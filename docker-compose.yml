@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=osm-my-biz
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=osm-my-biz
