@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  app:
+  api:
     build:
       context: backend/
       dockerfile: Dockerfile
@@ -14,3 +14,24 @@ services:
       - POSTGRES_USER=osm-my-biz
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=osm-my-biz
+  frontend:
+    build:
+      context: frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/osmmybiz/src:/opt/frontend/src
+      - ./frontend/osmmybiz/static:/opt/frontend/static
+      - ./frontend/osmmybiz/index.html:/opt/frontend/index.html
+      - ./frontend/osmmybiz/package.json:/opt/frontend/package.json
+      - ./frontend/osmmybiz/package-lock.json:/opt/frontend/package-lock.json
+  nginx:
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - VIRTUAL_HOST=localhost,127.0.0.1
+    links:
+      - "api:backend"
+      - "frontend:frontend"
