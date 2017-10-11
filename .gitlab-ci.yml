@@ -1,0 +1,16 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+client-unit:
+  script:
+    - npm install
+    - npm run unit
+
+client-lint:
+  script:
+    - npm install
+    - npm run lint
+	
