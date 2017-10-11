@@ -21,6 +21,7 @@ client-unit:
     - cd frontend/osmmybiz
     - npm install
     - npm run unit
+  coverage: '/=* Coverage summary =*[\s\S]*=*/'
 
 client-lint:
   image: node:8.4
