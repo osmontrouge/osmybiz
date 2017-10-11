@@ -1,16 +1,28 @@
-image: node:latest
+stages:
+  - build
+  - test
 
 cache:
   paths:
-    - node_modules/
+    - frontend/osmmybiz/node_modules/
+
+client-build:
+  image: node:8.4
+  stage: build
+  script:
+    - cd frontend/osmmybiz
+    - npm run build
 
 client-unit:
+  image: node:8.4
+  stage: test
   script:
-    - npm install
+    - cd frontend/osmmybiz
     - npm run unit
 
 client-lint:
+  image: node:8.4
+  stage: test
   script:
-    - npm install
+    - cd frontend/osmmybiz
     - npm run lint
-	
