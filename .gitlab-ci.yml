@@ -11,6 +11,7 @@ client-build:
   stage: build
   script:
     - cd frontend/osmmybiz
+    - npm install
     - npm run build
 
 client-unit:
