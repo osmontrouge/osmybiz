@@ -19,6 +19,7 @@ client-unit:
   stage: test
   script:
     - cd frontend/osmmybiz
+    - npm install
     - npm run unit
 
 client-lint:
@@ -26,4 +27,5 @@ client-lint:
   stage: test
   script:
     - cd frontend/osmmybiz
+    - npm install
     - npm run lint
