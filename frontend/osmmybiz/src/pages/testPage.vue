@@ -12,6 +12,10 @@
       New
     </button>
 
+    <button @click="login()">
+          Login
+    </button>
+
   </div>
 
 
@@ -39,7 +43,8 @@
     },
     methods: {
       ...mapActions([
-        'load'
+        'load',
+        'login'
       ]),
       ...mapMutations([
         'add',
@@ -51,6 +56,9 @@
           this.add({id: this.nextId, name: this.text})
           this.setText('')
         }
+      },
+      login () {
+        this.login()
       }
     }
   }
