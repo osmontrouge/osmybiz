@@ -1,0 +1,32 @@
+stages:
+  - build
+  - test
+
+cache:
+  paths:
+    - frontend/osmmybiz/node_modules/
+
+client-build:
+  image: node:8.4
+  stage: build
+  script:
+    - cd frontend/osmmybiz
+    - npm install
+    - npm run build
+
+client-unit:
+  image: node:8.4
+  stage: test
+  script:
+    - cd frontend/osmmybiz
+    - npm install
+    - npm run unit
+  coverage: '/=* Coverage summary =*[\s\S]*=*/'
+
+client-lint:
+  image: node:8.4
+  stage: test
+  script:
+    - cd frontend/osmmybiz
+    - npm install
+    - npm run lint
