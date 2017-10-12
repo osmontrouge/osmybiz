@@ -4,7 +4,15 @@ const state = {
   initialPos: latLng(47.223490, 8.817737),  // Hsr
   initialZoom: 13,
   tileUrl: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+
+  position: null
+}
+
+const mutations = {
+  setPosition (state, pos) {
+    state.position = pos
+  }
 }
 
 const getters = {
@@ -25,5 +33,6 @@ const getters = {
 
 export default {
   state,
-  getters
+  getters,
+  mutations
 }
