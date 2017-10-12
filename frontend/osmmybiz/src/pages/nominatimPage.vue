@@ -12,11 +12,11 @@
     </div>
     <div>
 
-      Class: {{ address.class }} </br>
-      Name: {{ address.display_name }} </br>
-      Lat: {{ address.lat }} </br>
-      Lon: {{ address.lon }} </br>
-      OSMID: {{ address.osm_id }} </br>
+      Class: {{ address.class }} <br>
+      Name: {{ address.display_name }} <br>
+      Lat: {{ address.lat }} <br>
+      Lon: {{ address.lon }} <br>
+      OSMID: {{ address.osm_id }} <br>
 
     </div>
 
