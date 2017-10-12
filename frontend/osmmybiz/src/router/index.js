@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import TestPage from '@/pages/testPage'
+import LandingPage from '@/pages/landingPage'
 import NominatimPage from '@/pages/nominatimPage'
 
 Vue.use(Router)
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Landing',
+      component: LandingPage
     }, {
       path: '/test',
       name: 'Test',
