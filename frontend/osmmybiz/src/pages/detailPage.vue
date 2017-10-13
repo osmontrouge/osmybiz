@@ -4,11 +4,12 @@
     <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert: ({{lat}} / {{lon}})</p>
 
      <detail-form></detail-form>
+
   </div>
 </template>
 
 <script>
-  import DetailForm from '@/components/detail-form'
+  import DetailForm from '@/components/DetailForm'
   import {mapGetters, mapActions} from 'vuex'
 
   export default {

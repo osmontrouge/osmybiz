@@ -16,8 +16,11 @@
     "2": "^1.0.0",
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
+    "semantic-ui-vue2": "^2.4.2",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
+    "vue-search-select": "^2.3.12",
+    "vue2-leaflet": "0.0.55",
     "vuex": "^2.4.1",
     "vuex-router-sync": "^4.3.2"
   },

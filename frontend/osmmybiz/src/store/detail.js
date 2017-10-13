@@ -1,10 +1,13 @@
 import osmApi from './../api/osmApi'
 
 const state = {
-  lat: 47.3742031,
+  lat: 47.0742031,
   lon: 9.1963728471363,
   details: {
-    category: '',
+    category: {
+      text: '',
+      value: 0
+    },
     name: '',
     openinghours: '',
     phonenumber: '',
@@ -58,7 +61,7 @@ function constructNote () {
     lat: state.lat,
     lon: state.lon,
     text: 'Note from OSM My Business:\n' +
-   'Category: ' + state.details.category + '\n' +
+   'Category: ' + state.details.category.text + '\n' +
    'Name: ' + state.details.name + '\n' +
    'Opening hours: ' + state.details.openinghours + '\n' +
    'Phone number: ' + state.details.phonenumber + '\n' +
