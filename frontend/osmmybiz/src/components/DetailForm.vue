@@ -23,9 +23,10 @@
             <label>Telefonnummer</label>
             <input type="text" v-model="details.phonenumber" placeholder="Telefonnummer">
           </div>
-          <div class="field">
+          <div class="field" :class="{ 'control': true }">
             <label>E-Mail</label>
-            <input type="text" v-model="details.email" placeholder="E-Mail">
+            <input v-validate="'email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email" type="text" v-model="details.email" placeholder="E-Mail">
+            <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
           </div>
           <div class="field">
             <label>Webseite</label>
@@ -49,6 +50,10 @@
   import {Mixin} from 'semantic-ui-vue2'
   import locales from '../assets/locales.json'
   import { BasicSelect } from 'vue-search-select'
+  import Vue from 'vue'
+  import VeeValidate from 'vee-validate'
+
+  Vue.use(VeeValidate)
 
   export default {
     name: 'detail-form',

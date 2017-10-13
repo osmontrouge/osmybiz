@@ -14,26 +14,26 @@ const state = {
     email: '',
     website: '',
     description: ''
-  }
+  },
+  note: {},
+  displaySuccess: false
 }
 
 const actions = {
-  postNote () {
+  postNote ({commit}) {
     let note = constructNote()
     console.log(note)
     osmApi.postNote(note).then(ps => {
       console.log(ps)
-      // commit('setAddress', ps.data[0])
+      setDisplaySuccess()
+      commit('setNote', ps)
     })
   }
 }
 
 const mutations = {
-  setLat (state, lat) {
-    state.lat = lat
-  },
-  setLon (state, lon) {
-    state.lon = lon
+  setNote (state, note) {
+    state.note = note
   }
 }
 
@@ -46,6 +46,12 @@ const getters = {
   },
   details (state) {
     return state.details
+  },
+  note (state) {
+    return state.note
+  },
+  displaySuccess (state) {
+    return state.displaySuccess
   }
 }
 
@@ -56,17 +62,38 @@ export default {
   getters
 }
 
+function setDisplaySuccess () {
+  state.displaySuccess = true
+}
+
 function constructNote () {
+  var text = 'Note from OSM My Business:\n'
+
+  if (state.details.category.text.length !== 0) {
+    text += 'Category: ' + state.details.category.text + '\n'
+  }
+  if (state.details.name.length !== 0) {
+    text += 'Name: ' + state.details.name + '\n'
+  }
+  if (state.details.openinghours.length !== 0) {
+    text += 'Opening hours: ' + state.details.openinghours + '\n'
+  }
+  if (state.details.phonenumber.length !== 0) {
+    text += 'Phone number: ' + state.details.phonenumber + '\n'
+  }
+  if (state.details.email.length !== 0) {
+    text += 'Email: ' + state.details.email + '\n'
+  }
+  if (state.details.website.length !== 0) {
+    text += 'Website: ' + state.details.website + '\n'
+  }
+  if (state.details.description.length !== 0) {
+    text += 'Description: ' + state.details.description + '\n'
+  }
+
   return {
     lat: state.lat,
     lon: state.lon,
-    text: 'Note from OSM My Business:\n' +
-   'Category: ' + state.details.category.text + '\n' +
-   'Name: ' + state.details.name + '\n' +
-   'Opening hours: ' + state.details.openinghours + '\n' +
-   'Phone number: ' + state.details.phonenumber + '\n' +
-   'Email: ' + state.details.email + '\n' +
-   'Website: ' + state.details.website + '\n' +
-   'Description: ' + state.details.description + '\n'
+    text: text
   }
 }

@@ -5,6 +5,8 @@
 
      <detail-form></detail-form>
 
+    <p v-if="displaySuccess">{{note}}</p>
+
   </div>
 </template>
 
@@ -22,7 +24,9 @@
     computed: {
       ...mapGetters([
         'lon',
-        'lat'
+        'lat',
+        'note',
+        'displaySuccess'
       ])
     },
     methods: {

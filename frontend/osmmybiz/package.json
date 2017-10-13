@@ -17,6 +17,7 @@
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
     "semantic-ui-vue2": "^2.4.2",
+    "vee-validate": "^2.0.0-rc.19",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
     "vue-search-select": "^2.3.12",
