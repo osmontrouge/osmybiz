@@ -11,6 +11,12 @@
   import {mapGetters} from 'vuex'
 
   export default {
+    created () {
+      console.log(this)
+      this.$store.subscribe((mut, state) => {
+        console.log('state changed', state, mut)
+      })
+    },
     computed: {
       ...mapGetters([
         'initialPos',
