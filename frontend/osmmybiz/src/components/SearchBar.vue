@@ -61,13 +61,13 @@
     width: 500px;
     z-index: 99;
     left: 50%;
-    margin-left: -250px;
+    margin-left: -251px;
     top:50px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
-
+    border: 2px solid #7ebc6f;
   }
 
   .search-bar {
@@ -99,8 +99,9 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-around;
-    top: 110px;
-    border-top: 1px solid grey
+    top: 114px;
+    border: 2px solid #7ebc6f;
+    border-top: none;
   }
 
   .suggestion {

@@ -2,7 +2,7 @@
   <div class="map-wrapper">
     <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked">
       <v-tilelayer :url="tileUrl" :attribution="attribution"></v-tilelayer>
-      <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-dragend="dragend"></v-marker>
+      <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
   </div>
 </template>
@@ -34,8 +34,8 @@
       clicked (event) {
         this.setPosition(event.latlng)
       },
-      dragend (event) {
-        this.setPosition(event.target._latlng)
+      drag (event) {
+        this.setPosition(event.latlng)
       }
     },
     computed: {
