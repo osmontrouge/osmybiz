@@ -8,6 +8,7 @@ const state = {
   tileUrl: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 
+  mapPosition: null,
   position: null,
 
   search: null,
@@ -40,7 +41,10 @@ const mutations = {
   setPosition (state, pos) {
     state.position = pos
   },
-
+  setMapPosition (state, pos) {
+    state.mapPosition = pos
+    state.position = pos
+  },
   setSearch (state, search) {
     state.search = search
   },
@@ -50,6 +54,10 @@ const mutations = {
   selectPoint (state, point) {
     state.suggestions = []
     state.search = point.name
+  },
+  resetSearch (state) {
+    state.search = ''
+    state.suggestions = []
   }
 }
 
@@ -75,6 +83,9 @@ const getters = {
   },
   position (state) {
     return state.position
+  },
+  mapPosition (state) {
+    return state.mapPosition
   }
 }
 

@@ -2,7 +2,10 @@
 
   <div class="search-bar-wrapper">
 
-    <input type="text" class="search-bar" placeholder="Suchen..." v-model="search">
+    <div class="input-wrapper">
+      <input type="text" class="search-bar" placeholder="Suchen..." v-model="search">
+      <div v-if="search && search.length" class="remove" @click="resetSearch()">x</div>
+    </div>
 
     <div class="suggestion-list" v-if="suggestions.length">
       <div v-for="sug in suggestions" class="suggestion" @click="pick(sug)">
@@ -20,17 +23,16 @@
   import {mapGetters, mapActions, mapMutations} from 'vuex'
 
   export default {
-    created () {
-    },
     methods: {
       ...mapActions(['queryNominatim']),
       ...mapMutations([
         'setSearch',
         'selectPoint',
-        'setPosition'
+        'setMapPosition',
+        'resetSearch'
       ]),
       pick (point) {
-        this.setPosition(point.coords)
+        this.setMapPosition(point.coords)
         this.selectPoint(point)
       }
     },
@@ -69,11 +71,25 @@
   }
 
   .search-bar {
-    width: 450px;
-    height: 40px;
     font-size: 28px;
     border: none;
     outline: none;
+    width: 430px;
+    height: 40px;
+  }
+
+  .remove {
+    width: 20px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .input-wrapper {
+    width: 450px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .suggestion-list {

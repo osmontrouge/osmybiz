@@ -1,30 +1,42 @@
 <template>
   <div class="map-wrapper">
-    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos">
+    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked">
       <v-tilelayer :url="tileUrl" :attribution="attribution"></v-tilelayer>
-      <v-marker v-if="position" :lat-lng="position"></v-marker>
+      <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-dragend="dragend"></v-marker>
     </v-map>
   </div>
 </template>
 
 <script>
   import Vue2Leaflet from 'vue2-leaflet'
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
+
+  const zoomOnSelect = 18
 
   let map
   function setMapPosition (pos) {
-    map.setView(pos, 20)
+    map.setView(pos, zoomOnSelect)
   }
 
   export default {
     mounted () {
       map = this.$refs.map.mapObject
-      this.$store.subscribe((mut, state) => {
-        if (mut.type === 'setPosition') {
-          console.log('state changed', state, mut)
+      this.$store.subscribe(mut => {
+        if (mut.type === 'setMapPosition') {
           setMapPosition(this.position)
         }
       })
+    },
+    methods: {
+      ...mapMutations([
+        'setPosition'
+      ]),
+      clicked (event) {
+        this.setPosition(event.latlng)
+      },
+      dragend (event) {
+        this.setPosition(event.target._latlng)
+      }
     },
     computed: {
       ...mapGetters([
@@ -32,7 +44,8 @@
         'initialZoom',
         'attribution',
         'tileUrl',
-        'position'
+        'position',
+        'mapPosition'
       ])
     },
 
