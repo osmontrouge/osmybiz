@@ -5,7 +5,7 @@
     <input type="text" class="search-bar" placeholder="Suchen..." v-model="search">
 
     <div class="suggestion-list" v-if="suggestions.length">
-      <div v-for="sug in suggestions" class="suggestion">
+      <div v-for="sug in suggestions" class="suggestion" @click="pick(sug)">
 
         <div class="main-text">{{ sug.name }}</div>
         <div class="sub-text">{{sug.country}}</div>
@@ -25,8 +25,14 @@
     methods: {
       ...mapActions(['queryNominatim']),
       ...mapMutations([
-        'setSearch'
-      ])
+        'setSearch',
+        'selectPoint',
+        'setPosition'
+      ]),
+      pick (point) {
+        this.setPosition(point.coords)
+        this.selectPoint(point)
+      }
     },
     computed: {
       ...mapGetters([

@@ -46,6 +46,10 @@ const mutations = {
   },
   setSuggestions (state, suggestions) {
     state.suggestions = suggestions
+  },
+  selectPoint (state, point) {
+    state.suggestions = []
+    state.search = point.name
   }
 }
 
@@ -68,6 +72,9 @@ const getters = {
   },
   suggestions (state) {
     return state.suggestions
+  },
+  position (state) {
+    return state.position
   }
 }
 

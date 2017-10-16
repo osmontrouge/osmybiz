@@ -1,7 +1,8 @@
 <template>
   <div class="map-wrapper">
-    <v-map class="map" :zoom="initialZoom" :center="initialPos">
+    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos">
       <v-tilelayer :url="tileUrl" :attribution="attribution"></v-tilelayer>
+      <v-marker v-if="position" :lat-lng="position"></v-marker>
     </v-map>
   </div>
 </template>
@@ -10,11 +11,19 @@
   import Vue2Leaflet from 'vue2-leaflet'
   import {mapGetters} from 'vuex'
 
+  let map
+  function setMapPosition (pos) {
+    map.setView(pos, 20)
+  }
+
   export default {
-    created () {
-      console.log(this)
+    mounted () {
+      map = this.$refs.map.mapObject
       this.$store.subscribe((mut, state) => {
-        console.log('state changed', state, mut)
+        if (mut.type === 'setPosition') {
+          console.log('state changed', state, mut)
+          setMapPosition(this.position)
+        }
       })
     },
     computed: {
@@ -22,7 +31,8 @@
         'initialPos',
         'initialZoom',
         'attribution',
-        'tileUrl'
+        'tileUrl',
+        'position'
       ])
     },
 
