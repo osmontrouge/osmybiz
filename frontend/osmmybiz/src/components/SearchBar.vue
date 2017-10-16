@@ -4,9 +4,12 @@
 
     <input type="text" class="search-bar" placeholder="Suchen..." v-model="search">
 
-    <div class="suggestion-list">
+    <div class="suggestion-list" v-if="suggestions.length">
       <div v-for="sug in suggestions" class="suggestion">
-        <span class="item">{{ sug.name }}</span>
+
+        <div class="main-text">{{ sug.name }}</div>
+        <div class="sub-text">{{sug.country}}</div>
+
       </div>
     </div>
   </div>
@@ -18,7 +21,6 @@
 
   export default {
     created () {
-      console.log(this)
     },
     methods: {
       ...mapActions(['queryNominatim']),
@@ -47,7 +49,7 @@
 
   .search-bar-wrapper {
     position: fixed;
-    height:70px;
+    height:60px;
     width: 500px;
     z-index: 99;
     left: 50%;
@@ -62,8 +64,8 @@
 
   .search-bar {
     width: 450px;
-    height: 50px;
-    font-size: 32px;
+    height: 40px;
+    font-size: 28px;
     border: none;
     outline: none;
   }
@@ -75,17 +77,29 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-around;
-    top: 120px
+    top: 110px;
+    border-top: 1px solid grey
   }
 
   .suggestion {
     background-color: white;
     width: 450px;
-    padding: 25px
+    padding: 10px 25px;
+    text-align: left;
   }
 
   .suggestion:hover {
-    background-color: lightgrey
+    background-color: lightgrey;
+    cursor: pointer;
+  }
+
+  .main-text {
+    font-size:20px;
+  }
+
+  .sub-text {
+    text-align: right;
+    color: grey;
   }
 
 </style>

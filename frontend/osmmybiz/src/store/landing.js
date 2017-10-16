@@ -16,6 +16,7 @@ const state = {
 
 const queryDebounceMs = 200
 const queryMinLength = 3
+const requestThrottleMs = 1000
 
 function q (commit, search) {
   if (!_.isString(search) || search.length < queryMinLength) {
@@ -27,7 +28,7 @@ function q (commit, search) {
   }
 }
 
-const queryFn = _.debounce(q, queryDebounceMs)
+const queryFn = _.debounce(_.throttle(q, requestThrottleMs), queryDebounceMs)
 
 const actions = {
   queryNominatim ({commit}, search) {
