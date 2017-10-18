@@ -15,6 +15,7 @@
   "dependencies": {
     "2": "^1.0.0",
     "axios": "^0.16.2",
+    "leaflet": "^1.2.0",
     "lodash": "^4.17.4",
     "semantic-ui-vue2": "^2.4.2",
     "vee-validate": "^2.0.0-rc.19",
