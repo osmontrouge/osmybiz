@@ -13,6 +13,7 @@ const state = {
     phonenumber: '',
     email: '',
     website: '',
+    wheelchair: false,
     description: ''
   },
   note: {},
@@ -22,9 +23,7 @@ const state = {
 const actions = {
   postNote ({commit}) {
     let note = constructNote()
-    console.log(note)
     osmApi.postNote(note).then(ps => {
-      console.log(ps)
       setDisplaySuccess()
       commit('setNote', ps)
     })
@@ -34,6 +33,9 @@ const actions = {
 const mutations = {
   setNote (state, note) {
     state.note = note
+  },
+  setDisplaySuccess (state, displaySuccess) {
+    state.displaySuccess = displaySuccess
   }
 }
 
@@ -86,6 +88,9 @@ function constructNote () {
   }
   if (state.details.website.length !== 0) {
     text += 'Website: ' + state.details.website + '\n'
+  }
+  if (state.details.wheelchair === true) {
+    text += 'Wheelchair accessible: Yes \n'
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + '\n'

@@ -7,7 +7,6 @@ export default {
   postNote: (note) => {
     return axios.post(url, note)
       .then(response => {
-        console.log(response)
         return response.data
       })
       .catch(e => {

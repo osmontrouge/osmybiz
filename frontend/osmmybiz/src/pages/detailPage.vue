@@ -3,16 +3,23 @@
 
     <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert: ({{lat}} / {{lon}})</p>
 
-     <detail-form></detail-form>
+    <detail-form v-if="!displaySuccess"></detail-form>
 
-    <p v-if="displaySuccess">{{note}}</p>
+    <div v-if="displaySuccess">
+      Sind diese Informationen richtig?
+
+      <p>{{note.properties.comments[0].text}}</p>
+
+      <button class="fluid ui button" @click="gotoLanding()">Alles richtig</button>
+      <button class="fluid ui button" @click="gotoDetail()">Informationen anpassen</button>
+    </div>
 
   </div>
 </template>
 
 <script>
   import DetailForm from '@/components/DetailForm'
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
 
   export default {
 
@@ -30,11 +37,18 @@
       ])
     },
     methods: {
+      ...mapMutations([
+        'setDisplaySuccess'
+      ]),
       ...mapActions([
         'postNote'
       ]),
-      postNote () {
-        this.postNote()
+      gotoLanding () {
+        this.$router.push('/')
+      },
+      gotoDetail () {
+        this.setDisplaySuccess(false)
+        this.$router.push('/detail')
       }
     }
   }
