@@ -1,17 +1,18 @@
 <template>
   <div>
-    <form class="ui form">
+    <form class="form">
       <div class="field">
         <label>Kategorie</label>
-        <basic-select :options="this.tags.presets.item"
+        <basic-select class="select-category"
+                      :options="this.tags.presets.item"
                       :selected-option="details.category"
                       placeholder="select category"
                       @select="onSelect">
         </basic-select>
       </div>
-      <div class="two fields">
+      <div class="right field">
         <div class="field">
-                    <div class="field">
+          <div class="field">
             <label>Name</label>
             <input type="text" v-model="details.name" placeholder="Name">
           </div>
@@ -32,38 +33,33 @@
             <label>Webseite</label>
             <input type="text" v-model="details.website" placeholder="Webseite">
           </div>
-          <div class="field ui toggle checkbox">
+          <div class="field">
             <input type="checkbox" v-model="details.wheelchair">
             <label>Rollstuhlgängig</label>
           </div>
         </div>
-        <div class="field">
+        <div class="left field">
           <div class="field">
             <label>Beschreibung</label>
-            <textarea rows="18" v-model="details.description" placeholder="Beschreibung"></textarea>
+            <textarea v-model="details.description" placeholder="Beschreibung"></textarea>
           </div>
         </div>
       </div>
-      <button class="fluid ui button" @click="submit()">Business erfassen</button>
+      <button class="button" @click="submit()">Business erfassen</button>
     </form>
   </div>
 </template>
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import {Mixin} from 'semantic-ui-vue2'
   import tags from '../assets/tags.json'
   import { BasicSelect } from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
-  import Checkbox from 'semantic-ui-vue2/src/modules/Checkbox'
 
   Vue.use(VeeValidate)
 
   export default {
-    mounted () {
-      console.log(tags)
-    },
     name: 'detail-form',
     data: function () {
       return {
@@ -87,12 +83,13 @@
       }
     },
     components: {
-      Checkbox,
       BasicSelect
-    },
-    mixins: [Mixin]
+    }
   }
 </script>
 
 <style scoped>
+  .select-category {
+
+  }
 </style>

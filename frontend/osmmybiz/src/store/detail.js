@@ -23,9 +23,7 @@ const state = {
 const actions = {
   postNote ({commit}) {
     let note = constructNote()
-    console.log(note)
     osmApi.postNote(note).then(ps => {
-      console.log(ps)
       setDisplaySuccess()
       commit('setNote', ps)
     })
@@ -35,6 +33,9 @@ const actions = {
 const mutations = {
   setNote (state, note) {
     state.note = note
+  },
+  setDisplaySuccess (state, displaySuccess) {
+    state.displaySuccess = displaySuccess
   }
 }
 
