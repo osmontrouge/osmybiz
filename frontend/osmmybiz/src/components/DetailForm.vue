@@ -3,7 +3,7 @@
     <form class="ui form">
       <div class="field">
         <label>Kategorie</label>
-        <basic-select :options="this.locales.data"
+        <basic-select :options="this.tags.presets.item"
                       :selected-option="details.category"
                       placeholder="select category"
                       @select="onSelect">
@@ -32,6 +32,10 @@
             <label>Webseite</label>
             <input type="text" v-model="details.website" placeholder="Webseite">
           </div>
+          <div class="field ui toggle checkbox">
+            <input type="checkbox" v-model="details.wheelchair">
+            <label>Rollstuhlgängig</label>
+          </div>
         </div>
         <div class="field">
           <div class="field">
@@ -48,18 +52,22 @@
 <script>
   import {mapGetters, mapActions} from 'vuex'
   import {Mixin} from 'semantic-ui-vue2'
-  import locales from '../assets/locales.json'
+  import tags from '../assets/tags.json'
   import { BasicSelect } from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
+  import Checkbox from 'semantic-ui-vue2/src/modules/Checkbox'
 
   Vue.use(VeeValidate)
 
   export default {
+    mounted () {
+      console.log(tags)
+    },
     name: 'detail-form',
     data: function () {
       return {
-        locales
+        tags
       }
     },
     computed: {
@@ -79,6 +87,7 @@
       }
     },
     components: {
+      Checkbox,
       BasicSelect
     },
     mixins: [Mixin]

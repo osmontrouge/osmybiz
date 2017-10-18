@@ -13,6 +13,7 @@ const state = {
     phonenumber: '',
     email: '',
     website: '',
+    wheelchair: false,
     description: ''
   },
   note: {},
@@ -86,6 +87,9 @@ function constructNote () {
   }
   if (state.details.website.length !== 0) {
     text += 'Website: ' + state.details.website + '\n'
+  }
+  if (state.details.wheelchair === true) {
+    text += 'Wheelchair accessible: Yes \n'
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + '\n'
