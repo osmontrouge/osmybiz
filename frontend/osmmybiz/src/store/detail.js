@@ -14,7 +14,8 @@ const state = {
     email: '',
     website: '',
     wheelchair: false,
-    description: ''
+    description: '',
+    note: ''
   },
   note: {},
   displaySuccess: false
@@ -94,6 +95,10 @@ function constructNote () {
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + '\n'
+  }
+
+  if (state.details.note.length > 0) {
+    text += 'Note: ' + state.details.note + '\n'
   }
 
   return {
