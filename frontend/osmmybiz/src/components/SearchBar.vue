@@ -62,7 +62,7 @@
     z-index: 99;
     left: 50%;
     margin-left: -251px;
-    top:50px;
+    top:100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,14 +99,14 @@
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-around;
-    top: 114px;
+    top: 160px;
     border: 2px solid #7ebc6f;
     border-top: none;
   }
 
   .suggestion {
     background-color: white;
-    width: 450px;
+    width: 100%;
     padding: 10px 25px;
     text-align: left;
   }

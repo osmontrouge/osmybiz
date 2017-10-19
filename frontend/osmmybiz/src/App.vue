@@ -30,12 +30,6 @@
 
   button {
     background-color: white;
-    position: fixed;
-    height:30px;
-    width: 200px;
-    z-index: 99;
-    left: 50%;
-    margin-left: -101px;
     display: flex;
     align-items: center;
     justify-content: center;

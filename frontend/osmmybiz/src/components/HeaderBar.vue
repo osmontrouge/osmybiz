@@ -26,5 +26,14 @@
     align-items: center;
   }
 
+  .title {
+    font-size: 24px;
+    font-weight:bold;
+    margin: 0 24px;
+  }
+
+  .login-button {
+    margin: 0 24px;
+  }
 
 </style>

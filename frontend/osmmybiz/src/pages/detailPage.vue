@@ -12,10 +12,11 @@
   import PostNoteSuccess from '@/components/PostNoteSuccess'
   import {mapGetters, mapMutations} from 'vuex'
   import {routes} from './../router'
+  import * as _ from 'lodash'
 
   export default {
     mounted () {
-      if (isNaN(this.lat) || isNaN(this.lon)) {
+      if (!_.isNumber(this.lat) || !_.isNumber(this.lon)) {
         this.$router.push({name: routes.Landing})
       }
     },
