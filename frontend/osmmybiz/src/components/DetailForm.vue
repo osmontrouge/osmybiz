@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-select">
-      <basic-select :options="this.tags.presets.item"
+      <basic-select :options="this.tags"
                     :selected-option="details.category"
                     placeholder="Kategorie auswählen"
                     @select="onSelect"
@@ -66,7 +66,7 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import tags from '../assets/tags.json'
+  import tags from '../assets/tags_de.json'
   import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
