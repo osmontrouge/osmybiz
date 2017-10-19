@@ -4,7 +4,6 @@
     <tile-map></tile-map>
     <selected-position></selected-position>
   </div>
-
 </template>
 
 <script>
