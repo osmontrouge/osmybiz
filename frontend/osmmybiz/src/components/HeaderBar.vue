@@ -1,0 +1,30 @@
+<template>
+    <div class="header">
+      <div class="title">
+        OpenStreetMap MyBusiness
+      </div>
+      <div class="login-button">
+        <button>Login</button>
+      </div>
+    </div>
+</template>
+
+<script>
+    export default {
+      name: 'header-bar'
+    }
+</script>
+
+<style scoped>
+
+  .header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+</style>

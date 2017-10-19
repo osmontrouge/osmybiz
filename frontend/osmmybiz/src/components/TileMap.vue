@@ -62,10 +62,10 @@
 
   .map-wrapper {
     position: fixed;
-    top: 0;
+    top: 50px;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
   }
   .map {
     height: 100%;
