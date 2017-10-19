@@ -1,25 +1,18 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
   <div class="form-wrapper">
 
-    <div class="form-header">
-      <h1>
-        Business erfassen
-        <span>Bitte füllen sie die Felder aus. (Felder mit * sind obligatorisch)</span>
-      </h1>
-    </div>
-
-    <div class="form-select">
       <basic-select :options="this.tags.presets.item"
                     :selected-option="details.category"
                     placeholder="Kategorie auswählen"
                     @select="onSelect"
-                    class=".basic-select">
+                    class="basic-select">
       </basic-select>
-    </div>
+
+
 
     <div class="form-fields">
-      <div class="left-field">
+      <div class="column">
         <div class="field">
           <label>Name</label>
           <input type="text" v-model="details.name" placeholder="Your Name...">
@@ -43,16 +36,22 @@
           <input type="text" v-model="details.website" placeholder="example.com">
         </div>
         <div class="field">
-          <input type="checkbox" v-model="details.wheelchair">
           <label>Rollstuhlgängig</label>
+          <input class="checkbox" type="checkbox" v-model="details.wheelchair">
         </div>
       </div>
 
-      <div class="right-field">
+      <div class="column">
         <div class="field">
           <label>Beschreibung</label>
-          <textarea v-model="details.description" placeholder="Beschreibung"></textarea>
+          <textarea class="area" v-model="details.description" placeholder="Beschreibung"></textarea>
         </div>
+
+        <div class="field">
+          <label>Notiz</label>
+          <textarea class="area" v-model="details.note" placeholder="Notiz"></textarea>
+        </div>
+
       </div>
     </div>
 
@@ -77,7 +76,8 @@
     name: 'detail-form',
     data: function () {
       return {
-        tags
+        tags,
+        selected: ''
       }
     },
     computed: {
@@ -90,6 +90,7 @@
         'postNote'
       ]),
       submit () {
+        console.log(this.selected)
         this.postNote()
       },
       onSelect (item) {
@@ -102,25 +103,22 @@
   }
 </script>
 
-<style scoped>
+<style>
 
-  input[type="text"], textarea {
+  input[type="text"], textarea, select {
     border: 2px solid #7ebc6f;
-    width: 100%;
     padding: 12px 20px;
-    margin: 0 0 8px 5px;
     display: inline-block;
-    border-radius: 4px;
     box-sizing: border-box;
   }
 
-  input:hover, textarea:hover {
-    background-color: #7ebc6f;
-    color: white;
+  .area {
+    flex-grow: 1;
   }
 
-  label {
-    margin: 0 0 0 5px;
+  .checkbox {
+    height: 44px;
+    width: 24px;
   }
 
   textarea {
@@ -128,42 +126,61 @@
   }
 
   .form-wrapper {
-  }
+    max-width:750px;
+    margin: auto;
 
-  .form-header {
-  }
-
-  .form-select {
-    margin-left: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 2px solid #7ebc6f;
   }
 
   .form-fields {
     display: flex;
     flex-flow: row;
+    justify-content: space-between;
+    align-items: stretch;
   }
 
-  .left-field {
-    flex: 1 1;
-  }
-
-  .right-field {
-    flex: 1 1;
-    align-self: stretch;
-    margin-left: 5px;
+  .column {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    justify-content: space-around;
   }
 
   .form-footer {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
   }
 
   .field {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-grow: 1;
+    padding-bottom: 12px;
   }
 
   .field label {
-    float: left;
+    text-align: left;
+  }
+
+  .basic-select, .basic-select:hover, .basic-select:focus {
+    border: 2px solid #7ebc6f !important;
+    margin-bottom: 12px !important;
+
+  }
+
+  .button {
+    flex-grow: 1;
+  }
+
+  .menu {
+    border: 2px solid #7ebc6f !important;
+    border-top: none !important;
+    margin: 0px -2px !important;
+    min-width: calc(100% + 2px ) !important;
+    width: calc(100% + 4px ) !important;
   }
 
 </style>

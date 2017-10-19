@@ -34,6 +34,7 @@
     align-items: center;
     justify-content: center;
     border: 2px solid #7ebc6f;
+    padding: 6px 12px;
   }
 
   button:hover {
