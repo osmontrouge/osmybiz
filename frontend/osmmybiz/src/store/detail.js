@@ -1,6 +1,16 @@
 import osmApi from './../api/osmApi'
+import tags from '../assets/tags_de.json'
+
+const options = []
+Object.keys(tags).forEach(function (key) {
+  options.push({
+    value: key,
+    text: tags[key]
+  })
+})
 
 const state = {
+  tags: options,
   lat: null,
   lon: null,
   details: {
@@ -58,6 +68,9 @@ const getters = {
   },
   displaySuccess (state) {
     return state.displaySuccess
+  },
+  tags (state) {
+    return state.tags
   }
 }
 

@@ -17,9 +17,6 @@ jsonfile.readFile(file, function(err, obj) {
 
     var keys = Object.keys(data.de.presets);
 
-
-
-
     keys.forEach(function (key) {
 
         if (isNeeded(key)) {

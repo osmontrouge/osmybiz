@@ -66,7 +66,6 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import tags from '../assets/tags_de.json'
   import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
@@ -75,14 +74,10 @@
 
   export default {
     name: 'detail-form',
-    data: function () {
-      return {
-        tags
-      }
-    },
     computed: {
       ...mapGetters([
-        'details'
+        'details',
+        'tags'
       ])
     },
     methods: {
