@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
   <div class="form-wrapper">
 
@@ -10,12 +10,29 @@
     </div>
 
     <div class="form-select">
+      <!--
       <basic-select :options="this.tags.presets.item"
                     :selected-option="details.category"
                     placeholder="Kategorie auswählen"
                     @select="onSelect"
                     class=".basic-select">
       </basic-select>
+      -->
+
+     <input type="text" list="categories" />
+      <datalist id="categories" v-model="selected">
+        <option v-for="option in this.tags.presets.item" v-bind:value="option.text">
+          {{ option.text }}
+        </option>
+      </datalist>
+
+      <!--
+      <select v-model="details.category">
+        <option v-for="option in this.tags.presets.item" v-bind:value="option">
+          {{ option.text }}
+        </option>
+      </select>
+      -->
     </div>
 
     <div class="form-fields">
@@ -77,7 +94,8 @@
     name: 'detail-form',
     data: function () {
       return {
-        tags
+        tags,
+        selected: ''
       }
     },
     computed: {
@@ -90,6 +108,7 @@
         'postNote'
       ]),
       submit () {
+        console.log(this.selected)
         this.postNote()
       },
       onSelect (item) {
@@ -104,7 +123,7 @@
 
 <style scoped>
 
-  input[type="text"], textarea {
+  input[type="text"], textarea, select {
     border: 2px solid #7ebc6f;
     width: 100%;
     padding: 12px 20px;
@@ -114,7 +133,7 @@
     box-sizing: border-box;
   }
 
-  input:hover, textarea:hover {
+  input:hover, textarea:hover, select:hover {
     background-color: #7ebc6f;
     color: white;
   }
