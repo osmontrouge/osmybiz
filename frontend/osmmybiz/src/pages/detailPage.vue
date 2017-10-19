@@ -11,8 +11,14 @@
   import DetailForm from '@/components/DetailForm'
   import PostNoteSuccess from '@/components/PostNoteSuccess'
   import {mapGetters, mapMutations} from 'vuex'
+  import {routes} from './../router'
 
   export default {
+    mounted () {
+      if (isNaN(this.lat) || isNaN(this.lon)) {
+        this.$router.push({name: routes.Landing})
+      }
+    },
     components: {
       DetailForm,
       PostNoteSuccess

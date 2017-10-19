@@ -1,8 +1,8 @@
 import osmApi from './../api/osmApi'
 
 const state = {
-  lat: 47.0742031,
-  lon: 9.1963728471363,
+  lat: null,
+  lon: null,
   details: {
     category: {
       text: '',
@@ -36,6 +36,10 @@ const mutations = {
   },
   setDisplaySuccess (state, displaySuccess) {
     state.displaySuccess = displaySuccess
+  },
+  setCoords (state, pos) {
+    state.lat = pos.lat
+    state.lon = pos.lng
   }
 }
 

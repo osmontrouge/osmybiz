@@ -7,6 +7,11 @@ import DetailPage from '@/pages/detailPage'
 
 Vue.use(Router)
 
+export const routes = {
+  Landing: 'Landing',
+  Detail: 'Detail'
+}
+
 export default new Router({
   routes: [
     {

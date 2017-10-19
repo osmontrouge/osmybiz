@@ -1,11 +1,16 @@
 <template>
   <div v-if="position" class="position-wrapper">
+
+    <div class="btn">
+      <button @click="create()">Neues Business</button>
+    </div>
     {{lat}} {{lng}}
   </div>
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
+  import {routes} from './../router'
 
   export default {
     computed: {
@@ -17,6 +22,15 @@
       },
       lng () {
         return this.position.lng.toFixed(4)
+      }
+    },
+    methods: {
+      ...mapMutations([
+        'setCoords'
+      ]),
+      create () {
+        this.setCoords(this.position)
+        this.$router.push({name: routes.Detail})
       }
     },
     name: 'selected-position'
