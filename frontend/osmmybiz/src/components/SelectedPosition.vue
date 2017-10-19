@@ -1,10 +1,15 @@
 <template>
   <div v-if="position" class="position-wrapper">
 
-    <div class="btn">
-      <button @click="create()">Neues Business</button>
+
+    <div class="current-position">
+      {{lat}} / {{lng}}
     </div>
-    {{lat}} {{lng}}
+
+    <div>
+      <button class="btn" @click="create()">Neues Business</button>
+    </div>
+
   </div>
 </template>
 
@@ -43,15 +48,24 @@
   .position-wrapper {
     background-color: white;
     position: fixed;
-    height:60px;
+    height:90px;
     width: 200px;
     z-index: 99;
     left: 50%;
     margin-left: -101px;
     bottom:50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 2px solid #7ebc6f;
   }
+
+  .btn {
+    position: relative;
+    left: 0;
+    margin-left: 0;
+    width: auto;
+  }
+
 </style>
