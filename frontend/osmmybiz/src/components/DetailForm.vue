@@ -2,14 +2,14 @@
 
   <div class="form-wrapper">
 
-      <basic-select :options="this.tags.presets.item"
+    <div class="form-select">
+      <basic-select :options="this.tags"
                     :selected-option="details.category"
                     placeholder="Kategorie auswählen"
                     @select="onSelect"
                     class="basic-select">
       </basic-select>
-
-
+    </div>
 
     <div class="form-fields">
       <div class="column">
@@ -65,7 +65,6 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
-  import tags from '../assets/tags.json'
   import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
@@ -74,15 +73,10 @@
 
   export default {
     name: 'detail-form',
-    data: function () {
-      return {
-        tags,
-        selected: ''
-      }
-    },
     computed: {
       ...mapGetters([
-        'details'
+        'details',
+        'tags'
       ])
     },
     methods: {
