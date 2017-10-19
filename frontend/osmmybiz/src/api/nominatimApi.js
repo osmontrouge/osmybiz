@@ -45,13 +45,3 @@ export function query (queryString) {
       console.log(e)
     })
 }
-
-export default {
-
-  loadAddress: (address) => {
-    return axios.get(buildRequest(address, 5))
-      .catch(e => {
-        console.log(e)
-      })
-  }
-}

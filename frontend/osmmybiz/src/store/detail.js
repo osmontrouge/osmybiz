@@ -1,8 +1,18 @@
 import osmApi from './../api/osmApi'
+import tags from '../assets/tags_de.json'
+
+const options = []
+Object.keys(tags).forEach(function (key) {
+  options.push({
+    value: key,
+    text: tags[key]
+  })
+})
 
 const state = {
-  lat: 47.0742031,
-  lon: 9.1963728471363,
+  tags: options,
+  lat: null,
+  lon: null,
   details: {
     category: {
       text: '',
@@ -37,6 +47,10 @@ const mutations = {
   },
   setDisplaySuccess (state, displaySuccess) {
     state.displaySuccess = displaySuccess
+  },
+  setCoords (state, pos) {
+    state.lat = pos.lat
+    state.lon = pos.lng
   }
 }
 
@@ -55,6 +69,9 @@ const getters = {
   },
   displaySuccess (state) {
     return state.displaySuccess
+  },
+  tags (state) {
+    return state.tags
   }
 }
 
