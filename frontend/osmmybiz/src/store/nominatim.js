@@ -1,4 +1,4 @@
-import nominatimApi from './../api/nominatimApi'
+import {query} from './../api/nominatimApi'
 
 const state = {
   address: {},
@@ -7,7 +7,7 @@ const state = {
 
 const actions = {
   loadFromNominatim ({commit}) {
-    nominatimApi.loadAddress(state.query).then(ps => {
+    query(state.query).then(ps => {
       commit('setAddress', ps.data[0])
     })
   }

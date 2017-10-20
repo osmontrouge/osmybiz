@@ -1,22 +1,51 @@
 <template>
   <div class="map-wrapper">
-    <v-map class="map" :zoom="initialZoom" :center="initialPos">
+    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked">
       <v-tilelayer :url="tileUrl" :attribution="attribution"></v-tilelayer>
+      <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
   </div>
 </template>
 
 <script>
   import Vue2Leaflet from 'vue2-leaflet'
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
+
+  const zoomOnSelect = 18
+
+  let map
+  function setMapPosition (pos) {
+    map.setView(pos, zoomOnSelect)
+  }
 
   export default {
+    mounted () {
+      map = this.$refs.map.mapObject
+      this.$store.subscribe(mut => {
+        if (mut.type === 'setMapPosition') {
+          setMapPosition(this.position)
+        }
+      })
+    },
+    methods: {
+      ...mapMutations([
+        'setPosition'
+      ]),
+      clicked (event) {
+        this.setPosition(event.latlng)
+      },
+      drag (event) {
+        this.setPosition(event.latlng)
+      }
+    },
     computed: {
       ...mapGetters([
         'initialPos',
         'initialZoom',
         'attribution',
-        'tileUrl'
+        'tileUrl',
+        'position',
+        'mapPosition'
       ])
     },
 
@@ -33,10 +62,10 @@
 
   .map-wrapper {
     position: fixed;
-    top: 0;
+    top: 50px;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
   }
   .map {
     height: 100%;
