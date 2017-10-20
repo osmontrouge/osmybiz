@@ -36,4 +36,4 @@ client-lint:
   script:
     - cd frontend/osmybiz
     - npm install
-    - npm run int
+    - npm run lint
