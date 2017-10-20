@@ -13,7 +13,6 @@ class Note(db.Model):
         onupdate=db.func.current_timestamp())
 
     def __init__(self, osm_note_id, osm_state):
-        """initialize with name."""
         self.osm_note_id = osm_note_id
         self.osm_state = osm_state
 
