@@ -18,4 +18,4 @@ COPY api/requirements.txt tmp/requirements.txt
 RUN pip install -r tmp/requirements.txt
 COPY api/ ${HOME}
 ENTRYPOINT ["dockerize", "-wait", "tcp://database:5432"]
-CMD ["python", "api.py"]
+CMD ["python", "run.py"]
