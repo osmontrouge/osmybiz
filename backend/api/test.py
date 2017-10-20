@@ -6,5 +6,3 @@ def app():
     app = create_app('sqlite+pysqlite:///tmp/db.db')
 
     return app
-
-def testbasic
