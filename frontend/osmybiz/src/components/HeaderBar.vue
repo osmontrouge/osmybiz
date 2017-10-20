@@ -1,7 +1,7 @@
 <template>
     <div class="header">
       <div class="title">
-        OpenStreetMap MyBusiness
+        OpenStreetMap My Business
       </div>
       <div class="login-button">
         <button>Login</button>

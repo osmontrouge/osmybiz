@@ -19,11 +19,11 @@ services:
       context: frontend/
       dockerfile: Dockerfile
     volumes:
-      - ./frontend/osmmybiz/src:/opt/frontend/src
-      - ./frontend/osmmybiz/static:/opt/frontend/static
-      - ./frontend/osmmybiz/index.html:/opt/frontend/index.html
-      - ./frontend/osmmybiz/package.json:/opt/frontend/package.json
-      - ./frontend/osmmybiz/package-lock.json:/opt/frontend/package-lock.json
+      - ./frontend/osmybiz/src:/opt/frontend/src
+      - ./frontend/osmybiz/static:/opt/frontend/static
+      - ./frontend/osmybiz/index.html:/opt/frontend/index.html
+      - ./frontend/osmybiz/package.json:/opt/frontend/package.json
+      - ./frontend/osmybiz/package-lock.json:/opt/frontend/package-lock.json
   nginx:
     build:
       context: nginx/
