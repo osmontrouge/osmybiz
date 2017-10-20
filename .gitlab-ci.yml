@@ -6,6 +6,14 @@ cache:
   paths:
     - frontend/osmmybiz/node_modules/
 
+backend-test:
+  image: python:3.6
+  stage: test
+  script:
+    - cd backend/api
+    - pip install -r requirements.txt
+    - python test.py
+
 client-build:
   image: node:8.4
   stage: build
