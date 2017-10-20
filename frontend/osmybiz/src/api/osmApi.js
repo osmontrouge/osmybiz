@@ -4,7 +4,7 @@ var url = 'https://master.apis.dev.openstreetmap.org/api/0.6/notes.json'
 
 export default {
 
-  postNote: (note) => {
+  post_Note: (note) => {
     return axios.post(url, note)
       .then(response => {
         return response.data
