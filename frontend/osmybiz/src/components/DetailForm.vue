@@ -3,19 +3,39 @@
   <div class="form-wrapper">
 
     <div class="form-select">
-      <basic-select :options="this.tags"
-                    :selected-option="details.category"
-                    placeholder="Kategorie auswählen"
-                    @select="onSelect"
-                    class="basic-select">
-      </basic-select>
+      <div class="field">
+        <label>Kategorie*</label>
+        <basic-select v-show="!isOwnCategory"
+                      :options="this.tags"
+                      :selected-option="details.category"
+                      placeholder="Kategorie auswählen"
+                      @select="onSelect"
+                      class="basic-select">
+        </basic-select>
+        <input v-show="isOwnCategory"
+               v-validate.initial="'required'"
+               v-model="details.category.text"
+               type="text"
+               name="category"/>
+        <span v-show="errors.has('category')"
+              class="help is-danger"> Das Kategoriefeld ist obligatorisch.
+        </span>
+      </div>
     </div>
 
     <div class="form-fields">
       <div class="column">
         <div class="field">
-          <label>Name</label>
-          <input type="text" v-model="details.name" placeholder="Your Name...">
+          <label>Name*</label>
+          <input v-validate.initial="'required'"
+                 :class="{'is-error': errors.has('first_name') }"
+                 type="text"
+                 name="name"
+                 v-model="details.name"
+                 placeholder="Your Name...">
+          <span v-show="errors.has('name')"
+                class="help is-danger"> Das Namensfeld ist obligatorisch.
+          </span>
         </div>
         <div class="field">
           <label>Öffnungszeiten</label>
@@ -27,9 +47,15 @@
         </div>
         <div class="field" :class="{ 'control': true }">
           <label>E-Mail</label>
-          <input v-validate="'email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email"
-                 type="text" v-model="details.email" placeholder="example@example.com">
-          <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
+          <input v-validate="'email'"
+                 :class="{'is-error': errors.has('email') }"
+                 name="email"
+                 type="text"
+                 v-model="details.email"
+                 placeholder="example@example.com">
+          <span v-show="errors.has('email')"
+                class="help is-danger">Das Emailfeld muss eine valide Emailadresse enthalten.
+          </span>
         </div>
         <div class="field">
           <label>Webseite</label>
@@ -57,14 +83,16 @@
 
     <div class="form-footer">
       <button class="button" @click="submit()">Senden</button>
+      <span>Felder mit * sind obligatorisch</span>
     </div>
+
 
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
   import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
@@ -76,19 +104,29 @@
     computed: {
       ...mapGetters([
         'details',
-        'tags'
+        'tags',
+        'isOwnCategory'
       ])
     },
     methods: {
+      ...mapMutations([
+        'setIsOwnCategory'
+      ]),
       ...mapActions([
         'postNote'
       ]),
       submit () {
-        console.log(this.selected)
         this.postNote()
       },
       onSelect (item) {
-        this.details.category = item
+        console.log(item.text)
+        if (item.text === 'Eigene Kategorie wählen') {
+          console.log('test')
+          this.setIsOwnCategory(true)
+          this.details.category = {value: 0, text: ''}
+        } else {
+          this.details.category = item
+        }
       }
     },
     components: {
@@ -104,6 +142,7 @@
     padding: 12px 20px;
     display: inline-block;
     box-sizing: border-box;
+    outline: none;
   }
 
   .area {
@@ -142,6 +181,7 @@
 
   .form-footer {
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
   }
@@ -156,6 +196,18 @@
   }
 
   .field label {
+    text-align: left;
+  }
+
+  .field span {
+    color: red;
+  }
+
+  .is-error {
+    border: 2px solid red !important;
+  }
+
+  span {
     text-align: left;
   }
 

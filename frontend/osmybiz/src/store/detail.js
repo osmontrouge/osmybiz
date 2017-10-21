@@ -2,6 +2,10 @@ import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
 
 const options = []
+options.push({
+  value: 0,
+  text: 'Eigene Kategorie wählen'
+})
 Object.keys(tags).forEach(function (key) {
   options.push({
     value: key,
@@ -28,7 +32,8 @@ const state = {
     note: ''
   },
   note: {},
-  displaySuccess: false
+  displaySuccess: false,
+  isOwnCategory: false
 }
 
 const actions = {
@@ -47,6 +52,9 @@ const mutations = {
   },
   setDisplaySuccess (state, displaySuccess) {
     state.displaySuccess = displaySuccess
+  },
+  setIsOwnCategory (state, isOwnCategory) {
+    state.isOwnCategory = isOwnCategory
   },
   setCoords (state, pos) {
     state.lat = pos.lat
@@ -69,6 +77,9 @@ const getters = {
   },
   displaySuccess (state) {
     return state.displaySuccess
+  },
+  isOwnCategory (state) {
+    return state.isOwnCategory
   },
   tags (state) {
     return state.tags
