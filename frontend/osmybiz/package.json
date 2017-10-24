@@ -1,5 +1,5 @@
 {
-  "name": "osmmybiz",
+  "name": "osmybiz",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "Max Luethi <m1luethi@hsr.ch>",
@@ -13,11 +13,9 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "2": "^1.0.0",
     "axios": "^0.16.2",
     "leaflet": "^1.2.0",
     "lodash": "^4.17.4",
-    "semantic-ui-vue2": "^2.4.2",
     "vee-validate": "^2.0.0-rc.19",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
