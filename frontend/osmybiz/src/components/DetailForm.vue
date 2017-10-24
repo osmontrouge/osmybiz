@@ -116,7 +116,7 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input type="text" v-model="details.website" placeholder="example.com">
+          <input type="text" v-model="details.website" placeholder="http://www.example.com">
         </div>
 
         <div class="field">
@@ -233,7 +233,6 @@
 </script>
 
 <style>
-
   input[type="text"], textarea, select {
     border: 2px solid #7ebc6f;
     padding: 12px 20px;
@@ -331,7 +330,7 @@
   button:disabled {
     border: 2px solid darkgray;
     background-color: lightgrey;
-    color: white;
+    color: black;
   }
 
   img{
