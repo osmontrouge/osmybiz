@@ -34,7 +34,7 @@ const state = {
 const actions = {
   postNote ({commit}) {
     let note = constructNote()
-    osmApi.postNote(note).then(ps => {
+    osmApi.post_Note(note).then(ps => {
       setDisplaySuccess()
       commit('setNote', ps)
     })
