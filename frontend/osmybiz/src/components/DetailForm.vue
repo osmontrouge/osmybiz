@@ -5,6 +5,7 @@
     <div class="form-select">
       <div class="field">
         <label>Kategorie*</label>
+
         <basic-select v-show="!isOwnCategory"
                       :options="this.tags"
                       :selected-option="details.category"
@@ -12,12 +13,18 @@
                       @select="onSelect"
                       class="basic-select">
         </basic-select>
-        <input v-show="isOwnCategory"
-               v-validate.initial="'required'"
-               v-model="details.category.text"
-               type="text"
-               name="category"/>
-        <span v-show="errors.has('category')"
+
+        <div v-show="isOwnCategory" class="ownCategory-field">
+          <input v-validate.initial="'required'"
+                 v-model="details.category.text"
+                 type="text"
+                 name="category-input"/>
+          <button class="button" @click="hideInput()">
+            Select Category
+          </button>
+        </div>
+
+        <span v-show="details.category.text === ''"
               class="help is-danger"> Das Kategoriefeld ist obligatorisch.
         </span>
       </div>
@@ -82,7 +89,9 @@
     </div>
 
     <div class="form-footer">
-      <button class="button" @click="submit()">Senden</button>
+      <button class="button"
+              :disabled="isRequiredFields()"
+              @click="submit()">Senden</button>
       <span>Felder mit * sind obligatorisch</span>
     </div>
 
@@ -117,6 +126,13 @@
       ]),
       submit () {
         this.postNote()
+      },
+      hideInput () {
+        this.setIsOwnCategory(false)
+        this.details.category = {value: 0, text: ''}
+      },
+      isRequiredFields () {
+        return this.details.category.text === '' || this.details.name === ''
       },
       onSelect (item) {
         console.log(item.text)
@@ -203,12 +219,22 @@
     color: red;
   }
 
-  .is-error {
-    border: 2px solid red !important;
-  }
-
   span {
     text-align: left;
+  }
+
+  .ownCategory-field {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .ownCategory-field input{
+    flex-grow: 5;
+  }
+
+  .ownCategory-field button{
+    flex-grow: 1;
+    margin-left: 10px;
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
@@ -219,6 +245,12 @@
 
   .button {
     flex-grow: 1;
+  }
+
+  button:disabled {
+    border: 2px solid darkgray;
+    background-color: lightgrey;
+    color: white;
   }
 
   .menu {
