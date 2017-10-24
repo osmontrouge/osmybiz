@@ -3,6 +3,7 @@ import {latLng} from 'leaflet'
 import * as _ from 'lodash'
 
 const baseUrl = 'https://nominatim.openstreetmap.org/search'
+const reverseBaseUrl = 'http://nominatim.openstreetmap.org/reverse'
 const queryMax = 10
 
 function parseCoords (lat, lng) {
@@ -40,6 +41,20 @@ export function query (queryString) {
   return axios.get(buildRequest(queryString, 5))
     .then(response => {
       return mapResults(response.data)
+    })
+    .catch(e => {
+      console.log(e)
+    })
+}
+
+function buildReverseRequest (lat, lon) {
+  return `${reverseBaseUrl}?format=json&lat=${lat}&lon=${lon}&addressdetails=1&zoom=18`
+}
+
+export function reverseQuery (lat, lon) {
+  return axios.get(buildReverseRequest(lat, lon))
+    .then(response => {
+      return response.data
     })
     .catch(e => {
       console.log(e)

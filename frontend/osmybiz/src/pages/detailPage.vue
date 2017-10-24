@@ -2,6 +2,8 @@
   <div>
     <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert: ({{lat}} / {{lon}})</p>
 
+    {{address.address}}
+
     <detail-form v-if="!displaySuccess"></detail-form>
     <post-note-success v-if="displaySuccess"></post-note-success>
   </div>
@@ -10,7 +12,7 @@
 <script>
   import DetailForm from '@/components/DetailForm'
   import PostNoteSuccess from '@/components/PostNoteSuccess'
-  import {mapGetters, mapMutations} from 'vuex'
+  import {mapActions, mapGetters, mapMutations} from 'vuex'
   /* import {routes} from './../router'
   import * as _ from 'lodash' */
 
@@ -19,6 +21,7 @@
       /* if (!_.isNumber(this.lat) || !_.isNumber(this.lon)) {
         this.$router.push({name: routes.Landing})
       } */
+      this.getAddress()
     },
     components: {
       DetailForm,
@@ -28,10 +31,14 @@
       ...mapGetters([
         'lon',
         'lat',
-        'displaySuccess'
+        'displaySuccess',
+        'address'
       ])
     },
     methods: {
+      ...mapActions([
+        'getAddress'
+      ]),
       ...mapMutations([
         'setDisplaySuccess'
       ])

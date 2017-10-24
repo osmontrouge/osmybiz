@@ -1,6 +1,7 @@
 import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
 import {LatLngRoundingAccuracy} from '../constants'
+import {reverseQuery} from '../api/nominatimApi'
 
 const options = []
 options.push({
@@ -48,7 +49,8 @@ const state = {
   isOwnCategory: false,
   isPopup: false,
   infoText: '',
-  infoMap: infoMap
+  infoMap: infoMap,
+  address: {}
 }
 
 const actions = {
@@ -57,6 +59,11 @@ const actions = {
     osmApi.post_Note(note).then(ps => {
       setDisplaySuccess()
       commit('setNote', ps)
+    })
+  },
+  getAddress ({commit}) {
+    reverseQuery(47.37045, 8.54462).then(ps => {
+      commit('setAddress', ps)
     })
   }
 }
@@ -80,6 +87,9 @@ const mutations = {
   },
   setInfoText (state, infoText) {
     state.infoText = infoText
+  },
+  setAddress (state, address) {
+    state.address = address
   }
 }
 
