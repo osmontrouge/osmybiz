@@ -2,9 +2,19 @@
 
   <div class="form-wrapper">
 
+    <div class="popup" v-if="isPopup">
+        <span>{{infoText}}</span>
+    </div>
+
     <div class="form-select">
       <div class="field">
-        <label>Kategorie*</label>
+        <div class="field-label">
+          <label>Kategorie*</label>
+          <img id="info-category"
+               @mouseenter="showPopup('category')"
+               @mouseleave="hidePopup()"
+               src="../assets/info_black.png">
+        </div>
 
         <basic-select v-show="!isOwnCategory"
                       :options="this.tags"
@@ -33,58 +43,119 @@
     <div class="form-fields">
       <div class="column">
         <div class="field">
-          <label>Name*</label>
+          <div class="field-label">
+            <label>Name*</label>
+            <img class="info"
+                 @mouseenter="showPopup('name')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input v-validate.initial="'required'"
                  :class="{'is-error': errors.has('first_name') }"
                  type="text"
                  name="name"
                  v-model="details.name"
                  placeholder="Your Name...">
+
           <span v-show="errors.has('name')"
                 class="help is-danger"> Das Namensfeld ist obligatorisch.
           </span>
         </div>
+
         <div class="field">
-          <label>Öffnungszeiten</label>
+          <div class="field-label">
+            <label>Öffnungszeiten</label>
+            <img class="info"
+                 @mouseenter="showPopup('openinghours')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input type="text" v-model="details.openinghours" placeholder="Mo-Fr 08:00-17:00">
         </div>
+
         <div class="field">
-          <label>Telefonnummer</label>
+          <div class="field-label">
+            <label>Telefonnummer</label>
+            <img class="info"
+                 @mouseenter="showPopup('phonenumber')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
           <input type="text" v-model="details.phonenumber" placeholder="+41 11 111 11 11">
         </div>
+
         <div class="field" :class="{ 'control': true }">
-          <label>E-Mail</label>
+          <div class="field-label">
+            <label>E-Mail</label>
+            <img class="info"
+                 @mouseenter="showPopup('email')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input v-validate="'email'"
                  :class="{'is-error': errors.has('email') }"
                  name="email"
                  type="text"
                  v-model="details.email"
                  placeholder="example@example.com">
+
           <span v-show="errors.has('email')"
                 class="help is-danger">Das Emailfeld muss eine valide Emailadresse enthalten.
           </span>
         </div>
+
         <div class="field">
-          <label>Webseite</label>
+          <div class="field-label">
+            <label>Webseite</label>
+            <img class="info"
+                 @mouseenter="showPopup('website')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input type="text" v-model="details.website" placeholder="example.com">
         </div>
+
         <div class="field">
-          <label>Rollstuhlgängig</label>
+          <div class="field-label">
+            <label>Rollstuhlgängig</label>
+            <img class="info"
+                 @mouseenter="showPopup('wheelchair')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input class="checkbox" type="checkbox" v-model="details.wheelchair">
         </div>
       </div>
 
       <div class="column">
         <div class="field">
-          <label>Beschreibung</label>
+          <div class="field-label">
+            <label>Beschreibung</label>
+            <img class="info"
+                 @mouseenter="showPopup('description')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <textarea class="area" v-model="details.description" placeholder="Beschreibung"></textarea>
         </div>
 
         <div class="field">
-          <label>Notiz</label>
+          <div class="field-label">
+            <label>Notiz</label>
+            <img class="info"
+                 @mouseenter="showPopup('note')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <textarea class="area" v-model="details.note" placeholder="Notiz"></textarea>
         </div>
-
       </div>
     </div>
 
@@ -94,8 +165,6 @@
               @click="submit()">Senden</button>
       <span>Felder mit * sind obligatorisch</span>
     </div>
-
-
   </div>
 
 </template>
@@ -114,12 +183,17 @@
       ...mapGetters([
         'details',
         'tags',
-        'isOwnCategory'
+        'isOwnCategory',
+        'isPopup',
+        'infoText',
+        'infoMap'
       ])
     },
     methods: {
       ...mapMutations([
-        'setIsOwnCategory'
+        'setIsOwnCategory',
+        'setIsPopup',
+        'setInfoText'
       ]),
       ...mapActions([
         'postNote'
@@ -133,6 +207,13 @@
       },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''
+      },
+      showPopup (key) {
+        this.setInfoText(this.infoMap.get(key))
+        this.setIsPopup(true)
+      },
+      hidePopup () {
+        this.setIsPopup(false)
       },
       onSelect (item) {
         console.log(item.text)
@@ -253,6 +334,35 @@
     color: white;
   }
 
+  img{
+    width: 4%;
+    height: 4%;
+    margin-left: 5px;
+  }
+
+  #info-category {
+    width: 2%;
+    height: 2%;
+    margin-left: 5px;
+  }
+
+  .field-label {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .popup {
+    background: #7ebc6f;
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 300px;
+    z-index: 100;
+    color: white;
+  }
   .menu {
     border: 2px solid #7ebc6f !important;
     border-top: none !important;

@@ -13,6 +13,17 @@ Object.keys(tags).forEach(function (key) {
   })
 })
 
+const infoMap = new Map()
+infoMap.set('category', 'Text about category')
+infoMap.set('name', 'Text about name')
+infoMap.set('openinghours', 'Text about openinghours')
+infoMap.set('phonenumber', 'Text about phonenumber')
+infoMap.set('email', 'Text about email')
+infoMap.set('website', 'Text about website')
+infoMap.set('wheelchair', 'Text about wheelchair')
+infoMap.set('description', 'Text about description')
+infoMap.set('note', 'Text about note')
+
 const state = {
   tags: options,
   lat: null,
@@ -33,7 +44,10 @@ const state = {
   },
   note: {},
   displaySuccess: false,
-  isOwnCategory: false
+  isOwnCategory: false,
+  isPopup: false,
+  infoText: '',
+  infoMap: infoMap
 }
 
 const actions = {
@@ -56,9 +70,15 @@ const mutations = {
   setIsOwnCategory (state, isOwnCategory) {
     state.isOwnCategory = isOwnCategory
   },
+  setIsPopup (state, isPopup) {
+    state.isPopup = isPopup
+  },
   setCoords (state, pos) {
     state.lat = pos.lat
     state.lon = pos.lng
+  },
+  setInfoText (state, infoText) {
+    state.infoText = infoText
   }
 }
 
@@ -81,8 +101,17 @@ const getters = {
   isOwnCategory (state) {
     return state.isOwnCategory
   },
+  isPopup (state) {
+    return state.isPopup
+  },
   tags (state) {
     return state.tags
+  },
+  infoText (state) {
+    return state.infoText
+  },
+  infoMap (state) {
+    return state.infoMap
   }
 }
 
