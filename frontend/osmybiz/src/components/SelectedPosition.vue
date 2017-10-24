@@ -16,7 +16,7 @@
 <script>
   import {mapGetters, mapMutations} from 'vuex'
   import {routes} from './../router'
-  import {LatLngRoundingAccuracy} from "../constants";
+  import {LatLngRoundingAccuracy} from '../constants'
 
   export default {
     computed: {

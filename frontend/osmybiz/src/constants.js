@@ -1,1 +1,1 @@
-export const LatLngRoundingAccuracy = 5;
+export const LatLngRoundingAccuracy = 5

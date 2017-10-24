@@ -1,6 +1,6 @@
 import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
-import {LatLngRoundingAccuracy} from "../constants";
+import {LatLngRoundingAccuracy} from '../constants'
 
 const options = []
 Object.keys(tags).forEach(function (key) {
