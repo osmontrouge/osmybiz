@@ -1,5 +1,6 @@
 import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
+import {LatLngRoundingAccuracy} from '../constants'
 
 const options = []
 Object.keys(tags).forEach(function (key) {
@@ -56,10 +57,10 @@ const mutations = {
 
 const getters = {
   lat (state) {
-    return state.lat
+    return state.lat.toFixed(LatLngRoundingAccuracy)
   },
   lon (state) {
-    return state.lon
+    return state.lon.toFixed(LatLngRoundingAccuracy)
   },
   details (state) {
     return state.details

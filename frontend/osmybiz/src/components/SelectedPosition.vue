@@ -16,6 +16,7 @@
 <script>
   import {mapGetters, mapMutations} from 'vuex'
   import {routes} from './../router'
+  import {LatLngRoundingAccuracy} from '../constants'
 
   export default {
     computed: {
@@ -23,10 +24,10 @@
         'position'
       ]),
       lat () {
-        return this.position.lat.toFixed(4)
+        return this.position.lat.toFixed(LatLngRoundingAccuracy)
       },
       lng () {
-        return this.position.lng.toFixed(4)
+        return this.position.lng.toFixed(LatLngRoundingAccuracy)
       }
     },
     methods: {
