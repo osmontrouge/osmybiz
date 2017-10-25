@@ -6,7 +6,6 @@
     <p>{{note.properties.comments[0].text}}</p>
 
     <button class="button" @click="gotoLanding()">Alles richtig</button>
-
     <button class="button" @click="gotoDetail()">Informationen anpassen</button>
   </div>
 

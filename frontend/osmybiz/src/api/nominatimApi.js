@@ -54,7 +54,7 @@ function buildReverseRequest (lat, lon) {
 export function reverseQuery (lat, lon) {
   return axios.get(buildReverseRequest(lat, lon))
     .then(response => {
-      return response.data
+      return response.data.address
     })
     .catch(e => {
       console.log(e)

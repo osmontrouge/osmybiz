@@ -62,7 +62,7 @@ const actions = {
     })
   },
   getAddress ({commit}) {
-    reverseQuery(47.37045, 8.54462).then(ps => {
+    reverseQuery(state.lat.toFixed(LatLngRoundingAccuracy), state.lon.toFixed(LatLngRoundingAccuracy)).then(ps => {
       commit('setAddress', ps)
     })
   }
@@ -140,6 +140,19 @@ function setDisplaySuccess () {
 function constructNote () {
   var text = 'Note from OSM My Business:\n'
 
+  if (state.address.length !== 0) {
+    let address = ''
+    if (state.address.pedestrian) {
+      address += state.address.pedestrian + ' '
+    } else {
+      address += state.address.road + ' '
+    }
+    address += state.address.house_number + ', '
+    address += state.address.postcode + ' ' + state.address.city + ', '
+    address += state.address.country
+
+    text += 'Address: ' + address + '\n'
+  }
   if (state.details.category.text.length !== 0) {
     text += 'Category: ' + state.details.category.text + '\n'
   }
