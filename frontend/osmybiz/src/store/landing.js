@@ -1,6 +1,7 @@
 import {latLng} from 'leaflet'
 import {query} from './../api/nominatimApi'
 import * as _ from 'lodash'
+import {queryBox} from '../api/overpassApi'
 
 const state = {
   initialPos: latLng(47.223490, 8.817737),  // Hsr
@@ -12,10 +13,11 @@ const state = {
   position: null,
 
   search: null,
-  suggestions: []
+  suggestions: [],
+  viewPort: null
 }
 
-const queryDebounceMs = 200
+const queryDebounceMs = 400
 const queryMinLength = 3
 const requestThrottleMs = 1000
 
@@ -29,11 +31,31 @@ function q (commit, search) {
   }
 }
 
+function qb (commit, bbox) {
+  queryBox(bbox).then(res => {
+    console.log(res)
+  })
+}
+
+function convertToBoundingBox (topRight, bottomLeft) {
+  return {
+    south: bottomLeft.lat,
+    west: bottomLeft.lng,
+    north: topRight.lat,
+    east: topRight.lng
+  }
+}
+
 const queryFn = _.debounce(_.throttle(q, requestThrottleMs), queryDebounceMs)
+
+const queryBoxFn = _.debounce(qb, queryDebounceMs)
 
 const actions = {
   queryNominatim ({commit}, search) {
     queryFn(commit, search)
+  },
+  queryOverpass ({commit}, bbox) {
+    queryBoxFn(commit, bbox)
   }
 }
 
@@ -58,6 +80,12 @@ const mutations = {
   resetSearch (state) {
     state.search = ''
     state.suggestions = []
+  },
+  setViewPort (state, data) {
+    state.viewPort = {
+      boundingBox: convertToBoundingBox(data.topRight, data.bottomLeft),
+      zoom: data.zoom
+    }
   }
 }
 
@@ -86,6 +114,9 @@ const getters = {
   },
   mapPosition (state) {
     return state.mapPosition
+  },
+  viewPort (state) {
+    return state.viewPort
   }
 }
 
