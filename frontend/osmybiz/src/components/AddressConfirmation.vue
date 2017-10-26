@@ -1,39 +1,39 @@
 <template>
 
-  <div>
-    <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert: ({{lat}} / {{lon}})</p>
+  <div class="address-wrapper">
+    <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert:</p>
 
-    {{address}}
-    <p v-if="address.pedestrian">
-      {{address.pedestrian}}
-      <span v-if="address.house_number">
-        {{' ' + address.house_number}}
-      </span>
-    </p>
-    <p v-if="address.road">
-      {{address.road}}
-      <span v-if="address.house_number">
-        {{' ' + address.house_number}}
-      </span>
-    </p>
     <p>
-      {{address.postcode}}
+      <span v-if="address.street">
+      {{address.street}}
+      </span>
+      <span v-if="address.housenumber">
+        {{' ' + address.housenumber}}
+      </span>
+    <p>
+      <span v-if="address.postcode">
+        {{address.postcode}}
+      </span>
       <span v-if="address.city">
         {{' ' + address.city}}
       </span>
-      <span v-if="address.village">
-        {{' ' + address.village}}
+    </p>
+    <p>
+      <span v-if="address.country">
+        {{address.country}}
       </span>
     </p>
-    <p>{{address.country}}</p>
 
-    <button @click="gotoLanding()">Addresse ändern</button>
+    <div class="address-buttons">
+      <button @click="displayDetailForm()">Adresse ist richtig</button>
+      <button @click="gotoLanding()">Adresse ändern</button>
+    </div>
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
 
   export default {
     name: 'address-confirmation',
@@ -51,13 +51,31 @@
       ...mapActions([
         'getAddress'
       ]),
+      ...mapMutations([
+        'setDisplayConfirmation'
+      ]),
       gotoLanding () {
         this.$router.push('/')
+      },
+      displayDetailForm () {
+        this.setDisplayConfirmation(false)
       }
     }
   }
 </script>
 
 <style scoped>
+  .address-wrapper {
+    max-width:750px;
+    margin: 20px auto 20px auto;
+  }
 
+  .address-buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  button {
+    margin: auto;
+  }
 </style>

@@ -162,7 +162,7 @@
     <div class="form-footer">
       <button class="button"
               :disabled="isRequiredFields()"
-              @click="submit()">Senden</button>
+              @click="submit()">Speichern</button>
       <span>Felder mit * sind obligatorisch</span>
     </div>
   </div>
@@ -193,7 +193,8 @@
       ...mapMutations([
         'setIsOwnCategory',
         'setIsPopup',
-        'setInfoText'
+        'setInfoText',
+        'setDetails'
       ]),
       ...mapActions([
         'postNote'
@@ -257,7 +258,6 @@
   .form-wrapper {
     max-width:750px;
     margin: auto;
-
   }
 
   .form-fields {

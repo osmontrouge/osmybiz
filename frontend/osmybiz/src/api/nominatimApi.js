@@ -47,6 +47,21 @@ export function query (queryString) {
     })
 }
 
+function parseAddress (data) {
+  let street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.footway
+  let housenumber = data.house_number
+  let postcode = data.postcode
+  let city = data.city ? data.city : data.village ? data.village : data.town
+  let country = data.country
+  return {
+    street: street,
+    housenumber: housenumber,
+    postcode: postcode,
+    city: city,
+    country: country
+  }
+}
+
 function buildReverseRequest (lat, lon) {
   return `${reverseBaseUrl}?format=json&lat=${lat}&lon=${lon}&addressdetails=1&zoom=18`
 }
@@ -54,7 +69,7 @@ function buildReverseRequest (lat, lon) {
 export function reverseQuery (lat, lon) {
   return axios.get(buildReverseRequest(lat, lon))
     .then(response => {
-      return response.data.address
+      return parseAddress(response.data.address)
     })
     .catch(e => {
       console.log(e)

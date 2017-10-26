@@ -1,7 +1,7 @@
 <template>
   <div>
-    <address-confirmation v-if="!displaySuccess"></address-confirmation>
-    <detail-form v-if="!displaySuccess"></detail-form>
+    <address-confirmation v-if="displayConfirmation"></address-confirmation>
+    <detail-form v-if="!displaySuccess && !displayConfirmation"></detail-form>
     <post-note-success v-if="displaySuccess"></post-note-success>
   </div>
 </template>
@@ -10,9 +10,13 @@
   import DetailForm from '@/components/DetailForm'
   import PostNoteSuccess from '@/components/PostNoteSuccess'
   import AddressConfirmation from '@/components/AddressConfirmation'
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
+    mounted () {
+      this.setDisplaySuccess(false)
+      this.setDisplayConfirmation(true)
+    },
     components: {
       DetailForm,
       PostNoteSuccess,
@@ -20,7 +24,14 @@
     },
     computed: {
       ...mapGetters([
-        'displaySuccess'
+        'displaySuccess',
+        'displayConfirmation'
+      ])
+    },
+    methods: {
+      ...mapMutations([
+        'setDisplaySuccess',
+        'setDisplayConfirmation'
       ])
     }
   }
