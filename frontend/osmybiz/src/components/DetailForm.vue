@@ -217,7 +217,6 @@
         this.setIsPopup(false)
       },
       onSelect (item) {
-        console.log(item.text)
         if (item.text === 'Eigene Kategorie wählen') {
           console.log('test')
           this.setIsOwnCategory(true)

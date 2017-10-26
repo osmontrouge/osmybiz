@@ -50,6 +50,7 @@ const state = {
   displaySuccess: false,
   displayConfirmation: true,
   isOwnCategory: false,
+  isLoading: true,
   isPopup: false,
   infoText: '',
   infoMap: infoMap,
@@ -65,7 +66,9 @@ const actions = {
     })
   },
   getAddress ({commit}) {
+    state.isLoading = true
     reverseQuery(state.lat.toFixed(LatLngRoundingAccuracy), state.lon.toFixed(LatLngRoundingAccuracy)).then(ps => {
+      state.isLoading = false
       commit('setAddress', ps)
     })
   }
@@ -135,6 +138,9 @@ const getters = {
   },
   infoMap (state) {
     return state.infoMap
+  },
+  isLoading (state) {
+    return state.isLoading
   }
 }
 

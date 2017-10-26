@@ -3,26 +3,32 @@
   <div class="address-wrapper">
     <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert:</p>
 
-    <p>
+    <div v-if="!isLoading">
+      <p>
       <span v-if="address.street">
       {{address.street}}
       </span>
-      <span v-if="address.housenumber">
+        <span v-if="address.housenumber">
         {{' ' + address.housenumber}}
       </span>
-    <p>
+      <p>
       <span v-if="address.postcode">
         {{address.postcode}}
       </span>
-      <span v-if="address.city">
+        <span v-if="address.city">
         {{' ' + address.city}}
       </span>
-    </p>
-    <p>
+      </p>
+      <p>
       <span v-if="address.country">
         {{address.country}}
       </span>
-    </p>
+      </p>
+    </div>
+
+    <div v-if="isLoading">
+      <img src="../assets/loading.gif">
+    </div>
 
     <div class="address-buttons">
       <button @click="displayDetailForm()">Adresse ist richtig</button>
@@ -44,7 +50,8 @@
       ...mapGetters([
         'lon',
         'lat',
-        'address'
+        'address',
+        'isLoading'
       ])
     },
     methods: {

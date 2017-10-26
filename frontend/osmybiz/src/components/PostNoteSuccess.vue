@@ -1,9 +1,9 @@
 <template>
 
   <div class="success-wrapper">
-    Sind diese Informationen richtig?
+    <p>Sind diese Informationen richtig?</p>
 
-    <p>{{note.text}}</p>
+    <p v-html="note.html"></p>
 
     <div class="success-buttons">
       <button @click="gotoLanding()">Alles richtig</button>
@@ -14,27 +14,19 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
     name: 'post-note-success',
     computed: {
       ...mapGetters([
-        'lon',
-        'lat',
-        'note',
-        'noteString',
-        'displaySuccess'
+        'note'
       ])
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setNoteString',
         'setDetails'
-      ]),
-      ...mapActions([
-        'postNote'
       ]),
       gotoLanding () {
         this.setDetails({
@@ -54,6 +46,7 @@
         this.$router.push('/')
       },
       gotoDetail () {
+        this.setDisplaySuccess(false)
         this.$router.push('/detail')
       }
     }
