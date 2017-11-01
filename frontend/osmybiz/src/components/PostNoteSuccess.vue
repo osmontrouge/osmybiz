@@ -1,38 +1,48 @@
 <template>
 
-  <div>
-    Sind diese Informationen richtig?
+  <div class="success-wrapper">
+    <p>Sind diese Informationen richtig?</p>
 
-    <p>{{note.properties.comments[0].text}}</p>
+    <p v-html="note.html"></p>
 
-    <button class="button" @click="gotoLanding()">Alles richtig</button>
-
-    <button class="button" @click="gotoDetail()">Informationen anpassen</button>
+    <div class="success-buttons">
+      <button @click="gotoLanding()">Alles richtig</button>
+      <button @click="gotoDetail()">Informationen anpassen</button>
+    </div>
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
     name: 'post-note-success',
     computed: {
       ...mapGetters([
-        'lon',
-        'lat',
-        'note',
-        'displaySuccess'
+        'note'
       ])
     },
     methods: {
       ...mapMutations([
-        'setDisplaySuccess'
-      ]),
-      ...mapActions([
-        'postNote'
+        'setDisplaySuccess',
+        'setDetails'
       ]),
       gotoLanding () {
+        this.setDetails({
+          category: {
+            text: '',
+            value: 0
+          },
+          name: '',
+          openinghours: '',
+          phonenumber: '',
+          email: '',
+          website: '',
+          wheelchair: false,
+          description: '',
+          note: ''
+        })
         this.$router.push('/')
       },
       gotoDetail () {
@@ -44,5 +54,17 @@
 </script>
 
 <style scoped>
+  .success-wrapper {
+    max-width:750px;
+    margin: 20px auto 20px auto;
+  }
 
+  .success-buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  button {
+    margin: auto;
+  }
 </style>

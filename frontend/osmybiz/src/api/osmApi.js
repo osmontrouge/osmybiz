@@ -7,7 +7,7 @@ export default {
   post_Note: (note) => {
     return axios.post(url, note)
       .then(response => {
-        return response.data
+        return response.data.properties.comments[0]
       })
       .catch(e => {
         console.log(e)

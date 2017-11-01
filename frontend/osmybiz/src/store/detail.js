@@ -1,14 +1,32 @@
 import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
 import {LatLngRoundingAccuracy} from '../constants'
+import {reverseQuery} from '../api/nominatimApi'
 
 const options = []
+
+options.push({
+  value: 0,
+  text: 'Eigene Kategorie wählen'
+})
+
 Object.keys(tags).forEach(function (key) {
   options.push({
     value: key,
     text: tags[key]
   })
 })
+
+const infoMap = new Map()
+infoMap.set('category', 'Text about category')
+infoMap.set('name', 'Text about name')
+infoMap.set('openinghours', 'Text about openinghours')
+infoMap.set('phonenumber', 'Text about phonenumber')
+infoMap.set('email', 'Text about email')
+infoMap.set('website', 'Text about website')
+infoMap.set('wheelchair', 'Text about wheelchair')
+infoMap.set('description', 'Text about description')
+infoMap.set('note', 'Text about note')
 
 const state = {
   tags: options,
@@ -29,15 +47,29 @@ const state = {
     note: ''
   },
   note: {},
-  displaySuccess: false
+  displaySuccess: false,
+  displayConfirmation: true,
+  isOwnCategory: false,
+  isLoading: true,
+  isPopup: false,
+  infoText: '',
+  infoMap: infoMap,
+  address: {}
 }
 
 const actions = {
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
-      setDisplaySuccess()
+      state.displaySuccess = true
       commit('setNote', ps)
+    })
+  },
+  getAddress ({commit}) {
+    state.isLoading = true
+    reverseQuery(state.lat.toFixed(LatLngRoundingAccuracy), state.lon.toFixed(LatLngRoundingAccuracy)).then(ps => {
+      state.isLoading = false
+      commit('setAddress', ps)
     })
   }
 }
@@ -49,9 +81,27 @@ const mutations = {
   setDisplaySuccess (state, displaySuccess) {
     state.displaySuccess = displaySuccess
   },
+  setDisplayConfirmation (state, displayConfirmation) {
+    state.displayConfirmation = displayConfirmation
+  },
+  setIsOwnCategory (state, isOwnCategory) {
+    state.isOwnCategory = isOwnCategory
+  },
+  setIsPopup (state, isPopup) {
+    state.isPopup = isPopup
+  },
   setCoords (state, pos) {
     state.lat = pos.lat
     state.lon = pos.lng
+  },
+  setInfoText (state, infoText) {
+    state.infoText = infoText
+  },
+  setAddress (state, address) {
+    state.address = address
+  },
+  setDetails (state, details) {
+    state.details = details
   }
 }
 
@@ -71,8 +121,26 @@ const getters = {
   displaySuccess (state) {
     return state.displaySuccess
   },
+  displayConfirmation (state) {
+    return state.displayConfirmation
+  },
+  isOwnCategory (state) {
+    return state.isOwnCategory
+  },
+  isPopup (state) {
+    return state.isPopup
+  },
   tags (state) {
     return state.tags
+  },
+  infoText (state) {
+    return state.infoText
+  },
+  infoMap (state) {
+    return state.infoMap
+  },
+  isLoading (state) {
+    return state.isLoading
   }
 }
 
@@ -83,13 +151,28 @@ export default {
   getters
 }
 
-function setDisplaySuccess () {
-  state.displaySuccess = true
-}
-
 function constructNote () {
-  var text = 'Note from OSM My Business:\n'
+  let text = 'Note from OSM My Business:\n'
 
+  if (state.address.length !== 0) {
+    let address = ''
+    if (state.address.street) {
+      address += state.address.street + ' '
+    }
+    if (state.address.housenumber) {
+      address += state.address.housenumber + ', '
+    }
+    if (state.address.postcode) {
+      address += state.address.postcode + ' '
+    }
+    if (state.address.city) {
+      address += state.address.city + ', '
+    }
+    if (state.address.country) {
+      address += state.address.country
+    }
+    text += 'Address: ' + address + '\n'
+  }
   if (state.details.category.text.length !== 0) {
     text += 'Category: ' + state.details.category.text + '\n'
   }
@@ -114,7 +197,6 @@ function constructNote () {
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + '\n'
   }
-
   if (state.details.note.length > 0) {
     text += 'Note: ' + state.details.note + '\n'
   }
