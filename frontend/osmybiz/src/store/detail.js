@@ -65,7 +65,8 @@ const state = {
   displayComment: false,
 
   // AddressConfirmation
-  address: {}
+  address: {},
+  displayAddressForm: false
 }
 
 const actions = {
@@ -104,6 +105,9 @@ const mutations = {
   },
   setDisplayConfirmation (state, displayConfirmation) {
     state.displayConfirmation = displayConfirmation
+  },
+  setDisplayAddressForm (state, displayAddressForm) {
+    state.displayAddressForm = displayAddressForm
   },
   setIsOwnCategory (state, isOwnCategory) {
     state.isOwnCategory = isOwnCategory
@@ -156,6 +160,9 @@ const getters = {
   },
   displayConfirmation (state) {
     return state.displayConfirmation
+  },
+  displayAddressForm (state) {
+    return state.displayAddressForm
   },
   isOwnCategory (state) {
     return state.isOwnCategory

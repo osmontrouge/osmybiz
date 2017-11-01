@@ -35,7 +35,7 @@
         </div>
 
         <span v-show="details.category.text === ''"
-              class="help is-danger"> Das Kategoriefeld ist obligatorisch.
+              class="help is-danger"> Die Kategorie ist obligatorisch.
         </span>
       </div>
     </div>
@@ -59,7 +59,7 @@
                  placeholder="Your Name...">
 
           <span v-show="errors.has('name')"
-                class="help is-danger"> Das Namensfeld ist obligatorisch.
+                class="help is-danger"> Der Name ist obligatorisch.
           </span>
         </div>
 
@@ -163,11 +163,13 @@
       <button class="button"
               v-if="!isComment"
               :disabled="isRequiredFields()"
-              @click="submitNote()">Speichern</button>
+              @click="submitNote()">
+        Speichern</button>
       <button class="button"
               v-if="isComment"
               :disabled="isRequiredFields()"
-              @click="submitComment()">Speichern</button>
+              @click="submitComment()">
+        Speichern</button>
       <span>Felder mit * sind obligatorisch</span>
     </div>
   </div>
@@ -251,6 +253,10 @@
     outline: none;
   }
 
+  input::placeholder, textarea::placeholder {
+    color: lightgrey;
+  }
+
   .area {
     flex-grow: 1;
   }
@@ -312,6 +318,12 @@
     text-align: left;
   }
 
+  button:disabled {
+    border: 2px solid darkgray;
+    background-color: lightgrey;
+    color: black;
+  }
+
   .ownCategory-field {
     display: flex;
     flex-direction: row;
@@ -334,12 +346,6 @@
 
   .button {
     flex-grow: 1;
-  }
-
-  button:disabled {
-    border: 2px solid darkgray;
-    background-color: lightgrey;
-    color: black;
   }
 
   img{
