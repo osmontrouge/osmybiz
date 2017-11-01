@@ -161,8 +161,13 @@
 
     <div class="form-footer">
       <button class="button"
+              v-if="!isComment"
               :disabled="isRequiredFields()"
-              @click="submit()">Speichern</button>
+              @click="submitNote()">Speichern</button>
+      <button class="button"
+              v-if="isComment"
+              :disabled="isRequiredFields()"
+              @click="submitComment()">Speichern</button>
       <span>Felder mit * sind obligatorisch</span>
     </div>
   </div>
@@ -185,6 +190,7 @@
         'tags',
         'isOwnCategory',
         'isPopup',
+        'isComment',
         'infoText',
         'infoMap'
       ])
@@ -197,10 +203,14 @@
         'setDetails'
       ]),
       ...mapActions([
-        'postNote'
+        'postNote',
+        'postComment'
       ]),
-      submit () {
+      submitNote () {
         this.postNote()
+      },
+      submitComment () {
+        this.postComment()
       },
       hideInput () {
         this.setIsOwnCategory(false)
