@@ -1,4 +1,4 @@
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
 
   <div class="form-wrapper">
 
@@ -135,7 +135,7 @@
       <div class="column">
         <div class="field">
           <div class="field-label">
-            <label>Beschreibung</label>
+            <label>Beschreibung des Geschäfts</label>
             <img class="info"
                  @mouseenter="showPopup('description')"
                  @mouseleave="hidePopup()"
@@ -147,7 +147,7 @@
 
         <div class="field">
           <div class="field-label">
-            <label>Notiz</label>
+            <label>Notiz für eintragende Person</label>
             <img class="info"
                  @mouseenter="showPopup('note')"
                  @mouseleave="hidePopup()"

@@ -2,6 +2,7 @@ import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
 import {LatLngRoundingAccuracy} from '../constants'
 import {reverseQuery} from '../api/nominatimApi'
+import {infoTexts} from '../locales/de'
 
 const options = []
 
@@ -18,15 +19,15 @@ Object.keys(tags).forEach(function (key) {
 })
 
 const infoMap = new Map()
-infoMap.set('category', 'Text about category')
-infoMap.set('name', 'Text about name')
-infoMap.set('openinghours', 'Text about openinghours')
-infoMap.set('phonenumber', 'Text about phonenumber')
-infoMap.set('email', 'Text about email')
-infoMap.set('website', 'Text about website')
-infoMap.set('wheelchair', 'Text about wheelchair')
-infoMap.set('description', 'Text about description')
-infoMap.set('note', 'Text about note')
+infoMap.set('category', infoTexts.category)
+infoMap.set('name', infoTexts.name)
+infoMap.set('openinghours', infoTexts.openinghours)
+infoMap.set('phonenumber', infoTexts.phonenumber)
+infoMap.set('email', infoTexts.email)
+infoMap.set('website', infoTexts.website)
+infoMap.set('wheelchair', infoTexts.wheelchair)
+infoMap.set('description', infoTexts.description)
+infoMap.set('note', infoTexts.note)
 
 const state = {
   // detailPage
