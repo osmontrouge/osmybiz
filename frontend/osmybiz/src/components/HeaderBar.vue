@@ -3,16 +3,37 @@
       <div class="title">
         OpenStreetMap My Business
       </div>
-      <div class="login-button">
-        <button>Login</button>
+      <div class="buttons">
+        <button @click="login()">Login</button>
+        <button @click="logout()">Logout</button>
+        <span v-if="user.id !== ''">{{user}}</span>
       </div>
     </div>
 </template>
 
 <script>
-    export default {
-      name: 'header-bar'
+  import {mapGetters, mapActions} from 'vuex'
+
+  export default {
+    name: 'header-bar',
+    computed: {
+      ...mapGetters([
+        'user'
+      ])
+    },
+    methods: {
+      ...mapActions([
+        'authenticate',
+        'deauthenticate'
+      ]),
+      login () {
+        this.authenticate()
+      },
+      logout () {
+        this.deauthenticate()
+      }
     }
+  }
 </script>
 
 <style scoped>
@@ -32,8 +53,14 @@
     margin: 0 24px;
   }
 
-  .login-button {
+  .buttons {
+    display: flex;
+    flex-direction: row;
     margin: 0 24px;
+  }
+
+  button {
+    margin: 8px 0 10px 10px;
   }
 
 </style>
