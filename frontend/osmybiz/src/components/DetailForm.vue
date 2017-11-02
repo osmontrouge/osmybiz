@@ -2,69 +2,182 @@
 
   <div class="form-wrapper">
 
+    <div class="popup" v-if="isPopup">
+        <span>{{infoText}}</span>
+    </div>
+
     <div class="form-select">
-      <basic-select :options="this.tags"
-                    :selected-option="details.category"
-                    placeholder="Kategorie auswählen"
-                    @select="onSelect"
-                    class="basic-select">
-      </basic-select>
+      <div class="field">
+        <div class="field-label">
+          <label>Kategorie*</label>
+          <img id="info-category"
+               @mouseenter="showPopup('category')"
+               @mouseleave="hidePopup()"
+               src="../assets/info_black.png">
+        </div>
+
+        <basic-select v-show="!isOwnCategory"
+                      :options="this.tags"
+                      :selected-option="details.category"
+                      placeholder="Kategorie auswählen"
+                      @select="onSelect"
+                      class="basic-select">
+        </basic-select>
+
+        <div v-show="isOwnCategory" class="ownCategory-field">
+          <input v-validate.initial="'required'"
+                 v-model="details.category.text"
+                 type="text"
+                 name="category-input"/>
+          <button class="button" @click="hideInput()">
+            Select Category
+          </button>
+        </div>
+
+        <span v-show="details.category.text === ''"
+              class="help is-danger"> Die Kategorie ist obligatorisch.
+        </span>
+      </div>
     </div>
 
     <div class="form-fields">
       <div class="column">
         <div class="field">
-          <label>Name</label>
-          <input type="text" v-model="details.name" placeholder="Your Name...">
+          <div class="field-label">
+            <label>Name*</label>
+            <img class="info"
+                 @mouseenter="showPopup('name')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
+          <input v-validate.initial="'required'"
+                 :class="{'is-error': errors.has('first_name') }"
+                 type="text"
+                 name="name"
+                 v-model="details.name"
+                 placeholder="Your Name...">
+
+          <span v-show="errors.has('name')"
+                class="help is-danger"> Der Name ist obligatorisch.
+          </span>
         </div>
+
         <div class="field">
-          <label>Öffnungszeiten</label>
+          <div class="field-label">
+            <label>Öffnungszeiten</label>
+            <img class="info"
+                 @mouseenter="showPopup('openinghours')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input type="text" v-model="details.openinghours" placeholder="Mo-Fr 08:00-17:00">
         </div>
+
         <div class="field">
-          <label>Telefonnummer</label>
+          <div class="field-label">
+            <label>Telefonnummer</label>
+            <img class="info"
+                 @mouseenter="showPopup('phonenumber')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
           <input type="text" v-model="details.phonenumber" placeholder="+41 11 111 11 11">
         </div>
+
         <div class="field" :class="{ 'control': true }">
-          <label>E-Mail</label>
-          <input v-validate="'email'" :class="{'input': true, 'is-danger': errors.has('email') }" name="email"
-                 type="text" v-model="details.email" placeholder="example@example.com">
-          <span v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</span>
+          <div class="field-label">
+            <label>E-Mail</label>
+            <img class="info"
+                 @mouseenter="showPopup('email')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
+          <input v-validate="'email'"
+                 :class="{'is-error': errors.has('email') }"
+                 name="email"
+                 type="text"
+                 v-model="details.email"
+                 placeholder="example@example.com">
+
+          <span v-show="errors.has('email')"
+                class="help is-danger">Das Emailfeld muss eine valide Emailadresse enthalten.
+          </span>
         </div>
+
         <div class="field">
-          <label>Webseite</label>
-          <input type="text" v-model="details.website" placeholder="example.com">
+          <div class="field-label">
+            <label>Webseite</label>
+            <img class="info"
+                 @mouseenter="showPopup('website')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
+          <input type="text" v-model="details.website" placeholder="http://www.example.com">
         </div>
+
         <div class="field">
-          <label>Rollstuhlgängig</label>
+          <div class="field-label">
+            <label>Rollstuhlgängig</label>
+            <img class="info"
+                 @mouseenter="showPopup('wheelchair')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <input class="checkbox" type="checkbox" v-model="details.wheelchair">
         </div>
       </div>
 
       <div class="column">
         <div class="field">
-          <label>Beschreibung</label>
+          <div class="field-label">
+            <label>Beschreibung</label>
+            <img class="info"
+                 @mouseenter="showPopup('description')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <textarea class="area" v-model="details.description" placeholder="Beschreibung"></textarea>
         </div>
 
         <div class="field">
-          <label>Notiz</label>
+          <div class="field-label">
+            <label>Notiz</label>
+            <img class="info"
+                 @mouseenter="showPopup('note')"
+                 @mouseleave="hidePopup()"
+                 src="../assets/info_black.png">
+          </div>
+
           <textarea class="area" v-model="details.note" placeholder="Notiz"></textarea>
         </div>
-
       </div>
     </div>
 
     <div class="form-footer">
-      <button class="button" @click="submit()">Senden</button>
+      <button class="button"
+              v-if="!isComment"
+              :disabled="isRequiredFields()"
+              @click="submitNote()">
+        Speichern</button>
+      <button class="button"
+              v-if="isComment"
+              :disabled="isRequiredFields()"
+              @click="submitComment()">
+        Speichern</button>
+      <span>Felder mit * sind obligatorisch</span>
     </div>
-
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
   import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
@@ -76,19 +189,53 @@
     computed: {
       ...mapGetters([
         'details',
-        'tags'
+        'tags',
+        'isOwnCategory',
+        'isPopup',
+        'isComment',
+        'infoText',
+        'infoMap'
       ])
     },
     methods: {
-      ...mapActions([
-        'postNote'
+      ...mapMutations([
+        'setIsOwnCategory',
+        'setIsPopup',
+        'setInfoText',
+        'setDetails'
       ]),
-      submit () {
-        console.log(this.selected)
+      ...mapActions([
+        'postNote',
+        'postComment'
+      ]),
+      submitNote () {
         this.postNote()
       },
+      submitComment () {
+        this.postComment()
+      },
+      hideInput () {
+        this.setIsOwnCategory(false)
+        this.details.category = {value: 0, text: ''}
+      },
+      isRequiredFields () {
+        return this.details.category.text === '' || this.details.name === ''
+      },
+      showPopup (key) {
+        this.setInfoText(this.infoMap.get(key))
+        this.setIsPopup(true)
+      },
+      hidePopup () {
+        this.setIsPopup(false)
+      },
       onSelect (item) {
-        this.details.category = item
+        if (item.text === 'Eigene Kategorie wählen') {
+          console.log('test')
+          this.setIsOwnCategory(true)
+          this.details.category = {value: 0, text: ''}
+        } else {
+          this.details.category = item
+        }
       }
     },
     components: {
@@ -98,12 +245,16 @@
 </script>
 
 <style>
-
   input[type="text"], textarea, select {
     border: 2px solid #7ebc6f;
     padding: 12px 20px;
     display: inline-block;
     box-sizing: border-box;
+    outline: none;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: lightgrey;
   }
 
   .area {
@@ -122,7 +273,6 @@
   .form-wrapper {
     max-width:750px;
     margin: auto;
-
   }
 
   .form-fields {
@@ -142,6 +292,7 @@
 
   .form-footer {
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
   }
@@ -159,6 +310,34 @@
     text-align: left;
   }
 
+  .field span {
+    color: red;
+  }
+
+  span {
+    text-align: left;
+  }
+
+  button:disabled {
+    border: 2px solid darkgray;
+    background-color: lightgrey;
+    color: black;
+  }
+
+  .ownCategory-field {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .ownCategory-field input{
+    flex-grow: 5;
+  }
+
+  .ownCategory-field button{
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+
   .basic-select, .basic-select:hover, .basic-select:focus {
     border: 2px solid #7ebc6f !important;
     margin-bottom: 12px !important;
@@ -169,6 +348,35 @@
     flex-grow: 1;
   }
 
+  img{
+    width: 4%;
+    height: 4%;
+    margin-left: 5px;
+  }
+
+  #info-category {
+    width: 2%;
+    height: 2%;
+    margin-left: 5px;
+  }
+
+  .field-label {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .popup {
+    background: #7ebc6f;
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 300px;
+    z-index: 100;
+    color: white;
+  }
   .menu {
     border: 2px solid #7ebc6f !important;
     border-top: none !important;

@@ -1,8 +1,7 @@
 <template>
   <div>
-    <p>Ihre Adresse wurde erfolgreich gefunden und gespeichert: ({{lat}} / {{lon}})</p>
-
-    <detail-form v-if="!displaySuccess"></detail-form>
+    <address-confirmation v-if="displayConfirmation"></address-confirmation>
+    <detail-form v-if="!displaySuccess && !displayConfirmation"></detail-form>
     <post-note-success v-if="displaySuccess"></post-note-success>
   </div>
 </template>
@@ -10,30 +9,29 @@
 <script>
   import DetailForm from '@/components/DetailForm'
   import PostNoteSuccess from '@/components/PostNoteSuccess'
+  import AddressConfirmation from '@/components/AddressConfirmation'
   import {mapGetters, mapMutations} from 'vuex'
-  /* import {routes} from './../router'
-  import * as _ from 'lodash' */
 
   export default {
     mounted () {
-      /* if (!_.isNumber(this.lat) || !_.isNumber(this.lon)) {
-        this.$router.push({name: routes.Landing})
-      } */
+      this.setDisplaySuccess(false)
+      this.setDisplayConfirmation(true)
     },
     components: {
       DetailForm,
-      PostNoteSuccess
+      PostNoteSuccess,
+      AddressConfirmation
     },
     computed: {
       ...mapGetters([
-        'lon',
-        'lat',
-        'displaySuccess'
+        'displaySuccess',
+        'displayConfirmation'
       ])
     },
     methods: {
       ...mapMutations([
-        'setDisplaySuccess'
+        'setDisplaySuccess',
+        'setDisplayConfirmation'
       ])
     }
   }
