@@ -72,8 +72,8 @@
 
   .search-bar {
     font-size: 28px;
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
     width: 430px;
     height: 40px;
   }
