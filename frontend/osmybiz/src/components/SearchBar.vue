@@ -76,6 +76,7 @@
     outline: none !important;
     width: 430px;
     height: 40px;
+    padding: 1px !important;
   }
 
   .remove {

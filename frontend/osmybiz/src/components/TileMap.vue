@@ -26,6 +26,9 @@
           setMapPosition(this.position)
         }
       })
+      if (this.position) {
+        setMapPosition(this.position)
+      }
     },
     methods: {
       ...mapMutations([
