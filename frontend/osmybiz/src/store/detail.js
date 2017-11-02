@@ -88,7 +88,7 @@ function setDisplaySuccess () {
 }
 
 function constructNote () {
-  var text = 'Note from OSM My Business:\n'
+  var text = '#OSMyBiz\n'
 
   if (state.details.category.text.length !== 0) {
     text += 'Category: ' + state.details.category.text + '\n'

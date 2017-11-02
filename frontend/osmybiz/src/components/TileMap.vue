@@ -26,6 +26,31 @@
     map.setView(pos, zoomOnSelect)
   }
 
+  let markers = []
+
+  function clearMarkers () {
+    markers.forEach(m => {
+      map.removeLayer(m)
+    })
+  }
+
+  function addMarkers (bs) {
+    const ms = bs.map(b => {
+      const m = L.marker(L.latLng(b.lat, b.lng), {
+        icon: bizMarker
+      })
+      map.addLayer(m)
+      return m
+    })
+
+    markers = ms
+  }
+
+  function drawBusinesses (businesses) {
+    clearMarkers()
+    addMarkers(businesses)
+  }
+
   export default {
     mounted () {
       map = this.$refs.map.mapObject
@@ -33,17 +58,10 @@
         if (mut.type === 'setMapPosition') {
           setMapPosition(this.position)
           this.viewChange()
+        } else if (mut.type === 'setBusinesses') {
+          drawBusinesses(this.businesses)
         }
       })
-
-      const testmarker = L.marker(this.initialPos, {
-        icon: bizMarker
-      })
-
-      testmarker.on('click', evt => {
-        console.log(evt)
-      })
-      testmarker.addTo(map)
     },
     methods: {
       ...mapActions(['queryOverpass']),
@@ -65,9 +83,7 @@
           bottomLeft: bbox._southWest,
           zoom: zoom
         })
-        if (zoom >= zoomOnSelect) {
-          this.queryOverpass(this.viewPort.boundingBox)
-        }
+        this.queryOverpass(this.viewPort)
       }
     },
     computed: {
@@ -78,7 +94,8 @@
         'tileUrl',
         'position',
         'mapPosition',
-        'viewPort'
+        'viewPort',
+        'businesses'
       ])
     },
 

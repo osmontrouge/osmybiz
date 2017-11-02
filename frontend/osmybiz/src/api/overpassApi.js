@@ -26,5 +26,6 @@ export function queryBox (bbox) {
     return parseData(res.data)
   }, (err) => {
     console.log(err)
+    return []
   })
 }

@@ -14,12 +14,16 @@ const state = {
 
   search: null,
   suggestions: [],
-  viewPort: null
+  viewPort: null,
+
+  businesses: []
 }
 
 const queryDebounceMs = 400
 const queryMinLength = 3
 const requestThrottleMs = 1000
+
+const minZoomBusinesses = 18
 
 function q (commit, search) {
   if (!_.isString(search) || search.length < queryMinLength) {
@@ -31,10 +35,14 @@ function q (commit, search) {
   }
 }
 
-function qb (commit, bbox) {
-  queryBox(bbox).then(res => {
-    console.log(res)
-  })
+function qb (commit, viewPort) {
+  if (viewPort.zoom < minZoomBusinesses) {
+    commit('setBusinesses', [])
+  } else {
+    queryBox(viewPort.boundingBox).then(res => {
+      commit('setBusinesses', res)
+    })
+  }
 }
 
 function convertToBoundingBox (topRight, bottomLeft) {
@@ -54,8 +62,8 @@ const actions = {
   queryNominatim ({commit}, search) {
     queryFn(commit, search)
   },
-  queryOverpass ({commit}, bbox) {
-    queryBoxFn(commit, bbox)
+  queryOverpass ({commit}, viewPort) {
+    queryBoxFn(commit, viewPort)
   }
 }
 
@@ -86,6 +94,9 @@ const mutations = {
       boundingBox: convertToBoundingBox(data.topRight, data.bottomLeft),
       zoom: data.zoom
     }
+  },
+  setBusinesses (state, businesses) {
+    state.businesses = businesses
   }
 }
 
@@ -117,6 +128,9 @@ const getters = {
   },
   viewPort (state) {
     return state.viewPort
+  },
+  businesses (state) {
+    return state.businesses
   }
 }
 
