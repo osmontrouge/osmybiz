@@ -16,21 +16,29 @@
                src="../assets/info_black.png">
         </div>
 
-        <basic-select v-show="!isOwnCategory"
-                      :options="this.tags"
-                      :selected-option="details.category"
-                      placeholder="Kategorie auswählen"
-                      @select="onSelect"
-                      class="basic-select">
-        </basic-select>
+        <div v-show="!isOwnCategory" class="Category-field">
+          <basic-select v-show="!isOwnCategory"
+                        :options="this.tags"
+                        :selected-option="details.category"
+                        placeholder="Kategorie auswählen"
+                        @select="onSelect"
+                        class="basic-select">
+          </basic-select>
 
-        <div v-show="isOwnCategory" class="ownCategory-field">
+          <button class="button" @click="showInput()">
+            Eigene Kategorie
+          </button>
+        </div>
+
+
+        <div v-show="isOwnCategory" class="Category-field">
           <input v-validate.initial="'required'"
                  v-model="details.category.text"
                  type="text"
+                 placeholder="Kategorie auswählen"
                  name="category-input"/>
           <button class="button" @click="hideInput()">
-            Select Category
+            Kategorie wählen
           </button>
         </div>
 
@@ -218,6 +226,10 @@
         this.setIsOwnCategory(false)
         this.details.category = {value: 0, text: ''}
       },
+      showInput () {
+        this.setIsOwnCategory(true)
+        this.details.category = {value: 0, text: ''}
+      },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''
       },
@@ -229,13 +241,7 @@
         this.setIsPopup(false)
       },
       onSelect (item) {
-        if (item.text === 'Eigene Kategorie wählen') {
-          console.log('test')
-          this.setIsOwnCategory(true)
-          this.details.category = {value: 0, text: ''}
-        } else {
-          this.details.category = item
-        }
+        this.details.category = item
       }
     },
     components: {
@@ -245,7 +251,7 @@
 </script>
 
 <style>
-  input[type="text"], textarea, select {
+  input[type="text"], textarea {
     border: 2px solid #7ebc6f;
     padding: 12px 20px;
     display: inline-block;
@@ -324,24 +330,23 @@
     color: black;
   }
 
-  .ownCategory-field {
+  .Category-field {
     display: flex;
     flex-direction: row;
   }
 
-  .ownCategory-field input{
-    flex-grow: 5;
+  .Category-field input, .basic-select{
+    flex-grow: 5 !important;
   }
 
-  .ownCategory-field button{
-    flex-grow: 1;
+  .Category-field button{
+    flex: 0 0;
+    flex-basis: auto;
     margin-left: 10px;
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
     border: 2px solid #7ebc6f !important;
-    margin-bottom: 12px !important;
-
   }
 
   .button {

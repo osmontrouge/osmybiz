@@ -6,11 +6,6 @@ import {infoTexts} from '../locales/de'
 
 const options = []
 
-options.push({
-  value: 0,
-  text: 'Eigene Kategorie wählen'
-})
-
 Object.keys(tags).forEach(function (key) {
   options.push({
     value: key,
