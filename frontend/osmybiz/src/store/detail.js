@@ -44,7 +44,10 @@ const state = {
   details: {
     category: {
       text: '',
-      value: 0
+      value: 0,
+      fields: [
+        {name: '', value: ''}
+      ]
     },
     name: '',
     openinghours: '',
