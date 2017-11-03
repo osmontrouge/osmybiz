@@ -24,18 +24,16 @@
     },
     methods: {
       ...mapActions([
-        'authenticate',
-        'deauthenticate',
-        'getDetails'
+        'authenticate'
       ]),
       login () {
         this.authenticate()
       },
       logout () {
-        this.deauthenticate()
+        // this.deauthenticate()
       },
       details () {
-        this.getDetails()
+        // this.getDetails()
       }
     }
   }
