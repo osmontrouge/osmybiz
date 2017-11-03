@@ -11,9 +11,14 @@
   import PostNoteSuccess from '@/components/PostNoteSuccess'
   import AddressConfirmation from '@/components/AddressConfirmation'
   import {mapGetters, mapMutations} from 'vuex'
+  import * as _ from 'lodash'
+  import {routes} from './../router'
 
   export default {
     mounted () {
+      if (!_.isNumber(this.lat) || !_.isNumber(this.lon)) {
+        this.$router.push({name: routes.Landing})
+      }
       this.setDisplaySuccess(false)
       this.setDisplayConfirmation(true)
     },
@@ -25,7 +30,9 @@
     computed: {
       ...mapGetters([
         'displaySuccess',
-        'displayConfirmation'
+        'displayConfirmation',
+        'lat',
+        'lon'
       ])
     },
     methods: {
