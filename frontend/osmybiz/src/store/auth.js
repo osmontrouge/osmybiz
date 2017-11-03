@@ -1,9 +1,10 @@
 var osmAuth = require('osm-auth')
 
 var auth = osmAuth({
-  oauth_consumer_key: 'WLwXbm6XFMG7WrVnE8enIF6GzyefYIN6oUJSxG65',
-  oauth_secret: '9WfJnwQxDvvYagx1Ut0tZBsOZ0ZCzAvOje3u1TV0',
-  landing: '/'
+  oauth_consumer_key: 'deem7DGxX11rEQZ1SjYQ2lL0O9JCCNtqBzFUePjA',
+  oauth_secret: 'umPZIExDrNP4KvcXkhwBNIlH9J8jByPSCSwwL4w9',
+  singlepage: true,
+  landing: '/#/'
 })
 
 const state = {
@@ -14,17 +15,21 @@ const state = {
 
 const actions = {
   authenticate () {
-    auth.authenticate(() => {
-      auth.xhr({
-        method: 'GET',
-        path: '/api/0.6/user/details'
-      }, done)
-      console.log(state.user)
+    auth.authenticate((res) => {
+      console.log(res)
+      getDetails()
     })
   },
   deauthenticate () {
     auth.logout()
-  }
+  } /* ,
+  getDetails () {
+    console.log(auth.authenticated())
+    auth.xhr({
+      method: 'GET',
+      path: '/api/0.6/user/details'
+    }, done)
+  } */
 }
 
 const mutations = {
@@ -38,8 +43,18 @@ const getters = {
 }
 
 function done (err, res) {
-  console.log(err)
-  state.user = res
+  if (err) {
+    console.log(err)
+  }
+  console.log(res)
+  // state.user = res
+}
+
+function getDetails () {
+  auth.xhr({
+    method: 'GET',
+    path: '/api/0.6/user/details'
+  }, done)
 }
 
 export default {

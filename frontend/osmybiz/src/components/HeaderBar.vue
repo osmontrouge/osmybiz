@@ -4,6 +4,7 @@
         OpenStreetMap My Business
       </div>
       <div class="buttons">
+        <button @click="details()">Details</button>
         <button @click="login()">Login</button>
         <button @click="logout()">Logout</button>
         <span v-if="user.id !== ''">{{user}}</span>
@@ -24,13 +25,17 @@
     methods: {
       ...mapActions([
         'authenticate',
-        'deauthenticate'
+        'deauthenticate',
+        'getDetails'
       ]),
       login () {
         this.authenticate()
       },
       logout () {
         this.deauthenticate()
+      },
+      details () {
+        this.getDetails()
       }
     }
   }

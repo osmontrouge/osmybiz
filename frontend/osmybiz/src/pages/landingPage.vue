@@ -12,7 +12,6 @@
   import SelectedPosition from './../components/SelectedPosition'
 
   export default {
-
     components: {
       SearchBar,
       TileMap,
