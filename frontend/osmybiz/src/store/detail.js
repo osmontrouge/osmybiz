@@ -1,6 +1,5 @@
 import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
-import {LatLngRoundingAccuracy} from '../constants'
 import {reverseQuery} from '../api/nominatimApi'
 
 const options = []
@@ -89,7 +88,7 @@ const actions = {
   },
   getAddress ({commit}) {
     state.isLoading = true
-    reverseQuery(state.lat.toFixed(LatLngRoundingAccuracy), state.lon.toFixed(LatLngRoundingAccuracy)).then(ps => {
+    reverseQuery(state.lat, state.lon).then(ps => {
       state.isLoading = false
       commit('setAddress', ps)
     })
@@ -135,10 +134,10 @@ const mutations = {
 
 const getters = {
   lat (state) {
-    return state.lat.toFixed(LatLngRoundingAccuracy)
+    return state.lat
   },
   lon (state) {
-    return state.lon.toFixed(LatLngRoundingAccuracy)
+    return state.lon
   },
   details (state) {
     return state.details
