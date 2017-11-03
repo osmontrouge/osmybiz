@@ -2475,7 +2475,7 @@
                     "terms": "Geldautomat, Bankautomat, Bankomat, Bancomat, Geldausgabeautomat, ATM"
                 },
                 "amenity/bank": {
-                    "name": "Bank-Fiiale",
+                    "name": "Bank-Filiale",
                     "terms": "Kasse, Kontor, Kreditgenossenschaft, Lagerstelle, Fiskus, Fonds, Vermögen, Investmentfirma, Register, Rücklage, Vorrat, Tresor, Rücklagen, Grundkapital, Vorrat, Lager, Lagerhaus, Sparkasse, Schatz, Treuhandgesellschaft, Tresorraum"
                 },
                 "amenity/bar": {

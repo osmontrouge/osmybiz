@@ -7,11 +7,17 @@ import {infoTexts} from '../locales/de'
 const options = []
 
 Object.keys(tags).forEach(function (key) {
-  console.log(tags)
+  var fields = []
+  tags[key].fields.forEach(function (field) {
+    fields.push({
+      name: field,
+      value: ''
+    })
+  })
   options.push({
     value: key,
     text: tags[key].name,
-    fields: tags[key].fields
+    fields: fields
   })
 })
 
@@ -241,6 +247,12 @@ function constructNote () {
   if (state.details.note.length > 0) {
     text += 'Note: ' + state.details.note + '\n'
   }
+
+  state.details.category.fields.forEach(function (field) {
+    if (field.value.length !== 0) {
+      text += field.name + ': ' + field.value + '\n'
+    }
+  })
 
   return {
     lat: state.lat,

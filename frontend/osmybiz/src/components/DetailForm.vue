@@ -167,6 +167,14 @@
       </div>
     </div>
 
+    <div class="extra-fields">
+      <div class="field"
+           v-for="field in details.category.fields">
+        <label>{{ field.name }}</label>
+        <input type="text" v-model="field.value">
+      </div>
+    </div>
+
     <div class="form-footer">
       <button class="button"
               v-if="!isComment"
@@ -284,6 +292,13 @@
   .form-fields {
     display: flex;
     flex-flow: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .extra-fields {
+    display: flex;
+    flex-flow: column;
     justify-content: space-between;
     align-items: stretch;
   }
