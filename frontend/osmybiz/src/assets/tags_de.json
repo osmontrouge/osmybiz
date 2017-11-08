@@ -29,7 +29,7 @@
     ]
   },
   "amenity/bank": {
-    "name": "Bank-Fiiale",
+    "name": "Bank-Filiale",
     "fields": [
       "Geldautomat",
       "Durchfahrts-Service"
