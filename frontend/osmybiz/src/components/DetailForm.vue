@@ -43,7 +43,7 @@
         </div>
 
         <span v-show="details.category.text === ''"
-              class="help is-danger"> Die Kategorie ist obligatorisch.
+              class="help is-danger"> Dies ist ein Pflichtfeld.
         </span>
       </div>
     </div>
@@ -60,14 +60,15 @@
           </div>
 
           <input v-validate.initial="'required'"
-                 :class="{'is-error': errors.has('first_name') }"
+                 :class="{'is-error': errors.has('name') }"
                  type="text"
                  name="name"
                  v-model="details.name"
                  placeholder="Your Name...">
 
           <span v-show="errors.has('name')"
-                class="help is-danger"> Der Name ist obligatorisch.
+                class="help is-danger">
+            Dies ist ein Pflichtfeld
           </span>
         </div>
 
@@ -80,7 +81,9 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input type="text" v-model="details.openinghours" placeholder="Mo-Fr 08:00-17:00">
+          <input type="text"
+                 v-model="details.openinghours"
+                 placeholder="Mo-Fr 08:00-17:00">
         </div>
 
         <div class="field">
@@ -91,7 +94,9 @@
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
-          <input type="text" v-model="details.phonenumber" placeholder="+41 11 111 11 11">
+          <input type="text"
+                 v-model="details.phonenumber"
+                 placeholder="+41 11 111 11 11">
         </div>
 
         <div class="field" :class="{ 'control': true }">
@@ -111,7 +116,8 @@
                  placeholder="example@example.com">
 
           <span v-show="errors.has('email')"
-                class="help is-danger">Das Emailfeld muss eine valide Emailadresse enthalten.
+                class="help is-danger">
+            Emailadresse ist nicht valid.
           </span>
         </div>
 
@@ -124,7 +130,16 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input type="text" v-model="details.website" placeholder="http://www.example.com">
+          <input v-validate="'url'"
+                 type="text"
+                 name="website"
+                 v-model="details.website"
+                 placeholder="http://www.example.com">
+
+          <span v-show="errors.has('website')"
+                class="help is-danger">
+            Webseite ist nicht valid.
+          </span>
         </div>
 
         <div class="field">
@@ -167,11 +182,21 @@
       </div>
     </div>
 
-    <div class="extra-fields">
-      <div class="field"
-           v-for="field in details.category.fields">
-        <label>{{ field.name }}</label>
-        <input type="text" v-model="field.value">
+    <div class="extra-fields" v-if="details.category.fields.length > 0 && details.category.fields[0].name !== ''">
+      <h3>Folgende Felder sind mögliche Zusatzinformationen:</h3>
+      <div class="column">
+        <div class="field"
+             v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
+          <label>{{ field.name }}</label>
+          <input type="text" v-model="field.value">
+        </div>
+      </div>
+      <div class="column">
+        <div class="field"
+             v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
+          <label>{{ field.name }}</label>
+          <input type="text" v-model="field.value">
+        </div>
       </div>
     </div>
 
@@ -186,7 +211,7 @@
               :disabled="isRequiredFields()"
               @click="submitComment()">
         Speichern</button>
-      <span>Felder mit * sind obligatorisch</span>
+      <span>Felder mit * sind Pflichtfelder</span>
     </div>
   </div>
 
@@ -284,6 +309,10 @@
     resize: none;
   }
 
+  h3 {
+    text-align: left;
+  }
+
   .form-wrapper {
     max-width:750px;
     margin: auto;
@@ -298,7 +327,8 @@
 
   .extra-fields {
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
   }
