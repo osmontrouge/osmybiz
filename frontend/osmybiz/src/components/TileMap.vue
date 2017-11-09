@@ -11,16 +11,12 @@
 <script>
   import Vue2Leaflet from 'vue2-leaflet'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
-  import * as L from 'leaflet'
+  import {createMarker} from './../util/markerFactory'
 
   const zoomOnSelect = 18
 
   let map
-
-  const bizMarker = L.icon({
-    iconUrl: '../static/biz-marker.png',
-    iconSize: [64, 64]
-  })
+  let component
 
   function setMapPosition (pos) {
     map.setView(pos, zoomOnSelect)
@@ -36,9 +32,7 @@
 
   function addMarkers (bs) {
     const ms = bs.map(b => {
-      const m = L.marker(L.latLng(b.lat, b.lng), {
-        icon: bizMarker
-      })
+      const m = createMarker(b, (data) => component.test(data))
       map.addLayer(m)
       return m
     })
@@ -53,6 +47,7 @@
 
   export default {
     mounted () {
+      component = this
       map = this.$refs.map.mapObject
       this.$store.subscribe(mut => {
         if (mut.type === 'setMapPosition') {
@@ -89,6 +84,9 @@
           zoom: zoom
         })
         this.queryOverpass(this.viewPort)
+      },
+      test (b) {
+        console.log('test', b)
       }
     },
     computed: {
@@ -125,5 +123,14 @@
   .map {
     height: 100%;
     width: 100%;
+  }
+
+  .popup {
+    display: flex;
+    flex-direction:column;
+  }
+
+  .popup-title {
+    font-weight: bold;
   }
 </style>
