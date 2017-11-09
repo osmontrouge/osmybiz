@@ -1,8 +1,8 @@
 <template>
   <div class="map-wrapper">
-    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-dragend="viewChange"
-           @l-zoomend="viewChange" @l-click="clicked">
-      <v-tilelayer :url="tileUrl" :attribution="attribution"></v-tilelayer>
+    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked"
+           @l-dragend="viewChange" @l-zoomend="viewChange">
+      <v-tilelayer :url="tileUrl"></v-tilelayer>
       <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
   </div>
@@ -62,6 +62,11 @@
           drawBusinesses(this.businesses)
         }
       })
+
+      map.attributionControl.addAttribution(this.attribution)
+      if (this.position) {
+        setMapPosition(this.position)
+      }
     },
     methods: {
       ...mapActions(['queryOverpass']),
