@@ -20,7 +20,8 @@
         this.$router.push({name: routes.Landing})
       }
       this.setDisplaySuccess(false)
-      this.setDisplayConfirmation(true)
+      const hasData = this.details.category.value !== 0
+      this.setDisplayConfirmation(!hasData)
     },
     components: {
       DetailForm,
@@ -32,7 +33,8 @@
         'displaySuccess',
         'displayConfirmation',
         'lat',
-        'lon'
+        'lon',
+        'details'
       ])
     },
     methods: {

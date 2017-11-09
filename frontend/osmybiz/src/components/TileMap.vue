@@ -91,11 +91,11 @@
         this.queryOverpass(this.viewPort)
       },
       edit (business) {
-        console.log()
         const note = createNoteFromNode(business)
-        console.log(note)
         this.setDetails(note)
-        this.setCoords(latLng(business.lat, business.lng))
+        const pos = latLng(business.lat, business.lng)
+        this.setCoords(pos)
+        this.setPosition(pos)
         this.$router.push({name: routes.Detail})
       }
     },
@@ -135,9 +135,10 @@
     width: 100%;
   }
 
-  .popup {
+  .map-popup {
     display: flex;
     flex-direction:column;
+    font-size: 16px
   }
 
   .popup-title {
