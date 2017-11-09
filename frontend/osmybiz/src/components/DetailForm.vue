@@ -182,7 +182,7 @@
       </div>
     </div>
 
-    <div class="extra-fields" v-if="details.category.fields.length > 0 && details.category.fields[0].name !== ''">
+    <div class="extra-fields" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
       <h3>Folgende Felder sind mögliche Zusatzinformationen:</h3>
       <div class="column">
         <div class="field"
