@@ -2,6 +2,8 @@
 
   <div class="form-wrapper">
 
+    <h2>Geschäft erfassen</h2>
+
     <div class="popup" v-if="isPopup">
         <span>{{infoText}}</span>
     </div>
@@ -309,7 +311,7 @@
     resize: none;
   }
 
-  h3 {
+  h2, h3 {
     text-align: left;
   }
 
