@@ -14,7 +14,7 @@ const filters = [
     values: [
       'atm', 'bbq', 'bench', 'bicycle_parking', 'bicycle_repair_station', 'clock', 'drinking_water', 'fountain', 'grave_yard',
       'grit_bin', 'hunting_stand', 'motorcycle_parking', 'parking', 'pavilion', 'place_of_worship', 'post_box', 'recycling', 'sanitary_dump_station',
-      'shelter', 'shower', 'social_facility', 'swimming_pool', 'toilets', 'vending_machine', 'waste', 'watering_place'
+      'shelter', 'shower', 'social_facility', 'swimming_pool', 'toilets', 'vending_machine', 'waste', 'watering_place', 'charging_station'
     ]
   },
   {

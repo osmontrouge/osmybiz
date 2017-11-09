@@ -2,6 +2,7 @@ import * as L from 'leaflet'
 import {getTagName} from './translate'
 import {categoryTags} from './../api/overpassApi'
 import * as $ from 'jquery'
+import {getNodeCategoryKey} from './overPassNodeUtils'
 
 const bizMarker = L.icon({
   iconUrl: '../static/biz-marker.png',
@@ -9,13 +10,8 @@ const bizMarker = L.icon({
 })
 
 function getBizCategory (b) {
-  for (const t of categoryTags) {
-    if (b.tags.hasOwnProperty(t)) {
-      const tagKey = `${t}/${b.tags[t]}`
-      return getTagName(tagKey)
-    }
-  }
-  return ''
+  const key = getNodeCategoryKey(b)
+  return getTagName(key)
 }
 
 function getOtherData (b) {

@@ -12,6 +12,9 @@
   import Vue2Leaflet from 'vue2-leaflet'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
   import {createMarker} from './../util/markerFactory'
+  import {createNoteFromNode} from './../util/overPassNodeUtils'
+  import {latLng} from 'leaflet'
+  import {routes} from './../router'
 
   const zoomOnSelect = 18
 
@@ -32,7 +35,7 @@
 
   function addMarkers (bs) {
     const ms = bs.map(b => {
-      const m = createMarker(b, (data) => component.test(data))
+      const m = createMarker(b, (data) => component.edit(data))
       map.addLayer(m)
       return m
     })
@@ -67,7 +70,9 @@
       ...mapActions(['queryOverpass']),
       ...mapMutations([
         'setPosition',
-        'setViewPort'
+        'setViewPort',
+        'setDetails',
+        'setCoords'
       ]),
       clicked (event) {
         this.setPosition(event.latlng)
@@ -85,8 +90,13 @@
         })
         this.queryOverpass(this.viewPort)
       },
-      test (b) {
-        console.log('test', b)
+      edit (business) {
+        console.log()
+        const note = createNoteFromNode(business)
+        console.log(note)
+        this.setDetails(note)
+        this.setCoords(latLng(business.lat, business.lng))
+        this.$router.push({name: routes.Detail})
       }
     },
     computed: {
