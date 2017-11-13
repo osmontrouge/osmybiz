@@ -1,2 +1,2 @@
-Osm-my-biz
-==========
+OpenStreetMap My Business 
+=========================
