@@ -1,6 +1,8 @@
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
 
   <div class="form-wrapper">
+
+    <h2>Geschäft erfassen</h2>
 
     <div class="popup" v-if="isPopup">
         <span>{{infoText}}</span>
@@ -16,26 +18,34 @@
                src="../assets/info_black.png">
         </div>
 
-        <basic-select v-show="!isOwnCategory"
-                      :options="this.tags"
-                      :selected-option="details.category"
-                      placeholder="Kategorie auswählen"
-                      @select="onSelect"
-                      class="basic-select">
-        </basic-select>
+        <div v-show="!isOwnCategory" class="Category-field">
+          <basic-select v-show="!isOwnCategory"
+                        :options="this.tags"
+                        :selected-option="details.category"
+                        placeholder="Kategorie auswählen"
+                        @select="onSelect"
+                        class="basic-select">
+          </basic-select>
 
-        <div v-show="isOwnCategory" class="ownCategory-field">
+          <button class="button" @click="showInput()">
+            Eigene Kategorie
+          </button>
+        </div>
+
+
+        <div v-show="isOwnCategory" class="Category-field">
           <input v-validate.initial="'required'"
                  v-model="details.category.text"
                  type="text"
+                 placeholder="Kategorie auswählen"
                  name="category-input"/>
           <button class="button" @click="hideInput()">
-            Select Category
+            Kategorie wählen
           </button>
         </div>
 
         <span v-show="details.category.text === ''"
-              class="help is-danger"> Die Kategorie ist obligatorisch.
+              class="help is-danger"> Dies ist ein Pflichtfeld.
         </span>
       </div>
     </div>
@@ -52,14 +62,15 @@
           </div>
 
           <input v-validate.initial="'required'"
-                 :class="{'is-error': errors.has('first_name') }"
+                 :class="{'is-error': errors.has('name') }"
                  type="text"
                  name="name"
                  v-model="details.name"
                  placeholder="Your Name...">
 
           <span v-show="errors.has('name')"
-                class="help is-danger"> Der Name ist obligatorisch.
+                class="help is-danger">
+            Dies ist ein Pflichtfeld
           </span>
         </div>
 
@@ -72,7 +83,9 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input type="text" v-model="details.openinghours" placeholder="Mo-Fr 08:00-17:00">
+          <input type="text"
+                 v-model="details.openinghours"
+                 placeholder="Mo-Fr 08:00-17:00">
         </div>
 
         <div class="field">
@@ -83,7 +96,9 @@
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
-          <input type="text" v-model="details.phonenumber" placeholder="+41 11 111 11 11">
+          <input type="text"
+                 v-model="details.phonenumber"
+                 placeholder="+41 11 111 11 11">
         </div>
 
         <div class="field" :class="{ 'control': true }">
@@ -103,7 +118,8 @@
                  placeholder="example@example.com">
 
           <span v-show="errors.has('email')"
-                class="help is-danger">Das Emailfeld muss eine valide Emailadresse enthalten.
+                class="help is-danger">
+            Emailadresse ist nicht valid.
           </span>
         </div>
 
@@ -116,7 +132,16 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input type="text" v-model="details.website" placeholder="http://www.example.com">
+          <input v-validate="'url'"
+                 type="text"
+                 name="website"
+                 v-model="details.website"
+                 placeholder="http://www.example.com">
+
+          <span v-show="errors.has('website')"
+                class="help is-danger">
+            Webseite ist nicht valid.
+          </span>
         </div>
 
         <div class="field">
@@ -135,7 +160,7 @@
       <div class="column">
         <div class="field">
           <div class="field-label">
-            <label>Beschreibung</label>
+            <label>Beschreibung des Geschäfts</label>
             <img class="info"
                  @mouseenter="showPopup('description')"
                  @mouseleave="hidePopup()"
@@ -147,7 +172,7 @@
 
         <div class="field">
           <div class="field-label">
-            <label>Notiz</label>
+            <label>Notiz für eintragende Person</label>
             <img class="info"
                  @mouseenter="showPopup('note')"
                  @mouseleave="hidePopup()"
@@ -155,6 +180,24 @@
           </div>
 
           <textarea class="area" v-model="details.note" placeholder="Notiz"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="extra-fields" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
+      <h3>Folgende Felder sind mögliche Zusatzinformationen:</h3>
+      <div class="column">
+        <div class="field"
+             v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
+          <label>{{ field.name }}</label>
+          <input type="text" v-model="field.value">
+        </div>
+      </div>
+      <div class="column">
+        <div class="field"
+             v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
+          <label>{{ field.name }}</label>
+          <input type="text" v-model="field.value">
         </div>
       </div>
     </div>
@@ -173,7 +216,7 @@
               :disabled="isRequiredFields()"
               @click="submitComment()">
         Speichern</button>
-      <span>Felder mit * sind obligatorisch</span>
+      <span>Felder mit * sind Pflichtfelder</span>
     </div>
   </div>
 
@@ -226,6 +269,10 @@
         this.setIsOwnCategory(false)
         this.details.category = {value: 0, text: ''}
       },
+      showInput () {
+        this.setIsOwnCategory(true)
+        this.details.category = {value: 0, text: ''}
+      },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''
       },
@@ -256,7 +303,7 @@
 </script>
 
 <style>
-  input[type="text"], textarea, select {
+  input[type="text"], textarea {
     border: 2px solid #7ebc6f;
     padding: 12px 20px;
     display: inline-block;
@@ -281,6 +328,10 @@
     resize: none;
   }
 
+  h2, h3 {
+    text-align: left;
+  }
+
   .form-wrapper {
     max-width:750px;
     margin: auto;
@@ -289,6 +340,14 @@
   .form-fields {
     display: flex;
     flex-flow: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .extra-fields {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
   }
@@ -335,24 +394,23 @@
     color: black;
   }
 
-  .ownCategory-field {
+  .Category-field {
     display: flex;
     flex-direction: row;
   }
 
-  .ownCategory-field input{
-    flex-grow: 5;
+  .Category-field input, .basic-select{
+    flex-grow: 5 !important;
   }
 
-  .ownCategory-field button{
-    flex-grow: 1;
+  .Category-field button{
+    flex: 0 0;
+    flex-basis: auto;
     margin-left: 10px;
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
     border: 2px solid #7ebc6f !important;
-    margin-bottom: 12px !important;
-
   }
 
   .button {
