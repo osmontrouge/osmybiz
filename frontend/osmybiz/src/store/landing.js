@@ -6,7 +6,6 @@ import {queryBox} from '../api/overpassApi'
 const state = {
   initialPos: latLng(47.223490, 8.817737),  // Hsr
   initialZoom: 15,
-  tileUrl: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 
   mapPosition: null,
@@ -16,7 +15,8 @@ const state = {
   suggestions: [],
   viewPort: null,
 
-  businesses: []
+  businesses: [],
+  mode: 'tiles'
 }
 
 const queryDebounceMs = 400
@@ -97,6 +97,9 @@ const mutations = {
   },
   setBusinesses (state, businesses) {
     state.businesses = businesses
+  },
+  setMode (state, mode) {
+    state.mode = mode
   }
 }
 
@@ -110,9 +113,6 @@ const getters = {
   },
   attribution (state) {
     return state.attribution
-  },
-  tileUrl (state) {
-    return state.tileUrl
   },
   searchText (state) {
     return state.search
@@ -131,6 +131,9 @@ const getters = {
   },
   businesses (state) {
     return state.businesses
+  },
+  mode (state) {
+    return state.mode
   }
 }
 

@@ -2,7 +2,6 @@
   <div class="map-wrapper">
     <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked"
            @l-dragend="viewChange" @l-zoomend="viewChange">
-      <v-tilelayer :url="tileUrl"></v-tilelayer>
       <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
   </div>
@@ -13,13 +12,15 @@
   import {mapGetters, mapMutations, mapActions} from 'vuex'
   import {createMarker} from './../util/markerFactory'
   import {createNoteFromNode} from './../util/overPassNodeUtils'
-  import {latLng} from 'leaflet'
+  import * as L from 'leaflet'
   import {routes} from './../router'
+  import {makeTileLayer, getTileUrl} from './../util/mapUtils'
 
   const zoomOnSelect = 18
 
   let map
   let component
+  let tileLayer
 
   function setMapPosition (pos) {
     map.setView(pos, zoomOnSelect)
@@ -43,6 +44,10 @@
     markers = ms
   }
 
+  function setTileMode (mode) {
+    tileLayer.setUrl(getTileUrl(mode), false)
+  }
+
   function drawBusinesses (businesses) {
     clearMarkers()
     addMarkers(businesses)
@@ -52,12 +57,17 @@
     mounted () {
       component = this
       map = this.$refs.map.mapObject
+      tileLayer = makeTileLayer(this.mode)
+      map.addLayer(tileLayer)
+
       this.$store.subscribe(mut => {
         if (mut.type === 'setMapPosition') {
           setMapPosition(this.position)
           this.viewChange()
         } else if (mut.type === 'setBusinesses') {
           drawBusinesses(this.businesses)
+        } else if (mut.type === 'setMode') {
+          setTileMode(this.mode)
         }
       })
 
@@ -93,7 +103,7 @@
       edit (business) {
         const note = createNoteFromNode(business)
         this.setDetails(note)
-        const pos = latLng(business.lat, business.lng)
+        const pos = L.latLng(business.lat, business.lng)
         this.setCoords(pos)
         this.setPosition(pos)
         this.$router.push({name: routes.Detail})
@@ -104,11 +114,11 @@
         'initialPos',
         'initialZoom',
         'attribution',
-        'tileUrl',
         'position',
         'mapPosition',
         'viewPort',
-        'businesses'
+        'businesses',
+        'mode'
       ])
     },
 
