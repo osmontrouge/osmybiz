@@ -1,7 +1,7 @@
 <template>
   <div class="map-wrapper">
-    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked">
-      <v-tilelayer :url="tileUrl" :attribution="attribution"></v-tilelayer>
+    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked" :attribution="attribution">
+      <v-tilelayer :url="tileUrl"></v-tilelayer>
       <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
   </div>
@@ -26,6 +26,11 @@
           setMapPosition(this.position)
         }
       })
+
+      map.attributionControl.addAttribution(this.attribution)
+      if (this.position) {
+        setMapPosition(this.position)
+      }
     },
     methods: {
       ...mapMutations([

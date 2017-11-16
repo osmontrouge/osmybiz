@@ -3,7 +3,7 @@
 
 
     <div class="current-position">
-      {{lat}} / {{lng}}
+      {{position.lat | latLng}} / {{ position.lng | latLng}}
     </div>
 
     <div>
@@ -16,19 +16,13 @@
 <script>
   import {mapGetters, mapMutations} from 'vuex'
   import {routes} from './../router'
-  import {LatLngRoundingAccuracy} from '../constants'
+  import LatLngFilter from './../filters/latLngFilter'
 
   export default {
     computed: {
       ...mapGetters([
         'position'
-      ]),
-      lat () {
-        return this.position.lat.toFixed(LatLngRoundingAccuracy)
-      },
-      lng () {
-        return this.position.lng.toFixed(LatLngRoundingAccuracy)
-      }
+      ])
     },
     methods: {
       ...mapMutations([
@@ -38,6 +32,9 @@
         this.setCoords(this.position)
         this.$router.push({name: routes.Detail})
       }
+    },
+    filters: {
+      LatLngFilter
     },
     name: 'selected-position'
   }
