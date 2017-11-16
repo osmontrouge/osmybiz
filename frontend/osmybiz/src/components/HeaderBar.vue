@@ -4,15 +4,29 @@
         OpenStreetMap My Business
       </div>
       <div class="buttons">
-        <button @click="login()">Login</button>
-        <button @click="logout()">Logout</button>
-        <!--<span v-if="user.id !== ''">{{user}}</span>-->
+        <div v-if="isLoggedIn" class="user" >
+          <span>{{user.name}}</span>
+        </div>
+
+        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()">
+          <icon name="envelope"></icon>
+          <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
+        </div>
+
+        <button v-if="!isLoggedIn" @click="login()">Login</button>
+        <button v-if="isLoggedIn" @click="logout()">Logout</button>
+
       </div>
     </div>
 </template>
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
+  import 'vue-awesome/icons'
+  import Icon from 'vue-awesome/components/Icon.vue'
+
+  // todo move to config
+  const messageUrl = 'https://master.apis.dev.openstreetmap.org/user/'
 
   export default {
     mounted () {
@@ -21,7 +35,8 @@
     name: 'header-bar',
     computed: {
       ...mapGetters([
-        'user'
+        'user',
+        'isLoggedIn'
       ])
     },
     methods: {
@@ -34,7 +49,15 @@
       },
       logout () {
         // this.deauthenticate()
+      },
+      gotoMessages () {
+        if (this.isLoggedIn) {
+          window.open(messageUrl + this.user.name + '/inbox', '_blank')
+        }
       }
+    },
+    components: {
+      Icon
     }
   }
 </script>
@@ -60,6 +83,29 @@
     display: flex;
     flex-direction: row;
     margin: 0 24px;
+    align-items: baseline;
+  }
+
+  .messages {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px 0 20px;
+    cursor: pointer;
+  }
+
+  .unread {
+    background-color: red;
+    color: white;
+    font-weight:bold;
+    padding: 1px 3px;
+    font-size: 10px;
+    position: absolute;
+    height: 14px;
+    line-height: 11px;
+    border-radius: 7px;
+    width: 14px;
+    top: -4px;
+    right: 10px;
   }
 
   button {

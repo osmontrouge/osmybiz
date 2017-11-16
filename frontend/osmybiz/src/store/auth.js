@@ -8,9 +8,7 @@ const state = {
 
 const actions = {
   authenticate () {
-    login((res) => {
-      console.log(res)
-    })
+    login()
   },
   isLoggedIn () {
     return isLoggedIn()

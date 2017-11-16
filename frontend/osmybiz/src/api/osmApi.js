@@ -1,6 +1,7 @@
 import axios from 'axios'
 import * as osmAuth from 'osm-auth'
-// import * as $ from 'jquery'
+import * as $ from 'jquery'
+import * as _ from 'lodash'
 
 // todo move to config
 const urlBase = 'https://master.apis.dev.openstreetmap.org'
@@ -26,15 +27,30 @@ const auth = osmAuth({
   singlepage: true
 })
 
-function parseUser (userXml) {
-  // const doc = $.parseXML(userXml)
-  //
-  // console.log(doc)
+function extractLanguages (langDoc) {
+  const childNodes = langDoc.children()
+  const languages = []
+  for (const node of childNodes) {
+    const text = $(node).text()
+    languages.push(text.slice(0, 2))
+  }
+  if (languages.length === 0) {
+    // todo extract to config (defaultlanguage)
+    languages.push('de')
+  }
+  return _.uniq(languages)
+}
 
+function parseUser (userXml) {
+  const doc = $(userXml)
+  const user = doc.find('user')
+  const messages = user.find('messages').find('received')
+  const languages = user.find('languages')
   return {
-    name: '',
-    id: '',
-    unReadCound: 0
+    name: user.attr('display_name'),
+    id: parseInt(user.attr('id')),
+    unReadCount: messages.attr('unread'),
+    langPrefs: extractLanguages(languages)
   }
 }
 
@@ -64,7 +80,6 @@ export function loadUser () {
           console.log(err)
           resolve(null)
         }
-        console.log(response)
         resolve(parseUser(response))
       })
     }
