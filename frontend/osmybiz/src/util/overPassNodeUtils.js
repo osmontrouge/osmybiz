@@ -12,8 +12,16 @@ export function getNodeCategoryKey (node) {
 
 function getBizCategory (node) {
   const key = getNodeCategoryKey(node)
+  var fields = []
+  getTagName(key).fields.forEach(function (field) {
+    fields.push({
+      name: field,
+      value: ''
+    })
+  })
   return {
-    text: getTagName(key),
+    text: getTagName(key).name,
+    fields: fields,
     value: key
   }
 }
