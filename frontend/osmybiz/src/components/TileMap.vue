@@ -1,7 +1,7 @@
 <template>
   <div class="map-wrapper">
-    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked" :attribution="attribution">
-      <v-tilelayer :url="tileUrl"></v-tilelayer>
+    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked"
+           @l-dragend="viewChange" @l-zoomend="viewChange">
       <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
   </div>
@@ -9,21 +9,65 @@
 
 <script>
   import Vue2Leaflet from 'vue2-leaflet'
-  import {mapGetters, mapMutations} from 'vuex'
+  import {mapGetters, mapMutations, mapActions} from 'vuex'
+  import {createMarker} from './../util/markerFactory'
+  import {createNoteFromNode} from './../util/overPassNodeUtils'
+  import * as L from 'leaflet'
+  import {routes} from './../router'
+  import {makeTileLayer, getTileUrl} from './../util/mapUtils'
 
   const zoomOnSelect = 18
 
   let map
+  let component
+  let tileLayer
+
   function setMapPosition (pos) {
     map.setView(pos, zoomOnSelect)
   }
 
+  let markers = []
+
+  function clearMarkers () {
+    markers.forEach(m => {
+      map.removeLayer(m)
+    })
+  }
+
+  function addMarkers (bs) {
+    const ms = bs.map(b => {
+      const m = createMarker(b, (data) => component.edit(data))
+      map.addLayer(m)
+      return m
+    })
+
+    markers = ms
+  }
+
+  function setTileMode (mode) {
+    tileLayer.setUrl(getTileUrl(mode), false)
+  }
+
+  function drawBusinesses (businesses) {
+    clearMarkers()
+    addMarkers(businesses)
+  }
+
   export default {
     mounted () {
+      component = this
       map = this.$refs.map.mapObject
+      tileLayer = makeTileLayer(this.mode)
+      map.addLayer(tileLayer)
+
       this.$store.subscribe(mut => {
         if (mut.type === 'setMapPosition') {
           setMapPosition(this.position)
+          this.viewChange()
+        } else if (mut.type === 'setBusinesses') {
+          drawBusinesses(this.businesses)
+        } else if (mut.type === 'setMode') {
+          setTileMode(this.mode)
         }
       })
 
@@ -33,14 +77,36 @@
       }
     },
     methods: {
+      ...mapActions(['queryOverpass']),
       ...mapMutations([
-        'setPosition'
+        'setPosition',
+        'setViewPort',
+        'setDetails',
+        'setCoords'
       ]),
       clicked (event) {
         this.setPosition(event.latlng)
       },
       drag (event) {
         this.setPosition(event.latlng)
+      },
+      viewChange () {
+        const bbox = map.getBounds()
+        const zoom = map.getZoom()
+        this.setViewPort({
+          topRight: bbox._northEast,
+          bottomLeft: bbox._southWest,
+          zoom: zoom
+        })
+        this.queryOverpass(this.viewPort)
+      },
+      edit (business) {
+        const note = createNoteFromNode(business)
+        this.setDetails(note)
+        const pos = L.latLng(business.lat, business.lng)
+        this.setCoords(pos)
+        this.setPosition(pos)
+        this.$router.push({name: routes.Detail})
       }
     },
     computed: {
@@ -48,9 +114,11 @@
         'initialPos',
         'initialZoom',
         'attribution',
-        'tileUrl',
         'position',
-        'mapPosition'
+        'mapPosition',
+        'viewPort',
+        'businesses',
+        'mode'
       ])
     },
 
@@ -75,5 +143,15 @@
   .map {
     height: 100%;
     width: 100%;
+  }
+
+  .map-popup {
+    display: flex;
+    flex-direction:column;
+    font-size: 16px
+  }
+
+  .popup-title {
+    font-weight: bold;
   }
 </style>
