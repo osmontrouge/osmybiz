@@ -1,4 +1,4 @@
-import {login, isLoggedIn, setOauthToken, loadUser} from './../api/osmApi'
+import {login, setOauthToken, loadUser, logout} from './../api/osmApi'
 import * as _ from 'lodash'
 
 const state = {
@@ -9,9 +9,6 @@ const state = {
 const actions = {
   authenticate () {
     login()
-  },
-  isLoggedIn () {
-    return isLoggedIn()
   },
   setToken (state, token) {
     return setOauthToken(token)
@@ -31,6 +28,11 @@ const mutations = {
     } else {
       state.isLoggedIn = false
     }
+  },
+  logout (state) {
+    logout()
+    state.user = null
+    state.isLoggedIn = false
   }
 }
 

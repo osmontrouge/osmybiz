@@ -70,6 +70,10 @@ export function setOauthToken (token) {
   })
 }
 
+export function logout () {
+  auth.logout()
+}
+
 export function loadUser () {
   return new Promise((resolve) => {
     if (!isLoggedIn()) {

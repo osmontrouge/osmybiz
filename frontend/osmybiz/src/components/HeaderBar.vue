@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapActions, mapMutations} from 'vuex'
   import 'vue-awesome/icons'
   import Icon from 'vue-awesome/components/Icon.vue'
 
@@ -44,11 +44,11 @@
         'authenticate',
         'loadUser'
       ]),
+      ...mapMutations([
+        'logout'
+      ]),
       login () {
         this.authenticate()
-      },
-      logout () {
-        // this.deauthenticate()
       },
       gotoMessages () {
         if (this.isLoggedIn) {
