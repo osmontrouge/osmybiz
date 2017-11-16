@@ -1,7 +1,8 @@
 import axios from 'axios'
+import {osmUrl} from '../config/config'
 
-let urlNote = 'https://master.apis.dev.openstreetmap.org/api/0.6/notes.json'
-let urlComment = 'https://master.apis.dev.openstreetmap.org/api/0.6/notes/'
+let urlNote = osmUrl + 'notes.json'
+let urlComment = osmUrl + 'notes/'
 
 export default {
 

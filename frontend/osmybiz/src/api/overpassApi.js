@@ -1,12 +1,11 @@
 import axios from 'axios'
+import {overpassUrl} from '../config/config'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 
 const tagRegex = categoryTags.join('|')
 
 const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`
-
-const url = 'http://overpass.osm.ch/api/interpreter'
 
 const filters = [
   {
@@ -60,7 +59,7 @@ function filterFn (node) {
 }
 
 export function queryBox (bbox) {
-  return axios.post(url, buildQuery(bbox)).then(res => {
+  return axios.post(overpassUrl, buildQuery(bbox)).then(res => {
     return parseData(res.data).filter(filterFn)
   }, (err) => {
     console.log(err)
