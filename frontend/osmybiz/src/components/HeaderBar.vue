@@ -4,10 +4,9 @@
         OpenStreetMap My Business
       </div>
       <div class="buttons">
-        <button @click="details()">Details</button>
         <button @click="login()">Login</button>
         <button @click="logout()">Logout</button>
-        <span v-if="user.id !== ''">{{user}}</span>
+        <!--<span v-if="user.id !== ''">{{user}}</span>-->
       </div>
     </div>
 </template>
@@ -16,6 +15,9 @@
   import {mapGetters, mapActions} from 'vuex'
 
   export default {
+    mounted () {
+      this.loadUser()
+    },
     name: 'header-bar',
     computed: {
       ...mapGetters([
@@ -24,16 +26,14 @@
     },
     methods: {
       ...mapActions([
-        'authenticate'
+        'authenticate',
+        'loadUser'
       ]),
       login () {
         this.authenticate()
       },
       logout () {
         // this.deauthenticate()
-      },
-      details () {
-        // this.getDetails()
       }
     }
   }
