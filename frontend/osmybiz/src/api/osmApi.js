@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * as osmAuth from 'osm-auth'
+import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
 
