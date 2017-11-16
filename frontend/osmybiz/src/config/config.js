@@ -17,3 +17,27 @@ export const nominatimReverseUrl = 'http://nominatim.openstreetmap.org/reverse'
 
 // overpass Urls
 export const overpassUrl = 'http://overpass.osm.ch/api/interpreter'
+
+// filter for categories
+export const filters = [
+  {
+    key: 'amenity',
+    values: [
+      'atm', 'bbq', 'bench', 'bicycle_parking', 'bicycle_repair_station', 'clock', 'drinking_water', 'fountain', 'grave_yard',
+      'grit_bin', 'hunting_stand', 'motorcycle_parking', 'parking', 'pavilion', 'place_of_worship', 'post_box', 'recycling', 'sanitary_dump_station',
+      'shelter', 'shower', 'social_facility', 'swimming_pool', 'toilets', 'vending_machine', 'waste', 'watering_place', 'charging_station'
+    ]
+  },
+  {
+    key: 'leisure',
+    values: [
+      'bird_hide', 'common', 'dog_park', 'firepit', 'fitness_station', 'garden', 'nature_reserve', 'park', 'picnic_table', 'pitch', 'playground',
+      'track', 'running_track', 'slipway'
+    ]
+  }, {
+    key: 'tourism',
+    values: [
+      'picnic_site', 'viewpoint'
+    ]
+  }
+]

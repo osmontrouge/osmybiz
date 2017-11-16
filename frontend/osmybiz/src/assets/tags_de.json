@@ -1,337 +1,1842 @@
 {
-  "amenity/animal_boarding": "Tierpension",
-  "amenity/animal_breeding": "Tierzucht",
-  "amenity/animal_shelter": "Tierheim",
-  "amenity/arts_centre": "Kunstzentrum",
-  "amenity/atm": "Geldautomat",
-  "amenity/bank": "Bank-Fiiale",
-  "amenity/bar": "Bar",
-  "amenity/bbq": "Grillplatz",
-  "amenity/bench": "Sitzbank",
-  "amenity/bicycle_parking": "Fahrradparkplatz",
-  "amenity/bicycle_rental": "Fahrradverleih",
-  "amenity/bicycle_repair_station": "Fahrradreperatur-Werkzeugkasten",
-  "amenity/biergarten": "Biergarten",
-  "amenity/boat_rental": "Bootsvermietung",
-  "amenity/bureau_de_change": "Geldwechselstube",
-  "amenity/bus_station": "Busbahnhof",
-  "amenity/cafe": "Café",
-  "amenity/car_rental": "Autovermietung",
-  "amenity/car_sharing": "Carsharing",
-  "amenity/car_wash": "Autowäsche",
-  "amenity/casino": "Kasino",
-  "amenity/charging_station": "Ladestation für Elektroautos, Plug-in Hybridfahrzeuge, Pedelecs und E-Bikes.",
-  "amenity/childcare": "Kindertagesstätte/Kinderbetreuung",
-  "amenity/cinema": "Kino",
-  "amenity/clinic": "Klinik",
-  "amenity/clinic/abortion": "Abtreibungsklinik",
-  "amenity/clinic/fertility": "Kinderwunschklinik",
-  "amenity/clock": "Uhr",
-  "amenity/college": "Hochschulgelände",
-  "amenity/community_centre": "Gemeindezentrum",
-  "amenity/compressed_air": "Druckluft",
-  "amenity/courthouse": "Gericht",
-  "amenity/coworking_space": "Co-Working-Räumlichkeiten",
-  "amenity/crematorium": "Krematorium",
-  "amenity/dentist": "Zahnarzt",
-  "amenity/doctors": "Arzt",
-  "amenity/dojo": "Kampfsportstudio",
-  "amenity/drinking_water": "Trinkwasser",
-  "amenity/driving_school": "Fahrschule",
-  "amenity/embassy": "Botschaft",
-  "amenity/fast_food": "Schnellimbiss",
-  "amenity/ferry_terminal": "Fährhafen",
-  "amenity/fire_station": "Feuerwehrhaus",
-  "amenity/food_court": "Gemeinschaftlicher Gastronomiebereich",
-  "amenity/fountain": "Springbrunnen",
-  "amenity/fuel": "Tankstelle",
-  "amenity/grave_yard": "Gräberfeld",
-  "amenity/grit_bin": "Streugutkiste",
-  "amenity/hospital": "Krankenhaus",
-  "amenity/hunting_stand": "Hochsitz/Jägerstand",
-  "amenity/ice_cream": "Eisgeschäft",
-  "amenity/internet_cafe": "Internetcafé",
-  "amenity/kindergarten": "Kindergarten",
-  "amenity/library": "Bibliothek",
-  "amenity/marketplace": "Wochenmarkt",
-  "amenity/motorcycle_parking": "Motorradparkplatz",
-  "amenity/nightclub": "Nachtklub",
-  "amenity/nursing_home": "Pflegeheim",
-  "amenity/parking": "Parkplatz",
-  "amenity/parking_entrance": "Garageneinfahrt/-ausfahrt",
-  "amenity/parking_space": "Stellplatz",
-  "amenity/pavilion": "Pavillon",
-  "amenity/pharmacy": "Apotheke",
-  "amenity/place_of_worship": "Andachtsstätte",
-  "amenity/place_of_worship/buddhist": "Buddhistischer Tempel",
-  "amenity/place_of_worship/christian": "Kirche",
-  "amenity/place_of_worship/hindu": "Hindutempel",
-  "amenity/place_of_worship/jewish": "Sy­n­a­go­ge",
-  "amenity/place_of_worship/muslim": "Moschee",
-  "amenity/place_of_worship/shinto": "Shintō-Schrein",
-  "amenity/place_of_worship/sikh": "Sikh-Tempel",
-  "amenity/place_of_worship/taoist": "Tao-Tempel",
-  "amenity/planetarium": "Planetarium",
-  "amenity/police": "Polizei",
-  "amenity/post_box": "Briefkasten",
-  "amenity/post_office": "Postfiliale",
-  "amenity/prison": "Gefängnisanlage",
-  "amenity/pub": "Kneipe",
-  "amenity/public_bath": "Öffentliches Bad",
-  "amenity/public_bookcase": "Offentlicher Bücherschrank",
-  "amenity/ranger_station": "Ranger-Station",
-  "amenity/recycling": "Recycling",
-  "amenity/recycling_centre": "Wertstoffhof",
-  "amenity/register_office": "Standesamt",
-  "amenity/restaurant": "Restaurant",
-  "amenity/sanitary_dump_station": "Campingtoiletten-Entsorgungsanlage",
-  "amenity/school": "Schulgelände",
-  "amenity/scrapyard": "Schrottplatz",
-  "amenity/shelter": "Unterstand",
-  "amenity/shower": "Dusche",
-  "amenity/social_facility": "Sozialeinrichtung",
-  "amenity/social_facility/food_bank": "Essensausgabe",
-  "amenity/social_facility/group_home": "Seniorenresidenz",
-  "amenity/social_facility/homeless_shelter": "Obdachlosenheim",
-  "amenity/social_facility/nursing_home": "Seniorenpflegeheim",
-  "amenity/studio": "Ton-/Fernsehstudio",
-  "amenity/swimming_pool": "Schwimmbecken",
-  "amenity/taxi": "Taxistand",
-  "amenity/telephone": "Telefon",
-  "amenity/theatre": "The­a­ter",
-  "amenity/toilets": "Toilette",
-  "amenity/townhall": "Rathaus",
-  "amenity/university": "Universitätsgelände",
-  "amenity/vending_machine": "Verkaufsautomat",
-  "amenity/vending_machine/cigarettes": "Zigarettenautomat",
-  "amenity/vending_machine/condoms": "Kondomautomat",
-  "amenity/vending_machine/drinks": "Getränkeautomat",
-  "amenity/vending_machine/excrement_bags": "Hundekottütenspender",
-  "amenity/vending_machine/feminine_hygiene": "Frauenhygiene-Automat",
-  "amenity/vending_machine/news_papers": "Zeitungsautomat",
-  "amenity/vending_machine/newspapers": "Zeitungstasche",
-  "amenity/vending_machine/parcel_pickup_dropoff": "Paketautomat",
-  "amenity/vending_machine/parking_tickets": "Parkscheinautomat",
-  "amenity/vending_machine/public_transport_tickets": "Fahrkartenautomat",
-  "amenity/vending_machine/sweets": "Süßigkeitenautomat",
-  "amenity/veterinary": "Tierarzt",
-  "amenity/waste/dog_excrement": "Hundekotabfalleimer",
-  "amenity/waste_basket": "Mülleimer",
-  "amenity/waste_disposal": "Müllcontainer",
-  "amenity/waste_transfer_station": "Müllumladestation",
-  "amenity/water_point": "Camping-Trinkwasser",
-  "amenity/watering_place": "Tränke",
-  "leisure/adult_gaming_centre": "Spielothek für Erwachsene",
-  "leisure/bird_hide": "Vogelbeobachtungsturm",
-  "leisure/bowling_alley": "Bowlingbahn",
-  "leisure/common": "öffentliche Fläche, Allmende",
-  "leisure/dance": "Tanzsaal",
-  "leisure/dog_park": "Hundepark",
-  "leisure/firepit": "Feuerstelle",
-  "leisure/fitness_centre": "Fitness Studio",
-  "leisure/fitness_centre/yoga": "Yoga-Studio",
-  "leisure/fitness_station": "Freiluft-Fitness-Station",
-  "leisure/garden": "Garten",
-  "leisure/golf_course": "Golfplatz",
-  "leisure/hackerspace": "Hackerspace",
-  "leisure/horse_riding": "Reitanlage",
-  "leisure/ice_rink": "Eislaufbahn",
-  "leisure/marina": "Yachthafen",
-  "leisure/miniature_golf": "Minigolf",
-  "leisure/nature_reserve": "Naturschutzgebiet",
-  "leisure/park": "Park",
-  "leisure/picnic_table": "Picknicktisch",
-  "leisure/pitch": "Sportplatz",
-  "leisure/pitch/american_football": "American-Football-Feld",
-  "leisure/pitch/baseball": "Baseball-Rautenfeld",
-  "leisure/pitch/basketball": "Basketballfeld",
-  "leisure/pitch/beachvolleyball": "Beachvolleyballplatz",
-  "leisure/pitch/bowls": "Bowlingrasen",
-  "leisure/pitch/cricket": "Cricket-Spielfeld",
-  "leisure/pitch/equestrian": "Reitplatz",
-  "leisure/pitch/rugby_league": "Rugby-League-Feld",
-  "leisure/pitch/rugby_union": "Rugby-Union-Feld",
-  "leisure/pitch/skateboard": "Skatepark",
-  "leisure/pitch/soccer": "Fußballplatz",
-  "leisure/pitch/table_tennis": "Tischtennisplatte",
-  "leisure/pitch/tennis": "Tennisplatz",
-  "leisure/pitch/volleyball": "Volleyballplatz",
-  "leisure/playground": "Spielplatz",
-  "leisure/resort": "Resort",
-  "leisure/running_track": "Rennbbahn (Laufen)",
-  "leisure/slipway": "Slipanlage",
-  "leisure/sports_centre": "Sportzentrum / -komplex",
-  "leisure/sports_centre/swimming": "Badeanstalt",
-  "leisure/stadium": "Stadion",
-  "leisure/swimming_pool": "Schwimmbecken",
-  "leisure/track": "Bahn (Nicht Motorsport)",
-  "leisure/water_park": "Erlebnisbad",
-  "office/accountant": "Steuerberater",
-  "office/administrative": "Verwaltungsamt",
-  "office/architect": "Architekt",
-  "office/company": "Firma",
-  "office/coworking": "Co-Working-Räumlichkeiten",
-  "office/educational_institution": "Bildungseinrichtung",
-  "office/employment_agency": "Arbeitsamt",
-  "office/estate_agent": "Immobilienmakler",
-  "office/financial": "Finanzberater",
-  "office/government": "Behörde",
-  "office/government/register_office": "Standesamt",
-  "office/insurance": "Versicherung",
-  "office/it": "IT-Büro",
-  "office/lawyer": "Anwalt",
-  "office/lawyer/notary": "Notariat",
-  "office/newspaper": "Redaktion",
-  "office/ngo": "Nichtregierungsorganisation",
-  "office/physician": "Arztpraxis",
-  "office/political_party": "Partei",
-  "office/research": "Forschungseinrichtung",
-  "office/telecommunication": "Telefongesellschaft",
-  "office/therapist": "Therapeut",
-  "office/travel_agent": "Reisebüro",
-  "shop/alcohol": "Spirituosenladen",
-  "shop/anime": "Anime-Geschäft",
-  "shop/antiques": "Antiquitätenladen",
-  "shop/appliance": "Haushaltselektrogerätegeschäft",
-  "shop/art": "Kunsthandlung",
-  "shop/baby_goods": "Babysachengeschäft",
-  "shop/bag": "Taschen/Koffer-Geschäft",
-  "shop/bakery": "Bäckerei",
-  "shop/bathroom_furnishing": "Badeinrichtungsgeschäft",
-  "shop/beauty": "Kosmetikladen",
-  "shop/beauty/nails": "Nagelstudio",
-  "shop/beauty/tanning": "Sonnenstudio",
-  "shop/bed": "Betten/Matratzengeschäft",
-  "shop/beverages": "Getränkeladen",
-  "shop/bicycle": "Fahrradladen",
-  "shop/bookmaker": "Buchmacher",
-  "shop/books": "Buchladen",
-  "shop/boutique": "Boutique",
-  "shop/butcher": "Metzger",
-  "shop/candles": "Kerzengeschäft",
-  "shop/car": "Autohändler",
-  "shop/car_parts": "Autoteilehandel",
-  "shop/car_repair": "Autowerkstatt",
-  "shop/carpet": "Teppichgeschäft",
-  "shop/charity": "Sozialkaufhaus",
-  "shop/cheese": "Käseladen",
-  "shop/chemist": "Drogerie",
-  "shop/chocolate": "Schokoladeladen",
-  "shop/clothes": "Bekleidungsgeschäft",
-  "shop/coffee": "Kaffeegeschäft",
-  "shop/computer": "Computerfachhandel",
-  "shop/confectionery": "Süßigkeitengeschäft",
-  "shop/convenience": "Gemischtwarenhandel",
-  "shop/copyshop": "Kopierladen",
-  "shop/cosmetics": "Drogerie",
-  "shop/craft": "Kunsthandwerkgeschäft",
-  "shop/curtain": "Vorhanggeschäft",
-  "shop/dairy": "Milchgeschäft",
-  "shop/deli": "Feinkostladen",
-  "shop/department_store": "Kaufhaus",
-  "shop/doityourself": "Heimwerkerladen",
-  "shop/dry_cleaning": "Chemische Reinigung",
-  "shop/e-cigarette": "E-Zigarettengeschäft",
-  "shop/electronics": "Elektronikfachgeschäft",
-  "shop/erotic": "Erotikgeschäft",
-  "shop/fabric": "Stoffgeschäft",
-  "shop/farm": "Hofladen",
-  "shop/fashion": "Modegeschäft",
-  "shop/fishmonger": "Fischhändler",
-  "shop/florist": "Blumenhändler",
-  "shop/frame": "Bilderrahmengeschäft",
-  "shop/funeral_directors": "Beerdigungsinstitut",
-  "shop/furnace": "Heizungsfachgeschäft",
-  "shop/furniture": "Möbelhaus",
-  "shop/garden_centre": "Gartenzentrum",
-  "shop/gas": "Gasflaschenverkauf",
-  "shop/gift": "Geschenkladen",
-  "shop/greengrocer": "Gemüsehändler",
-  "shop/hairdresser": "Friseur",
-  "shop/hardware": "Eisenwarenhandel",
-  "shop/hearing_aids": "Hörgerätegeschäft",
-  "shop/herbalist": "Kräuterladen",
-  "shop/hifi": "Hifi-Laden",
-  "shop/houseware": "Haushaltswarengeschäft",
-  "shop/interior_decoration": "Innenausstattungsgeschäft",
-  "shop/jewelry": "Juwelier",
-  "shop/kiosk": "Zeitungskiosk",
-  "shop/kitchen": "Kücheneinrichtungsgeschäft",
-  "shop/laundry": "Wäscherei",
-  "shop/leather": "Lederbekleidungsgeschäft",
-  "shop/locksmith": "Schlosser",
-  "shop/lottery": "Lottoannahmestelle",
-  "shop/mall": "Einkaufzentrum",
-  "shop/massage": "Massagesalon",
-  "shop/medical_supply": "Medizinbedarfgeschäft",
-  "shop/mobile_phone": "Mobiltelefonladen",
-  "shop/money_lender": "Geldverleiher",
-  "shop/motorcycle": "Motorradhändler",
-  "shop/music": "Musikgeschäft",
-  "shop/musical_instrument": "Musikinstrumentegeschäft",
-  "shop/newsagent": "Zeitungs-/Magazin-Geschäft",
-  "shop/nutrition_supplements": "Nahrungsergänzungsmittelgeschäft",
-  "shop/optician": "Optiker",
-  "shop/organic": "Bioladen",
-  "shop/outdoor": "Outdoorgeschäft",
-  "shop/paint": "Farbengeschäft",
-  "shop/pastry": "Konditorei",
-  "shop/pawnbroker": "Pfandleiher",
-  "shop/perfumery": "Parfümerie",
-  "shop/pet": "Tierhandlung",
-  "shop/photo": "Fotofachgeschäft",
-  "shop/pyrotechnics": "Feuerwerksgeschäft",
-  "shop/radiotechnics": "Radio/Elektronik-Geschäft",
-  "shop/religion": "Devotionalienhandlung",
-  "shop/scuba_diving": "Tauchwarengeschäft",
-  "shop/seafood": "Fischgeschäft",
-  "shop/second_hand": "Second-Hand-Laden",
-  "shop/shoes": "Schuhgeschäft",
-  "shop/sports": "Sportgeschäft",
-  "shop/stationery": "Schreibwarengeschäft",
-  "shop/storage_rental": "Lagerraumvermieter",
-  "shop/supermarket": "Supermarkt",
-  "shop/tailor": "Schneider",
-  "shop/tattoo": "Tätowierungsladen",
-  "shop/tea": "Teegeschäft",
-  "shop/ticket": "Eintrittskartenverkäufer",
-  "shop/tiles": "Fliesenhändler",
-  "shop/tobacco": "Trafik",
-  "shop/toys": "Spielwarengeschäft",
-  "shop/trade": "Baustoffhandel",
-  "shop/travel_agency": "Reisebüro",
-  "shop/tyres": "Reifenhandel",
-  "shop/vacant": "Leerstehendes Geschäft",
-  "shop/vacuum_cleaner": "Staubsaugergeschäft",
-  "shop/variety_store": "Gemischtwarenhandel",
-  "shop/video": "Videothek",
-  "shop/video_games": "Videospielgeschäft",
-  "shop/watches": "Uhrengeschäft",
-  "shop/water_sports": "Wassersportgeschäft",
-  "shop/weapons": "Waffengeschäft",
-  "shop/window_blind": "Fensterladengeschäft",
-  "shop/wine": "Vinothek",
-  "tourism/alpine_hut": "Schutzhütte",
-  "tourism/apartment": "Ferienwohnung",
-  "tourism/aquarium": "Aquarium",
-  "tourism/artwork": "Kunst",
-  "tourism/attraction": "Touristenattraktion",
-  "tourism/camp_site": "Campingplatz",
-  "tourism/caravan_site": "Wohnwagen-Campingplatz",
-  "tourism/chalet": "Ferienhaus",
-  "tourism/gallery": "Kunstgalerie",
-  "tourism/guest_house": "Pension, Gästehaus",
-  "tourism/hostel": "Herberge",
-  "tourism/hotel": "Hotel",
-  "tourism/information": "Information",
-  "tourism/information/board": "Informationstafel",
-  "tourism/information/guidepost": "Wegweiser",
-  "tourism/information/map": "Karte",
-  "tourism/information/office": "Tourismusbüro",
-  "tourism/motel": "Motel",
-  "tourism/museum": "Museum",
-  "tourism/picnic_site": "Picknickplatz",
-  "tourism/theme_park": "Themenpark",
-  "tourism/viewpoint": "Aussichtspunkt",
-  "tourism/zoo": "Zoo"
+  "amenity/animal_boarding": {
+    "name": "Tierpension",
+    "fields": [
+      "Tierpension"
+    ]
+  },
+  "amenity/animal_breeding": {
+    "name": "Tierzucht",
+    "fields": [
+      "Tierzucht"
+    ]
+  },
+  "amenity/animal_shelter": {
+    "name": "Tierheim",
+    "fields": [
+      "Tierheim"
+    ]
+  },
+  "amenity/arts_centre": {
+    "name": "Kunstzentrum",
+    "fields": []
+  },
+  "amenity/atm": {
+    "name": "Geldautomat",
+    "fields": [
+      "Währungen",
+      "Durchfahrts-Service"
+    ]
+  },
+  "amenity/bank": {
+    "name": "Bank-Filiale",
+    "fields": [
+      "Geldautomat",
+      "Durchfahrts-Service"
+    ]
+  },
+  "amenity/bar": {
+    "name": "Bar",
+    "fields": [
+      "Außenbestuhlung",
+      "Rauchen"
+    ]
+  },
+  "amenity/bbq": {
+    "name": "Grillplatz",
+    "fields": [
+      "Überdacht",
+      "Kraftstoff"
+    ]
+  },
+  "amenity/bench": {
+    "name": "Sitzbank",
+    "fields": [
+      "Rückenlehne"
+    ]
+  },
+  "amenity/bicycle_parking": {
+    "name": "Fahrradparkplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Typ",
+      "Kapazität",
+      "Überdacht"
+    ]
+  },
+  "amenity/bicycle_rental": {
+    "name": "Fahrradverleih",
+    "fields": [
+      "Kapazität",
+      "Netzwerk"
+    ]
+  },
+  "amenity/bicycle_repair_station": {
+    "name": "Fahrradreperatur-Werkzeugkasten",
+    "fields": [
+      "Marke",
+      "Gebühr",
+      "Fahrradservice"
+    ]
+  },
+  "amenity/biergarten": {
+    "name": "Biergarten",
+    "fields": [
+      "Außenbestuhlung",
+      "Rauchen"
+    ]
+  },
+  "amenity/boat_rental": {
+    "name": "Bootsvermietung",
+    "fields": []
+  },
+  "amenity/bureau_de_change": {
+    "name": "Geldwechselstube",
+    "fields": [
+      "Währungen"
+    ]
+  },
+  "amenity/bus_station": {
+    "name": "Busbahnhof",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "amenity/cafe": {
+    "name": "Café",
+    "fields": [
+      "Küche",
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Außenbestuhlung",
+      "Rauchen"
+    ]
+  },
+  "amenity/car_rental": {
+    "name": "Autovermietung",
+    "fields": []
+  },
+  "amenity/car_sharing": {
+    "name": "Carsharing",
+    "fields": [
+      "Kapazität"
+    ]
+  },
+  "amenity/car_wash": {
+    "name": "Autowäsche",
+    "fields": []
+  },
+  "amenity/casino": {
+    "name": "Kasino",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "amenity/charging_station": {
+    "name": "Ladestation für Elektroautos, Plug-in Hybridfahrzeuge, Pedelecs und E-Bikes.",
+    "fields": [
+      "Kapazität"
+    ]
+  },
+  "amenity/childcare": {
+    "name": "Kindertagesstätte/Kinderbetreuung",
+    "fields": []
+  },
+  "amenity/cinema": {
+    "name": "Kino",
+    "fields": []
+  },
+  "amenity/clinic": {
+    "name": "Klinik",
+    "fields": [
+      "Spezialgebiete"
+    ]
+  },
+  "amenity/clinic/abortion": {
+    "name": "Abtreibungsklinik",
+    "fields": [
+      "Spezialgebiete"
+    ]
+  },
+  "amenity/clinic/fertility": {
+    "name": "Kinderwunschklinik",
+    "fields": [
+      "Spezialgebiete"
+    ]
+  },
+  "amenity/clock": {
+    "name": "Uhr",
+    "fields": [
+      "Datum",
+      "Anzeige",
+      "Unterstützung",
+      "Sichtbarkeit"
+    ]
+  },
+  "amenity/college": {
+    "name": "Hochschulgelände",
+    "fields": [
+      "Internetzugang",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "amenity/community_centre": {
+    "name": "Gemeindezentrum",
+    "fields": []
+  },
+  "amenity/compressed_air": {
+    "name": "Druckluft",
+    "fields": []
+  },
+  "amenity/courthouse": {
+    "name": "Gericht",
+    "fields": []
+  },
+  "amenity/coworking_space": {
+    "name": "Co-Working-Räumlichkeiten",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "amenity/crematorium": {
+    "name": "Krematorium",
+    "fields": []
+  },
+  "amenity/dentist": {
+    "name": "Zahnarzt",
+    "fields": [
+      "Spezialgebiete"
+    ]
+  },
+  "amenity/doctors": {
+    "name": "Arzt",
+    "fields": [
+      "Spezialgebiete"
+    ]
+  },
+  "amenity/dojo": {
+    "name": "Kampfsportstudio",
+    "fields": [
+      "Sport"
+    ]
+  },
+  "amenity/drinking_water": {
+    "name": "Trinkwasser",
+    "fields": []
+  },
+  "amenity/driving_school": {
+    "name": "Fahrschule",
+    "fields": []
+  },
+  "amenity/embassy": {
+    "name": "Botschaft",
+    "fields": [
+      "Land"
+    ]
+  },
+  "amenity/fast_food": {
+    "name": "Schnellimbiss",
+    "fields": [
+      "Küche",
+      "Zustellung",
+      "Durchfahrts-Service",
+      "Außenbestuhlung",
+      "Rauchen",
+      "zum Mitnehmen"
+    ]
+  },
+  "amenity/ferry_terminal": {
+    "name": "Fährhafen",
+    "fields": [
+      "Netzwerk"
+    ]
+  },
+  "amenity/fire_station": {
+    "name": "Feuerwehrhaus",
+    "fields": []
+  },
+  "amenity/food_court": {
+    "name": "Gemeinschaftlicher Gastronomiebereich",
+    "fields": [
+      "Außenbestuhlung",
+      "Rauchen"
+    ]
+  },
+  "amenity/fountain": {
+    "name": "Springbrunnen",
+    "fields": []
+  },
+  "amenity/fuel": {
+    "name": "Tankstelle",
+    "fields": [
+      "Spritsorten"
+    ]
+  },
+  "amenity/grave_yard": {
+    "name": "Gräberfeld",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Religion"
+    ]
+  },
+  "amenity/grit_bin": {
+    "name": "Streugutkiste",
+    "fields": [
+      "Erlaubter Zugang"
+    ]
+  },
+  "amenity/hospital": {
+    "name": "Krankenhaus",
+    "fields": [
+      "Notfall",
+      "Spezialgebiete"
+    ]
+  },
+  "amenity/hunting_stand": {
+    "name": "Hochsitz/Jägerstand",
+    "fields": []
+  },
+  "amenity/ice_cream": {
+    "name": "Eisgeschäft",
+    "fields": [
+      "Zustellung",
+      "Außenbestuhlung",
+      "zum Mitnehmen"
+    ]
+  },
+  "amenity/internet_cafe": {
+    "name": "Internetcafé",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Außenbestuhlung",
+      "Rauchen"
+    ]
+  },
+  "amenity/kindergarten": {
+    "name": "Kindergarten",
+    "fields": []
+  },
+  "amenity/library": {
+    "name": "Bibliothek",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "amenity/marketplace": {
+    "name": "Wochenmarkt",
+    "fields": []
+  },
+  "amenity/motorcycle_parking": {
+    "name": "Motorradparkplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Kapazität",
+      "Überdacht"
+    ]
+  },
+  "amenity/nightclub": {
+    "name": "Nachtklub",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "amenity/nursing_home": {
+    "name": "Pflegeheim",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/parking": {
+    "name": "Parkplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Kapazität",
+      "Gebühr",
+      "Maximale Parkzeit",
+      "Parken und Reisen",
+      "Typ",
+      "Überwacht",
+      "Oberfläche"
+    ]
+  },
+  "amenity/parking_entrance": {
+    "name": "Garageneinfahrt/-ausfahrt",
+    "fields": [
+      "Erlaubter Zugang",
+      "Referenzcode"
+    ]
+  },
+  "amenity/parking_space": {
+    "name": "Stellplatz",
+    "fields": [
+      "Kapazität"
+    ]
+  },
+  "amenity/pavilion": {
+    "name": "Pavillon",
+    "fields": [
+      "Sitzbank",
+      "Mülleimer"
+    ]
+  },
+  "amenity/pharmacy": {
+    "name": "Apotheke",
+    "fields": [
+      "Durchfahrts-Service"
+    ]
+  },
+  "amenity/place_of_worship": {
+    "name": "Andachtsstätte",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Religion",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/buddhist": {
+    "name": "Buddhistischer Tempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/christian": {
+    "name": "Kirche",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/hindu": {
+    "name": "Hindutempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/jewish": {
+    "name": "Sy­n­a­go­ge",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/muslim": {
+    "name": "Moschee",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/shinto": {
+    "name": "Shintō-Schrein",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/sikh": {
+    "name": "Sikh-Tempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/taoist": {
+    "name": "Tao-Tempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/planetarium": {
+    "name": "Planetarium",
+    "fields": []
+  },
+  "amenity/police": {
+    "name": "Polizei",
+    "fields": []
+  },
+  "amenity/post_box": {
+    "name": "Briefkasten",
+    "fields": [
+      "Leerungszeiten",
+      "Durchfahrts-Service",
+      "Referenzcode"
+    ]
+  },
+  "amenity/post_office": {
+    "name": "Postfiliale",
+    "fields": []
+  },
+  "amenity/prison": {
+    "name": "Gefängnisanlage",
+    "fields": []
+  },
+  "amenity/pub": {
+    "name": "Kneipe",
+    "fields": [
+      "Außenbestuhlung",
+      "Rauchen"
+    ]
+  },
+  "amenity/public_bath": {
+    "name": "Öffentliches Bad",
+    "fields": [
+      "Im Freien",
+      "Sandbad",
+      "Spezialität"
+    ]
+  },
+  "amenity/public_bookcase": {
+    "name": "Offentlicher Bücherschrank",
+    "fields": [
+      "Kapazität"
+    ]
+  },
+  "amenity/ranger_station": {
+    "name": "Ranger-Station",
+    "fields": []
+  },
+  "amenity/recycling": {
+    "name": "Recycling",
+    "fields": [
+      "Leerungszeiten",
+      "akzeptiert",
+      "Recycling Typ"
+    ]
+  },
+  "amenity/recycling_centre": {
+    "name": "Wertstoffhof",
+    "fields": [
+      "akzeptiert"
+    ]
+  },
+  "amenity/register_office": {
+    "name": "Standesamt",
+    "fields": []
+  },
+  "amenity/restaurant": {
+    "name": "Restaurant",
+    "fields": [
+      "Kapazität",
+      "Küche",
+      "Zustellung",
+      "Außenbestuhlung",
+      "Rauchen",
+      "zum Mitnehmen"
+    ]
+  },
+  "amenity/sanitary_dump_station": {
+    "name": "Campingtoiletten-Entsorgungsanlage",
+    "fields": [
+      "Erlaubter Zugang",
+      "Gebühr",
+      "Wasserentnahmestelle"
+    ]
+  },
+  "amenity/school": {
+    "name": "Schulgelände",
+    "fields": []
+  },
+  "amenity/scrapyard": {
+    "name": "Schrottplatz",
+    "fields": []
+  },
+  "amenity/shelter": {
+    "name": "Unterstand",
+    "fields": [
+      "Mülleimer",
+      "Typ"
+    ]
+  },
+  "amenity/shower": {
+    "name": "Dusche",
+    "fields": [
+      "Gebühr",
+      "Überwacht"
+    ]
+  },
+  "amenity/social_facility": {
+    "name": "Sozialeinrichtung",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/food_bank": {
+    "name": "Essensausgabe",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/group_home": {
+    "name": "Seniorenresidenz",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/homeless_shelter": {
+    "name": "Obdachlosenheim",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/nursing_home": {
+    "name": "Seniorenpflegeheim",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/studio": {
+    "name": "Ton-/Fernsehstudio",
+    "fields": [
+      "Typ"
+    ]
+  },
+  "amenity/swimming_pool": {
+    "name": "Schwimmbecken",
+    "fields": []
+  },
+  "amenity/taxi": {
+    "name": "Taxistand",
+    "fields": [
+      "Kapazität"
+    ]
+  },
+  "amenity/telephone": {
+    "name": "Telefon",
+    "fields": []
+  },
+  "amenity/theatre": {
+    "name": "The­a­ter",
+    "fields": []
+  },
+  "amenity/toilets": {
+    "name": "Toilette",
+    "fields": [
+      "Erlaubter Zugang",
+      "Windelwechseln möglich",
+      "Gebühr",
+      "Geschlecht",
+      "Toiletten-Bauart"
+    ]
+  },
+  "amenity/townhall": {
+    "name": "Rathaus",
+    "fields": []
+  },
+  "amenity/university": {
+    "name": "Universitätsgelände",
+    "fields": [
+      "Internetzugang",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "amenity/vending_machine": {
+    "name": "Verkaufsautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten",
+      "Dienstleistung"
+    ]
+  },
+  "amenity/vending_machine/cigarettes": {
+    "name": "Zigarettenautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/condoms": {
+    "name": "Kondomautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/drinks": {
+    "name": "Getränkeautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/excrement_bags": {
+    "name": "Hundekottütenspender",
+    "fields": [
+      "Währungen",
+      "Gebühr",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/feminine_hygiene": {
+    "name": "Frauenhygiene-Automat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/news_papers": {
+    "name": "Zeitungsautomat",
+    "fields": [
+      "Währungen",
+      "Gebühr",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/newspapers": {
+    "name": "Zeitungstasche",
+    "fields": [
+      "Währungen",
+      "Gebühr",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/parcel_pickup_dropoff": {
+    "name": "Paketautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/parking_tickets": {
+    "name": "Parkscheinautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/public_transport_tickets": {
+    "name": "Fahrkartenautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/sweets": {
+    "name": "Süßigkeitenautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/veterinary": {
+    "name": "Tierarzt",
+    "fields": []
+  },
+  "amenity/waste/dog_excrement": {
+    "name": "Hundekotabfalleimer",
+    "fields": [
+      "Leerungszeiten"
+    ]
+  },
+  "amenity/waste_basket": {
+    "name": "Mülleimer",
+    "fields": [
+      "Leerungszeiten"
+    ]
+  },
+  "amenity/waste_disposal": {
+    "name": "Müllcontainer",
+    "fields": [
+      "Leerungszeiten"
+    ]
+  },
+  "amenity/waste_transfer_station": {
+    "name": "Müllumladestation",
+    "fields": []
+  },
+  "amenity/water_point": {
+    "name": "Camping-Trinkwasser",
+    "fields": []
+  },
+  "amenity/watering_place": {
+    "name": "Tränke",
+    "fields": []
+  },
+  "leisure/adult_gaming_centre": {
+    "name": "Spielothek für Erwachsene",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "leisure/bird_hide": {
+    "name": "Vogelbeobachtungsturm",
+    "fields": []
+  },
+  "leisure/bowling_alley": {
+    "name": "Bowlingbahn",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "leisure/common": {
+    "name": "öffentliche Fläche, Allmende",
+    "fields": []
+  },
+  "leisure/dance": {
+    "name": "Tanzsaal",
+    "fields": []
+  },
+  "leisure/dog_park": {
+    "name": "Hundepark",
+    "fields": []
+  },
+  "leisure/firepit": {
+    "name": "Feuerstelle",
+    "fields": []
+  },
+  "leisure/fitness_centre": {
+    "name": "Fitness Studio",
+    "fields": [
+      "Sport"
+    ]
+  },
+  "leisure/fitness_centre/yoga": {
+    "name": "Yoga-Studio",
+    "fields": [
+      "Sport"
+    ]
+  },
+  "leisure/fitness_station": {
+    "name": "Freiluft-Fitness-Station",
+    "fields": [
+      "Referenzcode"
+    ]
+  },
+  "leisure/garden": {
+    "name": "Garten",
+    "fields": [
+      "Erlaubter Zugang"
+    ]
+  },
+  "leisure/golf_course": {
+    "name": "Golfplatz",
+    "fields": []
+  },
+  "leisure/hackerspace": {
+    "name": "Hackerspace",
+    "fields": []
+  },
+  "leisure/horse_riding": {
+    "name": "Reitanlage",
+    "fields": [
+      "Erlaubter Zugang",
+      "Gebäude"
+    ]
+  },
+  "leisure/ice_rink": {
+    "name": "Eislaufbahn",
+    "fields": [
+      "Gebäude",
+      "Saisonal",
+      "Sportarten"
+    ]
+  },
+  "leisure/marina": {
+    "name": "Yachthafen",
+    "fields": [
+      "Kapazität",
+      "Gebühr",
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Stromversorgung",
+      "Toilettenentsorgungsanlage"
+    ]
+  },
+  "leisure/miniature_golf": {
+    "name": "Minigolf",
+    "fields": []
+  },
+  "leisure/nature_reserve": {
+    "name": "Naturschutzgebiet",
+    "fields": []
+  },
+  "leisure/park": {
+    "name": "Park",
+    "fields": []
+  },
+  "leisure/picnic_table": {
+    "name": "Picknicktisch",
+    "fields": []
+  },
+  "leisure/pitch": {
+    "name": "Sportplatz",
+    "fields": [
+      "Beleuchtung",
+      "Sport",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/american_football": {
+    "name": "American-Football-Feld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/baseball": {
+    "name": "Baseball-Rautenfeld",
+    "fields": [
+      "Beleuchtung"
+    ]
+  },
+  "leisure/pitch/basketball": {
+    "name": "Basketballfeld",
+    "fields": [
+      "Erlaubter Zugang",
+      "Basketball",
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/beachvolleyball": {
+    "name": "Beachvolleyballplatz",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/bowls": {
+    "name": "Bowlingrasen",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/cricket": {
+    "name": "Cricket-Spielfeld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/equestrian": {
+    "name": "Reitplatz",
+    "fields": [
+      "Gebäude",
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/rugby_league": {
+    "name": "Rugby-League-Feld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/rugby_union": {
+    "name": "Rugby-Union-Feld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/skateboard": {
+    "name": "Skatepark",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/soccer": {
+    "name": "Fußballplatz",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/table_tennis": {
+    "name": "Tischtennisplatte",
+    "fields": [
+      "Erlaubter Zugang",
+      "Beleuchtung"
+    ]
+  },
+  "leisure/pitch/tennis": {
+    "name": "Tennisplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/volleyball": {
+    "name": "Volleyballplatz",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/playground": {
+    "name": "Spielplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Höchstalter",
+      "Mindestalter",
+      "Oberfläche"
+    ]
+  },
+  "leisure/resort": {
+    "name": "Resort",
+    "fields": []
+  },
+  "leisure/running_track": {
+    "name": "Rennbbahn (Laufen)",
+    "fields": [
+      "Fahrspuren",
+      "Beleuchtung",
+      "Sportarten",
+      "Oberfläche",
+      "Breite (Meter)"
+    ]
+  },
+  "leisure/slipway": {
+    "name": "Slipanlage",
+    "fields": []
+  },
+  "leisure/sports_centre": {
+    "name": "Sportzentrum / -komplex",
+    "fields": [
+      "Sport"
+    ]
+  },
+  "leisure/sports_centre/swimming": {
+    "name": "Badeanstalt",
+    "fields": [
+      "Erlaubter Zugang",
+      "Gebäude"
+    ]
+  },
+  "leisure/stadium": {
+    "name": "Stadion",
+    "fields": [
+      "Sport"
+    ]
+  },
+  "leisure/swimming_pool": {
+    "name": "Schwimmbecken",
+    "fields": [
+      "Erlaubter Zugang"
+    ]
+  },
+  "leisure/track": {
+    "name": "Bahn (Nicht Motorsport)",
+    "fields": [
+      "Fahrspuren",
+      "Beleuchtung",
+      "Sportarten",
+      "Oberfläche",
+      "Breite (Meter)"
+    ]
+  },
+  "leisure/water_park": {
+    "name": "Erlebnisbad",
+    "fields": []
+  },
+  "office/accountant": {
+    "name": "Steuerberater",
+    "fields": []
+  },
+  "office/administrative": {
+    "name": "Verwaltungsamt",
+    "fields": []
+  },
+  "office/architect": {
+    "name": "Architekt",
+    "fields": []
+  },
+  "office/company": {
+    "name": "Firma",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "office/coworking": {
+    "name": "Co-Working-Räumlichkeiten",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "office/educational_institution": {
+    "name": "Bildungseinrichtung",
+    "fields": []
+  },
+  "office/employment_agency": {
+    "name": "Arbeitsamt",
+    "fields": []
+  },
+  "office/estate_agent": {
+    "name": "Immobilienmakler",
+    "fields": []
+  },
+  "office/financial": {
+    "name": "Finanzberater",
+    "fields": []
+  },
+  "office/government": {
+    "name": "Behörde",
+    "fields": []
+  },
+  "office/government/register_office": {
+    "name": "Standesamt",
+    "fields": []
+  },
+  "office/insurance": {
+    "name": "Versicherung",
+    "fields": []
+  },
+  "office/it": {
+    "name": "IT-Büro",
+    "fields": []
+  },
+  "office/lawyer": {
+    "name": "Anwalt",
+    "fields": []
+  },
+  "office/lawyer/notary": {
+    "name": "Notariat",
+    "fields": []
+  },
+  "office/newspaper": {
+    "name": "Redaktion",
+    "fields": []
+  },
+  "office/ngo": {
+    "name": "Nichtregierungsorganisation",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "office/physician": {
+    "name": "Arztpraxis",
+    "fields": []
+  },
+  "office/political_party": {
+    "name": "Partei",
+    "fields": []
+  },
+  "office/research": {
+    "name": "Forschungseinrichtung",
+    "fields": []
+  },
+  "office/telecommunication": {
+    "name": "Telefongesellschaft",
+    "fields": []
+  },
+  "office/therapist": {
+    "name": "Therapeut",
+    "fields": []
+  },
+  "office/travel_agent": {
+    "name": "Reisebüro",
+    "fields": []
+  },
+  "shop/alcohol": {
+    "name": "Spirituosenladen",
+    "fields": [
+      "Durchfahrts-Service"
+    ]
+  },
+  "shop/anime": {
+    "name": "Anime-Geschäft",
+    "fields": []
+  },
+  "shop/antiques": {
+    "name": "Antiquitätenladen",
+    "fields": []
+  },
+  "shop/appliance": {
+    "name": "Haushaltselektrogerätegeschäft",
+    "fields": []
+  },
+  "shop/art": {
+    "name": "Kunsthandlung",
+    "fields": []
+  },
+  "shop/baby_goods": {
+    "name": "Babysachengeschäft",
+    "fields": []
+  },
+  "shop/bag": {
+    "name": "Taschen/Koffer-Geschäft",
+    "fields": []
+  },
+  "shop/bakery": {
+    "name": "Bäckerei",
+    "fields": []
+  },
+  "shop/bathroom_furnishing": {
+    "name": "Badeinrichtungsgeschäft",
+    "fields": []
+  },
+  "shop/beauty": {
+    "name": "Kosmetikladen",
+    "fields": [
+      "Geschäftstyp"
+    ]
+  },
+  "shop/beauty/nails": {
+    "name": "Nagelstudio",
+    "fields": []
+  },
+  "shop/beauty/tanning": {
+    "name": "Sonnenstudio",
+    "fields": []
+  },
+  "shop/bed": {
+    "name": "Betten/Matratzengeschäft",
+    "fields": []
+  },
+  "shop/beverages": {
+    "name": "Getränkeladen",
+    "fields": []
+  },
+  "shop/bicycle": {
+    "name": "Fahrradladen",
+    "fields": [
+      "Fahrradservice"
+    ]
+  },
+  "shop/bookmaker": {
+    "name": "Buchmacher",
+    "fields": []
+  },
+  "shop/books": {
+    "name": "Buchladen",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "shop/boutique": {
+    "name": "Boutique",
+    "fields": [
+      "Kleidung"
+    ]
+  },
+  "shop/butcher": {
+    "name": "Metzger",
+    "fields": []
+  },
+  "shop/candles": {
+    "name": "Kerzengeschäft",
+    "fields": []
+  },
+  "shop/car": {
+    "name": "Autohändler",
+    "fields": [
+      "Second Hand",
+      "Raststätte"
+    ]
+  },
+  "shop/car_parts": {
+    "name": "Autoteilehandel",
+    "fields": []
+  },
+  "shop/car_repair": {
+    "name": "Autowerkstatt",
+    "fields": [
+      "Raststätte"
+    ]
+  },
+  "shop/carpet": {
+    "name": "Teppichgeschäft",
+    "fields": []
+  },
+  "shop/charity": {
+    "name": "Sozialkaufhaus",
+    "fields": [
+      "Second Hand"
+    ]
+  },
+  "shop/cheese": {
+    "name": "Käseladen",
+    "fields": []
+  },
+  "shop/chemist": {
+    "name": "Drogerie",
+    "fields": []
+  },
+  "shop/chocolate": {
+    "name": "Schokoladeladen",
+    "fields": []
+  },
+  "shop/clothes": {
+    "name": "Bekleidungsgeschäft",
+    "fields": [
+      "Kleidung"
+    ]
+  },
+  "shop/coffee": {
+    "name": "Kaffeegeschäft",
+    "fields": []
+  },
+  "shop/computer": {
+    "name": "Computerfachhandel",
+    "fields": []
+  },
+  "shop/confectionery": {
+    "name": "Süßigkeitengeschäft",
+    "fields": []
+  },
+  "shop/convenience": {
+    "name": "Gemischtwarenhandel",
+    "fields": []
+  },
+  "shop/copyshop": {
+    "name": "Kopierladen",
+    "fields": []
+  },
+  "shop/cosmetics": {
+    "name": "Drogerie",
+    "fields": []
+  },
+  "shop/craft": {
+    "name": "Kunsthandwerkgeschäft",
+    "fields": []
+  },
+  "shop/curtain": {
+    "name": "Vorhanggeschäft",
+    "fields": []
+  },
+  "shop/dairy": {
+    "name": "Milchgeschäft",
+    "fields": []
+  },
+  "shop/deli": {
+    "name": "Feinkostladen",
+    "fields": []
+  },
+  "shop/department_store": {
+    "name": "Kaufhaus",
+    "fields": []
+  },
+  "shop/doityourself": {
+    "name": "Heimwerkerladen",
+    "fields": []
+  },
+  "shop/dry_cleaning": {
+    "name": "Chemische Reinigung",
+    "fields": []
+  },
+  "shop/e-cigarette": {
+    "name": "E-Zigarettengeschäft",
+    "fields": []
+  },
+  "shop/electronics": {
+    "name": "Elektronikfachgeschäft",
+    "fields": []
+  },
+  "shop/erotic": {
+    "name": "Erotikgeschäft",
+    "fields": []
+  },
+  "shop/fabric": {
+    "name": "Stoffgeschäft",
+    "fields": []
+  },
+  "shop/farm": {
+    "name": "Hofladen",
+    "fields": []
+  },
+  "shop/fashion": {
+    "name": "Modegeschäft",
+    "fields": [
+      "Kleidung"
+    ]
+  },
+  "shop/fishmonger": {
+    "name": "Fischhändler",
+    "fields": []
+  },
+  "shop/florist": {
+    "name": "Blumenhändler",
+    "fields": []
+  },
+  "shop/frame": {
+    "name": "Bilderrahmengeschäft",
+    "fields": []
+  },
+  "shop/funeral_directors": {
+    "name": "Beerdigungsinstitut",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Religion"
+    ]
+  },
+  "shop/furnace": {
+    "name": "Heizungsfachgeschäft",
+    "fields": []
+  },
+  "shop/furniture": {
+    "name": "Möbelhaus",
+    "fields": []
+  },
+  "shop/garden_centre": {
+    "name": "Gartenzentrum",
+    "fields": []
+  },
+  "shop/gas": {
+    "name": "Gasflaschenverkauf",
+    "fields": []
+  },
+  "shop/gift": {
+    "name": "Geschenkladen",
+    "fields": []
+  },
+  "shop/greengrocer": {
+    "name": "Gemüsehändler",
+    "fields": []
+  },
+  "shop/hairdresser": {
+    "name": "Friseur",
+    "fields": []
+  },
+  "shop/hardware": {
+    "name": "Eisenwarenhandel",
+    "fields": []
+  },
+  "shop/hearing_aids": {
+    "name": "Hörgerätegeschäft",
+    "fields": []
+  },
+  "shop/herbalist": {
+    "name": "Kräuterladen",
+    "fields": []
+  },
+  "shop/hifi": {
+    "name": "Hifi-Laden",
+    "fields": []
+  },
+  "shop/houseware": {
+    "name": "Haushaltswarengeschäft",
+    "fields": []
+  },
+  "shop/interior_decoration": {
+    "name": "Innenausstattungsgeschäft",
+    "fields": []
+  },
+  "shop/jewelry": {
+    "name": "Juwelier",
+    "fields": []
+  },
+  "shop/kiosk": {
+    "name": "Zeitungskiosk",
+    "fields": []
+  },
+  "shop/kitchen": {
+    "name": "Kücheneinrichtungsgeschäft",
+    "fields": []
+  },
+  "shop/laundry": {
+    "name": "Wäscherei",
+    "fields": []
+  },
+  "shop/leather": {
+    "name": "Lederbekleidungsgeschäft",
+    "fields": []
+  },
+  "shop/locksmith": {
+    "name": "Schlosser",
+    "fields": []
+  },
+  "shop/lottery": {
+    "name": "Lottoannahmestelle",
+    "fields": []
+  },
+  "shop/mall": {
+    "name": "Einkaufzentrum",
+    "fields": []
+  },
+  "shop/massage": {
+    "name": "Massagesalon",
+    "fields": []
+  },
+  "shop/medical_supply": {
+    "name": "Medizinbedarfgeschäft",
+    "fields": []
+  },
+  "shop/mobile_phone": {
+    "name": "Mobiltelefonladen",
+    "fields": []
+  },
+  "shop/money_lender": {
+    "name": "Geldverleiher",
+    "fields": [
+      "Währungen"
+    ]
+  },
+  "shop/motorcycle": {
+    "name": "Motorradhändler",
+    "fields": []
+  },
+  "shop/music": {
+    "name": "Musikgeschäft",
+    "fields": []
+  },
+  "shop/musical_instrument": {
+    "name": "Musikinstrumentegeschäft",
+    "fields": []
+  },
+  "shop/newsagent": {
+    "name": "Zeitungs-/Magazin-Geschäft",
+    "fields": []
+  },
+  "shop/nutrition_supplements": {
+    "name": "Nahrungsergänzungsmittelgeschäft",
+    "fields": []
+  },
+  "shop/optician": {
+    "name": "Optiker",
+    "fields": []
+  },
+  "shop/organic": {
+    "name": "Bioladen",
+    "fields": []
+  },
+  "shop/outdoor": {
+    "name": "Outdoorgeschäft",
+    "fields": []
+  },
+  "shop/paint": {
+    "name": "Farbengeschäft",
+    "fields": []
+  },
+  "shop/pastry": {
+    "name": "Konditorei",
+    "fields": []
+  },
+  "shop/pawnbroker": {
+    "name": "Pfandleiher",
+    "fields": []
+  },
+  "shop/perfumery": {
+    "name": "Parfümerie",
+    "fields": []
+  },
+  "shop/pet": {
+    "name": "Tierhandlung",
+    "fields": []
+  },
+  "shop/photo": {
+    "name": "Fotofachgeschäft",
+    "fields": []
+  },
+  "shop/pyrotechnics": {
+    "name": "Feuerwerksgeschäft",
+    "fields": []
+  },
+  "shop/radiotechnics": {
+    "name": "Radio/Elektronik-Geschäft",
+    "fields": []
+  },
+  "shop/religion": {
+    "name": "Devotionalienhandlung",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Religion"
+    ]
+  },
+  "shop/scuba_diving": {
+    "name": "Tauchwarengeschäft",
+    "fields": []
+  },
+  "shop/seafood": {
+    "name": "Fischgeschäft",
+    "fields": []
+  },
+  "shop/second_hand": {
+    "name": "Second-Hand-Laden",
+    "fields": [
+      "Second Hand"
+    ]
+  },
+  "shop/shoes": {
+    "name": "Schuhgeschäft",
+    "fields": []
+  },
+  "shop/sports": {
+    "name": "Sportgeschäft",
+    "fields": []
+  },
+  "shop/stationery": {
+    "name": "Schreibwarengeschäft",
+    "fields": []
+  },
+  "shop/storage_rental": {
+    "name": "Lagerraumvermieter",
+    "fields": [
+      "Gebäude"
+    ]
+  },
+  "shop/supermarket": {
+    "name": "Supermarkt",
+    "fields": []
+  },
+  "shop/tailor": {
+    "name": "Schneider",
+    "fields": []
+  },
+  "shop/tattoo": {
+    "name": "Tätowierungsladen",
+    "fields": []
+  },
+  "shop/tea": {
+    "name": "Teegeschäft",
+    "fields": []
+  },
+  "shop/ticket": {
+    "name": "Eintrittskartenverkäufer",
+    "fields": []
+  },
+  "shop/tiles": {
+    "name": "Fliesenhändler",
+    "fields": []
+  },
+  "shop/tobacco": {
+    "name": "Trafik",
+    "fields": []
+  },
+  "shop/toys": {
+    "name": "Spielwarengeschäft",
+    "fields": []
+  },
+  "shop/trade": {
+    "name": "Baustoffhandel",
+    "fields": [
+      "Typ"
+    ]
+  },
+  "shop/travel_agency": {
+    "name": "Reisebüro",
+    "fields": []
+  },
+  "shop/tyres": {
+    "name": "Reifenhandel",
+    "fields": []
+  },
+  "shop/vacant": {
+    "name": "Leerstehendes Geschäft",
+    "fields": []
+  },
+  "shop/vacuum_cleaner": {
+    "name": "Staubsaugergeschäft",
+    "fields": []
+  },
+  "shop/variety_store": {
+    "name": "Gemischtwarenhandel",
+    "fields": []
+  },
+  "shop/video": {
+    "name": "Videothek",
+    "fields": []
+  },
+  "shop/video_games": {
+    "name": "Videospielgeschäft",
+    "fields": []
+  },
+  "shop/watches": {
+    "name": "Uhrengeschäft",
+    "fields": []
+  },
+  "shop/water_sports": {
+    "name": "Wassersportgeschäft",
+    "fields": []
+  },
+  "shop/weapons": {
+    "name": "Waffengeschäft",
+    "fields": []
+  },
+  "shop/window_blind": {
+    "name": "Fensterladengeschäft",
+    "fields": []
+  },
+  "shop/wine": {
+    "name": "Vinothek",
+    "fields": []
+  },
+  "tourism/alpine_hut": {
+    "name": "Schutzhütte",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "tourism/apartment": {
+    "name": "Ferienwohnung",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Räume",
+      "Rauchen"
+    ]
+  },
+  "tourism/aquarium": {
+    "name": "Aquarium",
+    "fields": []
+  },
+  "tourism/artwork": {
+    "name": "Kunst",
+    "fields": [
+      "Künstler",
+      "Typ"
+    ]
+  },
+  "tourism/attraction": {
+    "name": "Touristenattraktion",
+    "fields": []
+  },
+  "tourism/camp_site": {
+    "name": "Campingplatz",
+    "fields": [
+      "Kapazität",
+      "Gebühr",
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)"
+    ]
+  },
+  "tourism/caravan_site": {
+    "name": "Wohnwagen-Campingplatz",
+    "fields": [
+      "Kapazität",
+      "Gebühr",
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Stromversorgung",
+      "Toilettenentsorgungsanlage"
+    ]
+  },
+  "tourism/chalet": {
+    "name": "Ferienhaus",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Rauchen"
+    ]
+  },
+  "tourism/gallery": {
+    "name": "Kunstgalerie",
+    "fields": []
+  },
+  "tourism/guest_house": {
+    "name": "Pension, Gästehaus",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Räume",
+      "Rauchen"
+    ]
+  },
+  "tourism/hostel": {
+    "name": "Herberge",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Räume",
+      "Rauchen"
+    ]
+  },
+  "tourism/hotel": {
+    "name": "Hotel",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Räume",
+      "Rauchen",
+      "Sterne"
+    ]
+  },
+  "tourism/information": {
+    "name": "Information",
+    "fields": [
+      "Typ"
+    ]
+  },
+  "tourism/information/board": {
+    "name": "Informationstafel",
+    "fields": [
+      "Typ"
+    ]
+  },
+  "tourism/information/guidepost": {
+    "name": "Wegweiser",
+    "fields": [
+      "Referenzcode"
+    ]
+  },
+  "tourism/information/map": {
+    "name": "Karte",
+    "fields": [
+      "Abdeckung",
+      "Typ"
+    ]
+  },
+  "tourism/information/office": {
+    "name": "Tourismusbüro",
+    "fields": []
+  },
+  "tourism/motel": {
+    "name": "Motel",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Räume",
+      "Rauchen"
+    ]
+  },
+  "tourism/museum": {
+    "name": "Museum",
+    "fields": []
+  },
+  "tourism/picnic_site": {
+    "name": "Picknickplatz",
+    "fields": [
+      "Rauchen"
+    ]
+  },
+  "tourism/theme_park": {
+    "name": "Themenpark",
+    "fields": []
+  },
+  "tourism/viewpoint": {
+    "name": "Aussichtspunkt",
+    "fields": []
+  },
+  "tourism/zoo": {
+    "name": "Zoo",
+    "fields": []
+  }
 }

@@ -1,5 +1,13 @@
 import testApi from './../api/testApi'
 import * as _ from 'lodash'
+/* var osmAuth = require('osm-auth')
+
+  var auth = osmAuth({
+  oauth_consumer_key: 'WLwXbm6XFMG7WrVnE8enIF6GzyefYIN6oUJSxG65',
+  oauth_secret: '9WfJnwQxDvvYagx1Ut0tZBsOZ0ZCzAvOje3u1TV0',
+  auto: true // show a login form if the user is not authenticated and
+             // you try to do a call
+}) */
 
 const state = {
   testCollection: [],
@@ -11,6 +19,16 @@ const actions = {
     testApi.loadTests().then(ps => {
       commit('set', ps)
     })
+  },
+  login ({commit}) {
+    console.log('login: ')
+    commit('setUser', 'test')
+    /* auth.xhr({
+      method: 'GET',
+      path: '/api/0.6/user/details'
+    }, function (err, details) {
+      console.log(err, details)
+    }) */
   }
 }
 
