@@ -45,10 +45,11 @@ pages:
     - cd frontend/osmybiz
     - npm install
     - npm run build
-    - mkdir out
-    - mv dist/* out
+    - cd ./../../
+    - mkdir public
+    - mv frontend/osmybiz/dist/* public
   artifacts:
     paths:
-      - frontend/osmybiz/out
+      - public
   only:
     - demo
