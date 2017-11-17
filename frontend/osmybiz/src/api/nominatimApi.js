@@ -17,19 +17,19 @@ function parseCoords (lat, lng) {
   return latLng(latNr, lngNr)
 }
 
-function parseName (str) {
-  return _.take(str.split(','), 2).join(',')
-}
-
 function mapResults (results) {
-  return results.map(point => {
+  let points = results.map(point => {
     return {
       coords: parseCoords(point.lat, point.lon),
       osmId: point.osm_id,
-      name: parseName(point.display_name),
-      country: point.address.country
+      address: parseAddress(point.address)
     }
-  }).filter(p => _.isObject(p.coords))
+  }).filter(p => _.isObject(p.coords) && p.address.city !== undefined)
+  if (points.length === 5) {
+    return points
+  } else {
+    return points.splice(0, 5)
+  }
 }
 
 function buildRequest (query, count) {
@@ -38,7 +38,7 @@ function buildRequest (query, count) {
 }
 
 export function query (queryString) {
-  return axios.get(buildRequest(queryString, 5))
+  return axios.get(buildRequest(queryString, 7))
     .then(response => {
       return mapResults(response.data)
     })
@@ -48,11 +48,12 @@ export function query (queryString) {
 }
 
 function parseAddress (data) {
-  let street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.footway
+  let street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.suburb ? data.suburb : data.footway
   let housenumber = data.house_number
   let postcode = data.postcode
-  let city = data.city ? data.city : data.village ? data.village : data.town
+  let city = data.city ? data.city : data.village ? data.village : data.town ? data.town : data.hamlet
   let country = data.country
+
   return {
     street: street,
     housenumber: housenumber,
