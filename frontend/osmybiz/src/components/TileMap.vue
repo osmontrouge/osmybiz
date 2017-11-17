@@ -1,6 +1,6 @@
 <template>
   <div class="map-wrapper">
-    <v-map ref="map" class="map" :zoom="initialZoom" :center="initialPos" @l-click="clicked"
+    <v-map ref="map" class="map" @l-click="clicked"
            @l-dragend="viewChange" @l-zoomend="viewChange">
       <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
     </v-map>
@@ -15,15 +15,17 @@
   import * as L from 'leaflet'
   import {routes} from './../router'
   import {makeTileLayer, getTileUrl} from './../util/mapUtils'
+  import {storeViewPort, getInitialPosition} from './../util/positionUtil'
 
   const zoomOnSelect = 18
+  const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 
   let map
   let component
   let tileLayer
 
-  function setMapPosition (pos) {
-    map.setView(pos, zoomOnSelect)
+  function setMapPosition (pos, zoom) {
+    map.setView(pos, zoom || zoomOnSelect)
   }
 
   let markers = []
@@ -71,9 +73,13 @@
         }
       })
 
-      map.attributionControl.addAttribution(this.attribution)
+      map.attributionControl.addAttribution(attribution)
       if (this.position) {
         setMapPosition(this.position)
+      } else {
+        getInitialPosition(this.$router.currentRoute.params).then(pos => {
+          setMapPosition(pos.cords, pos.zoom)
+        })
       }
     },
     methods: {
@@ -98,6 +104,7 @@
           bottomLeft: bbox._southWest,
           zoom: zoom
         })
+        storeViewPort(bbox, zoom, this.$router)
         this.queryOverpass(this.viewPort)
       },
       edit (business) {
@@ -111,9 +118,6 @@
     },
     computed: {
       ...mapGetters([
-        'initialPos',
-        'initialZoom',
-        'attribution',
         'position',
         'mapPosition',
         'viewPort',
