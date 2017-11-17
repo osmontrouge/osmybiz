@@ -1,31 +1,35 @@
 import osmApi from './../api/osmApi'
 import tags from '../assets/tags_de.json'
 import {reverseQuery} from '../api/nominatimApi'
+import {infoTexts} from '../locales/de'
 
 const options = []
 
-options.push({
-  value: 0,
-  text: 'Eigene Kategorie wählen'
-})
-
 Object.keys(tags).forEach(function (key) {
+  var fields = []
+  tags[key].fields.forEach(function (field) {
+    fields.push({
+      name: field,
+      value: ''
+    })
+  })
   options.push({
     value: key,
-    text: tags[key]
+    text: tags[key].name,
+    fields: fields
   })
 })
 
 const infoMap = new Map()
-infoMap.set('category', 'Text about category')
-infoMap.set('name', 'Text about name')
-infoMap.set('openinghours', 'Text about openinghours')
-infoMap.set('phonenumber', 'Text about phonenumber')
-infoMap.set('email', 'Text about email')
-infoMap.set('website', 'Text about website')
-infoMap.set('wheelchair', 'Text about wheelchair')
-infoMap.set('description', 'Text about description')
-infoMap.set('note', 'Text about note')
+infoMap.set('category', infoTexts.category)
+infoMap.set('name', infoTexts.name)
+infoMap.set('openinghours', infoTexts.openinghours)
+infoMap.set('phonenumber', infoTexts.phonenumber)
+infoMap.set('email', infoTexts.email)
+infoMap.set('website', infoTexts.website)
+infoMap.set('wheelchair', infoTexts.wheelchair)
+infoMap.set('description', infoTexts.description)
+infoMap.set('note', infoTexts.note)
 
 const state = {
   // detailPage
@@ -39,7 +43,10 @@ const state = {
   details: {
     category: {
       text: '',
-      value: 0
+      value: 0,
+      fields: [
+        {name: '', value: ''}
+      ]
     },
     name: '',
     openinghours: '',
@@ -242,6 +249,12 @@ function constructNote () {
   if (state.details.note.length > 0) {
     text += 'Note: ' + state.details.note + '\n'
   }
+
+  state.details.category.fields.forEach(function (field) {
+    if (field.value.length !== 0) {
+      text += field.name + ': ' + field.value + '\n'
+    }
+  })
 
   return {
     lat: state.lat,

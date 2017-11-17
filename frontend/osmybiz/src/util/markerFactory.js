@@ -31,7 +31,7 @@ function popupContent (b, clickedCallBack) {
   const btn = $('<button class="popup-btn">Bearbeiten</button>').click(() => {
     clickedCallBack(b)
   })
-  const label = $(`<div class="popup-title">${cat} ${name}</div>`)
+  const label = $(`<div class="popup-title">${cat.name} ${name}</div>`)
   const popup = $('<div class="map-popup"></div>')
 
   popup.append(label)
