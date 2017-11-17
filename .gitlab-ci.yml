@@ -45,8 +45,10 @@ pages:
     - cd frontend/osmybiz
     - npm install
     - npm run build
+    - mkdir out
+    - mv dist/* out
   artifacts:
     paths:
-      - frontend/osmybiz/dist
+      - frontend/osmybiz/out
   only:
     - demo
