@@ -29,16 +29,16 @@
 }
 
   button {
-    background-color: white;
+    background-color: #7ebc6f;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #7ebc6f;
+    border: 2px solid #55834a;
     padding: 6px 12px;
   }
 
   button:hover {
-    background-color: #7ebc6f;
+    background-color: #55834a;
     color: white;
   }
 
