@@ -1,13 +1,8 @@
-import {latLng} from 'leaflet'
 import {query} from './../api/nominatimApi'
 import * as _ from 'lodash'
 import {queryBox} from '../api/overpassApi'
 
 const state = {
-  initialPos: latLng(47.223490, 8.817737),  // Hsr
-  initialZoom: 15,
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-
   mapPosition: null,
   position: null,
 
@@ -104,16 +99,6 @@ const mutations = {
 }
 
 const getters = {
-
-  initialPos (state) {
-    return state.initialPos
-  },
-  initialZoom (state) {
-    return state.initialZoom
-  },
-  attribution (state) {
-    return state.attribution
-  },
   searchText (state) {
     return state.search
   },

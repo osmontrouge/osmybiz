@@ -14,7 +14,6 @@
   import ToggleButton from './../components/ToggleButton'
 
   export default {
-
     components: {
       SearchBar,
       TileMap,

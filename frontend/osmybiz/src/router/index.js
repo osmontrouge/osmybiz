@@ -15,7 +15,7 @@ export const routes = {
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/:zoom?/:lat?/:lng?',
       name: 'Landing',
       component: LandingPage
     }, {
