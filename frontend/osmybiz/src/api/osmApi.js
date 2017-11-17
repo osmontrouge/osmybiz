@@ -8,7 +8,9 @@ const urlBase = 'https://master.apis.dev.openstreetmap.org'
 
 const urlNote = urlBase + '/api/0.6/notes.json'
 const urlComment = urlBase + '/api/0.6/notes/'
-const urlNode = '/api/0.6/node/create'
+const createChangeset = '/api/0.6/changeset/create'
+// const uploadChangeset = '/api/0.6/changeset/create'
+// const closeChangeset = '/api/0.6/changeset/close'
 const userPath = '/api/0.6/user/details.json'
 
 // prod keys move to config
@@ -94,20 +96,32 @@ export function loadUser () {
 export default {
 
   post_Node: (node) => {
-    console.log(node)
-    console.log(isLoggedIn())
+    let create =
+      '<osm>' +
+        '<changeset>' +
+          '<tag k="comment" v=""/>' +
+          '<tag k="created_by" v="OSMyBiz"/>' +
+          '<tag k="changesets_count" v="1"/>' +
+        '</changeset>' +
+      '</osm>'
     return new Promise((resolve) => {
       auth.xhr(
         {
           method: 'PUT',
-          path: urlNode,
-          content: node
+          path: createChangeset,
+          content: create,
+          options: {
+            header: {
+              'Content-Type': 'text/xml'
+            }
+          }
         }, (err, response) => {
         if (err) {
           console.log(err)
           resolve(null)
         }
-        resolve(response)
+        console.log(response)
+        constructUpload(node, response)
       })
     })
   },
@@ -132,4 +146,23 @@ export default {
         console.log(e)
       })
   }
+}
+
+function constructUpload (node) {
+  let category = node.details.category.text.split('/')
+  return '' +
+    '<osmChange>' +
+      '<create>' +
+        '<node id="1" lat="" lon="" changeset="">' +
+          '<tag k="' + category[0] + '" v="' + category[1] + '"/>' +
+          '<tag k="name" v=""/>' +
+          '<tag k="addr:street" v="' + node.address.street + '"/>' +
+          '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>' +
+          '<tag k="addr:postcode" v="' + node.address.postcode + '"/>' +
+          '<tag k="addr:city" v="' + node.address.city + '"/>' +
+        '</node>' +
+      '</create>' +
+      '<modify/>' +
+      '<delete if-unused="true"/>' +
+    '</osmChange>'
 }

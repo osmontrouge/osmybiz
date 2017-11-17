@@ -153,7 +153,29 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input class="checkbox" type="checkbox" v-model="details.wheelchair">
+          <div class="checkboxes">
+            <div class="checkbox-wrapper">
+              <input class="checkbox"
+                     type="radio"
+                     id="one"
+                     value="Ja"
+                     v-model="details.wheelchair">
+            </div>
+            <div class="checkbox-wrapper">
+              <input class="checkbox"
+                     type="radio"
+                     id="two"
+                     value="Eingeschränkt"
+                     v-model="details.wheelchair">
+            </div>
+            <div class="checkbox-wrapper">
+              <input class="checkbox"
+                     type="radio"
+                     id="three"
+                     value="Nein"
+                     v-model="details.wheelchair">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -184,8 +206,8 @@
       </div>
     </div>
 
+    <h3>Zusatzinformationen:</h3>
     <div class="extra-fields" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <h3>Folgende Felder sind mögliche Zusatzinformationen:</h3>
       <div class="column">
         <div class="field"
              v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
@@ -306,6 +328,18 @@
   }
 
   .area {
+    flex-grow: 1;
+  }
+
+  .checkboxes {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex-grow: 1;
   }
 

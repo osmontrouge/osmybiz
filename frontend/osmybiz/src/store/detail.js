@@ -77,12 +77,10 @@ const state = {
 
 const actions = {
   postNode () {
-    // let node = constructNode()
-    let node = '<osm>' +
-        '<node changeset="12" lat="47.22082" lon="8.79331">' +
-          '<tag k="note" v="Just a Note"' +
-        '</node>' +
-      '</osm>'
+    let node = {
+      details: state.details,
+      address: state.address
+    }
     osmApi.post_Node(node).then(ps => {
       // state.displaySuccess = true
       // state.displayNote = true
