@@ -6,8 +6,9 @@ import * as _ from 'lodash'
 // todo move to config
 const urlBase = 'https://master.apis.dev.openstreetmap.org'
 
-let urlNote = urlBase + '/api/0.6/notes.json'
-let urlComment = urlBase + '/api/0.6/notes/'
+const urlNote = urlBase + '/api/0.6/notes.json'
+const urlComment = urlBase + '/api/0.6/notes/'
+const urlNode = '/api/0.6/node/create'
 const userPath = '/api/0.6/user/details.json'
 
 // prod keys move to config
@@ -91,6 +92,25 @@ export function loadUser () {
 }
 
 export default {
+
+  post_Node: (node) => {
+    console.log(node)
+    console.log(isLoggedIn())
+    return new Promise((resolve) => {
+      auth.xhr(
+        {
+          method: 'PUT',
+          path: urlNode,
+          content: node
+        }, (err, response) => {
+        if (err) {
+          console.log(err)
+          resolve(null)
+        }
+        resolve(response)
+      })
+    })
+  },
 
   post_Note: (note) => {
     return axios.post(urlNote, note)

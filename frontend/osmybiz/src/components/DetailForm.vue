@@ -214,6 +214,9 @@
               @click="submitComment()">
         Speichern</button>
       <span>Felder mit * sind Pflichtfelder</span>
+      <button class="button"
+              @click="submitNode()">
+        Create Node</button>
     </div>
   </div>
 
@@ -249,13 +252,17 @@
       ]),
       ...mapActions([
         'postNote',
-        'postComment'
+        'postComment',
+        'postNode'
       ]),
       submitNote () {
         this.postNote()
       },
       submitComment () {
         this.postComment()
+      },
+      submitNode () {
+        this.postNode()
       },
       hideInput () {
         this.setIsOwnCategory(false)

@@ -76,6 +76,20 @@ const state = {
 }
 
 const actions = {
+  postNode () {
+    // let node = constructNode()
+    let node = '<osm>' +
+        '<node changeset="12" lat="47.22082" lon="8.79331">' +
+          '<tag k="note" v="Just a Note"' +
+        '</node>' +
+      '</osm>'
+    osmApi.post_Node(node).then(ps => {
+      // state.displaySuccess = true
+      // state.displayNote = true
+      // commit('setNodeID', ps)
+      console.log(ps)
+    })
+  },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
