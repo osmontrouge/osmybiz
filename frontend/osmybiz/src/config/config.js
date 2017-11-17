@@ -32,7 +32,7 @@ export const filters = [
       'pavilion', 'post_box', 'public_bath',
       'recycling', 'public_bookcase', 'sanitary_dump_station',
       'shelter', 'shower', 'swimming_pool', 'telephone',
-      'toilets','vending_machine', 'waste', 'water_point', 'watering_place',
+      'toilets', 'vending_machine', 'waste', 'water_point', 'watering_place',
       'waste_basket', 'waste_disposal', 'waste_transfer_station'
       // 'place_of_worship', 'social_facility',
     ]
