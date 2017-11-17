@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {overpassUrl, filters} from '../config/config'
+import {filters, overpassUrl} from '../config/config'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 
@@ -22,7 +22,7 @@ function parseData (data) {
   })
 }
 
-function filterFn (node) {
+function filterTags (node) {
   for (const f of filters) {
     if (node.tags.hasOwnProperty(f.key)) {
       for (const v of f.values) {
@@ -37,7 +37,7 @@ function filterFn (node) {
 
 export function queryBox (bbox) {
   return axios.post(overpassUrl, buildQuery(bbox)).then(res => {
-    return parseData(res.data).filter(filterFn)
+    return parseData(res.data).filter(filterTags)
   }, (err) => {
     console.log(err)
     return []

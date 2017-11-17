@@ -37,7 +37,7 @@ jsonfile.readFile(presets_json, function (err, obj) {
             })
         });
 
-        var output = '../../frontend/osmybiz/src/assets/tags_de.json';
+        var output = './assets/tags.json';
 
         jsonfile.writeFile(output, tags, function (err) {
             console.error(err)

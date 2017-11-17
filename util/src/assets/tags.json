@@ -21,6 +21,13 @@
     "name": "Kunstzentrum",
     "fields": []
   },
+  "amenity/atm": {
+    "name": "Geldautomat",
+    "fields": [
+      "Währungen",
+      "Durchfahrts-Service"
+    ]
+  },
   "amenity/bank": {
     "name": "Bank-Filiale",
     "fields": [
@@ -35,11 +42,41 @@
       "Rauchen"
     ]
   },
+  "amenity/bbq": {
+    "name": "Grillplatz",
+    "fields": [
+      "Überdacht",
+      "Kraftstoff"
+    ]
+  },
+  "amenity/bench": {
+    "name": "Sitzbank",
+    "fields": [
+      "Rückenlehne"
+    ]
+  },
+  "amenity/bicycle_parking": {
+    "name": "Fahrradparkplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Typ",
+      "Kapazität",
+      "Überdacht"
+    ]
+  },
   "amenity/bicycle_rental": {
     "name": "Fahrradverleih",
     "fields": [
       "Kapazität",
       "Netzwerk"
+    ]
+  },
+  "amenity/bicycle_repair_station": {
+    "name": "Fahrradreperatur-Werkzeugkasten",
+    "fields": [
+      "Marke",
+      "Gebühr",
+      "Fahrradservice"
     ]
   },
   "amenity/biergarten": {
@@ -98,6 +135,12 @@
       "Rauchen"
     ]
   },
+  "amenity/charging_station": {
+    "name": "Ladestation für Elektroautos, Plug-in Hybridfahrzeuge, Pedelecs und E-Bikes.",
+    "fields": [
+      "Kapazität"
+    ]
+  },
   "amenity/childcare": {
     "name": "Kindertagesstätte/Kinderbetreuung",
     "fields": []
@@ -122,6 +165,15 @@
     "name": "Kinderwunschklinik",
     "fields": [
       "Spezialgebiete"
+    ]
+  },
+  "amenity/clock": {
+    "name": "Uhr",
+    "fields": [
+      "Datum",
+      "Anzeige",
+      "Unterstützung",
+      "Sichtbarkeit"
     ]
   },
   "amenity/college": {
@@ -173,6 +225,10 @@
       "Sport"
     ]
   },
+  "amenity/drinking_water": {
+    "name": "Trinkwasser",
+    "fields": []
+  },
   "amenity/driving_school": {
     "name": "Fahrschule",
     "fields": []
@@ -211,10 +267,27 @@
       "Rauchen"
     ]
   },
+  "amenity/fountain": {
+    "name": "Springbrunnen",
+    "fields": []
+  },
   "amenity/fuel": {
     "name": "Tankstelle",
     "fields": [
       "Spritsorten"
+    ]
+  },
+  "amenity/grave_yard": {
+    "name": "Gräberfeld",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Religion"
+    ]
+  },
+  "amenity/grit_bin": {
+    "name": "Streugutkiste",
+    "fields": [
+      "Erlaubter Zugang"
     ]
   },
   "amenity/hospital": {
@@ -223,6 +296,10 @@
       "Notfall",
       "Spezialgebiete"
     ]
+  },
+  "amenity/hunting_stand": {
+    "name": "Hochsitz/Jägerstand",
+    "fields": []
   },
   "amenity/ice_cream": {
     "name": "Eisgeschäft",
@@ -258,6 +335,14 @@
     "name": "Wochenmarkt",
     "fields": []
   },
+  "amenity/motorcycle_parking": {
+    "name": "Motorradparkplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Kapazität",
+      "Überdacht"
+    ]
+  },
   "amenity/nightclub": {
     "name": "Nachtklub",
     "fields": [
@@ -271,10 +356,107 @@
       "Unterstützter Personenkreis"
     ]
   },
+  "amenity/parking": {
+    "name": "Parkplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Kapazität",
+      "Gebühr",
+      "Maximale Parkzeit",
+      "Parken und Reisen",
+      "Typ",
+      "Überwacht",
+      "Oberfläche"
+    ]
+  },
+  "amenity/parking_entrance": {
+    "name": "Garageneinfahrt/-ausfahrt",
+    "fields": [
+      "Erlaubter Zugang",
+      "Referenzcode"
+    ]
+  },
+  "amenity/parking_space": {
+    "name": "Stellplatz",
+    "fields": [
+      "Kapazität"
+    ]
+  },
+  "amenity/pavilion": {
+    "name": "Pavillon",
+    "fields": [
+      "Sitzbank",
+      "Mülleimer"
+    ]
+  },
   "amenity/pharmacy": {
     "name": "Apotheke",
     "fields": [
       "Durchfahrts-Service"
+    ]
+  },
+  "amenity/place_of_worship": {
+    "name": "Andachtsstätte",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Religion",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/buddhist": {
+    "name": "Buddhistischer Tempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/christian": {
+    "name": "Kirche",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/hindu": {
+    "name": "Hindutempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/jewish": {
+    "name": "Sy­n­a­go­ge",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/muslim": {
+    "name": "Moschee",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/shinto": {
+    "name": "Shintō-Schrein",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/sikh": {
+    "name": "Sikh-Tempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
+    ]
+  },
+  "amenity/place_of_worship/taoist": {
+    "name": "Tao-Tempel",
+    "fields": [
+      "Glaubensrichtung, Konfession",
+      "Betriebszeiten, Gottesdienstzeiten"
     ]
   },
   "amenity/planetarium": {
@@ -284,6 +466,14 @@
   "amenity/police": {
     "name": "Polizei",
     "fields": []
+  },
+  "amenity/post_box": {
+    "name": "Briefkasten",
+    "fields": [
+      "Leerungszeiten",
+      "Durchfahrts-Service",
+      "Referenzcode"
+    ]
   },
   "amenity/post_office": {
     "name": "Postfiliale",
@@ -318,6 +508,20 @@
     "name": "Ranger-Station",
     "fields": []
   },
+  "amenity/recycling": {
+    "name": "Recycling",
+    "fields": [
+      "Leerungszeiten",
+      "akzeptiert",
+      "Recycling Typ"
+    ]
+  },
+  "amenity/recycling_centre": {
+    "name": "Wertstoffhof",
+    "fields": [
+      "akzeptiert"
+    ]
+  },
   "amenity/register_office": {
     "name": "Standesamt",
     "fields": []
@@ -333,6 +537,14 @@
       "zum Mitnehmen"
     ]
   },
+  "amenity/sanitary_dump_station": {
+    "name": "Campingtoiletten-Entsorgungsanlage",
+    "fields": [
+      "Erlaubter Zugang",
+      "Gebühr",
+      "Wasserentnahmestelle"
+    ]
+  },
   "amenity/school": {
     "name": "Schulgelände",
     "fields": []
@@ -341,11 +553,67 @@
     "name": "Schrottplatz",
     "fields": []
   },
+  "amenity/shelter": {
+    "name": "Unterstand",
+    "fields": [
+      "Mülleimer",
+      "Typ"
+    ]
+  },
+  "amenity/shower": {
+    "name": "Dusche",
+    "fields": [
+      "Gebühr",
+      "Überwacht"
+    ]
+  },
+  "amenity/social_facility": {
+    "name": "Sozialeinrichtung",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/food_bank": {
+    "name": "Essensausgabe",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/group_home": {
+    "name": "Seniorenresidenz",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/homeless_shelter": {
+    "name": "Obdachlosenheim",
+    "fields": [
+      "Internetzugang",
+      "Internetzugangsgebühr",
+      "SSID (Netzwerk Name)",
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
+  "amenity/social_facility/nursing_home": {
+    "name": "Seniorenpflegeheim",
+    "fields": [
+      "Typ",
+      "Unterstützter Personenkreis"
+    ]
+  },
   "amenity/studio": {
     "name": "Ton-/Fernsehstudio",
     "fields": [
       "Typ"
     ]
+  },
+  "amenity/swimming_pool": {
+    "name": "Schwimmbecken",
+    "fields": []
   },
   "amenity/taxi": {
     "name": "Taxistand",
@@ -358,8 +626,18 @@
     "fields": []
   },
   "amenity/theatre": {
-    "name": "The­a­ter",
+    "name": "Theater",
     "fields": []
+  },
+  "amenity/toilets": {
+    "name": "Toilette",
+    "fields": [
+      "Erlaubter Zugang",
+      "Windelwechseln möglich",
+      "Gebühr",
+      "Geschlecht",
+      "Toiletten-Bauart"
+    ]
   },
   "amenity/townhall": {
     "name": "Rathaus",
@@ -372,12 +650,126 @@
       "SSID (Netzwerk Name)"
     ]
   },
+  "amenity/vending_machine": {
+    "name": "Verkaufsautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten",
+      "Dienstleistung"
+    ]
+  },
+  "amenity/vending_machine/cigarettes": {
+    "name": "Zigarettenautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/condoms": {
+    "name": "Kondomautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/drinks": {
+    "name": "Getränkeautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/excrement_bags": {
+    "name": "Hundekottütenspender",
+    "fields": [
+      "Währungen",
+      "Gebühr",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/feminine_hygiene": {
+    "name": "Frauenhygiene-Automat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/news_papers": {
+    "name": "Zeitungsautomat",
+    "fields": [
+      "Währungen",
+      "Gebühr",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/newspapers": {
+    "name": "Zeitungstasche",
+    "fields": [
+      "Währungen",
+      "Gebühr",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/parcel_pickup_dropoff": {
+    "name": "Paketautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/parking_tickets": {
+    "name": "Parkscheinautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/public_transport_tickets": {
+    "name": "Fahrkartenautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
+  "amenity/vending_machine/sweets": {
+    "name": "Süßigkeitenautomat",
+    "fields": [
+      "Währungen",
+      "Zahlungsarten"
+    ]
+  },
   "amenity/veterinary": {
     "name": "Tierarzt",
     "fields": []
   },
+  "amenity/waste/dog_excrement": {
+    "name": "Hundekotabfalleimer",
+    "fields": [
+      "Leerungszeiten"
+    ]
+  },
+  "amenity/waste_basket": {
+    "name": "Mülleimer",
+    "fields": [
+      "Leerungszeiten"
+    ]
+  },
+  "amenity/waste_disposal": {
+    "name": "Müllcontainer",
+    "fields": [
+      "Leerungszeiten"
+    ]
+  },
+  "amenity/waste_transfer_station": {
+    "name": "Müllumladestation",
+    "fields": []
+  },
   "amenity/water_point": {
     "name": "Camping-Trinkwasser",
+    "fields": []
+  },
+  "amenity/watering_place": {
+    "name": "Tränke",
     "fields": []
   },
   "leisure/adult_gaming_centre": {
@@ -386,14 +778,30 @@
       "Rauchen"
     ]
   },
+  "leisure/bird_hide": {
+    "name": "Vogelbeobachtungsturm",
+    "fields": []
+  },
   "leisure/bowling_alley": {
     "name": "Bowlingbahn",
     "fields": [
       "Rauchen"
     ]
   },
+  "leisure/common": {
+    "name": "öffentliche Fläche, Allmende",
+    "fields": []
+  },
   "leisure/dance": {
     "name": "Tanzsaal",
+    "fields": []
+  },
+  "leisure/dog_park": {
+    "name": "Hundepark",
+    "fields": []
+  },
+  "leisure/firepit": {
+    "name": "Feuerstelle",
     "fields": []
   },
   "leisure/fitness_centre": {
@@ -406,6 +814,18 @@
     "name": "Yoga-Studio",
     "fields": [
       "Sport"
+    ]
+  },
+  "leisure/fitness_station": {
+    "name": "Freiluft-Fitness-Station",
+    "fields": [
+      "Referenzcode"
+    ]
+  },
+  "leisure/garden": {
+    "name": "Garten",
+    "fields": [
+      "Erlaubter Zugang"
     ]
   },
   "leisure/golf_course": {
@@ -447,8 +867,152 @@
     "name": "Minigolf",
     "fields": []
   },
+  "leisure/nature_reserve": {
+    "name": "Naturschutzgebiet",
+    "fields": []
+  },
+  "leisure/park": {
+    "name": "Park",
+    "fields": []
+  },
+  "leisure/picnic_table": {
+    "name": "Picknicktisch",
+    "fields": []
+  },
+  "leisure/pitch": {
+    "name": "Sportplatz",
+    "fields": [
+      "Beleuchtung",
+      "Sport",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/american_football": {
+    "name": "American-Football-Feld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/baseball": {
+    "name": "Baseball-Rautenfeld",
+    "fields": [
+      "Beleuchtung"
+    ]
+  },
+  "leisure/pitch/basketball": {
+    "name": "Basketballfeld",
+    "fields": [
+      "Erlaubter Zugang",
+      "Basketball",
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/beachvolleyball": {
+    "name": "Beachvolleyballplatz",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/bowls": {
+    "name": "Bowlingrasen",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/cricket": {
+    "name": "Cricket-Spielfeld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/equestrian": {
+    "name": "Reitplatz",
+    "fields": [
+      "Gebäude",
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/rugby_league": {
+    "name": "Rugby-League-Feld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/rugby_union": {
+    "name": "Rugby-Union-Feld",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/skateboard": {
+    "name": "Skatepark",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/soccer": {
+    "name": "Fußballplatz",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/table_tennis": {
+    "name": "Tischtennisplatte",
+    "fields": [
+      "Erlaubter Zugang",
+      "Beleuchtung"
+    ]
+  },
+  "leisure/pitch/tennis": {
+    "name": "Tennisplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/pitch/volleyball": {
+    "name": "Volleyballplatz",
+    "fields": [
+      "Beleuchtung",
+      "Oberfläche"
+    ]
+  },
+  "leisure/playground": {
+    "name": "Spielplatz",
+    "fields": [
+      "Erlaubter Zugang",
+      "Höchstalter",
+      "Mindestalter",
+      "Oberfläche"
+    ]
+  },
   "leisure/resort": {
     "name": "Resort",
+    "fields": []
+  },
+  "leisure/running_track": {
+    "name": "Rennbbahn (Laufen)",
+    "fields": [
+      "Fahrspuren",
+      "Beleuchtung",
+      "Sportarten",
+      "Oberfläche",
+      "Breite (Meter)"
+    ]
+  },
+  "leisure/slipway": {
+    "name": "Slipanlage",
     "fields": []
   },
   "leisure/sports_centre": {
@@ -474,6 +1038,16 @@
     "name": "Schwimmbecken",
     "fields": [
       "Erlaubter Zugang"
+    ]
+  },
+  "leisure/track": {
+    "name": "Bahn (Nicht Motorsport)",
+    "fields": [
+      "Fahrspuren",
+      "Beleuchtung",
+      "Sportarten",
+      "Oberfläche",
+      "Breite (Meter)"
     ]
   },
   "leisure/water_park": {
@@ -1247,8 +1821,18 @@
     "name": "Museum",
     "fields": []
   },
+  "tourism/picnic_site": {
+    "name": "Picknickplatz",
+    "fields": [
+      "Rauchen"
+    ]
+  },
   "tourism/theme_park": {
     "name": "Themenpark",
+    "fields": []
+  },
+  "tourism/viewpoint": {
+    "name": "Aussichtspunkt",
     "fields": []
   },
   "tourism/zoo": {

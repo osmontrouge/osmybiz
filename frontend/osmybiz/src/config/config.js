@@ -23,21 +23,42 @@ export const filters = [
   {
     key: 'amenity',
     values: [
-      'atm', 'bbq', 'bench', 'bicycle_parking', 'bicycle_repair_station', 'clock', 'drinking_water', 'fountain', 'grave_yard',
-      'grit_bin', 'hunting_stand', 'motorcycle_parking', 'parking', 'pavilion', 'place_of_worship', 'post_box', 'recycling', 'sanitary_dump_station',
-      'shelter', 'shower', 'social_facility', 'swimming_pool', 'toilets', 'vending_machine', 'waste', 'watering_place', 'charging_station'
+      'atm', 'bbq', 'bench', 'bicycle_parking',
+      'bicycle_repair_station', 'charging_station',
+      'clock', 'compressed_air', 'coworking_space',
+      'drinking_water', 'fountain', 'grave_yard',
+      'grit_bin', 'hunting_stand', 'motorcycle_parking',
+      'parking', 'parking_entrance', 'parking_space',
+      'pavilion', 'post_box', 'public_bath',
+      'recycling', 'public_bookcase', 'sanitary_dump_station',
+      'shelter', 'shower', 'swimming_pool', 'telephone',
+      'toilets','vending_machine', 'waste', 'water_point', 'watering_place',
+      'waste_basket', 'waste_disposal', 'waste_transfer_station'
+      // 'place_of_worship', 'social_facility',
     ]
   },
   {
     key: 'leisure',
     values: [
-      'bird_hide', 'common', 'dog_park', 'firepit', 'fitness_station', 'garden', 'nature_reserve', 'park', 'picnic_table', 'pitch', 'playground',
-      'track', 'running_track', 'slipway'
+      'bird_hide', 'common', 'dog_park', 'firepit',
+      'fitness_station', 'garden', 'nature_reserve',
+      'park', 'picnic_table', 'pitch', 'playground',
+      'track', 'running_track', 'slipway', 'swimming_pool'
+    ]
+  }, {
+    key: 'office',
+    values: [
+      'company', 'coworking'
+    ]
+  }, {
+    key: 'shop',
+    values: [
+      'vacant'
     ]
   }, {
     key: 'tourism',
     values: [
-      'picnic_site', 'viewpoint'
+      'picnic_site', 'viewpoint', 'information'
     ]
   }
 ]

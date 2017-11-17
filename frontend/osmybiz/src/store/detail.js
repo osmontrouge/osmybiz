@@ -5,7 +5,9 @@ import {infoTexts} from '../locales/de'
 
 const options = []
 
-Object.keys(tags).forEach(function (key) {
+let keys = Object.keys(tags)
+
+keys.forEach(function (key) {
   var fields = []
   tags[key].fields.forEach(function (field) {
     fields.push({
