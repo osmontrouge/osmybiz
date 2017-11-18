@@ -76,6 +76,8 @@ const state = {
 const actions = {
   postNode () {
     let node = {
+      lat: state.lat,
+      lon: state.lon,
       details: state.details,
       address: state.address
     }

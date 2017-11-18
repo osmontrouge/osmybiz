@@ -5,11 +5,13 @@ import * as _ from 'lodash'
 // todo move to config
 const urlBase = 'https://master.apis.dev.openstreetmap.org'
 
-const createNote = '/api/0.6/notes.json'
-const createChangeset = '/api/0.6/changeset/create'
-// const uploadChangeset = '/api/0.6/changeset/create'
-// const closeChangeset = '/api/0.6/changeset/close'
+const createNotePath = '/api/0.6/notes.json'
+const createChangesetPath = '/api/0.6/changeset/create'
+const uploadChangesetPath = '/api/0.6/changeset/'
+const closeChangesetPath = '/api/0.6/changeset/'
 const userPath = '/api/0.6/user/details.json'
+
+let changesetID = 0
 
 // prod keys move to config
 // const oauthKey = 'deem7DGxX11rEQZ1SjYQ2lL0O9JCCNtqBzFUePjA'
@@ -97,16 +99,16 @@ export default {
     let create =
       '<osm>' +
         '<changeset>' +
-          '<tag k="comment" v=""/>' +
+          '<tag k="comment" v="#OsMyBiz"/>' +
           '<tag k="created_by" v="OSMyBiz"/>' +
           '<tag k="changesets_count" v="1"/>' +
         '</changeset>' +
       '</osm>'
-    return new Promise((resolve) => {
+    return new Promise(() => {
       auth.xhr(
         {
           method: 'PUT',
-          path: createChangeset,
+          path: createChangesetPath,
           content: create,
           options: {
             header: {
@@ -116,10 +118,9 @@ export default {
         }, (err, response) => {
         if (err) {
           console.log(err)
-          resolve(null)
         }
-        console.log(response)
-        constructUpload(node, response)
+        changesetID = response
+        uploadChangeset(node)
       })
     })
   },
@@ -129,7 +130,7 @@ export default {
       auth.xhr(
         {
           method: 'POST',
-          path: createNote,
+          path: createNotePath,
           content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
         }, (err, response) => {
         if (err) {
@@ -154,21 +155,58 @@ export default {
   } */
 }
 
+function uploadChangeset (node) {
+  let upload = constructUpload(node)
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'POST',
+        path: uploadChangesetPath + changesetID + '/upload',
+        content: upload,
+        options: {
+          header: {
+            'Content-Type': 'text/xml'
+          }
+        }
+      }, (err, response) => {
+      if (err) {
+        console.log(err)
+        resolve(null)
+      }
+      console.log(response)
+        var x2js = new X2JS();
+      console.log($.xml2json(response))
+      closeChangeset()
+    })
+  })
+}
+
 function constructUpload (node) {
-  let category = node.details.category.text.split('/')
+  let category = node.details.category.value.split('/')
   return '' +
-    '<osmChange>' +
+    '<osmChange version="0.6" generator="OSMyBiz">' +
       '<create>' +
-        '<node id="1" lat="" lon="" changeset="">' +
+        '<node id="-1" version="0"' +
+            ' lat="' + node.lat + '"' +
+            ' lon="' + node.lon + '"' +
+            ' changeset="' + changesetID + '">' +
           '<tag k="' + category[0] + '" v="' + category[1] + '"/>' +
-          '<tag k="name" v=""/>' +
           '<tag k="addr:street" v="' + node.address.street + '"/>' +
-          '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>' +
           '<tag k="addr:postcode" v="' + node.address.postcode + '"/>' +
           '<tag k="addr:city" v="' + node.address.city + '"/>' +
         '</node>' +
       '</create>' +
-      '<modify/>' +
-      '<delete if-unused="true"/>' +
     '</osmChange>'
+}
+
+function closeChangeset () {
+  auth.xhr(
+    {
+      method: 'PUT',
+      path: closeChangesetPath + changesetID + '/close'
+    }, (err) => {
+    if (err) {
+      console.log(err)
+    }
+  })
 }
