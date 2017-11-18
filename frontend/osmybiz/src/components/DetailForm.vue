@@ -160,6 +160,7 @@
                      id="one"
                      value="Ja"
                      v-model="details.wheelchair">
+              <label>Ja</label>
             </div>
             <div class="checkbox-wrapper">
               <input class="checkbox"
@@ -167,6 +168,7 @@
                      id="two"
                      value="Eingeschränkt"
                      v-model="details.wheelchair">
+              <label>Eingeschränkt</label>
             </div>
             <div class="checkbox-wrapper">
               <input class="checkbox"
@@ -174,6 +176,7 @@
                      id="three"
                      value="Nein"
                      v-model="details.wheelchair">
+              <label>Nein</label>
             </div>
           </div>
         </div>
@@ -206,20 +209,24 @@
       </div>
     </div>
 
-    <h3>Zusatzinformationen:</h3>
-    <div class="extra-fields" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <div class="column">
-        <div class="field"
-             v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
-          <label>{{ field.name }}</label>
-          <input type="text" v-model="field.value">
+    <h5>Felder mit * sind Pflichtfelder</h5>
+
+    <div class="extra-wrapper" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
+      <h3>Zusatzinformationen:</h3>
+      <div class="extra-fields">
+        <div class="column">
+          <div class="field"
+               v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
+            <label>{{ field.name }}</label>
+            <input type="text" v-model="field.value">
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="field"
-             v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
-          <label>{{ field.name }}</label>
-          <input type="text" v-model="field.value">
+        <div class="column">
+          <div class="field"
+               v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
+            <label>{{ field.name }}</label>
+            <input type="text" v-model="field.value">
+          </div>
         </div>
       </div>
     </div>
@@ -235,7 +242,6 @@
               :disabled="isRequiredFields()"
               @click="submitComment()">
         Speichern</button>
-      <span>Felder mit * sind Pflichtfelder</span>
       <button class="button"
               @click="submitNode()">
         Create Node</button>
@@ -352,7 +358,7 @@
     resize: none;
   }
 
-  h2, h3 {
+  h2, h3, h5 {
     text-align: left;
   }
 
@@ -366,6 +372,14 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: stretch;
+  }
+
+  .extra-wrapper {
+    border-top: 1px solid #7ebc6f;
+  }
+
+  .extra-wrapper h3 {
+    margin-top: 10px;
   }
 
   .extra-fields {

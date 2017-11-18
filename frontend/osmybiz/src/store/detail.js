@@ -252,8 +252,8 @@ function constructNote () {
   if (state.details.website.length !== 0) {
     text += 'Website: ' + state.details.website + '\n'
   }
-  if (state.details.wheelchair === true) {
-    text += 'Wheelchair accessible: Yes \n'
+  if (state.details.wheelchair !== 0) {
+    text += 'Wheelchair accessible: ' + state.details.wheelchair + '\n'
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + '\n'
@@ -315,8 +315,8 @@ function constructComment () {
   if (state.details.website.length !== 0) {
     text += 'Website: ' + state.details.website + ', '
   }
-  if (state.details.wheelchair === true) {
-    text += 'Wheelchair accessible: Yes , '
+  if (state.details.wheelchair !== 0) {
+    text += 'Wheelchair accessible: ' + state.details.wheelchair + ', '
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + ', '
