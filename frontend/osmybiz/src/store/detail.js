@@ -60,7 +60,7 @@ const state = {
   isOwnCategory: false,
   isLoading: true,
   isPopup: false,
-  isComment: false,
+  isNote: false,
   infoText: '',
   infoMap: infoMap,
 
@@ -133,8 +133,8 @@ const mutations = {
   setIsPopup (state, isPopup) {
     state.isPopup = isPopup
   },
-  setIsComment (state, isComment) {
-    state.isComment = isComment
+  setIsNote (state, isNote) {
+    state.isNote = isNote
   },
   setCoords (state, pos) {
     state.lat = pos.lat
@@ -188,8 +188,8 @@ const getters = {
   isPopup (state) {
     return state.isPopup
   },
-  isComment (state) {
-    return state.isComment
+  isNote (state) {
+    return state.isNote
   },
   tags (state) {
     return state.tags

@@ -233,16 +233,20 @@
 
     <div class="form-footer">
       <button class="button"
-              v-if="!isComment"
+              v-if="isNote"
               :disabled="isRequiredFields()"
               @click="submitNote()">
         Speichern</button>
+      <!--
       <button class="button"
               v-if="isComment"
               :disabled="isRequiredFields()"
               @click="submitComment()">
         Speichern</button>
+        -->
       <button class="button"
+              v-if="!isNote"
+              :disabled="isRequiredFields()"
               @click="submitNode()">
         Create Node</button>
     </div>
@@ -266,7 +270,7 @@
         'tags',
         'isOwnCategory',
         'isPopup',
-        'isComment',
+        'isNote',
         'infoText',
         'infoMap'
       ])
