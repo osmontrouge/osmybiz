@@ -264,6 +264,9 @@
 
   export default {
     name: 'detail-form',
+    created () {
+      localStorage.setItem('details', JSON.stringify(this.details))
+    },
     computed: {
       ...mapGetters([
         'details',
@@ -272,7 +275,8 @@
         'isPopup',
         'isNote',
         'infoText',
-        'infoMap'
+        'infoMap',
+        'temp'
       ])
     },
     methods: {
@@ -280,7 +284,8 @@
         'setIsOwnCategory',
         'setIsPopup',
         'setInfoText',
-        'setDetails'
+        'setDetails',
+        'saveTemp'
       ]),
       ...mapActions([
         'postNote',
@@ -311,8 +316,17 @@
       hidePopup () {
         this.setIsPopup(false)
       },
+      reset () {
+        let details = JSON.parse(localStorage.getItem('details'))
+        this.setDetails(details)
+      },
       onSelect (item) {
-        this.details.category = item
+        if (item.text === 'Eigene Kategorie wählen') {
+          this.setIsOwnCategory(true)
+          this.details.category = {value: 0, text: ''}
+        } else {
+          this.details.category = item
+        }
       }
     },
     components: {
@@ -454,6 +468,7 @@
 
   .button {
     flex-grow: 1;
+    margin-top: 5px;
   }
 
   img{
