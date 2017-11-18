@@ -1,7 +1,7 @@
 import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
-
+import xml2json from 'jquery-xml2json'
 // todo move to config
 const urlBase = 'https://master.apis.dev.openstreetmap.org'
 
@@ -9,6 +9,7 @@ const createNotePath = '/api/0.6/notes.json'
 const createChangesetPath = '/api/0.6/changeset/create'
 const uploadChangesetPath = '/api/0.6/changeset/'
 const closeChangesetPath = '/api/0.6/changeset/'
+const getNodePath = '/api/0.6/node/'
 const userPath = '/api/0.6/user/details.json'
 
 let changesetID = 0
@@ -104,7 +105,7 @@ export default {
           '<tag k="changesets_count" v="1"/>' +
         '</changeset>' +
       '</osm>'
-    return new Promise(() => {
+    return new Promise((resolve) => {
       auth.xhr(
         {
           method: 'PUT',
@@ -120,7 +121,7 @@ export default {
           console.log(err)
         }
         changesetID = response
-        uploadChangeset(node)
+        resolve(uploadChangeset(node))
       })
     })
   },
@@ -173,10 +174,8 @@ function uploadChangeset (node) {
         console.log(err)
         resolve(null)
       }
-      console.log(response)
-        var x2js = new X2JS();
-      console.log($.xml2json(response))
       closeChangeset()
+      resolve(getNode(xml2json(response)['#document'].diffResult.node.$.new_id))
     })
   })
 }
@@ -208,5 +207,21 @@ function closeChangeset () {
     if (err) {
       console.log(err)
     }
+  })
+}
+
+function getNode (nodeId) {
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'GET',
+        path: getNodePath + nodeId
+      }, (err, response) => {
+      if (err) {
+        console.log(err)
+        resolve(err)
+      }
+      resolve(xml2json(response)['#document'].osm.node.tag)
+    })
   })
 }
