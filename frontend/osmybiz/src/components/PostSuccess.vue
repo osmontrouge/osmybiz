@@ -1,27 +1,20 @@
 <template>
 
   <div class="success-wrapper">
-    <div class="note-success" v-if="displayNote">
-      <p>Sind diese Informationen richtig?</p>
+    <div class="node-success" v-if="!isNote">
+      <p>Neues Business erfolgreich erstellt: </p>
 
-      <p v-html="note.html"></p>
-
-      <div class="success-buttons">
-        <button @click="gotoLanding()">Alles richtig</button>
-        <button @click="gotoDetail()">Informationen anpassen</button>
-      </div>
+      <p>Node</p>
     </div>
 
-    <div class="comment-success" v-if="displayComment">
-      <p>Änderungen erfolgreich</p>
+    <div class="note-success" v-if="isNote">
+      <p>Änderungen erfolgreich gespeichert: </p>
 
-      <p>
-        {{comment}}
-      </p>
+      <p v-html="note.html"></p>
+    </div>
 
-      <div class="success-buttons">
-        <button @click="gotoLanding()">Ok</button>
-      </div>
+    <div class="success-buttons">
+      <button @click="gotoLanding()">Weitere Änderungen vornehmen</button>
     </div>
   </div>
 
@@ -35,16 +28,14 @@
     computed: {
       ...mapGetters([
         'note',
-        'comment',
-        'displayNote',
-        'displayComment'
+        'node',
+        'isNote'
       ])
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setDetails',
-        'setIsComment'
+        'setDetails'
       ]),
       gotoLanding () {
         this.setDetails({
@@ -62,11 +53,6 @@
           note: ''
         })
         this.$router.push('/')
-      },
-      gotoDetail () {
-        this.setDisplaySuccess(false)
-        this.setIsComment(true)
-        this.$router.push('/detail')
       }
     }
   }

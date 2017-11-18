@@ -290,9 +290,6 @@
       submitNote () {
         this.postNote()
       },
-      submitComment () {
-        this.postComment()
-      },
       submitNode () {
         this.postNode()
       },

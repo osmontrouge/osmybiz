@@ -66,9 +66,7 @@ const state = {
 
   // PostNoteSuccess
   note: {},
-  comment: {},
-  displayNote: false,
-  displayComment: false,
+  node: {},
 
   // AddressConfirmation
   address: {},
@@ -92,7 +90,6 @@ const actions = {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
       state.displaySuccess = true
-      state.displayNote = true
       commit('setNote', ps)
     })
   },

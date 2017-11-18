@@ -1,4 +1,3 @@
-import axios from 'axios'
 import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
@@ -6,8 +5,7 @@ import * as _ from 'lodash'
 // todo move to config
 const urlBase = 'https://master.apis.dev.openstreetmap.org'
 
-const urlNote = urlBase + '/api/0.6/notes.json'
-const urlComment = urlBase + '/api/0.6/notes/'
+const createNote = '/api/0.6/notes.json'
 const createChangeset = '/api/0.6/changeset/create'
 // const uploadChangeset = '/api/0.6/changeset/create'
 // const closeChangeset = '/api/0.6/changeset/close'
@@ -127,25 +125,33 @@ export default {
   },
 
   post_Note: (note) => {
-    return axios.post(urlNote, note)
-      .then(response => {
-        return {
-          html: response.data.properties.comments[0].html,
-          id: response.data.properties.id,
-          status: response.data.properties.status
+    return new Promise((resolve) => {
+      auth.xhr(
+        {
+          method: 'POST',
+          path: createNote,
+          content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
+        }, (err, response) => {
+        if (err) {
+          console.log(err)
+          resolve(null)
         }
+        const data = JSON.parse(response)
+        resolve({
+          html: data.properties.comments[0].html,
+          id: data.properties.id,
+          status: data.properties.status
+        })
       })
-      .catch(e => {
-        console.log(e)
-      })
-  },
+    })
+  }
 
-  post_Comment: (id, comment) => {
+  /* post_Comment: (id, comment) => {
     return axios.post(urlComment + id + '/comment?text=' + comment)
       .catch(e => {
         console.log(e)
       })
-  }
+  } */
 }
 
 function constructUpload (node) {
