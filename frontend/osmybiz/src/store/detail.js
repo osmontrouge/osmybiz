@@ -75,7 +75,7 @@ const state = {
 }
 
 const actions = {
-  postNode () {
+  postNode ({commit}) {
     let node = {
       lat: state.lat,
       lon: state.lon,
@@ -83,9 +83,8 @@ const actions = {
       address: state.address
     }
     osmApi.post_Node(node).then(ps => {
-      // state.displaySuccess = true
-      // state.displayNote = true
-      // commit('setNodeID', ps)
+      state.displaySuccess = true
+      commit('setNode', ps)
       console.log(ps)
     })
   },
@@ -117,6 +116,9 @@ const actions = {
 const mutations = {
   setNote (state, note) {
     state.note = note
+  },
+  setNode (state, node) {
+    state.node = node
   },
   setDisplaySuccess (state, displaySuccess) {
     state.displaySuccess = displaySuccess
@@ -163,6 +165,9 @@ const getters = {
   },
   note (state) {
     return state.note
+  },
+  node (state) {
+    return state.node
   },
   comment (state) {
     return state.comment

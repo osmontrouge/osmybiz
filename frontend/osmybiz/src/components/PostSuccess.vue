@@ -5,6 +5,7 @@
       <p>Neues Business erfolgreich erstellt: </p>
 
       <p>Node</p>
+      <a :href="node.link" target="_blank">Link zum Node</a>
     </div>
 
     <div class="note-success" v-if="isNote">

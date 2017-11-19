@@ -290,6 +290,7 @@ function parseNode (node) {
     id: node.$.id,
     lat: node.$.lat,
     lon: node.$.lon,
+    link: 'https://master.apis.dev.openstreetmap.org/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
     address: address,
     details: details
   }
