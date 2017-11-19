@@ -78,13 +78,13 @@
           <div class="field-label">
             <label>Öffnungszeiten</label>
             <img class="info"
-                 @mouseenter="showPopup('openinghours')"
+                 @mouseenter="showPopup('opening_hours')"
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
 
           <input type="text"
-                 v-model="details.openinghours"
+                 v-model="details.opening_hours"
                  placeholder="Mo-Fr 08:00-17:00">
         </div>
 
@@ -92,12 +92,12 @@
           <div class="field-label">
             <label>Telefonnummer</label>
             <img class="info"
-                 @mouseenter="showPopup('phonenumber')"
+                 @mouseenter="showPopup('phone')"
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
           <input type="text"
-                 v-model="details.phonenumber"
+                 v-model="details.phone"
                  placeholder="+41 11 111 11 11">
         </div>
 
@@ -158,7 +158,7 @@
               <input class="checkbox"
                      type="radio"
                      id="one"
-                     value="Ja"
+                     value="yes"
                      v-model="details.wheelchair">
               <label>Ja</label>
             </div>
@@ -166,7 +166,7 @@
               <input class="checkbox"
                      type="radio"
                      id="two"
-                     value="Eingeschränkt"
+                     value="limited"
                      v-model="details.wheelchair">
               <label>Eingeschränkt</label>
             </div>
@@ -174,7 +174,7 @@
               <input class="checkbox"
                      type="radio"
                      id="three"
-                     value="Nein"
+                     value="no"
                      v-model="details.wheelchair">
               <label>Nein</label>
             </div>

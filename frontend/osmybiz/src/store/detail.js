@@ -9,7 +9,8 @@ Object.keys(tags).forEach(function (key) {
   var fields = []
   tags[key].fields.forEach(function (field) {
     fields.push({
-      name: field,
+      key: field.field_key,
+      name: field.field_name,
       value: ''
     })
   })
@@ -23,8 +24,8 @@ Object.keys(tags).forEach(function (key) {
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
 infoMap.set('name', infoTexts.name)
-infoMap.set('openinghours', infoTexts.openinghours)
-infoMap.set('phonenumber', infoTexts.phonenumber)
+infoMap.set('opening_hours', infoTexts.opening_hours)
+infoMap.set('phone', infoTexts.phone)
 infoMap.set('email', infoTexts.email)
 infoMap.set('website', infoTexts.website)
 infoMap.set('wheelchair', infoTexts.wheelchair)
@@ -45,15 +46,15 @@ const state = {
       text: '',
       value: 0,
       fields: [
-        {name: '', value: ''}
+        {key: '', name: '', value: ''}
       ]
     },
     name: '',
-    openinghours: '',
-    phonenumber: '',
+    opening_hours: '',
+    phone: '',
     email: '',
     website: '',
-    wheelchair: false,
+    wheelchair: '',
     description: '',
     note: ''
   },
@@ -239,11 +240,11 @@ function constructNote () {
   if (state.details.name.length !== 0) {
     text += 'Name: ' + state.details.name + '\n'
   }
-  if (state.details.openinghours.length !== 0) {
-    text += 'Opening hours: ' + state.details.openinghours + '\n'
+  if (state.details.opening_hours.length !== 0) {
+    text += 'Opening hours: ' + state.details.opening_hours + '\n'
   }
-  if (state.details.phonenumber.length !== 0) {
-    text += 'Phone number: ' + state.details.phonenumber + '\n'
+  if (state.details.phone.length !== 0) {
+    text += 'Phone number: ' + state.details.phone + '\n'
   }
   if (state.details.email.length !== 0) {
     text += 'Email: ' + state.details.email + '\n'
@@ -302,11 +303,11 @@ function constructComment () {
   if (state.details.name.length !== 0) {
     text += 'Name: ' + state.details.name + ', '
   }
-  if (state.details.openinghours.length !== 0) {
-    text += 'Opening hours: ' + state.details.openinghours + ', '
+  if (state.details.opening_hours.length !== 0) {
+    text += 'Opening hours: ' + state.details.opening_hours + ', '
   }
-  if (state.details.phonenumber.length !== 0) {
-    text += 'Phone number: ' + state.details.phonenumber + ', '
+  if (state.details.phone.length !== 0) {
+    text += 'Phone number: ' + state.details.phone + ', '
   }
   if (state.details.email.length !== 0) {
     text += 'Email: ' + state.details.email + ', '
