@@ -22,47 +22,44 @@
         </div>
 
         <div class="success-text">
-          <div class="address-text">
+          <p>
             <span v-if="node.address.street">
-            {{node.address.street}}
+              {{node.address.street}}
             </span>
-              <span v-if="node.address.housenumber">
-              {{' ' + node.address.housenumber}}
+            <span v-if="node.address.housenumber">
+                {{' ' + node.address.housenumber}}
             </span>
-              <span v-if="node.address.postcode">
-              {{', ' +node.address.postcode}}
+            <span v-if="node.address.postcode">
+                {{', ' +node.address.postcode}}
             </span>
-              <span v-if="node.address.city">
-              {{' ' + node.address.city}}
+            <span v-if="node.address.city">
+                {{' ' + node.address.city}}
             </span>
-          </div>
-
-          <div class="details-text">
-            <span v-if="node.details.name">
+          </p>
+          <p v-if="node.details.name">
               {{node.details.name}}
-            </span>
-            <span v-if="node.details.opening_hours">
+            </p>
+          <p v-if="node.details.opening_hours">
               {{node.details.opening_hours}}
-            </span>
-            <span v-if="node.details.phone">
+            </p>
+          <p v-if="node.details.phone">
               {{node.details.phone}}
-            </span>
-            <span v-if="node.details.email">
+            </p>
+          <p v-if="node.details.email">
               {{node.details.email}}
-            </span>
-            <span v-if="node.details.website">
+            </p>
+          <p v-if="node.details.website">
               {{node.details.website}}
-            </span>
-            <span v-if="node.details.wheelchair">
+            </p>
+          <p v-if="node.details.wheelchair">
               {{node.details.wheelchair}}
-            </span>
-            <span v-if="node.details.description">
+            </p>
+          <p v-if="node.details.description">
               {{node.details.name}}
-            </span>
-            <span v-if="node.details.note">
+            </p>
+          <p v-if="node.details.note">
               {{node.details.name}}
-            </span>
-          </div>
+            </p>
         </div>
       </div>
     </div>
@@ -120,7 +117,7 @@
 
 <style scoped>
   .success-wrapper {
-    max-width:750px;
+    max-width: 750px;
     margin: 20px auto 20px auto;
     text-align: left;
   }
@@ -139,6 +136,7 @@
   .success-container {
     display: flex;
     flex-direction: row;
+    justify-content: stretch;
   }
 
   .success-labels {
@@ -156,9 +154,5 @@
 
   .success-buttons {
     margin-top: 10px;
-  }
-
-  .address-text {
-    margin-bottom: 10px;
   }
 </style>

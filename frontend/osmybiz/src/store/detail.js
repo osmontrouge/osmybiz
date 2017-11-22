@@ -4,40 +4,7 @@ import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
 
 const options = []
-
-Object.keys(tags).forEach(function (key) {
-  var fields = []
-  tags[key].fields.forEach(function (field) {
-    if (field.options) {
-      var options = []
-      Object.keys(field.options).forEach(function (option) {
-        options.push({
-          key: option,
-          text: field.options[option]
-        })
-      })
-      fields.push({
-        key: field.key,
-        label: field.label,
-        type: field.type,
-        options: options,
-        value: ''
-      })
-    } else {
-      fields.push({
-        key: field.key,
-        label: field.label,
-        type: field.type,
-        value: ''
-      })
-    }
-  })
-  options.push({
-    value: key,
-    text: tags[key].name,
-    fields: fields
-  })
-})
+loadTags()
 
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
@@ -349,4 +316,40 @@ function constructComment () {
   }
 
   return text
+}
+
+function loadTags () {
+  Object.keys(tags).forEach(function (key) {
+    var fields = []
+    tags[key].fields.forEach(function (field) {
+      if (field.options) {
+        var options = []
+        Object.keys(field.options).forEach(function (option) {
+          options.push({
+            key: option,
+            text: field.options[option]
+          })
+        })
+        fields.push({
+          key: field.key,
+          label: field.label,
+          type: field.type,
+          options: options,
+          value: ''
+        })
+      } else {
+        fields.push({
+          key: field.key,
+          label: field.label,
+          type: field.type,
+          value: ''
+        })
+      }
+    })
+    options.push({
+      value: key,
+      text: tags[key].name,
+      fields: fields
+    })
+  })
 }

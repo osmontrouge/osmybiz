@@ -11,7 +11,7 @@
            v-for="option in field.options"
            class="checkbox-wrapper">
         <label>{{option.text}}</label>
-        <input type="checkbox"7
+        <input type="checkbox"
                class="checkbox"
                v-model="field.value"/>
       </div>

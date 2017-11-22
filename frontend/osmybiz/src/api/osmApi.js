@@ -4,14 +4,14 @@ import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
 
 // todo move to config
-const urlBase = 'https://master.apis.dev.openstreetmap.org/api/0.6/'
+const urlBase = 'https://master.apis.dev.openstreetmap.org'
 
-const createNotePath = 'notes.json'
-const createChangesetPath = 'changeset/create'
-const uploadChangesetPath = 'changeset/'
-const closeChangesetPath = 'changeset/'
-const getNodePath = 'node/'
-const userPath = 'user/details.json'
+const createNotePath = '/api/0.6/notes.json'
+const createChangesetPath = '/api/0.6/changeset/create'
+const uploadChangesetPath = '/api/0.6/changeset/'
+const closeChangesetPath = '/api/0.6/changeset/'
+const getNodePath = '/api/0.6/node/'
+const userPath = '/api/0.6/user/details.json'
 
 let changesetID = 0
 
@@ -277,7 +277,6 @@ function getNode (nodeId) {
         console.log(err)
         resolve(err)
       }
-      console.log(xml2json(response)['#document'].osm.node)
       resolve(parseNode(xml2json(response)['#document'].osm.node))
     })
   })
@@ -291,7 +290,7 @@ function parseNode (node) {
     id: node.$.id,
     lat: node.$.lat,
     lon: node.$.lon,
-    link: 'https://master.apis.dev.openstreetmap.org/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
+    link: 'https://master.apis.dev.openstreetmap.org/node/' + node.$.id + '/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
     address: address,
     details: details
   }

@@ -382,6 +382,7 @@
   .form-wrapper {
     max-width:750px;
     margin: auto;
+    margin-bottom: 50px;
   }
 
   .form-fields {
@@ -461,7 +462,7 @@
   .Category-field button{
     flex: 0 0;
     flex-basis: auto;
-    margin-left: 10px;
+    margin: auto auto auto 10px;
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
