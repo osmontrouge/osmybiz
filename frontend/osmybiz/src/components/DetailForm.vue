@@ -155,7 +155,7 @@
 
           <div class="checkboxes">
             <div class="checkbox-wrapper">
-              <input class="checkbox"
+              <input class="radiobutton"
                      type="radio"
                      id="one"
                      value="yes"
@@ -163,7 +163,7 @@
               <label>Ja</label>
             </div>
             <div class="checkbox-wrapper">
-              <input class="checkbox"
+              <input class="radiobutton"
                      type="radio"
                      id="two"
                      value="limited"
@@ -171,7 +171,7 @@
               <label>Eingeschränkt</label>
             </div>
             <div class="checkbox-wrapper">
-              <input class="checkbox"
+              <input class="radiobutton"
                      type="radio"
                      id="three"
                      value="no"
@@ -219,7 +219,6 @@
                v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
             <label>{{ field.label }}</label>
             <extra-input-field :field="field"></extra-input-field>
-            <!--<input type="text" v-model="field.value">-->
           </div>
         </div>
         <div class="column">
@@ -227,7 +226,6 @@
                v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
             <label>{{ field.label }}</label>
             <extra-input-field :field="field"></extra-input-field>
-            <!--<input type="text" v-model="field.value">-->
           </div>
         </div>
       </div>
@@ -340,7 +338,7 @@
 </script>
 
 <style>
-  input[type="text"], textarea {
+  input[type="text"], input[type="number"], textarea, select {
     border: 2px solid #7ebc6f;
     padding: 12px 20px;
     display: inline-block;
@@ -368,7 +366,7 @@
     flex-grow: 1;
   }
 
-  .checkbox {
+  .checkbox, .radiobutton {
     height: 44px;
     width: 24px;
   }

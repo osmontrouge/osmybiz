@@ -12,8 +12,8 @@ Object.keys(tags).forEach(function (key) {
       var options = []
       Object.keys(field.options).forEach(function (option) {
         options.push({
-          text: field.options[option],
-          value: ''
+          key: option,
+          text: field.options[option]
         })
       })
       fields.push({

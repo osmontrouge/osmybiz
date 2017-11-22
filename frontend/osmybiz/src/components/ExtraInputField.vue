@@ -1,20 +1,31 @@
 <template>
-  <div>
+  <div class="extrainput-wrapper">
     <input v-if="checkType()==='text'"
            type="text"
            v-model="field.value"/>
     <input v-if="checkType()==='number'"
            type="number"
            v-model="field.value"/>
-    <input v-if="checkType()==='check'"
-           type="checkbox"
-           v-model="field.value"/>
-    <input v-if="checkType()==='radio'"
-           type="radio"
-           v-model="field.value"/>
+    <div v-if="checkType()==='check'">
+      <div v-if="field.options"
+           v-for="option in field.options"
+           class="checkbox-wrapper">
+        <label>{{option.text}}</label>
+        <input type="checkbox"7
+               class="checkbox"
+               v-model="field.value"/>
+      </div>
+      <div v-if="!field.options"
+           class="checkbox-wrapper">
+        <input type="checkbox"
+               class="checkbox"
+               v-model="field.value"/>
+      </div>
+    </div>
     <select v-if="checkType()==='combo'"
             v-model="field.value">
-      <option v-for="option in field.options" v-bind:value="option.value">
+      <option></option>
+      <option v-for="option in field.options" v-bind:value="option.key">
         {{option.text}}
       </option>
     </select>
@@ -30,11 +41,14 @@
           if (this.field.type === 'text' ||
             this.field.type === 'check' ||
             this.field.type === 'number' ||
-            this.field.type === 'combo' ||
-            this.field.type === 'radio') {
+            this.field.type === 'combo') {
             return this.field.type
           } else {
-            return 'text'
+            if (this.field.type === 'radio') {
+              return 'combo'
+            } else {
+              return 'text'
+            }
           }
         }
       }
@@ -42,5 +56,12 @@
 </script>
 
 <style scoped>
+  .extrainput-wrapper {
+    display: flex;
+    justify-content: stretch;
+  }
 
+  input[type="text"], input[type="number"], select {
+    width: 100%;
+  }
 </style>
