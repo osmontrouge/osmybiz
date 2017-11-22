@@ -15,7 +15,8 @@ function getBizCategory (node) {
   var fields = []
   getTagName(key).fields.forEach(function (field) {
     fields.push({
-      name: field,
+      key: field.field_key,
+      name: field.field_name,
       value: ''
     })
   })

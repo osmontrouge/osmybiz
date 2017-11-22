@@ -26,10 +26,12 @@
     },
     methods: {
       ...mapMutations([
-        'setCoords'
+        'setCoords',
+        'setIsNote'
       ]),
       create () {
         this.setCoords(this.position)
+        this.setIsNote(false)
         this.$router.push({name: routes.Detail})
       }
     },

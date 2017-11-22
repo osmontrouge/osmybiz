@@ -2,19 +2,40 @@
   "amenity/animal_boarding": {
     "name": "Tierpension",
     "fields": [
-      "Tierpension"
+      {
+        "field_key": "animal_boarding",
+        "field_name": "Tierpension"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/animal_breeding": {
     "name": "Tierzucht",
     "fields": [
-      "Tierzucht"
+      {
+        "field_key": "animal_breeding",
+        "field_name": "Tierzucht"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/animal_shelter": {
     "name": "Tierheim",
     "fields": [
-      "Tierheim"
+      {
+        "field_key": "animal_shelter",
+        "field_name": "Tierheim"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/arts_centre": {
@@ -24,105 +45,244 @@
   "amenity/atm": {
     "name": "Geldautomat",
     "fields": [
-      "Währungen",
-      "Durchfahrts-Service"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "drive_through",
+        "field_name": "Durchfahrts-Service"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/bank": {
     "name": "Bank-Filiale",
     "fields": [
-      "Geldautomat",
-      "Durchfahrts-Service"
+      {
+        "field_key": "atm",
+        "field_name": "Geldautomat"
+      },
+      {
+        "field_key": "drive_through",
+        "field_name": "Durchfahrts-Service"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/bar": {
     "name": "Bar",
     "fields": [
-      "Außenbestuhlung",
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/bbq": {
     "name": "Grillplatz",
     "fields": [
-      "Überdacht",
-      "Kraftstoff"
+      {
+        "field_key": "covered",
+        "field_name": "Überdacht"
+      },
+      {
+        "field_key": "fuel",
+        "field_name": "Kraftstoff"
+      }
     ]
   },
   "amenity/bench": {
     "name": "Sitzbank",
     "fields": [
-      "Rückenlehne"
+      {
+        "field_key": "backrest",
+        "field_name": "Rückenlehne"
+      }
     ]
   },
   "amenity/bicycle_parking": {
     "name": "Fahrradparkplatz",
     "fields": [
-      "Erlaubter Zugang",
-      "Typ",
-      "Kapazität",
-      "Überdacht"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "bicycle_parking",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "covered",
+        "field_name": "Überdacht"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/bicycle_rental": {
     "name": "Fahrradverleih",
     "fields": [
-      "Kapazität",
-      "Netzwerk"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "network",
+        "field_name": "Netzwerk"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/bicycle_repair_station": {
     "name": "Fahrradreperatur-Werkzeugkasten",
     "fields": [
-      "Marke",
-      "Gebühr",
-      "Fahrradservice"
+      {
+        "field_key": "brand",
+        "field_name": "Marke"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "service/bicycle",
+        "field_name": "Fahrradservice"
+      }
     ]
   },
   "amenity/biergarten": {
     "name": "Biergarten",
     "fields": [
-      "Außenbestuhlung",
-      "Rauchen"
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/boat_rental": {
     "name": "Bootsvermietung",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/bureau_de_change": {
     "name": "Geldwechselstube",
     "fields": [
-      "Währungen"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/bus_station": {
     "name": "Busbahnhof",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/cafe": {
     "name": "Café",
     "fields": [
-      "Küche",
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Außenbestuhlung",
-      "Rauchen"
+      {
+        "field_key": "cuisine",
+        "field_name": "Küche"
+      },
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/car_rental": {
     "name": "Autovermietung",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/car_sharing": {
     "name": "Carsharing",
     "fields": [
-      "Kapazität"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/car_wash": {
@@ -132,18 +292,37 @@
   "amenity/casino": {
     "name": "Kasino",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/charging_station": {
     "name": "Ladestation für Elektroautos, Plug-in Hybridfahrzeuge, Pedelecs und E-Bikes.",
     "fields": [
-      "Kapazität"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/childcare": {
     "name": "Kindertagesstätte/Kinderbetreuung",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/cinema": {
     "name": "Kino",
@@ -152,40 +331,88 @@
   "amenity/clinic": {
     "name": "Klinik",
     "fields": [
-      "Spezialgebiete"
+      {
+        "field_key": "healthcare/speciality",
+        "field_name": "Spezialgebiete"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/clinic/abortion": {
     "name": "Abtreibungsklinik",
     "fields": [
-      "Spezialgebiete"
+      {
+        "field_key": "healthcare/speciality",
+        "field_name": "Spezialgebiete"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/clinic/fertility": {
     "name": "Kinderwunschklinik",
     "fields": [
-      "Spezialgebiete"
+      {
+        "field_key": "healthcare/speciality",
+        "field_name": "Spezialgebiete"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/clock": {
     "name": "Uhr",
     "fields": [
-      "Datum",
-      "Anzeige",
-      "Unterstützung",
-      "Sichtbarkeit"
+      {
+        "field_key": "date",
+        "field_name": "Datum"
+      },
+      {
+        "field_key": "display",
+        "field_name": "Anzeige"
+      },
+      {
+        "field_key": "support",
+        "field_name": "Unterstützung"
+      },
+      {
+        "field_key": "visibility",
+        "field_name": "Sichtbarkeit"
+      }
     ]
   },
   "amenity/college": {
     "name": "Hochschulgelände",
     "fields": [
-      "Internetzugang",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/community_centre": {
     "name": "Gemeindezentrum",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/compressed_air": {
     "name": "Druckluft",
@@ -193,14 +420,28 @@
   },
   "amenity/courthouse": {
     "name": "Gericht",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/coworking_space": {
     "name": "Co-Working-Räumlichkeiten",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      }
     ]
   },
   "amenity/crematorium": {
@@ -210,19 +451,36 @@
   "amenity/dentist": {
     "name": "Zahnarzt",
     "fields": [
-      "Spezialgebiete"
+      {
+        "field_key": "healthcare/speciality",
+        "field_name": "Spezialgebiete"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/doctors": {
     "name": "Arzt",
     "fields": [
-      "Spezialgebiete"
+      {
+        "field_key": "healthcare/speciality",
+        "field_name": "Spezialgebiete"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/dojo": {
     "name": "Kampfsportstudio",
     "fields": [
-      "Sport"
+      {
+        "field_key": "sport",
+        "field_name": "Sport"
+      }
     ]
   },
   "amenity/drinking_water": {
@@ -231,40 +489,92 @@
   },
   "amenity/driving_school": {
     "name": "Fahrschule",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/embassy": {
     "name": "Botschaft",
     "fields": [
-      "Land"
+      {
+        "field_key": "country",
+        "field_name": "Land"
+      }
     ]
   },
   "amenity/fast_food": {
     "name": "Schnellimbiss",
     "fields": [
-      "Küche",
-      "Zustellung",
-      "Durchfahrts-Service",
-      "Außenbestuhlung",
-      "Rauchen",
-      "zum Mitnehmen"
+      {
+        "field_key": "cuisine",
+        "field_name": "Küche"
+      },
+      {
+        "field_key": "delivery",
+        "field_name": "Zustellung"
+      },
+      {
+        "field_key": "drive_through",
+        "field_name": "Durchfahrts-Service"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      },
+      {
+        "field_key": "takeaway",
+        "field_name": "zum Mitnehmen"
+      }
     ]
   },
   "amenity/ferry_terminal": {
     "name": "Fährhafen",
     "fields": [
-      "Netzwerk"
+      {
+        "field_key": "network",
+        "field_name": "Netzwerk"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/fire_station": {
     "name": "Feuerwehrhaus",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/food_court": {
     "name": "Gemeinschaftlicher Gastronomiebereich",
     "fields": [
-      "Außenbestuhlung",
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/fountain": {
@@ -274,27 +584,53 @@
   "amenity/fuel": {
     "name": "Tankstelle",
     "fields": [
-      "Spritsorten"
+      {
+        "field_key": "fuel_multi",
+        "field_name": "Spritsorten"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/grave_yard": {
     "name": "Gräberfeld",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Religion"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "religion",
+        "field_name": "Religion"
+      }
     ]
   },
   "amenity/grit_bin": {
     "name": "Streugutkiste",
     "fields": [
-      "Erlaubter Zugang"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      }
     ]
   },
   "amenity/hospital": {
     "name": "Krankenhaus",
     "fields": [
-      "Notfall",
-      "Spezialgebiete"
+      {
+        "field_key": "emergency",
+        "field_name": "Notfall"
+      },
+      {
+        "field_key": "healthcare/speciality",
+        "field_name": "Spezialgebiete"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/hunting_stand": {
@@ -304,311 +640,699 @@
   "amenity/ice_cream": {
     "name": "Eisgeschäft",
     "fields": [
-      "Zustellung",
-      "Außenbestuhlung",
-      "zum Mitnehmen"
+      {
+        "field_key": "delivery",
+        "field_name": "Zustellung"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "takeaway",
+        "field_name": "zum Mitnehmen"
+      }
     ]
   },
   "amenity/internet_cafe": {
     "name": "Internetcafé",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Außenbestuhlung",
-      "Rauchen"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/kindergarten": {
     "name": "Kindergarten",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/library": {
     "name": "Bibliothek",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/marketplace": {
     "name": "Wochenmarkt",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/motorcycle_parking": {
     "name": "Motorradparkplatz",
     "fields": [
-      "Erlaubter Zugang",
-      "Kapazität",
-      "Überdacht"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "covered",
+        "field_name": "Überdacht"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/nightclub": {
     "name": "Nachtklub",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/nursing_home": {
     "name": "Pflegeheim",
     "fields": [
-      "Typ",
-      "Unterstützter Personenkreis"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "social_facility",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "social_facility_for",
+        "field_name": "Unterstützter Personenkreis"
+      }
     ]
   },
   "amenity/parking": {
     "name": "Parkplatz",
     "fields": [
-      "Erlaubter Zugang",
-      "Kapazität",
-      "Gebühr",
-      "Maximale Parkzeit",
-      "Parken und Reisen",
-      "Typ",
-      "Überwacht",
-      "Oberfläche"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "maxstay",
+        "field_name": "Maximale Parkzeit"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "park_ride",
+        "field_name": "Parken und Reisen"
+      },
+      {
+        "field_key": "parking",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "supervised",
+        "field_name": "Überwacht"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "amenity/parking_entrance": {
     "name": "Garageneinfahrt/-ausfahrt",
     "fields": [
-      "Erlaubter Zugang",
-      "Referenzcode"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "ref",
+        "field_name": "Referenzcode"
+      }
     ]
   },
   "amenity/parking_space": {
     "name": "Stellplatz",
     "fields": [
-      "Kapazität"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      }
     ]
   },
   "amenity/pavilion": {
     "name": "Pavillon",
     "fields": [
-      "Sitzbank",
-      "Mülleimer"
+      {
+        "field_key": "bench",
+        "field_name": "Sitzbank"
+      },
+      {
+        "field_key": "bin",
+        "field_name": "Mülleimer"
+      }
     ]
   },
   "amenity/pharmacy": {
     "name": "Apotheke",
     "fields": [
-      "Durchfahrts-Service"
+      {
+        "field_key": "drive_through",
+        "field_name": "Durchfahrts-Service"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/place_of_worship": {
     "name": "Andachtsstätte",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Religion",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "religion",
+        "field_name": "Religion"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/buddhist": {
     "name": "Buddhistischer Tempel",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/christian": {
     "name": "Kirche",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/hindu": {
     "name": "Hindutempel",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/jewish": {
     "name": "Sy­n­a­go­ge",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/muslim": {
     "name": "Moschee",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/shinto": {
     "name": "Shintō-Schrein",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/sikh": {
     "name": "Sikh-Tempel",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/place_of_worship/taoist": {
     "name": "Tao-Tempel",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Betriebszeiten, Gottesdienstzeiten"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "service_times",
+        "field_name": "Betriebszeiten, Gottesdienstzeiten"
+      }
     ]
   },
   "amenity/planetarium": {
     "name": "Planetarium",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/police": {
     "name": "Polizei",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/post_box": {
     "name": "Briefkasten",
     "fields": [
-      "Leerungszeiten",
-      "Durchfahrts-Service",
-      "Referenzcode"
+      {
+        "field_key": "collection_times",
+        "field_name": "Leerungszeiten"
+      },
+      {
+        "field_key": "drive_through",
+        "field_name": "Durchfahrts-Service"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "ref",
+        "field_name": "Referenzcode"
+      }
     ]
   },
   "amenity/post_office": {
     "name": "Postfiliale",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/prison": {
     "name": "Gefängnisanlage",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/pub": {
     "name": "Kneipe",
     "fields": [
-      "Außenbestuhlung",
-      "Rauchen"
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "amenity/public_bath": {
     "name": "Öffentliches Bad",
     "fields": [
-      "Im Freien",
-      "Sandbad",
-      "Spezialität"
+      {
+        "field_key": "bath/open_air",
+        "field_name": "Im Freien"
+      },
+      {
+        "field_key": "bath/sand_bath",
+        "field_name": "Sandbad"
+      },
+      {
+        "field_key": "bath/type",
+        "field_name": "Spezialität"
+      }
     ]
   },
   "amenity/public_bookcase": {
     "name": "Offentlicher Bücherschrank",
     "fields": [
-      "Kapazität"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/ranger_station": {
     "name": "Ranger-Station",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/recycling": {
     "name": "Recycling",
     "fields": [
-      "Leerungszeiten",
-      "akzeptiert",
-      "Recycling Typ"
+      {
+        "field_key": "collection_times",
+        "field_name": "Leerungszeiten"
+      },
+      {
+        "field_key": "recycling_accepts",
+        "field_name": "akzeptiert"
+      },
+      {
+        "field_key": "recycling_type",
+        "field_name": "Recycling Typ"
+      }
     ]
   },
   "amenity/recycling_centre": {
     "name": "Wertstoffhof",
     "fields": [
-      "akzeptiert"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "recycling_accepts",
+        "field_name": "akzeptiert"
+      }
     ]
   },
   "amenity/register_office": {
     "name": "Standesamt",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/restaurant": {
     "name": "Restaurant",
     "fields": [
-      "Kapazität",
-      "Küche",
-      "Zustellung",
-      "Außenbestuhlung",
-      "Rauchen",
-      "zum Mitnehmen"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "cuisine",
+        "field_name": "Küche"
+      },
+      {
+        "field_key": "delivery",
+        "field_name": "Zustellung"
+      },
+      {
+        "field_key": "outdoor_seating",
+        "field_name": "Außenbestuhlung"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      },
+      {
+        "field_key": "takeaway",
+        "field_name": "zum Mitnehmen"
+      }
     ]
   },
   "amenity/sanitary_dump_station": {
     "name": "Campingtoiletten-Entsorgungsanlage",
     "fields": [
-      "Erlaubter Zugang",
-      "Gebühr",
-      "Wasserentnahmestelle"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "water_point",
+        "field_name": "Wasserentnahmestelle"
+      }
     ]
   },
   "amenity/school": {
     "name": "Schulgelände",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/scrapyard": {
     "name": "Schrottplatz",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/shelter": {
     "name": "Unterstand",
     "fields": [
-      "Mülleimer",
-      "Typ"
+      {
+        "field_key": "bin",
+        "field_name": "Mülleimer"
+      },
+      {
+        "field_key": "shelter_type",
+        "field_name": "Typ"
+      }
     ]
   },
   "amenity/shower": {
     "name": "Dusche",
     "fields": [
-      "Gebühr",
-      "Überwacht"
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "supervised",
+        "field_name": "Überwacht"
+      }
     ]
   },
   "amenity/social_facility": {
     "name": "Sozialeinrichtung",
     "fields": [
-      "Typ",
-      "Unterstützter Personenkreis"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "social_facility",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "social_facility_for",
+        "field_name": "Unterstützter Personenkreis"
+      }
     ]
   },
   "amenity/social_facility/food_bank": {
     "name": "Essensausgabe",
     "fields": [
-      "Typ",
-      "Unterstützter Personenkreis"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "social_facility",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "social_facility_for",
+        "field_name": "Unterstützter Personenkreis"
+      }
     ]
   },
   "amenity/social_facility/group_home": {
     "name": "Seniorenresidenz",
     "fields": [
-      "Typ",
-      "Unterstützter Personenkreis"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "social_facility",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "social_facility_for",
+        "field_name": "Unterstützter Personenkreis"
+      }
     ]
   },
   "amenity/social_facility/homeless_shelter": {
     "name": "Obdachlosenheim",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Typ",
-      "Unterstützter Personenkreis"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "social_facility",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "social_facility_for",
+        "field_name": "Unterstützter Personenkreis"
+      }
     ]
   },
   "amenity/social_facility/nursing_home": {
     "name": "Seniorenpflegeheim",
     "fields": [
-      "Typ",
-      "Unterstützter Personenkreis"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "social_facility",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "social_facility_for",
+        "field_name": "Unterstützter Personenkreis"
+      }
     ]
   },
   "amenity/studio": {
     "name": "Ton-/Fernsehstudio",
     "fields": [
-      "Typ"
+      {
+        "field_key": "studio",
+        "field_name": "Typ"
+      }
     ]
   },
   "amenity/swimming_pool": {
@@ -618,7 +1342,14 @@
   "amenity/taxi": {
     "name": "Taxistand",
     "fields": [
-      "Kapazität"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/telephone": {
@@ -627,142 +1358,332 @@
   },
   "amenity/theatre": {
     "name": "The­a­ter",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/toilets": {
     "name": "Toilette",
     "fields": [
-      "Erlaubter Zugang",
-      "Windelwechseln möglich",
-      "Gebühr",
-      "Geschlecht",
-      "Toiletten-Bauart"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "diaper",
+        "field_name": "Windelwechseln möglich"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "gender",
+        "field_name": "Geschlecht"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "toilets/disposal",
+        "field_name": "Toiletten-Bauart"
+      }
     ]
   },
   "amenity/townhall": {
     "name": "Rathaus",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/university": {
     "name": "Universitätsgelände",
     "fields": [
-      "Internetzugang",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "amenity/vending_machine": {
     "name": "Verkaufsautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten",
-      "Dienstleistung"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      },
+      {
+        "field_key": "vending",
+        "field_name": "Dienstleistung"
+      }
     ]
   },
   "amenity/vending_machine/cigarettes": {
     "name": "Zigarettenautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/condoms": {
     "name": "Kondomautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/drinks": {
     "name": "Getränkeautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/excrement_bags": {
     "name": "Hundekottütenspender",
     "fields": [
-      "Währungen",
-      "Gebühr",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/feminine_hygiene": {
     "name": "Frauenhygiene-Automat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/news_papers": {
     "name": "Zeitungsautomat",
     "fields": [
-      "Währungen",
-      "Gebühr",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/newspapers": {
     "name": "Zeitungstasche",
     "fields": [
-      "Währungen",
-      "Gebühr",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/parcel_pickup_dropoff": {
     "name": "Paketautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/parking_tickets": {
     "name": "Parkscheinautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/public_transport_tickets": {
     "name": "Fahrkartenautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/vending_machine/sweets": {
     "name": "Süßigkeitenautomat",
     "fields": [
-      "Währungen",
-      "Zahlungsarten"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "payment_multi",
+        "field_name": "Zahlungsarten"
+      }
     ]
   },
   "amenity/veterinary": {
     "name": "Tierarzt",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/waste/dog_excrement": {
     "name": "Hundekotabfalleimer",
     "fields": [
-      "Leerungszeiten"
+      {
+        "field_key": "collection_times",
+        "field_name": "Leerungszeiten"
+      }
     ]
   },
   "amenity/waste_basket": {
     "name": "Mülleimer",
     "fields": [
-      "Leerungszeiten"
+      {
+        "field_key": "collection_times",
+        "field_name": "Leerungszeiten"
+      }
     ]
   },
   "amenity/waste_disposal": {
     "name": "Müllcontainer",
     "fields": [
-      "Leerungszeiten"
+      {
+        "field_key": "collection_times",
+        "field_name": "Leerungszeiten"
+      }
     ]
   },
   "amenity/waste_transfer_station": {
     "name": "Müllumladestation",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "amenity/water_point": {
     "name": "Camping-Trinkwasser",
@@ -775,7 +1696,14 @@
   "leisure/adult_gaming_centre": {
     "name": "Spielothek für Erwachsene",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "leisure/bird_hide": {
@@ -785,7 +1713,14 @@
   "leisure/bowling_alley": {
     "name": "Bowlingbahn",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "leisure/common": {
@@ -794,7 +1729,12 @@
   },
   "leisure/dance": {
     "name": "Tanzsaal",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "leisure/dog_park": {
     "name": "Hundepark",
@@ -807,30 +1747,47 @@
   "leisure/fitness_centre": {
     "name": "Fitness Studio",
     "fields": [
-      "Sport"
+      {
+        "field_key": "sport",
+        "field_name": "Sport"
+      }
     ]
   },
   "leisure/fitness_centre/yoga": {
     "name": "Yoga-Studio",
     "fields": [
-      "Sport"
+      {
+        "field_key": "sport",
+        "field_name": "Sport"
+      }
     ]
   },
   "leisure/fitness_station": {
     "name": "Freiluft-Fitness-Station",
     "fields": [
-      "Referenzcode"
+      {
+        "field_key": "ref",
+        "field_name": "Referenzcode"
+      }
     ]
   },
   "leisure/garden": {
     "name": "Garten",
     "fields": [
-      "Erlaubter Zugang"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      }
     ]
   },
   "leisure/golf_course": {
     "name": "Golfplatz",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "leisure/hackerspace": {
     "name": "Hackerspace",
@@ -839,33 +1796,86 @@
   "leisure/horse_riding": {
     "name": "Reitanlage",
     "fields": [
-      "Erlaubter Zugang",
-      "Gebäude"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "building",
+        "field_name": "Gebäude"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "leisure/ice_rink": {
     "name": "Eislaufbahn",
     "fields": [
-      "Gebäude",
-      "Saisonal",
-      "Sportarten"
+      {
+        "field_key": "building",
+        "field_name": "Gebäude"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "seasonal",
+        "field_name": "Saisonal"
+      },
+      {
+        "field_key": "sport_ice",
+        "field_name": "Sportarten"
+      }
     ]
   },
   "leisure/marina": {
     "name": "Yachthafen",
     "fields": [
-      "Kapazität",
-      "Gebühr",
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Stromversorgung",
-      "Toilettenentsorgungsanlage"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "power_supply",
+        "field_name": "Stromversorgung"
+      },
+      {
+        "field_key": "sanitary_dump_station",
+        "field_name": "Toilettenentsorgungsanlage"
+      }
     ]
   },
   "leisure/miniature_golf": {
     "name": "Minigolf",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "leisure/nature_reserve": {
     "name": "Naturschutzgebiet",
@@ -882,133 +1892,271 @@
   "leisure/pitch": {
     "name": "Sportplatz",
     "fields": [
-      "Beleuchtung",
-      "Sport",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "sport",
+        "field_name": "Sport"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/american_football": {
     "name": "American-Football-Feld",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/baseball": {
     "name": "Baseball-Rautenfeld",
     "fields": [
-      "Beleuchtung"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      }
     ]
   },
   "leisure/pitch/basketball": {
     "name": "Basketballfeld",
     "fields": [
-      "Erlaubter Zugang",
-      "Basketball",
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "hoops",
+        "field_name": "Basketball"
+      },
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/beachvolleyball": {
     "name": "Beachvolleyballplatz",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/bowls": {
     "name": "Bowlingrasen",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/cricket": {
     "name": "Cricket-Spielfeld",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/equestrian": {
     "name": "Reitplatz",
     "fields": [
-      "Gebäude",
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "building",
+        "field_name": "Gebäude"
+      },
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/rugby_league": {
     "name": "Rugby-League-Feld",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/rugby_union": {
     "name": "Rugby-Union-Feld",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/skateboard": {
     "name": "Skatepark",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/soccer": {
     "name": "Fußballplatz",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/table_tennis": {
     "name": "Tischtennisplatte",
     "fields": [
-      "Erlaubter Zugang",
-      "Beleuchtung"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      }
     ]
   },
   "leisure/pitch/tennis": {
     "name": "Tennisplatz",
     "fields": [
-      "Erlaubter Zugang",
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/pitch/volleyball": {
     "name": "Volleyballplatz",
     "fields": [
-      "Beleuchtung",
-      "Oberfläche"
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/playground": {
     "name": "Spielplatz",
     "fields": [
-      "Erlaubter Zugang",
-      "Höchstalter",
-      "Mindestalter",
-      "Oberfläche"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "playground/max_age",
+        "field_name": "Höchstalter"
+      },
+      {
+        "field_key": "playground/min_age",
+        "field_name": "Mindestalter"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      }
     ]
   },
   "leisure/resort": {
     "name": "Resort",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "leisure/running_track": {
     "name": "Rennbbahn (Laufen)",
     "fields": [
-      "Fahrspuren",
-      "Beleuchtung",
-      "Sportarten",
-      "Oberfläche",
-      "Breite (Meter)"
+      {
+        "field_key": "lanes",
+        "field_name": "Fahrspuren"
+      },
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "sport_racing_nonmotor",
+        "field_name": "Sportarten"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      },
+      {
+        "field_key": "width",
+        "field_name": "Breite (Meter)"
+      }
     ]
   },
   "leisure/slipway": {
@@ -1018,41 +2166,84 @@
   "leisure/sports_centre": {
     "name": "Sportzentrum / -komplex",
     "fields": [
-      "Sport"
+      {
+        "field_key": "sport",
+        "field_name": "Sport"
+      }
     ]
   },
   "leisure/sports_centre/swimming": {
     "name": "Badeanstalt",
     "fields": [
-      "Erlaubter Zugang",
-      "Gebäude"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "building",
+        "field_name": "Gebäude"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "leisure/stadium": {
     "name": "Stadion",
     "fields": [
-      "Sport"
+      {
+        "field_key": "sport",
+        "field_name": "Sport"
+      }
     ]
   },
   "leisure/swimming_pool": {
     "name": "Schwimmbecken",
     "fields": [
-      "Erlaubter Zugang"
+      {
+        "field_key": "access_simple",
+        "field_name": "Erlaubter Zugang"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "leisure/track": {
     "name": "Bahn (Nicht Motorsport)",
     "fields": [
-      "Fahrspuren",
-      "Beleuchtung",
-      "Sportarten",
-      "Oberfläche",
-      "Breite (Meter)"
+      {
+        "field_key": "lanes",
+        "field_name": "Fahrspuren"
+      },
+      {
+        "field_key": "lit",
+        "field_name": "Beleuchtung"
+      },
+      {
+        "field_key": "sport_racing_nonmotor",
+        "field_name": "Sportarten"
+      },
+      {
+        "field_key": "surface",
+        "field_name": "Oberfläche"
+      },
+      {
+        "field_key": "width",
+        "field_name": "Breite (Meter)"
+      }
     ]
   },
   "leisure/water_park": {
     "name": "Erlebnisbad",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "office/accountant": {
     "name": "Steuerberater",
@@ -1069,15 +2260,27 @@
   "office/company": {
     "name": "Firma",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "office/coworking": {
     "name": "Co-Working-Räumlichkeiten",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      }
     ]
   },
   "office/educational_institution": {
@@ -1102,7 +2305,12 @@
   },
   "office/government/register_office": {
     "name": "Standesamt",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "office/insurance": {
     "name": "Versicherung",
@@ -1127,7 +2335,10 @@
   "office/ngo": {
     "name": "Nichtregierungsorganisation",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "office/physician": {
@@ -1157,487 +2368,1094 @@
   "shop/alcohol": {
     "name": "Spirituosenladen",
     "fields": [
-      "Durchfahrts-Service"
+      {
+        "field_key": "drive_through",
+        "field_name": "Durchfahrts-Service"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/anime": {
     "name": "Anime-Geschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/antiques": {
     "name": "Antiquitätenladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/appliance": {
     "name": "Haushaltselektrogerätegeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/art": {
     "name": "Kunsthandlung",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/baby_goods": {
     "name": "Babysachengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/bag": {
     "name": "Taschen/Koffer-Geschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/bakery": {
     "name": "Bäckerei",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/bathroom_furnishing": {
     "name": "Badeinrichtungsgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/beauty": {
     "name": "Kosmetikladen",
     "fields": [
-      "Geschäftstyp"
+      {
+        "field_key": "beauty",
+        "field_name": "Geschäftstyp"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/beauty/nails": {
     "name": "Nagelstudio",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/beauty/tanning": {
     "name": "Sonnenstudio",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/bed": {
     "name": "Betten/Matratzengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/beverages": {
     "name": "Getränkeladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/bicycle": {
     "name": "Fahrradladen",
     "fields": [
-      "Fahrradservice"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "service/bicycle",
+        "field_name": "Fahrradservice"
+      }
     ]
   },
   "shop/bookmaker": {
     "name": "Buchmacher",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/books": {
     "name": "Buchladen",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/boutique": {
     "name": "Boutique",
     "fields": [
-      "Kleidung"
+      {
+        "field_key": "clothes",
+        "field_name": "Kleidung"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/butcher": {
     "name": "Metzger",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/candles": {
     "name": "Kerzengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/car": {
     "name": "Autohändler",
     "fields": [
-      "Second Hand",
-      "Raststätte"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "second_hand",
+        "field_name": "Second Hand"
+      },
+      {
+        "field_key": "service/vehicle",
+        "field_name": "Raststätte"
+      }
     ]
   },
   "shop/car_parts": {
     "name": "Autoteilehandel",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/car_repair": {
     "name": "Autowerkstatt",
     "fields": [
-      "Raststätte"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "service/vehicle",
+        "field_name": "Raststätte"
+      }
     ]
   },
   "shop/carpet": {
     "name": "Teppichgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/charity": {
     "name": "Sozialkaufhaus",
     "fields": [
-      "Second Hand"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "second_hand",
+        "field_name": "Second Hand"
+      }
     ]
   },
   "shop/cheese": {
     "name": "Käseladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/chemist": {
     "name": "Drogerie",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/chocolate": {
     "name": "Schokoladeladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/clothes": {
     "name": "Bekleidungsgeschäft",
     "fields": [
-      "Kleidung"
+      {
+        "field_key": "clothes",
+        "field_name": "Kleidung"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/coffee": {
     "name": "Kaffeegeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/computer": {
     "name": "Computerfachhandel",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/confectionery": {
     "name": "Süßigkeitengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/convenience": {
     "name": "Gemischtwarenhandel",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/copyshop": {
     "name": "Kopierladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/cosmetics": {
     "name": "Drogerie",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/craft": {
     "name": "Kunsthandwerkgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/curtain": {
     "name": "Vorhanggeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/dairy": {
     "name": "Milchgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/deli": {
     "name": "Feinkostladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/department_store": {
     "name": "Kaufhaus",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/doityourself": {
     "name": "Heimwerkerladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/dry_cleaning": {
     "name": "Chemische Reinigung",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/e-cigarette": {
     "name": "E-Zigarettengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/electronics": {
     "name": "Elektronikfachgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/erotic": {
     "name": "Erotikgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/fabric": {
     "name": "Stoffgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/farm": {
     "name": "Hofladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/fashion": {
     "name": "Modegeschäft",
     "fields": [
-      "Kleidung"
+      {
+        "field_key": "clothes",
+        "field_name": "Kleidung"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/fishmonger": {
     "name": "Fischhändler",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/florist": {
     "name": "Blumenhändler",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/frame": {
     "name": "Bilderrahmengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/funeral_directors": {
     "name": "Beerdigungsinstitut",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Religion"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "religion",
+        "field_name": "Religion"
+      }
     ]
   },
   "shop/furnace": {
     "name": "Heizungsfachgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/furniture": {
     "name": "Möbelhaus",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/garden_centre": {
     "name": "Gartenzentrum",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/gas": {
     "name": "Gasflaschenverkauf",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/gift": {
     "name": "Geschenkladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/greengrocer": {
     "name": "Gemüsehändler",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/hairdresser": {
     "name": "Friseur",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/hardware": {
     "name": "Eisenwarenhandel",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/hearing_aids": {
     "name": "Hörgerätegeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/herbalist": {
     "name": "Kräuterladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/hifi": {
     "name": "Hifi-Laden",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/houseware": {
     "name": "Haushaltswarengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/interior_decoration": {
     "name": "Innenausstattungsgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/jewelry": {
     "name": "Juwelier",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/kiosk": {
     "name": "Zeitungskiosk",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/kitchen": {
     "name": "Kücheneinrichtungsgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/laundry": {
     "name": "Wäscherei",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/leather": {
     "name": "Lederbekleidungsgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/locksmith": {
     "name": "Schlosser",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/lottery": {
     "name": "Lottoannahmestelle",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/mall": {
     "name": "Einkaufzentrum",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/massage": {
     "name": "Massagesalon",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/medical_supply": {
     "name": "Medizinbedarfgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/mobile_phone": {
     "name": "Mobiltelefonladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/money_lender": {
     "name": "Geldverleiher",
     "fields": [
-      "Währungen"
+      {
+        "field_key": "currency_multi",
+        "field_name": "Währungen"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/motorcycle": {
     "name": "Motorradhändler",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/music": {
     "name": "Musikgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/musical_instrument": {
     "name": "Musikinstrumentegeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/newsagent": {
     "name": "Zeitungs-/Magazin-Geschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/nutrition_supplements": {
     "name": "Nahrungsergänzungsmittelgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/optician": {
     "name": "Optiker",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/organic": {
     "name": "Bioladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/outdoor": {
     "name": "Outdoorgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/paint": {
     "name": "Farbengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/pastry": {
     "name": "Konditorei",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/pawnbroker": {
     "name": "Pfandleiher",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/perfumery": {
     "name": "Parfümerie",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/pet": {
     "name": "Tierhandlung",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/photo": {
     "name": "Fotofachgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/pyrotechnics": {
     "name": "Feuerwerksgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/radiotechnics": {
     "name": "Radio/Elektronik-Geschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/religion": {
     "name": "Devotionalienhandlung",
     "fields": [
-      "Glaubensrichtung, Konfession",
-      "Religion"
+      {
+        "field_key": "denomination",
+        "field_name": "Glaubensrichtung, Konfession"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "religion",
+        "field_name": "Religion"
+      }
     ]
   },
   "shop/scuba_diving": {
     "name": "Tauchwarengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/seafood": {
     "name": "Fischgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/second_hand": {
     "name": "Second-Hand-Laden",
     "fields": [
-      "Second Hand"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "second_hand",
+        "field_name": "Second Hand"
+      }
     ]
   },
   "shop/shoes": {
     "name": "Schuhgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/sports": {
     "name": "Sportgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/stationery": {
     "name": "Schreibwarengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/storage_rental": {
     "name": "Lagerraumvermieter",
     "fields": [
-      "Gebäude"
+      {
+        "field_key": "building",
+        "field_name": "Gebäude"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "shop/supermarket": {
     "name": "Supermarkt",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/tailor": {
     "name": "Schneider",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/tattoo": {
     "name": "Tätowierungsladen",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/tea": {
     "name": "Teegeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/ticket": {
     "name": "Eintrittskartenverkäufer",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/tiles": {
     "name": "Fliesenhändler",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/tobacco": {
     "name": "Trafik",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/toys": {
     "name": "Spielwarengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/trade": {
     "name": "Baustoffhandel",
     "fields": [
-      "Typ"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "trade",
+        "field_name": "Typ"
+      }
     ]
   },
   "shop/travel_agency": {
     "name": "Reisebüro",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/tyres": {
     "name": "Reifenhandel",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/vacant": {
     "name": "Leerstehendes Geschäft",
@@ -1645,191 +3463,481 @@
   },
   "shop/vacuum_cleaner": {
     "name": "Staubsaugergeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/variety_store": {
     "name": "Gemischtwarenhandel",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/video": {
     "name": "Videothek",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/video_games": {
     "name": "Videospielgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/watches": {
     "name": "Uhrengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/water_sports": {
     "name": "Wassersportgeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/weapons": {
     "name": "Waffengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/window_blind": {
     "name": "Fensterladengeschäft",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "shop/wine": {
     "name": "Vinothek",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/alpine_hut": {
     "name": "Schutzhütte",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "tourism/apartment": {
     "name": "Ferienwohnung",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Räume",
-      "Rauchen"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "rooms",
+        "field_name": "Räume"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "tourism/aquarium": {
     "name": "Aquarium",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/artwork": {
     "name": "Kunst",
     "fields": [
-      "Künstler",
-      "Typ"
+      {
+        "field_key": "artist",
+        "field_name": "Künstler"
+      },
+      {
+        "field_key": "artwork_type",
+        "field_name": "Typ"
+      }
     ]
   },
   "tourism/attraction": {
     "name": "Touristenattraktion",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/camp_site": {
     "name": "Campingplatz",
     "fields": [
-      "Kapazität",
-      "Gebühr",
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "tourism/caravan_site": {
     "name": "Wohnwagen-Campingplatz",
     "fields": [
-      "Kapazität",
-      "Gebühr",
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Stromversorgung",
-      "Toilettenentsorgungsanlage"
+      {
+        "field_key": "capacity",
+        "field_name": "Kapazität"
+      },
+      {
+        "field_key": "fee",
+        "field_name": "Gebühr"
+      },
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "power_supply",
+        "field_name": "Stromversorgung"
+      },
+      {
+        "field_key": "sanitary_dump_station",
+        "field_name": "Toilettenentsorgungsanlage"
+      }
     ]
   },
   "tourism/chalet": {
     "name": "Ferienhaus",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Rauchen"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "tourism/gallery": {
     "name": "Kunstgalerie",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/guest_house": {
     "name": "Pension, Gästehaus",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Räume",
-      "Rauchen"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "rooms",
+        "field_name": "Räume"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "tourism/hostel": {
     "name": "Herberge",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Räume",
-      "Rauchen"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "rooms",
+        "field_name": "Räume"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "tourism/hotel": {
     "name": "Hotel",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Räume",
-      "Rauchen",
-      "Sterne"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "rooms",
+        "field_name": "Räume"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      },
+      {
+        "field_key": "stars",
+        "field_name": "Sterne"
+      }
     ]
   },
   "tourism/information": {
     "name": "Information",
     "fields": [
-      "Typ"
+      {
+        "field_key": "information",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "tourism/information/board": {
     "name": "Informationstafel",
     "fields": [
-      "Typ"
+      {
+        "field_key": "board_type",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "tourism/information/guidepost": {
     "name": "Wegweiser",
     "fields": [
-      "Referenzcode"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "ref",
+        "field_name": "Referenzcode"
+      }
     ]
   },
   "tourism/information/map": {
     "name": "Karte",
     "fields": [
-      "Abdeckung",
-      "Typ"
+      {
+        "field_key": "map_size",
+        "field_name": "Abdeckung"
+      },
+      {
+        "field_key": "map_type",
+        "field_name": "Typ"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
     ]
   },
   "tourism/information/office": {
     "name": "Tourismusbüro",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/motel": {
     "name": "Motel",
     "fields": [
-      "Internetzugang",
-      "Internetzugangsgebühr",
-      "SSID (Netzwerk Name)",
-      "Räume",
-      "Rauchen"
+      {
+        "field_key": "internet_access",
+        "field_name": "Internetzugang"
+      },
+      {
+        "field_key": "internet_access/fee",
+        "field_name": "Internetzugangsgebühr"
+      },
+      {
+        "field_key": "internet_access/ssid",
+        "field_name": "SSID (Netzwerk Name)"
+      },
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "rooms",
+        "field_name": "Räume"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "tourism/museum": {
     "name": "Museum",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/picnic_site": {
     "name": "Picknickplatz",
     "fields": [
-      "Rauchen"
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      },
+      {
+        "field_key": "smoking",
+        "field_name": "Rauchen"
+      }
     ]
   },
   "tourism/theme_park": {
     "name": "Themenpark",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   },
   "tourism/viewpoint": {
     "name": "Aussichtspunkt",
@@ -1837,6 +3945,11 @@
   },
   "tourism/zoo": {
     "name": "Zoo",
-    "fields": []
+    "fields": [
+      {
+        "field_key": "operator",
+        "field_name": "Betreiber"
+      }
+    ]
   }
 }

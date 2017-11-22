@@ -1,14 +1,19 @@
-import axios from 'axios'
 import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
+import xml2json from 'jquery-xml2json'
 
 // todo move to config
-const urlBase = 'https://master.apis.dev.openstreetmap.org'
+const urlBase = 'https://master.apis.dev.openstreetmap.org/api/0.6/'
 
-let urlNote = urlBase + '/api/0.6/notes.json'
-let urlComment = urlBase + '/api/0.6/notes/'
-const userPath = '/api/0.6/user/details.json'
+const createNotePath = 'notes.json'
+const createChangesetPath = 'changeset/create'
+const uploadChangesetPath = 'changeset/'
+const closeChangesetPath = 'changeset/'
+const getNodePath = 'node/'
+const userPath = 'user/details.json'
+
+let changesetID = 0
 
 // prod keys move to config
 // const oauthKey = 'deem7DGxX11rEQZ1SjYQ2lL0O9JCCNtqBzFUePjA'
@@ -92,24 +97,256 @@ export function loadUser () {
 
 export default {
 
-  post_Note: (note) => {
-    return axios.post(urlNote, note)
-      .then(response => {
-        return {
-          html: response.data.properties.comments[0].html,
-          id: response.data.properties.id,
-          status: response.data.properties.status
+  post_Node: (node) => {
+    let create =
+      '<osm>' +
+        '<changeset>' +
+          '<tag k="comment" v="#OsMyBiz"/>' +
+          '<tag k="created_by" v="OSMyBiz"/>' +
+          '<tag k="changesets_count" v="1"/>' +
+        '</changeset>' +
+      '</osm>'
+    return new Promise((resolve) => {
+      auth.xhr(
+        {
+          method: 'PUT',
+          path: createChangesetPath,
+          content: create,
+          options: {
+            header: {
+              'Content-Type': 'text/xml'
+            }
+          }
+        }, (err, response) => {
+        if (err) {
+          console.log(err)
         }
+        changesetID = response
+        resolve(uploadChangeset(node))
       })
-      .catch(e => {
-        console.log(e)
-      })
+    })
   },
 
-  post_Comment: (id, comment) => {
+  post_Note: (note) => {
+    return new Promise((resolve) => {
+      auth.xhr(
+        {
+          method: 'POST',
+          path: createNotePath,
+          content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
+        }, (err, response) => {
+        if (err) {
+          console.log(err)
+          resolve(null)
+        }
+        const data = JSON.parse(response)
+        resolve({
+          html: data.properties.comments[0].html,
+          id: data.properties.id,
+          status: data.properties.status
+        })
+      })
+    })
+  }
+
+  /* post_Comment: (id, comment) => {
     return axios.post(urlComment + id + '/comment?text=' + comment)
       .catch(e => {
         console.log(e)
       })
+  } */
+}
+
+function uploadChangeset (node) {
+  let upload = constructUpload(node)
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'POST',
+        path: uploadChangesetPath + changesetID + '/upload',
+        content: upload,
+        options: {
+          header: {
+            'Content-Type': 'text/xml'
+          }
+        }
+      }, (err, response) => {
+      if (err) {
+        console.log(err)
+        resolve(null)
+      }
+      closeChangeset()
+      resolve(getNode(xml2json(response)['#document'].diffResult.node.$.new_id))
+    })
+  })
+}
+
+function constructUpload (node) {
+  let category = node.details.category.value.split('/')
+  let xml = '' +
+    '<osmChange version="0.6" generator="OSMyBiz">' +
+    '<create>' +
+    '<node id="-1" version="0"' +
+    ' lat="' + node.lat + '"' +
+    ' lon="' + node.lon + '"' +
+    ' changeset="' + changesetID + '">' +
+    '<tag k="' + category[0] + '" v="' + category[1] + '"/>' +
+    '<tag k="name" v="' + node.details.name + '"/>'
+
+  xml += createAddressTags(node)
+
+  xml += createDetailTags(node)
+
+  xml += '</node>' +
+    '</create>' +
+    '</osmChange>'
+
+  return xml
+}
+
+function createAddressTags (node) {
+  let text = ''
+  if (node.address.street) {
+    text += '<tag k="addr:street" v="' + node.address.street + '"/>'
   }
+  if (node.address.housenumber) {
+    text += '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>'
+  }
+  if (node.address.postcode) {
+    text += '<tag k="addr:postcode" v="' + node.address.postcode + '"/>'
+  }
+  if (node.address.city) {
+    text += '<tag k="addr:city" v="' + node.address.city + '"/>'
+  }
+  return text
+}
+
+function createDetailTags (node) {
+  let text = ''
+  if (node.details.opening_hours.length !== 0) {
+    text += '<tag k="opening_hours" v="' + node.details.opening_hours + '"/>'
+  }
+  if (node.details.phone.length !== 0) {
+    text += '<tag k="phone" v="' + node.details.phone + '"/>'
+  }
+  if (node.details.email.length !== 0) {
+    text += '<tag k="email" v="' + node.details.email + '"/>'
+  }
+  if (node.details.website.length !== 0) {
+    text += '<tag k="website" v="' + node.details.website + '"/>'
+  }
+  if (node.details.wheelchair.length !== 0) {
+    text += '<tag k="wheelchair" v="' + node.details.wheelchair + '"/>'
+  }
+  if (node.details.description.length !== 0) {
+    text += '<tag k="description" v="' + node.details.description + '"/>'
+  }
+  if (node.details.note.length !== 0) {
+    text += '<tag k="note" v="' + node.details.note + '"/>'
+  }
+
+  node.details.category.fields.forEach(function (field) {
+    if (field.value.length !== 0) {
+      text += '<tag k="' + field.key + '" v="' + field.value + '"/>'
+    }
+  })
+
+  return text
+}
+
+function closeChangeset () {
+  auth.xhr(
+    {
+      method: 'PUT',
+      path: closeChangesetPath + changesetID + '/close'
+    }, (err) => {
+    if (err) {
+      console.log(err)
+    }
+  })
+}
+
+function getNode (nodeId) {
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'GET',
+        path: getNodePath + nodeId
+      }, (err, response) => {
+      if (err) {
+        console.log(err)
+        resolve(err)
+      }
+      console.log(xml2json(response)['#document'].osm.node)
+      resolve(parseNode(xml2json(response)['#document'].osm.node))
+    })
+  })
+}
+
+function parseNode (node) {
+  let address = parseAddress(node)
+  let details = parseDetails(node)
+
+  return {
+    id: node.$.id,
+    lat: node.$.lat,
+    lon: node.$.lon,
+    link: 'https://master.apis.dev.openstreetmap.org/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
+    address: address,
+    details: details
+  }
+}
+
+function parseAddress (node) {
+  let address = {}
+  const tags = [{
+    k: 'addr:street',
+    v: 'street'
+  }, {
+    k: 'addr:housenumber',
+    v: 'housenumber'
+  }, {
+    k: 'addr:postcode',
+    v: 'postcode'
+  }, {
+    k: 'addr:city',
+    v: 'city'
+  }]
+  for (let nodeTag of node.tag) {
+    for (let tag of tags) {
+      if (tag.k === nodeTag.$.k) {
+        address[tag.v] = nodeTag.$.v
+      }
+    }
+  }
+  return address
+}
+
+function parseDetails (node) {
+  let details = {}
+  const tags = [{
+    k: 'name'
+  }, {
+    k: 'opening_hours'
+  }, {
+    k: 'phone'
+  }, {
+    k: 'email'
+  }, {
+    k: 'website'
+  }, {
+    k: 'wheelchair'
+  }, {
+    k: 'description'
+  }, {
+    k: 'note'
+  }]
+  for (let nodeTag of node.tag) {
+    for (let tag of tags) {
+      if (tag.k === nodeTag.$.k) {
+        details[tag.k] = nodeTag.$.v
+      }
+    }
+  }
+  return details
 }

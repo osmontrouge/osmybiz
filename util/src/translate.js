@@ -23,7 +23,10 @@ jsonfile.readFile(presets_json, function (err, obj) {
                         if(obj[filtered_key].fields){
                             obj[filtered_key].fields.forEach(function (filtered_field_key) {
                                 if(field_key === filtered_field_key) {
-                                    fields.push(data.de.presets.fields[field_key].label)
+                                    fields.push({
+                                        field_key: field_key,
+                                        field_name: data.de.presets.fields[field_key].label
+                                    })
                                 }
                             })
                         }

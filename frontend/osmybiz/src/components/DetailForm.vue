@@ -78,13 +78,13 @@
           <div class="field-label">
             <label>Öffnungszeiten</label>
             <img class="info"
-                 @mouseenter="showPopup('openinghours')"
+                 @mouseenter="showPopup('opening_hours')"
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
 
           <input type="text"
-                 v-model="details.openinghours"
+                 v-model="details.opening_hours"
                  placeholder="Mo-Fr 08:00-17:00">
         </div>
 
@@ -92,12 +92,12 @@
           <div class="field-label">
             <label>Telefonnummer</label>
             <img class="info"
-                 @mouseenter="showPopup('phonenumber')"
+                 @mouseenter="showPopup('phone')"
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
           <input type="text"
-                 v-model="details.phonenumber"
+                 v-model="details.phone"
                  placeholder="+41 11 111 11 11">
         </div>
 
@@ -153,7 +153,32 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input class="checkbox" type="checkbox" v-model="details.wheelchair">
+          <div class="checkboxes">
+            <div class="checkbox-wrapper">
+              <input class="checkbox"
+                     type="radio"
+                     id="one"
+                     value="yes"
+                     v-model="details.wheelchair">
+              <label>Ja</label>
+            </div>
+            <div class="checkbox-wrapper">
+              <input class="checkbox"
+                     type="radio"
+                     id="two"
+                     value="limited"
+                     v-model="details.wheelchair">
+              <label>Eingeschränkt</label>
+            </div>
+            <div class="checkbox-wrapper">
+              <input class="checkbox"
+                     type="radio"
+                     id="three"
+                     value="no"
+                     v-model="details.wheelchair">
+              <label>Nein</label>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -184,39 +209,46 @@
       </div>
     </div>
 
-    <div class="extra-fields" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <h3>Folgende Felder sind mögliche Zusatzinformationen:</h3>
-      <div class="column">
-        <div class="field"
-             v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
-          <label>{{ field.name }}</label>
-          <input type="text" v-model="field.value">
+    <h5>Felder mit * sind Pflichtfelder</h5>
+
+    <div class="extra-wrapper" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
+      <h3>Zusatzinformationen:</h3>
+      <div class="extra-fields">
+        <div class="column">
+          <div class="field"
+               v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
+            <label>{{ field.name }}</label>
+            <input type="text" v-model="field.value">
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <div class="field"
-             v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
-          <label>{{ field.name }}</label>
-          <input type="text" v-model="field.value">
+        <div class="column">
+          <div class="field"
+               v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
+            <label>{{ field.name }}</label>
+            <input type="text" v-model="field.value">
+          </div>
         </div>
       </div>
     </div>
 
     <div class="form-footer">
       <button class="button"
-              @click="reset()">
-        Zurücksetzen</button>
-      <button class="button"
-              v-if="!isComment"
+              v-if="isNote"
               :disabled="isRequiredFields()"
               @click="submitNote()">
         Speichern</button>
+      <!--
       <button class="button"
               v-if="isComment"
               :disabled="isRequiredFields()"
               @click="submitComment()">
         Speichern</button>
-      <span>Felder mit * sind Pflichtfelder</span>
+        -->
+      <button class="button"
+              v-if="!isNote"
+              :disabled="isRequiredFields()"
+              @click="submitNode()">
+        Create Node</button>
     </div>
   </div>
 
@@ -241,7 +273,7 @@
         'tags',
         'isOwnCategory',
         'isPopup',
-        'isComment',
+        'isNote',
         'infoText',
         'infoMap',
         'temp'
@@ -257,13 +289,14 @@
       ]),
       ...mapActions([
         'postNote',
-        'postComment'
+        'postComment',
+        'postNode'
       ]),
       submitNote () {
         this.postNote()
       },
-      submitComment () {
-        this.postComment()
+      submitNode () {
+        this.postNode()
       },
       hideInput () {
         this.setIsOwnCategory(false)
@@ -319,6 +352,18 @@
     flex-grow: 1;
   }
 
+  .checkboxes {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
   .checkbox {
     height: 44px;
     width: 24px;
@@ -328,7 +373,7 @@
     resize: none;
   }
 
-  h2, h3 {
+  h2, h3, h5 {
     text-align: left;
   }
 
@@ -342,6 +387,14 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: stretch;
+  }
+
+  .extra-wrapper {
+    border-top: 1px solid #7ebc6f;
+  }
+
+  .extra-wrapper h3 {
+    margin-top: 10px;
   }
 
   .extra-fields {
