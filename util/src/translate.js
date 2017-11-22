@@ -1,6 +1,5 @@
 var jsonfile = require('jsonfile')
 
-//var presets_json = 'assets/filtered_presets.json';
 var presets_json = 'assets/with_Options.json';
 var translation = 'assets/locales/de.json';
 

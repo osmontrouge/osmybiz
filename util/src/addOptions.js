@@ -52,7 +52,6 @@ jsonfile.readFile(fields, function (err, obj) {
             }
         })
 
-        //var output = '../../frontend/osmybiz/src/assets/tags_de.json';
         var output = './assets/with_Options.json';
 
         jsonfile.writeFile(output, with_Options, function (err) {
