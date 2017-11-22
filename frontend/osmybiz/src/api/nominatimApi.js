@@ -3,7 +3,7 @@ import {latLng} from 'leaflet'
 import * as _ from 'lodash'
 
 const baseUrl = 'https://nominatim.openstreetmap.org/search'
-const reverseBaseUrl = 'http://nominatim.openstreetmap.org/reverse'
+const reverseBaseUrl = 'https://nominatim.openstreetmap.org/reverse'
 const queryMax = 10
 
 function parseCoords (lat, lng) {

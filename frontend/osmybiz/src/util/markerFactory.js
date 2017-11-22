@@ -5,7 +5,7 @@ import * as $ from 'jquery'
 import {getNodeCategoryKey} from './overPassNodeUtils'
 
 const bizMarker = L.icon({
-  iconUrl: '../static/biz-marker.png',
+  iconUrl: require('../assets/biz-marker.png'),
   iconSize: [64, 64]
 })
 

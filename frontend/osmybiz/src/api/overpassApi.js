@@ -6,7 +6,7 @@ const tagRegex = categoryTags.join('|')
 
 const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`
 
-const url = 'http://overpass.osm.ch/api/interpreter'
+const url = 'https://overpass.osm.ch/api/interpreter'
 
 const filters = [
   {
