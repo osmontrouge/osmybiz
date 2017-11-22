@@ -217,15 +217,17 @@
         <div class="column">
           <div class="field"
                v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
-            <label>{{ field.name }}</label>
-            <input type="text" v-model="field.value">
+            <label>{{ field.label }}</label>
+            <extra-input-field :field="field"></extra-input-field>
+            <!--<input type="text" v-model="field.value">-->
           </div>
         </div>
         <div class="column">
           <div class="field"
                v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
-            <label>{{ field.name }}</label>
-            <input type="text" v-model="field.value">
+            <label>{{ field.label }}</label>
+            <extra-input-field :field="field"></extra-input-field>
+            <!--<input type="text" v-model="field.value">-->
           </div>
         </div>
       </div>
@@ -259,6 +261,7 @@
   import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
+  import ExtraInputField from '../components/ExtraInputField'
 
   Vue.use(VeeValidate)
 
@@ -330,7 +333,8 @@
       }
     },
     components: {
-      BasicSelect
+      BasicSelect,
+      ExtraInputField
     }
   }
 </script>

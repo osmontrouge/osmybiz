@@ -8,11 +8,29 @@ const options = []
 Object.keys(tags).forEach(function (key) {
   var fields = []
   tags[key].fields.forEach(function (field) {
-    fields.push({
-      key: field.field_key,
-      name: field.field_name,
-      value: ''
-    })
+    if (field.options) {
+      var options = []
+      Object.keys(field.options).forEach(function (option) {
+        options.push({
+          text: field.options[option],
+          value: ''
+        })
+      })
+      fields.push({
+        key: field.key,
+        label: field.label,
+        type: field.type,
+        options: options,
+        value: ''
+      })
+    } else {
+      fields.push({
+        key: field.key,
+        label: field.label,
+        type: field.type,
+        value: ''
+      })
+    }
   })
   options.push({
     value: key,
