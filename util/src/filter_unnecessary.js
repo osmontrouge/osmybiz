@@ -41,7 +41,7 @@ const filters = [
     }, {
         key: 'tourism',
         values: [
-            'picnic_site', 'viewpoint', 'information'
+            'picnic_site', 'viewpoint', 'information', 'artwork'
         ]
     }
 ]
