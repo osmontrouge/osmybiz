@@ -1,0 +1,21 @@
+{
+  "infoTexts": {
+    "category": "",
+    "name": "",
+    "openinghours": "",
+    "phonenumber": "",
+    "email": "",
+    "website": "",
+    "wheelchair": "",
+    "description": "",
+    "note": ""
+  },
+  "landing": {
+    "search": "Search...",
+    "satelite": "Satelite",
+    "map": "Map"
+  },
+  "detail": {
+
+  }
+}

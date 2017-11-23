@@ -3,7 +3,7 @@
   <div class="search-bar-wrapper">
 
     <div class="input-wrapper">
-      <input type="text" class="search-bar" placeholder="Suchen..." v-model="search">
+      <input type="text" class="search-bar" :placeholder="t('landing').search" v-model="search">
       <div v-if="search && search.length" class="remove" @click="resetSearch()">x</div>
     </div>
 

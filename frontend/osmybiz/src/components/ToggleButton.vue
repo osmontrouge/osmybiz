@@ -1,8 +1,8 @@
 <template>
 
   <div class="toggle-wrapper">
-    <button @click="setSatellite()" v-if="isTiles">Satellit</button>
-    <button @click="setTiles()" v-if="isSatellite">Karte</button>
+    <button @click="setSatellite()" v-if="isTiles">{{t('landing').satelite}}</button>
+    <button @click="setTiles()" v-if="isSatellite">{{t('landing').map}}</button>
   </div>
 
 </template>
