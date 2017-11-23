@@ -6,15 +6,22 @@ export const mapBoxToken = 'pk.eyJ1IjoibXRoaSIsImEiOiJjajlzZHJqZGc2bGRxMnhxbTd0b
 export const initialPosition = latLng(46.87897, 8.23975) // aprox center of switzerland
 export const initialZoom = 8
 
+// state for osmApi (dev oder prod)
+let state = 'dev'
+
 // osm authentification token and key
-export const oauthKey = 'deem7DGxX11rEQZ1SjYQ2lL0O9JCCNtqBzFUePjA'
-export const oauthSecret = 'umPZIExDrNP4KvcXkhwBNIlH9J8jByPSCSwwL4w9'
+export const oauthKey = state === 'dev'
+  ? 'IRTx85wq5Mv1TT7gt6iJ1KbPJiUyMmASB8jfuRCK'
+  : 'deem7DGxX11rEQZ1SjYQ2lL0O9JCCNtqBzFUePjA'
+export const oauthSecret = state === 'dev'
+  ? 'tLZgaEwwAHn1eXoc79rsDLqdAwjHCi0Lh38T7ki7'
+  : 'umPZIExDrNP4KvcXkhwBNIlH9J8jByPSCSwwL4w9'
 
 // change between development (dev) and production (prod)
-let state = 'dev'
+export const osmApiLevel = '/api/0.6/'
 export const osmUrl = state === 'dev'
-  ? 'https://master.apis.dev.openstreetmap.org/api/0.6/'
-  : 'https://http://api.openstreetmap.org/api/0.6/'
+  ? 'https://master.apis.dev.openstreetmap.org/'
+  : 'https://http://api.openstreetmap.org/'
 
 // nominatim Urls
 export const nominatimUrl = 'https://nominatim.openstreetmap.org/search'

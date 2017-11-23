@@ -1,6 +1,7 @@
 var jsonfile = require('jsonfile')
 
 var tags = 'assets/tags.json';
+
 const filters = [
     {
         key: 'amenity',
@@ -68,7 +69,7 @@ jsonfile.readFile(tags, function (err, obj) {
         }
     });
 
-    var output = '../../frontend/osmybiz/src/assets/tags_de.json';
+    var output = '../../frontend/osmybiz/src/assets/tags_'+ process.argv[2] +'.json';
 
     jsonfile.writeFile(output, data, function (err) {
         console.error(err)

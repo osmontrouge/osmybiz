@@ -14,10 +14,33 @@ function getBizCategory (node) {
   const key = getNodeCategoryKey(node)
   var fields = []
   getTagName(key).fields.forEach(function (field) {
-    fields.push({
-      name: field,
-      value: ''
-    })
+    var value = ''
+    if (node.tags[field.key]) {
+      value = node.tags[field.key]
+    }
+    if (field.options) {
+      var options = []
+      Object.keys(field.options).forEach(function (option) {
+        options.push({
+          key: option,
+          text: field.options[option]
+        })
+      })
+      fields.push({
+        key: field.key,
+        label: field.label,
+        type: field.type,
+        options: options,
+        value: value
+      })
+    } else {
+      fields.push({
+        key: field.key,
+        label: field.label,
+        type: field.type,
+        value: value
+      })
+    }
   })
   return {
     text: getTagName(key).name,

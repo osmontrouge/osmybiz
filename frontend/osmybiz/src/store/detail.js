@@ -4,29 +4,13 @@ import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
 
 const options = []
-
-let keys = Object.keys(tags)
-
-keys.forEach(function (key) {
-  var fields = []
-  tags[key].fields.forEach(function (field) {
-    fields.push({
-      name: field,
-      value: ''
-    })
-  })
-  options.push({
-    value: key,
-    text: tags[key].name,
-    fields: fields
-  })
-})
+loadTags()
 
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
 infoMap.set('name', infoTexts.name)
-infoMap.set('openinghours', infoTexts.openinghours)
-infoMap.set('phonenumber', infoTexts.phonenumber)
+infoMap.set('opening_hours', infoTexts.opening_hours)
+infoMap.set('phone', infoTexts.phone)
 infoMap.set('email', infoTexts.email)
 infoMap.set('website', infoTexts.website)
 infoMap.set('wheelchair', infoTexts.wheelchair)
@@ -47,30 +31,28 @@ const state = {
       text: '',
       value: 0,
       fields: [
-        {name: '', value: ''}
+        {key: '', name: '', value: ''}
       ]
     },
     name: '',
-    openinghours: '',
-    phonenumber: '',
+    opening_hours: '',
+    phone: '',
     email: '',
     website: '',
-    wheelchair: false,
+    wheelchair: '',
     description: '',
     note: ''
   },
   isOwnCategory: false,
   isLoading: true,
   isPopup: false,
-  isComment: false,
+  isNote: false,
   infoText: '',
   infoMap: infoMap,
 
   // PostNoteSuccess
   note: {},
-  comment: {},
-  displayNote: false,
-  displayComment: false,
+  node: {},
 
   // AddressConfirmation
   address: {},
@@ -78,11 +60,23 @@ const state = {
 }
 
 const actions = {
+  postNode ({commit}) {
+    let node = {
+      lat: state.lat,
+      lon: state.lon,
+      details: state.details,
+      address: state.address
+    }
+    osmApi.post_Node(node).then(ps => {
+      state.displaySuccess = true
+      commit('setNode', ps)
+      console.log(ps)
+    })
+  },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
       state.displaySuccess = true
-      state.displayNote = true
       commit('setNote', ps)
     })
   },
@@ -108,6 +102,9 @@ const mutations = {
   setNote (state, note) {
     state.note = note
   },
+  setNode (state, node) {
+    state.node = node
+  },
   setDisplaySuccess (state, displaySuccess) {
     state.displaySuccess = displaySuccess
   },
@@ -123,8 +120,8 @@ const mutations = {
   setIsPopup (state, isPopup) {
     state.isPopup = isPopup
   },
-  setIsComment (state, isComment) {
-    state.isComment = isComment
+  setIsNote (state, isNote) {
+    state.isNote = isNote
   },
   setCoords (state, pos) {
     state.lat = pos.lat
@@ -154,6 +151,9 @@ const getters = {
   note (state) {
     return state.note
   },
+  node (state) {
+    return state.node
+  },
   comment (state) {
     return state.comment
   },
@@ -178,8 +178,8 @@ const getters = {
   isPopup (state) {
     return state.isPopup
   },
-  isComment (state) {
-    return state.isComment
+  isNote (state) {
+    return state.isNote
   },
   tags (state) {
     return state.tags
@@ -230,11 +230,11 @@ function constructNote () {
   if (state.details.name.length !== 0) {
     text += 'Name: ' + state.details.name + '\n'
   }
-  if (state.details.openinghours.length !== 0) {
-    text += 'Opening hours: ' + state.details.openinghours + '\n'
+  if (state.details.opening_hours.length !== 0) {
+    text += 'Opening hours: ' + state.details.opening_hours + '\n'
   }
-  if (state.details.phonenumber.length !== 0) {
-    text += 'Phone number: ' + state.details.phonenumber + '\n'
+  if (state.details.phone.length !== 0) {
+    text += 'Phone number: ' + state.details.phone + '\n'
   }
   if (state.details.email.length !== 0) {
     text += 'Email: ' + state.details.email + '\n'
@@ -242,8 +242,8 @@ function constructNote () {
   if (state.details.website.length !== 0) {
     text += 'Website: ' + state.details.website + '\n'
   }
-  if (state.details.wheelchair === true) {
-    text += 'Wheelchair accessible: Yes \n'
+  if (state.details.wheelchair !== 0) {
+    text += 'Wheelchair accessible: ' + state.details.wheelchair + '\n'
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + '\n'
@@ -293,11 +293,11 @@ function constructComment () {
   if (state.details.name.length !== 0) {
     text += 'Name: ' + state.details.name + ', '
   }
-  if (state.details.openinghours.length !== 0) {
-    text += 'Opening hours: ' + state.details.openinghours + ', '
+  if (state.details.opening_hours.length !== 0) {
+    text += 'Opening hours: ' + state.details.opening_hours + ', '
   }
-  if (state.details.phonenumber.length !== 0) {
-    text += 'Phone number: ' + state.details.phonenumber + ', '
+  if (state.details.phone.length !== 0) {
+    text += 'Phone number: ' + state.details.phone + ', '
   }
   if (state.details.email.length !== 0) {
     text += 'Email: ' + state.details.email + ', '
@@ -305,8 +305,8 @@ function constructComment () {
   if (state.details.website.length !== 0) {
     text += 'Website: ' + state.details.website + ', '
   }
-  if (state.details.wheelchair === true) {
-    text += 'Wheelchair accessible: Yes , '
+  if (state.details.wheelchair !== 0) {
+    text += 'Wheelchair accessible: ' + state.details.wheelchair + ', '
   }
   if (state.details.description.length !== 0) {
     text += 'Description: ' + state.details.description + ', '
@@ -316,4 +316,40 @@ function constructComment () {
   }
 
   return text
+}
+
+function loadTags () {
+  Object.keys(tags).forEach(function (key) {
+    var fields = []
+    tags[key].fields.forEach(function (field) {
+      if (field.options) {
+        var options = []
+        Object.keys(field.options).forEach(function (option) {
+          options.push({
+            key: option,
+            text: field.options[option]
+          })
+        })
+        fields.push({
+          key: field.key,
+          label: field.label,
+          type: field.type,
+          options: options,
+          value: ''
+        })
+      } else {
+        fields.push({
+          key: field.key,
+          label: field.label,
+          type: field.type,
+          value: ''
+        })
+      }
+    })
+    options.push({
+      value: key,
+      text: tags[key].name,
+      fields: fields
+    })
+  })
 }

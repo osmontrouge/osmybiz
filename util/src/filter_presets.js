@@ -35,7 +35,6 @@ jsonfile.readFile(presets, function (err, obj) {
                 switch (field){
                     case "name": return false;
                     case "address": return false;
-                    case "operator": return false;
                     case "building_area": return false;
                     case "opening_hours": return false;
                     case "website": return false;
