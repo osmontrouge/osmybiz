@@ -3079,21 +3079,6 @@
       }
     ]
   },
-  "tourism/artwork": {
-    "name": "Kunst",
-    "fields": [
-      {
-        "key": "artist",
-        "type": "text",
-        "label": "Künstler"
-      },
-      {
-        "key": "artwork_type",
-        "type": "combo",
-        "label": "Typ"
-      }
-    ]
-  },
   "tourism/attraction": {
     "name": "Touristenattraktion",
     "fields": [
