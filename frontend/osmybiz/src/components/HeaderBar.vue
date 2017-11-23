@@ -123,7 +123,9 @@
   }
 
   select {
+    border: 2px solid #7ebc6f;
     padding: 7px 8px;
+    outline: none;
   }
 
 </style>

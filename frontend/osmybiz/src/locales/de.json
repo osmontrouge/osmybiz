@@ -17,11 +17,10 @@
   },
   "detail": {
     "title": "Geschäft erfassen",
-    "required-subtitle": "Felder mit * sind Pflichtfelder",
-    "required-span": "Dies ist ein Pflichtfeld",
+    "subtitle": "Zusatzinformationen",
     "save": "Speichern",
-    "own-category": "Eigene Kategorie",
-    "choose-category": "Kategorie wählen",
+    "owncategory": "Eigene Kategorie",
+    "choosecategory": "Kategorie wählen",
     "labels": {
       "category": "Kategorie",
       "name": "Name",
@@ -33,11 +32,12 @@
       "yes": "Ja",
       "limited": "Eingeschränkt",
       "no": "Nein",
-      "description": "Beschreibung",
+      "description": "Beschreibung des Geschäfts",
       "note": "Notiz für eintragende Person"
     },
     "placeholders": {
       "category": "Kategorie wählen...",
+      "owncategory": "Kategorie eingeben...",
       "name": "Ihr Name...",
       "opening_hours": "Mo-Fr 08:00-17:00",
       "phone": "+41 11 111 11 11",
@@ -45,6 +45,12 @@
       "website": "http://www.example.com",
       "description": "Beschreibung",
       "note": "Notiz"
+    },
+    "validate": {
+      "subtitle": "Felder mit * sind Pflichtfelder",
+      "required": "Dies ist ein Pflichfeld",
+      "email": "E-Mailadresse ist nicht valid",
+      "website": "Webseite ist nicht valid"
     }
   }
 }

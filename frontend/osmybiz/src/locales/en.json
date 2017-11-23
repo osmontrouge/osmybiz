@@ -16,12 +16,11 @@
     "map": "Map"
   },
   "detail": {
-    "title": "Record Business",
-    "required-subtitle": "Fields with * are required",
-    "required-span": "This field is required",
+    "title": "Create Business",
+    "subtitle": "Extra informations",
     "save": "Save",
-    "own-category": "Own Category",
-    "choose-category": "Choose Category",
+    "owncategory": "Own Category",
+    "choosecategory": "Choose Category",
     "labels": {
       "category": "Category",
       "name": "Name",
@@ -33,11 +32,12 @@
       "yes": "Yes",
       "limited": "Limited",
       "no": "No",
-      "description": "Description",
+      "description": "Description of business",
       "note": "Note for mapping Person"
     },
     "placeholders": {
       "category": "Choose Category...",
+      "owncategory": "Insert Category",
       "name": "Your name...",
       "opening_hours": "Mo-Fr 08:00-17:00",
       "phone": "+41 11 111 11 11",
@@ -45,6 +45,12 @@
       "website": "http://www.example.com",
       "description": "Description",
       "note": "Note"
+    },
+    "validate": {
+      "subtitle": "Fields with * are required",
+      "required": "This field is required",
+      "email": "E-Mail address is not valid",
+      "website": "Website is not valid"
     }
   }
 }

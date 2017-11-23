@@ -2,7 +2,7 @@
 
   <div class="form-wrapper">
 
-    <h2>Geschäft erfassen</h2>
+    <h2>{{t('detail').title}}</h2>
 
     <div class="popup" v-if="isPopup">
         <span>{{infoText}}</span>
@@ -11,7 +11,7 @@
     <div class="form-select">
       <div class="field">
         <div class="field-label">
-          <label>Kategorie*</label>
+          <label>{{t('detail').labels.category}}*</label>
           <img id="info-category"
                @mouseenter="showPopup('category')"
                @mouseleave="hidePopup()"
@@ -22,13 +22,13 @@
           <basic-select v-show="!isOwnCategory"
                         :options="this.tags"
                         :selected-option="details.category"
-                        placeholder="Kategorie auswählen"
+                        :placeholder="t('detail').placeholders.category"
                         @select="onSelect"
                         class="basic-select">
           </basic-select>
 
           <button class="button" @click="showInput()">
-            Eigene Kategorie
+            {{t('detail').owncategory}}
           </button>
         </div>
 
@@ -37,15 +37,16 @@
           <input v-validate.initial="'required'"
                  v-model="details.category.text"
                  type="text"
-                 placeholder="Kategorie auswählen"
+                 :placeholder="t('detail').placeholders.owncategory"
                  name="category-input"/>
           <button class="button" @click="hideInput()">
-            Kategorie wählen
+            {{t('detail').choosecategory}}
           </button>
         </div>
 
         <span v-show="details.category.text === ''"
-              class="help is-danger"> Dies ist ein Pflichtfeld.
+              class="help is-danger">
+          {{t('detail').validate.required}}
         </span>
       </div>
     </div>
@@ -54,7 +55,7 @@
       <div class="column">
         <div class="field">
           <div class="field-label">
-            <label>Name*</label>
+            <label>{{t('detail').labels.name}}*</label>
             <img class="info"
                  @mouseenter="showPopup('name')"
                  @mouseleave="hidePopup()"
@@ -66,17 +67,17 @@
                  type="text"
                  name="name"
                  v-model="details.name"
-                 placeholder="Your Name...">
+                 :placeholder="t('detail').placeholders.name">
 
           <span v-show="errors.has('name')"
                 class="help is-danger">
-            Dies ist ein Pflichtfeld
+            {{t('detail').validate.required}}
           </span>
         </div>
 
         <div class="field">
           <div class="field-label">
-            <label>Öffnungszeiten</label>
+            <label>{{t('detail').labels.opening_hours}}</label>
             <img class="info"
                  @mouseenter="showPopup('opening_hours')"
                  @mouseleave="hidePopup()"
@@ -85,12 +86,12 @@
 
           <input type="text"
                  v-model="details.opening_hours"
-                 placeholder="Mo-Fr 08:00-17:00">
+                 :placeholder="t('detail').placeholders.opening_hours">
         </div>
 
         <div class="field">
           <div class="field-label">
-            <label>Telefonnummer</label>
+            <label>{{t('detail').labels.phone}}</label>
             <img class="info"
                  @mouseenter="showPopup('phone')"
                  @mouseleave="hidePopup()"
@@ -98,12 +99,12 @@
           </div>
           <input type="text"
                  v-model="details.phone"
-                 placeholder="+41 11 111 11 11">
+                 :placeholder="t('detail').placeholders.phone">
         </div>
 
         <div class="field" :class="{ 'control': true }">
           <div class="field-label">
-            <label>E-Mail</label>
+            <label>{{t('detail').labels.email}}</label>
             <img class="info"
                  @mouseenter="showPopup('email')"
                  @mouseleave="hidePopup()"
@@ -115,17 +116,17 @@
                  name="email"
                  type="text"
                  v-model="details.email"
-                 placeholder="example@example.com">
+                 :placeholder="t('detail').placeholders.email">
 
           <span v-show="errors.has('email')"
                 class="help is-danger">
-            Emailadresse ist nicht valid.
+            {{t('detail').validate.email}}
           </span>
         </div>
 
         <div class="field">
           <div class="field-label">
-            <label>Webseite</label>
+            <label>{{t('detail').labels.website}}</label>
             <img class="info"
                  @mouseenter="showPopup('website')"
                  @mouseleave="hidePopup()"
@@ -136,17 +137,17 @@
                  type="text"
                  name="website"
                  v-model="details.website"
-                 placeholder="http://www.example.com">
+                 :placeholder="t('detail').placeholders.website">
 
           <span v-show="errors.has('website')"
                 class="help is-danger">
-            Webseite ist nicht valid.
+            {{t('detail').validate.website}}
           </span>
         </div>
 
         <div class="field">
           <div class="field-label">
-            <label>Rollstuhlgängig</label>
+            <label>{{t('detail').labels.wheelchair}}</label>
             <img class="info"
                  @mouseenter="showPopup('wheelchair')"
                  @mouseleave="hidePopup()"
@@ -160,7 +161,7 @@
                      id="one"
                      value="yes"
                      v-model="details.wheelchair">
-              <label>Ja</label>
+              <label>{{t('detail').labels.yes}}</label>
             </div>
             <div class="checkbox-wrapper">
               <input class="radiobutton"
@@ -168,7 +169,7 @@
                      id="two"
                      value="limited"
                      v-model="details.wheelchair">
-              <label>Eingeschränkt</label>
+              <label>{{t('detail').labels.limited}}</label>
             </div>
             <div class="checkbox-wrapper">
               <input class="radiobutton"
@@ -176,7 +177,7 @@
                      id="three"
                      value="no"
                      v-model="details.wheelchair">
-              <label>Nein</label>
+              <label>{{t('detail').labels.no}}</label>
             </div>
           </div>
         </div>
@@ -185,34 +186,38 @@
       <div class="column">
         <div class="field">
           <div class="field-label">
-            <label>Beschreibung des Geschäfts</label>
+            <label>{{t('detail').labels.description}}</label>
             <img class="info"
                  @mouseenter="showPopup('description')"
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
 
-          <textarea class="area" v-model="details.description" placeholder="Beschreibung"></textarea>
+          <textarea class="area"
+                    v-model="details.description"
+                    :placeholder="t('detail').placeholders.description"></textarea>
         </div>
 
         <div class="field">
           <div class="field-label">
-            <label>Notiz für eintragende Person</label>
+            <label>{{t('detail').labels.note}}</label>
             <img class="info"
                  @mouseenter="showPopup('note')"
                  @mouseleave="hidePopup()"
                  src="../assets/info_black.png">
           </div>
 
-          <textarea class="area" v-model="details.note" placeholder="Notiz"></textarea>
+          <textarea class="area"
+                    v-model="details.note"
+                    :placeholder="t('detail').placeholders.note"></textarea>
         </div>
       </div>
     </div>
 
-    <h5>Felder mit * sind Pflichtfelder</h5>
+    <h5>{{t('detail').validate.subtitle}}</h5>
 
     <div class="extra-wrapper" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <h3>Zusatzinformationen:</h3>
+      <h3>{{t('detail').subtitle}}</h3>
       <div class="extra-fields">
         <div class="column">
           <div class="field"
@@ -236,7 +241,7 @@
               v-if="isNote"
               :disabled="isRequiredFields()"
               @click="submitNote()">
-        Speichern</button>
+        {{t('save')}}</button>
       <!--
       <button class="button"
               v-if="isComment"
@@ -248,7 +253,7 @@
               v-if="!isNote"
               :disabled="isRequiredFields()"
               @click="submitNode()">
-        Create Node</button>
+        {{t('save')}}</button>
     </div>
   </div>
 
