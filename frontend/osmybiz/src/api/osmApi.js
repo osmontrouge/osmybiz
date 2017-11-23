@@ -1,33 +1,23 @@
+import {osmUrl, osmApiLevel, oauthKey, oauthSecret} from '../config/config'
 import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
 
-// todo move to config
-const urlBase = 'https://master.apis.dev.openstreetmap.org'
-
-const createNotePath = '/api/0.6/notes.json'
-const createChangesetPath = '/api/0.6/changeset/create'
-const uploadChangesetPath = '/api/0.6/changeset/'
-const closeChangesetPath = '/api/0.6/changeset/'
-const getNodePath = '/api/0.6/node/'
-const userPath = '/api/0.6/user/details.json'
+const createNotePath = osmApiLevel + 'notes.json'
+const createChangesetPath = osmApiLevel + 'changeset/create'
+const uploadChangesetPath = osmApiLevel + 'changeset/'
+const closeChangesetPath = osmApiLevel + 'changeset/'
+const getNodePath = osmApiLevel + 'node/'
+const userPath = osmApiLevel + 'user/details.json'
 
 let changesetID = 0
-
-// prod keys move to config
-// const oauthKey = 'deem7DGxX11rEQZ1SjYQ2lL0O9JCCNtqBzFUePjA'
-// const oauthSecret = 'umPZIExDrNP4KvcXkhwBNIlH9J8jByPSCSwwL4w9'
-
-// dev keys move to config
-const oauthKey = 'IRTx85wq5Mv1TT7gt6iJ1KbPJiUyMmASB8jfuRCK'
-const oauthSecret = 'tLZgaEwwAHn1eXoc79rsDLqdAwjHCi0Lh38T7ki7'
 
 const auth = osmAuth({
   oauth_consumer_key: oauthKey,
   oauth_secret: oauthSecret,
   auto: false,
-  url: urlBase,
+  url: osmUrl,
   landing: '/',
   singlepage: true
 })

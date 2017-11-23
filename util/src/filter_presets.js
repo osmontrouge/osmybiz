@@ -2,7 +2,7 @@ var jsonfile = require('jsonfile')
 
 var presets = 'assets/presets.json';
 
-var groups = ['amenity', 'shop', 'leisure', 'office', 'tourism'];
+const groups = ['amenity', 'shop', 'leisure', 'office', 'tourism'];
 
 function isNeeded(key) {
     return groups.some(function (g) {
