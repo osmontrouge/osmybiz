@@ -2,13 +2,13 @@
   <div>
     <address-confirmation v-if="displayConfirmation"></address-confirmation>
     <detail-form v-if="!displaySuccess && !displayConfirmation"></detail-form>
-    <post-note-success v-if="displaySuccess"></post-note-success>
+    <post-success v-if="displaySuccess"></post-success>
   </div>
 </template>
 
 <script>
   import DetailForm from '@/components/DetailForm'
-  import PostNoteSuccess from '@/components/PostNoteSuccess'
+  import PostSuccess from '@/components/PostSuccess'
   import AddressConfirmation from '@/components/AddressConfirmation'
   import {mapGetters, mapMutations} from 'vuex'
   import * as _ from 'lodash'
@@ -25,7 +25,7 @@
     },
     components: {
       DetailForm,
-      PostNoteSuccess,
+      PostSuccess,
       AddressConfirmation
     },
     computed: {

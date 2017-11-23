@@ -1,6 +1,6 @@
 var jsonfile = require('jsonfile')
 
-var presets_json = 'assets/filtered_presets.json';
+var presets_json = 'assets/with_Options.json';
 var translation = 'assets/locales/de.json';
 
 jsonfile.readFile(presets_json, function (err, obj) {
@@ -20,15 +20,27 @@ jsonfile.readFile(presets_json, function (err, obj) {
                     var fields = []
 
                     keys_fields.forEach(function (field_key) {
-                        if(obj[filtered_key].fields){
+                        if (obj[filtered_key].fields) {
                             obj[filtered_key].fields.forEach(function (filtered_field_key) {
-                                if(field_key === filtered_field_key) {
-                                    fields.push(data.de.presets.fields[field_key].label)
+                                if (field_key === filtered_field_key.key) {
+                                    if (filtered_field_key.options) {
+                                        fields.push({
+                                            key: filtered_field_key.key,
+                                            type: filtered_field_key.type,
+                                            label: data.de.presets.fields[field_key].label,
+                                            options: data.de.presets.fields[field_key].options
+                                        })
+                                    } else {
+                                        fields.push({
+                                            key: filtered_field_key.key,
+                                            type: filtered_field_key.type,
+                                            label: data.de.presets.fields[field_key].label
+                                        })
+                                    }
                                 }
                             })
                         }
                     })
-
                     tags[key] = {
                         name: val.name,
                         fields: fields

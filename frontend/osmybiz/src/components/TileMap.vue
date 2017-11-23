@@ -88,7 +88,8 @@
         'setPosition',
         'setViewPort',
         'setDetails',
-        'setCoords'
+        'setCoords',
+        'setIsNote'
       ]),
       clicked (event) {
         this.setPosition(event.latlng)
@@ -112,6 +113,7 @@
         this.setDetails(note)
         const pos = L.latLng(business.lat, business.lng)
         this.setCoords(pos)
+        this.setIsNote(true)
         this.setPosition(pos)
         this.$router.push({name: routes.Detail})
       }
