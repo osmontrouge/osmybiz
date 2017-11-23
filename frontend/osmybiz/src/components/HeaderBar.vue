@@ -13,6 +13,11 @@
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
+        <select v-on:change="onSelect">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+        </select>
+
         <button v-if="!isLoggedIn" @click="login()">Login</button>
         <button v-if="isLoggedIn" @click="logout()">Logout</button>
 
@@ -36,7 +41,8 @@
     computed: {
       ...mapGetters([
         'user',
-        'isLoggedIn'
+        'isLoggedIn',
+        'language'
       ])
     },
     methods: {
@@ -45,7 +51,8 @@
         'loadUser'
       ]),
       ...mapMutations([
-        'logout'
+        'logout',
+        'setLanguage'
       ]),
       login () {
         this.authenticate()
@@ -54,6 +61,9 @@
         if (this.isLoggedIn) {
           window.open(messageUrl + this.user.name + '/inbox', '_blank')
         }
+      },
+      onSelect (e) {
+        this.$translate.setLang(e.target.value)
       }
     },
     components: {
@@ -110,6 +120,10 @@
 
   button {
     margin: 8px 0 10px 10px;
+  }
+
+  select {
+    padding: 7px 8px;
   }
 
 </style>

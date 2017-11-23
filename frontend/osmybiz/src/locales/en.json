@@ -16,6 +16,35 @@
     "map": "Map"
   },
   "detail": {
-
+    "title": "Record Business",
+    "required-subtitle": "Fields with * are required",
+    "required-span": "This field is required",
+    "save": "Save",
+    "own-category": "Own Category",
+    "choose-category": "Choose Category",
+    "labels": {
+      "category": "Category",
+      "name": "Name",
+      "opening_hours": "Opening hours",
+      "phone": "Phone number",
+      "email": "E-Mail address",
+      "website": "Website",
+      "wheelchair": "Wheelchair accessible",
+      "yes": "Yes",
+      "limited": "Limited",
+      "no": "No",
+      "description": "Description",
+      "note": "Note for mapping Person"
+    },
+    "placeholders": {
+      "category": "Choose Category...",
+      "name": "Your name...",
+      "opening_hours": "Mo-Fr 08:00-17:00",
+      "phone": "+41 11 111 11 11",
+      "email": "example@example.com",
+      "website": "http://www.example.com",
+      "description": "Description",
+      "note": "Note"
+    }
   }
 }
