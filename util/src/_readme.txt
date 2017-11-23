@@ -1,3 +1,8 @@
+Ausführen:
+
+node run [Sprachkürzel z.B. de, en, etc.]
+
+
 Ausführungsreihenfolge:
 
 1. node filter_presets
