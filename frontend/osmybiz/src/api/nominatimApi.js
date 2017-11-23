@@ -1,9 +1,8 @@
 import axios from 'axios'
 import {latLng} from 'leaflet'
 import * as _ from 'lodash'
+import {nominatimReverseUrl, nominatimUrl} from '../config/config'
 
-const baseUrl = 'https://nominatim.openstreetmap.org/search'
-const reverseBaseUrl = 'https://nominatim.openstreetmap.org/reverse'
 const queryMax = 10
 
 function parseCoords (lat, lng) {
@@ -34,7 +33,7 @@ function mapResults (results) {
 
 function buildRequest (query, count) {
   count = count > queryMax ? queryMax : count
-  return `${baseUrl}?format=json&q=${query}&limit=${count}&addressdetails=1`
+  return `${nominatimUrl}?format=json&q=${query}&limit=${count}&addressdetails=1`
 }
 
 export function query (queryString) {
@@ -64,7 +63,7 @@ function parseAddress (data) {
 }
 
 function buildReverseRequest (lat, lon) {
-  return `${reverseBaseUrl}?format=json&lat=${lat}&lon=${lon}&addressdetails=1&zoom=18`
+  return `${nominatimReverseUrl}?format=json&lat=${lat}&lon=${lon}&addressdetails=1&zoom=18`
 }
 
 export function reverseQuery (lat, lon) {
