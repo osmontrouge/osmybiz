@@ -24,7 +24,7 @@
     }
     return null
   }
-
+  
   export default {
     mounted () {
       const token = extractToken(window.location.href)

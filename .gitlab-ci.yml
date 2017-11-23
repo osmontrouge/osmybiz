@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - deploy
 
 cache:
   paths:
@@ -37,3 +38,18 @@ client-lint:
     - cd frontend/osmybiz
     - npm install
     - npm run lint
+pages:
+  image: node:8.4
+  stage: deploy
+  script:
+    - cd frontend/osmybiz
+    - npm install
+    - npm run build
+    - cd ./../../
+    - mkdir public
+    - mv frontend/osmybiz/dist/* public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
