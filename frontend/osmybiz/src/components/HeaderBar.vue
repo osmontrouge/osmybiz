@@ -19,7 +19,7 @@
         </div>
 
         <button v-if="!isLoggedIn" @click="login()">Login</button>
-        <button v-if="isLoggedIn" @click="logout()">Logout</button>
+        <button v-if="isLoggedIn" @click="signOff()">Logout</button>
 
       </div>
     </div>
@@ -30,9 +30,9 @@
   import 'vue-awesome/icons'
   import {loadTags} from '../store/detail'
   import Icon from 'vue-awesome/components/Icon.vue'
+  import {osmUrl} from './../config/config'
 
-  // todo move to config
-  const messageUrl = 'https://master.apis.dev.openstreetmap.org/user/'
+  const messageUrl = osmUrl + '/user/'
 
   export default {
     mounted () {
@@ -57,6 +57,10 @@
       ]),
       login () {
         this.authenticate()
+      },
+      signOff () {
+        this.logout()
+        window.location.reload()
       },
       gotoMessages () {
         if (this.isLoggedIn) {
