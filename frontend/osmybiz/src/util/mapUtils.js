@@ -57,6 +57,13 @@ function getWrapper () {
   return $('<div class="popup-data"></div>')
 }
 
+function getMapErrorLink (coords) {
+  return $(`<div class="popup-link">Kartenfelher melden</div>`).click(() => {
+    const url = 'https://master.apis.dev.openstreetmap.org/note/new?lat=47.22100&lon=8.79071#map=19/47.22027/8.79245&layers=N'
+    window.open(url,'_blank')
+  })
+}
+
 function createButton (text, isLoggedIn, callback, arg) {
   const btn = $(`<button class="popup-btn">${text}</button>`).click(() => {
     callback(arg)
