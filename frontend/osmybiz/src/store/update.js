@@ -1,18 +1,22 @@
-import {latlng} from 'leaflet'
+import {latLng} from 'leaflet'
 
 const state = {
   updates: [
     {
-      coords: latlng(47, 8),
+      coords: latLng(46.96005, 8.01270),
       kind: 'node',
       oldVersion: 10,
-      newVersion: 11
+      newVersion: 11,
+      name: 'Test Poi',
+      date: new Date(2017, 10, 23)
     },
     {
-      coords: latlng(48, 9),
+      coords: latLng(46.95453, 8.02168),
       kind: 'note',
       oldState: 'created',
-      newState: 'closed'
+      newState: 'closed',
+      name: 'Test Notiz',
+      date: new Date(2017, 10, 21)
     }
   ]
 }

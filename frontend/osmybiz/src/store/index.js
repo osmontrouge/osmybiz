@@ -5,6 +5,7 @@ import landing from './landing'
 import nominatim from './nominatim'
 import detail from './detail'
 import auth from './auth'
+import update from './update'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     auth,
     nominatim,
     detail,
-    landing
+    landing,
+    update
   }
 })

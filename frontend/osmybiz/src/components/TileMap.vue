@@ -124,6 +124,7 @@
     computed: {
       ...mapGetters([
         'mapPosition',
+        'position',
         'viewPort',
         'businesses',
         'mode',
@@ -166,5 +167,6 @@
 
   .popup-link {
     cursor: pointer;
+    text-decoration: underline;
   }
 </style>
