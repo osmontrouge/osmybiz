@@ -1,0 +1,87 @@
+<template>
+  <div>
+    <div class="help-text-icon">
+      <button @click="toggle()">
+        <icon name="question-circle"></icon>
+      </button>
+    </div>
+
+    <div class="help-text" v-if="showHelp">
+      <div class="help-title">Hilfe</div>
+      <div class="section">
+        Zoomen sie herein um genauere Karteninformationen zu sehen.
+      </div>
+      <div class="section">
+        Mit einem Linksklick auf ein bestehendes Geschäft (blauer Kreis)
+        können Sie dieses bearbeiten.
+      </div>
+      <div class="section">
+        Mit einem Linksklick auf eine beliebige Position in der Karte
+        können Sie ein neues Geschäft erfassen.
+      </div>
+      <button class="ok-btn" @click="confirm()">Ok</button>
+    </div>
+
+  </div>
+</template>
+
+<script>
+  import 'vue-awesome/icons'
+  import Icon from 'vue-awesome/components/Icon.vue'
+  import {mapGetters, mapMutations} from 'vuex'
+
+  export default {
+    methods: {
+      ...mapMutations(['setShowHelp']),
+      confirm () {
+        this.setShowHelp(false)
+      },
+      toggle () {
+        this.setShowHelp(!this.showHelp)
+      }
+    },
+    computed: {
+      ...mapGetters(['showHelp'])
+    },
+    components: {
+      Icon
+    },
+    name: 'help-text'
+  }
+</script>
+
+<style>
+  .help-text-icon {
+    position: fixed;
+    z-index: 99;
+    bottom: 50px;
+    left: 24px;
+    font-size: 16px;
+  }
+
+  .help-text {
+    position: fixed;
+    z-index: 99;
+    bottom: 50px;
+    left: 100px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 5px;
+    max-width: 300px;
+    max-height: 450px;
+    overflow-y: auto;
+  }
+  .section {
+    margin-bottom: 6px;
+    text-align: left;
+  }
+  .help-title {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .ok-btn {
+    float:right;
+  }
+</style>

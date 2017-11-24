@@ -3,12 +3,14 @@
     <search-bar></search-bar>
     <tile-map></tile-map>
     <toggle-button></toggle-button>
+    <help-text></help-text>
   </div>
 </template>
 
 <script>
   import TileMap from './../components/TileMap'
   import SearchBar from './../components/SearchBar'
+  import HelpText from './../components/HelpText'
 
   import {mapActions} from 'vuex'
   import * as _ from 'lodash'
@@ -38,7 +40,8 @@
     components: {
       SearchBar,
       TileMap,
-      ToggleButton
+      ToggleButton,
+      HelpText
     }
   }
 
