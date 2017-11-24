@@ -10,7 +10,6 @@
 <script>
   import TileMap from './../components/TileMap'
   import SearchBar from './../components/SearchBar'
-  import SelectedPosition from './../components/SelectedPosition'
 
   import {mapActions} from 'vuex'
   import * as _ from 'lodash'
@@ -24,7 +23,7 @@
     }
     return null
   }
-  
+
   export default {
     mounted () {
       const token = extractToken(window.location.href)
@@ -40,7 +39,6 @@
     components: {
       SearchBar,
       TileMap,
-      SelectedPosition,
       ToggleButton
     }
   }
