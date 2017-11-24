@@ -4,6 +4,7 @@
     <tile-map></tile-map>
     <selected-position></selected-position>
     <toggle-button></toggle-button>
+    <help-text></help-text>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
   import TileMap from './../components/TileMap'
   import SearchBar from './../components/SearchBar'
   import SelectedPosition from './../components/SelectedPosition'
+  import HelpText from './../components/HelpText'
 
   import {mapActions} from 'vuex'
   import * as _ from 'lodash'
@@ -24,7 +26,7 @@
     }
     return null
   }
-  
+
   export default {
     mounted () {
       const token = extractToken(window.location.href)
@@ -41,7 +43,8 @@
       SearchBar,
       TileMap,
       SelectedPosition,
-      ToggleButton
+      ToggleButton,
+      HelpText
     }
   }
 
