@@ -5,6 +5,7 @@ import * as $ from 'jquery'
 import {getTagName} from './translate'
 import {categoryTags} from './../api/overpassApi'
 import {getNodeCategoryKey} from './overPassNodeUtils'
+import {osmUrl} from './../config/config'
 
 const mapbox = 'https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg70?access_token=' + mapBoxToken
 const osm = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -59,8 +60,8 @@ function getWrapper () {
 
 function getMapErrorLink (coords) {
   return $(`<div class="popup-link">Kartenfelher melden</div>`).click(() => {
-    const url = 'https://master.apis.dev.openstreetmap.org/note/new?lat=47.22100&lon=8.79071#map=19/47.22027/8.79245&layers=N'
-    window.open(url,'_blank')
+    const url = `${osmUrl}note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
+    window.open(url, '_blank')
   })
 }
 
@@ -76,14 +77,15 @@ function createButton (text, isLoggedIn, callback, arg) {
 
 function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
   return loadAddress(coords).then(address => {
-    const data = getWrapper()
+    const wrapper = getWrapper()
     const title = getTitle('Neues Business')
     const btn = createButton('Erstellen', isloggedIn, clickedCallBack, coords)
-    data.append(title)
-    data.append(address)
-    data.append(btn)
+    wrapper.append(title)
+    wrapper.append(address)
+    wrapper.append(btn)
+    wrapper.append(getMapErrorLink(coords))
 
-    return data[0]
+    return wrapper[0]
   })
 }
 
@@ -99,6 +101,7 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
     wrapper.append(address)
     wrapper.append(getOtherData(business))
     wrapper.append(btn)
+    wrapper.append(getMapErrorLink(coords))
 
     return wrapper[0]
   })

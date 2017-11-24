@@ -163,4 +163,8 @@
   .popup-title {
     font-weight: bold;
   }
+
+  .popup-link {
+    cursor: pointer;
+  }
 </style>
