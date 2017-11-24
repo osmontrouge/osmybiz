@@ -4,6 +4,11 @@
         OpenStreetMap My Business
       </div>
       <div class="buttons">
+        <select v-on:change="onSelect">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+        </select>
+
         <div v-if="isLoggedIn" class="user" >
           <span>{{user.name}}</span>
         </div>
@@ -12,11 +17,6 @@
           <icon name="envelope"></icon>
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
-
-        <select v-on:change="onSelect">
-          <option value="de">Deutsch</option>
-          <option value="en">English</option>
-        </select>
 
         <button v-if="!isLoggedIn" @click="login()">Login</button>
         <button v-if="isLoggedIn" @click="logout()">Logout</button>
@@ -51,7 +51,9 @@
         'loadUser'
       ]),
       ...mapMutations([
-        'logout'
+        'logout',
+        'setLanguage',
+        'setTags'
       ]),
       login () {
         this.authenticate()
@@ -62,8 +64,10 @@
         }
       },
       onSelect (e) {
-        loadTags(e.target.value)
         this.$translate.setLang(e.target.value)
+        this.setLanguage(e.target.value)
+        this.setTags(e.target.value)
+        loadTags()
       }
     },
     components: {
@@ -124,6 +128,7 @@
 
   select {
     border: 2px solid #7ebc6f;
+    margin-right: 10px;
     padding: 7px 8px;
     outline: none;
   }

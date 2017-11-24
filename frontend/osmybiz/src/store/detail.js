@@ -1,11 +1,10 @@
 import osmApi from './../api/osmApi'
 import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
-import tagsDe from '../assets/tags_de.json'
-import tagsEn from '../assets/tags_en.json'
+import {getLanguageTags} from './locale'
 
 let initalOptions = []
-loadTags('de')
+loadTags()
 
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
@@ -319,15 +318,9 @@ function constructComment () {
   return text
 }
 
-export function loadTags (lng) {
-  let tags = {}
+export function loadTags () {
+  let tags = getLanguageTags()
   let options = []
-  switch (lng) {
-    case 'de': tags = tagsDe
-      break
-    case 'en': tags = tagsEn
-      break
-  }
   Object.keys(tags).forEach(function (key) {
     var fields = []
     tags[key].fields.forEach(function (field) {

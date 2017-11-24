@@ -324,6 +324,16 @@
       },
       reset () {
         let details = JSON.parse(localStorage.getItem('details'))
+        let category = {
+          fields: details.category.fields,
+          text: this.details.category.text,
+          value: this.details.category.value
+        }
+        console.log(category)
+        this.details.category.fields.forEach(function (field, index) {
+          category.fields[index].label = field.label
+        })
+        details.category = category
         this.setDetails(details)
       },
       onSelect (item) {
