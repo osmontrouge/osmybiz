@@ -233,6 +233,9 @@
 
     <div class="form-footer">
       <button class="button"
+              @click="reset()">
+        Zurücksetzen</button>
+      <button class="button"
               v-if="isNote"
               :disabled="isRequiredFields()"
               @click="submitNote()">
