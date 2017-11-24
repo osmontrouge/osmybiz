@@ -34,6 +34,11 @@ const bizMarker = L.icon({
   iconSize: [64, 64]
 })
 
+/* const highlightedMarker = L.icon({
+  iconUrl: require('../assets/highlighted-marker.png'),
+  iconSize: [32, 32]
+}) */
+
 function getBizCategory (b) {
   const key = getNodeCategoryKey(b)
   return getTagName(key)
