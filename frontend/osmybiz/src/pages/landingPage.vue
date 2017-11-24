@@ -4,6 +4,7 @@
     <tile-map></tile-map>
     <toggle-button></toggle-button>
     <help-text></help-text>
+    <update-list></update-list>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
   import TileMap from './../components/TileMap'
   import SearchBar from './../components/SearchBar'
   import HelpText from './../components/HelpText'
+  import UpdateList from './../components/UpdateList'
 
   import {mapActions} from 'vuex'
   import * as _ from 'lodash'
@@ -41,7 +43,8 @@
       SearchBar,
       TileMap,
       ToggleButton,
-      HelpText
+      HelpText,
+      UpdateList
     }
   }
 

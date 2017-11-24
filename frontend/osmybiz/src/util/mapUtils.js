@@ -23,9 +23,25 @@ export function makeTileLayer (mode) {
   return L.tileLayer(tileUrls[mode], {})
 }
 
+function printAddress (address) {
+  let out = ''
+  let hasData = false
+  if (address.street) {
+    hasData = true
+    out += address.street
+    if (address.housenumber) {
+      out += ' ' + address.housenumber
+    }
+  }
+  if (address.city) {
+    out += (hasData ? ', ' : '') + address.city
+  }
+  return out
+}
+
 function loadAddress (coords) {
   return reverseQuery(coords.lat, coords.lng).then(address => {
-    return $(`<div class="popup-entry">${address.street} ${address.housenumber}, ${address.city}</div>`)
+    return $(`<div class="popup-entry">${printAddress(address)}</div>`)
   })
 }
 
@@ -70,7 +86,7 @@ function getWrapper () {
 
 function getMapErrorLink (coords) {
   return $(`<div class="popup-link">Kartenfehler melden</div>`).click(() => {
-    const url = `${osmUrl}note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
+    const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
     window.open(url, '_blank')
   })
 }

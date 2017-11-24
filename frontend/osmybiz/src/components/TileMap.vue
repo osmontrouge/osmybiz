@@ -142,6 +142,7 @@
     computed: {
       ...mapGetters([
         'mapPosition',
+        'position',
         'viewPort',
         'businesses',
         'mode',
