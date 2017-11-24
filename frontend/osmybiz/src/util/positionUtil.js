@@ -2,6 +2,7 @@ import {initialPosition, initialZoom} from '../config/config'
 import * as _ from 'lodash'
 import {latLng} from 'leaflet'
 import {routes} from '../router'
+import {LatLngRoundingAccuracy} from './../constants'
 
 function fallBackPosition () {
   return {
@@ -23,8 +24,8 @@ function getStoredPosition () {
 }
 
 export function storeViewPort (bbox, zoom, $router) {
-  const lat = (bbox._northEast.lat + bbox._southWest.lat) / 2
-  const lng = (bbox._northEast.lng + bbox._southWest.lng) / 2
+  const lat = ((bbox._northEast.lat + bbox._southWest.lat) / 2).toFixed(LatLngRoundingAccuracy)
+  const lng = ((bbox._northEast.lng + bbox._southWest.lng) / 2).toFixed(LatLngRoundingAccuracy)
 
   storePosition(latLng(lat, lng), zoom)
 
