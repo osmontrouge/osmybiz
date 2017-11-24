@@ -7,9 +7,22 @@
 
 <script>
   import HeaderBar from './components/HeaderBar'
+  import Vue from 'vue'
+  import VueTranslate from 'vue-translate-plugin'
+  import de from './locales/de.json'
+  import en from './locales/en.json'
+
+  Vue.use(VueTranslate)
+  Vue.locales({
+    de: de,
+    en: en
+  })
 
   export default {
     name: 'app',
+    mounted () {
+      this.$translate.setLang('de')
+    },
     components: {
       HeaderBar
     }

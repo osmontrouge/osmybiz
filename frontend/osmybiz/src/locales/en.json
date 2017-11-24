@@ -1,0 +1,56 @@
+{
+  "infoTexts": {
+    "category": "",
+    "name": "",
+    "openinghours": "",
+    "phonenumber": "",
+    "email": "",
+    "website": "",
+    "wheelchair": "",
+    "description": "",
+    "note": ""
+  },
+  "landing": {
+    "search": "Search...",
+    "satelite": "Satelite",
+    "map": "Map"
+  },
+  "detail": {
+    "title": "Create Business",
+    "subtitle": "Extra informations",
+    "save": "Save",
+    "owncategory": "Own Category",
+    "choosecategory": "Choose Category",
+    "labels": {
+      "category": "Category",
+      "name": "Name",
+      "opening_hours": "Opening hours",
+      "phone": "Phone number",
+      "email": "E-Mail address",
+      "website": "Website",
+      "wheelchair": "Wheelchair accessible",
+      "yes": "Yes",
+      "limited": "Limited",
+      "no": "No",
+      "description": "Description of business",
+      "note": "Note for mapping Person"
+    },
+    "placeholders": {
+      "category": "Choose Category...",
+      "owncategory": "Insert Category",
+      "name": "Your name...",
+      "opening_hours": "Mo-Fr 08:00-17:00",
+      "phone": "+41 11 111 11 11",
+      "email": "example@example.com",
+      "website": "http://www.example.com",
+      "description": "Description",
+      "note": "Note"
+    },
+    "validate": {
+      "subtitle": "Fields with * are required",
+      "required": "This field is required",
+      "email": "E-Mail address is not valid",
+      "website": "Website is not valid"
+    }
+  }
+}

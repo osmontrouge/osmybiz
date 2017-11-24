@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "fs": "0.0.1-security",
     "jquery": "^3.2.1",
     "jquery-xml2json": "0.0.8",
+    "jsonfile": "^4.0.0",
     "leaflet": "^1.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.2",
@@ -25,6 +27,7 @@
     "vue-awesome": "^2.3.4",
     "vue-router": "^2.7.0",
     "vue-search-select": "^2.3.12",
+    "vue-translate-plugin": "^1.2.0",
     "vue2-leaflet": "0.0.55",
     "vuex": "^2.4.1",
     "vuex-router-sync": "^4.3.2"

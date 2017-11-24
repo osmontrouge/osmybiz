@@ -1,5 +1,6 @@
-import tags from '../assets/tags_de.json'
+import {getLanguageTags} from '../store/locale'
 
 export function getTagName (tag) {
-  return tags[tag] || ''
+  let tags = getLanguageTags()
+  return tags[tag] || tag
 }

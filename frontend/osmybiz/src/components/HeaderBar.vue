@@ -4,6 +4,11 @@
         OpenStreetMap My Business
       </div>
       <div class="buttons">
+        <select v-on:change="onSelect">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+        </select>
+
         <div v-if="isLoggedIn" class="user" >
           <span>{{user.name}}</span>
         </div>
@@ -23,6 +28,7 @@
 <script>
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import 'vue-awesome/icons'
+  import {loadTags} from '../store/detail'
   import Icon from 'vue-awesome/components/Icon.vue'
 
   // todo move to config
@@ -45,7 +51,9 @@
         'loadUser'
       ]),
       ...mapMutations([
-        'logout'
+        'logout',
+        'setLanguage',
+        'setTags'
       ]),
       login () {
         this.authenticate()
@@ -54,6 +62,12 @@
         if (this.isLoggedIn) {
           window.open(messageUrl + this.user.name + '/inbox', '_blank')
         }
+      },
+      onSelect (e) {
+        this.$translate.setLang(e.target.value)
+        this.setLanguage(e.target.value)
+        this.setTags(e.target.value)
+        loadTags()
       }
     },
     components: {
@@ -110,6 +124,13 @@
 
   button {
     margin: 8px 0 10px 10px;
+  }
+
+  select {
+    border: 2px solid #7ebc6f;
+    margin-right: 10px;
+    padding: 7px 8px;
+    outline: none;
   }
 
 </style>
