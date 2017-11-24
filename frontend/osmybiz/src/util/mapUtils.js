@@ -3,7 +3,7 @@ import {mapBoxToken} from '../config/config'
 import {reverseQuery} from './../api/nominatimApi'
 import * as $ from 'jquery'
 import {getTagName} from './translate'
-import {categoryTags} from './../api/overpassApi'
+// import {categoryTags} from './../api/overpassApi'
 import {getNodeCategoryKey} from './overPassNodeUtils'
 import {osmUrl} from './../config/config'
 
@@ -60,16 +60,21 @@ function getBizCategory (b) {
   return getTagName(key)
 }
 
-function getOtherData (b) {
-  const data = $('<div class="popup-data"></div>')
-  for (const tag of Object.keys(b.tags)) {
-    if (categoryTags.indexOf(tag) === -1 && tag !== 'name') {
-      const entry = $(`<div class="popup-entry">${tag}: ${b.tags[tag]}</div>`)
-      data.append(entry)
-    }
-  }
-  return data
-}
+// todo check if other data is needed in popup
+// function getOtherData (b) {
+//   const data = $('<div class="popup-data"></div>')
+//   for (const tag of Object.keys(b.tags)) {
+//     if (categoryTags.indexOf(tag) === -1 && tag !== 'name') {
+//       const tagName = getTagName(tag)
+//       console.log(tag, tagName)
+//       if (!_.isEmpty(tagName)) {
+//         const entry = $(`<div class="popup-entry">${tagName}: ${b.tags[tag]}</div>`)
+//         data.append(entry)
+//       }
+//     }
+//   }
+//   return data
+// }
 
 function getTitle (title) {
   return $(`<div class="popup-title">${title}</div>`)
@@ -80,7 +85,7 @@ function getWrapper () {
 }
 
 function getMapErrorLink (coords) {
-  return $(`<div class="popup-link">Kartenfelher melden</div>`).click(() => {
+  return $(`<div class="popup-link">Kartenfehler melden</div>`).click(() => {
     const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
     window.open(url, '_blank')
   })
@@ -120,7 +125,7 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
 
     wrapper.append(title)
     wrapper.append(address)
-    wrapper.append(getOtherData(business))
+    // wrapper.append(getOtherData(business))
     wrapper.append(btn)
     wrapper.append(getMapErrorLink(coords))
 
