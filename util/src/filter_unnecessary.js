@@ -71,7 +71,10 @@ jsonfile.readFile(tags, function (err, obj) {
 
     var output = '../../frontend/osmybiz/src/assets/tags_'+ process.argv[2] +'.json';
 
+    console.log("start filter")
+
     jsonfile.writeFile(output, data, function (err) {
+        console.log("finish filter")
         console.error(err)
     })
 });
