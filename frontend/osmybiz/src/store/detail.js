@@ -1,10 +1,11 @@
 import osmApi from './../api/osmApi'
-import tags from '../assets/tags_de.json'
 import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
+import tagsDe from '../assets/tags_de.json'
+import tagsEn from '../assets/tags_en.json'
 
-const options = []
-loadTags()
+let initalOptions = []
+loadTags('de')
 
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
@@ -23,7 +24,7 @@ const state = {
   displayConfirmation: true,
 
   // DetailForm
-  tags: options,
+  tags: initalOptions,
   lat: null,
   lon: null,
   details: {
@@ -318,7 +319,15 @@ function constructComment () {
   return text
 }
 
-function loadTags () {
+export function loadTags (lng) {
+  let tags = {}
+  let options = []
+  switch (lng) {
+    case 'de': tags = tagsDe
+      break
+    case 'en': tags = tagsEn
+      break
+  }
   Object.keys(tags).forEach(function (key) {
     var fields = []
     tags[key].fields.forEach(function (field) {
@@ -352,4 +361,22 @@ function loadTags () {
       fields: fields
     })
   })
+  if (state) {
+    state.tags = options
+    state.tags.forEach(function (tag) {
+      if (tag.value === state.details.category.value) {
+        let category = {
+          fields: tag.fields,
+          text: tag.text,
+          value: tag.value
+        }
+        state.details.category.fields.forEach(function (field, index) {
+          category.fields[index].value = field.value
+        })
+        state.details.category = category
+      }
+    })
+  } else {
+    initalOptions = options
+  }
 }

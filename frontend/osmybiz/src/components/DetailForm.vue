@@ -327,12 +327,7 @@
         this.setDetails(details)
       },
       onSelect (item) {
-        if (item.text === 'Eigene Kategorie wählen') {
-          this.setIsOwnCategory(true)
-          this.details.category = {value: 0, text: ''}
-        } else {
-          this.details.category = item
-        }
+        this.details.category = item
       }
     },
     components: {

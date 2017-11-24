@@ -28,6 +28,7 @@
 <script>
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import 'vue-awesome/icons'
+  import {loadTags} from '../store/detail'
   import Icon from 'vue-awesome/components/Icon.vue'
 
   // todo move to config
@@ -41,8 +42,7 @@
     computed: {
       ...mapGetters([
         'user',
-        'isLoggedIn',
-        'language'
+        'isLoggedIn'
       ])
     },
     methods: {
@@ -51,8 +51,7 @@
         'loadUser'
       ]),
       ...mapMutations([
-        'logout',
-        'setLanguage'
+        'logout'
       ]),
       login () {
         this.authenticate()
@@ -63,6 +62,7 @@
         }
       },
       onSelect (e) {
+        loadTags(e.target.value)
         this.$translate.setLang(e.target.value)
       }
     },
