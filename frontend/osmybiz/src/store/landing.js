@@ -11,7 +11,8 @@ const state = {
   viewPort: null,
 
   businesses: [],
-  mode: 'tiles'
+  mode: 'tiles',
+  showHelp: true
 }
 
 const queryDebounceMs = 400
@@ -95,6 +96,9 @@ const mutations = {
   },
   setMode (state, mode) {
     state.mode = mode
+  },
+  setShowHelp (state, showHelp) {
+    state.showHelp = showHelp
   }
 }
 
@@ -119,6 +123,9 @@ const getters = {
   },
   mode (state) {
     return state.mode
+  },
+  showHelp (state) {
+    return state.showHelp
   }
 }
 
