@@ -31,7 +31,7 @@ function loadAddress (coords) {
 
 const bizMarker = L.icon({
   iconUrl: require('../assets/biz-marker.png'),
-  iconSize: [64, 64]
+  iconSize: [32, 32]
 })
 
 /* const highlightedMarker = L.icon({
