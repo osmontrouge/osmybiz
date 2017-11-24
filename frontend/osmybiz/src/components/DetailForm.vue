@@ -34,8 +34,7 @@
 
 
         <div v-show="isOwnCategory" class="Category-field">
-          <input v-validate.initial="'required'"
-                 v-model="details.category.text"
+          <input v-model="details.category.text"
                  type="text"
                  :placeholder="t('detail').placeholders.owncategory"
                  name="category-input"/>
@@ -62,14 +61,12 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input v-validate.initial="'required'"
-                 :class="{'is-error': errors.has('name') }"
-                 type="text"
+          <input type="text"
                  name="name"
                  v-model="details.name"
                  :placeholder="t('detail').placeholders.name">
 
-          <span v-show="errors.has('name')"
+          <span v-show="details.name === ''"
                 class="help is-danger">
             {{t('detail').validate.required}}
           </span>
@@ -237,6 +234,9 @@
     </div>
 
     <div class="form-footer">
+      <button class="button"
+              @click="reset()">
+        Zurücksetzen</button>
       <button class="button"
               v-if="isNote"
               :disabled="isRequiredFields()"

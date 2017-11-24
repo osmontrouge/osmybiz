@@ -118,6 +118,23 @@
       createNew (coords) {
         this.setCoords(coords)
         this.setIsNote(false)
+        this.setDetails({
+          category: {
+            text: '',
+            value: 0,
+            fields: [
+              {key: '', name: '', value: ''}
+            ]
+          },
+          name: '',
+          opening_hours: '',
+          phone: '',
+          email: '',
+          website: '',
+          wheelchair: '',
+          description: '',
+          note: ''
+        })
         this.$router.push({name: routes.Detail})
       }
     },
