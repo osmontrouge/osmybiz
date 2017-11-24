@@ -2,7 +2,6 @@
   <div>
     <search-bar></search-bar>
     <tile-map></tile-map>
-    <selected-position></selected-position>
     <toggle-button></toggle-button>
   </div>
 </template>
