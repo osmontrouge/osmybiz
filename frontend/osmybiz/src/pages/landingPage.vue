@@ -2,7 +2,6 @@
   <div>
     <search-bar></search-bar>
     <tile-map></tile-map>
-    <selected-position></selected-position>
     <toggle-button></toggle-button>
     <help-text></help-text>
   </div>
@@ -11,7 +10,6 @@
 <script>
   import TileMap from './../components/TileMap'
   import SearchBar from './../components/SearchBar'
-  import SelectedPosition from './../components/SelectedPosition'
   import HelpText from './../components/HelpText'
 
   import {mapActions} from 'vuex'
@@ -42,7 +40,6 @@
     components: {
       SearchBar,
       TileMap,
-      SelectedPosition,
       ToggleButton,
       HelpText
     }

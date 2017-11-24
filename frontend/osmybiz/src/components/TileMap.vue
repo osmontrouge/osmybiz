@@ -1,8 +1,6 @@
 <template>
   <div class="map-wrapper">
-    <v-map ref="map" class="map" @l-click="clicked"
-           @l-dragend="viewChange" @l-zoomend="viewChange">
-      <v-marker v-if="position" :draggable="true" :lat-lng="position" @l-drag="drag"></v-marker>
+    <v-map ref="map" class="map" @l-dragend="viewChange" @l-zoomend="viewChange" @l-contextmenu="contextMenu($event)">
     </v-map>
   </div>
 </template>
@@ -10,11 +8,10 @@
 <script>
   import Vue2Leaflet from 'vue2-leaflet'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
-  import {createMarker} from './../util/markerFactory'
   import {createNoteFromNode} from './../util/overPassNodeUtils'
   import * as L from 'leaflet'
   import {routes} from './../router'
-  import {makeTileLayer, getTileUrl} from './../util/mapUtils'
+  import {makeTileLayer, getTileUrl, createNewBusinessPopup, createMarker} from './../util/mapUtils'
   import {storeViewPort, getInitialPosition} from './../util/positionUtil'
 
   const zoomOnSelect = 18
@@ -36,9 +33,9 @@
     })
   }
 
-  function addMarkers (bs) {
+  function addMarkers (bs, isloggedIn) {
     const ms = bs.map(b => {
-      const m = createMarker(b, (data) => component.edit(data))
+      const m = createMarker(b, map, isloggedIn, (data) => component.edit(data))
       map.addLayer(m)
       return m
     })
@@ -50,9 +47,15 @@
     tileLayer.setUrl(getTileUrl(mode), false)
   }
 
-  function drawBusinesses (businesses) {
+  function drawBusinesses (businesses, isloggedIn) {
     clearMarkers()
-    addMarkers(businesses)
+    addMarkers(businesses, isloggedIn)
+  }
+
+  function drawContextMenu (coords, isloggedIn) {
+    createNewBusinessPopup(map, coords, isloggedIn, (latlng) => {
+      component.createNew(latlng)
+    })
   }
 
   export default {
@@ -67,7 +70,7 @@
           setMapPosition(this.position)
           this.viewChange()
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses)
+          drawBusinesses(this.businesses, this.isLoggedIn)
         } else if (mut.type === 'setMode') {
           setTileMode(this.mode)
         }
@@ -85,18 +88,11 @@
     methods: {
       ...mapActions(['queryOverpass']),
       ...mapMutations([
-        'setPosition',
         'setViewPort',
         'setDetails',
         'setCoords',
         'setIsNote'
       ]),
-      clicked (event) {
-        this.setPosition(event.latlng)
-      },
-      drag (event) {
-        this.setPosition(event.latlng)
-      },
       viewChange () {
         const bbox = map.getBounds()
         const zoom = map.getZoom()
@@ -114,17 +110,24 @@
         const pos = L.latLng(business.lat, business.lng)
         this.setCoords(pos)
         this.setIsNote(true)
-        this.setPosition(pos)
+        this.$router.push({name: routes.Detail})
+      },
+      contextMenu (event) {
+        drawContextMenu(event.latlng, this.isLoggedIn)
+      },
+      createNew (coords) {
+        this.setCoords(coords)
+        this.setIsNote(false)
         this.$router.push({name: routes.Detail})
       }
     },
     computed: {
       ...mapGetters([
-        'position',
         'mapPosition',
         'viewPort',
         'businesses',
-        'mode'
+        'mode',
+        'isLoggedIn'
       ])
     },
 
@@ -159,5 +162,9 @@
 
   .popup-title {
     font-weight: bold;
+  }
+
+  .popup-link {
+    cursor: pointer;
   }
 </style>
