@@ -34,8 +34,7 @@
 
 
         <div v-show="isOwnCategory" class="Category-field">
-          <input v-validate.initial="'required'"
-                 v-model="details.category.text"
+          <input v-model="details.category.text"
                  type="text"
                  placeholder="Kategorie auswählen"
                  name="category-input"/>
@@ -45,7 +44,8 @@
         </div>
 
         <span v-show="details.category.text === ''"
-              class="help is-danger"> Dies ist ein Pflichtfeld.
+              class="help is-danger">
+          Dies ist ein Pflichtfeld.
         </span>
       </div>
     </div>
@@ -61,17 +61,15 @@
                  src="../assets/info_black.png">
           </div>
 
-          <input v-validate.initial="'required'"
-                 :class="{'is-error': errors.has('name') }"
-                 type="text"
+          <input type="text"
                  name="name"
                  v-model="details.name"
                  placeholder="Your Name...">
 
-          <span v-show="errors.has('name')"
+          <span v-show="details.name === ''"
                 class="help is-danger">
-            Dies ist ein Pflichtfeld
-          </span>
+            Dies ist ein Pflichtfeld.
+        </span>
         </div>
 
         <div class="field">
@@ -232,6 +230,9 @@
     </div>
 
     <div class="form-footer">
+      <button class="button"
+              @click="reset()">
+        Zurücksetzen</button>
       <button class="button"
               v-if="isNote"
               :disabled="isRequiredFields()"
