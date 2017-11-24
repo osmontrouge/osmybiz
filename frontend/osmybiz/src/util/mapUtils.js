@@ -69,7 +69,7 @@ function getWrapper () {
 }
 
 function getMapErrorLink (coords) {
-  return $(`<div class="popup-link">Kartenfelher melden</div>`).click(() => {
+  return $(`<div class="popup-link">Kartenfehler melden</div>`).click(() => {
     const url = `${osmUrl}note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
     window.open(url, '_blank')
   })

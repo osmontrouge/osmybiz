@@ -184,5 +184,6 @@
 
   .popup-link {
     cursor: pointer;
+    text-decoration: underline;
   }
 </style>
