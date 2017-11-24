@@ -16,7 +16,7 @@
         können Sie dieses bearbeiten.
       </div>
       <div class="section">
-        Mit einem Linksklick auf eine beliebige Position in der Karte
+        Mit einem Rechtsklick auf eine beliebige Position in der Karte
         können Sie ein neues Geschäft erfassen.
       </div>
       <button class="ok-btn" @click="confirm()">Ok</button>

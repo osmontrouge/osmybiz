@@ -20,6 +20,7 @@
     "jsonfile": "^4.0.0",
     "leaflet": "^1.2.0",
     "lodash": "^4.17.4",
+    "moment": "^2.19.2",
     "osm-auth": "^1.0.2",
     "vee-validate": "^2.0.0-rc.19",
     "vue": "^2.4.2",
