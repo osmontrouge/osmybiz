@@ -91,7 +91,8 @@
         'setViewPort',
         'setDetails',
         'setCoords',
-        'setIsNote'
+        'setIsNote',
+        'setPosition'
       ]),
       viewChange () {
         const bbox = map.getBounds()
@@ -183,5 +184,6 @@
 
   .popup-link {
     cursor: pointer;
+    text-decoration: underline;
   }
 </style>
