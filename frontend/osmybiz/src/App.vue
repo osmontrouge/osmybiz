@@ -42,4 +42,11 @@
     color: white;
   }
 
+  button:disabled {
+    background-color: grey;
+    color: white;
+    cursor: default;
+    border: none;
+  }
+
 </style>
