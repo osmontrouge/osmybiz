@@ -16,7 +16,7 @@
 
   export default {
     mounted () {
-      if (!_.isNumber(this.lat) || !_.isNumber(this.lon)) {
+      if (!_.isNumber(this.lat) || !_.isNumber(this.lon) || !this.isLoggedIn) {
         this.$router.push({name: routes.Landing})
       }
       this.setDisplaySuccess(false)
@@ -34,7 +34,8 @@
         'displayConfirmation',
         'lat',
         'lon',
-        'details'
+        'details',
+        'isLoggedIn'
       ])
     },
     methods: {

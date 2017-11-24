@@ -1,5 +1,6 @@
 import axios from 'axios'
-import {filters, overpassUrl} from '../config/config'
+import {overpassUrl} from '../config/config'
+import tags from '../assets/tags_de'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 
@@ -23,16 +24,17 @@ function parseData (data) {
 }
 
 function filterTags (node) {
-  for (const f of filters) {
-    if (node.tags.hasOwnProperty(f.key)) {
-      for (const v of f.values) {
-        if (node.tags[f.key].indexOf(v) === 0) {
-          return false
-        }
+  for (const f of Object.keys(tags)) {
+    const element = f.split('/')
+    const key = element[0]
+    const value = element[1]
+    if (node.tags.hasOwnProperty(key)) {
+      if (node.tags[key].indexOf(value) === 0) {
+        return true
       }
     }
   }
-  return true
+  return false
 }
 
 export function queryBox (bbox) {

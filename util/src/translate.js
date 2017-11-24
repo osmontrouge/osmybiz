@@ -3,9 +3,12 @@ var jsonfile = require('jsonfile')
 var presets_json = 'assets/with_Options.json';
 var translation = 'assets/locales/'+ process.argv[2] +'.json';
 
+console.log("test")
+
 jsonfile.readFile(presets_json, function (err, obj) {
 
     jsonfile.readFile(translation, function (err2, obj2) {
+        console.log("start translate")
         var data = obj2[process.argv[2]].presets;
         var tags = {};
 
@@ -50,6 +53,8 @@ jsonfile.readFile(presets_json, function (err, obj) {
         });
 
         var output = './assets/tags.json';
+
+        console.log("finish translate")
 
         jsonfile.writeFile(output, tags, function (err) {
             console.error(err)
