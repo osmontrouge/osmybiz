@@ -48,6 +48,7 @@
     justify-content: center;
     border: 2px solid #55834a;
     padding: 6px 12px;
+    border-radius: 5px;
   }
 
   button:hover {

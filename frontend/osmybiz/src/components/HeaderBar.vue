@@ -95,6 +95,7 @@
     font-size: 24px;
     font-weight:bold;
     margin: 0 24px;
+    color: #7ebc6f;
   }
 
   .buttons {
