@@ -1,7 +1,9 @@
 <template>
   <div>
-    <address-confirmation v-if="displayConfirmation"></address-confirmation>
-    <detail-form v-if="!displaySuccess && !displayConfirmation"></detail-form>
+    <h2>{{t('detail').title}}</h2>
+    <category-field v-if="!displaySuccess"></category-field>
+    <address-fields v-if="!displaySuccess"></address-fields>
+    <detail-form v-if="!displaySuccess"></detail-form>
     <post-success v-if="displaySuccess"></post-success>
   </div>
 </template>
@@ -9,7 +11,8 @@
 <script>
   import DetailForm from '@/components/DetailForm'
   import PostSuccess from '@/components/PostSuccess'
-  import AddressConfirmation from '@/components/AddressConfirmation'
+  import AddressFields from '../components/AddressFields'
+  import CategoryField from '../components/CategoryField'
   import {mapGetters, mapMutations} from 'vuex'
   import * as _ from 'lodash'
   import {routes} from './../router'
@@ -26,7 +29,8 @@
     components: {
       DetailForm,
       PostSuccess,
-      AddressConfirmation
+      AddressFields,
+      CategoryField
     },
     computed: {
       ...mapGetters([
@@ -48,4 +52,9 @@
 </script>
 
 <style>
+  h2 {
+    text-align: left;
+    margin: auto;
+    max-width:750px;
+  }
 </style>

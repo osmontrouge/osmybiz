@@ -2,52 +2,10 @@
 
   <div class="form-wrapper">
 
-    <h2>{{t('detail').title}}</h2>
+    <h3>Details</h3>
 
     <div class="popup" v-if="isPopup">
         <span>{{infoText}}</span>
-    </div>
-
-    <div class="form-select">
-      <div class="field">
-        <div class="field-label">
-          <label>{{t('detail').labels.category}}*</label>
-          <img id="info-category"
-               @mouseenter="showPopup('category')"
-               @mouseleave="hidePopup()"
-               src="../assets/info_black.png">
-        </div>
-
-        <div v-show="!isOwnCategory" class="Category-field">
-          <basic-select v-show="!isOwnCategory"
-                        :options="this.tags"
-                        :selected-option="details.category"
-                        :placeholder="t('detail').placeholders.category"
-                        @select="onSelect"
-                        class="basic-select">
-          </basic-select>
-
-          <button class="button" @click="showInput()">
-            {{t('detail').owncategory}}
-          </button>
-        </div>
-
-
-        <div v-show="isOwnCategory" class="Category-field">
-          <input v-model="details.category.text"
-                 type="text"
-                 :placeholder="t('detail').placeholders.owncategory"
-                 name="category-input"/>
-          <button class="button" @click="hideInput()">
-            {{t('detail').choosecategory}}
-          </button>
-        </div>
-
-        <span v-show="details.category.text === ''"
-              class="help is-danger">
-          {{t('detail').validate.required}}
-        </span>
-      </div>
     </div>
 
     <div class="form-fields">
@@ -220,14 +178,14 @@
           <div class="field"
                v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
             <label>{{ field.label }}</label>
-            <extra-input-field :field="field"></extra-input-field>
+            <extra-input-fields :field="field"></extra-input-fields>
           </div>
         </div>
         <div class="column">
           <div class="field"
                v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
             <label>{{ field.label }}</label>
-            <extra-input-field :field="field"></extra-input-field>
+            <extra-input-fields :field="field"></extra-input-fields>
           </div>
         </div>
       </div>
@@ -261,10 +219,9 @@
 
 <script>
   import {mapGetters, mapActions, mapMutations} from 'vuex'
-  import {BasicSelect} from 'vue-search-select'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
-  import ExtraInputField from '../components/ExtraInputField'
+  import ExtraInputFields from '../components/ExtraInputFields'
 
   Vue.use(VeeValidate)
 
@@ -341,8 +298,7 @@
       }
     },
     components: {
-      BasicSelect,
-      ExtraInputField
+      ExtraInputFields
     }
   }
 </script>
@@ -385,7 +341,7 @@
     resize: none;
   }
 
-  h2, h3, h5 {
+  h3, h5 {
     text-align: left;
   }
 
@@ -419,7 +375,7 @@
   }
 
   .column {
-    width: 45%;
+    width: 47%;
     display: flex;
     flex-direction: column;
     align-items:stretch;
@@ -460,25 +416,6 @@
     color: black;
   }
 
-  .Category-field {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .Category-field input, .basic-select{
-    flex-grow: 5 !important;
-  }
-
-  .Category-field button{
-    flex: 0 0;
-    flex-basis: auto;
-    margin: auto auto auto 10px;
-  }
-
-  .basic-select, .basic-select:hover, .basic-select:focus {
-    border: 2px solid #7ebc6f !important;
-  }
-
   .button {
     flex-grow: 1;
     margin-top: 5px;
@@ -487,12 +424,6 @@
   img{
     width: 4%;
     height: 4%;
-    margin-left: 5px;
-  }
-
-  #info-category {
-    width: 2%;
-    height: 2%;
     margin-left: 5px;
   }
 
@@ -512,13 +443,6 @@
     width: 300px;
     z-index: 100;
     color: white;
-  }
-  .menu {
-    border: 2px solid #7ebc6f !important;
-    border-top: none !important;
-    margin: 0px -2px !important;
-    min-width: calc(100% + 2px ) !important;
-    width: calc(100% + 4px ) !important;
   }
 
 </style>
