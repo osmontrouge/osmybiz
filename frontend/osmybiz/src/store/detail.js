@@ -185,7 +185,7 @@ export default {
 }
 
 function constructNote () {
-  let text = 'Note from OSM My Business:\n'
+  let text = '#OSMyBiz \n \n'
 
   if (state.address.length !== 0) {
     let address = ''
@@ -236,7 +236,7 @@ function constructNote () {
 
   state.details.category.fields.forEach(function (field) {
     if (field.value.length !== 0) {
-      text += field.name + ': ' + field.value + '\n'
+      text += field.label + ': ' + field.value + '\n'
     }
   })
 
