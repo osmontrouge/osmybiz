@@ -5,6 +5,9 @@
     <address-fields v-if="!displaySuccess"></address-fields>
     <detail-form v-if="!displaySuccess"></detail-form>
     <post-success v-if="displaySuccess"></post-success>
+
+    <form-popup v-if="isPopup"></form-popup>
+
   </div>
 </template>
 
@@ -13,6 +16,7 @@
   import PostSuccess from '@/components/PostSuccess'
   import AddressFields from '../components/AddressFields'
   import CategoryField from '../components/CategoryField'
+  import FormPopup from '../components/FormPopup'
   import {mapGetters, mapMutations} from 'vuex'
   import * as _ from 'lodash'
   import {routes} from './../router'
@@ -27,6 +31,7 @@
       this.setDisplayConfirmation(!hasData)
     },
     components: {
+      FormPopup,
       DetailForm,
       PostSuccess,
       AddressFields,
@@ -39,7 +44,8 @@
         'lat',
         'lon',
         'details',
-        'isLoggedIn'
+        'isLoggedIn',
+        'isPopup'
       ])
     },
     methods: {

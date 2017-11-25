@@ -4,10 +4,6 @@
 
     <h3>Details</h3>
 
-    <div class="popup" v-if="isPopup">
-        <span>{{infoText}}</span>
-    </div>
-
     <div class="form-fields">
       <div class="column">
         <div class="field">
@@ -261,14 +257,6 @@
       submitNode () {
         this.postNode()
       },
-      hideInput () {
-        this.setIsOwnCategory(false)
-        this.details.category = {value: 0, text: ''}
-      },
-      showInput () {
-        this.setIsOwnCategory(true)
-        this.details.category = {value: 0, text: ''}
-      },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''
       },
@@ -430,19 +418,6 @@
   .field-label {
     display: flex;
     flex-direction: row;
-  }
-
-  .popup {
-    background: #7ebc6f;
-    display: block;
-    position: absolute;
-    margin: 0 auto;
-    top: 35%;
-    left: 0;
-    right: 0;
-    width: 300px;
-    z-index: 100;
-    color: white;
   }
 
 </style>

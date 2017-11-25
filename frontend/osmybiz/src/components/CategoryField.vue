@@ -56,12 +56,15 @@
       ...mapGetters([
         'details',
         'tags',
-        'isOwnCategory'
+        'isOwnCategory',
+        'infoMap'
       ])
     },
     methods: {
       ...mapMutations([
-        'setIsOwnCategory'
+        'setIsOwnCategory',
+        'setInfoText',
+        'setIsPopup'
       ]),
       hideInput () {
         this.setIsOwnCategory(false)
@@ -70,6 +73,13 @@
       showInput () {
         this.setIsOwnCategory(true)
         this.details.category = {value: 0, text: ''}
+      },
+      showPopup (key) {
+        this.setInfoText(this.infoMap.get(key))
+        this.setIsPopup(true)
+      },
+      hidePopup () {
+        this.setIsPopup(false)
       },
       onSelect (item) {
         this.details.category = item
@@ -83,7 +93,7 @@
 
 <style scoped>
   .category-wrapper {
-    max-width:750px;
+    max-width: 750px;
     margin: 15px auto 0 auto;
   }
 
@@ -92,11 +102,11 @@
     flex-direction: row;
   }
 
-  .Category-field input, .basic-select{
+  .Category-field input, .basic-select {
     flex-grow: 5 !important;
   }
 
-  .Category-field button{
+  .Category-field button {
     flex: 0 0;
     flex-basis: auto;
     margin: auto auto auto 10px;
@@ -116,7 +126,7 @@
     border: 2px solid #7ebc6f !important;
     border-top: none !important;
     margin: 0px -2px !important;
-    min-width: calc(100% + 2px ) !important;
-    width: calc(100% + 4px ) !important;
+    min-width: calc(100% + 2px) !important;
+    width: calc(100% + 4px) !important;
   }
 </style>
