@@ -138,13 +138,6 @@ export default {
       })
     })
   }
-
-  /* post_Comment: (id, comment) => {
-    return axios.post(urlComment + id + '/comment?text=' + comment)
-      .catch(e => {
-        console.log(e)
-      })
-  } */
 }
 
 function uploadChangeset (node) {
