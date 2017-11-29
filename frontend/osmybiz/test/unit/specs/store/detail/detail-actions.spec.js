@@ -4,7 +4,7 @@ const actions = actionsInjector({
   './../api/osmApi': {
     post_Note () {
       return new Promise(resolve => {
-        resolve({test: 'test'})
+        resolve({ text: 'test Address: test Category: test Name: test' })
       })
     }
   }
@@ -16,8 +16,6 @@ const testAction = (action, payload, state, expectedMutations, done) => {
   // mock commit
   const commit = (type, payload) => {
     const mutation = expectedMutations[count]
-
-    console.log('commit')
 
     try {
       expect(mutation.type).to.equal(type)
@@ -59,8 +57,8 @@ describe('detail store', () => {
               ]
             },
             name: '',
-            openinghours: '',
-            phonenumber: '',
+            opening_hours: '',
+            phone: '',
             email: '',
             website: '',
             wheelchair: false,
@@ -69,7 +67,7 @@ describe('detail store', () => {
           }
         },
         [
-          { type: 'setNote', payload: { test: 'test' } }
+          { type: 'setNote', payload: { text: { address: 'test', name: 'test' } } }
         ], done)
     })
   })

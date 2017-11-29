@@ -69,21 +69,14 @@ const actions = {
     osmApi.post_Node(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
-      console.log(ps)
     })
   },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
       state.displaySuccess = true
-      console.log(ps)
-      let address = ps.text.split('Address: ')[1].split('Category')[0]
-      let name = ps.text.split('Name: ')[1].split('\n')[0]
-      ps.text = {
-        address: address,
-        name: name
-      }
-      commit('setNote', ps)
+      let displayNote = constructDisplayNote(ps)
+      commit('setNote', displayNote)
     })
   },
   getAddress ({commit}) {
@@ -249,6 +242,16 @@ function constructNote () {
     lon: state.lon,
     text: text
   }
+}
+
+function constructDisplayNote (note) {
+  let address = note.text.split('Address: ')[1].split(' Category')[0]
+  let name = note.text.split('Name: ')[1].split('\n')[0]
+  note.text = {
+    address: address,
+    name: name
+  }
+  return note
 }
 
 export function loadTags () {
