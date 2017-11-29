@@ -7,6 +7,7 @@ import detail from './detail'
 import auth from './auth'
 import locale from './locale'
 import update from './update'
+import error from './error'
 
 Vue.use(Vuex)
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     detail,
     landing,
     locale,
-    update
+    update,
+    error
   }
 })

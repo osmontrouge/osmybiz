@@ -2,11 +2,13 @@
   <div id="app">
     <header-bar></header-bar>
     <router-view></router-view>
+    <error></error>
   </div>
 </template>
 
 <script>
   import HeaderBar from './components/HeaderBar'
+  import Error from './components/Error'
   import Vue from 'vue'
   import VueTranslate from 'vue-translate-plugin'
   import de from './locales/de.json'
@@ -24,7 +26,8 @@
       this.$translate.setLang('de')
     },
     components: {
-      HeaderBar
+      HeaderBar,
+      Error
     }
   }
 </script>

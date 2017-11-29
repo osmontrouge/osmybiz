@@ -2,6 +2,7 @@ import axios from 'axios'
 import {latLng} from 'leaflet'
 import * as _ from 'lodash'
 import {nominatimReverseUrl, nominatimUrl} from '../config/config'
+import {setError} from '../store/error'
 
 const queryMax = 10
 
@@ -42,6 +43,7 @@ export function query (queryString) {
       return mapResults(response.data)
     })
     .catch(e => {
+      setError()
       console.log(e)
     })
 }
