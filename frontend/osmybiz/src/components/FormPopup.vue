@@ -1,6 +1,8 @@
 <template>
-  <div class="popup">
-    <span>{{infoText}}</span>
+  <div>
+    <div class="popup" id="popup">
+      <span>{{infoText}}</span>
+    </div>
   </div>
 </template>
 
@@ -9,6 +11,15 @@
 
   export default {
     name: 'form-popup',
+    mounted () {
+      let popup = document.getElementById('popup')
+      window.onmousemove = function (e) {
+        let x = e.clientX
+        let y = e.clientY
+        popup.style.top = (y + 10) + 'px'
+        popup.style.left = (x + 10) + 'px'
+      }
+    },
     computed: {
       ...mapGetters([
         'infoText'
@@ -22,9 +33,6 @@
     background: #7ebc6f;
     display: block;
     position: absolute;
-    bottom: 50%;
-    left: 0;
-    right: 0;
     z-index: 100;
     color: white;
     padding: 10px;
