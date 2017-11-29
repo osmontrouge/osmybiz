@@ -18,6 +18,7 @@
 
 <script>
   import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {routes} from './../router'
 
   export default {
     name: 'form-footer',
@@ -38,9 +39,11 @@
       ]),
       submitNote () {
         this.postNote()
+        this.$router.push({name: routes.Landing})
       },
       submitNode () {
         this.postNode()
+        this.$router.push({name: routes.Landing})
       },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''

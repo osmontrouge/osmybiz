@@ -20,7 +20,6 @@ infoMap.set('note', infoTexts.note)
 const state = {
   // detailPage
   displaySuccess: false,
-  displayConfirmation: true,
 
   // DetailForm
   tags: initalOptions,

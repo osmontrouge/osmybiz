@@ -1,28 +1,16 @@
 <template>
 
-  <div class="success-wrapper">
+  <div class="success-wrapper" v-if="displaySuccess">
     <div class="node-success" v-if="!isNote">
       <div class="success-header">
-        <h2>Neues Business erfolgreich erstellt: </h2>
-
-        <a :href="node.link" target="_blank">Link zum Business</a>
+        <h3>Neues Business erstellt </h3>
+        <a :href="node.link" target="_blank">Link zu OpenStreetMap</a>
       </div>
 
-      <div class="success-container">
-        <div class="success-labels">
-          <p>Adresse:</p>
-          <p>Name:</p>
-          <p>Öffnungszeiten:</p>
-          <p>Telefonnummer:</p>
-          <p>E-Mail:</p>
-          <p>Webseite:</p>
-          <p>Rollstuhlgängig:</p>
-          <p>Beschreibung:</p>
-          <p>Notiz:</p>
-        </div>
-
-        <div class="success-text">
+      <div class="success-text">
           <p>
+            <strong>Adresse:</strong>
+
             <span v-if="node.address.street">
               {{node.address.street}}
             </span>
@@ -35,43 +23,19 @@
             <span v-if="node.address.city">
                 {{' ' + node.address.city}}
             </span>
+
+            <strong>Name:</strong> {{node.details.name}}
           </p>
-          <p v-if="node.details.name">
-              {{node.details.name}}
-            </p>
-          <p v-if="node.details.opening_hours">
-              {{node.details.opening_hours}}
-            </p>
-          <p v-if="node.details.phone">
-              {{node.details.phone}}
-            </p>
-          <p v-if="node.details.email">
-              {{node.details.email}}
-            </p>
-          <p v-if="node.details.website">
-              {{node.details.website}}
-            </p>
-          <p v-if="node.details.wheelchair">
-              {{node.details.wheelchair}}
-            </p>
-          <p v-if="node.details.description">
-              {{node.details.name}}
-            </p>
-          <p v-if="node.details.note">
-              {{node.details.name}}
-            </p>
-        </div>
       </div>
     </div>
 
     <div class="note-success" v-if="isNote">
-      <p>Änderungen erfolgreich gespeichert: </p>
-
+      <p>Änderungen gespeichert: </p>
       <p v-html="note.html"></p>
     </div>
 
     <div class="success-buttons">
-      <button @click="gotoLanding()">Weitere Änderungen vornehmen</button>
+      <button @click="toggleSuccess()">Ok</button>
     </div>
   </div>
 
@@ -82,11 +46,16 @@
 
   export default {
     name: 'post-note-success',
+    mounted () {
+
+    },
     computed: {
       ...mapGetters([
         'note',
         'node',
-        'isNote'
+        'isNote',
+        'displaySuccess',
+        'hasUpdates'
       ])
     },
     methods: {
@@ -94,22 +63,9 @@
         'setDisplaySuccess',
         'setDetails'
       ]),
-      gotoLanding () {
-        this.setDetails({
-          category: {
-            text: '',
-            value: 0
-          },
-          name: '',
-          openinghours: '',
-          phonenumber: '',
-          email: '',
-          website: '',
-          wheelchair: false,
-          description: '',
-          note: ''
-        })
-        this.$router.push('/')
+      toggleSuccess () {
+        this.setDisplaySuccess(false)
+        this.hasUpdates = true
       }
     }
   }
@@ -117,42 +73,41 @@
 
 <style scoped>
   .success-wrapper {
-    max-width: 750px;
-    margin: 20px auto 20px auto;
-    text-align: left;
+    position: fixed;
+    z-index: 100;
+    width: 500px;
+    margin-left: -250px;
+    bottom: 50px;
+    left: 50%;
+    background-color: white;
+    border: 2px solid #7ebc6f;
+    padding: 12px;
   }
 
   .success-header {
     display: flex;
     flex-direction: row;
+    justify-content: stretch;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    text-align: left;
+    margin: 0;
   }
 
   a {
-    font-size: large;
-    margin-top: 8px;
+    margin-top: 2px;
     margin-left: 10px;
   }
 
-  .success-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-  }
-
-  .success-labels {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    font-weight: bold;
-  }
-
   .success-text {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    text-align: left;
   }
 
   .success-buttons {
     margin-top: 10px;
+    float: right;
   }
 </style>

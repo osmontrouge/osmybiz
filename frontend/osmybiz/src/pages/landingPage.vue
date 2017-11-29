@@ -5,6 +5,8 @@
     <toggle-button></toggle-button>
     <help-text></help-text>
     <update-list></update-list>
+
+    <post-success></post-success>
   </div>
 </template>
 
@@ -13,6 +15,7 @@
   import SearchBar from './../components/SearchBar'
   import HelpText from './../components/HelpText'
   import UpdateList from './../components/UpdateList'
+  import PostSuccess from './../components/PostSuccess'
 
   import {mapActions} from 'vuex'
   import * as _ from 'lodash'
@@ -44,7 +47,8 @@
       TileMap,
       ToggleButton,
       HelpText,
-      UpdateList
+      UpdateList,
+      PostSuccess
     }
   }
 
