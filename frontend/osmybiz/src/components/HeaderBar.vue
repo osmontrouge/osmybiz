@@ -83,12 +83,17 @@
 <style scoped>
 
   .header {
+    position: fixed;
+    margin: auto;
     height: 50px;
     width: 100%;
+    top: 0;
+    z-index: 9999;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background: white;
   }
 
   .title {

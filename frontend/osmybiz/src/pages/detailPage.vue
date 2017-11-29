@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="detail-wrapper">
     <address-confirmation v-if="displayConfirmation"></address-confirmation>
     <detail-form v-if="!displaySuccess && !displayConfirmation"></detail-form>
     <post-success v-if="displaySuccess"></post-success>
@@ -48,4 +48,7 @@
 </script>
 
 <style>
+  .detail-wrapper {
+    margin-top: 50px;
+  }
 </style>
