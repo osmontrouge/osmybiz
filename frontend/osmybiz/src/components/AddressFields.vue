@@ -75,9 +75,6 @@
 
   export default {
     name: 'address-fields',
-    mounted () {
-      this.getAddress()
-    },
     computed: {
       ...mapGetters([
         'address'
@@ -133,5 +130,9 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 12px;
+  }
+
+  span {
+    color: red;
   }
 </style>

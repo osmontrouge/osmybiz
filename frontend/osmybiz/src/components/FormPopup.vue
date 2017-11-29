@@ -22,12 +22,11 @@
     background: #7ebc6f;
     display: block;
     position: absolute;
-    margin: 0 auto;
-    top: 35%;
+    bottom: 50%;
     left: 0;
     right: 0;
-    width: 300px;
     z-index: 100;
     color: white;
+    padding: 10px;
   }
 </style>

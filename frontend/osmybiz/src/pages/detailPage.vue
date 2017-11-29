@@ -17,7 +17,7 @@
   import AddressFields from '../components/AddressFields'
   import CategoryField from '../components/CategoryField'
   import FormPopup from '../components/FormPopup'
-  import {mapGetters, mapMutations} from 'vuex'
+  import {mapGetters, mapMutations, mapActions} from 'vuex'
   import * as _ from 'lodash'
   import {routes} from './../router'
 
@@ -29,6 +29,9 @@
       this.setDisplaySuccess(false)
       const hasData = this.details.category.value !== 0
       this.setDisplayConfirmation(!hasData)
+
+      this.getAddress()
+      localStorage.setItem('details', JSON.stringify(this.details))
     },
     components: {
       FormPopup,
@@ -45,13 +48,17 @@
         'lon',
         'details',
         'isLoggedIn',
-        'isPopup'
+        'isPopup',
+        'address'
       ])
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
         'setDisplayConfirmation'
+      ]),
+      ...mapActions([
+        'getAddress'
       ])
     }
   }
