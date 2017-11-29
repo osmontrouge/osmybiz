@@ -76,16 +76,14 @@ const actions = {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
       state.displaySuccess = true
+      console.log(ps)
+      let address = ps.text.split('Address: ')[1].split('Category')[0]
+      let name = ps.text.split('Name: ')[1].split('\n')[0]
+      ps.text = {
+        address: address,
+        name: name
+      }
       commit('setNote', ps)
-    })
-  },
-  postComment () {
-    let comment = constructComment()
-    state.comment = comment
-    osmApi.post_Comment(state.note.id, comment).then(() => {
-      state.displaySuccess = true
-      state.displayNote = false
-      state.displayComment = true
     })
   },
   getAddress ({commit}) {
@@ -154,15 +152,6 @@ const getters = {
   node (state) {
     return state.node
   },
-  comment (state) {
-    return state.comment
-  },
-  displayNote (state) {
-    return state.displayNote
-  },
-  displayComment (state) {
-    return state.displayComment
-  },
   displaySuccess (state) {
     return state.displaySuccess
   },
@@ -200,7 +189,7 @@ export default {
 }
 
 function constructNote () {
-  let text = 'Note from OSM My Business:\n'
+  let text = '#OSMyBiz \n \n'
 
   if (state.address.length !== 0) {
     let address = ''
@@ -251,7 +240,7 @@ function constructNote () {
 
   state.details.category.fields.forEach(function (field) {
     if (field.value.length !== 0) {
-      text += field.name + ': ' + field.value + '\n'
+      text += field.label + ': ' + field.value + '\n'
     }
   })
 
@@ -260,59 +249,6 @@ function constructNote () {
     lon: state.lon,
     text: text
   }
-}
-
-function constructComment () {
-  let text = 'Comment from OSM My Business: '
-
-  if (state.address.length !== 0) {
-    let address = ''
-    if (state.address.street) {
-      address += state.address.street + ' '
-    }
-    if (state.address.housenumber) {
-      address += state.address.housenumber + ', '
-    }
-    if (state.address.postcode) {
-      address += state.address.postcode + ' '
-    }
-    if (state.address.city) {
-      address += state.address.city + ', '
-    }
-    if (state.address.country) {
-      address += state.address.country
-    }
-    text += 'Address: ' + address + ', '
-  }
-  if (state.details.category.text.length !== 0) {
-    text += 'Category: ' + state.details.category.text + ', '
-  }
-  if (state.details.name.length !== 0) {
-    text += 'Name: ' + state.details.name + ', '
-  }
-  if (state.details.opening_hours.length !== 0) {
-    text += 'Opening hours: ' + state.details.opening_hours + ', '
-  }
-  if (state.details.phone.length !== 0) {
-    text += 'Phone number: ' + state.details.phone + ', '
-  }
-  if (state.details.email.length !== 0) {
-    text += 'Email: ' + state.details.email + ', '
-  }
-  if (state.details.website.length !== 0) {
-    text += 'Website: ' + state.details.website + ', '
-  }
-  if (state.details.wheelchair !== 0) {
-    text += 'Wheelchair accessible: ' + state.details.wheelchair + ', '
-  }
-  if (state.details.description.length !== 0) {
-    text += 'Description: ' + state.details.description + ', '
-  }
-  if (state.details.note.length > 0) {
-    text += 'Note: ' + state.details.note + ', '
-  }
-
-  return text
 }
 
 export function loadTags () {
@@ -368,5 +304,25 @@ export function loadTags () {
     })
   } else {
     initalOptions = options
+  }
+}
+
+export function clearDetails () {
+  state.details = {
+    category: {
+      text: '',
+      value: 0,
+      fields: [
+        {key: '', name: '', value: ''}
+      ]
+    },
+    name: '',
+    opening_hours: '',
+    phone: '',
+    email: '',
+    website: '',
+    wheelchair: '',
+    description: '',
+    note: ''
   }
 }

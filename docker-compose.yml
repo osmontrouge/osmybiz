@@ -11,9 +11,9 @@ services:
   database:
     image: postgres
     environment:
-      - POSTGRES_USER=osm-my-biz
+      - POSTGRES_USER=osmybiz
       - POSTGRES_PASSWORD=123456
-      - POSTGRES_DB=osm-my-biz
+      - POSTGRES_DB=osmybiz
   frontend:
     build:
       context: frontend/

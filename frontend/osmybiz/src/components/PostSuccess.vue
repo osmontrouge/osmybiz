@@ -23,15 +23,30 @@
             <span v-if="node.address.city">
                 {{' ' + node.address.city}}
             </span>
-
-            <strong>Name:</strong> {{node.details.name}}
+            <span v-if="node.address.country">
+                {{' ' + node.address.country}}
+            </span>
           </p>
+        <p>
+          <strong>Name:</strong> {{node.details.name}}
+        </p>
       </div>
     </div>
 
     <div class="note-success" v-if="isNote">
-      <p>Änderungen gespeichert: </p>
-      <p v-html="note.html"></p>
+      <div class="success-header">
+        <h3>Änderungen gespeichert </h3>
+        <a :href="note.link" target="_blank">Link zu OpenStreetMap</a>
+      </div>
+
+      <div class="success-text">
+        <p>
+          <strong>Adresse:</strong> {{note.text.address}}
+        </p>
+        <p>
+          <strong>Name:</strong> {{note.text.name}}
+        </p>
+      </div>
     </div>
 
     <div class="success-buttons">
@@ -46,9 +61,6 @@
 
   export default {
     name: 'post-note-success',
-    mounted () {
-
-    },
     computed: {
       ...mapGetters([
         'note',
@@ -65,7 +77,6 @@
       ]),
       toggleSuccess () {
         this.setDisplaySuccess(false)
-        this.hasUpdates = true
       }
     }
   }
