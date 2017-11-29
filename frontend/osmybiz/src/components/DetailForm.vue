@@ -186,35 +186,12 @@
         </div>
       </div>
     </div>
-
-    <div class="form-footer">
-      <button class="button"
-              @click="reset()">
-        Zurücksetzen</button>
-      <button class="button"
-              v-if="isNote"
-              :disabled="isRequiredFields()"
-              @click="submitNote()">
-        {{t('save')}}</button>
-      <!--
-      <button class="button"
-              v-if="isComment"
-              :disabled="isRequiredFields()"
-              @click="submitComment()">
-        Speichern</button>
-        -->
-      <button class="button"
-              v-if="!isNote"
-              :disabled="isRequiredFields()"
-              @click="submitNode()">
-        {{t('save')}}</button>
-    </div>
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
   import ExtraInputFields from '../components/ExtraInputFields'
@@ -229,57 +206,21 @@
         'address',
         'tags',
         'isOwnCategory',
-        'isPopup',
-        'isNote',
-        'infoText',
-        'infoMap',
-        'temp'
+        'infoMap'
       ])
     },
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
         'setIsPopup',
-        'setInfoText',
-        'setDetails',
-        'setAddress',
-        'saveTemp'
+        'setInfoText'
       ]),
-      ...mapActions([
-        'postNote',
-        'postComment',
-        'postNode'
-      ]),
-      submitNote () {
-        this.postNote()
-      },
-      submitNode () {
-        this.postNode()
-      },
-      isRequiredFields () {
-        return this.details.category.text === '' || this.details.name === ''
-      },
       showPopup (key) {
         this.setInfoText(this.infoMap.get(key))
         this.setIsPopup(true)
       },
       hidePopup () {
         this.setIsPopup(false)
-      },
-      reset () {
-        let details = JSON.parse(localStorage.getItem('details'))
-        let address = JSON.parse(localStorage.getItem('address'))
-        let category = {
-          fields: details.category.fields,
-          text: this.details.category.text,
-          value: this.details.category.value
-        }
-        this.details.category.fields.forEach(function (field, index) {
-          category.fields[index].label = field.label
-        })
-        details.category = category
-        this.setDetails(details)
-        this.setAddress(address)
       },
       onSelect (item) {
         this.details.category = item
@@ -336,7 +277,6 @@
   .form-wrapper {
     max-width:750px;
     margin: auto;
-    margin-bottom: 50px;
   }
 
   .form-fields {
@@ -370,13 +310,6 @@
     justify-content: space-around;
   }
 
-  .form-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-  }
-
   .field {
     display: flex;
     flex-direction: column;
@@ -396,17 +329,6 @@
 
   span {
     text-align: left;
-  }
-
-  button:disabled {
-    border: 2px solid darkgray;
-    background-color: lightgrey;
-    color: black;
-  }
-
-  .button {
-    flex-grow: 1;
-    margin-top: 5px;
   }
 
   img{

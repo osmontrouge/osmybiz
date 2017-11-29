@@ -1,9 +1,12 @@
 <template>
   <div>
     <h2>{{t('detail').title}}</h2>
+
     <category-field v-if="!displaySuccess"></category-field>
     <address-fields v-if="!displaySuccess"></address-fields>
     <detail-form v-if="!displaySuccess"></detail-form>
+    <form-footer v-if="!displaySuccess"></form-footer>
+
     <post-success v-if="displaySuccess"></post-success>
 
     <form-popup v-if="isPopup"></form-popup>
@@ -17,6 +20,7 @@
   import AddressFields from '../components/AddressFields'
   import CategoryField from '../components/CategoryField'
   import FormPopup from '../components/FormPopup'
+  import FormFooter from '../components/FormFooter'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
   import * as _ from 'lodash'
   import {routes} from './../router'
@@ -35,6 +39,7 @@
     },
     components: {
       FormPopup,
+      FormFooter,
       DetailForm,
       PostSuccess,
       AddressFields,
