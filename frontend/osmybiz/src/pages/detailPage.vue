@@ -5,6 +5,7 @@
     <category-field v-if="!displaySuccess"></category-field>
     <address-fields v-if="!displaySuccess"></address-fields>
     <detail-form v-if="!displaySuccess"></detail-form>
+    <extra-info-fields v-if="!displaySuccess"></extra-info-fields>
     <form-footer v-if="!displaySuccess"></form-footer>
 
     <post-success v-if="displaySuccess"></post-success>
@@ -20,6 +21,7 @@
   import AddressFields from '../components/AddressFields'
   import CategoryField from '../components/CategoryField'
   import FormPopup from '../components/FormPopup'
+  import ExtraInfoFields from '../components/ExtraInfoFields'
   import FormFooter from '../components/FormFooter'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
   import * as _ from 'lodash'
@@ -43,7 +45,8 @@
       DetailForm,
       PostSuccess,
       AddressFields,
-      CategoryField
+      CategoryField,
+      ExtraInfoFields
     },
     computed: {
       ...mapGetters([

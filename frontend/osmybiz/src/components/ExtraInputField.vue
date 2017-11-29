@@ -34,7 +34,7 @@
 
 <script>
     export default {
-      name: 'extra-input-fields',
+      name: 'extra-input-field',
       props: ['field'],
       mounted () {
         console.log()

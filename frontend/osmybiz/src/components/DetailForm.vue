@@ -164,28 +164,7 @@
         </div>
       </div>
     </div>
-
     <h5>{{t('detail').validate.subtitle}}</h5>
-
-    <div class="extra-wrapper" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <h3>{{t('detail').subtitle}}</h3>
-      <div class="extra-fields">
-        <div class="column">
-          <div class="field"
-               v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
-            <label>{{ field.label }}</label>
-            <extra-input-fields :field="field"></extra-input-fields>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field"
-               v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
-            <label>{{ field.label }}</label>
-            <extra-input-fields :field="field"></extra-input-fields>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
 </template>
@@ -194,7 +173,6 @@
   import {mapGetters, mapMutations} from 'vuex'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
-  import ExtraInputFields from '../components/ExtraInputFields'
 
   Vue.use(VeeValidate)
 
@@ -225,9 +203,6 @@
       onSelect (item) {
         this.details.category = item
       }
-    },
-    components: {
-      ExtraInputFields
     }
   }
 </script>
@@ -277,27 +252,12 @@
   .form-wrapper {
     max-width:750px;
     margin: auto;
+    margin-bottom: 10px;
   }
 
   .form-fields {
     display: flex;
     flex-flow: row;
-    justify-content: space-between;
-    align-items: stretch;
-  }
-
-  .extra-wrapper {
-    border-top: 1px solid #7ebc6f;
-  }
-
-  .extra-wrapper h3 {
-    margin-top: 10px;
-  }
-
-  .extra-fields {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
   }
