@@ -4,6 +4,7 @@
             @click="back()">
       Zurück</button>
     <button class="button"
+            id="reset-button"
             @click="reset()">
       Zurücksetzen</button>
     <button class="button"
@@ -81,9 +82,9 @@
 <style scoped>
   .form-footer {
     position: fixed;
-    margin: auto;
-    height: 50px;
-    width: 100%;
+    height: 60px;
+    margin: 0 10% 0;
+    width: 80%;
     bottom: 0;
     background: white;
     display: flex;
@@ -100,6 +101,10 @@
 
   .button {
     flex-grow: 1;
-    margin: 5px;
+    margin: 10px 0;
+  }
+
+  #reset-button {
+    margin: 10px;
   }
 </style>

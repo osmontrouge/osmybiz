@@ -209,6 +209,11 @@
 </script>
 
 <style>
+  .form-wrapper {
+    margin: 0 10% 10px;
+    width: 80%;
+  }
+
   input[type="text"], input[type="number"], textarea, select {
     border: 2px solid #7ebc6f;
     padding: 12px 20px;
@@ -250,12 +255,6 @@
     text-align: left;
   }
 
-  .form-wrapper {
-    max-width:750px;
-    margin: auto;
-    margin-bottom: 10px;
-  }
-
   .form-fields {
     display: flex;
     flex-flow: row;
@@ -264,7 +263,7 @@
   }
 
   .column {
-    width: 47%;
+    width: 49%;
     display: flex;
     flex-direction: column;
     align-items:stretch;
@@ -290,12 +289,6 @@
 
   span {
     text-align: left;
-  }
-
-  img{
-    width: 4%;
-    height: 4%;
-    margin-left: 5px;
   }
 
   .field-label {

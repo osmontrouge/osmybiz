@@ -90,8 +90,8 @@
 
 <style scoped>
   .address-wrapper {
-    max-width: 750px;
-    margin: 0 auto;
+    margin: 0 10% 0;
+    width: 80%;
   }
 
   .address-fields {
@@ -123,7 +123,7 @@
   }
 
   .middle {
-    flex-basis: 6%;
+    flex-basis: 2%;
   }
 
   .field {
