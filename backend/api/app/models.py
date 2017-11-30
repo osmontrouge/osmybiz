@@ -1,29 +1,48 @@
 from app import db
 
-class Note(db.Model):
-
-    __tablename__ = 'notes'
+class User(db.Model):
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    osm_note_id = db.Column(db.Integer)
-    osm_state = db.Column(db.String)
+    osmId = db.Column(db.Integer)
+    osmName = db.Column(db.String)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
         db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-    def __init__(self, osm_note_id, osm_state):
-        self.osm_note_id = osm_note_id
-        self.osm_state = osm_state
+    def __init__(self, osmId, osmName):
+        self.osmId = osmId
+        self.osmName = osmName
 
     def save(self):
         db.session.add(self)
         db.session.commit()
 
-    @staticmethod
-    def get_all():
-        return Note.query.all()
+class Node(db.Model):
 
-    def delete(self):
-        db.session.delete(self)
+    __tablename__ = 'node'
+
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, db.ForeignKey('user.id'))
+    osmId = db.Column(db.Integer)
+    lat = db.Column(db.Float)
+    lng = db.Column(db.Float)
+    version = db.Column(db.Integer)
+    recieveUpdates = db.Column(db.Boolean)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(
+        db.DateTime, default=db.func.current_timestamp(),
+        onupdate=db.func.current_timestamp())
+
+    def __init__(self, userId, osmId, lat, lng, version, recieveUpdates):
+        self.userId = userId
+        self.osmId = osmId
+        self.lat = lat
+        self.lng = lng
+        self.version = version
+        self.recieveUpdates = recieveUpdates
+
+    def save(self):
+        db.session.add(self)
         db.session.commit()
