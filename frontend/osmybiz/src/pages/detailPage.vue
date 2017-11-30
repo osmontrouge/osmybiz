@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="detail-wrapper">
     <h2>{{t('detail').title}}</h2>
 
     <category-field></category-field>
@@ -71,5 +71,9 @@
     text-align: left;
     margin: auto;
     max-width:750px;
+  }
+
+  .detail-wrapper {
+    margin-top: 50px;
   }
 </style>

@@ -60,7 +60,7 @@
   import {mapGetters, mapMutations} from 'vuex'
 
   export default {
-    name: 'post-note-success',
+    name: 'post-success',
     computed: {
       ...mapGetters([
         'note',

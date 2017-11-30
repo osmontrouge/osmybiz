@@ -245,7 +245,7 @@ function constructNote () {
 }
 
 function constructDisplayNote (note) {
-  let address = note.text.split('Address: ')[1].split(' Category')[0]
+  let address = note.text.split('Address: ')[1].split('\n')[0]
   let name = note.text.split('Name: ')[1].split('\n')[0]
   note.text = {
     address: address,

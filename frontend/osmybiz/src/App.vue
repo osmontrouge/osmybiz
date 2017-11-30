@@ -2,6 +2,7 @@
   <div id="app">
     <header-bar></header-bar>
     <router-view></router-view>
+    <post-success></post-success>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
   import VueTranslate from 'vue-translate-plugin'
   import de from './locales/de.json'
   import en from './locales/en.json'
+  import PostSuccess from './components/PostSuccess'
 
   Vue.use(VueTranslate)
   Vue.locales({
@@ -24,6 +26,7 @@
       this.$translate.setLang('de')
     },
     components: {
+      PostSuccess,
       HeaderBar
     }
   }

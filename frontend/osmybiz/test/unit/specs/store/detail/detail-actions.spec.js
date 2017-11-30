@@ -4,7 +4,7 @@ const actions = actionsInjector({
   './../api/osmApi': {
     post_Note () {
       return new Promise(resolve => {
-        resolve({ text: 'test Address: test Category: test Name: test' })
+        resolve({text: 'test Address: test\n Category: test\n Name: test\n Wheelchair: true'})
       })
     }
   }
