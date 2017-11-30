@@ -13,6 +13,7 @@
   import {routes} from './../router'
   import {makeTileLayer, getTileUrl, createNewBusinessPopup, createMarker} from './../util/mapUtils'
   import {storeViewPort, getInitialPosition} from './../util/positionUtil'
+  import {setError} from '../store/error'
 
   const zoomOnSelect = 18
   const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -64,6 +65,10 @@
       map = this.$refs.map.mapObject
       tileLayer = makeTileLayer(this.mode)
       map.addLayer(tileLayer)
+
+      tileLayer.on('tileerror', function () {
+        setError('Karte konnte nicht geladen werden')
+      })
 
       this.$store.subscribe(mut => {
         if (mut.type === 'setMapPosition') {

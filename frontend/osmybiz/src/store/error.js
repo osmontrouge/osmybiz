@@ -6,12 +6,6 @@ const state = {
 const actions = {}
 
 const mutations = {
-  setError (state, error) {
-    state.error = error
-  },
-  setIsError (state, isError) {
-    state.isError = isError
-  }
 }
 
 const getters = {

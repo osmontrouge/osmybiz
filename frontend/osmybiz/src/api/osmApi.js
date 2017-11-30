@@ -51,7 +51,9 @@ function parseUser (userXml) {
 }
 
 export function login () {
-  auth.authenticate()
+  auth.authenticate(function () {
+    setError('Benutzer konnte nicht eingeloggt werden.')
+  })
 }
 
 export function isLoggedIn () {
