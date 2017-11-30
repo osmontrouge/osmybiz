@@ -62,8 +62,8 @@ export function createNoteFromNode (node) {
   return {
     category: getBizCategory(node),
     name: extractTag(node, 'name'),
-    openinghours: extractTag(node, 'opening_hours'),
-    phonenumber: extractTag(node, 'phone'),
+    opening_hours: extractTag(node, 'opening_hours'),
+    phone: extractTag(node, 'phone'),
     email: extractTag(node, 'email'),
     website: extractTag(node, 'website'),
     wheelchair: extractWheelchair(node),

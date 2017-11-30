@@ -20,7 +20,6 @@ infoMap.set('note', infoTexts.note)
 const state = {
   // detailPage
   displaySuccess: false,
-  displayConfirmation: true,
 
   // DetailForm
   tags: initalOptions,
@@ -70,23 +69,14 @@ const actions = {
     osmApi.post_Node(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
-      console.log(ps)
     })
   },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
       state.displaySuccess = true
-      commit('setNote', ps)
-    })
-  },
-  postComment () {
-    let comment = constructComment()
-    state.comment = comment
-    osmApi.post_Comment(state.note.id, comment).then(() => {
-      state.displaySuccess = true
-      state.displayNote = false
-      state.displayComment = true
+      let displayNote = constructDisplayNote(ps)
+      commit('setNote', displayNote)
     })
   },
   getAddress ({commit}) {
@@ -94,6 +84,7 @@ const actions = {
     reverseQuery(state.lat, state.lon).then(ps => {
       state.isLoading = false
       commit('setAddress', ps)
+      localStorage.setItem('address', JSON.stringify(ps))
     })
   }
 }
@@ -110,9 +101,6 @@ const mutations = {
   },
   setDisplayConfirmation (state, displayConfirmation) {
     state.displayConfirmation = displayConfirmation
-  },
-  setDisplayAddressForm (state, displayAddressForm) {
-    state.displayAddressForm = displayAddressForm
   },
   setIsOwnCategory (state, isOwnCategory) {
     state.isOwnCategory = isOwnCategory
@@ -148,29 +136,20 @@ const getters = {
   details (state) {
     return state.details
   },
+  address (state) {
+    return state.address
+  },
   note (state) {
     return state.note
   },
   node (state) {
     return state.node
   },
-  comment (state) {
-    return state.comment
-  },
-  displayNote (state) {
-    return state.displayNote
-  },
-  displayComment (state) {
-    return state.displayComment
-  },
   displaySuccess (state) {
     return state.displaySuccess
   },
   displayConfirmation (state) {
     return state.displayConfirmation
-  },
-  displayAddressForm (state) {
-    return state.displayAddressForm
   },
   isOwnCategory (state) {
     return state.isOwnCategory
@@ -203,7 +182,7 @@ export default {
 }
 
 function constructNote () {
-  let text = 'Note from OSM My Business:\n'
+  let text = '#OSMyBiz \n \n'
 
   if (state.address.length !== 0) {
     let address = ''
@@ -254,7 +233,7 @@ function constructNote () {
 
   state.details.category.fields.forEach(function (field) {
     if (field.value.length !== 0) {
-      text += field.name + ': ' + field.value + '\n'
+      text += field.label + ': ' + field.value + '\n'
     }
   })
 
@@ -265,57 +244,14 @@ function constructNote () {
   }
 }
 
-function constructComment () {
-  let text = 'Comment from OSM My Business: '
-
-  if (state.address.length !== 0) {
-    let address = ''
-    if (state.address.street) {
-      address += state.address.street + ' '
-    }
-    if (state.address.housenumber) {
-      address += state.address.housenumber + ', '
-    }
-    if (state.address.postcode) {
-      address += state.address.postcode + ' '
-    }
-    if (state.address.city) {
-      address += state.address.city + ', '
-    }
-    if (state.address.country) {
-      address += state.address.country
-    }
-    text += 'Address: ' + address + ', '
+function constructDisplayNote (note) {
+  let address = note.text.split('Address: ')[1].split('\n')[0]
+  let name = note.text.split('Name: ')[1].split('\n')[0]
+  note.text = {
+    address: address,
+    name: name
   }
-  if (state.details.category.text.length !== 0) {
-    text += 'Category: ' + state.details.category.text + ', '
-  }
-  if (state.details.name.length !== 0) {
-    text += 'Name: ' + state.details.name + ', '
-  }
-  if (state.details.opening_hours.length !== 0) {
-    text += 'Opening hours: ' + state.details.opening_hours + ', '
-  }
-  if (state.details.phone.length !== 0) {
-    text += 'Phone number: ' + state.details.phone + ', '
-  }
-  if (state.details.email.length !== 0) {
-    text += 'Email: ' + state.details.email + ', '
-  }
-  if (state.details.website.length !== 0) {
-    text += 'Website: ' + state.details.website + ', '
-  }
-  if (state.details.wheelchair !== 0) {
-    text += 'Wheelchair accessible: ' + state.details.wheelchair + ', '
-  }
-  if (state.details.description.length !== 0) {
-    text += 'Description: ' + state.details.description + ', '
-  }
-  if (state.details.note.length > 0) {
-    text += 'Note: ' + state.details.note + ', '
-  }
-
-  return text
+  return note
 }
 
 export function loadTags () {
@@ -371,5 +307,25 @@ export function loadTags () {
     })
   } else {
     initalOptions = options
+  }
+}
+
+export function clearDetails () {
+  state.details = {
+    category: {
+      text: '',
+      value: 0,
+      fields: [
+        {key: '', name: '', value: ''}
+      ]
+    },
+    name: '',
+    opening_hours: '',
+    phone: '',
+    email: '',
+    website: '',
+    wheelchair: '',
+    description: '',
+    note: ''
   }
 }

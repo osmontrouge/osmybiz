@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <header-bar></header-bar>
+
     <router-view></router-view>
+
+    <post-success></post-success>
+
     <error-message></error-message>
   </div>
 </template>
@@ -13,6 +17,7 @@
   import VueTranslate from 'vue-translate-plugin'
   import de from './locales/de.json'
   import en from './locales/en.json'
+  import PostSuccess from './components/PostSuccess'
 
   Vue.use(VueTranslate)
   Vue.locales({
@@ -27,7 +32,8 @@
     },
     components: {
       HeaderBar,
-      ErrorMessage
+      ErrorMessage,
+      PostSuccess
     }
   }
 </script>
@@ -51,6 +57,7 @@
     justify-content: center;
     border: 2px solid #55834a;
     padding: 6px 12px;
+    border-radius: 5px;
   }
 
   button:hover {
