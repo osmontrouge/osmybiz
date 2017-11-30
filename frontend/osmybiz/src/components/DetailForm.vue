@@ -242,13 +242,6 @@
               :disabled="isRequiredFields()"
               @click="submitNote()">
         {{t('save')}}</button>
-      <!--
-      <button class="button"
-              v-if="isComment"
-              :disabled="isRequiredFields()"
-              @click="submitComment()">
-        Speichern</button>
-        -->
       <button class="button"
               v-if="!isNote"
               :disabled="isRequiredFields()"
@@ -295,7 +288,6 @@
       ]),
       ...mapActions([
         'postNote',
-        'postComment',
         'postNode'
       ]),
       submitNote () {
