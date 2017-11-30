@@ -3,7 +3,7 @@
     <div class="field">
       <div class="field-label">
         <label>{{t('detail').labels.category}}*</label>
-        <img id="info-category"
+        <img class="info"
              @mouseenter="showPopup('category')"
              @mouseleave="hidePopup()"
              src="../assets/info_black.png">
@@ -93,8 +93,8 @@
 
 <style scoped>
   .category-wrapper {
-    max-width: 750px;
-    margin: 15px auto 0 auto;
+    margin: 15px 10% 0;
+    width: 80%;
   }
 
   .Category-field {
@@ -109,17 +109,11 @@
   .Category-field button {
     flex: 0 0;
     flex-basis: auto;
-    margin: auto auto auto 10px;
+    margin-left: 10px;
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
     border: 2px solid #7ebc6f !important;
-  }
-
-  #info-category {
-    width: 2%;
-    height: 2%;
-    margin-left: 5px;
   }
 
   .menu {

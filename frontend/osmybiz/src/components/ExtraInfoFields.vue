@@ -43,8 +43,8 @@
 
   .extra-wrapper {
     border-top: 1px solid #7ebc6f;
-    max-width:750px;
-    margin: auto;
+    margin: 0 10% 0;
+    width: 80%;
   }
 
   .extra-wrapper h3 {

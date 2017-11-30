@@ -69,11 +69,18 @@
 <style>
   h2 {
     text-align: left;
-    margin: auto;
-    max-width:750px;
+    margin: 0 10% 0;
+    width: 80%;
   }
 
   .detail-wrapper {
     margin-top: 50px;
+    margin-bottom: 60px;
+  }
+
+  img{
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
   }
 </style>

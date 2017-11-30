@@ -1,18 +1,22 @@
 <template>
   <div class="form-footer">
     <button class="button"
+            @click="back()">
+      Zurück</button>
+    <button class="button"
+            id="reset-button"
             @click="reset()">
       Zurücksetzen</button>
     <button class="button"
             v-if="isNote"
             :disabled="isRequiredFields()"
             @click="submitNote()">
-      {{t('save')}}</button>
+      {{t('detail').save}}</button>
     <button class="button"
             v-if="!isNote"
             :disabled="isRequiredFields()"
             @click="submitNode()">
-      {{t('save')}}</button>
+      {{t('detail').save}}</button>
   </div>
 </template>
 
@@ -56,15 +60,20 @@
         let address = JSON.parse(localStorage.getItem('address'))
         let category = {
           fields: details.category.fields,
-          text: this.details.category.text,
-          value: this.details.category.value
+          text: details.category.text,
+          value: details.category.value
         }
-        this.details.category.fields.forEach(function (field, index) {
-          category.fields[index].label = field.label
-        })
+        if (this.details.category.text === details.category.text) {
+          this.details.category.fields.forEach(function (field, index) {
+            category.fields[index].label = field.label
+          })
+        }
         details.category = category
         this.setDetails(details)
         this.setAddress(address)
+      },
+      back () {
+        this.$router.push({name: routes.Landing})
       }
     }
   }
@@ -72,11 +81,14 @@
 
 <style scoped>
   .form-footer {
-    max-width:750px;
-    margin: auto;
-    margin-bottom: 50px;
+    position: fixed;
+    height: 60px;
+    margin: 0 10% 0;
+    width: 80%;
+    bottom: 0;
+    background: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
     justify-content: flex-start;
   }
@@ -89,6 +101,10 @@
 
   .button {
     flex-grow: 1;
-    margin-top: 5px;
+    margin: 10px 0;
+  }
+
+  #reset-button {
+    margin: 10px;
   }
 </style>
