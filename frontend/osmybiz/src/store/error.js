@@ -30,7 +30,10 @@ export default {
   getters
 }
 
-export function setError (source) {
+export function setError (error) {
   state.isError = true
-  state.error = 'Es ist ein Fehler aufgetreten.'
+  state.error = error
+  setTimeout(function () {
+    state.isError = false
+  }, 5000)
 }

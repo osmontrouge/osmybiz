@@ -2,13 +2,13 @@
   <div id="app">
     <header-bar></header-bar>
     <router-view></router-view>
-    <error></error>
+    <error-message></error-message>
   </div>
 </template>
 
 <script>
   import HeaderBar from './components/HeaderBar'
-  import Error from './components/Error'
+  import ErrorMessage from './components/ErrorMessage'
   import Vue from 'vue'
   import VueTranslate from 'vue-translate-plugin'
   import de from './locales/de.json'
@@ -27,7 +27,7 @@
     },
     components: {
       HeaderBar,
-      Error
+      ErrorMessage
     }
   }
 </script>

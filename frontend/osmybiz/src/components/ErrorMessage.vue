@@ -9,7 +9,7 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    name: 'error',
+    name: 'error-message',
     computed: {
       ...mapGetters([
         'error',
@@ -31,19 +31,18 @@
     border: 2px solid #880000;
     background: white;
     display: flex;
-    align-items: left;
-    justify-content: left;
+    align-items: center;
 
     padding: 5px;
   }
 
   img {
     height: 50px;
+    width: 50px;
   }
 
   span {
     font-size: 16px;
     margin-left: 10px;
-    margin-top: 15px;
   }
 </style>
