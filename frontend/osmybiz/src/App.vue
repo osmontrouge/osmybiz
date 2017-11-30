@@ -1,13 +1,18 @@
 <template>
   <div id="app">
     <header-bar></header-bar>
+
     <router-view></router-view>
+
     <post-success></post-success>
+
+    <error-message></error-message>
   </div>
 </template>
 
 <script>
   import HeaderBar from './components/HeaderBar'
+  import ErrorMessage from './components/ErrorMessage'
   import Vue from 'vue'
   import VueTranslate from 'vue-translate-plugin'
   import de from './locales/de.json'
@@ -26,8 +31,9 @@
       this.$translate.setLang('de')
     },
     components: {
-      PostSuccess,
-      HeaderBar
+      HeaderBar,
+      ErrorMessage,
+      PostSuccess
     }
   }
 </script>

@@ -3,6 +3,7 @@ import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
+import {setError} from '../store/error'
 
 const createNotePath = osmApiLevel + 'notes.json'
 const createChangesetPath = osmApiLevel + 'changeset/create'
@@ -50,7 +51,9 @@ function parseUser (userXml) {
 }
 
 export function login () {
-  auth.authenticate()
+  auth.authenticate(function () {
+    setError('Benutzer konnte nicht eingeloggt werden.')
+  })
 }
 
 export function isLoggedIn () {
@@ -76,6 +79,7 @@ export function loadUser () {
     } else {
       auth.xhr({method: 'GET', path: userPath}, (err, response) => {
         if (err) {
+          setError('Benutzer konnte nicht geladen werden.')
           console.log(err)
           resolve(null)
         }
@@ -109,6 +113,7 @@ export default {
           }
         }, (err, response) => {
         if (err) {
+          setError('Unternehmen konnte nicht hochgeladen werden.')
           console.log(err)
         }
         changesetID = response
@@ -126,6 +131,7 @@ export default {
           content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
         }, (err, response) => {
         if (err) {
+          setError('Änderungen konnten nicht gespeichert werden')
           console.log(err)
           resolve(null)
         }
