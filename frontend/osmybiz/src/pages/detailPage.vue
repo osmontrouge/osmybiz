@@ -2,13 +2,11 @@
   <div>
     <h2>{{t('detail').title}}</h2>
 
-    <category-field v-if="!displaySuccess"></category-field>
-    <address-fields v-if="!displaySuccess"></address-fields>
-    <detail-form v-if="!displaySuccess"></detail-form>
-    <extra-info-fields v-if="!displaySuccess"></extra-info-fields>
-    <form-footer v-if="!displaySuccess"></form-footer>
-
-    <post-success v-if="displaySuccess"></post-success>
+    <category-field></category-field>
+    <address-fields></address-fields>
+    <detail-form></detail-form>
+    <extra-info-fields></extra-info-fields>
+    <form-footer></form-footer>
 
     <form-popup v-if="isPopup"></form-popup>
 
@@ -33,8 +31,6 @@
         this.$router.push({name: routes.Landing})
       }
       this.setDisplaySuccess(false)
-      const hasData = this.details.category.value !== 0
-      this.setDisplayConfirmation(!hasData)
 
       this.getAddress()
       localStorage.setItem('details', JSON.stringify(this.details))
@@ -50,8 +46,6 @@
     },
     computed: {
       ...mapGetters([
-        'displaySuccess',
-        'displayConfirmation',
         'lat',
         'lon',
         'details',

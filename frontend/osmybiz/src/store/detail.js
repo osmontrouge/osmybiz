@@ -20,7 +20,6 @@ infoMap.set('note', infoTexts.note)
 const state = {
   // detailPage
   displaySuccess: false,
-  displayConfirmation: true,
 
   // DetailForm
   tags: initalOptions,
@@ -70,14 +69,14 @@ const actions = {
     osmApi.post_Node(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
-      console.log(ps)
     })
   },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
       state.displaySuccess = true
-      commit('setNote', ps)
+      let displayNote = constructDisplayNote(ps)
+      commit('setNote', displayNote)
     })
   },
   getAddress ({commit}) {
@@ -245,6 +244,16 @@ function constructNote () {
   }
 }
 
+function constructDisplayNote (note) {
+  let address = note.text.split('Address: ')[1].split(' Category')[0]
+  let name = note.text.split('Name: ')[1].split('\n')[0]
+  note.text = {
+    address: address,
+    name: name
+  }
+  return note
+}
+
 export function loadTags () {
   let tags = getLanguageTags()
   let options = []
@@ -298,5 +307,25 @@ export function loadTags () {
     })
   } else {
     initalOptions = options
+  }
+}
+
+export function clearDetails () {
+  state.details = {
+    category: {
+      text: '',
+      value: 0,
+      fields: [
+        {key: '', name: '', value: ''}
+      ]
+    },
+    name: '',
+    opening_hours: '',
+    phone: '',
+    email: '',
+    website: '',
+    wheelchair: '',
+    description: '',
+    note: ''
   }
 }

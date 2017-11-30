@@ -132,7 +132,9 @@ export default {
         const data = JSON.parse(response)
         resolve({
           html: data.properties.comments[0].html,
+          text: data.properties.comments[0].text,
           id: data.properties.id,
+          link: 'https://master.apis.dev.openstreetmap.org/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
           status: data.properties.status
         })
       })

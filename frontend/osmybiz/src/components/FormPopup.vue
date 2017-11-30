@@ -16,7 +16,7 @@
       window.onmousemove = function (e) {
         let x = e.clientX
         let y = e.clientY
-        popup.style.top = (y + 10) + 'px'
+        popup.style.top = (y + 10 + window.scrollY) + 'px'
         popup.style.left = (x + 10) + 'px'
       }
     },
@@ -34,6 +34,7 @@
     display: block;
     position: absolute;
     z-index: 100;
+    width: 25%;
     color: white;
     padding: 10px;
   }

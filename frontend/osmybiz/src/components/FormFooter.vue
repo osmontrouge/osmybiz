@@ -18,6 +18,8 @@
 
 <script>
   import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {routes} from './../router'
+  import {clearDetails} from './../store/detail'
 
   export default {
     name: 'form-footer',
@@ -38,9 +40,13 @@
       ]),
       submitNote () {
         this.postNote()
+        this.$router.push({name: routes.Landing})
+        clearDetails()
       },
       submitNode () {
         this.postNode()
+        this.$router.push({name: routes.Landing})
+        clearDetails()
       },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''
