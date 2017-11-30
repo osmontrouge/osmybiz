@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {overpassUrl} from '../config/config'
 import tags from '../assets/tags_de'
+import {setError} from '../store/error'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 
@@ -41,6 +42,7 @@ export function queryBox (bbox) {
   return axios.post(overpassUrl, buildQuery(bbox)).then(res => {
     return parseData(res.data).filter(filterTags)
   }, (err) => {
+    setError('Unternehmen konnten nicht geladen werden.')
     console.log(err)
     return []
   })

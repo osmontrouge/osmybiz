@@ -2,6 +2,7 @@ import axios from 'axios'
 import {latLng} from 'leaflet'
 import * as _ from 'lodash'
 import {nominatimReverseUrl, nominatimUrl} from '../config/config'
+import {setError} from '../store/error'
 
 const queryMax = 10
 
@@ -42,6 +43,7 @@ export function query (queryString) {
       return mapResults(response.data)
     })
     .catch(e => {
+      setError('Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.')
       console.log(e)
     })
 }
@@ -72,6 +74,7 @@ export function reverseQuery (lat, lon) {
       return parseAddress(response.data.address)
     })
     .catch(e => {
+      setError('Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.')
       console.log(e)
     })
 }
