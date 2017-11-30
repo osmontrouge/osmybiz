@@ -9,6 +9,7 @@
       Zurücksetzen</button>
     <button class="button"
             v-if="isNote"
+            id="save-note"
             :disabled="isRequiredFields()"
             @click="submitNote()">
       {{t('detail').save}}</button>

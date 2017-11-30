@@ -145,7 +145,29 @@ export default {
         })
       })
     })
+  },
+
+  get_Notes: (lat, lng) => {
+    let left = lng - 0.00005
+    let bottom = lat - 0.00005
+    let right = lng + 0.00005
+    let top = lat + 0.00005
+    return new Promise((resolve) => {
+      auth.xhr(
+        {
+          method: 'GET',
+          path: createNotePath + '?bbox=' + left + ',' + bottom + ',' + right + ',' + top
+        }, (err, response) => {
+        if (err) {
+          console.log(err)
+          resolve(null)
+        }
+        const data = JSON.parse(response)
+        resolve(data.features)
+      })
+    })
   }
+
 }
 
 function uploadChangeset (node) {

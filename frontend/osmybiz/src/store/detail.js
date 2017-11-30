@@ -23,6 +23,7 @@ const state = {
 
   // DetailForm
   tags: initalOptions,
+  address: {},
   lat: null,
   lon: null,
   details: {
@@ -43,19 +44,17 @@ const state = {
     note: ''
   },
   isOwnCategory: false,
-  isLoading: true,
   isPopup: false,
   isNote: false,
   infoText: '',
   infoMap: infoMap,
 
-  // PostNoteSuccess
+  // PostSuccess
   note: {},
   node: {},
 
-  // AddressConfirmation
-  address: {},
-  displayAddressForm: false
+  // Check Duplicates
+  isDuplicateNote: false
 }
 
 const actions = {
@@ -80,13 +79,17 @@ const actions = {
     })
   },
   getAddress ({commit}) {
-    state.isLoading = true
     reverseQuery(state.lat, state.lon).then(ps => {
-      state.isLoading = false
       commit('setAddress', ps)
       localStorage.setItem('address', JSON.stringify(ps))
     })
+  },
+  getNotes ({commit}) {
+    osmApi.get_Notes(state.lat, state.lon).then(ps => {
+      commit('setIsDuplicateNote', ps)
+    })
   }
+
 }
 
 const mutations = {
@@ -123,6 +126,28 @@ const mutations = {
   },
   setDetails (state, details) {
     state.details = details
+  },
+  setIsDuplicateNote (state, notes) {
+    if (typeof notes === 'boolean') {
+      state.isDuplicateNote = notes
+    } else {
+      notes.forEach(function (note) {
+        if (note.properties.status === 'open') {
+          let text = note.properties.comments[0].text
+          let fields = text.split('\n')
+          if (fields[0] === '#OSMyBiz ' &&
+            fields[3] === 'Category: ' + state.details.category.text &&
+            fields[4] === 'Name: ' + state.details.name) {
+            state.isDuplicateNote = true
+
+            // change styling of formular
+            document.getElementById('formular').style.opacity = 0.2
+            document.getElementById('reset-button').disabled = true
+            document.getElementById('save-note').disabled = true
+          }
+        }
+      })
+    }
   }
 }
 
@@ -169,8 +194,8 @@ const getters = {
   infoMap (state) {
     return state.infoMap
   },
-  isLoading (state) {
-    return state.isLoading
+  isDuplicateNote (state) {
+    return state.isDuplicateNote
   }
 }
 
