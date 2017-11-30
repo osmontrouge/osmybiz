@@ -2,53 +2,7 @@
 
   <div class="form-wrapper">
 
-    <h2>{{t('detail').title}}</h2>
-
-    <div class="popup" v-if="isPopup">
-        <span>{{infoText}}</span>
-    </div>
-
-    <div class="form-select">
-      <div class="field">
-        <div class="field-label">
-          <label>{{t('detail').labels.category}}*</label>
-          <img id="info-category"
-               @mouseenter="showPopup('category')"
-               @mouseleave="hidePopup()"
-               src="../assets/info_black.png">
-        </div>
-
-        <div v-show="!isOwnCategory" class="Category-field">
-          <basic-select v-show="!isOwnCategory"
-                        :options="this.tags"
-                        :selected-option="details.category"
-                        :placeholder="t('detail').placeholders.category"
-                        @select="onSelect"
-                        class="basic-select">
-          </basic-select>
-
-          <button class="button" @click="showInput()">
-            {{t('detail').owncategory}}
-          </button>
-        </div>
-
-
-        <div v-show="isOwnCategory" class="Category-field">
-          <input v-model="details.category.text"
-                 type="text"
-                 :placeholder="t('detail').placeholders.owncategory"
-                 name="category-input"/>
-          <button class="button" @click="hideInput()">
-            {{t('detail').choosecategory}}
-          </button>
-        </div>
-
-        <span v-show="details.category.text === ''"
-              class="help is-danger">
-          {{t('detail').validate.required}}
-        </span>
-      </div>
-    </div>
+    <h3>Details</h3>
 
     <div class="form-fields">
       <div class="column">
@@ -210,103 +164,36 @@
         </div>
       </div>
     </div>
-
     <h5>{{t('detail').validate.subtitle}}</h5>
 
-    <div class="extra-wrapper" v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <h3>{{t('detail').subtitle}}</h3>
-      <div class="extra-fields">
-        <div class="column">
-          <div class="field"
-               v-for="field in details.category.fields.slice(details.category.fields.length/2, details.category.fields.length)">
-            <label>{{ field.label }}</label>
-            <extra-input-field :field="field"></extra-input-field>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field"
-               v-for="field in details.category.fields.slice(0, details.category.fields.length/2)">
-            <label>{{ field.label }}</label>
-            <extra-input-field :field="field"></extra-input-field>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-footer">
-      <button class="button"
-              @click="reset()">
-        Zurücksetzen</button>
-      <button class="button"
-              v-if="isNote"
-              :disabled="isRequiredFields()"
-              @click="submitNote()">
-        {{t('save')}}</button>
-      <button class="button"
-              v-if="!isNote"
-              :disabled="isRequiredFields()"
-              @click="submitNode()">
-        {{t('save')}}</button>
-    </div>
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
-  import {BasicSelect} from 'vue-search-select'
+  import {mapGetters, mapMutations} from 'vuex'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
-  import ExtraInputField from '../components/ExtraInputField'
 
   Vue.use(VeeValidate)
 
   export default {
     name: 'detail-form',
-    created () {
-      localStorage.setItem('details', JSON.stringify(this.details))
-    },
     computed: {
       ...mapGetters([
         'details',
+        'address',
         'tags',
         'isOwnCategory',
-        'isPopup',
-        'isNote',
-        'infoText',
-        'infoMap',
-        'temp'
+        'infoMap'
       ])
     },
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
         'setIsPopup',
-        'setInfoText',
-        'setDetails',
-        'saveTemp'
+        'setInfoText'
       ]),
-      ...mapActions([
-        'postNote',
-        'postNode'
-      ]),
-      submitNote () {
-        this.postNote()
-      },
-      submitNode () {
-        this.postNode()
-      },
-      hideInput () {
-        this.setIsOwnCategory(false)
-        this.details.category = {value: 0, text: ''}
-      },
-      showInput () {
-        this.setIsOwnCategory(true)
-        this.details.category = {value: 0, text: ''}
-      },
-      isRequiredFields () {
-        return this.details.category.text === '' || this.details.name === ''
-      },
       showPopup (key) {
         this.setInfoText(this.infoMap.get(key))
         this.setIsPopup(true)
@@ -314,27 +201,9 @@
       hidePopup () {
         this.setIsPopup(false)
       },
-      reset () {
-        let details = JSON.parse(localStorage.getItem('details'))
-        let category = {
-          fields: details.category.fields,
-          text: this.details.category.text,
-          value: this.details.category.value
-        }
-        console.log(category)
-        this.details.category.fields.forEach(function (field, index) {
-          category.fields[index].label = field.label
-        })
-        details.category = category
-        this.setDetails(details)
-      },
       onSelect (item) {
         this.details.category = item
       }
-    },
-    components: {
-      BasicSelect,
-      ExtraInputField
     }
   }
 </script>
@@ -377,14 +246,14 @@
     resize: none;
   }
 
-  h2, h3, h5 {
+  h3, h5 {
     text-align: left;
   }
 
   .form-wrapper {
     max-width:750px;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
 
   .form-fields {
@@ -394,35 +263,12 @@
     align-items: stretch;
   }
 
-  .extra-wrapper {
-    border-top: 1px solid #7ebc6f;
-  }
-
-  .extra-wrapper h3 {
-    margin-top: 10px;
-  }
-
-  .extra-fields {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
-  }
-
   .column {
-    width: 45%;
+    width: 47%;
     display: flex;
     flex-direction: column;
     align-items:stretch;
     justify-content: space-around;
-  }
-
-  .form-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
   }
 
   .field {
@@ -446,71 +292,15 @@
     text-align: left;
   }
 
-  button:disabled {
-    border: 2px solid darkgray;
-    background-color: lightgrey;
-    color: black;
-  }
-
-  .Category-field {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .Category-field input, .basic-select{
-    flex-grow: 5 !important;
-  }
-
-  .Category-field button{
-    flex: 0 0;
-    flex-basis: auto;
-    margin: auto auto auto 10px;
-  }
-
-  .basic-select, .basic-select:hover, .basic-select:focus {
-    border: 2px solid #7ebc6f !important;
-  }
-
-  .button {
-    flex-grow: 1;
-    margin-top: 5px;
-  }
-
   img{
     width: 4%;
     height: 4%;
     margin-left: 5px;
   }
 
-  #info-category {
-    width: 2%;
-    height: 2%;
-    margin-left: 5px;
-  }
-
   .field-label {
     display: flex;
     flex-direction: row;
-  }
-
-  .popup {
-    background: #7ebc6f;
-    display: block;
-    position: absolute;
-    margin: 0 auto;
-    top: 35%;
-    left: 0;
-    right: 0;
-    width: 300px;
-    z-index: 100;
-    color: white;
-  }
-  .menu {
-    border: 2px solid #7ebc6f !important;
-    border-top: none !important;
-    margin: 0px -2px !important;
-    min-width: calc(100% + 2px ) !important;
-    width: calc(100% + 4px ) !important;
   }
 
 </style>

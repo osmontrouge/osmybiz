@@ -36,6 +36,9 @@
     export default {
       name: 'extra-input-field',
       props: ['field'],
+      mounted () {
+        console.log()
+      },
       methods: {
         checkType () {
           if (this.field.type === 'text' ||

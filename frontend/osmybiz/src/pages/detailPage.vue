@@ -1,16 +1,29 @@
 <template>
-  <div class="detail-wrapper">
-    <address-confirmation v-if="displayConfirmation"></address-confirmation>
-    <detail-form v-if="!displaySuccess && !displayConfirmation"></detail-form>
+  <div>
+    <h2>{{t('detail').title}}</h2>
+
+    <category-field v-if="!displaySuccess"></category-field>
+    <address-fields v-if="!displaySuccess"></address-fields>
+    <detail-form v-if="!displaySuccess"></detail-form>
+    <extra-info-fields v-if="!displaySuccess"></extra-info-fields>
+    <form-footer v-if="!displaySuccess"></form-footer>
+
     <post-success v-if="displaySuccess"></post-success>
+
+    <form-popup v-if="isPopup"></form-popup>
+
   </div>
 </template>
 
 <script>
   import DetailForm from '@/components/DetailForm'
   import PostSuccess from '@/components/PostSuccess'
-  import AddressConfirmation from '@/components/AddressConfirmation'
-  import {mapGetters, mapMutations} from 'vuex'
+  import AddressFields from '../components/AddressFields'
+  import CategoryField from '../components/CategoryField'
+  import FormPopup from '../components/FormPopup'
+  import ExtraInfoFields from '../components/ExtraInfoFields'
+  import FormFooter from '../components/FormFooter'
+  import {mapGetters, mapMutations, mapActions} from 'vuex'
   import * as _ from 'lodash'
   import {routes} from './../router'
 
@@ -22,11 +35,18 @@
       this.setDisplaySuccess(false)
       const hasData = this.details.category.value !== 0
       this.setDisplayConfirmation(!hasData)
+
+      this.getAddress()
+      localStorage.setItem('details', JSON.stringify(this.details))
     },
     components: {
+      FormPopup,
+      FormFooter,
       DetailForm,
       PostSuccess,
-      AddressConfirmation
+      AddressFields,
+      CategoryField,
+      ExtraInfoFields
     },
     computed: {
       ...mapGetters([
@@ -35,20 +55,27 @@
         'lat',
         'lon',
         'details',
-        'isLoggedIn'
+        'isLoggedIn',
+        'isPopup',
+        'address'
       ])
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
         'setDisplayConfirmation'
+      ]),
+      ...mapActions([
+        'getAddress'
       ])
     }
   }
 </script>
 
 <style>
-  .detail-wrapper {
-    margin-top: 50px;
+  h2 {
+    text-align: left;
+    margin: auto;
+    max-width:750px;
   }
 </style>

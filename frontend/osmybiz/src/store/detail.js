@@ -85,6 +85,7 @@ const actions = {
     reverseQuery(state.lat, state.lon).then(ps => {
       state.isLoading = false
       commit('setAddress', ps)
+      localStorage.setItem('address', JSON.stringify(ps))
     })
   }
 }
@@ -101,9 +102,6 @@ const mutations = {
   },
   setDisplayConfirmation (state, displayConfirmation) {
     state.displayConfirmation = displayConfirmation
-  },
-  setDisplayAddressForm (state, displayAddressForm) {
-    state.displayAddressForm = displayAddressForm
   },
   setIsOwnCategory (state, isOwnCategory) {
     state.isOwnCategory = isOwnCategory
@@ -139,6 +137,9 @@ const getters = {
   details (state) {
     return state.details
   },
+  address (state) {
+    return state.address
+  },
   note (state) {
     return state.note
   },
@@ -150,9 +151,6 @@ const getters = {
   },
   displayConfirmation (state) {
     return state.displayConfirmation
-  },
-  displayAddressForm (state) {
-    return state.displayAddressForm
   },
   isOwnCategory (state) {
     return state.isOwnCategory
