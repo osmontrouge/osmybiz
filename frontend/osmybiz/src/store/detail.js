@@ -2,6 +2,7 @@ import osmApi from './../api/osmApi'
 import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
 import {getLanguageTags} from './locale'
+import {surroundingQueryNode} from '../api/overpassApi'
 
 let initalOptions = []
 loadTags()
@@ -23,6 +24,7 @@ const state = {
 
   // DetailForm
   tags: initalOptions,
+  address: {},
   lat: null,
   lon: null,
   details: {
@@ -43,19 +45,17 @@ const state = {
     note: ''
   },
   isOwnCategory: false,
-  isLoading: true,
   isPopup: false,
   isNote: false,
   infoText: '',
   infoMap: infoMap,
 
-  // PostNoteSuccess
+  // PostSuccess
   note: {},
   node: {},
 
-  // AddressConfirmation
-  address: {},
-  displayAddressForm: false
+  // Check Duplicates
+  isDuplicate: false
 }
 
 const actions = {
@@ -71,6 +71,14 @@ const actions = {
       commit('setNode', ps)
     })
   },
+  checkDuplicate ({commit}) {
+    return new Promise((resolve) => {
+      surroundingQueryNode(state.details, state.lat, state.lon).then(ps => {
+        resolve(ps)
+        commit('setIsDuplicate', ps)
+      })
+    })
+  },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
@@ -80,13 +88,17 @@ const actions = {
     })
   },
   getAddress ({commit}) {
-    state.isLoading = true
     reverseQuery(state.lat, state.lon).then(ps => {
-      state.isLoading = false
       commit('setAddress', ps)
       localStorage.setItem('address', JSON.stringify(ps))
     })
+  },
+  getNotes ({commit}) {
+    osmApi.get_Notes(state.lat, state.lon).then(ps => {
+      commit('setIsDuplicateNote', ps)
+    })
   }
+
 }
 
 const mutations = {
@@ -123,6 +135,22 @@ const mutations = {
   },
   setDetails (state, details) {
     state.details = details
+  },
+  setIsDuplicate (state, isDuplicate) {
+    state.isDuplicate = isDuplicate
+  },
+  setIsDuplicateNote (state, notes) {
+    notes.forEach(function (note) {
+      if (note.properties.status === 'open') {
+        let text = note.properties.comments[0].text
+        let fields = text.split('\n')
+        if (fields[0] === '#OSMyBiz ' &&
+          fields[3] === 'Category: ' + state.details.category.text &&
+          fields[4] === 'Name: ' + state.details.name) {
+          state.isDuplicate = true
+        }
+      }
+    })
   }
 }
 
@@ -169,8 +197,8 @@ const getters = {
   infoMap (state) {
     return state.infoMap
   },
-  isLoading (state) {
-    return state.isLoading
+  isDuplicate (state) {
+    return state.isDuplicate
   }
 }
 

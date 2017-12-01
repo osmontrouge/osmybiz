@@ -1,11 +1,25 @@
 <template>
   <div class="detail-wrapper">
-    <h2>{{t('detail').title}}</h2>
 
-    <category-field></category-field>
-    <address-fields></address-fields>
-    <detail-form></detail-form>
-    <extra-info-fields></extra-info-fields>
+    <div v-bind:class="{ duplicateFormular: isDuplicate }">
+      <h2>{{t('detail').title}}</h2>
+
+      <category-field></category-field>
+      <address-fields></address-fields>
+      <detail-form></detail-form>
+      <extra-info-fields></extra-info-fields>
+    </div>
+
+    <div v-bind:class="{ duplicateText: isDuplicate }"
+         v-if="isDuplicate">
+      <p v-if="isNote">
+        Für dieses Objekt besteht bereits eine Notiz. Bitte haben sie Geduld bis diese abgearbeitet wird.
+      </p>
+      <p v-if="!isNote">
+        Dieses Objekt besteht bereits.
+      </p>
+    </div>
+
     <form-footer></form-footer>
 
     <form-popup v-if="isPopup"></form-popup>
@@ -34,6 +48,10 @@
 
       this.getAddress()
       localStorage.setItem('details', JSON.stringify(this.details))
+
+      if (this.isNote) {
+        this.getNotes()
+      }
     },
     components: {
       FormPopup,
@@ -51,7 +69,9 @@
         'details',
         'isLoggedIn',
         'isPopup',
-        'address'
+        'isNote',
+        'address',
+        'isDuplicate'
       ])
     },
     methods: {
@@ -60,7 +80,8 @@
         'setDisplayConfirmation'
       ]),
       ...mapActions([
-        'getAddress'
+        'getAddress',
+        'getNotes'
       ])
     }
   }
@@ -82,5 +103,18 @@
     width: 15px;
     height: 15px;
     margin-left: 5px;
+  }
+
+  .duplicateText {
+    position: fixed;
+    top: 40%;
+    margin: 0 10% 10px;
+    width: 80%;
+    font-size: 24px;
+  }
+
+  .duplicateFormular {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
   }
 </style>

@@ -17,7 +17,7 @@
   import UpdateList from './../components/UpdateList'
   import PostSuccess from './../components/PostSuccess'
 
-  import {mapActions} from 'vuex'
+  import {mapActions, mapMutations} from 'vuex'
   import * as _ from 'lodash'
   import ToggleButton from './../components/ToggleButton'
 
@@ -38,9 +38,11 @@
           window.location.href = '/'
         })
       }
+      this.setIsDuplicate(false)
     },
     methods: {
-      ...mapActions(['setToken'])
+      ...mapActions(['setToken']),
+      ...mapMutations(['setIsDuplicate'])
     },
     components: {
       SearchBar,
