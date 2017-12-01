@@ -30,7 +30,8 @@
     computed: {
       ...mapGetters([
         'isNote',
-        'details'
+        'details',
+        'user'
       ])
     },
     methods: {
@@ -48,7 +49,7 @@
         clearDetails()
       },
       submitNode () {
-        this.postNode()
+        this.postNode(this.user)
         this.$router.push({name: routes.Landing})
         clearDetails()
       },

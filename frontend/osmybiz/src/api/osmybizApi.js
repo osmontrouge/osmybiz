@@ -1,6 +1,9 @@
 import axios from 'axios'
 import {fakeOsmybizApi} from './../config/config'
-import {mockAddOrUpdateUser, mockAddOrUpdateNode, mockFetchnodes, mockUnsubscribe} from './osmybizApiMock'
+import {
+  mockAddOrUpdateUser, mockAddOrUpdateNode, mockFetchnodes, mockUnsubscribe,
+  mockDeleteNode
+} from './osmybizApiMock'
 
 const baseRoute = './api/'
 
@@ -41,4 +44,11 @@ export function unsubscribe (userId, nodeId) {
   }
   const route = baseRoute + `user/${userId}/node/${nodeId}/unsubscribe`
   return axios.post(route)
+}
+
+export function deleteNode (userId, nodeId) {
+  if (fakeOsmybizApi) {
+    return mockDeleteNode(userId, nodeId)
+  }
+  return Promise.resolve()
 }

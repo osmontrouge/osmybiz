@@ -1,5 +1,7 @@
-import {addOrUpdateUser, fetchnodes} from './../api/osmybizApi'
+import {addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe} from './../api/osmybizApi'
 import {getNode} from './../api/osmApi'
+import {getUpdate} from './../util/updateUtil'
+import * as _ from 'lodash'
 
 const state = {
   updates: [],
@@ -12,14 +14,42 @@ const actions = {
       fetchnodes(user.id).then(ns => {
         commit('setNodes', ns)
 
-        ns.forEach(n => {
+        ns.filter(n => n.recieveUpdates).forEach(n => {
           getNode(n.osmId).then(node => {
-            console.log(node)
+            const update = getUpdate(n, node)
+            if (_.isObject(update)) {
+              commit('pushUpdate', update)
+            }
           })
         })
       })
     }, (err) => {
       console.log(err)
+    })
+  },
+
+  confirmUpdate ({commit}, {user, update}) {
+    let promise
+    if (update.kind === 'update') {
+      promise = addOrUpdateNode(user.id, {
+        osmId: update.id,
+        version: update.newVersion,
+        lat: update.coords.lat,
+        lng: update.coords.lng,
+        recieveUpdates: true
+      })
+    } else {
+      promise = deleteNode(user.id, update.id)
+    }
+    promise.then(() => {
+      commit('removeUpdate', update)
+    })
+  },
+
+  ignoreFutureUpdates ({commit}, {update, user}) {
+    console.log(update, user)
+    unsubscribe(user.id, update.id).then(() => {
+      commit('removeUpdate', update)
     })
   }
 }
@@ -27,6 +57,16 @@ const actions = {
 const mutations = {
   setNodes (state, nodes) {
     state.nodes = nodes
+  },
+  pushUpdate (state, update) {
+    state.updates.push(update)
+  },
+  removeUpdate (state, update) {
+    const i = _.findIndex(state.updates, u => u.id === update.id)
+
+    if (i >= 0) {
+      state.updates.splice(i, 1)
+    }
   }
 }
 

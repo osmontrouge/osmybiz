@@ -83,3 +83,22 @@ export function mockUnsubscribe (userId, nodeId) {
   saveNodes(nodes)
   return Promise.resolve()
 }
+
+export function mockDeleteNode (userId, nodeId) {
+  const users = loadUsers()
+  const user = users.filter(u => u.osmId === userId)[0]
+
+  if (!_.isObject(user)) {
+    return Promise.reject('User not found')
+  }
+  const nodes = loadNodes()
+  let node = nodes.filter(n => n.osmId === nodeId && n.userId === userId)[0]
+  if (!_.isObject(node)) {
+    return Promise.reject('Node not found')
+  }
+
+  const index = nodes.indexOf(node)
+  nodes.splice(index, 1)
+  saveNodes(nodes)
+  return Promise.resolve()
+}

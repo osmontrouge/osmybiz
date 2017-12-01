@@ -2,6 +2,7 @@ import osmApi from './../api/osmApi'
 import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
 import {getLanguageTags} from './locale'
+import {addOrUpdateNode} from '../api/osmybizApi'
 
 let initalOptions = []
 loadTags()
@@ -59,7 +60,7 @@ const state = {
 }
 
 const actions = {
-  postNode ({commit}) {
+  postNode ({commit}, user) {
     let node = {
       lat: state.lat,
       lon: state.lon,
@@ -69,6 +70,14 @@ const actions = {
     osmApi.post_Node(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
+      console.log(ps)
+      addOrUpdateNode(user.id, {
+        lat: ps.lat,
+        lng: ps.lon,
+        version: parseInt(ps.version),
+        osmId: parseInt(ps.id),
+        recieveUpdates: true
+      })
     })
   },
   postNote ({commit}) {

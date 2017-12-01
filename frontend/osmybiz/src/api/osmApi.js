@@ -1,4 +1,4 @@
-import {osmUrl, osmApiLevel, oauthKey, oauthSecret, osmUrl2} from '../config/config'
+import {osmUrl, osmApiLevel, oauthKey, oauthSecret} from '../config/config'
 import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
@@ -18,7 +18,7 @@ const auth = osmAuth({
   oauth_consumer_key: oauthKey,
   oauth_secret: oauthSecret,
   auto: false,
-  url: osmUrl2,
+  url: osmUrl,
   landing: '/',
   singlepage: true
 })
@@ -258,17 +258,22 @@ function closeChangeset () {
 }
 
 export function getNode (nodeId) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     auth.xhr(
       {
         method: 'GET',
         path: getNodePath + nodeId
       }, (err, response) => {
       if (err) {
-        console.log(err)
-        resolve(err)
+        if (err.status === 404 || err.status === 410) {
+          resolve(null)
+        } else {
+          console.log(err)
+          reject(err)
+        }
+      } else {
+        resolve(parseNode(xml2json(response)['#document'].osm.node))
       }
-      resolve(parseNode(xml2json(response)['#document'].osm.node))
     })
   })
 }
@@ -277,15 +282,15 @@ function parseNode (node) {
   let address = parseAddress(node)
   let details = parseDetails(node)
 
-  console.log(node)
-
   return {
     id: node.$.id,
     lat: node.$.lat,
     lon: node.$.lon,
     link: osmUrl + '/node/' + node.$.id + '/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
     address: address,
-    details: details
+    details: details,
+    version: node.$.version,
+    changeSet: node.$.changeset
   }
 }
 
