@@ -37,6 +37,13 @@
   export default {
     mounted () {
       this.loadUser()
+      this.$store.subscribe(mut => {
+        if (mut.type === 'setUser') {
+          if (this.isLoggedIn) {
+            this.loadUpdates(this.user)
+          }
+        }
+      })
     },
     name: 'header-bar',
     computed: {
@@ -48,7 +55,8 @@
     methods: {
       ...mapActions([
         'authenticate',
-        'loadUser'
+        'loadUser',
+        'loadUpdates'
       ]),
       ...mapMutations([
         'logout',

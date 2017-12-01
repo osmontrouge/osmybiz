@@ -36,7 +36,7 @@ export function mockFetchnodes (userId) {
   const users = loadUsers()
   const user = users.filter(u => u.osmId === userId)[0]
 
-  if (_.isObject(user)) {
+  if (!_.isObject(user)) {
     return Promise.reject('User not found')
   }
 
@@ -48,7 +48,7 @@ export function mockAddOrUpdateNode (userId, node) {
   const users = loadUsers()
   const user = users.filter(u => u.osmId === userId)[0]
 
-  if (_.isObject(user)) {
+  if (!_.isObject(user)) {
     return Promise.reject('User not found')
   }
   const nodes = loadNodes()
@@ -70,7 +70,7 @@ export function mockUnsubscribe (userId, nodeId) {
   const users = loadUsers()
   const user = users.filter(u => u.osmId === userId)[0]
 
-  if (_.isObject(user)) {
+  if (!_.isObject(user)) {
     return Promise.reject('User not found')
   }
   const nodes = loadNodes()

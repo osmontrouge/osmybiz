@@ -1,4 +1,4 @@
-import {osmUrl, osmApiLevel, oauthKey, oauthSecret} from '../config/config'
+import {osmUrl, osmApiLevel, oauthKey, oauthSecret, osmUrl2} from '../config/config'
 import osmAuth from 'osm-auth'
 import * as $ from 'jquery'
 import * as _ from 'lodash'
@@ -18,7 +18,7 @@ const auth = osmAuth({
   oauth_consumer_key: oauthKey,
   oauth_secret: oauthSecret,
   auto: false,
-  url: osmUrl,
+  url: osmUrl2,
   landing: '/',
   singlepage: true
 })
@@ -140,7 +140,7 @@ export default {
           html: data.properties.comments[0].html,
           text: data.properties.comments[0].text,
           id: data.properties.id,
-          link: 'https://master.apis.dev.openstreetmap.org/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
+          link: osmUrl + '/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
           status: data.properties.status
         })
       })
@@ -257,7 +257,7 @@ function closeChangeset () {
   })
 }
 
-function getNode (nodeId) {
+export function getNode (nodeId) {
   return new Promise((resolve) => {
     auth.xhr(
       {
@@ -277,11 +277,13 @@ function parseNode (node) {
   let address = parseAddress(node)
   let details = parseDetails(node)
 
+  console.log(node)
+
   return {
     id: node.$.id,
     lat: node.$.lat,
     lon: node.$.lon,
-    link: 'https://master.apis.dev.openstreetmap.org/node/' + node.$.id + '/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
+    link: osmUrl + '/node/' + node.$.id + '/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
     address: address,
     details: details
   }

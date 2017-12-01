@@ -21,7 +21,7 @@ export const oauthSecret = state === 'dev'
 export const osmApiLevel = '/api/0.6/'
 export const osmUrl = state === 'dev'
   ? 'https://master.apis.dev.openstreetmap.org'
-  : 'https://http://api.openstreetmap.org'
+  : 'https://api.openstreetmap.org'
 
 // nominatim Urls
 export const nominatimUrl = 'https://nominatim.openstreetmap.org/search'

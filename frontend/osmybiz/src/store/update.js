@@ -1,28 +1,35 @@
-import {latLng} from 'leaflet'
+import {addOrUpdateUser, fetchnodes} from './../api/osmybizApi'
+import {getNode} from './../api/osmApi'
 
 const state = {
-  updates: [
-    {
-      coords: latLng(46.96005, 8.01270),
-      kind: 'node',
-      oldVersion: 10,
-      newVersion: 11,
-      name: 'Test Poi',
-      date: new Date(2017, 10, 23)
-    },
-    {
-      coords: latLng(46.95453, 8.02168),
-      kind: 'note',
-      oldState: 'created',
-      newState: 'closed',
-      name: 'Test Notiz',
-      date: new Date(2017, 10, 21)
-    }
-  ]
+  updates: [],
+  nodes: []
 }
 
-const actions = {}
-const mutations = {}
+const actions = {
+  loadUpdates ({commit}, user) {
+    addOrUpdateUser(user.id, user.name).then(() => {
+      fetchnodes(user.id).then(ns => {
+        commit('setNodes', ns)
+
+        ns.forEach(n => {
+          getNode(n.osmId).then(node => {
+            console.log(node)
+          })
+        })
+      })
+    }, (err) => {
+      console.log(err)
+    })
+  }
+}
+
+const mutations = {
+  setNodes (state, nodes) {
+    state.nodes = nodes
+  }
+}
+
 const getters = {
   updates (state) {
     return state.updates
