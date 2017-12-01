@@ -28,5 +28,5 @@ export const nominatimUrl = 'https://nominatim.openstreetmap.org/search'
 export const nominatimReverseUrl = 'http://nominatim.openstreetmap.org/reverse'
 
 // overpass Urls
-export const overpassUrl = 'http://overpass.osm.ch/api/interpreter'
+export const overpassUrl = 'https://overpass.osm.ch/api/interpreter'
 export const searchradius = 10.0
