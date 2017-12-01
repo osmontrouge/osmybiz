@@ -24,7 +24,6 @@
       <div class="clickable-text">
         Weitere Änderungen an diesem Punkt ignorieren
       </div>
-
     </div>
   </div>
 </template>

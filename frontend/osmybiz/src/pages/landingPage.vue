@@ -43,11 +43,9 @@
       this.setIsDuplicate(false)
 
       if (localStorage.getItem('showHelp')) {
-        console.log(JSON.parse(localStorage.getItem('showHelp')))
         this.setShowHelp(JSON.parse(localStorage.getItem('showHelp')))
       }
       if (localStorage.getItem('showLoginHelp')) {
-        console.log(JSON.parse(localStorage.getItem('showLoginHelp')))
         this.setShowLoginHelp(JSON.parse(localStorage.getItem('showLoginHelp')))
       }
     },

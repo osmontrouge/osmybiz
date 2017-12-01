@@ -2,8 +2,7 @@ import * as L from 'leaflet'
 import {mapBoxToken} from '../config/config'
 import {reverseQuery} from './../api/nominatimApi'
 import * as $ from 'jquery'
-import {getTagName} from './translate'
-// import {categoryTags} from './../api/overpassApi'
+import {get, getTagName} from './translate'
 import {getNodeCategoryKey} from './overPassNodeUtils'
 import {osmUrl} from './../config/config'
 
@@ -85,7 +84,7 @@ function getWrapper () {
 }
 
 function getMapErrorLink (coords) {
-  return $(`<div class="popup-link">Kartenfehler melden</div>`).click(() => {
+  return $(`<div class="popup-link">${get().locale.popups.feedback}</div>`).click(() => {
     const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
     window.open(url, '_blank')
   })

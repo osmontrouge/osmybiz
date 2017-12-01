@@ -52,5 +52,8 @@
       "email": "E-Mail address is not valid",
       "website": "Website is not valid"
     }
+  },
+  "popups": {
+    "feedback": "Report Map Error"
   }
 }
