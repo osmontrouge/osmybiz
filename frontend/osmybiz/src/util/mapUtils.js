@@ -95,7 +95,7 @@ function createButton (text, isLoggedIn, callback, arg) {
     callback(arg)
   })
   if (!isLoggedIn) {
-    btn.attr('title', 'Für diese Funktion muss man eingeloggt sein')
+    btn.attr('title', get().locale.popups.buttontitle)
     btn.attr('disabled', 'disabled')
   }
   return btn
@@ -104,8 +104,8 @@ function createButton (text, isLoggedIn, callback, arg) {
 function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
   return loadAddress(coords).then(address => {
     const wrapper = getWrapper()
-    const title = getTitle('Neues Business')
-    const btn = createButton('Erstellen', isloggedIn, clickedCallBack, coords)
+    const title = getTitle(get().locale.popups.popuptitle)
+    const btn = createButton(get().locale.popups.create, isloggedIn, clickedCallBack, coords)
     wrapper.append(title)
     wrapper.append(address)
     wrapper.append(btn)
@@ -120,7 +120,7 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
     const wrapper = getWrapper()
     const cat = getBizCategory(business)
     const name = business.tags['name'] || ''
-    const btn = createButton('Bearbeiten', isloggedIn, clickedCallBack, business)
+    const btn = createButton(get().locale.popups.edit, isloggedIn, clickedCallBack, business)
     const title = getTitle(`${cat.name} ${name}`)
 
     wrapper.append(title)

@@ -54,6 +54,10 @@
     }
   },
   "popups": {
-    "feedback": "Kartenfehler melden"
+    "popuptitle": "Neues Unternehmen",
+    "feedback": "Kartenfehler melden",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "buttontitle": "Für diese Funktion muss man eingeloggt sein"
   }
 }

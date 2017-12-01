@@ -54,6 +54,10 @@
     }
   },
   "popups": {
-    "feedback": "Report Map Error"
+    "popuptitle": "New Business",
+    "feedback": "Report Map Error",
+    "edit": "Edit",
+    "create": "Create",
+    "buttontitle": "You have to be logged in for this function"
   }
 }
