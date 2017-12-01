@@ -65,7 +65,6 @@ const actions = {
 
 const mutations = {
   setPosition (state, pos) {
-    console.log(pos)
     state.position = pos
   },
   setMapPosition (state, pos) {

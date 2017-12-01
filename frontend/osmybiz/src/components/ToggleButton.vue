@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: transparent;
     font-size: 16px;
   }
 </style>
