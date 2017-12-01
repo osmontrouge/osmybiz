@@ -12,7 +12,8 @@ const state = {
 
   businesses: [],
   mode: 'tiles',
-  showHelp: true
+  showHelp: true,
+  showLoginHelp: true
 }
 
 const queryDebounceMs = 400
@@ -100,6 +101,9 @@ const mutations = {
   },
   setShowHelp (state, showHelp) {
     state.showHelp = showHelp
+  },
+  setShowLoginHelp (state, showLoginHelp) {
+    state.showLoginHelp = showLoginHelp
   }
 }
 
@@ -127,6 +131,9 @@ const getters = {
   },
   showHelp (state) {
     return state.showHelp
+  },
+  showLoginHelp (state) {
+    return state.showLoginHelp
   }
 }
 
