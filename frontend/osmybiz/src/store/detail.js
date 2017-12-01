@@ -2,6 +2,7 @@ import osmApi from './../api/osmApi'
 import {reverseQuery} from '../api/nominatimApi'
 import {infoTexts} from '../locales/de'
 import {getLanguageTags} from './locale'
+import {surroundingQueryNode} from '../api/overpassApi'
 
 let initalOptions = []
 loadTags()
@@ -54,7 +55,7 @@ const state = {
   node: {},
 
   // Check Duplicates
-  isDuplicateNote: false
+  isDuplicate: false
 }
 
 const actions = {
@@ -68,6 +69,14 @@ const actions = {
     osmApi.post_Node(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
+    })
+  },
+  checkDuplicate ({commit}) {
+    return new Promise((resolve) => {
+      surroundingQueryNode(state.details, state.lat, state.lon).then(ps => {
+        resolve(ps)
+        commit('setIsDuplicate', ps)
+      })
     })
   },
   postNote ({commit}) {
@@ -127,27 +136,21 @@ const mutations = {
   setDetails (state, details) {
     state.details = details
   },
+  setIsDuplicate (state, isDuplicate) {
+    state.isDuplicate = isDuplicate
+  },
   setIsDuplicateNote (state, notes) {
-    if (typeof notes === 'boolean') {
-      state.isDuplicateNote = notes
-    } else {
-      notes.forEach(function (note) {
-        if (note.properties.status === 'open') {
-          let text = note.properties.comments[0].text
-          let fields = text.split('\n')
-          if (fields[0] === '#OSMyBiz ' &&
-            fields[3] === 'Category: ' + state.details.category.text &&
-            fields[4] === 'Name: ' + state.details.name) {
-            state.isDuplicateNote = true
-
-            // change styling of formular
-            document.getElementById('formular').style.opacity = 0.2
-            document.getElementById('reset-button').disabled = true
-            document.getElementById('save-note').disabled = true
-          }
+    notes.forEach(function (note) {
+      if (note.properties.status === 'open') {
+        let text = note.properties.comments[0].text
+        let fields = text.split('\n')
+        if (fields[0] === '#OSMyBiz ' &&
+          fields[3] === 'Category: ' + state.details.category.text &&
+          fields[4] === 'Name: ' + state.details.name) {
+          state.isDuplicate = true
         }
-      })
-    }
+      }
+    })
   }
 }
 
@@ -194,8 +197,8 @@ const getters = {
   infoMap (state) {
     return state.infoMap
   },
-  isDuplicateNote (state) {
-    return state.isDuplicateNote
+  isDuplicate (state) {
+    return state.isDuplicate
   }
 }
 

@@ -38,11 +38,11 @@
           window.location.href = '/'
         })
       }
-      this.setIsDuplicateNote(false)
+      this.setIsDuplicate(false)
     },
     methods: {
       ...mapActions(['setToken']),
-      ...mapMutations(['setIsDuplicateNote'])
+      ...mapMutations(['setIsDuplicate'])
     },
     components: {
       SearchBar,

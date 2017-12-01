@@ -1,7 +1,7 @@
 <template>
   <div class="detail-wrapper">
 
-    <div id="formular">
+    <div v-bind:class="{ duplicateFormular: isDuplicate }">
       <h2>{{t('detail').title}}</h2>
 
       <category-field></category-field>
@@ -10,9 +10,13 @@
       <extra-info-fields></extra-info-fields>
     </div>
 
-    <div class="duplicate" v-if="isDuplicateNote">
-      <p>
+    <div v-bind:class="{ duplicateText: isDuplicate }"
+         v-if="isDuplicate">
+      <p v-if="isNote">
         Für dieses Objekt besteht bereits eine Notiz. Bitte haben sie Geduld bis diese abgearbeitet wird.
+      </p>
+      <p v-if="!isNote">
+        Dieses Objekt besteht bereits.
       </p>
     </div>
 
@@ -67,7 +71,7 @@
         'isPopup',
         'isNote',
         'address',
-        'isDuplicateNote'
+        'isDuplicate'
       ])
     },
     methods: {
@@ -101,11 +105,16 @@
     margin-left: 5px;
   }
 
-  .duplicate {
+  .duplicateText {
     position: fixed;
     top: 40%;
     margin: 0 10% 10px;
     width: 80%;
     font-size: 24px;
+  }
+
+  .duplicateFormular {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
   }
 </style>
