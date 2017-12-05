@@ -7,14 +7,20 @@
     <div class="node-warning" v-if="!isNote">
       <div class="warning-title">Warnung</div>
       <div class="section">
-        Node
+        An dieser Stelle besteht bereits ein Unternehmen mit demselben Namen und Kategorie.
+      </div>
+      <div class="section">
+        Sie haben jedoch die Möglichkeit mit einem Linksklick auf das Unternehmen, die bereits vorhandenen Informationen anzupassen.
       </div>
     </div>
 
     <div class="note-warning" v-if="isNote">
       <div class="warning-title">Warnung</div>
       <div class="section">
-        Note
+        Für dieses Unternehmen wurden bereits Änderungen vorgenommen, die noch nicht abgearbeitet wurden.
+      </div>
+      <div class="section">
+        Sie haben jedoch die Möglichkeit über OpenStreetMap einen Kommentar dazu zu hinterlassen:
         <a :href="noteLink" target="_blank">Kommentar hinterlassen</a>
       </div>
     </div>

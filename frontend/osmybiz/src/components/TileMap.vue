@@ -34,7 +34,7 @@
     })
   }
 
-  function addMarkers (bs, isloggedIn, checkDuplicate) {
+  function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote) {
     const ms = bs.map(b => {
       const m = createMarker(b, map, isloggedIn, (data) => {
         // first time checkDuplicate always returns false
@@ -44,7 +44,7 @@
             component.edit(data)
           }
         })
-      })
+      }, setIsNote)
       map.addLayer(m)
       return m
     })
@@ -56,13 +56,14 @@
     tileLayer.setUrl(getTileUrl(mode), false)
   }
 
-  function drawBusinesses (businesses, isloggedIn, checkDuplicate) {
+  function drawBusinesses (businesses, isloggedIn, checkDuplicate, setIsNote) {
     clearMarkers()
-    addMarkers(businesses, isloggedIn, checkDuplicate)
+    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote)
   }
 
-  function drawContextMenu (coords, isloggedIn) {
+  function drawContextMenu (coords, isloggedIn, setIsNote) {
     createNewBusinessPopup(map, coords, isloggedIn, (latlng) => {
+      setIsNote(false)
       component.createNew(latlng)
     })
   }
@@ -83,7 +84,7 @@
           setMapPosition(this.position)
           this.viewChange()
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote)
+          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote, this.setIsNote)
         } else if (mut.type === 'setMode') {
           setTileMode(this.mode)
         }
@@ -127,7 +128,7 @@
         this.$router.push({name: routes.Detail})
       },
       contextMenu (event) {
-        drawContextMenu(event.latlng, this.isLoggedIn)
+        drawContextMenu(event.latlng, this.isLoggedIn, this.setIsNote)
       },
       createNew (coords) {
         this.setCoords(coords)
