@@ -1,62 +1,58 @@
 <template>
 
   <div class="success-wrapper" v-if="displaySuccess">
+    <div class="success-button" @click="toggleSuccess">
+      <icon name="window-close"></icon>
+    </div>
     <div class="node-success" v-if="!isNote">
-      <div class="success-header">
-        <h3>Neues Business erstellt </h3>
+      <div class="success-title">Neues Unternehmen erstellt</div>
+      <div class="section">
         <a :href="node.link" target="_blank">Link zu OpenStreetMap</a>
       </div>
-
-      <div class="success-text">
-          <p>
-            <strong>Adresse:</strong>
-
-            <span v-if="node.address.street">
-              {{node.address.street}}
-            </span>
-            <span v-if="node.address.housenumber">
-                {{' ' + node.address.housenumber}}
-            </span>
-            <span v-if="node.address.postcode">
-                {{', ' +node.address.postcode}}
-            </span>
-            <span v-if="node.address.city">
-                {{' ' + node.address.city}}
-            </span>
-            <span v-if="node.address.country">
-                {{' ' + node.address.country}}
-            </span>
-          </p>
-        <p>
-          <strong>Name:</strong> {{node.details.name}}
-        </p>
+      <div class="section">
+        Adresse:
+        <span v-if="node.address.street">
+          {{node.address.street}}
+        </span>
+        <span v-if="node.address.housenumber">
+          {{' ' + node.address.housenumber}}
+        </span>
+        <span v-if="node.address.postcode">
+          {{', ' +node.address.postcode}}
+        </span>
+        <span v-if="node.address.city">
+          {{' ' + node.address.city}}
+        </span>
+        <span v-if="node.address.country">
+          {{' ' + node.address.country}}
+        </span>
+      </div>
+      <div class="section">
+        Name:
+        {{node.details.name}}
       </div>
     </div>
 
     <div class="note-success" v-if="isNote">
-      <div class="success-header">
-        <h3>Änderungen gespeichert </h3>
+      <div class="success-title">Änderungen gespeichert</div>
+
+      <div class="section">
         <a :href="note.link" target="_blank">Link zu OpenStreetMap</a>
       </div>
-
-      <div class="success-text">
-        <p>
-          <strong>Adresse:</strong> {{note.text.address}}
-        </p>
-        <p>
-          <strong>Name:</strong> {{note.text.name}}
-        </p>
+      <div class="section">
+        Adresse: {{note.text.address}}
       </div>
-    </div>
-
-    <div class="success-buttons">
-      <button @click="toggleSuccess()">Ok</button>
+      <div class="section">
+        Name: {{note.text.name}}
+      </div>
     </div>
   </div>
 
 </template>
 
 <script>
+  import 'vue-awesome/icons'
+  import Icon from 'vue-awesome/components/Icon.vue'
   import {mapGetters, mapMutations} from 'vuex'
 
   export default {
@@ -78,6 +74,9 @@
       toggleSuccess () {
         this.setDisplaySuccess(false)
       }
+    },
+    components: {
+      Icon
     }
   }
 </script>
@@ -93,32 +92,23 @@
     background-color: white;
     border: 2px solid #7ebc6f;
     padding: 12px;
+    font-size: 16px;
   }
 
-  .success-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-    text-align: left;
-    margin-bottom: 10px;
-  }
-
-  h3 {
-    text-align: left;
-    margin: 0;
-  }
-
-  a {
-    margin-top: 2px;
-    margin-left: 10px;
-  }
-
-  .success-text {
+  .section {
+    margin-bottom: 6px;
     text-align: left;
   }
 
-  .success-buttons {
-    margin-top: 10px;
+  .success-title {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .success-button {
     float: right;
+    cursor: pointer;
   }
 </style>
