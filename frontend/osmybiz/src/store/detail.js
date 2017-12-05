@@ -216,6 +216,8 @@ function constructNote () {
     let address = ''
     if (state.address.street) {
       address += state.address.street + ' '
+    } else {
+      address += state.address.place + ' '
     }
     if (state.address.housenumber) {
       address += state.address.housenumber + ', '

@@ -14,6 +14,9 @@
             <span v-if="node.address.street">
               {{node.address.street}}
             </span>
+            <span v-if="node.address.place">
+              {{node.address.place}}
+            </span>
             <span v-if="node.address.housenumber">
                 {{' ' + node.address.housenumber}}
             </span>
