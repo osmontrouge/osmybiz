@@ -87,12 +87,13 @@
     z-index: 100;
     width: 500px;
     margin-left: -250px;
-    bottom: 50px;
+    bottom: 65px;
     left: 50%;
     background-color: white;
     border: 2px solid #7ebc6f;
     padding: 12px;
     font-size: 16px;
+    overflow-y: auto;
   }
 
   .section {

@@ -5,7 +5,6 @@
       Zurück</button>
     <button class="button"
             id="reset-button"
-            :disabled="isDuplicate"
             @click="reset()">
       Zurücksetzen</button>
     <button class="button"
@@ -35,12 +34,14 @@
       ...mapMutations([
         'setDetails',
         'setAddress',
-        'setIsDuplicate'
+        'setIsDuplicate',
+        'setIsConfirm'
       ]),
       ...mapActions([
         'postNote',
         'postNode',
-        'checkDuplicate'
+        'checkDuplicateNode',
+        'getConfirmation'
       ]),
       submit () {
         if (this.isNote) {
@@ -48,7 +49,7 @@
           this.$router.push({name: routes.Landing})
           clearDetails()
         } else {
-          this.checkDuplicate().then((res) => {
+          this.checkDuplicateNode().then((res) => {
             if (!res) {
               this.postNode()
               this.$router.push({name: routes.Landing})
@@ -61,24 +62,30 @@
         return this.details.category.text === '' || this.details.name === ''
       },
       reset () {
-        let details = JSON.parse(localStorage.getItem('details'))
-        let address = JSON.parse(localStorage.getItem('address'))
-        let category = {
-          fields: details.category.fields,
-          text: details.category.text,
-          value: details.category.value
-        }
-        if (this.details.category.text === details.category.text) {
-          this.details.category.fields.forEach(function (field, index) {
-            category.fields[index].label = field.label
-          })
-        }
-        details.category = category
-        this.setDetails(details)
-        this.setAddress(address)
+        this.getConfirmation(() => {
+          let details = JSON.parse(localStorage.getItem('details'))
+          let address = JSON.parse(localStorage.getItem('address'))
+          let category = {
+            fields: details.category.fields,
+            text: details.category.text,
+            value: details.category.value
+          }
+          if (this.details.category.text === details.category.text) {
+            this.details.category.fields.forEach(function (field, index) {
+              category.fields[index].label = field.label
+            })
+          }
+          details.category = category
+          this.setDetails(details)
+          this.setAddress(address)
+          this.setIsConfirm(false)
+        })
       },
       back () {
-        this.$router.push({name: routes.Landing})
+        this.getConfirmation(() => {
+          this.$router.push({name: routes.Landing})
+          this.setIsConfirm(false)
+        })
       }
     }
   }

@@ -34,9 +34,17 @@
     })
   }
 
-  function addMarkers (bs, isloggedIn) {
+  function addMarkers (bs, isloggedIn, checkDuplicate) {
     const ms = bs.map(b => {
-      const m = createMarker(b, map, isloggedIn, (data) => component.edit(data))
+      const m = createMarker(b, map, isloggedIn, (data) => {
+        // first time checkDuplicate always returns false
+        checkDuplicate()
+        checkDuplicate().then((res) => {
+          if (!res) {
+            component.edit(data)
+          }
+        })
+      })
       map.addLayer(m)
       return m
     })
@@ -48,9 +56,9 @@
     tileLayer.setUrl(getTileUrl(mode), false)
   }
 
-  function drawBusinesses (businesses, isloggedIn) {
+  function drawBusinesses (businesses, isloggedIn, checkDuplicate) {
     clearMarkers()
-    addMarkers(businesses, isloggedIn)
+    addMarkers(businesses, isloggedIn, checkDuplicate)
   }
 
   function drawContextMenu (coords, isloggedIn) {
@@ -75,7 +83,7 @@
           setMapPosition(this.position)
           this.viewChange()
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.isLoggedIn)
+          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote)
         } else if (mut.type === 'setMode') {
           setTileMode(this.mode)
         }
@@ -91,7 +99,7 @@
       }
     },
     methods: {
-      ...mapActions(['queryOverpass']),
+      ...mapActions(['queryOverpass', 'checkDuplicateNote']),
       ...mapMutations([
         'setViewPort',
         'setDetails',
