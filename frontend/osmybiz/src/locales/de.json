@@ -1,9 +1,10 @@
 {
   "infoTexts": {
     "category": "Wählen sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. \n \n Durchsuchen sie die Daten nach einem passenden Unternehmen und sollten sie nicht fündig werden, wählen sie \"Eigene Kategorie wählen\" und geben sie eine eigene Kategorie ein.",
+    "address": "Adresse test test",
     "name": "Schreiben sie den Namen ihres Unternehmens in dieses Feld. \n \n z.B. Migros",
-    "openinghours": "In dieses Feld kommen die Öffnungszeiten ihres Unternehmens. \n \n z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
-    "phonenumber": "Hier kommt die Telefonnummer unter der man sie bzw. ihr Unternehmen erreichen kann.",
+    "opening_hours": "In dieses Feld kommen die Öffnungszeiten ihres Unternehmens. \n \n z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Hier kommt die Telefonnummer unter der man sie bzw. ihr Unternehmen erreichen kann.",
     "email": "Hier kommt die E-Mailadresse unter der man sie bzw. ihr Unternehmen erreichen kann.",
     "website": "In dieses Feld kommt die Webseite von ihrem Unternehmen.",
     "wheelchair": "Hier ein Häkchen setzen, wenn ihr Unternehmen rollstuhlgängig ist.",

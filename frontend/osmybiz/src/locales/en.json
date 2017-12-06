@@ -1,14 +1,15 @@
 {
   "infoTexts": {
-    "category": "",
-    "name": "",
-    "openinghours": "",
-    "phonenumber": "",
-    "email": "",
-    "website": "",
-    "wheelchair": "",
-    "description": "",
-    "note": ""
+    "category": "Cat",
+    "address": "Ad",
+    "name": "Na",
+    "opening_hours": "oh",
+    "phone": "ph",
+    "email": "em",
+    "website": "ws",
+    "wheelchair": "wc",
+    "description": "ds",
+    "note": "no"
   },
   "landing": {
     "search": "Search...",
