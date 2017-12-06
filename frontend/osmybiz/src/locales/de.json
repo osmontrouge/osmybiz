@@ -47,7 +47,7 @@
       "note": "Notiz"
     },
     "validate": {
-      "subtitle": "Felder mit * sind Pflichtfelder",
+      "subtitle": "Felder mit * sind Pflichtfelder (Bei Feldern mit (*) ist jeweils eines davon ein Pflichfeld)",
       "required": "Dies ist ein Pflichfeld",
       "email": "E-Mailadresse ist nicht valid",
       "website": "Webseite ist nicht valid"

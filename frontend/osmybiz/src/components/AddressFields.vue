@@ -1,19 +1,21 @@
 <template>
 
   <div class="address-wrapper">
-    <h3>Adresse</h3>
+    <div class="field-label">
+      <h3>Adresse</h3>
+      <img class="info"
+           @mouseenter="showPopup('address')"
+           @mouseleave="hidePopup()"
+           src="../assets/info_black.png">
+    </div>
     <div class="address-fields">
       <div class="row">
         <div class="left-field">
-          <label>Strasse*</label>
+          <label>Strasse(*)</label>
           <input type="text"
                  name="street"
                  v-model="address.street"
                  placeholder="Dorfstrasse">
-
-          <span v-show="address.street === ''"
-                class="help is-danger"> Die Strasse ist obligatorisch.
-          </span>
         </div>
 
         <div class="middle"></div>
@@ -25,6 +27,21 @@
                  v-model="address.housenumber"
                  placeholder="50">
         </div>
+      </div>
+
+      <div class="field">
+        <label>Platz(*)</label>
+        <input type="text"
+               name="place"
+               v-model="address.place"
+               placeholder="Insel">
+
+        <span v-show="address.street === '' && address.place === ''"
+              class="help is-danger"> Die Strasse oder der Platz ist obligatorisch.
+          </span>
+        <span v-show="address.street !== '' && address.place !== ''"
+              class="help is-danger"> Die Strasse und der Platz dürfen nicht beide ausgefüllt sein.
+          </span>
       </div>
 
       <div class="row">
@@ -54,36 +71,46 @@
           </span>
         </div>
       </div>
-    </div>
-    <div class="field">
-      <label>Land*</label>
-      <input type="text"
-             name="country"
-             v-model="address.country"
-             placeholder="Schweiz">
 
-      <span v-show="address.country === ''"
-            class="help is-danger"> Das Land ist obligatorisch.
+      <div class="field">
+        <label>Land*</label>
+        <input type="text"
+               name="country"
+               v-model="address.country"
+               placeholder="Schweiz">
+
+        <span v-show="address.country === ''"
+              class="help is-danger"> Das Land ist obligatorisch.
         </span>
+      </div>
     </div>
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
     name: 'address-fields',
     computed: {
       ...mapGetters([
-        'address'
+        'address',
+        'infoMap'
       ])
     },
     methods: {
-      ...mapActions([
-        'getAddress'
-      ])
+      ...mapMutations([
+        'setInfoText',
+        'setIsPopup'
+      ]),
+      showPopup (key) {
+        this.setInfoText(this.infoMap.get(key))
+        this.setIsPopup(true)
+      },
+      hidePopup () {
+        this.setIsPopup(false)
+      }
     }
   }
 </script>
@@ -97,14 +124,12 @@
   .address-fields {
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
     align-items: stretch;
   }
 
   .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     text-align: left;
   }
 

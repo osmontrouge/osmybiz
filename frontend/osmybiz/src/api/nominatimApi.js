@@ -49,15 +49,17 @@ export function query (queryString) {
 }
 
 function parseAddress (data) {
-  let street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.suburb ? data.suburb : data.footway
-  let housenumber = data.house_number
-  let postcode = data.postcode
-  let city = data.city ? data.city : data.village ? data.village : data.town ? data.town : data.hamlet
-  let country = data.country
+  let street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.suburb ? data.suburb : data.footway ? data.footway : ''
+  let place = data.place ? data.place : ''
+  let housenumber = data.house_number ? data.house_number : ''
+  let postcode = data.postcode ? data.postcode : ''
+  let city = data.city ? data.city : data.village ? data.village : data.town ? data.town : data.hamlet ? data.hamlet : ''
+  let country = data.country ? data.country : ''
 
   return {
     street: street,
     housenumber: housenumber,
+    place: place,
     postcode: postcode,
     city: city,
     country: country
