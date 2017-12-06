@@ -1,5 +1,5 @@
-import tagsDe from '../assets/tags_de.json'
-import tagsEn from '../assets/tags_en.json'
+import tagsDe from '../assets/tags/tags_de.json'
+import tagsEn from '../assets/tags/tags_en.json'
 
 const state = {
   language: 'de',

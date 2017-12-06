@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {overpassUrl, searchradius} from '../config/config'
-import tags from '../assets/tags_de'
+import tags from '../assets/tags/tags_de'
 import {setError} from '../store/error'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
