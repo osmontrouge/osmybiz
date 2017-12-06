@@ -8,6 +8,7 @@
     <update-list></update-list>
 
     <post-success></post-success>
+    <duplicate-warning></duplicate-warning>
   </div>
 </template>
 
@@ -19,6 +20,7 @@
   import PostSuccess from './../components/PostSuccess'
   import ToggleButton from './../components/ToggleButton'
   import LoginHelpText from '../components/LoginHelpText'
+  import DuplicateWarning from '../components/DuplicateWarning'
 
   import {mapActions, mapMutations} from 'vuex'
   import * as _ from 'lodash'
@@ -60,7 +62,8 @@
       ToggleButton,
       HelpText,
       UpdateList,
-      PostSuccess
+      PostSuccess,
+      DuplicateWarning
     }
   }
 

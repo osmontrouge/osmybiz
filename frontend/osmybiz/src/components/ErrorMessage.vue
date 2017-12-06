@@ -27,8 +27,8 @@
     width: 500px;
     margin-left: -250px;
     left: 50%;
-    color: #880000;
-    border: 2px solid #880000;
+    color: red;
+    border: 2px solid red;
     background: white;
     display: flex;
     align-items: center;

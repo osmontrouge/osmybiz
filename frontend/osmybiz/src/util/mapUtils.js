@@ -115,7 +115,8 @@ function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
   })
 }
 
-function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCallBack) {
+function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCallBack, setIsNote) {
+  setIsNote(true)
   return loadAddress(coords).then(address => {
     const wrapper = getWrapper()
     const cat = getBizCategory(business)
@@ -133,8 +134,8 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
   })
 }
 
-function createExistingBusinessPopup (map, coords, business, isloggedIn, clb) {
-  constructExistingBusinessPopup(business, coords, isloggedIn, clb).then(content => {
+function createExistingBusinessPopup (map, coords, business, isloggedIn, clb, setIsNote) {
+  constructExistingBusinessPopup(business, coords, isloggedIn, clb, setIsNote).then(content => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)
@@ -142,8 +143,8 @@ function createExistingBusinessPopup (map, coords, business, isloggedIn, clb) {
   })
 }
 
-export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
-  constructNewBusinessPopup(coords, isloggedIn, clb).then(content => {
+export function createNewBusinessPopup (map, coords, isloggedIn, clbc) {
+  constructNewBusinessPopup(coords, isloggedIn, clbc).then(content => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)
@@ -151,13 +152,13 @@ export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
   })
 }
 
-export function createMarker (business, map, isloggedIn, callback) {
+export function createMarker (business, map, isloggedIn, callback, setIsNote) {
   const coords = L.latLng(business.lat, business.lng)
   const m = L.marker(coords, {
     icon: bizMarker
   })
   m.on('click', () => {
-    createExistingBusinessPopup(map, coords, business, isloggedIn, callback)
+    createExistingBusinessPopup(map, coords, business, isloggedIn, callback, setIsNote)
   })
   return m
 }
