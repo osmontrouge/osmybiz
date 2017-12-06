@@ -1,7 +1,13 @@
 <template>
 
   <div class="address-wrapper">
-    <h3>Adresse</h3>
+    <div class="field-label">
+      <h3>Adresse</h3>
+      <img class="info"
+           @mouseenter="showPopup('address')"
+           @mouseleave="hidePopup()"
+           src="../assets/info_black.png">
+    </div>
     <div class="address-fields">
       <div class="row">
         <div class="left-field">
@@ -32,6 +38,9 @@
 
         <span v-show="address.street === '' && address.place === ''"
               class="help is-danger"> Die Strasse oder der Platz ist obligatorisch.
+          </span>
+        <span v-show="address.street !== '' && address.place !== ''"
+              class="help is-danger"> Die Strasse und der Platz dürfen nicht beide ausgefüllt sein.
           </span>
       </div>
 
@@ -80,14 +89,28 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
     name: 'address-fields',
     computed: {
       ...mapGetters([
-        'address'
+        'address',
+        'infoMap'
       ])
+    },
+    methods: {
+      ...mapMutations([
+        'setInfoText',
+        'setIsPopup'
+      ]),
+      showPopup (key) {
+        this.setInfoText(this.infoMap.get(key))
+        this.setIsPopup(true)
+      },
+      hidePopup () {
+        this.setIsPopup(false)
+      }
     }
   }
 </script>
