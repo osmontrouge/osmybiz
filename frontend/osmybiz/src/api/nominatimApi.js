@@ -3,6 +3,7 @@ import {latLng} from 'leaflet'
 import * as _ from 'lodash'
 import {nominatimReverseUrl, nominatimUrl} from '../config/config'
 import {setError} from '../store/error'
+import {get} from '../util/translate'
 
 const queryMax = 10
 
@@ -34,7 +35,7 @@ function mapResults (results) {
 
 function buildRequest (query, count) {
   count = count > queryMax ? queryMax : count
-  return `${nominatimUrl}?format=json&q=${query}&limit=${count}&addressdetails=1`
+  return `${nominatimUrl}?format=json&q=${query}&limit=${count}&addressdetails=1&accept-language=${get().lang}`
 }
 
 export function query (queryString) {
