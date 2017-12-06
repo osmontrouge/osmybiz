@@ -217,11 +217,11 @@ function constructNote () {
     let address = ''
     if (state.address.street) {
       address += state.address.street + ' '
+      if (state.address.housenumber) {
+        address += state.address.housenumber + ', '
+      }
     } else {
-      address += state.address.place + ' '
-    }
-    if (state.address.housenumber) {
-      address += state.address.housenumber + ', '
+      address += state.address.place + ', '
     }
     if (state.address.postcode) {
       address += state.address.postcode + ' '

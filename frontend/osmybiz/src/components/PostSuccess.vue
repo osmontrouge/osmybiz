@@ -13,15 +13,18 @@
 
             <span v-if="node.address.street">
               {{node.address.street}}
+              <span v-if="!node.address.housenumber">
+                {{', '}}
+              </span>
+              <span v-if="node.address.housenumber">
+                {{' ' + node.address.housenumber  + ', '}}
+              </span>
             </span>
             <span v-if="node.address.place">
-              {{node.address.place}}
-            </span>
-            <span v-if="node.address.housenumber">
-                {{' ' + node.address.housenumber}}
+              {{node.address.place + ', '}}
             </span>
             <span v-if="node.address.postcode">
-                {{', ' +node.address.postcode}}
+                {{node.address.postcode}}
             </span>
             <span v-if="node.address.city">
                 {{' ' + node.address.city}}
