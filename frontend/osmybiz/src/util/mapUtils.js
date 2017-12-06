@@ -122,6 +122,7 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
     const wrapper = getWrapper()
     const cat = getBizCategory(business)
     const name = business.tags['name'] || ''
+    console.log('edit')
     const btn = createButton('Bearbeiten', isloggedIn, clickedCallBack, business)
     const title = getTitle(`${cat.name} ${name}`)
 
@@ -144,8 +145,8 @@ function createExistingBusinessPopup (map, coords, business, isloggedIn, clb, se
   })
 }
 
-export function createNewBusinessPopup (map, coords, isloggedIn, clbc) {
-  constructNewBusinessPopup(coords, isloggedIn, clbc).then(content => {
+export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
+  constructNewBusinessPopup(coords, isloggedIn, clb).then(content => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)

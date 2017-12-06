@@ -43,10 +43,6 @@
 
       this.getAddress()
       localStorage.setItem('details', JSON.stringify(this.details))
-
-      if (this.isNote) {
-        this.checkDuplicateNote()
-      }
     },
     components: {
       ConfirmWarning,
