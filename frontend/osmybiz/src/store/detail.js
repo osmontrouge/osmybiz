@@ -39,10 +39,7 @@ const state = {
 
   // PostSuccess
   note: {},
-  node: {},
-
-  // Check Duplicates
-  isDuplicate: false
+  node: {}
 }
 
 const actions = {
