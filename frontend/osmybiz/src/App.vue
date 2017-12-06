@@ -31,7 +31,6 @@
     mounted () {
       this.$translate.setLang('de')
       init(this.$translate)
-      console.log(this.$translate)
     },
     components: {
       HeaderBar,

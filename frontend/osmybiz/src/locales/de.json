@@ -13,7 +13,19 @@
   "landing": {
     "search": "Suchen...",
     "satelite": "Satellit",
-    "map": "Karte"
+    "map": "Karte",
+    "help": {
+      "title": "Hilfe",
+      "section1": "Zommen Sie mit Doppelklick oder mit dem '+' oben links in die Karte hinein oder suchen Sie ihre Adresse mittels Suchfeld oben in der Mitte.",
+      "section2": "Mit einem Linksklick auf ein bestehendes Unternehmen (blauer Kreis) können Sie dieses bearbeiten.",
+      "section3": "Mit einem Rechtsklick auf eine beliebige Position in der Karte können Sie ein neues Unternehmen erfassen."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "Um Änderungen in der Karte vorzunehmen müssen Sie sich mit einem OpenStreetMap-Login anmelden.",
+      "section2": "In dieser Ansicht können Sie aber bereits schauen, wie das ganze in Etwa funktioniert."
+    }
+
   },
   "detail": {
     "title": "Unternehmen erfassen",
