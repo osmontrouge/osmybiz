@@ -34,9 +34,17 @@
     })
   }
 
-  function addMarkers (bs, isloggedIn) {
+  function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote) {
     const ms = bs.map(b => {
-      const m = createMarker(b, map, isloggedIn, (data) => component.edit(data))
+      const m = createMarker(b, map, isloggedIn, (data) => {
+        // first time checkDuplicate always returns false
+        checkDuplicate()
+        checkDuplicate().then((res) => {
+          if (!res) {
+            component.edit(data)
+          }
+        })
+      }, setIsNote)
       map.addLayer(m)
       return m
     })
@@ -48,13 +56,14 @@
     tileLayer.setUrl(getTileUrl(mode), false)
   }
 
-  function drawBusinesses (businesses, isloggedIn) {
+  function drawBusinesses (businesses, isloggedIn, checkDuplicate, setIsNote) {
     clearMarkers()
-    addMarkers(businesses, isloggedIn)
+    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote)
   }
 
-  function drawContextMenu (coords, isloggedIn) {
+  function drawContextMenu (coords, isloggedIn, setIsNote) {
     createNewBusinessPopup(map, coords, isloggedIn, (latlng) => {
+      setIsNote(false)
       component.createNew(latlng)
     })
   }
@@ -75,7 +84,7 @@
           setMapPosition(this.position)
           this.viewChange()
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.isLoggedIn)
+          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote, this.setIsNote)
         } else if (mut.type === 'setMode') {
           setTileMode(this.mode)
         }
@@ -91,7 +100,7 @@
       }
     },
     methods: {
-      ...mapActions(['queryOverpass']),
+      ...mapActions(['queryOverpass', 'checkDuplicateNote']),
       ...mapMutations([
         'setViewPort',
         'setDetails',
@@ -119,7 +128,7 @@
         this.$router.push({name: routes.Detail})
       },
       contextMenu (event) {
-        drawContextMenu(event.latlng, this.isLoggedIn)
+        drawContextMenu(event.latlng, this.isLoggedIn, this.setIsNote)
       },
       createNew (coords) {
         this.setCoords(coords)

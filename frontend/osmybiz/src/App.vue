@@ -13,11 +13,12 @@
 <script>
   import HeaderBar from './components/HeaderBar'
   import ErrorMessage from './components/ErrorMessage'
+  import PostSuccess from './components/PostSuccess'
   import Vue from 'vue'
   import VueTranslate from 'vue-translate-plugin'
   import de from './locales/de.json'
   import en from './locales/en.json'
-  import PostSuccess from './components/PostSuccess'
+  import {init} from './util/translate'
 
   Vue.use(VueTranslate)
   Vue.locales({
@@ -29,6 +30,7 @@
     name: 'app',
     mounted () {
       this.$translate.setLang('de')
+      init(this.$translate)
     },
     components: {
       HeaderBar,

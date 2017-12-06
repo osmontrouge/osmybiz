@@ -8,6 +8,7 @@
     <update-list></update-list>
 
     <post-success></post-success>
+    <duplicate-warning></duplicate-warning>
   </div>
 </template>
 
@@ -19,6 +20,7 @@
   import PostSuccess from './../components/PostSuccess'
   import ToggleButton from './../components/ToggleButton'
   import LoginHelpText from '../components/LoginHelpText'
+  import DuplicateWarning from '../components/DuplicateWarning'
 
   import {mapActions, mapMutations} from 'vuex'
   import * as _ from 'lodash'
@@ -43,11 +45,9 @@
       this.setIsDuplicate(false)
 
       if (localStorage.getItem('showHelp')) {
-        console.log(JSON.parse(localStorage.getItem('showHelp')))
         this.setShowHelp(JSON.parse(localStorage.getItem('showHelp')))
       }
       if (localStorage.getItem('showLoginHelp')) {
-        console.log(JSON.parse(localStorage.getItem('showLoginHelp')))
         this.setShowLoginHelp(JSON.parse(localStorage.getItem('showLoginHelp')))
       }
     },
@@ -62,7 +62,8 @@
       ToggleButton,
       HelpText,
       UpdateList,
-      PostSuccess
+      PostSuccess,
+      DuplicateWarning
     }
   }
 

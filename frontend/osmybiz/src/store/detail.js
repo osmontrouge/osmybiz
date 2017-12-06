@@ -1,22 +1,9 @@
 import osmApi from './../api/osmApi'
 import {reverseQuery} from '../api/nominatimApi'
-import {infoTexts} from '../locales/de'
 import {getLanguageTags} from './locale'
-import {surroundingQueryNode} from '../api/overpassApi'
 
 let initalOptions = []
 loadTags()
-
-const infoMap = new Map()
-infoMap.set('category', infoTexts.category)
-infoMap.set('name', infoTexts.name)
-infoMap.set('opening_hours', infoTexts.opening_hours)
-infoMap.set('phone', infoTexts.phone)
-infoMap.set('email', infoTexts.email)
-infoMap.set('website', infoTexts.website)
-infoMap.set('wheelchair', infoTexts.wheelchair)
-infoMap.set('description', infoTexts.description)
-infoMap.set('note', infoTexts.note)
 
 const state = {
   // detailPage
@@ -48,7 +35,7 @@ const state = {
   isPopup: false,
   isNote: false,
   infoText: '',
-  infoMap: infoMap,
+  infoMap: new Map(),
 
   // PostSuccess
   note: {},
@@ -71,14 +58,6 @@ const actions = {
       commit('setNode', ps)
     })
   },
-  checkDuplicate ({commit}) {
-    return new Promise((resolve) => {
-      surroundingQueryNode(state.details, state.lat, state.lon).then(ps => {
-        resolve(ps)
-        commit('setIsDuplicate', ps)
-      })
-    })
-  },
   postNote ({commit}) {
     let note = constructNote()
     osmApi.post_Note(note).then(ps => {
@@ -92,13 +71,7 @@ const actions = {
       commit('setAddress', ps)
       localStorage.setItem('address', JSON.stringify(ps))
     })
-  },
-  getNotes ({commit}) {
-    osmApi.get_Notes(state.lat, state.lon).then(ps => {
-      commit('setIsDuplicateNote', ps)
-    })
   }
-
 }
 
 const mutations = {
@@ -127,6 +100,9 @@ const mutations = {
     state.lat = pos.lat
     state.lon = pos.lng
   },
+  setInfoMap (state, infoMap) {
+    state.infoMap = infoMap
+  },
   setInfoText (state, infoText) {
     state.infoText = infoText
   },
@@ -135,22 +111,6 @@ const mutations = {
   },
   setDetails (state, details) {
     state.details = details
-  },
-  setIsDuplicate (state, isDuplicate) {
-    state.isDuplicate = isDuplicate
-  },
-  setIsDuplicateNote (state, notes) {
-    notes.forEach(function (note) {
-      if (note.properties.status === 'open') {
-        let text = note.properties.comments[0].text
-        let fields = text.split('\n')
-        if (fields[0] === '#OSMyBiz ' &&
-          fields[3] === 'Category: ' + state.details.category.text &&
-          fields[4] === 'Name: ' + state.details.name) {
-          state.isDuplicate = true
-        }
-      }
-    })
   }
 }
 
@@ -196,9 +156,6 @@ const getters = {
   },
   infoMap (state) {
     return state.infoMap
-  },
-  isDuplicate (state) {
-    return state.isDuplicate
   }
 }
 
@@ -216,9 +173,11 @@ function constructNote () {
     let address = ''
     if (state.address.street) {
       address += state.address.street + ' '
-    }
-    if (state.address.housenumber) {
-      address += state.address.housenumber + ', '
+      if (state.address.housenumber) {
+        address += state.address.housenumber + ', '
+      }
+    } else {
+      address += state.address.place + ', '
     }
     if (state.address.postcode) {
       address += state.address.postcode + ' '

@@ -1,89 +1,116 @@
 <template>
 
   <div class="address-wrapper">
-    <h3>Adresse</h3>
+    <div class="field-label">
+      <h3>{{t('detail').titles.address}}</h3>
+      <img class="info"
+           @mouseenter="showPopup('address')"
+           @mouseleave="hidePopup()"
+           src="../assets/info_black.png">
+    </div>
     <div class="address-fields">
       <div class="row">
         <div class="left-field">
-          <label>Strasse*</label>
+          <label>{{t('detail').labels.street}}(*)</label>
           <input type="text"
                  name="street"
                  v-model="address.street"
-                 placeholder="Dorfstrasse">
-
-          <span v-show="address.street === ''"
-                class="help is-danger"> Die Strasse ist obligatorisch.
-          </span>
+                 :placeholder="t('detail').placeholders.street">
         </div>
 
         <div class="middle"></div>
 
         <div class="right-field">
-          <label>Hausnummer</label>
+          <label>{{t('detail').labels.housenumber}}</label>
           <input type="text"
                  name="housenumber"
                  v-model="address.housenumber"
-                 placeholder="50">
+                 :placeholder="t('detail').placeholders.housenumber">
         </div>
+      </div>
+
+      <div class="field">
+        <label>{{t('detail').labels.place}}(*)</label>
+        <input type="text"
+               name="place"
+               v-model="address.place"
+               :placeholder="t('detail').placeholders.place">
+
+        <span v-show="address.street === '' && address.place === ''"
+              class="help is-danger"> {{t('detail').validate.streetOrPlace}}
+          </span>
+        <span v-show="address.street !== '' && address.place !== ''"
+              class="help is-danger"> {{t('detail').validate.notStreetAndPlace}}
+          </span>
       </div>
 
       <div class="row">
         <div class="left-field">
-          <label>Postleitzahl*</label>
+          <label>{{t('detail').labels.postcode}}*</label>
           <input type="text"
                  name="postcode"
                  v-model="address.postcode"
-                 placeholder="8450">
+                 :placeholder="t('detail').placeholders.postcode">
 
           <span v-show="address.postcode === ''"
-                class="help is-danger"> Die Postleitzahl ist obligatorisch.
+                class="help is-danger"> {{t('detail').validate.required}}
           </span>
         </div>
 
         <div class="middle"></div>
 
         <div class="right-field">
-          <label>Ort*</label>
+          <label>{{t('detail').labels.city}}*</label>
           <input type="text"
                  name="city"
                  v-model="address.city"
-                 placeholder="Winterthur">
+                 :placeholder="t('detail').placeholders.city">
 
           <span v-show="address.city === ''"
-                class="help is-danger"> Der Ort ist obligatorisch.
+                class="help is-danger"> {{t('detail').validate.required}}
           </span>
         </div>
       </div>
-    </div>
-    <div class="field">
-      <label>Land*</label>
-      <input type="text"
-             name="country"
-             v-model="address.country"
-             placeholder="Schweiz">
 
-      <span v-show="address.country === ''"
-            class="help is-danger"> Das Land ist obligatorisch.
+      <div class="field">
+        <label>{{t('detail').labels.country}}*</label>
+        <input type="text"
+               name="country"
+               v-model="address.country"
+               :placeholder="t('detail').placeholders.country">
+
+        <span v-show="address.country === ''"
+              class="help is-danger"> {{t('detail').validate.required}}
         </span>
+      </div>
     </div>
   </div>
 
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
     name: 'address-fields',
     computed: {
       ...mapGetters([
-        'address'
+        'address',
+        'infoMap'
       ])
     },
     methods: {
-      ...mapActions([
-        'getAddress'
-      ])
+      ...mapMutations([
+        'setInfoText',
+        'setIsPopup'
+      ]),
+      showPopup (key) {
+        this.setInfoText(this.infoMap.get(key))
+        this.setIsPopup(true)
+      },
+      hidePopup () {
+        this.setIsPopup(false)
+      }
     }
   }
 </script>
@@ -97,14 +124,12 @@
   .address-fields {
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
     align-items: stretch;
   }
 
   .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     text-align: left;
   }
 

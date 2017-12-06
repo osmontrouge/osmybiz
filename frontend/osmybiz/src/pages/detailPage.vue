@@ -1,7 +1,7 @@
 <template>
   <div class="detail-wrapper">
 
-    <div v-bind:class="{ duplicateFormular: isDuplicate }">
+    <div>
       <h2>{{t('detail').title}}</h2>
 
       <category-field></category-field>
@@ -10,15 +10,8 @@
       <extra-info-fields></extra-info-fields>
     </div>
 
-    <div v-bind:class="{ duplicateText: isDuplicate }"
-         v-if="isDuplicate">
-      <p v-if="isNote">
-        Für dieses Objekt besteht bereits eine Notiz. Bitte haben sie Geduld bis diese abgearbeitet wird.
-      </p>
-      <p v-if="!isNote">
-        Dieses Objekt besteht bereits.
-      </p>
-    </div>
+    <duplicate-warning></duplicate-warning>
+    <confirm-warning></confirm-warning>
 
     <form-footer></form-footer>
 
@@ -35,9 +28,12 @@
   import FormPopup from '../components/FormPopup'
   import ExtraInfoFields from '../components/ExtraInfoFields'
   import FormFooter from '../components/FormFooter'
+  import DuplicateWarning from '../components/DuplicateWarning'
   import {mapGetters, mapMutations, mapActions} from 'vuex'
   import * as _ from 'lodash'
   import {routes} from './../router'
+  import ConfirmWarning from '../components/ConfirmWarning'
+  import {getInfoTexts} from '../util/translate'
 
   export default {
     mounted () {
@@ -50,17 +46,21 @@
       localStorage.setItem('details', JSON.stringify(this.details))
 
       if (this.isNote) {
-        this.getNotes()
+        this.checkDuplicateNote()
       }
+
+      this.setInfoMap(getInfoTexts())
     },
     components: {
+      ConfirmWarning,
       FormPopup,
       FormFooter,
       DetailForm,
       PostSuccess,
       AddressFields,
       CategoryField,
-      ExtraInfoFields
+      ExtraInfoFields,
+      DuplicateWarning
     },
     computed: {
       ...mapGetters([
@@ -77,11 +77,12 @@
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setDisplayConfirmation'
+        'setDisplayConfirmation',
+        'setInfoMap'
       ]),
       ...mapActions([
         'getAddress',
-        'getNotes'
+        'checkDuplicateNote'
       ])
     }
   }

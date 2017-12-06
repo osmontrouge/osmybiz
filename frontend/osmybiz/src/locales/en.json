@@ -1,28 +1,48 @@
 {
   "infoTexts": {
-    "category": "",
-    "name": "",
-    "openinghours": "",
-    "phonenumber": "",
-    "email": "",
-    "website": "",
-    "wheelchair": "",
-    "description": "",
-    "note": ""
+    "category": "Cat",
+    "address": "Ad",
+    "name": "Na",
+    "opening_hours": "oh",
+    "phone": "ph",
+    "email": "em",
+    "website": "ws",
+    "wheelchair": "wc",
+    "description": "ds",
+    "note": "no"
   },
   "landing": {
     "search": "Search...",
     "satelite": "Satelite",
-    "map": "Map"
+    "map": "Map",
+    "help": {
+      "title": "Help",
+      "section1": "Zoom in with a double click or the '+' in the top left corner or search your address using the search bar at the top.",
+      "section2": "With a left click on an existing business (blue circle) you can edit this business.",
+      "section3": "With a right click on any position on the map you can create a new Business."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "To make changes on the map you have to be logged in with an OpenStreetMap-Login.",
+      "section2": "But in this view you can already peer, how the website works."
+    }
   },
   "detail": {
     "title": "Create Business",
     "subtitle": "Extra informations",
-    "save": "Save",
-    "owncategory": "Own Category",
-    "choosecategory": "Choose Category",
-    "labels": {
+    "titles": {
       "category": "Category",
+      "address": "Address",
+      "details": "Details",
+      "extras": "Extra Informations"
+    },
+    "labels": {
+      "street": "Street",
+      "housenumber": "House number",
+      "place": "Place",
+      "postcode": "Postcode",
+      "city": "City",
+      "country": "Country",
       "name": "Name",
       "opening_hours": "Opening hours",
       "phone": "Phone number",
@@ -39,6 +59,12 @@
       "category": "Choose Category...",
       "owncategory": "Insert Category",
       "name": "Your name...",
+      "street": "Mainstreet",
+      "housenumber": "50",
+      "place": "Island",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Switzerland",
       "opening_hours": "Mo-Fr 08:00-17:00",
       "phone": "+41 11 111 11 11",
       "email": "example@example.com",
@@ -47,10 +73,26 @@
       "note": "Note"
     },
     "validate": {
-      "subtitle": "Fields with * are required",
       "required": "This field is required",
       "email": "E-Mail address is not valid",
-      "website": "Website is not valid"
+      "website": "Website is not valid",
+      "streetOrPlace": "The street or the place are required",
+      "notStreetAndPlace": "The street and the place can't both be filled",
+      "subtitle": "Fields with * are required (At Fields with (*) is just one at a time required)"
+    },
+    "buttons": {
+      "owncategory": "Own Category",
+      "choosecategory": "Choose Category",
+      "back": "Back",
+      "reset": "Reset",
+      "save": "Save"
     }
+  },
+  "popups": {
+    "popuptitle": "New Business",
+    "feedback": "Report Map Error",
+    "edit": "Edit",
+    "create": "Create",
+    "buttontitle": "You have to be logged in for this function"
   }
 }

@@ -2,7 +2,7 @@
   <div class="category-wrapper">
     <div class="field">
       <div class="field-label">
-        <label>{{t('detail').labels.category}}*</label>
+        <h3>{{t('detail').titles.category}}*</h3>
         <img class="info"
              @mouseenter="showPopup('category')"
              @mouseleave="hidePopup()"
@@ -19,7 +19,7 @@
         </basic-select>
 
         <button class="button" @click="showInput()">
-          {{t('detail').owncategory}}
+          {{t('detail').buttons.owncategory}}
         </button>
       </div>
 
@@ -30,7 +30,7 @@
                :placeholder="t('detail').placeholders.owncategory"
                name="category-input"/>
         <button class="button" @click="hideInput()">
-          {{t('detail').choosecategory}}
+          {{t('detail').buttons.choosecategory}}
         </button>
       </div>
 

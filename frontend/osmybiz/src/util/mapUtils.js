@@ -2,8 +2,7 @@ import * as L from 'leaflet'
 import {mapBoxToken} from '../config/config'
 import {reverseQuery} from './../api/nominatimApi'
 import * as $ from 'jquery'
-import {getTagName} from './translate'
-// import {categoryTags} from './../api/overpassApi'
+import {get, getTagName} from './translate'
 import {getNodeCategoryKey} from './overPassNodeUtils'
 import {osmUrl} from './../config/config'
 
@@ -85,7 +84,7 @@ function getWrapper () {
 }
 
 function getMapErrorLink (coords) {
-  return $(`<div class="popup-link">Kartenfehler melden</div>`).click(() => {
+  return $(`<div class="popup-link">${get().locale.popups.feedback}</div>`).click(() => {
     const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
     window.open(url, '_blank')
   })
@@ -96,7 +95,7 @@ function createButton (text, isLoggedIn, callback, arg) {
     callback(arg)
   })
   if (!isLoggedIn) {
-    btn.attr('title', 'Für diese Funktion muss man eingeloggt sein')
+    btn.attr('title', get().locale.popups.buttontitle)
     btn.attr('disabled', 'disabled')
   }
   return btn
@@ -105,8 +104,8 @@ function createButton (text, isLoggedIn, callback, arg) {
 function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
   return loadAddress(coords).then(address => {
     const wrapper = getWrapper()
-    const title = getTitle('Neues Business')
-    const btn = createButton('Erstellen', isloggedIn, clickedCallBack, coords)
+    const title = getTitle(get().locale.popups.popuptitle)
+    const btn = createButton(get().locale.popups.create, isloggedIn, clickedCallBack, coords)
     wrapper.append(title)
     wrapper.append(address)
     wrapper.append(btn)
@@ -116,12 +115,13 @@ function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
   })
 }
 
-function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCallBack) {
+function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCallBack, setIsNote) {
+  setIsNote(true)
   return loadAddress(coords).then(address => {
     const wrapper = getWrapper()
     const cat = getBizCategory(business)
     const name = business.tags['name'] || ''
-    const btn = createButton('Bearbeiten', isloggedIn, clickedCallBack, business)
+    const btn = createButton(get().locale.popups.edit, isloggedIn, clickedCallBack, business)
     const title = getTitle(`${cat.name} ${name}`)
 
     wrapper.append(title)
@@ -134,8 +134,8 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
   })
 }
 
-function createExistingBusinessPopup (map, coords, business, isloggedIn, clb) {
-  constructExistingBusinessPopup(business, coords, isloggedIn, clb).then(content => {
+function createExistingBusinessPopup (map, coords, business, isloggedIn, clb, setIsNote) {
+  constructExistingBusinessPopup(business, coords, isloggedIn, clb, setIsNote).then(content => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)
@@ -143,8 +143,8 @@ function createExistingBusinessPopup (map, coords, business, isloggedIn, clb) {
   })
 }
 
-export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
-  constructNewBusinessPopup(coords, isloggedIn, clb).then(content => {
+export function createNewBusinessPopup (map, coords, isloggedIn, clbc) {
+  constructNewBusinessPopup(coords, isloggedIn, clbc).then(content => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)
@@ -152,13 +152,13 @@ export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
   })
 }
 
-export function createMarker (business, map, isloggedIn, callback) {
+export function createMarker (business, map, isloggedIn, callback, setIsNote) {
   const coords = L.latLng(business.lat, business.lng)
   const m = L.marker(coords, {
     icon: bizMarker
   })
   m.on('click', () => {
-    createExistingBusinessPopup(map, coords, business, isloggedIn, callback)
+    createExistingBusinessPopup(map, coords, business, isloggedIn, callback, setIsNote)
   })
   return m
 }

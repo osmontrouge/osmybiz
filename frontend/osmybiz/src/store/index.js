@@ -6,6 +6,7 @@ import auth from './auth'
 import locale from './locale'
 import update from './update'
 import error from './error'
+import warning from './warning'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     landing,
     locale,
     update,
-    error
+    error,
+    warning
   }
 })

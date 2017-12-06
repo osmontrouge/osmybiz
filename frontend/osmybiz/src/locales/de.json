@@ -1,9 +1,10 @@
 {
   "infoTexts": {
     "category": "Wählen sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. \n \n Durchsuchen sie die Daten nach einem passenden Unternehmen und sollten sie nicht fündig werden, wählen sie \"Eigene Kategorie wählen\" und geben sie eine eigene Kategorie ein.",
+    "address": "Adresse test test",
     "name": "Schreiben sie den Namen ihres Unternehmens in dieses Feld. \n \n z.B. Migros",
-    "openinghours": "In dieses Feld kommen die Öffnungszeiten ihres Unternehmens. \n \n z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
-    "phonenumber": "Hier kommt die Telefonnummer unter der man sie bzw. ihr Unternehmen erreichen kann.",
+    "opening_hours": "In dieses Feld kommen die Öffnungszeiten ihres Unternehmens. \n \n z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Hier kommt die Telefonnummer unter der man sie bzw. ihr Unternehmen erreichen kann.",
     "email": "Hier kommt die E-Mailadresse unter der man sie bzw. ihr Unternehmen erreichen kann.",
     "website": "In dieses Feld kommt die Webseite von ihrem Unternehmen.",
     "wheelchair": "Hier ein Häkchen setzen, wenn ihr Unternehmen rollstuhlgängig ist.",
@@ -13,16 +14,34 @@
   "landing": {
     "search": "Suchen...",
     "satelite": "Satellit",
-    "map": "Karte"
+    "map": "Karte",
+    "help": {
+      "title": "Hilfe",
+      "section1": "Zommen Sie mit Doppelklick oder mit dem '+' oben links in die Karte hinein oder suchen Sie ihre Adresse mittels Suchfeld oben in der Mitte.",
+      "section2": "Mit einem Linksklick auf ein bestehendes Unternehmen (blauer Kreis) können Sie dieses bearbeiten.",
+      "section3": "Mit einem Rechtsklick auf eine beliebige Position in der Karte können Sie ein neues Unternehmen erfassen."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "Um Änderungen in der Karte vorzunehmen müssen Sie sich mit einem OpenStreetMap-Login anmelden.",
+      "section2": "In dieser Ansicht können Sie aber bereits schauen, wie das ganze in Etwa funktioniert."
+    }
   },
   "detail": {
     "title": "Unternehmen erfassen",
-    "subtitle": "Zusatzinformationen",
-    "save": "Speichern",
-    "owncategory": "Eigene Kategorie",
-    "choosecategory": "Kategorie wählen",
-    "labels": {
+    "titles": {
       "category": "Kategorie",
+      "address": "Adresse",
+      "details": "Details",
+      "extras": "Zusatzinformationen"
+    },
+    "labels": {
+      "street": "Strasse",
+      "housenumber": "Hausnummber",
+      "place": "Platz",
+      "postcode": "Postleitzahl",
+      "city": "Ort",
+      "country": "Land",
       "name": "Name",
       "opening_hours": "Öffnungszeiten",
       "phone": "Telefonnummer",
@@ -38,6 +57,12 @@
     "placeholders": {
       "category": "Kategorie wählen...",
       "owncategory": "Kategorie eingeben...",
+      "street": "Dorfstrasse",
+      "housenumber": "50",
+      "place": "Insel",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Schweiz",
       "name": "Ihr Name...",
       "opening_hours": "Mo-Fr 08:00-17:00",
       "phone": "+41 11 111 11 11",
@@ -47,10 +72,26 @@
       "note": "Notiz"
     },
     "validate": {
-      "subtitle": "Felder mit * sind Pflichtfelder",
       "required": "Dies ist ein Pflichfeld",
       "email": "E-Mailadresse ist nicht valid",
-      "website": "Webseite ist nicht valid"
+      "website": "Webseite ist nicht valid",
+      "streetOrPlace": "Die Strasse oder der Platz ist obligatorisch.",
+      "notStreetAndPlace": "Die Strasse und der Platz dürfen nicht beide ausgefüllt sein.",
+      "subtitle": "Felder mit * sind Pflichtfelder (Bei Feldern mit (*) ist jeweils nur eines davon ein Pflichfeld)"
+    },
+    "buttons": {
+      "owncategory": "Eigene Kategorie",
+      "choosecategory": "Kategorie wählen",
+      "back": "Zurück",
+      "reset": "Zurücksetzen",
+      "save": "Speichern"
     }
+  },
+  "popups": {
+    "popuptitle": "Neues Unternehmen",
+    "feedback": "Kartenfehler melden",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "buttontitle": "Für diese Funktion muss man eingeloggt sein"
   }
 }

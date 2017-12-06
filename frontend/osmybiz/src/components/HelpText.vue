@@ -7,17 +7,15 @@
     </div>
 
     <div class="help-text" v-if="showHelp">
-      <div class="help-title">Hilfe</div>
+      <div class="help-title">{{t('landing').help.title}}</div>
       <div class="section">
-        Zoomen sie herein um genauere Karteninformationen zu sehen.
+        {{t('landing').help.section1}}
       </div>
       <div class="section">
-        Mit einem Linksklick auf ein bestehendes Geschäft (blauer Kreis)
-        können Sie dieses bearbeiten.
+        {{t('landing').help.section2}}
       </div>
       <div class="section">
-        Mit einem Rechtsklick auf eine beliebige Position in der Karte
-        können Sie ein neues Geschäft erfassen.
+        {{t('landing').help.section3}}
       </div>
       <button class="ok-btn" @click="confirm()">Ok</button>
     </div>
