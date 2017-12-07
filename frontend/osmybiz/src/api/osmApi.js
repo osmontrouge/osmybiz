@@ -255,7 +255,8 @@ function closeChangeset () {
   })
 }
 
-export function getNode2 (nodeId) {
+// temporary fix to redirect to live api, because dev environment is currentliy borken
+function getNode2 (nodeId) {
   return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => {
     console.log(res)
 
@@ -273,8 +274,14 @@ export function getNode (nodeId) {
         path: getNodePath + nodeId
       }, (err, response) => {
       if (err) {
-        if (err.status === 404 || err.status === 410) {
+        if (err.status === 410) {
           resolve(null)
+        } else if (err.status === 404) {
+          getNode2(nodeId).then(res => {
+            resolve(res)
+          }).catch(() => {
+            resolve(null)
+          })
         } else {
           console.log(err)
           reject(err)

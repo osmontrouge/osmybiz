@@ -1,4 +1,4 @@
-import {postNode, postNote, getNode2} from './../api/osmApi'
+import {postNode, postNote, getNode} from './../api/osmApi'
 import {reverseQuery} from './../api/nominatimApi'
 import {infoTexts} from './../locales/de'
 import {getLanguageTags} from './locale'
@@ -92,9 +92,7 @@ const actions = {
 
       console.log(user, osmId, ps)
 
-      getNode2(osmId).then(node => {
-        console.log(node)
-
+      getNode(osmId).then(node => {
         addOrUpdateNode(user.id, {
           lat: parseFloat(node.lat),
           lng: parseFloat(node.lon),
