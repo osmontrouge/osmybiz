@@ -37,6 +37,8 @@ def is_node_valid(node):
 
     if 'recieveUpdates' not in node or not isinstance(node['recieveUpdates'], bool):
         return False
+    if 'name' not in node or not isinstance(node['name', str]):
+        return False
     return True
 
 
@@ -53,7 +55,8 @@ def to_node_vm(node):
         'lat': node.lat,
         'lng': node.lng,
         'version':	node.version,
-        'recieveUpdates': node.recieveUpdates
+        'recieveUpdates': node.recieveUpdates,
+        'name': node.name
     }
 
 
@@ -114,12 +117,13 @@ def add_or_update_node(userid):
     existingNode = find_node_by_user_and_id(user.id, node['osmId'])
 
     if existingNode is None:
-        existingNode = Node(user.id, node['osmId'], node['lat'], node['lng'], node['version'], node['recieveUpdates'])
+        existingNode = Node(user.id, node['name'], node['osmId'], node['lat'], node['lng'], node['version'], node['recieveUpdates'])
     else:
         existingNode.lat = node['lat']
         existingNode.lng = node['lng']
         existingNode.version = node['version']
         existingNode.recieveUpdates = node['recieveUpdates']
+        existingNode.name = node['name']
 
     existingNode.save()
 

@@ -30,18 +30,20 @@ class Node(db.Model):
     lng = db.Column(db.Float)
     version = db.Column(db.Integer)
     recieveUpdates = db.Column(db.Boolean)
+    name = db.Column(db.String)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
         db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-    def __init__(self, userId, osmId, lat, lng, version, recieveUpdates):
+    def __init__(self, userId, name, osmId, lat, lng, version, recieveUpdates):
         self.userId = userId
         self.osmId = osmId
         self.lat = lat
         self.lng = lng
         self.version = version
         self.recieveUpdates = recieveUpdates
+        self.name = name
 
     def save(self):
         db.session.add(self)
