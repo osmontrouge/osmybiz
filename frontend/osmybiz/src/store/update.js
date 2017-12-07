@@ -13,13 +13,24 @@ const actions = {
   loadUpdates ({commit}, user) {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchnodes(user.id).then(ns => {
-        commit('setNodes', ns)
+        commit('setNodes', [])
 
         ns.filter(n => n.recieveUpdates).forEach(n => {
           getNode(n.osmId).then(node => {
             const update = getUpdate(n, node)
             if (_.isObject(update)) {
               commit('pushUpdate', update)
+            }
+
+            if (_.isObject(node)) {
+              const ownedNode = {
+                id: n.osmId,
+                lat: n.lat,
+                lng: n.lng,
+                tags: node.tags,
+                mine: true
+              }
+              commit('pushNode', ownedNode)
             }
           })
         })
@@ -48,7 +59,6 @@ const actions = {
   },
 
   ignoreFutureUpdates ({commit}, {update, user}) {
-    console.log(update, user)
     unsubscribe(user.id, update.id).then(() => {
       commit('removeUpdate', update)
     })
@@ -71,6 +81,9 @@ const mutations = {
   },
   toggleUpdates (state) {
     state.showUpdates = !state.showUpdates
+  },
+  pushNode (state, node) {
+    state.nodes.push(node)
   }
 }
 
@@ -83,6 +96,9 @@ const getters = {
   },
   updateCount (state) {
     return state.updates.length
+  },
+  ownedNodes (state) {
+    return state.nodes
   }
 }
 

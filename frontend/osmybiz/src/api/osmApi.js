@@ -330,8 +330,17 @@ function parseNode (node) {
     address: address,
     details: details,
     version: node.$.version,
-    changeSet: node.$.changeset
+    changeSet: node.$.changeset,
+    tags: parseTags(node.tag)
   }
+}
+
+function parseTags (tags) {
+  const res = {}
+  for (const tag of tags) {
+    res[tag['$'].k] = tag['$'].v
+  }
+  return res
 }
 
 function parseAddress (node) {

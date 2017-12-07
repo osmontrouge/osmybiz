@@ -8,11 +8,8 @@ app = create_app('postgresql+psycopg2://osmybiz:123456@database:5432/osmybiz')
 
 
 def is_user_valid(user):
-    print('uservali', file=sys.stderr)
     if 'osmId' not in user or not isinstance(user['osmId'], int):
         return False
-
-    print('id valid', file=sys.stderr)
 
     if 'username' not in user or not isinstance(user['username'], str):
         return False
@@ -21,7 +18,6 @@ def is_user_valid(user):
 
 
 def is_node_valid(node):
-    print(node, file=sys.stdout)
     if 'osmId' not in node or not isinstance(node['osmId'], int):
         print('osmid invalid', file=sys.stderr)
         return False
