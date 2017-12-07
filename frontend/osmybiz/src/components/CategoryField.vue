@@ -2,7 +2,7 @@
   <div class="category-wrapper">
     <div class="field">
       <div class="field-label">
-        <label>{{t('detail').labels.category}}*</label>
+        <h3>{{t('detail').labels.category}}*</h3>
         <img class="info"
              @mouseenter="showPopup('category')"
              @mouseleave="hidePopup()"
