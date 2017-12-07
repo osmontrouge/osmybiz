@@ -1,14 +1,16 @@
-import {postNode, postNote, getNode} from './../api/osmApi'
+import {postNode, postNote, getNode, getNotes} from './../api/osmApi'
 import {reverseQuery} from './../api/nominatimApi'
 import {infoTexts} from './../locales/de'
 import {getLanguageTags} from './locale'
 import {addOrUpdateNode} from './../api/osmybizApi'
+import {surroundingQueryNode} from '../api/overpassApi'
 
 let initalOptions = []
 loadTags()
 
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
+infoMap.set('address', infoTexts.address)
 infoMap.set('name', infoTexts.name)
 infoMap.set('opening_hours', infoTexts.opening_hours)
 infoMap.set('phone', infoTexts.phone)
@@ -25,6 +27,7 @@ const state = {
 
   // DetailForm
   tags: initalOptions,
+  address: {},
   lat: null,
   lon: null,
   details: {
@@ -45,19 +48,17 @@ const state = {
     note: ''
   },
   isOwnCategory: false,
-  isLoading: true,
   isPopup: false,
   isNote: false,
   infoText: '',
   infoMap: infoMap,
 
-  // PostNoteSuccess
+  // PostSuccess
   note: {},
   node: {},
 
-  // AddressConfirmation
-  address: {},
-  displayAddressForm: false
+  // Check Duplicates
+  isDuplicate: false
 }
 
 const actions = {
@@ -82,6 +83,14 @@ const actions = {
       })
     })
   },
+  checkDuplicate ({commit}) {
+    return new Promise((resolve) => {
+      surroundingQueryNode(state.details, state.lat, state.lon).then(ps => {
+        resolve(ps)
+        commit('setIsDuplicate', ps)
+      })
+    })
+  },
   postNote ({commit}, {user, osmId}) {
     const note = constructNote()
     const name = state.details.name
@@ -89,8 +98,6 @@ const actions = {
       state.displaySuccess = true
       let displayNote = constructDisplayNote(ps)
       commit('setNote', displayNote)
-
-      console.log(user, osmId, ps)
 
       getNode(osmId).then(node => {
         addOrUpdateNode(user.id, {
@@ -105,13 +112,17 @@ const actions = {
     })
   },
   getAddress ({commit}) {
-    state.isLoading = true
     reverseQuery(state.lat, state.lon).then(ps => {
-      state.isLoading = false
       commit('setAddress', ps)
       localStorage.setItem('address', JSON.stringify(ps))
     })
+  },
+  getNotes ({commit}) {
+    getNotes(state.lat, state.lon).then(ps => {
+      commit('setIsDuplicateNote', ps)
+    })
   }
+
 }
 
 const mutations = {
@@ -152,6 +163,22 @@ const mutations = {
   setOsmId (state, id) {
     state.osmId = id
     console.log(state)
+  },
+  setIsDuplicate (state, isDuplicate) {
+    state.isDuplicate = isDuplicate
+  },
+  setIsDuplicateNote (state, notes) {
+    notes.forEach(function (note) {
+      if (note.properties.status === 'open') {
+        let text = note.properties.comments[0].text
+        let fields = text.split('\n')
+        if (fields[0] === '#OSMyBiz ' &&
+          fields[3] === 'Category: ' + state.details.category.text &&
+          fields[4] === 'Name: ' + state.details.name) {
+          state.isDuplicate = true
+        }
+      }
+    })
   }
 }
 
@@ -203,6 +230,9 @@ const getters = {
   },
   osmId (state) {
     return state.osmId
+  },
+  isDuplicate (state) {
+    return state.isDuplicate
   }
 }
 
@@ -220,9 +250,11 @@ function constructNote () {
     let address = ''
     if (state.address.street) {
       address += state.address.street + ' '
-    }
-    if (state.address.housenumber) {
-      address += state.address.housenumber + ', '
+      if (state.address.housenumber) {
+        address += state.address.housenumber + ', '
+      }
+    } else {
+      address += state.address.place + ', '
     }
     if (state.address.postcode) {
       address += state.address.postcode + ' '

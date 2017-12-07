@@ -3,6 +3,7 @@
     <search-bar></search-bar>
     <tile-map></tile-map>
     <toggle-button></toggle-button>
+    <login-help-text></login-help-text>
     <help-text></help-text>
     <update-list></update-list>
 
@@ -16,10 +17,11 @@
   import HelpText from './../components/HelpText'
   import UpdateList from './../components/UpdateList'
   import PostSuccess from './../components/PostSuccess'
-
-  import {mapActions} from 'vuex'
-  import * as _ from 'lodash'
   import ToggleButton from './../components/ToggleButton'
+  import LoginHelpText from '../components/LoginHelpText'
+
+  import {mapActions, mapMutations} from 'vuex'
+  import * as _ from 'lodash'
 
   function extractToken (url) {
     const tokenRegex = /\?oauth_token=(.*)#\//
@@ -38,11 +40,23 @@
           window.location.href = '/'
         })
       }
+      this.setIsDuplicate(false)
+
+      if (localStorage.getItem('showHelp')) {
+        console.log(JSON.parse(localStorage.getItem('showHelp')))
+        this.setShowHelp(JSON.parse(localStorage.getItem('showHelp')))
+      }
+      if (localStorage.getItem('showLoginHelp')) {
+        console.log(JSON.parse(localStorage.getItem('showLoginHelp')))
+        this.setShowLoginHelp(JSON.parse(localStorage.getItem('showLoginHelp')))
+      }
     },
     methods: {
-      ...mapActions(['setToken'])
+      ...mapActions(['setToken']),
+      ...mapMutations(['setIsDuplicate', 'setShowHelp', 'setShowLoginHelp'])
     },
     components: {
+      LoginHelpText,
       SearchBar,
       TileMap,
       ToggleButton,

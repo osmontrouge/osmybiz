@@ -146,6 +146,27 @@ export function postNote (note) {
   })
 }
 
+export function getNotes (lat, lng) {
+  let left = lng - 0.00005
+  let bottom = lat - 0.00005
+  let right = lng + 0.00005
+  let top = lat + 0.00005
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'GET',
+        path: createNotePath + '?bbox=' + left + ',' + bottom + ',' + right + ',' + top
+      }, (err, response) => {
+      if (err) {
+        console.log(err)
+        resolve(null)
+      }
+      const data = JSON.parse(response)
+      resolve(data.features)
+    })
+  })
+}
+
 function uploadChangeset (node) {
   let upload = constructUpload(node)
   return new Promise((resolve) => {
@@ -197,9 +218,13 @@ function createAddressTags (node) {
   let text = ''
   if (node.address.street) {
     text += '<tag k="addr:street" v="' + node.address.street + '"/>'
-  }
-  if (node.address.housenumber) {
-    text += '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>'
+    if (node.address.housenumber) {
+      text += '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>'
+    }
+  } else {
+    if (node.address.place) {
+      text += '<tag k="addr:place" v="' + node.address.place + '"/>'
+    }
   }
   if (node.address.postcode) {
     text += '<tag k="addr:postcode" v="' + node.address.postcode + '"/>'
@@ -317,6 +342,9 @@ function parseAddress (node) {
   }, {
     k: 'addr:housenumber',
     v: 'housenumber'
+  }, {
+    k: 'addr:place',
+    v: 'place'
   }, {
     k: 'addr:postcode',
     v: 'postcode'

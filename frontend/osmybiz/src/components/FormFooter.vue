@@ -5,17 +5,12 @@
       Zurück</button>
     <button class="button"
             id="reset-button"
+            :disabled="isDuplicate"
             @click="reset()">
       Zurücksetzen</button>
     <button class="button"
-            v-if="isNote"
-            :disabled="isRequiredFields()"
-            @click="submitNote()">
-      {{t('detail').save}}</button>
-    <button class="button"
-            v-if="!isNote"
-            :disabled="isRequiredFields()"
-            @click="submitNode()">
+            :disabled="isRequiredFields() || isDuplicate"
+            @click="submit()">
       {{t('detail').save}}</button>
   </div>
 </template>
@@ -32,27 +27,37 @@
         'isNote',
         'details',
         'user',
-        'osmId'
+        'osmId',
+        'lat',
+        'lon',
+        'isDuplicate'
       ])
     },
     methods: {
       ...mapMutations([
         'setDetails',
-        'setAddress'
+        'setAddress',
+        'setIsDuplicate'
       ]),
       ...mapActions([
         'postNote',
-        'postNode'
+        'postNode',
+        'checkDuplicate'
       ]),
-      submitNote () {
-        this.postNote({user: this.user, osmId: this.osmId})
-        this.$router.push({name: routes.Landing})
-        clearDetails()
-      },
-      submitNode () {
-        this.postNode(this.user)
-        this.$router.push({name: routes.Landing})
-        clearDetails()
+      submit () {
+        if (this.isNote) {
+          this.postNote({user: this.user, osmId: this.osmId})
+          this.$router.push({name: routes.Landing})
+          clearDetails()
+        } else {
+          this.checkDuplicate().then((res) => {
+            if (!res) {
+              this.postNode(this.user)
+              this.$router.push({name: routes.Landing})
+              clearDetails()
+            }
+          })
+        }
       },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''

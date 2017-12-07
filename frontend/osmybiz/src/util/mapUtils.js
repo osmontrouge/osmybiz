@@ -80,6 +80,7 @@ function createButton (text, isLoggedIn, callback, arg) {
     callback(arg)
   })
   if (!isLoggedIn) {
+    btn.attr('title', 'Für diese Funktion muss man eingeloggt sein')
     btn.attr('disabled', 'disabled')
   }
   return btn

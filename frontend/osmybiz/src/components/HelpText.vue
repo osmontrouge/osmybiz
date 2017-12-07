@@ -35,9 +35,11 @@
       ...mapMutations(['setShowHelp']),
       confirm () {
         this.setShowHelp(false)
+        localStorage.setItem('showHelp', JSON.stringify(false))
       },
       toggle () {
         this.setShowHelp(!this.showHelp)
+        localStorage.setItem('showHelp', JSON.stringify(this.showHelp))
       }
     },
     computed: {

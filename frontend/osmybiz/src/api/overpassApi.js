@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {overpassUrl} from '../config/config'
+import {overpassUrl, searchradius} from '../config/config'
 import tags from '../assets/tags_de'
 import {setError} from '../store/error'
 
@@ -8,9 +8,19 @@ export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 const tagRegex = categoryTags.join('|')
 
 const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`
+const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"={{name}}];out;`
 
 function buildQuery (bbox) {
   return query.replace('{{bbox}}', `${bbox.south}, ${bbox.west}, ${bbox.north}, ${bbox.east}`)
+}
+
+function buildSurroundingQuery (details, lat, lon) {
+  return surroundingQuery
+    .replace('{{name}}', `${details.name}`)
+    .replace('{{lat}}', `${lat}`)
+    .replace('{{lon}}', `${lon}`)
+    .replace('{{tag}}', `${details.category.value.split('/')[0]}`)
+    .replace('{{cat}}', `${details.category.value.split('/')[1]}`)
 }
 
 function parseData (data) {
@@ -45,5 +55,14 @@ export function queryBox (bbox) {
     setError('Unternehmen konnten nicht geladen werden.')
     console.log(err)
     return []
+  })
+}
+
+export function surroundingQueryNode (details, lat, lon) {
+  return axios.post(overpassUrl, buildSurroundingQuery(details, lat, lon)).then(res => {
+    return res.data.elements.length > 0
+  }, (err) => {
+    console.log(err)
+    return false
   })
 }

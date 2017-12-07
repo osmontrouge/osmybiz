@@ -1,5 +1,5 @@
 <template>
-  <div class="update-wrapper" v-if="show">
+  <div class="update-wrapper" v-if="false">
     <div class="update-title">
       Kartenänderungen
     </div>
