@@ -221,9 +221,13 @@ function createAddressTags (node) {
   let text = ''
   if (node.address.street) {
     text += '<tag k="addr:street" v="' + node.address.street + '"/>'
-  }
-  if (node.address.housenumber) {
-    text += '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>'
+    if (node.address.housenumber) {
+      text += '<tag k="addr:housenumber" v="' + node.address.housenumber + '"/>'
+    }
+  } else {
+    if (node.address.place) {
+      text += '<tag k="addr:place" v="' + node.address.place + '"/>'
+    }
   }
   if (node.address.postcode) {
     text += '<tag k="addr:postcode" v="' + node.address.postcode + '"/>'
@@ -317,6 +321,9 @@ function parseAddress (node) {
   }, {
     k: 'addr:housenumber',
     v: 'housenumber'
+  }, {
+    k: 'addr:place',
+    v: 'place'
   }, {
     k: 'addr:postcode',
     v: 'postcode'

@@ -9,6 +9,7 @@ loadTags()
 
 const infoMap = new Map()
 infoMap.set('category', infoTexts.category)
+infoMap.set('address', infoTexts.address)
 infoMap.set('name', infoTexts.name)
 infoMap.set('opening_hours', infoTexts.opening_hours)
 infoMap.set('phone', infoTexts.phone)
@@ -216,9 +217,11 @@ function constructNote () {
     let address = ''
     if (state.address.street) {
       address += state.address.street + ' '
-    }
-    if (state.address.housenumber) {
-      address += state.address.housenumber + ', '
+      if (state.address.housenumber) {
+        address += state.address.housenumber + ', '
+      }
+    } else {
+      address += state.address.place + ', '
     }
     if (state.address.postcode) {
       address += state.address.postcode + ' '
