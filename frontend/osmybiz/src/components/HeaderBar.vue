@@ -136,7 +136,7 @@
     background-color: red;
     color: white;
     font-weight:bold;
-    padding: 1px 3px;
+    padding: 1px 4px;
     font-size: 12px;
     position: absolute;
     height: 14px;
