@@ -35,6 +35,7 @@ services:
       dockerfile: Dockerfile.nginx
     command: []
   nginx:
+    image: geometalab/osmmybiz-nginx
     build:
       context: nginx/
       dockerfile: Dockerfile
