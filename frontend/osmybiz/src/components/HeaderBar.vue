@@ -18,6 +18,11 @@
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
+        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()">
+          <icon name="bell"></icon>
+          <span class="unread" v-if="updateCount > 0">{{updateCount}}</span>
+        </div>
+
         <button v-if="!isLoggedIn" @click="login()">Login</button>
         <button v-if="isLoggedIn" @click="signOff()">Logout</button>
 
@@ -49,7 +54,8 @@
     computed: {
       ...mapGetters([
         'user',
-        'isLoggedIn'
+        'isLoggedIn',
+        'updateCount'
       ])
     },
     methods: {
@@ -61,7 +67,8 @@
       ...mapMutations([
         'logout',
         'setLanguage',
-        'setTags'
+        'setTags',
+        'toggleUpdates'
       ]),
       login () {
         this.authenticate()
@@ -130,7 +137,7 @@
     color: white;
     font-weight:bold;
     padding: 1px 3px;
-    font-size: 10px;
+    font-size: 12px;
     position: absolute;
     height: 14px;
     line-height: 11px;

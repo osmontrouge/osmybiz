@@ -5,7 +5,8 @@ import * as _ from 'lodash'
 
 const state = {
   updates: [],
-  nodes: []
+  nodes: [],
+  showUpdates: false
 }
 
 const actions = {
@@ -67,6 +68,9 @@ const mutations = {
     if (i >= 0) {
       state.updates.splice(i, 1)
     }
+  },
+  toggleUpdates (state) {
+    state.showUpdates = !state.showUpdates
   }
 }
 
@@ -74,8 +78,11 @@ const getters = {
   updates (state) {
     return state.updates
   },
-  hasUpdates (state) {
-    return state.updates.length > 0
+  showUpdates (state) {
+    return state.showUpdates
+  },
+  updateCount (state) {
+    return state.updates.length
   }
 }
 

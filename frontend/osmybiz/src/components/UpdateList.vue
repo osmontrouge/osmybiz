@@ -1,7 +1,10 @@
 <template>
   <div class="update-wrapper" v-if="show">
     <div class="update-title">
-      Änderungen
+      Kartenänderungen
+    </div>
+    <div class="update" v-if="updateCount === 0">
+      Keine Änderugen
     </div>
     <div class="update" v-for="update in updates">
 
@@ -65,13 +68,14 @@
     },
     computed: {
       ...mapGetters([
-        'isLoggedIn',
         'updates',
         'hasUpdates',
-        'user'
+        'user',
+        'showUpdates',
+        'updateCount'
       ]),
       show () {
-        return this.isLoggedIn && this.hasUpdates
+        return this.showUpdates
       }
     },
     filters: {
@@ -97,16 +101,19 @@
     font-size: 14px;
     background-color: white;
     border: 2px solid #7ebc6f;
-    padding: 12px
+    padding: 12px;
+    overflow-y: auto;
   }
 
   .update-title {
     font-size:20px;
     font-weight:bold;
+    text-align: left;
   }
 
   .update {
-    margin-top: 12px;
+    margin-top: 24px;
+    margin-bottom: 24px;
     text-align: left;
   }
 
