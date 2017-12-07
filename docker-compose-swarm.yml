@@ -1,0 +1,71 @@
+version: '3.3'
+services:
+  backend: &api
+    image: geometalab/osmmybiz-backend
+    networks:
+      - default
+    deploy:
+      replicas: 1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  backend-migrate:
+    <<: *api
+    command: ["python", "manage.py", "db", "upgrade"]
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: none
+        max_attempts: 1
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=osmybiz
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=osmybiz
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - default
+    deploy:
+      replicas: 1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  frontend:
+    image: geometalab/osmmybiz-frontend
+    networks:
+      - default
+    deploy:
+      replicas: 1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  nginx:
+    image: geometalab/osmmybiz-nginx
+    environment:
+#      - VIRTUAL_HOST=localhost,127.0.0.1,<my-domain>
+      - VIRTUAL_HOST=localhost,127.0.0.1,192.168.99.101,192.168.99.100
+    ports:
+      - "80:80"
+    networks:
+      - default
+      - webnet
+    deploy:
+      replicas: 1
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+volumes:
+  db-data:
+networks:
+  webnet:
