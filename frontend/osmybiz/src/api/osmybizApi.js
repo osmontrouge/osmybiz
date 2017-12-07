@@ -52,5 +52,6 @@ export function deleteNode (userId, nodeId) {
   if (fakeOsmybizApi) {
     return mockDeleteNode(userId, nodeId)
   }
-  return Promise.resolve()
+  const route = baseRoute + `user/${userId}/node/${nodeId}/delete`
+  return axios.post(route)
 }

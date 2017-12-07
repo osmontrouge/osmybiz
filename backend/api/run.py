@@ -165,6 +165,19 @@ def unsubscribe(userid, nodeid):
 
     return '', 200
 
+@app.route('/api/user/<int:userid>/node/<int:nodeid>/delete', methods=['POST'])
+def deleteNode(userid, nodeid):
+    user = find_user_by_osmid(userid)
+
+    if user is None:
+        abort(404)
+
+    node = find_node_by_user_and_id(user.id, nodeid)
+
+    if node is not None:
+        node.delete()
+        
+    return  '', 200
 
 if __name__ == '__main__':
     app.run(port=5000, host="0.0.0.0")
