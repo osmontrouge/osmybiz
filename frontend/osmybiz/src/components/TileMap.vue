@@ -37,8 +37,6 @@
   function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote) {
     const ms = bs.map(b => {
       const m = createMarker(b, map, isloggedIn, (data) => {
-        console.log('checking for dupes', data)
-
         checkDuplicate(data).then((res) => {
           if (!res) {
             component.edit(data)
