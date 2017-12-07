@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   api:
+    image: geometalab/osmmybiz-backend
     build:
       context: backend/
       dockerfile: Dockerfile
@@ -24,6 +25,12 @@ services:
       - ./frontend/osmybiz/index.html:/opt/frontend/index.html
       - ./frontend/osmybiz/package.json:/opt/frontend/package.json
       - ./frontend/osmybiz/package-lock.json:/opt/frontend/package-lock.json
+  frontend-build:
+    image: geometalab/osmmybiz-frontend
+    build:
+      context: frontend/
+      dockerfile: Dockerfile.nginx
+    command: []
   nginx:
     build:
       context: nginx/
