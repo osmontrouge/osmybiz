@@ -1,8 +1,8 @@
-import osmApi from './../api/osmApi'
-import {reverseQuery} from '../api/nominatimApi'
-import {infoTexts} from '../locales/de'
+import {postNode, postNote, getNode2} from './../api/osmApi'
+import {reverseQuery} from './../api/nominatimApi'
+import {infoTexts} from './../locales/de'
 import {getLanguageTags} from './locale'
-import {addOrUpdateNode} from '../api/osmybizApi'
+import {addOrUpdateNode} from './../api/osmybizApi'
 
 let initalOptions = []
 loadTags()
@@ -21,6 +21,7 @@ infoMap.set('note', infoTexts.note)
 const state = {
   // detailPage
   displaySuccess: false,
+  osmId: null,
 
   // DetailForm
   tags: initalOptions,
@@ -61,13 +62,13 @@ const state = {
 
 const actions = {
   postNode ({commit}, user) {
-    let node = {
+    const node = {
       lat: state.lat,
       lon: state.lon,
       details: state.details,
       address: state.address
     }
-    osmApi.post_Node(node).then(ps => {
+    postNode(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
       console.log(ps)
@@ -81,12 +82,28 @@ const actions = {
       })
     })
   },
-  postNote ({commit}) {
-    let note = constructNote()
-    osmApi.post_Note(note).then(ps => {
+  postNote ({commit}, {user, osmId}) {
+    const note = constructNote()
+    const name = state.details.name
+    postNote(note).then(ps => {
       state.displaySuccess = true
       let displayNote = constructDisplayNote(ps)
       commit('setNote', displayNote)
+
+      console.log(user, osmId, ps)
+
+      getNode2(osmId).then(node => {
+        console.log(node)
+
+        addOrUpdateNode(user.id, {
+          lat: parseFloat(node.lat),
+          lng: parseFloat(node.lon),
+          version: parseInt(node.version),
+          osmId: parseInt(node.id),
+          recieveUpdates: true,
+          name: name
+        })
+      })
     })
   },
   getAddress ({commit}) {
@@ -133,6 +150,10 @@ const mutations = {
   },
   setDetails (state, details) {
     state.details = details
+  },
+  setOsmId (state, id) {
+    state.osmId = id
+    console.log(state)
   }
 }
 
@@ -181,6 +202,9 @@ const getters = {
   },
   isLoading (state) {
     return state.isLoading
+  },
+  osmId (state) {
+    return state.osmId
   }
 }
 

@@ -4,6 +4,7 @@ import * as $ from 'jquery'
 import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
 import {setError} from '../store/error'
+import axios from 'axios'
 
 const createNotePath = osmApiLevel + 'notes.json'
 const createChangesetPath = osmApiLevel + 'changeset/create'
@@ -89,10 +90,8 @@ export function loadUser () {
   })
 }
 
-export default {
-
-  post_Node: (node) => {
-    let create =
+export function postNode (node) {
+  let create =
       '<osm>' +
         '<changeset>' +
           '<tag k="comment" v="#OsMyBiz"/>' +
@@ -100,52 +99,51 @@ export default {
           '<tag k="changesets_count" v="1"/>' +
         '</changeset>' +
       '</osm>'
-    return new Promise((resolve) => {
-      auth.xhr(
-        {
-          method: 'PUT',
-          path: createChangesetPath,
-          content: create,
-          options: {
-            header: {
-              'Content-Type': 'text/xml'
-            }
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'PUT',
+        path: createChangesetPath,
+        content: create,
+        options: {
+          header: {
+            'Content-Type': 'text/xml'
           }
-        }, (err, response) => {
-        if (err) {
-          setError('Unternehmen konnte nicht hochgeladen werden.')
-          console.log(err)
         }
-        changesetID = response
-        resolve(uploadChangeset(node))
-      })
+      }, (err, response) => {
+      if (err) {
+        setError('Unternehmen konnte nicht hochgeladen werden.')
+        console.log(err)
+      }
+      changesetID = response
+      resolve(uploadChangeset(node))
     })
-  },
+  })
+}
 
-  post_Note: (note) => {
-    return new Promise((resolve) => {
-      auth.xhr(
-        {
-          method: 'POST',
-          path: createNotePath,
-          content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
-        }, (err, response) => {
-        if (err) {
-          setError('Änderungen konnten nicht gespeichert werden')
-          console.log(err)
-          resolve(null)
-        }
-        const data = JSON.parse(response)
-        resolve({
-          html: data.properties.comments[0].html,
-          text: data.properties.comments[0].text,
-          id: data.properties.id,
-          link: osmUrl + '/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
-          status: data.properties.status
-        })
+export function postNote (note) {
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'POST',
+        path: createNotePath,
+        content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
+      }, (err, response) => {
+      if (err) {
+        setError('Änderungen konnten nicht gespeichert werden')
+        console.log(err)
+        resolve(null)
+      }
+      const data = JSON.parse(response)
+      resolve({
+        html: data.properties.comments[0].html,
+        text: data.properties.comments[0].text,
+        id: data.properties.id,
+        link: osmUrl + '/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
+        status: data.properties.status
       })
     })
-  }
+  })
 }
 
 function uploadChangeset (node) {
@@ -254,6 +252,16 @@ function closeChangeset () {
     if (err) {
       console.log(err)
     }
+  })
+}
+
+export function getNode2 (nodeId) {
+  return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => {
+    console.log(res)
+
+    const parsed = xml2json(res.data)
+    console.log(parsed)
+    return parseNode(parsed.osm.node)
   })
 }
 

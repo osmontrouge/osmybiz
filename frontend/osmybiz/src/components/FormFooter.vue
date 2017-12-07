@@ -31,7 +31,8 @@
       ...mapGetters([
         'isNote',
         'details',
-        'user'
+        'user',
+        'osmId'
       ])
     },
     methods: {
@@ -44,7 +45,7 @@
         'postNode'
       ]),
       submitNote () {
-        this.postNote()
+        this.postNote({user: this.user, osmId: this.osmId})
         this.$router.push({name: routes.Landing})
         clearDetails()
       },

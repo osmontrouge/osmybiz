@@ -60,22 +60,6 @@ function getBizCategory (b) {
   return getTagName(key)
 }
 
-// todo check if other data is needed in popup
-// function getOtherData (b) {
-//   const data = $('<div class="popup-data"></div>')
-//   for (const tag of Object.keys(b.tags)) {
-//     if (categoryTags.indexOf(tag) === -1 && tag !== 'name') {
-//       const tagName = getTagName(tag)
-//       console.log(tag, tagName)
-//       if (!_.isEmpty(tagName)) {
-//         const entry = $(`<div class="popup-entry">${tagName}: ${b.tags[tag]}</div>`)
-//         data.append(entry)
-//       }
-//     }
-//   }
-//   return data
-// }
-
 function getTitle (title) {
   return $(`<div class="popup-title">${title}</div>`)
 }

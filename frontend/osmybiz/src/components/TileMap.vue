@@ -97,7 +97,8 @@
         'setDetails',
         'setCoords',
         'setIsNote',
-        'setPosition'
+        'setPosition',
+        'setOsmId'
       ]),
       viewChange () {
         const bbox = map.getBounds()
@@ -115,6 +116,7 @@
         this.setDetails(note)
         const pos = L.latLng(business.lat, business.lng)
         this.setCoords(pos)
+        this.setOsmId(business.id)
         this.setIsNote(true)
         this.$router.push({name: routes.Detail})
       },
