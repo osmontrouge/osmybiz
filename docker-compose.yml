@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  api:
+  api: &api
     image: geometalab/osmmybiz-backend
     build:
       context: backend/
@@ -9,6 +9,9 @@ services:
       - ./backend/api:/opt/backend
     links:
       - database:database
+  api-migrate:
+    <<: *api
+    command: ["python", "manage.py", "db", "upgrade"]
   database:
     image: postgres
     environment:
