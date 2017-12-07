@@ -1,9 +1,8 @@
-import {postNode, postNote, getNode, getNotes} from './../api/osmApi'
+import {postNode, postNote, getNode} from './../api/osmApi'
 import {reverseQuery} from './../api/nominatimApi'
 import {infoTexts} from './../locales/de'
 import {getLanguageTags} from './locale'
 import {addOrUpdateNode} from './../api/osmybizApi'
-import {surroundingQueryNode} from '../api/overpassApi'
 
 let initalOptions = []
 loadTags()
@@ -55,10 +54,7 @@ const state = {
 
   // PostSuccess
   note: {},
-  node: {},
-
-  // Check Duplicates
-  isDuplicate: false
+  node: {}
 }
 
 const actions = {
@@ -80,14 +76,6 @@ const actions = {
         osmId: parseInt(ps.id),
         recieveUpdates: true,
         name: ps.details.name
-      })
-    })
-  },
-  checkDuplicate ({commit}) {
-    return new Promise((resolve) => {
-      surroundingQueryNode(state.details, state.lat, state.lon).then(ps => {
-        resolve(ps)
-        commit('setIsDuplicate', ps)
       })
     })
   },
@@ -116,13 +104,7 @@ const actions = {
       commit('setAddress', ps)
       localStorage.setItem('address', JSON.stringify(ps))
     })
-  },
-  getNotes ({commit}) {
-    getNotes(state.lat, state.lon).then(ps => {
-      commit('setIsDuplicateNote', ps)
-    })
   }
-
 }
 
 const mutations = {
@@ -163,22 +145,6 @@ const mutations = {
   setOsmId (state, id) {
     state.osmId = id
     console.log(state)
-  },
-  setIsDuplicate (state, isDuplicate) {
-    state.isDuplicate = isDuplicate
-  },
-  setIsDuplicateNote (state, notes) {
-    notes.forEach(function (note) {
-      if (note.properties.status === 'open') {
-        let text = note.properties.comments[0].text
-        let fields = text.split('\n')
-        if (fields[0] === '#OSMyBiz ' &&
-          fields[3] === 'Category: ' + state.details.category.text &&
-          fields[4] === 'Name: ' + state.details.name) {
-          state.isDuplicate = true
-        }
-      }
-    })
   }
 }
 
@@ -230,9 +196,6 @@ const getters = {
   },
   osmId (state) {
     return state.osmId
-  },
-  isDuplicate (state) {
-    return state.isDuplicate
   }
 }
 
