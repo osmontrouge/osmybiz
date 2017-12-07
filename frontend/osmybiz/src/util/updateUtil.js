@@ -6,7 +6,8 @@ export function getUpdate (ourNode, osmNode) {
     return {
       kind: 'delete',
       coords: latLng(ourNode.lat, ourNode.lng),
-      id: ourNode.osmId
+      id: ourNode.osmId,
+      name: ourNode.name
     }
   } else if (osmNode.version > ourNode.version) {
     return {
@@ -15,7 +16,8 @@ export function getUpdate (ourNode, osmNode) {
       id: ourNode.osmId,
       changeSet: osmNode.changeSet,
       oldVersion: parseInt(ourNode.version),
-      newVersion: parseInt(osmNode.version)
+      newVersion: parseInt(osmNode.version),
+      name: ourNode.name
     }
   }
   // no change

@@ -9,11 +9,11 @@
     <div class="update" v-for="update in updates">
 
       <div v-if="update.kind === 'delete'">
-        Das Unternehmen bei {{update.coords | latlng}} wurde entfernt
+        Das Unternehmen {{update.name}} wurde entfernt.
       </div>
 
       <div v-if="update.kind === 'update'">
-        Das Unternehmen an {{update.coords | latlng}} wurde bearbeitet.
+        Das Unternehmen {{update.name}} wurde bearbeitet.
       </div>
 
       <div class="actions">
@@ -42,8 +42,6 @@
 
 <script>
   import {mapGetters, mapMutations, mapActions} from 'vuex'
-  import {DateFilter} from './../filters/dateFilter'
-  import {LatLngFilter} from './../filters/latLngFilter'
   import 'vue-awesome/icons'
   import Icon from 'vue-awesome/components/Icon.vue'
   import {osmUrl} from './../config/config'
@@ -77,10 +75,6 @@
       show () {
         return this.showUpdates
       }
-    },
-    filters: {
-      DateFilter,
-      LatLngFilter
     },
     components: {
       Icon
