@@ -195,7 +195,8 @@ function constructNote () {
     text += 'Address: ' + address + '\n'
   }
   if (state.details.category.text.length !== 0) {
-    text += 'Category: ' + state.details.category.text + '\n'
+    let category = state.details.category.value.split('/')
+    text += 'Category: ' + category[0] + ':' + category[1] + '\n'
   }
   if (state.details.name.length !== 0) {
     text += 'Name: ' + state.details.name + '\n'

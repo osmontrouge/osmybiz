@@ -27,8 +27,9 @@ const actions = {
           if (note.properties.status === 'open') {
             let text = note.properties.comments[0].text
             let fields = text.split('\n')
+            let cat = fields[3].split(':')[1].substring(1)
             if (fields[0] === '#OSMyBiz ' &&
-              fields[3].toLowerCase() === 'category: ' + data.tags[Object.keys(data.tags)[0]] &&
+              fields[3] === 'Category: ' + cat + ':' + data.tags[cat] &&
               fields[4] === 'Name: ' + data.tags['name']) {
               duplicate = true
               noteLink = 'https://master.apis.dev.openstreetmap.org/note/' + note.properties.id + '/#map=19/' + note.geometry.coordinates[1] + '/' + note.geometry.coordinates[0] + '&layers=ND'
