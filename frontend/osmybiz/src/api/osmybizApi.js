@@ -27,7 +27,9 @@ export function fetchnodes (userId) {
     return mockFetchnodes(userId)
   }
   const route = baseRoute + `user/${userId}/node`
-  return axios.get(route)
+  return axios.get(route).then(response => {
+    return response.data
+  })
 }
 
 export function addOrUpdateNode (userId, node) {

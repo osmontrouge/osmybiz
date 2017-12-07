@@ -72,11 +72,12 @@ const actions = {
       commit('setNode', ps)
       console.log(ps)
       addOrUpdateNode(user.id, {
-        lat: ps.lat,
-        lng: ps.lon,
+        lat: parseFloat(ps.lat),
+        lng: parseFloat(ps.lon),
         version: parseInt(ps.version),
         osmId: parseInt(ps.id),
-        recieveUpdates: true
+        recieveUpdates: true,
+        name: ps.details.name
       })
     })
   },

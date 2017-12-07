@@ -31,4 +31,4 @@ export const nominatimReverseUrl = 'http://nominatim.openstreetmap.org/reverse'
 export const overpassUrl = 'http://overpass.osm.ch/api/interpreter'
 
 // fake the osmybiz backend with localstorage
-export const fakeOsmybizApi = true
+export const fakeOsmybizApi = false

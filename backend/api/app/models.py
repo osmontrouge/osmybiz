@@ -4,7 +4,7 @@ class User(db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    osmId = db.Column(db.Integer)
+    osmId = db.Column(db.BigInteger)
     osmName = db.Column(db.String)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
@@ -25,7 +25,7 @@ class Node(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
-    osmId = db.Column(db.Integer)
+    osmId = db.Column(db.BigInteger)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
     version = db.Column(db.Integer)

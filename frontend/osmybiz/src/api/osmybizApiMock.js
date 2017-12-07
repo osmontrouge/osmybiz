@@ -61,6 +61,7 @@ export function mockAddOrUpdateNode (userId, node) {
   existingNode.lng = node.lng
   existingNode.version = node.version
   existingNode.recieveUpdates = node.recieveUpdates
+  existingNode.name = node.name
 
   saveNodes(nodes)
   return Promise.resolve()

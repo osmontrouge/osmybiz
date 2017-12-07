@@ -17,27 +17,33 @@ def is_user_valid(user):
     if 'username' not in user or not isinstance(user['username'], str):
         return False
 
-    print('name valid', file=sys.stderr)
-
     return True
 
 
 def is_node_valid(node):
+    print(node, file=sys.stdout)
     if 'osmId' not in node or not isinstance(node['osmId'], int):
+        print('osmid invalid', file=sys.stderr)
         return False
 
     if 'lat' not in node or not isinstance(node['lat'], float):
+        print('lat invalid', file=sys.stderr)
         return False
 
     if 'lng' not in node or not isinstance(node['lng'], float):
+        print('lng invalid', file=sys.stderr)
         return False
 
     if 'version' not in node or not isinstance(node['version'], int):
+        print('version invalid', file=sys.stderr)
         return False
 
     if 'recieveUpdates' not in node or not isinstance(node['recieveUpdates'], bool):
+        print('recieveupdates invalid', file=sys.stderr)
         return False
-    if 'name' not in node or not isinstance(node['name', str]):
+
+    if 'name' not in node or not isinstance(node['name'], str):
+        print('name invalid', file=sys.stderr)
         return False
     return True
 
