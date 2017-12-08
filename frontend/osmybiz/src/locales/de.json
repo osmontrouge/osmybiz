@@ -102,6 +102,7 @@
   "popups": {
     "popuptitle": "Neues Unternehmen",
     "feedback": "Kartenfehler melden",
+    "mapLink": "Auf OSM.org ansehen",
     "edit": "Bearbeiten",
     "create": "Erstellen",
     "buttontitle": "Für diese Funktion muss man eingeloggt sein"
