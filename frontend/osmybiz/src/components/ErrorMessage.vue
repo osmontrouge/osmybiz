@@ -1,6 +1,9 @@
 <template>
-    <div class="error" v-if="isError">
-      <div class="error-title">{{t('error').title}}</div>
+    <div class="error-dialog" v-if="isError">
+      <div class="dialog-title">
+        {{t('error').title}}
+      </div>
+
       <div class="section">
         <img src="../assets/error.png" alt="">
         <span>{{error}}</span>
@@ -23,7 +26,7 @@
 </script>
 
 <style scoped>
-  .error {
+  .error-dialog {
     position: fixed;
     z-index: 99;
     bottom:50px;
@@ -39,7 +42,7 @@
     padding: 5px;
   }
 
-  .error-title {
+  .dialog-title {
     font-weight: bold;
     text-align: left;
     margin-bottom: 5px;

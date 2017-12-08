@@ -1,17 +1,20 @@
 <template>
   <div>
-    <div class="login-text" v-if="showLoginHelp && !isLoggedIn">
-      <div class="help-header">
-        <div class="help-title">{{t('landing').loginhelp.title}}</div>
-        <icon name="arrow-up"></icon>
+    <div class="login-dialog" v-if="showLoginHelp && !isLoggedIn">
+      <div class="close-button" @click="toggle">
+        <icon name="window-close"></icon>
       </div>
+
+      <div class="dialog-title">
+        {{t('landing').loginhelp.title}}
+      </div>
+
       <div class="section">
         {{t('landing').loginhelp.section1}}
       </div>
       <div class="section">
         {{t('landing').loginhelp.section2}}
       </div>
-      <button class="ok-btn" @click="confirm()">Ok</button>
     </div>
 
   </div>
@@ -25,7 +28,7 @@
   export default {
     methods: {
       ...mapMutations(['setShowLoginHelp']),
-      confirm () {
+      toggle () {
         this.setShowLoginHelp(false)
         localStorage.setItem('showLoginHelp', JSON.stringify(false))
       }
@@ -41,7 +44,7 @@
 </script>
 
 <style>
-  .login-text {
+  .login-dialog {
     position: fixed;
     z-index: 999;
     top: 55px;
@@ -60,18 +63,14 @@
     text-align: left;
   }
 
-  .help-header {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .help-title {
+  .dialog-title {
     flex-grow: 1;
     font-weight: bold;
     text-align: left;
   }
 
-  .ok-btn {
-    float:right;
+  .close-button {
+    float: right;
+    cursor: pointer;
   }
 </style>

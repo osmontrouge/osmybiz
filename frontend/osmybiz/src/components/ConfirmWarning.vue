@@ -1,14 +1,19 @@
 <template>
 
-  <div class="duplicate-wrapper" v-if="isConfirm">
+  <div class="confirm-dialog" v-if="isConfirm">
     <div class="close-button" @click="toggle">
       <icon name="window-close"></icon>
     </div>
-    <div class="warning-title">{{t('warning').confirm.title}}</div>
+
+    <div class="dialog-title">
+      {{t('warning').confirm.title}}
+    </div>
+
     <div class="section">
       {{t('warning').confirm.section}}
     </div>
-    <div class="dialog-buttons">
+
+    <div class="confirm-buttons">
       <button class="confirm-button" @click="toggle">
         {{t('warning').confirm.no}}
       </button>
@@ -51,7 +56,7 @@
 </script>
 
 <style scoped>
-  .duplicate-wrapper {
+  .confirm-dialog {
     position: fixed;
     z-index: 100;
     width: 500px;
@@ -70,7 +75,7 @@
     text-align: left;
   }
 
-  .warning-title {
+  .dialog-title {
     font-weight: bold;
     text-align: left;
     margin-bottom: 5px;
@@ -82,7 +87,7 @@
     cursor: pointer;
   }
 
-  .dialog-buttons {
+  .confirm-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
