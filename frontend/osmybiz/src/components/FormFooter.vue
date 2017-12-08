@@ -43,22 +43,25 @@
         'postNote',
         'postNode',
         'checkDuplicateNode',
-        'getConfirmation'
+        'getConfirmation',
+        'loadUpdates'
       ]),
       submit () {
+        let promise
         if (this.isNote) {
-          this.postNote({user: this.user, osmId: this.osmId})
-          this.$router.push({name: routes.Landing})
-          clearDetails()
+          promise = this.postNote({user: this.user, osmId: this.osmId})
         } else {
-          this.checkDuplicateNode().then((res) => {
+          promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
-              this.postNode(this.user)
-              this.$router.push({name: routes.Landing})
-              clearDetails()
+              return this.postNode(this.user)
             }
           })
         }
+        promise.then(() => {
+          this.loadUpdates(this.user)
+          this.$router.push({name: routes.Landing})
+          clearDetails()
+        })
       },
       isRequiredFields () {
         return this.details.category.text === '' || this.details.name === ''

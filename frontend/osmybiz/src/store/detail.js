@@ -65,11 +65,11 @@ const actions = {
       details: state.details,
       address: state.address
     }
-    postNode(node).then(ps => {
+    return postNode(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
-      console.log(ps)
-      addOrUpdateNode(user.id, {
+
+      return addOrUpdateNode(user.id, {
         lat: parseFloat(ps.lat),
         lng: parseFloat(ps.lon),
         version: parseInt(ps.version),
@@ -82,13 +82,13 @@ const actions = {
   postNote ({commit}, {user, osmId}) {
     const note = constructNote()
     const name = state.details.name
-    postNote(note).then(ps => {
+    return postNote(note).then(ps => {
       state.displaySuccess = true
       let displayNote = constructDisplayNote(ps)
       commit('setNote', displayNote)
 
-      getNode(osmId).then(node => {
-        addOrUpdateNode(user.id, {
+      return getNode(osmId).then(node => {
+        return addOrUpdateNode(user.id, {
           lat: parseFloat(node.lat),
           lng: parseFloat(node.lon),
           version: parseInt(node.version),
