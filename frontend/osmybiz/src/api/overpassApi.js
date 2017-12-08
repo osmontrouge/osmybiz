@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {overpassUrl, searchradius} from '../config/config'
-import tags from '../assets/tags/tags_de'
+import tags from '../assets/tags/de'
 import {setError} from '../store/error'
 import {get} from '../util/translate'
 
