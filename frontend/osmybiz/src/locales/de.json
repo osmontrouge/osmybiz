@@ -13,7 +13,19 @@
   "landing": {
     "search": "Suchen...",
     "satelite": "Satellit",
-    "map": "Karte"
+    "map": "Karte",
+    "update": {
+      "title": "Kartenänderungen",
+      "noChanges": "Keine Änderungen",
+      "changeText1": "Das Unternehmen",
+      "changeText2": "wurde bearbeitet.",
+      "deleteText1": "Das Unternemhen",
+      "deleteText2": "wurde gelöscht.",
+      "confirmHelp": "Als gelesen markieren",
+      "zoomHelp": "Auf der Karte anzeigen",
+      "changesetHelp": "Changeset anschauen",
+      "muteHelp": "Notifikationen abschalten"
+    }
   },
   "detail": {
     "title": "Unternehmen erfassen",

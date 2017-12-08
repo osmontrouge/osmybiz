@@ -1,36 +1,36 @@
 <template>
   <div class="update-wrapper" v-if="showUpdates">
     <div class="update-title">
-      Kartenänderungen
+      {{t('landing').update.title}}
     </div>
     <div class="update" v-if="updateCount === 0">
-      Keine Änderugen
+      {{t('landing').update.noChanges}}
     </div>
     <div class="update" v-for="update in updates">
 
       <div v-if="update.kind === 'delete'">
-        Das Unternehmen {{update.name}} wurde entfernt.
+        {{t('landing').update.deleteText1}} {{update.name}} {{t('landing').update.deleteText2}}
       </div>
 
       <div v-if="update.kind === 'update'">
-        Das Unternehmen {{update.name}} wurde bearbeitet.
+        {{t('landing').update.changeText1}} {{update.name}} {{t('landing').update.changeText2}}
       </div>
 
       <div class="actions">
 
-        <button @click="confirm(update)" class="spacer icon-button" title="Als gelesen markieren">
+        <button @click="confirm(update)" class="spacer icon-button" :title="t('landing').update.confirmHelp">
           <icon name="check"></icon>
         </button>
 
-        <button @click="zoom(update.coords)" class="spacer icon-button" title="Zoom">
+        <button @click="zoom(update.coords)" class="spacer icon-button" :title="t('landing').update.zoomHelp">
           <icon name="search"></icon>
         </button>
 
-        <button v-if="update.changeSet" @click="changeSet(update.changeSet)" class="spacer icon-button" title="Changeset">
+        <button v-if="update.changeSet" @click="changeSet(update.changeSet)" class="spacer icon-button" :title="t('landing').update.changesetHelp">
           <icon name="clone"></icon>
         </button>
 
-        <button @click="ignore(update)" v-if="update.kind === 'update'" class="icon-button" title="Punkt ignorieren">
+        <button @click="ignore(update)" v-if="update.kind === 'update'" class="icon-button" :title="t('landing').update.muteHelp">
           <icon name="volume-off"></icon>
         </button>
 

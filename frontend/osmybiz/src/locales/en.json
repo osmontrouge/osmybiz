@@ -13,7 +13,19 @@
   "landing": {
     "search": "Search...",
     "satelite": "Satelite",
-    "map": "Map"
+    "map": "Map",
+    "update": {
+      "title": "Map changes",
+      "noChanges": "No changes",
+      "changeText1": "The business",
+      "changeText2": "has been updated.",
+      "deleteText1": "The business",
+      "deleteText2": "has been removed.",
+      "confirmHelp": "Mark as read",
+      "zoomHelp": "Show on map",
+      "changesetHelp": "View changeset",
+      "muteHelp": "Disable notifications"
+    }
   },
   "detail": {
     "title": "Create Business",
