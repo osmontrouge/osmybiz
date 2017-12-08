@@ -347,3 +347,12 @@ export function clearDetails () {
     note: ''
   }
 }
+
+export function showPopup (key) {
+  state.infoText = state.infoMap.get(key)
+  state.isPopup = true
+}
+
+export function hidePopup () {
+  state.isPopup = false
+}

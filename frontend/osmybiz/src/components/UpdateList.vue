@@ -70,10 +70,7 @@
         'user',
         'showUpdates',
         'updateCount'
-      ]),
-      show () {
-        return this.showUpdates
-      }
+      ])
     },
     components: {
       Icon
