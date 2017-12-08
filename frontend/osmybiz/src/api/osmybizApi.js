@@ -1,11 +1,11 @@
 import axios from 'axios'
-import {fakeOsmybizApi} from './../config/config'
+import {fakeOsmybizApi, osmyBizBackendUrl} from './../config/config'
 import {
   mockAddOrUpdateUser, mockAddOrUpdateNode, mockFetchnodes, mockUnsubscribe,
   mockDeleteNode
 } from './osmybizApiMock'
 
-const baseRoute = './api/'
+const baseRoute = osmyBizBackendUrl + '/api/'
 
 if (fakeOsmybizApi) {
   console.warn('Using fake osmybiz bakend')

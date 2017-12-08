@@ -286,10 +286,7 @@ function closeChangeset () {
 // temporary fix to redirect to live api, because dev environment is currentliy borken
 function getNode2 (nodeId) {
   return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => {
-    console.log(res)
-
     const parsed = xml2json(res.data)
-    console.log(parsed)
     return parseNode(parsed.osm.node)
   })
 }
