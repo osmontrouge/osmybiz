@@ -74,6 +74,13 @@ function getMapErrorLink (coords) {
   })
 }
 
+function getMapLink (coords) {
+  return $(`<div class="popup-link">${get().locale.popups.mapLink}</div>`).click(() => {
+    const url = `${osmUrl}/#map=19/${coords.lat}/${coords.lng}&layers=N`
+    window.open(url, '_blank')
+  })
+}
+
 function createButton (text, isLoggedIn, callback, arg) {
   const btn = $(`<button class="popup-btn">${text}</button>`).click(() => {
     callback(arg)
@@ -93,6 +100,7 @@ function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
     wrapper.append(title)
     wrapper.append(address)
     wrapper.append(btn)
+    wrapper.append(getMapLink(coords))
     wrapper.append(getMapErrorLink(coords))
 
     return wrapper[0]
@@ -110,8 +118,8 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
 
     wrapper.append(title)
     wrapper.append(address)
-    // wrapper.append(getOtherData(business))
     wrapper.append(btn)
+    wrapper.append(getMapLink(coords))
     wrapper.append(getMapErrorLink(coords))
 
     return wrapper[0]
