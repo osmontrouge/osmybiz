@@ -79,7 +79,6 @@ export function getInitialPosition (params) {
     const fromUrl = extractHash(params)
 
     if (_.isObject(fromUrl)) {
-      console.log('picked url from route')
       resolve(fromUrl)
       return
     }
@@ -87,17 +86,14 @@ export function getInitialPosition (params) {
     const stored = getStoredPosition()
 
     if (_.isObject(stored)) {
-      console.log('picked url from store')
       resolve(stored)
       return
     }
 
     getBrowserLocation().then(pos => {
       if (_.isObject(pos)) {
-        console.log('picked url from browser')
         resolve(pos)
       } else {
-        console.log('picked fallback url')
         resolve(fallBackPosition())
       }
     })

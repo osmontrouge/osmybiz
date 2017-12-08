@@ -134,7 +134,6 @@ const mutations = {
   },
   setOsmId (state, id) {
     state.osmId = id
-    console.log(state)
   }
 }
 
