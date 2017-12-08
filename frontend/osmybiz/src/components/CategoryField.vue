@@ -4,8 +4,8 @@
       <div class="field-label">
         <h3>{{t('detail').titles.category}}*</h3>
         <img class="info"
-             @mouseenter="showPopup('category')"
-             @mouseleave="hidePopup()"
+             @mouseenter="show('category')"
+             @mouseleave="hide()"
              src="../assets/info_black.png">
       </div>
 
@@ -45,6 +45,7 @@
 <script>
   import {BasicSelect} from 'vue-search-select'
   import {mapGetters, mapMutations} from 'vuex'
+  import {showPopup, hidePopup} from '../store/detail'
   import Vue from 'vue'
   import VeeValidate from 'vee-validate'
 
@@ -74,12 +75,11 @@
         this.setIsOwnCategory(true)
         this.details.category = {value: 0, text: ''}
       },
-      showPopup (key) {
-        this.setInfoText(this.infoMap.get(key))
-        this.setIsPopup(true)
+      show (key) {
+        showPopup(key)
       },
-      hidePopup () {
-        this.setIsPopup(false)
+      hide () {
+        hidePopup()
       },
       onSelect (item) {
         this.details.category = item

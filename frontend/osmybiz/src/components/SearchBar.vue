@@ -42,7 +42,6 @@
         'resetSearch'
       ]),
       pick (point) {
-        console.log(point.coords)
         this.setMapPosition(point.coords)
         this.selectPoint(point)
       }

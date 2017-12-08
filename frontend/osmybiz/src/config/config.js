@@ -32,7 +32,7 @@ export const overpassUrl = 'https://overpass.osm.ch/api/interpreter'
 export const searchradius = 10.0
 
 // fake the osmybiz backend with localstorage
-export const fakeOsmybizApi = false
+export const fakeOsmybizApi = true
 
 export const osmyBizBackendUrl = 'http://localhost:8080'
 // export const osmyBizBackendUrl = 'https://osmybiz.infs.ch'

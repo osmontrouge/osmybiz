@@ -4,8 +4,8 @@
     <div class="field-label">
       <h3>{{t('detail').titles.address}}</h3>
       <img class="info"
-           @mouseenter="showPopup('address')"
-           @mouseleave="hidePopup()"
+           @mouseenter="show('address')"
+           @mouseleave="hide()"
            src="../assets/info_black.png">
     </div>
     <div class="address-fields">
@@ -90,6 +90,7 @@
 
 <script>
   import {mapGetters, mapMutations} from 'vuex'
+  import {showPopup, hidePopup} from '../store/detail'
 
   export default {
     name: 'address-fields',
@@ -104,12 +105,11 @@
         'setInfoText',
         'setIsPopup'
       ]),
-      showPopup (key) {
-        this.setInfoText(this.infoMap.get(key))
-        this.setIsPopup(true)
+      show (key) {
+        showPopup(key)
       },
-      hidePopup () {
-        this.setIsPopup(false)
+      hide () {
+        hidePopup()
       }
     }
   }

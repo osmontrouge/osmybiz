@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TestPage from '@/pages/testPage'
 import LandingPage from '@/pages/landingPage'
 import DetailPage from '@/pages/detailPage'
 
@@ -17,10 +16,6 @@ export default new Router({
       path: '/:zoom?/:lat?/:lng?',
       name: 'Landing',
       component: LandingPage
-    }, {
-      path: '/test',
-      name: 'Test',
-      component: TestPage
     }, {
       path: '/detail',
       name: 'Detail',

@@ -68,8 +68,8 @@
       },
       reset () {
         this.getConfirmation(() => {
-          let details = JSON.parse(localStorage.getItem('details'))
-          let address = JSON.parse(localStorage.getItem('address'))
+          const details = JSON.parse(localStorage.getItem('details'))
+          const address = JSON.parse(localStorage.getItem('address'))
           let category = {
             fields: details.category.fields,
             text: details.category.text,
