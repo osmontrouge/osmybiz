@@ -71,7 +71,7 @@ const actions = {
     const name = state.details.name
     return postNote(note).then(ps => {
       state.displaySuccess = true
-      let displayNote = constructDisplayNote(ps)
+      const displayNote = constructDisplayNote(ps)
       commit('setNote', displayNote)
 
       return getNode(osmId).then(node => {
@@ -221,7 +221,7 @@ function constructNote () {
     text += 'Address: ' + address + '\n'
   }
   if (state.details.category.text.length !== 0) {
-    let category = state.details.category.value.split('/')
+    const category = state.details.category.value.split('/')
     text += 'Category: ' + category[0] + ':' + category[1] + '\n'
   }
   if (state.details.name.length !== 0) {
@@ -263,8 +263,8 @@ function constructNote () {
 }
 
 function constructDisplayNote (note) {
-  let address = note.text.split('Address: ')[1].split('\n')[0]
-  let name = note.text.split('Name: ')[1].split('\n')[0]
+  const address = note.text.split('Address: ')[1].split('\n')[0]
+  const name = note.text.split('Name: ')[1].split('\n')[0]
   note.text = {
     address: address,
     name: name
@@ -273,13 +273,12 @@ function constructDisplayNote (note) {
 }
 
 export function loadTags () {
-  let tags = getLanguageTags()
+  const tags = getLanguageTags()
   let options = []
   Object.keys(tags).forEach(function (key) {
     var fields = []
     tags[key].fields.forEach(function (field) {
       if (field.options) {
-        var options = []
         Object.keys(field.options).forEach(function (option) {
           options.push({
             key: option,

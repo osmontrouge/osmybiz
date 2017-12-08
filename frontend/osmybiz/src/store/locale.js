@@ -13,14 +13,14 @@ const mutations = {
     state.language = lng
   },
   setTags (state, lng) {
-    let tags = {}
     switch (lng) {
-      case 'de': tags = tagsDe
+      case 'de': state.languageTags = tagsDe
         break
-      case 'en': tags = tagsEn
+      case 'en': state.languageTags = tagsEn
         break
+      default:
+        state.languageTags = tagsDe
     }
-    state.languageTags = tags
   }
 }
 

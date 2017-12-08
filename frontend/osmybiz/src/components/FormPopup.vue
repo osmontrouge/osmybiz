@@ -14,8 +14,8 @@
     mounted () {
       let popup = document.getElementById('popup')
       window.onmousemove = function (e) {
-        let x = e.clientX
-        let y = e.clientY
+        const x = e.clientX
+        const y = e.clientY
         popup.style.top = (y + 10 + window.scrollY) + 'px'
         popup.style.left = (x + 10) + 'px'
       }

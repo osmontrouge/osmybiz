@@ -25,9 +25,9 @@ const actions = {
         let noteLink = ''
         ps.forEach(function (note) {
           if (note.properties.status === 'open') {
-            let text = note.properties.comments[0].text
-            let fields = text.split('\n')
-            let cat = fields[3].split(':')[1].substring(1)
+            const text = note.properties.comments[0].text
+            const fields = text.split('\n')
+            const cat = fields[3].split(':')[1].substring(1)
             if (fields[0] === '#OSMyBiz ' &&
               fields[3] === 'Category: ' + cat + ':' + data.tags[cat] &&
               fields[4] === 'Name: ' + data.tags['name']) {
@@ -36,7 +36,6 @@ const actions = {
             }
           }
         })
-        console.log(duplicate)
         resolve(duplicate)
         commit('setNoteLink', noteLink)
         commit('setIsDuplicate', duplicate)
