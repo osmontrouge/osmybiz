@@ -5,23 +5,23 @@
       <icon name="window-close"></icon>
     </div>
     <div class="node-warning" v-if="!isNote">
-      <div class="warning-title">Warnung</div>
+      <div class="warning-title">{{t('warning').duplicate.node.title}}</div>
       <div class="section">
-        An dieser Stelle besteht bereits ein Unternehmen mit demselben Namen und Kategorie.
+        {{t('warning').duplicate.node.section1}}
       </div>
       <div class="section">
-        Sie haben jedoch die Möglichkeit mit einem Linksklick auf das Unternehmen, die bereits vorhandenen Informationen anzupassen.
+        {{t('warning').duplicate.node.section2}}
       </div>
     </div>
 
     <div class="note-warning" v-if="isNote">
-      <div class="warning-title">Warnung</div>
+      <div class="warning-title">{{t('warning').duplicate.note.title}}</div>
       <div class="section">
-        Für dieses Unternehmen wurden bereits Änderungen vorgenommen, die noch nicht abgearbeitet wurden.
+        {{t('warning').duplicate.note.section1}}
       </div>
       <div class="section">
-        Sie haben jedoch die Möglichkeit über OpenStreetMap einen Kommentar dazu zu hinterlassen:
-        <a :href="noteLink" target="_blank">Kommentar hinterlassen</a>
+        {{t('warning').duplicate.note.section2}}
+        <a :href="noteLink" target="_blank">{{t('warning').duplicate.note.comment}}</a>
       </div>
     </div>
   </div>

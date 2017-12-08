@@ -33,6 +33,7 @@
   import * as _ from 'lodash'
   import {routes} from './../router'
   import ConfirmWarning from '../components/ConfirmWarning'
+  import {getInfoTexts} from '../util/translate'
 
   export default {
     mounted () {
@@ -43,6 +44,8 @@
 
       this.getAddress()
       localStorage.setItem('details', JSON.stringify(this.details))
+
+      this.setInfoMap(getInfoTexts())
     },
     components: {
       ConfirmWarning,
@@ -70,11 +73,11 @@
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setDisplayConfirmation'
+        'setDisplayConfirmation',
+        'setInfoMap'
       ]),
       ...mapActions([
-        'getAddress',
-        'checkDuplicateNote'
+        'getAddress'
       ])
     }
   }

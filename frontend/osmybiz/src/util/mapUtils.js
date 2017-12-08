@@ -2,8 +2,7 @@ import * as L from 'leaflet'
 import {mapBoxToken} from '../config/config'
 import {reverseQuery} from './../api/nominatimApi'
 import * as $ from 'jquery'
-import {getTagName} from './translate'
-// import {categoryTags} from './../api/overpassApi'
+import {get, getTagName} from './translate'
 import {getNodeCategoryKey} from './overPassNodeUtils'
 import {osmUrl} from './../config/config'
 
@@ -85,7 +84,7 @@ function getWrapper () {
 }
 
 function getMapErrorLink (coords) {
-  return $(`<div class="popup-link">Kartenfehler melden</div>`).click(() => {
+  return $(`<div class="popup-link">${get().locale.popups.feedback}</div>`).click(() => {
     const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
     window.open(url, '_blank')
   })
@@ -96,7 +95,7 @@ function createButton (text, isLoggedIn, callback, arg) {
     callback(arg)
   })
   if (!isLoggedIn) {
-    btn.attr('title', 'Für diese Funktion muss man eingeloggt sein')
+    btn.attr('title', get().locale.popups.buttontitle)
     btn.attr('disabled', 'disabled')
   }
   return btn
@@ -105,8 +104,8 @@ function createButton (text, isLoggedIn, callback, arg) {
 function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
   return loadAddress(coords).then(address => {
     const wrapper = getWrapper()
-    const title = getTitle('Neues Business')
-    const btn = createButton('Erstellen', isloggedIn, clickedCallBack, coords)
+    const title = getTitle(get().locale.popups.popuptitle)
+    const btn = createButton(get().locale.popups.create, isloggedIn, clickedCallBack, coords)
     wrapper.append(title)
     wrapper.append(address)
     wrapper.append(btn)
@@ -122,8 +121,7 @@ function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCa
     const wrapper = getWrapper()
     const cat = getBizCategory(business)
     const name = business.tags['name'] || ''
-    console.log('edit')
-    const btn = createButton('Bearbeiten', isloggedIn, clickedCallBack, business)
+    const btn = createButton(get().locale.popups.edit, isloggedIn, clickedCallBack, business)
     const title = getTitle(`${cat.name} ${name}`)
 
     wrapper.append(title)

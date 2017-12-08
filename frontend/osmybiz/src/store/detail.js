@@ -1,22 +1,9 @@
 import osmApi from './../api/osmApi'
 import {reverseQuery} from '../api/nominatimApi'
-import {infoTexts} from '../locales/de'
 import {getLanguageTags} from './locale'
 
 let initalOptions = []
 loadTags()
-
-const infoMap = new Map()
-infoMap.set('category', infoTexts.category)
-infoMap.set('address', infoTexts.address)
-infoMap.set('name', infoTexts.name)
-infoMap.set('opening_hours', infoTexts.opening_hours)
-infoMap.set('phone', infoTexts.phone)
-infoMap.set('email', infoTexts.email)
-infoMap.set('website', infoTexts.website)
-infoMap.set('wheelchair', infoTexts.wheelchair)
-infoMap.set('description', infoTexts.description)
-infoMap.set('note', infoTexts.note)
 
 const state = {
   // detailPage
@@ -48,7 +35,7 @@ const state = {
   isPopup: false,
   isNote: false,
   infoText: '',
-  infoMap: infoMap,
+  infoMap: new Map(),
 
   // PostSuccess
   note: {},
@@ -109,6 +96,9 @@ const mutations = {
   setCoords (state, pos) {
     state.lat = pos.lat
     state.lon = pos.lng
+  },
+  setInfoMap (state, infoMap) {
+    state.infoMap = infoMap
   },
   setInfoText (state, infoText) {
     state.infoText = infoText

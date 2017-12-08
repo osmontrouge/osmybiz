@@ -3,7 +3,9 @@ import tagsEn from '../assets/tags_en.json'
 
 const state = {
   language: 'de',
-  languageTags: tagsDe
+  languageTags: tagsDe,
+
+  $translate: {}
 }
 
 const mutations = {

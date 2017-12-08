@@ -1,7 +1,10 @@
 <template>
     <div class="error" v-if="isError">
-      <img src="../assets/error.png" alt="">
-      <span>{{error}}</span>
+      <div class="error-title">{{t('error').title}}</div>
+      <div class="section">
+        <img src="../assets/error.png" alt="">
+        <span>{{error}}</span>
+      </div>
     </div>
 </template>
 
@@ -31,9 +34,24 @@
     border: 2px solid red;
     background: white;
     display: flex;
-    align-items: center;
+    flex-direction: column;
 
     padding: 5px;
+  }
+
+  .error-title {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .section {
+    margin-bottom: 6px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   img {

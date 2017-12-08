@@ -1,28 +1,48 @@
 {
   "infoTexts": {
-    "category": "",
-    "name": "",
-    "openinghours": "",
-    "phonenumber": "",
-    "email": "",
-    "website": "",
-    "wheelchair": "",
-    "description": "",
-    "note": ""
+    "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
+    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
+    "name": "Write the name of your business in this field. e.g. Migros",
+    "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
+    "email": "Here comes the email address under which you, respectively your business, are reachable.",
+    "website": "In this field is the website of your business.",
+    "wheelchair": "Tick the box if your business is wheelchair accessible respectively how accessible it is.",
+    "description": "In this field you can include extra informations about your business. e.g. Our bakery is also a mail-administration center",
+    "note": "A note is used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement."
   },
   "landing": {
     "search": "Search...",
     "satelite": "Satelite",
-    "map": "Map"
+    "map": "Map",
+    "help": {
+      "title": "Help",
+      "section1": "Zoom in with a double click or the '+' in the top left corner or search your address using the search bar at the top.",
+      "section2": "With a left click on an existing business (blue circle) you can edit this business.",
+      "section3": "With a right click on any position on the map you can create a new Business."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "To make changes on the map you have to be logged in with an OpenStreetMap-Login.",
+      "section2": "But in this view you can already peer, how the website works."
+    }
   },
   "detail": {
     "title": "Create Business",
     "subtitle": "Extra informations",
-    "save": "Save",
-    "owncategory": "Own Category",
-    "choosecategory": "Choose Category",
-    "labels": {
+    "titles": {
       "category": "Category",
+      "address": "Address",
+      "details": "Details",
+      "extras": "Extra Informations"
+    },
+    "labels": {
+      "street": "Street",
+      "housenumber": "House number",
+      "place": "Place",
+      "postcode": "Postcode",
+      "city": "City",
+      "country": "Country",
       "name": "Name",
       "opening_hours": "Opening hours",
       "phone": "Phone number",
@@ -39,6 +59,12 @@
       "category": "Choose Category...",
       "owncategory": "Insert Category",
       "name": "Your name...",
+      "street": "Mainstreet",
+      "housenumber": "50",
+      "place": "Island",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Switzerland",
       "opening_hours": "Mo-Fr 08:00-17:00",
       "phone": "+41 11 111 11 11",
       "email": "example@example.com",
@@ -47,10 +73,73 @@
       "note": "Note"
     },
     "validate": {
-      "subtitle": "Fields with * are required",
       "required": "This field is required",
       "email": "E-Mail address is not valid",
-      "website": "Website is not valid"
+      "website": "Website is not valid",
+      "streetOrPlace": "The street or the place are required",
+      "notStreetAndPlace": "The street and the place can't both be filled",
+      "subtitle": "Fields with * are required (At Fields with (*) is just one at a time required)"
+    },
+    "buttons": {
+      "owncategory": "Own Category",
+      "choosecategory": "Choose Category",
+      "back": "Back",
+      "reset": "Reset",
+      "save": "Save"
+    }
+  },
+  "popups": {
+    "popuptitle": "New Business",
+    "feedback": "Report Map Error",
+    "edit": "Edit",
+    "create": "Create",
+    "buttontitle": "You have to be logged in for this function"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Are you sure?",
+      "section": "If you press Yes all your changes will be lost.",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Already existing business",
+        "section1": "At this position is already a business with exact same name and category",
+        "section2": "You have the possibility though to edit the already existing informations with a left click on the business."
+      },
+      "note": {
+        "title": "Already existing changes",
+        "section1": "For this business there already exists a change, which isn't processed yet.",
+        "section2": "You have the possibility though to leave a comment directly in OpenStreetMap:",
+        "comment": "Leave comment"
+      }
+    }
+  },
+  "success": {
+    "address": "Address",
+    "name": "Name",
+    "link": "Link to OpenStreetMap",
+    "node": {
+      "title": "New business created"
+    },
+    "note": {
+      "title": "Changes saved"
+    }
+  },
+  "error": {
+    "title": "Error",
+    "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",
+    "osm": {
+      "login": "User could not be logged in.",
+      "loadUser": "User could not be loaded.",
+      "postNode": "Business could not be uploaded.",
+      "postNote": "Changes could not be saved.",
+      "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later."
+    },
+    "overpass": {
+      "query": "Businesses could not be loaded.",
+      "surrounding": "There is a problem with uploading the data to OpenStreetMap. Check your internet connection or try it again later."
     }
   }
 }

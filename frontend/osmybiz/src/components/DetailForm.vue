@@ -164,6 +164,7 @@
         </div>
       </div>
     </div>
+
     <h5>{{t('detail').validate.subtitle}}</h5>
 
   </div>
