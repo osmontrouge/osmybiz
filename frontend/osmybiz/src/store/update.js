@@ -1,34 +1,104 @@
-import {latLng} from 'leaflet'
+import {addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe} from './../api/osmybizApi'
+import {getNode} from './../api/osmApi'
+import {getUpdate} from './../util/updateUtil'
+import * as _ from 'lodash'
 
 const state = {
-  updates: [
-    {
-      coords: latLng(46.96005, 8.01270),
-      kind: 'node',
-      oldVersion: 10,
-      newVersion: 11,
-      name: 'Test Poi',
-      date: new Date(2017, 10, 23)
-    },
-    {
-      coords: latLng(46.95453, 8.02168),
-      kind: 'note',
-      oldState: 'created',
-      newState: 'closed',
-      name: 'Test Notiz',
-      date: new Date(2017, 10, 21)
-    }
-  ]
+  updates: [],
+  nodes: [],
+  showUpdates: false
 }
 
-const actions = {}
-const mutations = {}
+const actions = {
+  loadUpdates ({commit}, user) {
+    addOrUpdateUser(user.id, user.name).then(() => {
+      fetchnodes(user.id).then(ns => {
+        commit('setNodes', [])
+
+        ns.filter(n => n.recieveUpdates).forEach(n => {
+          getNode(n.osmId).then(node => {
+            const update = getUpdate(n, node)
+            if (_.isObject(update)) {
+              commit('pushUpdate', update)
+            }
+
+            if (_.isObject(node)) {
+              const ownedNode = {
+                id: n.osmId,
+                lat: n.lat,
+                lng: n.lng,
+                tags: node.tags,
+                mine: true
+              }
+              commit('pushNode', ownedNode)
+            }
+          })
+        })
+      })
+    }, (err) => {
+      console.log(err)
+    })
+  },
+
+  confirmUpdate ({commit}, {user, update}) {
+    let promise
+    if (update.kind === 'update') {
+      promise = addOrUpdateNode(user.id, {
+        osmId: update.id,
+        version: update.newVersion,
+        lat: update.coords.lat,
+        lng: update.coords.lng,
+        recieveUpdates: true
+      })
+    } else {
+      promise = deleteNode(user.id, update.id)
+    }
+    promise.then(() => {
+      commit('removeUpdate', update)
+    })
+  },
+
+  ignoreFutureUpdates ({commit}, {update, user}) {
+    unsubscribe(user.id, update.id).then(() => {
+      commit('removeUpdate', update)
+    })
+  }
+}
+
+const mutations = {
+  setNodes (state, nodes) {
+    state.nodes = nodes
+  },
+  pushUpdate (state, update) {
+    state.updates.push(update)
+  },
+  removeUpdate (state, update) {
+    const i = _.findIndex(state.updates, u => u.id === update.id)
+
+    if (i >= 0) {
+      state.updates.splice(i, 1)
+    }
+  },
+  toggleUpdates (state) {
+    state.showUpdates = !state.showUpdates
+  },
+  pushNode (state, node) {
+    state.nodes.push(node)
+  }
+}
+
 const getters = {
   updates (state) {
     return state.updates
   },
-  hasUpdates (state) {
-    return state.updates.length > 0
+  showUpdates (state) {
+    return state.showUpdates
+  },
+  updateCount (state) {
+    return state.updates.length
+  },
+  ownedNodes (state) {
+    return state.nodes
   }
 }
 

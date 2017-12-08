@@ -2,10 +2,21 @@ const actionsInjector = require('inject-loader!../../../../../src/store/detail')
 
 const actions = actionsInjector({
   './../api/osmApi': {
-    post_Note () {
-      return new Promise(resolve => {
-        resolve({text: 'test Address: test\n Category: test\n Name: test\n Wheelchair: true'})
+    postNote () {
+      return Promise.resolve({text: 'test Address: test\n Category: test\n Name: test\n Wheelchair: true'})
+    },
+    getNode () {
+      return Promise.resolve({
+        lat: '1',
+        lon: '2',
+        version: '1',
+        id: '1'
       })
+    }
+  },
+  './../api/osmybizApi': {
+    addOrUpdateNode () {
+      return Promise.resolve()
     }
   }
 })
@@ -46,7 +57,7 @@ describe('detail store', () => {
   describe('actions', () => {
     it('should post note', done => {
       testAction(actions.default.actions.postNote,
-        null,
+        {user: {}, osmId: 0},
         {
           details: {
             category: {

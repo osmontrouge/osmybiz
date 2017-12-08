@@ -13,7 +13,7 @@ let state = 'dev'
 export const osmApiLevel = '/api/0.6/'
 export const osmUrl = state === 'dev'
   ? 'https://master.apis.dev.openstreetmap.org'
-  : 'https://http://api.openstreetmap.org'
+  : 'https://api.openstreetmap.org'
 
 // oauth dev
 // export const oauthSecret = 'tLZgaEwwAHn1eXoc79rsDLqdAwjHCi0Lh38T7ki7'
@@ -27,6 +27,9 @@ export const oauthKey = 'ZNNKpkLgobvrDT68TZzu5Dy94zvhn3TQ9qErsoLW'
 export const nominatimUrl = 'https://nominatim.openstreetmap.org/search'
 export const nominatimReverseUrl = 'https://nominatim.openstreetmap.org/reverse'
 
-// overpass Urls
+// overpass api url
 export const overpassUrl = 'https://overpass.osm.ch/api/interpreter'
 export const searchradius = 10.0
+
+// fake the osmybiz backend with localstorage
+export const fakeOsmybizApi = true

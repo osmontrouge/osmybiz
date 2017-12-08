@@ -1,4 +1,4 @@
-import osmApi from './../api/osmApi'
+import {getNotes} from './../api/osmApi'
 import {surroundingQueryNode} from '../api/overpassApi'
 import detail from '../store/detail'
 
@@ -20,7 +20,7 @@ const actions = {
   },
   checkDuplicateNote ({commit}, data) {
     return new Promise((resolve) => {
-      osmApi.get_Notes(data.lat, data.lng).then(ps => {
+      getNotes(data.lat, data.lng).then(ps => {
         let duplicate = false
         let noteLink = ''
         ps.forEach(function (note) {

@@ -49,31 +49,15 @@ const bizMarker = L.icon({
   iconSize: [32, 32]
 })
 
-/* const highlightedMarker = L.icon({
+const highlightedMarker = L.icon({
   iconUrl: require('../assets/highlighted-marker.png'),
   iconSize: [32, 32]
-}) */
+})
 
 function getBizCategory (b) {
   const key = getNodeCategoryKey(b)
   return getTagName(key)
 }
-
-// todo check if other data is needed in popup
-// function getOtherData (b) {
-//   const data = $('<div class="popup-data"></div>')
-//   for (const tag of Object.keys(b.tags)) {
-//     if (categoryTags.indexOf(tag) === -1 && tag !== 'name') {
-//       const tagName = getTagName(tag)
-//       console.log(tag, tagName)
-//       if (!_.isEmpty(tagName)) {
-//         const entry = $(`<div class="popup-entry">${tagName}: ${b.tags[tag]}</div>`)
-//         data.append(entry)
-//       }
-//     }
-//   }
-//   return data
-// }
 
 function getTitle (title) {
   return $(`<div class="popup-title">${title}</div>`)
@@ -154,8 +138,9 @@ export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
 
 export function createMarker (business, map, isloggedIn, callback, setIsNote) {
   const coords = L.latLng(business.lat, business.lng)
+  const icon = business.mine ? highlightedMarker : bizMarker
   const m = L.marker(coords, {
-    icon: bizMarker
+    icon: icon
   })
   m.on('click', () => {
     createExistingBusinessPopup(map, coords, business, isloggedIn, callback, setIsNote)

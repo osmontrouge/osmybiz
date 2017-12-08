@@ -15,6 +15,18 @@
     "search": "Suchen...",
     "satelite": "Satellit",
     "map": "Karte",
+    "update": {
+      "title": "Kartenänderungen",
+      "noChanges": "Keine Änderungen",
+      "changeText1": "Das Unternehmen",
+      "changeText2": "wurde bearbeitet.",
+      "deleteText1": "Das Unternemhen",
+      "deleteText2": "wurde gelöscht.",
+      "confirmHelp": "Als gelesen markieren",
+      "zoomHelp": "Auf der Karte anzeigen",
+      "changesetHelp": "Changeset anschauen",
+      "muteHelp": "Notifikationen abschalten"
+    },
     "help": {
       "title": "Hilfe",
       "section1": "Zommen Sie mit Doppelklick oder mit dem '+' oben links in die Karte hinein oder suchen Sie ihre Adresse mittels Suchfeld oben in der Mitte.",
