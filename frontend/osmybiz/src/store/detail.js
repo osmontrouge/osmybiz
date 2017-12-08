@@ -276,11 +276,12 @@ export function loadTags () {
   const tags = getLanguageTags()
   let options = []
   Object.keys(tags).forEach(function (key) {
-    var fields = []
+    let fields = []
     tags[key].fields.forEach(function (field) {
       if (field.options) {
+        let fieldOptions = []
         Object.keys(field.options).forEach(function (option) {
-          options.push({
+          fieldOptions.push({
             key: option,
             text: field.options[option]
           })
@@ -289,7 +290,7 @@ export function loadTags () {
           key: field.key,
           label: field.label,
           type: field.type,
-          options: options,
+          options: fieldOptions,
           value: ''
         })
       } else {
