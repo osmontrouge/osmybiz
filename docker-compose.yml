@@ -1,6 +1,7 @@
 version: '3.3'
 services:
-  api:
+  api: &api
+    image: geometalab/osmmybiz-backend
     build:
       context: backend/
       dockerfile: Dockerfile
@@ -8,6 +9,9 @@ services:
       - ./backend/api:/opt/backend
     links:
       - database:database
+  api-migrate:
+    <<: *api
+    command: ["python", "manage.py", "db", "upgrade"]
   database:
     image: postgres
     environment:
@@ -24,7 +28,14 @@ services:
       - ./frontend/osmybiz/index.html:/opt/frontend/index.html
       - ./frontend/osmybiz/package.json:/opt/frontend/package.json
       - ./frontend/osmybiz/package-lock.json:/opt/frontend/package-lock.json
+  frontend-build:
+    image: geometalab/osmmybiz-frontend
+    build:
+      context: frontend/
+      dockerfile: Dockerfile.nginx
+    command: []
   nginx:
+    image: geometalab/osmmybiz-nginx
     build:
       context: nginx/
       dockerfile: Dockerfile
