@@ -19,7 +19,7 @@ const auth = osmAuth({
   oauth_secret: oauthSecret,
   auto: false,
   url: osmUrl,
-  landing: '/',
+  landing: location.pathname,
   singlepage: true
 })
 

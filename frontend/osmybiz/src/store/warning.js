@@ -18,23 +18,25 @@ const actions = {
       })
     })
   },
-  checkDuplicateNote ({commit}) {
+  checkDuplicateNote ({commit}, data) {
     return new Promise((resolve) => {
-      osmApi.get_Notes(detail.state.lat, detail.state.lon).then(ps => {
+      osmApi.get_Notes(data.lat, data.lng).then(ps => {
         let duplicate = false
         let noteLink = ''
         ps.forEach(function (note) {
           if (note.properties.status === 'open') {
             let text = note.properties.comments[0].text
             let fields = text.split('\n')
+            let cat = fields[3].split(':')[1].substring(1)
             if (fields[0] === '#OSMyBiz ' &&
-              fields[3] === 'Category: ' + detail.state.details.category.text &&
-              fields[4] === 'Name: ' + detail.state.details.name) {
+              fields[3] === 'Category: ' + cat + ':' + data.tags[cat] &&
+              fields[4] === 'Name: ' + data.tags['name']) {
               duplicate = true
               noteLink = 'https://master.apis.dev.openstreetmap.org/note/' + note.properties.id + '/#map=19/' + note.geometry.coordinates[1] + '/' + note.geometry.coordinates[0] + '&layers=ND'
             }
           }
         })
+        console.log(duplicate)
         resolve(duplicate)
         commit('setNoteLink', noteLink)
         commit('setIsDuplicate', duplicate)

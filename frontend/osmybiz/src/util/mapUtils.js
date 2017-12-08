@@ -143,8 +143,8 @@ function createExistingBusinessPopup (map, coords, business, isloggedIn, clb, se
   })
 }
 
-export function createNewBusinessPopup (map, coords, isloggedIn, clbc) {
-  constructNewBusinessPopup(coords, isloggedIn, clbc).then(content => {
+export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
+  constructNewBusinessPopup(coords, isloggedIn, clb).then(content => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)

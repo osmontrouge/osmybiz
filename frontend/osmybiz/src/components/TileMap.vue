@@ -37,9 +37,7 @@
   function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote) {
     const ms = bs.map(b => {
       const m = createMarker(b, map, isloggedIn, (data) => {
-        // first time checkDuplicate always returns false
-        checkDuplicate()
-        checkDuplicate().then((res) => {
+        checkDuplicate(data).then((res) => {
           if (!res) {
             component.edit(data)
           }

@@ -9,7 +9,6 @@
       <div class="section">
         <a :href="node.link" target="_blank">Link zu OpenStreetMap</a>
       </div>
-
       <div class="section">
         Adresse:
         <span v-if="node.address.street">
@@ -38,10 +37,10 @@
         Name:
         {{node.details.name}}
       </div>
+    </div>
 
-      <div class="note-success" v-if="isNote">
-        <div class="success-title">Änderungen gespeichert</div>
-
+    <div class="note-success" v-if="isNote">
+      <div class="success-title">Änderungen gespeichert</div>
         <div class="section">
           <a :href="note.link" target="_blank">Link zu OpenStreetMap</a>
         </div>
@@ -51,7 +50,6 @@
         <div class="section">
           Name: {{note.text.name}}
         </div>
-      </div>
     </div>
   </div>
 
