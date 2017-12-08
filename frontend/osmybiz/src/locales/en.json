@@ -94,5 +94,52 @@
     "edit": "Edit",
     "create": "Create",
     "buttontitle": "You have to be logged in for this function"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Are you sure?",
+      "section": "If you press Yes all your changes will be lost.",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Already existing business",
+        "section1": "At this position is already a business with exact same name and category",
+        "section2": "You have the possibility though to edit the already existing informations with a left click on the business."
+      },
+      "note": {
+        "title": "Already existing changes",
+        "section1": "For this business there already exists a change, which isn't processed yet.",
+        "section2": "You have the possibility though to leave a comment directly in OpenStreetMap:",
+        "comment": "Leave comment"
+      }
+    }
+  },
+  "success": {
+    "address": "Address",
+    "name": "Name",
+    "link": "Link to OpenStreetMap",
+    "node": {
+      "title": "New business created"
+    },
+    "note": {
+      "title": "Changes saved"
+    }
+  },
+  "error": {
+    "title": "Error",
+    "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",
+    "osm": {
+      "login": "User could not be logged in.",
+      "loadUser": "User could not be loaded.",
+      "postNode": "Business could not be uploaded.",
+      "postNote": "Changes could not be saved.",
+      "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later."
+    },
+    "overpass": {
+      "query": "Businesses could not be loaded.",
+      "surrounding": "There is a problem with uploading the data to OpenStreetMap. Check your internet connection or try it again later."
+    }
   }
 }

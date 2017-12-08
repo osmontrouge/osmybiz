@@ -123,7 +123,7 @@
       "title": "Neues Unternehmen erstellt"
     },
     "note": {
-      "title": "Neues Unternehmen erstellt"
+      "title": "Änderungen gespeichert"
     }
   },
   "error": {
@@ -134,11 +134,11 @@
       "loadUser": "Benutzer konnte nicht geladen werden.",
       "postNode": "Unternehmen konnte nicht hochgeladen werden.",
       "postNote": "Änderungen konnten nicht gespeichert werden",
-      "load": "Es besteht ein Problem mit dem Laden der Daten von OSM. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
+      "load": "Es besteht ein Problem mit dem Laden der Daten von OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
     },
     "overpass": {
       "query": "Unternehmen konnten nicht geladen werden.",
-      "surrounding": "Es besteht ein Problem mit dem Hochladen der Daten nach OSM. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
+      "surrounding": "Es besteht ein Problem mit dem Hochladen der Daten nach OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
     }
   }
 }
