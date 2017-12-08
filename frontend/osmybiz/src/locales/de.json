@@ -93,5 +93,52 @@
     "edit": "Bearbeiten",
     "create": "Erstellen",
     "buttontitle": "Für diese Funktion muss man eingeloggt sein"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Sind sie sicher?",
+      "section": "Wenn Sie Ja drücken, gehen alle Ihre Änderungen verloren.",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Bereits bestehendes Unternehmen",
+        "section1": "An dieser Stelle besteht bereits ein Unternehmen mit demselben Namen und Kategorie.",
+        "section2": "Sie haben jedoch die Möglichkeit mit einem Linksklick auf das Unternehmen, die bereits vorhandenen Informationen anzupassen."
+      },
+      "note": {
+        "title": "Bereits bestehende Änderung",
+        "section1": "Für dieses Unternehmen wurden bereits Änderungen vorgenommen, die noch nicht abgearbeitet wurden.",
+        "section2": "Sie haben jedoch die Möglichkeit über OpenStreetMap einen Kommentar dazu zu hinterlassen:",
+        "comment": "Kommentar hinterlassen"
+      }
+    }
+  },
+  "success": {
+    "address": "Adresse",
+    "name": "Name",
+    "link": "Link zu OpenStreetMap",
+    "node": {
+      "title": "Neues Unternehmen erstellt"
+    },
+    "note": {
+      "title": "Neues Unternehmen erstellt"
+    }
+  },
+  "error": {
+    "title": "Fehler",
+    "nominatim": "Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.",
+    "osm": {
+      "login": "Benutzer konnte nicht eingeloggt werden.",
+      "loadUser": "Benutzer konnte nicht geladen werden.",
+      "postNode": "Unternehmen konnte nicht hochgeladen werden.",
+      "postNote": "Änderungen konnten nicht gespeichert werden",
+      "load": "Es besteht ein Problem mit dem Laden der Daten von OSM. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
+    },
+    "overpass": {
+      "query": "Unternehmen konnten nicht geladen werden.",
+      "surrounding": "Es besteht ein Problem mit dem Hochladen der Daten nach OSM. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
+    }
   }
 }

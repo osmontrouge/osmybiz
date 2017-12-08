@@ -4,6 +4,7 @@ import * as $ from 'jquery'
 import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
 import {setError} from '../store/error'
+import {get} from '../util/translate'
 
 const createNotePath = osmApiLevel + 'notes.json'
 const createChangesetPath = osmApiLevel + 'changeset/create'
@@ -52,7 +53,7 @@ function parseUser (userXml) {
 
 export function login () {
   auth.authenticate(function () {
-    setError('Benutzer konnte nicht eingeloggt werden.')
+    setError(get().locale.error.osm.login)
   })
 }
 
@@ -79,7 +80,7 @@ export function loadUser () {
     } else {
       auth.xhr({method: 'GET', path: userPath}, (err, response) => {
         if (err) {
-          setError('Benutzer konnte nicht geladen werden.')
+          setError(get().locale.error.osm.loadUser)
           console.log(err)
           resolve(null)
         }
@@ -113,7 +114,7 @@ export default {
           }
         }, (err, response) => {
         if (err) {
-          setError('Unternehmen konnte nicht hochgeladen werden.')
+          setError(get().locale.error.osm.postNode)
           console.log(err)
         }
         changesetID = response
@@ -131,7 +132,7 @@ export default {
           content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
         }, (err, response) => {
         if (err) {
-          setError('Änderungen konnten nicht gespeichert werden')
+          setError(get().locale.error.osm.postNote)
           console.log(err)
           resolve(null)
         }
@@ -159,6 +160,7 @@ export default {
           path: createNotePath + '?bbox=' + left + ',' + bottom + ',' + right + ',' + top
         }, (err, response) => {
         if (err) {
+          setError(get().locale.error.osm.load)
           console.log(err)
           resolve(null)
         }
@@ -185,6 +187,7 @@ function uploadChangeset (node) {
         }
       }, (err, response) => {
       if (err) {
+        setError(get().locale.error.osm.load)
         console.log(err)
         resolve(null)
       }
@@ -278,6 +281,7 @@ function closeChangeset () {
       path: closeChangesetPath + changesetID + '/close'
     }, (err) => {
     if (err) {
+      setError(get().locale.error.osm.load)
       console.log(err)
     }
   })
@@ -291,6 +295,7 @@ function getNode (nodeId) {
         path: getNodePath + nodeId
       }, (err, response) => {
       if (err) {
+        setError(get().locale.error.osm.load)
         console.log(err)
         resolve(err)
       }

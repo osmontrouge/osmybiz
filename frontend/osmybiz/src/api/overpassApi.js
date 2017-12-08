@@ -2,6 +2,7 @@ import axios from 'axios'
 import {overpassUrl, searchradius} from '../config/config'
 import tags from '../assets/tags_de'
 import {setError} from '../store/error'
+import {get} from '../util/translate'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 
@@ -52,7 +53,7 @@ export function queryBox (bbox) {
   return axios.post(overpassUrl, buildQuery(bbox)).then(res => {
     return parseData(res.data).filter(filterTags)
   }, (err) => {
-    setError('Unternehmen konnten nicht geladen werden.')
+    setError(get().locale.error.overpass.query)
     console.log(err)
     return []
   })
@@ -62,6 +63,7 @@ export function surroundingQueryNode (details, lat, lon) {
   return axios.post(overpassUrl, buildSurroundingQuery(details, lat, lon)).then(res => {
     return res.data.elements.length > 0
   }, (err) => {
+    setError(get().locale.error.overpass.surrounding)
     console.log(err)
     return false
   })
