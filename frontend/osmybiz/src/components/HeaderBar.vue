@@ -36,6 +36,7 @@
   import {loadTags} from '../store/detail'
   import Icon from 'vue-awesome/components/Icon.vue'
   import {osmUrl} from './../config/config'
+  import {getInfoTexts} from '../util/translate'
 
   const messageUrl = osmUrl + '/user/'
 
@@ -68,7 +69,9 @@
         'logout',
         'setLanguage',
         'setTags',
-        'toggleUpdates'
+        'toggleUpdates',
+        'setInfoMap'
+
       ]),
       login () {
         this.authenticate()
@@ -86,6 +89,7 @@
         this.$translate.setLang(e.target.value)
         this.setLanguage(e.target.value)
         this.setTags(e.target.value)
+        this.setInfoMap(getInfoTexts())
         loadTags()
       }
     },

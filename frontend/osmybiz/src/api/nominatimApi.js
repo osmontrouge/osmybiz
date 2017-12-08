@@ -3,6 +3,7 @@ import {latLng} from 'leaflet'
 import * as _ from 'lodash'
 import {nominatimReverseUrl, nominatimUrl} from '../config/config'
 import {setError} from '../store/error'
+import {get} from '../util/translate'
 
 const queryMax = 10
 
@@ -34,7 +35,7 @@ function mapResults (results) {
 
 function buildRequest (query, count) {
   count = count > queryMax ? queryMax : count
-  return `${nominatimUrl}?format=json&q=${query}&limit=${count}&addressdetails=1`
+  return `${nominatimUrl}?format=json&q=${query}&limit=${count}&addressdetails=1&accept-language=${get().lang}`
 }
 
 export function query (queryString) {
@@ -43,7 +44,7 @@ export function query (queryString) {
       return mapResults(response.data)
     })
     .catch(e => {
-      setError('Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.')
+      setError(get().locale.error.nominatim)
       console.log(e)
     })
 }
@@ -76,7 +77,7 @@ export function reverseQuery (lat, lon) {
       return parseAddress(response.data.address)
     })
     .catch(e => {
-      setError('Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.')
+      setError(get().locale.error.nominatim)
       console.log(e)
     })
 }

@@ -5,6 +5,7 @@ import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
 import {setError} from '../store/error'
 import axios from 'axios'
+import {get} from '../util/translate'
 
 const createNotePath = osmApiLevel + 'notes.json'
 const createChangesetPath = osmApiLevel + 'changeset/create'
@@ -20,7 +21,7 @@ const auth = osmAuth({
   oauth_secret: oauthSecret,
   auto: false,
   url: osmUrl,
-  landing: '/',
+  landing: location.pathname,
   singlepage: true
 })
 
@@ -53,7 +54,7 @@ function parseUser (userXml) {
 
 export function login () {
   auth.authenticate(function () {
-    setError('Benutzer konnte nicht eingeloggt werden.')
+    setError(get().locale.error.osm.login)
   })
 }
 
@@ -80,7 +81,7 @@ export function loadUser () {
     } else {
       auth.xhr({method: 'GET', path: userPath}, (err, response) => {
         if (err) {
-          setError('Benutzer konnte nicht geladen werden.')
+          setError(get().locale.error.osm.loadUser)
           console.log(err)
           resolve(null)
         }
@@ -109,10 +110,9 @@ export function postNode (node) {
           header: {
             'Content-Type': 'text/xml'
           }
-        }
-      }, (err, response) => {
+        }}, (err, response) => {
       if (err) {
-        setError('Unternehmen konnte nicht hochgeladen werden.')
+        setError(get().locale.error.osm.postNode)
         console.log(err)
       }
       changesetID = response
@@ -182,6 +182,7 @@ function uploadChangeset (node) {
         }
       }, (err, response) => {
       if (err) {
+        setError(get().locale.error.osm.load)
         console.log(err)
         resolve(null)
       }
@@ -275,6 +276,7 @@ function closeChangeset () {
       path: closeChangesetPath + changesetID + '/close'
     }, (err) => {
     if (err) {
+      setError(get().locale.error.osm.load)
       console.log(err)
     }
   })
@@ -308,6 +310,7 @@ export function getNode (nodeId) {
             resolve(null)
           })
         } else {
+          setError(get().locale.error.osm.load)
           console.log(err)
           reject(err)
         }

@@ -1,13 +1,14 @@
 {
   "infoTexts": {
-    "category": "Wählen sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. \n \n Durchsuchen sie die Daten nach einem passenden Unternehmen und sollten sie nicht fündig werden, wählen sie \"Eigene Kategorie wählen\" und geben sie eine eigene Kategorie ein.",
-    "name": "Schreiben sie den Namen ihres Unternehmens in dieses Feld. \n \n z.B. Migros",
-    "openinghours": "In dieses Feld kommen die Öffnungszeiten ihres Unternehmens. \n \n z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
-    "phonenumber": "Hier kommt die Telefonnummer unter der man sie bzw. ihr Unternehmen erreichen kann.",
-    "email": "Hier kommt die E-Mailadresse unter der man sie bzw. ihr Unternehmen erreichen kann.",
-    "website": "In dieses Feld kommt die Webseite von ihrem Unternehmen.",
-    "wheelchair": "Hier ein Häkchen setzen, wenn ihr Unternehmen rollstuhlgängig ist.",
-    "description": "In diesem Feld können sie zusätzliche Informationen über ihr Unternehmen erfassen. \n \n z.B. Unsere Bäckerei ist auch eine Poststelle.",
+    "category": "Wählen Sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. Durchsuchen Sie die Daten nach einer passenden Kategorie und sollten Sie nicht fündig werden, drücken Sie \"Eigene Kategorie\" und geben eine eigene Kategorie ein.",
+    "address": "Die Adresse wird automatisch von dem Punkt geladen, den Sie ausgewählt haben. Nehmen Sie allfällige Änderungen vor. Das Feld \"Platz\" darf nur dann ausgefüllt werden, wenn für das Unternehmen sonst keine Adresse existiert.",
+    "name": "Schreiben Sie den Namen Ihres Unternehmens in dieses Feld. z.B. Migros",
+    "opening_hours": "In dieses Feld kommen die Öffnungszeiten Ihres Unternehmens. z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Hier kommt die Telefonnummer unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
+    "email": "Hier kommt die E-Mailadresse unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
+    "website": "In dieses Feld kommt die Webseite von Ihrem Unternehmen.",
+    "wheelchair": "Hier ein Häkchen setzen, wenn Ihr Unternehmen rollstuhlgängig ist bzw. wie rollstuhlgängig es ist.",
+    "description": "In diesem Feld können Sie zusätzliche Informationen über Ihr Unternehmen erfassen. z.B. Unsere Bäckerei ist auch eine Poststelle.",
     "note": "Eine Notiz dient dazu, Informationen zum Element festzuhalten, die nicht offensichlich sind, die die Intention des Autors genauer beschreiben, oder die Hinweise zur weiteren Bearbeitung geben."
   },
   "landing": {
@@ -25,16 +26,34 @@
       "zoomHelp": "Auf der Karte anzeigen",
       "changesetHelp": "Changeset anschauen",
       "muteHelp": "Notifikationen abschalten"
+    },
+    "help": {
+      "title": "Hilfe",
+      "section1": "Zommen Sie mit Doppelklick oder mit dem '+' oben links in die Karte hinein oder suchen Sie ihre Adresse mittels Suchfeld oben in der Mitte.",
+      "section2": "Mit einem Linksklick auf ein bestehendes Unternehmen (blauer Kreis) können Sie dieses bearbeiten.",
+      "section3": "Mit einem Rechtsklick auf eine beliebige Position in der Karte können Sie ein neues Unternehmen erfassen."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "Um Änderungen in der Karte vorzunehmen müssen Sie sich mit einem OpenStreetMap-Login anmelden.",
+      "section2": "In dieser Ansicht können Sie aber bereits schauen, wie das ganze in Etwa funktioniert."
     }
   },
   "detail": {
     "title": "Unternehmen erfassen",
-    "subtitle": "Zusatzinformationen",
-    "save": "Speichern",
-    "owncategory": "Eigene Kategorie",
-    "choosecategory": "Kategorie wählen",
-    "labels": {
+    "titles": {
       "category": "Kategorie",
+      "address": "Adresse",
+      "details": "Details",
+      "extras": "Zusatzinformationen"
+    },
+    "labels": {
+      "street": "Strasse",
+      "housenumber": "Hausnummber",
+      "place": "Platz",
+      "postcode": "Postleitzahl",
+      "city": "Ort",
+      "country": "Land",
       "name": "Name",
       "opening_hours": "Öffnungszeiten",
       "phone": "Telefonnummer",
@@ -50,6 +69,12 @@
     "placeholders": {
       "category": "Kategorie wählen...",
       "owncategory": "Kategorie eingeben...",
+      "street": "Dorfstrasse",
+      "housenumber": "50",
+      "place": "Insel",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Schweiz",
       "name": "Ihr Name...",
       "opening_hours": "Mo-Fr 08:00-17:00",
       "phone": "+41 11 111 11 11",
@@ -59,10 +84,73 @@
       "note": "Notiz"
     },
     "validate": {
-      "subtitle": "Felder mit * sind Pflichtfelder (Bei Feldern mit (*) ist jeweils eines davon ein Pflichfeld)",
       "required": "Dies ist ein Pflichfeld",
       "email": "E-Mailadresse ist nicht valid",
-      "website": "Webseite ist nicht valid"
+      "website": "Webseite ist nicht valid",
+      "streetOrPlace": "Die Strasse oder der Platz ist obligatorisch.",
+      "notStreetAndPlace": "Die Strasse und der Platz dürfen nicht beide ausgefüllt sein.",
+      "subtitle": "Felder mit * sind Pflichtfelder (Bei Feldern mit (*) ist jeweils nur eines davon ein Pflichfeld)"
+    },
+    "buttons": {
+      "owncategory": "Eigene Kategorie",
+      "choosecategory": "Kategorie wählen",
+      "back": "Zurück",
+      "reset": "Zurücksetzen",
+      "save": "Speichern"
+    }
+  },
+  "popups": {
+    "popuptitle": "Neues Unternehmen",
+    "feedback": "Kartenfehler melden",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "buttontitle": "Für diese Funktion muss man eingeloggt sein"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Sind sie sicher?",
+      "section": "Wenn Sie Ja drücken, gehen alle Ihre Änderungen verloren.",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Bereits bestehendes Unternehmen",
+        "section1": "An dieser Stelle besteht bereits ein Unternehmen mit demselben Namen und Kategorie.",
+        "section2": "Sie haben jedoch die Möglichkeit mit einem Linksklick auf das Unternehmen, die bereits vorhandenen Informationen anzupassen."
+      },
+      "note": {
+        "title": "Bereits bestehende Änderung",
+        "section1": "Für dieses Unternehmen wurden bereits Änderungen vorgenommen, die noch nicht abgearbeitet wurden.",
+        "section2": "Sie haben jedoch die Möglichkeit über OpenStreetMap einen Kommentar dazu zu hinterlassen:",
+        "comment": "Kommentar hinterlassen"
+      }
+    }
+  },
+  "success": {
+    "address": "Adresse",
+    "name": "Name",
+    "link": "Link zu OpenStreetMap",
+    "node": {
+      "title": "Neues Unternehmen erstellt"
+    },
+    "note": {
+      "title": "Änderungen gespeichert"
+    }
+  },
+  "error": {
+    "title": "Fehler",
+    "nominatim": "Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.",
+    "osm": {
+      "login": "Benutzer konnte nicht eingeloggt werden.",
+      "loadUser": "Benutzer konnte nicht geladen werden.",
+      "postNode": "Unternehmen konnte nicht hochgeladen werden.",
+      "postNote": "Änderungen konnten nicht gespeichert werden",
+      "load": "Es besteht ein Problem mit dem Laden der Daten von OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
+    },
+    "overpass": {
+      "query": "Unternehmen konnten nicht geladen werden.",
+      "surrounding": "Es besteht ein Problem mit dem Hochladen der Daten nach OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
     }
   }
 }

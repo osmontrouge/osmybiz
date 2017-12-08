@@ -2,14 +2,14 @@
   <div>
     <div class="login-text" v-if="showLoginHelp && !isLoggedIn">
       <div class="help-header">
-        <div class="help-title">Information</div>
+        <div class="help-title">{{t('landing').loginhelp.title}}</div>
         <icon name="arrow-up"></icon>
       </div>
       <div class="section">
-        Um Änderungen in der Karte vorzunehmen müssen Sie sich mit einem OpenStreetMap-Login anmelden.
+        {{t('landing').loginhelp.section1}}
       </div>
       <div class="section">
-        In dieser Ansicht können Sie aber bereits schauen, wie das ganze in Etwa funktioniert.
+        {{t('landing').loginhelp.section2}}
       </div>
       <button class="ok-btn" @click="confirm()">Ok</button>
     </div>
