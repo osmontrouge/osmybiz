@@ -130,7 +130,7 @@ export function postNote (note) {
         content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
       }, (err, response) => {
       if (err) {
-        setError('Änderungen konnten nicht gespeichert werden')
+        setError(get().locale.error.osm.postNote)
         console.log(err)
         resolve(null)
       }
@@ -158,6 +158,7 @@ export function getNotes (lat, lng) {
         path: createNotePath + '?bbox=' + left + ',' + bottom + ',' + right + ',' + top
       }, (err, response) => {
       if (err) {
+        setError(get().error.osm.load)
         console.log(err)
         resolve(null)
       }
