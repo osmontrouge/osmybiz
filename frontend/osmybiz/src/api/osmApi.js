@@ -194,7 +194,6 @@ function uploadChangeset (node) {
 }
 
 function constructUpload (node) {
-  const category = node.details.category.value.split('/')
   let xml = '' +
     '<osmChange version="0.6" generator="OSMyBiz">' +
     '<create>' +
@@ -202,8 +201,12 @@ function constructUpload (node) {
     ' lat="' + node.lat + '"' +
     ' lon="' + node.lon + '"' +
     ' changeset="' + changesetID + '">' +
-    '<tag k="' + category[0] + '" v="' + category[1] + '"/>' +
     '<tag k="name" v="' + node.details.name + '"/>'
+
+  if (node.details.category.value !== 0) {
+    const category = node.details.category.value.split('/')
+    xml += '<tag k="' + category[0] + '" v="' + category[1] + '"/>'
+  }
 
   xml += createAddressTags(node)
 
@@ -261,11 +264,13 @@ function createDetailTags (node) {
     text += '<tag k="note" v="' + node.details.note + '"/>'
   }
 
-  node.details.category.fields.forEach(function (field) {
-    if (field.value.length !== 0) {
-      text += '<tag k="' + field.key + '" v="' + field.value + '"/>'
-    }
-  })
+  if (node.details.category.fields) {
+    node.details.category.fields.forEach(function (field) {
+      if (field.value.length !== 0) {
+        text += '<tag k="' + field.key + '" v="' + field.value + '"/>'
+      }
+    })
+  }
 
   return text
 }
