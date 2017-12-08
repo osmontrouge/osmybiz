@@ -49,18 +49,21 @@
       submit () {
         let promise
         if (this.isNote) {
-          promise = this.postNote({user: this.user, osmId: this.osmId})
+          promise = this.postNote({user: this.user, osmId: this.osmId}).then(() => true)
         } else {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
-              return this.postNode(this.user)
+              return this.postNode(this.user).then(() => true)
             }
+            return false
           })
         }
-        promise.then(() => {
-          this.loadUpdates(this.user)
-          this.$router.push({name: routes.Landing})
-          clearDetails()
+        promise.then((success) => {
+          if (success) {
+            this.loadUpdates(this.user)
+            this.$router.push({name: routes.Landing})
+            clearDetails()
+          }
         })
       },
       isRequiredFields () {

@@ -1,11 +1,14 @@
 <template>
 
-  <div class="duplicate-wrapper" v-if="isDuplicate">
+  <div class="duplicate-dialog" v-if="isDuplicate">
     <div class="close-button" @click="toggle">
       <icon name="window-close"></icon>
     </div>
+
     <div class="node-warning" v-if="!isNote">
-      <div class="warning-title">{{t('warning').duplicate.node.title}}</div>
+      <div class="dialog-title">
+        {{t('warning').duplicate.node.title}}
+      </div>
       <div class="section">
         {{t('warning').duplicate.node.section1}}
       </div>
@@ -15,7 +18,9 @@
     </div>
 
     <div class="note-warning" v-if="isNote">
-      <div class="warning-title">{{t('warning').duplicate.note.title}}</div>
+      <div class="dialog-title">
+        {{t('warning').duplicate.note.title}}
+      </div>
       <div class="section">
         {{t('warning').duplicate.note.section1}}
       </div>
@@ -57,7 +62,7 @@
 </script>
 
 <style scoped>
-  .duplicate-wrapper {
+  .duplicate-dialog {
     position: fixed;
     z-index: 100;
     width: 500px;
@@ -76,7 +81,7 @@
     text-align: left;
   }
 
-  .warning-title {
+  .dialog-title {
     font-weight: bold;
     text-align: left;
     margin-bottom: 5px;

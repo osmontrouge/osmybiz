@@ -9,7 +9,7 @@ export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure']
 const tagRegex = categoryTags.join('|')
 
 const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`
-const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"={{name}}];out;`
+const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"="{{name}}"];out;`
 
 function buildQuery (bbox) {
   return query.replace('{{bbox}}', `${bbox.south}, ${bbox.west}, ${bbox.north}, ${bbox.east}`)
