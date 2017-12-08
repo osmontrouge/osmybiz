@@ -1,6 +1,7 @@
-import osmApi from './../api/osmApi'
-import {reverseQuery} from '../api/nominatimApi'
+import {postNode, postNote, getNode} from './../api/osmApi'
+import {reverseQuery} from './../api/nominatimApi'
 import {getLanguageTags} from './locale'
+import {addOrUpdateNode} from './../api/osmybizApi'
 
 let initalOptions = []
 loadTags()
@@ -8,6 +9,7 @@ loadTags()
 const state = {
   // detailPage
   displaySuccess: false,
+  osmId: null,
 
   // DetailForm
   tags: initalOptions,
@@ -43,24 +45,45 @@ const state = {
 }
 
 const actions = {
-  postNode ({commit}) {
-    let node = {
+  postNode ({commit}, user) {
+    const node = {
       lat: state.lat,
       lon: state.lon,
       details: state.details,
       address: state.address
     }
-    osmApi.post_Node(node).then(ps => {
+    return postNode(node).then(ps => {
       state.displaySuccess = true
       commit('setNode', ps)
+
+      return addOrUpdateNode(user.id, {
+        lat: parseFloat(ps.lat),
+        lng: parseFloat(ps.lon),
+        version: parseInt(ps.version),
+        osmId: parseInt(ps.id),
+        recieveUpdates: true,
+        name: ps.details.name
+      })
     })
   },
-  postNote ({commit}) {
-    let note = constructNote()
-    osmApi.post_Note(note).then(ps => {
+  postNote ({commit}, {user, osmId}) {
+    const note = constructNote()
+    const name = state.details.name
+    return postNote(note).then(ps => {
       state.displaySuccess = true
       let displayNote = constructDisplayNote(ps)
       commit('setNote', displayNote)
+
+      return getNode(osmId).then(node => {
+        return addOrUpdateNode(user.id, {
+          lat: parseFloat(node.lat),
+          lng: parseFloat(node.lon),
+          version: parseInt(node.version),
+          osmId: parseInt(node.id),
+          recieveUpdates: true,
+          name: name
+        })
+      })
     })
   },
   getAddress ({commit}) {
@@ -108,6 +131,10 @@ const mutations = {
   },
   setDetails (state, details) {
     state.details = details
+  },
+  setOsmId (state, id) {
+    state.osmId = id
+    console.log(state)
   }
 }
 
@@ -153,6 +180,12 @@ const getters = {
   },
   infoMap (state) {
     return state.infoMap
+  },
+  isLoading (state) {
+    return state.isLoading
+  },
+  osmId (state) {
+    return state.osmId
   }
 }
 
@@ -188,7 +221,8 @@ function constructNote () {
     text += 'Address: ' + address + '\n'
   }
   if (state.details.category.text.length !== 0) {
-    text += 'Category: ' + state.details.category.text + '\n'
+    let category = state.details.category.value.split('/')
+    text += 'Category: ' + category[0] + ':' + category[1] + '\n'
   }
   if (state.details.name.length !== 0) {
     text += 'Name: ' + state.details.name + '\n'

@@ -44,7 +44,7 @@ export function query (queryString) {
       return mapResults(response.data)
     })
     .catch(e => {
-      setError('Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.')
+      setError(get().locale.error.nominatim)
       console.log(e)
     })
 }
@@ -77,7 +77,7 @@ export function reverseQuery (lat, lon) {
       return parseAddress(response.data.address)
     })
     .catch(e => {
-      setError('Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.')
+      setError(get().locale.error.nominatim)
       console.log(e)
     })
 }

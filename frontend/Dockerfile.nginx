@@ -1,0 +1,20 @@
+FROM node:8 as dist
+
+ENV HOME /opt/frontend
+
+WORKDIR ${HOME}
+COPY ./osmybiz/package.json ${HOME}/package.json
+COPY ./osmybiz/package-lock.json ${HOME}/package-lock.json
+RUN npm install
+
+COPY ./osmybiz ${HOME}
+
+RUN npm run build -p
+
+FROM nginx:alpine
+
+MAINTAINER Nicola Jordan
+
+COPY --from=dist /opt/frontend/dist /var/www
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf

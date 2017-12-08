@@ -5,13 +5,12 @@
       <icon name="window-close"></icon>
     </div>
     <div class="node-success" v-if="!isNote">
-      <div class="success-title">Neues Unternehmen erstellt</div>
+      <div class="success-title">{{t('success').node.title}}</div>
       <div class="section">
-        <a :href="node.link" target="_blank">Link zu OpenStreetMap</a>
+        <a :href="node.link" target="_blank">{{t('success').link}}</a>
       </div>
-
       <div class="section">
-        Adresse:
+        {{t('success').address}}
         <span v-if="node.address.street">
               {{node.address.street}}
               <span v-if="!node.address.housenumber">
@@ -35,23 +34,24 @@
             </span>
       </div>
       <div class="section">
-        Name:
+        {{t('success').name}}
         {{node.details.name}}
       </div>
+    </div>
 
-      <div class="note-success" v-if="isNote">
-        <div class="success-title">Änderungen gespeichert</div>
-
+    <div class="note-success" v-if="isNote">
+      <div class="success-title">{{t('success').note.title}}</div>
         <div class="section">
-          <a :href="note.link" target="_blank">Link zu OpenStreetMap</a>
+          <a :href="note.link" target="_blank">{{t('success').link}}</a>
         </div>
         <div class="section">
-          Adresse: {{note.text.address}}
+          {{t('success').address}}
+          {{note.text.address}}
         </div>
         <div class="section">
-          Name: {{note.text.name}}
+          {{t('success').name}}
+          {{note.text.name}}
         </div>
-      </div>
     </div>
   </div>
 

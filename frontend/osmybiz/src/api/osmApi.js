@@ -4,6 +4,8 @@ import * as $ from 'jquery'
 import * as _ from 'lodash'
 import xml2json from 'jquery-xml2json'
 import {setError} from '../store/error'
+import axios from 'axios'
+import {get} from '../util/translate'
 
 const createNotePath = osmApiLevel + 'notes.json'
 const createChangesetPath = osmApiLevel + 'changeset/create'
@@ -19,7 +21,7 @@ const auth = osmAuth({
   oauth_secret: oauthSecret,
   auto: false,
   url: osmUrl,
-  landing: '/',
+  landing: location.pathname,
   singlepage: true
 })
 
@@ -52,7 +54,7 @@ function parseUser (userXml) {
 
 export function login () {
   auth.authenticate(function () {
-    setError('Benutzer konnte nicht eingeloggt werden.')
+    setError(get().locale.error.osm.login)
   })
 }
 
@@ -79,7 +81,7 @@ export function loadUser () {
     } else {
       auth.xhr({method: 'GET', path: userPath}, (err, response) => {
         if (err) {
-          setError('Benutzer konnte nicht geladen werden.')
+          setError(get().locale.error.osm.loadUser)
           console.log(err)
           resolve(null)
         }
@@ -89,10 +91,8 @@ export function loadUser () {
   })
 }
 
-export default {
-
-  post_Node: (node) => {
-    let create =
+export function postNode (node) {
+  let create =
       '<osm>' +
         '<changeset>' +
           '<tag k="comment" v="#OsMyBiz"/>' +
@@ -100,74 +100,72 @@ export default {
           '<tag k="changesets_count" v="1"/>' +
         '</changeset>' +
       '</osm>'
-    return new Promise((resolve) => {
-      auth.xhr(
-        {
-          method: 'PUT',
-          path: createChangesetPath,
-          content: create,
-          options: {
-            header: {
-              'Content-Type': 'text/xml'
-            }
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'PUT',
+        path: createChangesetPath,
+        content: create,
+        options: {
+          header: {
+            'Content-Type': 'text/xml'
           }
-        }, (err, response) => {
-        if (err) {
-          setError('Unternehmen konnte nicht hochgeladen werden.')
-          console.log(err)
-        }
-        changesetID = response
-        resolve(uploadChangeset(node))
+        }}, (err, response) => {
+      if (err) {
+        setError(get().locale.error.osm.postNode)
+        console.log(err)
+      }
+      changesetID = response
+      resolve(uploadChangeset(node))
+    })
+  })
+}
+
+export function postNote (note) {
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'POST',
+        path: createNotePath,
+        content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
+      }, (err, response) => {
+      if (err) {
+        setError(get().locale.error.osm.postNote)
+        console.log(err)
+        resolve(null)
+      }
+      const data = JSON.parse(response)
+      resolve({
+        html: data.properties.comments[0].html,
+        text: data.properties.comments[0].text,
+        id: data.properties.id,
+        link: osmUrl + '/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
+        status: data.properties.status
       })
     })
-  },
+  })
+}
 
-  post_Note: (note) => {
-    return new Promise((resolve) => {
-      auth.xhr(
-        {
-          method: 'POST',
-          path: createNotePath,
-          content: 'lat=' + note.lat + '&lon=' + note.lon + '&text=' + note.text
-        }, (err, response) => {
-        if (err) {
-          setError('Änderungen konnten nicht gespeichert werden')
-          console.log(err)
-          resolve(null)
-        }
-        const data = JSON.parse(response)
-        resolve({
-          html: data.properties.comments[0].html,
-          text: data.properties.comments[0].text,
-          id: data.properties.id,
-          link: 'https://master.apis.dev.openstreetmap.org/note/' + data.properties.id + '/#map=19/' + data.geometry.coordinates[1] + '/' + data.geometry.coordinates[0] + '&layers=ND',
-          status: data.properties.status
-        })
-      })
+export function getNotes (lat, lng) {
+  let left = lng - 0.00005
+  let bottom = lat - 0.00005
+  let right = lng + 0.00005
+  let top = lat + 0.00005
+  return new Promise((resolve) => {
+    auth.xhr(
+      {
+        method: 'GET',
+        path: createNotePath + '?bbox=' + left + ',' + bottom + ',' + right + ',' + top
+      }, (err, response) => {
+      if (err) {
+        setError(get().error.osm.load)
+        console.log(err)
+        resolve(null)
+      }
+      const data = JSON.parse(response)
+      resolve(data.features)
     })
-  },
-
-  get_Notes: (lat, lng) => {
-    let left = lng - 0.00005
-    let bottom = lat - 0.00005
-    let right = lng + 0.00005
-    let top = lat + 0.00005
-    return new Promise((resolve) => {
-      auth.xhr(
-        {
-          method: 'GET',
-          path: createNotePath + '?bbox=' + left + ',' + bottom + ',' + right + ',' + top
-        }, (err, response) => {
-        if (err) {
-          console.log(err)
-          resolve(null)
-        }
-        const data = JSON.parse(response)
-        resolve(data.features)
-      })
-    })
-  }
-
+  })
 }
 
 function uploadChangeset (node) {
@@ -185,6 +183,7 @@ function uploadChangeset (node) {
         }
       }, (err, response) => {
       if (err) {
+        setError(get().locale.error.osm.load)
         console.log(err)
         resolve(null)
       }
@@ -278,23 +277,47 @@ function closeChangeset () {
       path: closeChangesetPath + changesetID + '/close'
     }, (err) => {
     if (err) {
+      setError(get().locale.error.osm.load)
       console.log(err)
     }
   })
 }
 
-function getNode (nodeId) {
-  return new Promise((resolve) => {
+// temporary fix to redirect to live api, because dev environment is currentliy borken
+function getNode2 (nodeId) {
+  return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => {
+    console.log(res)
+
+    const parsed = xml2json(res.data)
+    console.log(parsed)
+    return parseNode(parsed.osm.node)
+  })
+}
+
+export function getNode (nodeId) {
+  return new Promise((resolve, reject) => {
     auth.xhr(
       {
         method: 'GET',
         path: getNodePath + nodeId
       }, (err, response) => {
       if (err) {
-        console.log(err)
-        resolve(err)
+        if (err.status === 410) {
+          resolve(null)
+        } else if (err.status === 404) {
+          getNode2(nodeId).then(res => {
+            resolve(res)
+          }).catch(() => {
+            resolve(null)
+          })
+        } else {
+          setError(get().locale.error.osm.load)
+          console.log(err)
+          reject(err)
+        }
+      } else {
+        resolve(parseNode(xml2json(response)['#document'].osm.node))
       }
-      resolve(parseNode(xml2json(response)['#document'].osm.node))
     })
   })
 }
@@ -307,10 +330,21 @@ function parseNode (node) {
     id: node.$.id,
     lat: node.$.lat,
     lon: node.$.lon,
-    link: 'https://master.apis.dev.openstreetmap.org/node/' + node.$.id + '/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
+    link: osmUrl + '/node/' + node.$.id + '/#map=19/' + node.$.lat + '/' + node.$.lon + '&layers=D',
     address: address,
-    details: details
+    details: details,
+    version: node.$.version,
+    changeSet: node.$.changeset,
+    tags: parseTags(node.tag)
   }
+}
+
+function parseTags (tags) {
+  const res = {}
+  for (const tag of tags) {
+    res[tag['$'].k] = tag['$'].v
+  }
+  return res
 }
 
 function parseAddress (node) {

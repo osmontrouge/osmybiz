@@ -4,16 +4,16 @@
     <div class="close-button" @click="toggle">
       <icon name="window-close"></icon>
     </div>
-    <div class="warning-title">Sind Sie sicher?</div>
+    <div class="warning-title">{{t('warning').confirm.title}}</div>
     <div class="section">
-      Wenn Sie Weiter drücken, gehen alle Ihre Änderungen verloren.
+      {{t('warning').confirm.section}}
     </div>
     <div class="dialog-buttons">
       <button class="confirm-button" @click="toggle">
-        Abbrechen
+        {{t('warning').confirm.no}}
       </button>
       <button class="confirm-button" @click="confirm">
-        Weiter
+        {{t('warning').confirm.yes}}
       </button>
     </div>
   </div>

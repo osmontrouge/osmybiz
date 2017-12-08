@@ -38,6 +38,7 @@ client-lint:
     - cd frontend/osmybiz
     - npm install
     - npm run lint
+
 pages:
   image: node:8.4
   stage: deploy

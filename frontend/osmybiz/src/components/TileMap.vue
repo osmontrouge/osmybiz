@@ -14,6 +14,7 @@
   import {makeTileLayer, getTileUrl, createNewBusinessPopup, createMarker} from './../util/mapUtils'
   import {storeViewPort, getInitialPosition} from './../util/positionUtil'
   import {setError} from '../store/error'
+  import * as _ from 'lodash'
 
   const zoomOnSelect = 18
   const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -34,8 +35,10 @@
     })
   }
 
-  function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote) {
-    const ms = bs.map(b => {
+  function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
+    const mine = getNodesInViewPort(ownedNodes, viewport)
+    const merge = mergeNodes(bs, mine)
+    const ms = merge.map(b => {
       const m = createMarker(b, map, isloggedIn, (data) => {
         checkDuplicate(data).then((res) => {
           if (!res) {
@@ -50,13 +53,24 @@
     markers = ms
   }
 
+  function mergeNodes (all, mine) {
+    return _.unionBy(mine, all, (b) => b.id)
+  }
+
+  function getNodesInViewPort (nodes, viewPort) {
+    const bbox = viewPort.boundingBox
+    return nodes.filter(n => {
+      return n.lat >= bbox.south && n.lat <= bbox.north && n.lng >= bbox.west && n.lng <= bbox.east
+    })
+  }
+
   function setTileMode (mode) {
     tileLayer.setUrl(getTileUrl(mode), false)
   }
 
-  function drawBusinesses (businesses, isloggedIn, checkDuplicate, setIsNote) {
+  function drawBusinesses (businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
     clearMarkers()
-    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote)
+    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport)
   }
 
   function drawContextMenu (coords, isloggedIn, setIsNote) {
@@ -82,7 +96,7 @@
           setMapPosition(this.position)
           this.viewChange()
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote, this.setIsNote)
+          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote, this.setIsNote, this.ownedNodes, this.viewPort)
         } else if (mut.type === 'setMode') {
           setTileMode(this.mode)
         }
@@ -104,7 +118,8 @@
         'setDetails',
         'setCoords',
         'setIsNote',
-        'setPosition'
+        'setPosition',
+        'setOsmId'
       ]),
       viewChange () {
         const bbox = map.getBounds()
@@ -122,6 +137,7 @@
         this.setDetails(note)
         const pos = L.latLng(business.lat, business.lng)
         this.setCoords(pos)
+        this.setOsmId(business.id)
         this.setIsNote(true)
         this.$router.push({name: routes.Detail})
       },
@@ -158,7 +174,8 @@
         'viewPort',
         'businesses',
         'mode',
-        'isLoggedIn'
+        'isLoggedIn',
+        'ownedNodes'
       ])
     },
 

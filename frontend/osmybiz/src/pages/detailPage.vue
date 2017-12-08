@@ -77,8 +77,7 @@
         'setInfoMap'
       ]),
       ...mapActions([
-        'getAddress',
-        'checkDuplicateNote'
+        'getAddress'
       ])
     }
   }
