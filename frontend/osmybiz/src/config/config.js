@@ -34,5 +34,5 @@ export const searchradius = 10.0
 // fake the osmybiz backend with localstorage
 export const fakeOsmybizApi = false
 
-export const osmyBizBackendUrl = 'http://localhost:8080'
-// export const osmyBizBackendUrl = 'https://osmybiz.infs.ch'
+// export const osmyBizBackendUrl = 'http://localhost:8080'
+export const osmyBizBackendUrl = 'https://osmybiz.infs.ch'
