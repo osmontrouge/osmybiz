@@ -50,12 +50,12 @@ export function query (queryString) {
 }
 
 function parseAddress (data) {
-  let street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.suburb ? data.suburb : data.footway ? data.footway : ''
-  let place = data.place ? data.place : ''
-  let housenumber = data.house_number ? data.house_number : ''
-  let postcode = data.postcode ? data.postcode : ''
-  let city = data.city ? data.city : data.village ? data.village : data.town ? data.town : data.hamlet ? data.hamlet : ''
-  let country = data.country ? data.country : ''
+  const street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.suburb ? data.suburb : data.footway ? data.footway : ''
+  const place = data.place ? data.place : ''
+  const housenumber = data.house_number ? data.house_number : ''
+  const postcode = data.postcode ? data.postcode : ''
+  const city = data.city ? data.city : data.village ? data.village : data.town ? data.town : data.hamlet ? data.hamlet : ''
+  const country = data.country ? data.country : ''
 
   return {
     street: street,

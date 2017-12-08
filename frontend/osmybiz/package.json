@@ -14,10 +14,8 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "fs": "0.0.1-security",
     "jquery": "^3.2.1",
     "jquery-xml2json": "0.0.8",
-    "jsonfile": "^4.0.0",
     "leaflet": "^1.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.2",

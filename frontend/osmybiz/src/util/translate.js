@@ -11,7 +11,7 @@ export function get () {
 }
 
 export function getTagName (tag) {
-  let tags = getLanguageTags()
+  const tags = getLanguageTags()
   return tags[tag] || tag
 }
 
