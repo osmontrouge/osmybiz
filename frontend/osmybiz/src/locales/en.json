@@ -103,6 +103,7 @@
   "popups": {
     "popuptitle": "New Business",
     "feedback": "Report Map Error",
+    "mapLink": "View on OSM.org",
     "edit": "Edit",
     "create": "Create",
     "buttontitle": "You have to be logged in for this function"
