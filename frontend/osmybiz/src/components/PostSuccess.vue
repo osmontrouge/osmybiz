@@ -4,11 +4,16 @@
     <div class="success-button" @click="toggleSuccess">
       <icon name="window-close"></icon>
     </div>
+
     <div class="node-success" v-if="!isNote">
-      <div class="success-title">{{t('success').node.title}}</div>
+      <div class="dialog-title">
+        {{t('success').node.title}}
+      </div>
+
       <div class="section">
         <a :href="node.link" target="_blank">{{t('success').link}}</a>
       </div>
+
       <div class="section">
         {{t('success').address}}
         <span v-if="node.address.street">
@@ -40,18 +45,22 @@
     </div>
 
     <div class="note-success" v-if="isNote">
-      <div class="success-title">{{t('success').note.title}}</div>
-        <div class="section">
-          <a :href="note.link" target="_blank">{{t('success').link}}</a>
-        </div>
-        <div class="section">
-          {{t('success').address}}
-          {{note.text.address}}
-        </div>
-        <div class="section">
-          {{t('success').name}}
-          {{note.text.name}}
-        </div>
+      <div class="dialog-title">
+        {{t('success').note.title}}
+      </div>
+      <div class="section">
+        <a :href="note.link" target="_blank">{{t('success').link}}</a>
+      </div>
+
+      <div class="section">
+        {{t('success').address}}
+        {{note.text.address}}
+      </div>
+
+      <div class="section">
+        {{t('success').name}}
+        {{note.text.name}}
+      </div>
     </div>
   </div>
 
@@ -108,7 +117,7 @@
     text-align: left;
   }
 
-  .success-title {
+  .dialog-title {
     font-weight: bold;
     text-align: left;
     margin-bottom: 5px;

@@ -1,23 +1,29 @@
 <template>
   <div>
-    <div class="help-text-icon">
+    <div class="help-dialog-icon">
       <button @click="toggle()">
         <icon name="question-circle"></icon>
       </button>
     </div>
 
-    <div class="help-text" v-if="showHelp">
-      <div class="help-title">{{t('landing').help.title}}</div>
+    <div class="help-dialog" v-if="showHelp">
+      <div class="close-button" @click="toggle">
+        <icon name="window-close"></icon>
+      </div>
+
+      <div class="dialog-title">{{t('landing').help.title}}</div>
+
       <div class="section">
         {{t('landing').help.section1}}
       </div>
+
       <div class="section">
         {{t('landing').help.section2}}
       </div>
+
       <div class="section">
         {{t('landing').help.section3}}
       </div>
-      <button class="ok-btn" @click="confirm()">Ok</button>
     </div>
 
   </div>
@@ -31,10 +37,6 @@
   export default {
     methods: {
       ...mapMutations(['setShowHelp']),
-      confirm () {
-        this.setShowHelp(false)
-        localStorage.setItem('showHelp', JSON.stringify(false))
-      },
       toggle () {
         this.setShowHelp(!this.showHelp)
         localStorage.setItem('showHelp', JSON.stringify(this.showHelp))
@@ -51,7 +53,7 @@
 </script>
 
 <style>
-  .help-text-icon {
+  .help-dialog-icon {
     position: fixed;
     z-index: 99;
     bottom: 50px;
@@ -59,7 +61,7 @@
     font-size: 16px;
   }
 
-  .help-text {
+  .help-dialog {
     position: fixed;
     z-index: 99;
     bottom: 50px;
@@ -76,12 +78,13 @@
     margin-bottom: 6px;
     text-align: left;
   }
-  .help-title {
+  .dialog-title {
     font-weight: bold;
     text-align: left;
   }
 
-  .ok-btn {
-    float:right;
+  .close-button {
+    float: right;
+    cursor: pointer;
   }
 </style>
