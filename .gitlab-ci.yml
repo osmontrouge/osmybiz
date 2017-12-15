@@ -49,6 +49,8 @@ pages:
     - cd ./../../
     - mkdir public
     - mv frontend/osmybiz/dist/* public
+    - mkdir -p public/.well-known/acme-challenge/eTmh0ZhzO-NhDxx7vIqSyEGIDCwFgu_ZsQGXyr3kMSw
+    - echo 'eTmh0ZhzO-NhDxx7vIqSyEGIDCwFgu_ZsQGXyr3kMSw.1AmwjUgTmx4IiwBW5EfhQyyoJBYyWdgBa-KEl5mm56E' > public/.well-known/acme-challenge/eTmh0ZhzO-NhDxx7vIqSyEGIDCwFgu_ZsQGXyr3kMSw
   artifacts:
     paths:
       - public
