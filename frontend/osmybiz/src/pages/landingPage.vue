@@ -13,47 +13,47 @@
 </template>
 
 <script>
-  import TileMap from './../components/TileMap'
-  import SearchBar from './../components/SearchBar'
-  import HelpText from './../components/HelpText'
-  import UpdateList from './../components/UpdateList'
-  import PostSuccess from './../components/PostSuccess'
-  import ToggleButton from './../components/ToggleButton'
-  import LoginHelpText from '../components/LoginHelpText'
-  import DuplicateWarning from '../components/DuplicateWarning'
+  import { mapActions, mapMutations } from 'vuex';
+  import * as _ from 'lodash';
+  import TileMap from './../components/TileMap.vue';
+  import SearchBar from './../components/SearchBar.vue';
+  import HelpText from './../components/HelpText.vue';
+  import UpdateList from './../components/UpdateList.vue';
+  import PostSuccess from './../components/PostSuccess.vue';
+  import ToggleButton from './../components/ToggleButton.vue';
+  import LoginHelpText from '../components/LoginHelpText.vue';
+  import DuplicateWarning from '../components/DuplicateWarning.vue';
 
-  import {mapActions, mapMutations} from 'vuex'
-  import * as _ from 'lodash'
 
-  function extractToken (url) {
-    const tokenRegex = /\?oauth_token=(.*)#\//
-    const matches = tokenRegex.exec(url)
+  function extractToken(url) {
+    const tokenRegex = /\?oauth_token=(.*)#\//;
+    const matches = tokenRegex.exec(url);
     if (_.isArray(matches) && matches.length > 1) {
-      return matches[1]
+      return matches[1];
     }
-    return null
+    return null;
   }
 
   export default {
-    mounted () {
-      const token = extractToken(window.location.href)
+    mounted() {
+      const token = extractToken(window.location.href);
       if (_.isString(token) && !_.isEmpty(token)) {
         this.setToken(token).then(() => {
-          window.location.href = location.pathname
-        })
+          window.location.href = location.pathname;
+        });
       }
-      this.setIsDuplicate(false)
+      this.setIsDuplicate(false);
 
       if (localStorage.getItem('showHelp')) {
-        this.setShowHelp(JSON.parse(localStorage.getItem('showHelp')))
+        this.setShowHelp(JSON.parse(localStorage.getItem('showHelp')));
       }
       if (localStorage.getItem('showLoginHelp')) {
-        this.setShowLoginHelp(JSON.parse(localStorage.getItem('showLoginHelp')))
+        this.setShowLoginHelp(JSON.parse(localStorage.getItem('showLoginHelp')));
       }
     },
     methods: {
       ...mapActions(['setToken']),
-      ...mapMutations(['setIsDuplicate', 'setShowHelp', 'setShowLoginHelp'])
+      ...mapMutations(['setIsDuplicate', 'setShowHelp', 'setShowLoginHelp']),
     },
     components: {
       LoginHelpText,
@@ -63,9 +63,9 @@
       HelpText,
       UpdateList,
       PostSuccess,
-      DuplicateWarning
-    }
-  }
+      DuplicateWarning,
+    },
+  };
 
 </script>
 

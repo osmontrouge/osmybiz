@@ -43,13 +43,13 @@
 </template>
 
 <script>
-  import {BasicSelect} from 'vue-search-select'
-  import {mapGetters, mapMutations} from 'vuex'
-  import {showPopup, hidePopup} from '../store/detail'
-  import Vue from 'vue'
-  import VeeValidate from 'vee-validate'
+  import Vue from 'vue';
+  import VeeValidate from 'vee-validate';
+  import { BasicSelect } from 'vue-search-select';
+  import { mapGetters, mapMutations } from 'vuex';
+  import { showPopup, hidePopup } from '../store/detail';
 
-  Vue.use(VeeValidate)
+  Vue.use(VeeValidate);
 
   export default {
     name: 'category-field',
@@ -58,37 +58,37 @@
         'details',
         'tags',
         'isOwnCategory',
-        'infoMap'
-      ])
+        'infoMap',
+      ]),
     },
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
         'setInfoText',
-        'setIsPopup'
+        'setIsPopup',
       ]),
-      hideInput () {
-        this.setIsOwnCategory(false)
-        this.details.category = {value: 0, text: ''}
+      hideInput() {
+        this.setIsOwnCategory(false);
+        this.details.category = { value: 0, text: '' };
       },
-      showInput () {
-        this.setIsOwnCategory(true)
-        this.details.category = {value: 0, text: ''}
+      showInput() {
+        this.setIsOwnCategory(true);
+        this.details.category = { value: 0, text: '' };
       },
-      show (key) {
-        showPopup(key)
+      show(key) {
+        showPopup(key);
       },
-      hide () {
-        hidePopup()
+      hide() {
+        hidePopup();
       },
-      onSelect (item) {
-        this.details.category = item
-      }
+      onSelect(item) {
+        this.details.category = item;
+      },
     },
     components: {
-      BasicSelect
-    }
-  }
+      BasicSelect,
+    },
+  };
 </script>
 
 <style scoped>

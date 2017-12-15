@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import * as _ from 'lodash'
-import {LatLngRoundingAccuracy} from './../constants'
+import Vue from 'vue';
+import * as _ from 'lodash';
+import { LatLngRoundingAccuracy } from './../constants';
 
 Vue.filter('latlng', (val) => {
   if (_.isObject(val) && _.isNumber(val.lat) && _.isNumber(val.lng)) {
-    return `${val.lat.toFixed(LatLngRoundingAccuracy)}/${val.lng.toFixed(LatLngRoundingAccuracy)}`
+    return `${val.lat.toFixed(LatLngRoundingAccuracy)}/${val.lng.toFixed(LatLngRoundingAccuracy)}`;
   }
-  return val
-})
+  return val;
+});

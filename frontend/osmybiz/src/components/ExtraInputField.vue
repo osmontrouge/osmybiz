@@ -33,29 +33,26 @@
 </template>
 
 <script>
-    export default {
-      name: 'extra-input-field',
-      props: ['field'],
-      mounted () {
-        console.log()
-      },
-      methods: {
-        checkType () {
-          if (this.field.type === 'text' ||
-            this.field.type === 'check' ||
-            this.field.type === 'number' ||
-            this.field.type === 'combo') {
-            return this.field.type
-          } else {
-            if (this.field.type === 'radio') {
-              return 'combo'
-            } else {
-              return 'text'
-            }
-          }
+  export default {
+    name: 'extra-input-field',
+    props: ['field'],
+    mounted() {
+    },
+    methods: {
+      checkType() {
+        if (this.field.type === 'text' ||
+          this.field.type === 'check' ||
+          this.field.type === 'number' ||
+          this.field.type === 'combo') {
+          return this.field.type;
         }
-      }
-    }
+        if (this.field.type === 'radio') {
+          return 'combo';
+        }
+        return 'text';
+      },
+    },
+  };
 </script>
 
 <style scoped>

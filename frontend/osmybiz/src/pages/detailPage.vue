@@ -21,31 +21,32 @@
 </template>
 
 <script>
-  import DetailForm from '@/components/DetailForm'
-  import PostSuccess from '@/components/PostSuccess'
-  import AddressFields from '../components/AddressFields'
-  import CategoryField from '../components/CategoryField'
-  import FormPopup from '../components/FormPopup'
-  import ExtraInfoFields from '../components/ExtraInfoFields'
-  import FormFooter from '../components/FormFooter'
-  import DuplicateWarning from '../components/DuplicateWarning'
-  import {mapGetters, mapMutations, mapActions} from 'vuex'
-  import * as _ from 'lodash'
-  import {routes} from './../router'
-  import ConfirmWarning from '../components/ConfirmWarning'
-  import {getInfoTexts} from '../util/translate'
+  import { mapGetters, mapMutations, mapActions } from 'vuex';
+  import * as _ from 'lodash';
+  import DetailForm from '../components/DetailForm.vue';
+  import PostSuccess from '../components/PostSuccess.vue';
+  import AddressFields from '../components/AddressFields.vue';
+  import CategoryField from '../components/CategoryField.vue';
+  import FormPopup from '../components/FormPopup.vue';
+  import ExtraInfoFields from '../components/ExtraInfoFields.vue';
+  import FormFooter from '../components/FormFooter.vue';
+  import DuplicateWarning from '../components/DuplicateWarning.vue';
+  import ConfirmWarning from '../components/ConfirmWarning.vue';
+
+  import { routes } from './../router';
+  import { getInfoTexts } from '../util/translate';
 
   export default {
-    mounted () {
+    mounted() {
       if (!_.isNumber(this.lat) || !_.isNumber(this.lon) || !this.isLoggedIn) {
-        this.$router.push({name: routes.Landing})
+        this.$router.push({ name: routes.Landing });
       }
-      this.setDisplaySuccess(false)
+      this.setDisplaySuccess(false);
 
-      this.getAddress()
-      localStorage.setItem('details', JSON.stringify(this.details))
+      this.getAddress();
+      localStorage.setItem('details', JSON.stringify(this.details));
 
-      this.setInfoMap(getInfoTexts())
+      this.setInfoMap(getInfoTexts());
     },
     components: {
       ConfirmWarning,
@@ -56,7 +57,7 @@
       AddressFields,
       CategoryField,
       ExtraInfoFields,
-      DuplicateWarning
+      DuplicateWarning,
     },
     computed: {
       ...mapGetters([
@@ -67,20 +68,20 @@
         'isPopup',
         'isNote',
         'address',
-        'isDuplicate'
-      ])
+        'isDuplicate',
+      ]),
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
         'setDisplayConfirmation',
-        'setInfoMap'
+        'setInfoMap',
       ]),
       ...mapActions([
-        'getAddress'
-      ])
-    }
-  }
+        'getAddress',
+      ]),
+    },
+  };
 </script>
 
 <style>

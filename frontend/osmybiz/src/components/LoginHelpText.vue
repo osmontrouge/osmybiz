@@ -21,26 +21,26 @@
 </template>
 
 <script>
-  import 'vue-awesome/icons'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {mapGetters, mapMutations} from 'vuex'
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     methods: {
       ...mapMutations(['setShowLoginHelp']),
-      toggle () {
-        this.setShowLoginHelp(false)
-        localStorage.setItem('showLoginHelp', JSON.stringify(false))
-      }
+      toggle() {
+        this.setShowLoginHelp(false);
+        localStorage.setItem('showLoginHelp', JSON.stringify(false));
+      },
     },
     computed: {
-      ...mapGetters(['showLoginHelp', 'isLoggedIn'])
+      ...mapGetters(['showLoginHelp', 'isLoggedIn']),
     },
     components: {
-      Icon
+      Icon,
     },
-    name: 'login-help-text'
-  }
+    name: 'login-help-text',
+  };
 </script>
 
 <style>

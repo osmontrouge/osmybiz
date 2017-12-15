@@ -7,31 +7,34 @@
 
 </template>
 <script>
-  import {mapGetters, mapMutations} from 'vuex'
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     methods: {
       ...mapMutations(['setMode']),
-      setTiles () {
-        this.setMode('tiles')
+
+      setTiles() {
+        this.setMode('tiles');
       },
-      setSatellite () {
-        this.setMode('satellite')
-      }
+
+      setSatellite() {
+        this.setMode('satellite');
+      },
+
     },
     computed: {
       ...mapGetters([
-        'mode'
+        'mode',
       ]),
-      isSatellite () {
-        return this.mode === 'satellite'
+      isSatellite() {
+        return this.mode === 'satellite';
       },
-      isTiles () {
-        return this.mode === 'tiles'
-      }
+      isTiles() {
+        return this.mode === 'tiles';
+      },
     },
-    name: 'toggle-button'
-  }
+    name: 'toggle-button',
+  };
 </script>
 <style>
   .toggle-wrapper {

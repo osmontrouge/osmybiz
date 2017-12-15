@@ -40,28 +40,32 @@
 </template>
 
 <script>
-  import {mapGetters, mapMutations, mapActions} from 'vuex'
-  import 'vue-awesome/icons'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {osmUrl} from './../config/config'
+  import { mapGetters, mapMutations, mapActions } from 'vuex';
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import { osmUrl } from './../config/config';
 
   export default {
     methods: {
       ...mapMutations(['setMapPosition']),
       ...mapActions(['confirmUpdate', 'ignoreFutureUpdates']),
-      zoom (coords) {
-        this.setMapPosition(coords)
+
+      zoom(coords) {
+        this.setMapPosition(coords);
       },
-      changeSet (changeSet) {
-        const url = `${osmUrl}/changeset/${changeSet}`
-        window.open(url, '_blank')
+
+      changeSet(changeSet) {
+        const url = `${osmUrl}/changeset/${changeSet}`;
+        window.open(url, '_blank');
       },
-      ignore (update) {
-        this.ignoreFutureUpdates({update: update, user: this.user})
+
+      ignore(update) {
+        this.ignoreFutureUpdates({ update, user: this.user });
       },
-      confirm (update) {
-        this.confirmUpdate({update: update, user: this.user})
-      }
+      confirm(update) {
+        this.confirmUpdate({ update, user: this.user });
+      },
+
     },
     computed: {
       ...mapGetters([
@@ -69,14 +73,14 @@
         'hasUpdates',
         'user',
         'showUpdates',
-        'updateCount'
-      ])
+        'updateCount',
+      ]),
     },
     components: {
-      Icon
+      Icon,
     },
-    name: 'update-list'
-  }
+    name: 'update-list',
+  };
 </script>
 
 <style>

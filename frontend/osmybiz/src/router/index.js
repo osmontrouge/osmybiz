@@ -1,25 +1,25 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import LandingPage from '@/pages/landingPage'
-import DetailPage from '@/pages/detailPage'
+import Vue from 'vue';
+import Router from 'vue-router';
+import LandingPage from '../pages/landingPage.vue';
+import DetailPage from '../pages/detailPage.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export const routes = {
   Landing: 'Landing',
-  Detail: 'Detail'
-}
+  Detail: 'Detail',
+};
 
 export default new Router({
   routes: [
     {
       path: '/:zoom?/:lat?/:lng?',
       name: 'Landing',
-      component: LandingPage
+      component: LandingPage,
     }, {
       path: '/detail',
       name: 'Detail',
-      component: DetailPage
-    }
-  ]
-})
+      component: DetailPage,
+    },
+  ],
+});

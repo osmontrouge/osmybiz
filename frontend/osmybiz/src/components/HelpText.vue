@@ -30,26 +30,26 @@
 </template>
 
 <script>
-  import 'vue-awesome/icons'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {mapGetters, mapMutations} from 'vuex'
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     methods: {
       ...mapMutations(['setShowHelp']),
-      toggle () {
-        this.setShowHelp(!this.showHelp)
-        localStorage.setItem('showHelp', JSON.stringify(this.showHelp))
-      }
+      toggle() {
+        this.setShowHelp(!this.showHelp);
+        localStorage.setItem('showHelp', JSON.stringify(this.showHelp));
+      },
     },
     computed: {
-      ...mapGetters(['showHelp'])
+      ...mapGetters(['showHelp']),
     },
     components: {
-      Icon
+      Icon,
     },
-    name: 'help-text'
-  }
+    name: 'help-text',
+  };
 </script>
 
 <style>

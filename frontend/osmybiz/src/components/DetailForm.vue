@@ -172,12 +172,13 @@
 </template>
 
 <script>
-  import {showPopup, hidePopup} from '../store/detail'
-  import {mapGetters, mapMutations} from 'vuex'
-  import Vue from 'vue'
-  import VeeValidate from 'vee-validate'
+  import Vue from 'vue';
+  import VeeValidate from 'vee-validate';
+  import { mapGetters, mapMutations } from 'vuex';
+  import { showPopup, hidePopup } from '../store/detail';
 
-  Vue.use(VeeValidate)
+
+  Vue.use(VeeValidate);
 
   export default {
     name: 'detail-form',
@@ -187,26 +188,26 @@
         'address',
         'tags',
         'isOwnCategory',
-        'infoMap'
-      ])
+        'infoMap',
+      ]),
     },
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
         'setIsPopup',
-        'setInfoText'
+        'setInfoText',
       ]),
-      show (key) {
-        showPopup(key)
+      show(key) {
+        showPopup(key);
       },
-      hide () {
-        hidePopup()
+      hide() {
+        hidePopup();
       },
-      onSelect (item) {
-        this.details.category = item
-      }
-    }
-  }
+      onSelect(item) {
+        this.details.category = item;
+      },
+    },
+  };
 </script>
 
 <style>

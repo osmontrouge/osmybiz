@@ -31,72 +31,71 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
-  import 'vue-awesome/icons'
-  import {loadTags} from '../store/detail'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {osmUrl} from './../config/config'
-  import {getInfoTexts} from '../util/translate'
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import 'vue-awesome/icons';
+  import { mapGetters, mapActions, mapMutations } from 'vuex';
+  import { loadTags } from '../store/detail';
+  import { osmUrl } from './../config/config';
+  import { getInfoTexts } from '../util/translate';
 
-  const messageUrl = osmUrl + '/user/'
+  const messageUrl = `${osmUrl}/user/`;
 
   export default {
-    mounted () {
-      this.loadUser()
-      this.$store.subscribe(mut => {
+    mounted() {
+      this.loadUser();
+      this.$store.subscribe((mut) => {
         if (mut.type === 'setUser') {
           if (this.isLoggedIn) {
-            this.loadUpdates(this.user)
+            this.loadUpdates(this.user);
           }
         }
-      })
+      });
     },
     name: 'header-bar',
     computed: {
       ...mapGetters([
         'user',
         'isLoggedIn',
-        'updateCount'
-      ])
+        'updateCount',
+      ]),
     },
     methods: {
       ...mapActions([
         'authenticate',
         'loadUser',
-        'loadUpdates'
+        'loadUpdates',
       ]),
       ...mapMutations([
         'logout',
         'setLanguage',
         'setTags',
         'toggleUpdates',
-        'setInfoMap'
-
+        'setInfoMap',
       ]),
-      login () {
-        this.authenticate()
+      login() {
+        this.authenticate();
       },
-      signOff () {
-        this.logout()
-        window.location.reload()
+      signOff() {
+        this.logout();
+        window.location.reload();
       },
-      gotoMessages () {
+      gotoMessages() {
         if (this.isLoggedIn) {
-          window.open(messageUrl + this.user.name + '/inbox', '_blank')
+          window.open(`${messageUrl + this.user.name}/inbox`, '_blank');
         }
       },
-      onSelect (e) {
-        this.$translate.setLang(e.target.value)
-        this.setLanguage(e.target.value)
-        this.setTags(e.target.value)
-        this.setInfoMap(getInfoTexts())
-        loadTags()
-      }
+      onSelect(e) {
+        this.$translate.setLang(e.target.value);
+        this.setLanguage(e.target.value);
+        this.setTags(e.target.value);
+        this.setInfoMap(getInfoTexts());
+        loadTags();
+      },
     },
     components: {
-      Icon
-    }
-  }
+      Icon,
+    },
+  };
 </script>
 
 <style scoped>

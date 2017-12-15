@@ -67,9 +67,9 @@
 </template>
 
 <script>
-  import 'vue-awesome/icons'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {mapGetters, mapMutations} from 'vuex'
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     name: 'post-success',
@@ -79,22 +79,22 @@
         'node',
         'isNote',
         'displaySuccess',
-        'hasUpdates'
-      ])
+        'hasUpdates',
+      ]),
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setDetails'
+        'setDetails',
       ]),
-      toggleSuccess () {
-        this.setDisplaySuccess(false)
-      }
+      toggleSuccess() {
+        this.setDisplaySuccess(false);
+      },
     },
     components: {
-      Icon
-    }
-  }
+      Icon,
+    },
+  };
 </script>
 
 <style scoped>
