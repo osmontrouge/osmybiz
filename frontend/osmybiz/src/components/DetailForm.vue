@@ -172,11 +172,11 @@
 </template>
 
 <script>
+
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import { showPopup, hidePopup } from '../store/detail';
-
 
   Vue.use(VeeValidate);
 

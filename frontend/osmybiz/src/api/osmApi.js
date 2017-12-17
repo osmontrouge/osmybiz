@@ -13,6 +13,7 @@ const closeChangesetPath = `${osmApiLevel}changeset/`;
 const getNodePath = `${osmApiLevel}node/`;
 const userPath = `${osmApiLevel}user/details.json`;
 
+
 const auth = osmAuth({
   oauth_consumer_key: oauthKey,
   oauth_secret: oauthSecret,
@@ -96,6 +97,7 @@ export function getNode(nodeId) {
   });
 }
 
+
 function closeChangeset(changesetId) {
   auth.xhr(
     {
@@ -132,7 +134,6 @@ function uploadChangeset(node, changesetId) {
   });
 }
 
-
 export function postNode(node) {
   const create =
     '<osm>' +
@@ -152,11 +153,11 @@ export function postNode(node) {
           header: {
             'Content-Type': 'text/xml',
           },
-        } }, (err, changeSetId) => {
+        } }, (err, changesetId) => {
       if (err) {
         setError(get().locale.error.osm.postNode);
       }
-      resolve(uploadChangeset(node, changeSetId));
+      resolve(uploadChangeset(node, changesetId));
     });
   });
 }
@@ -205,4 +206,3 @@ export function getNotes(lat, lng) {
     });
   });
 }
-

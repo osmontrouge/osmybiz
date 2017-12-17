@@ -44,6 +44,7 @@ const state = {
   node: {},
 };
 
+
 function constructNote() {
   let text = '#OSMyBiz \n \n';
 
@@ -356,4 +357,3 @@ export function showPopup(key) {
 export function hidePopup() {
   state.isPopup = false;
 }
-

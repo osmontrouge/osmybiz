@@ -43,9 +43,9 @@
 </template>
 
 <script>
+  import { BasicSelect } from 'vue-search-select';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import { BasicSelect } from 'vue-search-select';
   import { mapGetters, mapMutations } from 'vuex';
   import { showPopup, hidePopup } from '../store/detail';
 

@@ -60,7 +60,6 @@ export function query(queryString) {
       setError(get().locale.error.nominatim);
     });
 }
-
 function buildReverseRequest(lat, lon) {
   return `${nominatimReverseUrl}?format=json&lat=${lat}&lon=${lon}&addressdetails=1&zoom=18`;
 }
