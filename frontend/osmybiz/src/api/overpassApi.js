@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { overpassUrl, searchradius } from '../config/config';
-import tags from '../assets/tags/de.json';
-import { setError } from '../store/error';
-import { get } from '../util/translate';
+import axios from 'axios'
+import {overpassUrl, searchradius} from '../config/config'
+import tags from '../assets/tags/de'
+import {setError} from '../store/error'
+import {get} from '../util/translate'
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure'];
 
 const tagRegex = categoryTags.join('|');
 
-const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`;
-const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"="{{name}}"];out;`;
+const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`
+const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"="{{name}}"];out;`
 
 function buildQuery(bbox) {
   return query.replace('{{bbox}}', `${bbox.south}, ${bbox.west}, ${bbox.north}, ${bbox.east}`);

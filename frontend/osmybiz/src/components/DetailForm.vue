@@ -172,10 +172,10 @@
 </template>
 
 <script>
-  import Vue from 'vue';
-  import VeeValidate from 'vee-validate';
-  import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../store/detail';
+  import {showPopup, hidePopup} from '../store/detail'
+  import {mapGetters, mapMutations} from 'vuex'
+  import Vue from 'vue'
+  import VeeValidate from 'vee-validate'
 
 
   Vue.use(VeeValidate);
@@ -197,11 +197,11 @@
         'setIsPopup',
         'setInfoText',
       ]),
-      show(key) {
-        showPopup(key);
+      show (key) {
+        showPopup(key)
       },
-      hide() {
-        hidePopup();
+      hide () {
+        hidePopup()
       },
       onSelect(item) {
         this.details.category = item;

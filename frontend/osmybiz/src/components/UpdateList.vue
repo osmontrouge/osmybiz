@@ -73,8 +73,8 @@
         'hasUpdates',
         'user',
         'showUpdates',
-        'updateCount',
-      ]),
+        'updateCount'
+      ])
     },
     components: {
       Icon,

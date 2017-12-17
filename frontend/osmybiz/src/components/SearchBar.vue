@@ -41,10 +41,10 @@
         'setMapPosition',
         'resetSearch',
       ]),
-      pick(point) {
-        this.setMapPosition(point.coords);
-        this.selectPoint(point);
-      },
+      pick (point) {
+        this.setMapPosition(point.coords)
+        this.selectPoint(point)
+      }
     },
     computed: {
       ...mapGetters([

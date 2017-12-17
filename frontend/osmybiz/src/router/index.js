@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import LandingPage from '../pages/landingPage.vue';
-import DetailPage from '../pages/detailPage.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
+import LandingPage from '@/pages/landingPage'
+import DetailPage from '@/pages/detailPage'
 
 Vue.use(Router);
 
@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/:zoom?/:lat?/:lng?',
       name: 'Landing',
-      component: LandingPage,
+      component: LandingPage
     }, {
       path: '/detail',
       name: 'Detail',

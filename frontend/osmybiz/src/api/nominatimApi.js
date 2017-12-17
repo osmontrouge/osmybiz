@@ -55,10 +55,31 @@ function buildRequest(q, count) {
 
 export function query(queryString) {
   return axios.get(buildRequest(queryString, 7))
-    .then(response => mapResults(response.data))
-    .catch(() => {
-      setError(get().locale.error.nominatim);
-    });
+    .then(response => {
+      return mapResults(response.data)
+    })
+    .catch(e => {
+      setError(get().locale.error.nominatim)
+      console.log(e)
+    })
+}
+
+function parseAddress (data) {
+  const street = data.pedestrian ? data.pedestrian : data.road ? data.road : data.suburb ? data.suburb : data.footway ? data.footway : ''
+  const place = data.place ? data.place : ''
+  const housenumber = data.house_number ? data.house_number : ''
+  const postcode = data.postcode ? data.postcode : ''
+  const city = data.city ? data.city : data.village ? data.village : data.town ? data.town : data.hamlet ? data.hamlet : ''
+  const country = data.country ? data.country : ''
+
+  return {
+    street: street,
+    housenumber: housenumber,
+    place: place,
+    postcode: postcode,
+    city: city,
+    country: country
+  }
 }
 
 function buildReverseRequest(lat, lon) {

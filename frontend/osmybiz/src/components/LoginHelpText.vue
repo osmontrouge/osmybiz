@@ -28,10 +28,10 @@
   export default {
     methods: {
       ...mapMutations(['setShowLoginHelp']),
-      toggle() {
-        this.setShowLoginHelp(false);
-        localStorage.setItem('showLoginHelp', JSON.stringify(false));
-      },
+      toggle () {
+        this.setShowLoginHelp(false)
+        localStorage.setItem('showLoginHelp', JSON.stringify(false))
+      }
     },
     computed: {
       ...mapGetters(['showLoginHelp', 'isLoggedIn']),

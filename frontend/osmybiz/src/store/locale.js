@@ -1,6 +1,5 @@
-/* eslint-disable no-param-reassign */
-import tagsDe from '../assets/tags/de.json';
-import tagsEn from '../assets/tags/en.json';
+import tagsDe from '../assets/tags/de.json'
+import tagsEn from '../assets/tags/en.json'
 
 const state = {
   language: 'de',
@@ -13,17 +12,17 @@ const mutations = {
   setLanguage(s, lng) {
     s.language = lng;
   },
-  setTags(s, lng) {
+  setTags (state, lng) {
     switch (lng) {
-      case 'de': s.languageTags = tagsDe;
-        break;
-      case 'en': s.languageTags = tagsEn;
-        break;
+      case 'de': state.languageTags = tagsDe
+        break
+      case 'en': state.languageTags = tagsEn
+        break
       default:
-        s.languageTags = tagsDe;
+        state.languageTags = tagsDe
     }
-  },
-};
+  }
+}
 
 const getters = {
   language(s) {

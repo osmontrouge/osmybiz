@@ -43,11 +43,11 @@
 </template>
 
 <script>
-  import Vue from 'vue';
-  import VeeValidate from 'vee-validate';
-  import { BasicSelect } from 'vue-search-select';
-  import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../store/detail';
+  import {BasicSelect} from 'vue-search-select'
+  import {mapGetters, mapMutations} from 'vuex'
+  import {showPopup, hidePopup} from '../store/detail'
+  import Vue from 'vue'
+  import VeeValidate from 'vee-validate'
 
   Vue.use(VeeValidate);
 
@@ -78,11 +78,11 @@
       show(key) {
         showPopup(key);
       },
-      hide() {
-        hidePopup();
+      show (key) {
+        showPopup(key)
       },
-      onSelect(item) {
-        this.details.category = item;
+      hide () {
+        hidePopup()
       },
     },
     components: {

@@ -49,31 +49,31 @@
       submit() {
         let promise;
         if (this.isNote) {
-          promise = this.postNote({ user: this.user, osmId: this.osmId }).then(() => true);
+          promise = this.postNote({user: this.user, osmId: this.osmId}).then(() => true)
         } else {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
-              return this.postNode(this.user).then(() => true);
+              return this.postNode(this.user).then(() => true)
             }
-            return false;
-          });
+            return false
+          })
         }
         promise.then((success) => {
           if (success) {
-            this.loadUpdates(this.user);
-            this.$router.push({ name: routes.Landing });
-            clearDetails();
+            this.loadUpdates(this.user)
+            this.$router.push({name: routes.Landing})
+            clearDetails()
           }
-        });
+        })
       },
       isRequiredFields() {
         return this.details.category.text === '' || this.details.name === '';
       },
       reset() {
         this.getConfirmation(() => {
-          const details = JSON.parse(localStorage.getItem('details'));
-          const address = JSON.parse(localStorage.getItem('address'));
-          const category = {
+          const details = JSON.parse(localStorage.getItem('details'))
+          const address = JSON.parse(localStorage.getItem('address'))
+          let category = {
             fields: details.category.fields,
             text: details.category.text,
             value: details.category.value,

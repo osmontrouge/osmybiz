@@ -37,10 +37,10 @@
   export default {
     methods: {
       ...mapMutations(['setShowHelp']),
-      toggle() {
-        this.setShowHelp(!this.showHelp);
-        localStorage.setItem('showHelp', JSON.stringify(this.showHelp));
-      },
+      toggle () {
+        this.setShowHelp(!this.showHelp)
+        localStorage.setItem('showHelp', JSON.stringify(this.showHelp))
+      }
     },
     computed: {
       ...mapGetters(['showHelp']),

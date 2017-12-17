@@ -10,9 +10,9 @@ export function get() {
   return $translate;
 }
 
-export function getTagName(tag) {
-  const tags = getLanguageTags();
-  return tags[tag] || tag;
+export function getTagName (tag) {
+  const tags = getLanguageTags()
+  return tags[tag] || tag
 }
 
 export function getInfoTexts() {

@@ -84,22 +84,22 @@ export function getInitialPosition(params) {
     const fromUrl = extractHash(params);
 
     if (_.isObject(fromUrl)) {
-      resolve(fromUrl);
-      return;
+      resolve(fromUrl)
+      return
     }
 
     const stored = getStoredPosition();
 
     if (_.isObject(stored)) {
-      resolve(stored);
-      return;
+      resolve(stored)
+      return
     }
 
     getBrowserLocation().then((pos) => {
       if (_.isObject(pos)) {
-        resolve(pos);
+        resolve(pos)
       } else {
-        resolve(fallBackPosition());
+        resolve(fallBackPosition())
       }
     });
   });

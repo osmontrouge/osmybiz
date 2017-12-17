@@ -13,17 +13,16 @@ const state = {
 const actions = {
   checkDuplicateNode({ commit }) {
     return new Promise((resolve) => {
-      if (detail.s.details.category.value === 0) {
-        resolve(false);
-        commit('setIsDuplicate', false);
+      if (detail.state.details.category.value === 0) {
+        resolve(false)
+        commit('setIsDuplicate', false)
       } else {
-        surroundingQueryNode(detail.s.details, detail.s.lat, detail.s.lon)
-          .then((ps) => {
-            resolve(ps);
-            commit('setIsDuplicate', ps);
-          });
+        surroundingQueryNode(detail.state.details, detail.state.lat, detail.state.lon).then(ps => {
+          resolve(ps)
+          commit('setIsDuplicate', ps)
+        })
       }
-    });
+    })
   },
   checkDuplicateNote({ commit }, data) {
     return new Promise((resolve) => {
@@ -32,9 +31,9 @@ const actions = {
         let noteLink = '';
         ps.forEach((note) => {
           if (note.properties.status === 'open') {
-            const text = note.properties.comments[0].text;
-            const fields = text.split('\n');
-            const cat = fields[3].split(':')[1].substring(1);
+            const text = note.properties.comments[0].text
+            const fields = text.split('\n')
+            const cat = fields[3].split(':')[1].substring(1)
             if (fields[0] === '#OSMyBiz ' &&
               fields[3] === `Category: ${cat}:${data.tags[cat]}` &&
               fields[4] === `Name: ${data.tags.name}`) {
@@ -42,12 +41,12 @@ const actions = {
               noteLink = `https://master.apis.dev.openstreetmap.org/note/${note.properties.id}/#map=19/${note.geometry.coordinates[1]}/${note.geometry.coordinates[0]}&layers=ND`;
             }
           }
-        });
-        resolve(duplicate);
-        commit('setNoteLink', noteLink);
-        commit('setIsDuplicate', duplicate);
-      });
-    });
+        })
+        resolve(duplicate)
+        commit('setNoteLink', noteLink)
+        commit('setIsDuplicate', duplicate)
+      })
+    })
   },
   getConfirmation({ commit }, action) {
     commit('setIsConfirm', true);

@@ -44,8 +44,159 @@ const state = {
   node: {},
 };
 
-function constructNote() {
-  let text = '#OSMyBiz \n \n';
+const actions = {
+  postNode ({commit}, user) {
+    const node = {
+      lat: state.lat,
+      lon: state.lon,
+      details: state.details,
+      address: state.address
+    }
+    return postNode(node).then(ps => {
+      state.displaySuccess = true
+      commit('setNode', ps)
+
+      return addOrUpdateNode(user.id, {
+        lat: parseFloat(ps.lat),
+        lng: parseFloat(ps.lon),
+        version: parseInt(ps.version),
+        osmId: parseInt(ps.id),
+        recieveUpdates: true,
+        name: ps.details.name
+      })
+    })
+  },
+  postNote ({commit}, {user, osmId}) {
+    const note = constructNote()
+    const name = state.details.name
+    return postNote(note).then(ps => {
+      state.displaySuccess = true
+      const displayNote = constructDisplayNote(ps)
+      commit('setNote', displayNote)
+
+      return getNode(osmId).then(node => {
+        return addOrUpdateNode(user.id, {
+          lat: parseFloat(node.lat),
+          lng: parseFloat(node.lon),
+          version: parseInt(node.version),
+          osmId: parseInt(node.id),
+          recieveUpdates: true,
+          name: name
+        })
+      })
+    })
+  },
+  getAddress ({commit}) {
+    reverseQuery(state.lat, state.lon).then(ps => {
+      commit('setAddress', ps)
+      localStorage.setItem('address', JSON.stringify(ps))
+    })
+  }
+}
+
+const mutations = {
+  setNote (state, note) {
+    state.note = note
+  },
+  setNode (state, node) {
+    state.node = node
+  },
+  setDisplaySuccess (state, displaySuccess) {
+    state.displaySuccess = displaySuccess
+  },
+  setDisplayConfirmation (state, displayConfirmation) {
+    state.displayConfirmation = displayConfirmation
+  },
+  setIsOwnCategory (state, isOwnCategory) {
+    state.isOwnCategory = isOwnCategory
+  },
+  setIsPopup (state, isPopup) {
+    state.isPopup = isPopup
+  },
+  setIsNote (state, isNote) {
+    state.isNote = isNote
+  },
+  setCoords (state, pos) {
+    state.lat = pos.lat
+    state.lon = pos.lng
+  },
+  setInfoMap (state, infoMap) {
+    state.infoMap = infoMap
+  },
+  setInfoText (state, infoText) {
+    state.infoText = infoText
+  },
+  setAddress (state, address) {
+    state.address = address
+  },
+  setDetails (state, details) {
+    state.details = details
+  },
+  setOsmId (state, id) {
+    state.osmId = id
+  }
+}
+
+const getters = {
+  lat (state) {
+    return state.lat
+  },
+  lon (state) {
+    return state.lon
+  },
+  details (state) {
+    return state.details
+  },
+  address (state) {
+    return state.address
+  },
+  note (state) {
+    return state.note
+  },
+  node (state) {
+    return state.node
+  },
+  displaySuccess (state) {
+    return state.displaySuccess
+  },
+  displayConfirmation (state) {
+    return state.displayConfirmation
+  },
+  isOwnCategory (state) {
+    return state.isOwnCategory
+  },
+  isPopup (state) {
+    return state.isPopup
+  },
+  isNote (state) {
+    return state.isNote
+  },
+  tags (state) {
+    return state.tags
+  },
+  infoText (state) {
+    return state.infoText
+  },
+  infoMap (state) {
+    return state.infoMap
+  },
+  isLoading (state) {
+    return state.isLoading
+  },
+  osmId (state) {
+    return state.osmId
+  }
+}
+
+export default {
+  state,
+  actions,
+  mutations,
+  getters
+}
+
+function constructNote () {
+  let text = '#OSMyBiz \n \n'
 
   if (state.address.length !== 0) {
     let address = '';
@@ -69,8 +220,8 @@ function constructNote() {
     text += `Address: ${address}\n`;
   }
   if (state.details.category.text.length !== 0) {
-    const category = state.details.category.value.split('/');
-    text += `Category: ${category[0]}:${category[1]}\n`;
+    const category = state.details.category.value.split('/')
+    text += 'Category: ' + category[0] + ':' + category[1] + '\n'
   }
   if (state.details.name.length !== 0) {
     text += `Name: ${state.details.name}\n`;
@@ -110,9 +261,9 @@ function constructNote() {
   };
 }
 
-function constructDisplayNote(note) {
-  const address = note.text.split('Address: ')[1].split('\n')[0];
-  const name = note.text.split('Name: ')[1].split('\n')[0];
+function constructDisplayNote (note) {
+  const address = note.text.split('Address: ')[1].split('\n')[0]
+  const name = note.text.split('Name: ')[1].split('\n')[0]
   note.text = {
     address,
     name,
@@ -140,15 +291,15 @@ export function clearDetails() {
   };
 }
 
-export function loadTags() {
-  const tags = getLanguageTags();
-  const options = [];
-  Object.keys(tags).forEach((key) => {
-    const fields = [];
-    tags[key].fields.forEach((field) => {
+export function loadTags () {
+  const tags = getLanguageTags()
+  let options = []
+  Object.keys(tags).forEach(function (key) {
+    let fields = []
+    tags[key].fields.forEach(function (field) {
       if (field.options) {
-        const fieldOptions = [];
-        Object.keys(field.options).forEach((option) => {
+        let fieldOptions = []
+        Object.keys(field.options).forEach(function (option) {
           fieldOptions.push({
             key: option,
             text: field.options[option],
@@ -159,8 +310,8 @@ export function loadTags() {
           label: field.label,
           type: field.type,
           options: fieldOptions,
-          value: '',
-        });
+          value: ''
+        })
       } else {
         fields.push({
           key: field.key,
@@ -355,4 +506,13 @@ export function showPopup(key) {
 
 export function hidePopup() {
   state.isPopup = false;
+}
+
+export function showPopup (key) {
+  state.infoText = state.infoMap.get(key)
+  state.isPopup = true
+}
+
+export function hidePopup () {
+  state.isPopup = false
 }

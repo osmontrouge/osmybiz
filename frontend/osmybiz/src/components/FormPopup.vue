@@ -11,14 +11,14 @@
 
   export default {
     name: 'form-popup',
-    mounted() {
-      const popup = document.getElementById('popup');
-      window.onmousemove = (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        popup.style.top = `${y + 10 + window.scrollY}px`;
-        popup.style.left = `${x + 10}px`;
-      };
+    mounted () {
+      let popup = document.getElementById('popup')
+      window.onmousemove = function (e) {
+        const x = e.clientX
+        const y = e.clientY
+        popup.style.top = (y + 10 + window.scrollY) + 'px'
+        popup.style.left = (x + 10) + 'px'
+      }
     },
     computed: {
       ...mapGetters([
