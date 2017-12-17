@@ -13,11 +13,11 @@ const state = {
 const actions = {
   checkDuplicateNode({ commit }) {
     return new Promise((resolve) => {
-      if (detail.s.details.category.value === 0) {
+      if (detail.state.details.category.value === 0) {
         resolve(false);
         commit('setIsDuplicate', false);
       } else {
-        surroundingQueryNode(detail.s.details, detail.s.lat, detail.s.lon)
+        surroundingQueryNode(detail.state.details, detail.state.lat, detail.state.lon)
           .then((ps) => {
             resolve(ps);
             commit('setIsDuplicate', ps);

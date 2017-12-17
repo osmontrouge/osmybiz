@@ -49,6 +49,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import { showPopup, hidePopup } from '../store/detail';
 
+
   Vue.use(VeeValidate);
 
   export default {
@@ -80,9 +81,6 @@
       },
       hide() {
         hidePopup();
-      },
-      onSelect(item) {
-        this.details.category = item;
       },
     },
     components: {

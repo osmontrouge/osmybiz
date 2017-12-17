@@ -356,3 +356,4 @@ export function showPopup(key) {
 export function hidePopup() {
   state.isPopup = false;
 }
+

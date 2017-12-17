@@ -1,10 +1,10 @@
-import axios from 'axios';
 import osmAuth from 'osm-auth';
 import xml2json from 'jquery-xml2json';
+import axios from 'axios';
 import { osmUrl, osmApiLevel, oauthKey, oauthSecret } from '../config/config';
 import { setError } from '../store/error';
 import { get } from '../util/translate';
-import util from '../util/osmApiUtils';
+import util from './../util/osmApiUtils';
 
 const createNotePath = `${osmApiLevel}notes.json`;
 const createChangesetPath = `${osmApiLevel}changeset/create`;
@@ -61,18 +61,6 @@ export function loadUser() {
   });
 }
 
-function closeChangeset(changeSetId) {
-  auth.xhr(
-    {
-      method: 'PUT',
-      path: `${closeChangesetPath + changeSetId}/close`,
-    }, (err) => {
-    if (err) {
-      setError(get().locale.error.osm.load);
-    }
-  });
-}
-
 // temporary fix to redirect to live api, because dev environment is currentliy borken
 function getNode2(nodeId) {
   return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then((res) => {
@@ -108,14 +96,25 @@ export function getNode(nodeId) {
   });
 }
 
+function closeChangeset(changesetId) {
+  auth.xhr(
+    {
+      method: 'PUT',
+      path: `${closeChangesetPath + changesetId}/close`,
+    }, (err) => {
+    if (err) {
+      setError(get().locale.error.osm.load);
+    }
+  });
+}
 
-function uploadChangeset(node, changeSetId) {
-  const upload = util.constructUpload(node, changeSetId);
+function uploadChangeset(node, changesetId) {
+  const upload = util.constructUpload(node, changesetId);
   return new Promise((resolve) => {
     auth.xhr(
       {
         method: 'POST',
-        path: `${uploadChangesetPath + changeSetId}/upload`,
+        path: `${uploadChangesetPath + changesetId}/upload`,
         content: upload,
         options: {
           header: {
@@ -127,11 +126,12 @@ function uploadChangeset(node, changeSetId) {
         setError(get().locale.error.osm.load);
         resolve(null);
       }
-      closeChangeset();
+      closeChangeset(changesetId);
       resolve(getNode(xml2json(response)['#document'].diffResult.node.$.new_id));
     });
   });
 }
+
 
 export function postNode(node) {
   const create =
@@ -152,8 +152,7 @@ export function postNode(node) {
           header: {
             'Content-Type': 'text/xml',
           },
-        },
-      }, (err, changeSetId) => {
+        } }, (err, changeSetId) => {
       if (err) {
         setError(get().locale.error.osm.postNode);
       }
