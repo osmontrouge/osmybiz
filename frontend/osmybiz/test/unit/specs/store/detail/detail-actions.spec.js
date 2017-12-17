@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/import/no-extraneous-dependencies,import/no-webpack-loader-syntax
+// eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
 const actionsInjector = require('inject-loader!../../../../../src/store/detail');
 
 const actions = actionsInjector({
