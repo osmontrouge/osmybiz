@@ -35,6 +35,9 @@
   import { mapGetters, mapMutations } from 'vuex';
 
   export default {
+    mounted() {
+      this.setShowHelp(true);
+    },
     methods: {
       ...mapMutations(['setShowHelp']),
       toggle() {

@@ -13,8 +13,8 @@ const state = {
 
   businesses: [],
   mode: 'tiles',
-  showHelp: true,
-  showLoginHelp: true,
+  showHelp: false,
+  showLoginHelp: false,
 };
 
 const queryDebounceMs = 400;

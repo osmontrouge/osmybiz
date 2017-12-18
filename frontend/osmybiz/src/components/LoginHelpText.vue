@@ -26,6 +26,9 @@
   import { mapGetters, mapMutations } from 'vuex';
 
   export default {
+    mounted() {
+      this.setShowLoginHelp(true);
+    },
     methods: {
       ...mapMutations(['setShowLoginHelp']),
       toggle() {
