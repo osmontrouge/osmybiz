@@ -1,8 +1,7 @@
 import * as _ from 'lodash';
 import { latLng } from 'leaflet';
-import { initialPosition, initialZoom } from '../config/config';
+import { initialPosition, initialZoom, LatLngRoundingAccuracy } from '../config/config';
 import { routes } from '../router';
-import constants from './../constants';
 
 function fallBackPosition() {
   return {
@@ -35,10 +34,10 @@ function storePosition(cords, zoom) {
 export function storeViewPort(bbox, zoom, $router) {
 // eslint-disable-next-line no-underscore-dangle
   const lat = ((bbox._northEast.lat + bbox._southWest.lat) / 2)
-    .toFixed(constants.LatLngRoundingAccuracy);
+    .toFixed(LatLngRoundingAccuracy);
 // eslint-disable-next-line no-underscore-dangle
   const lng = ((bbox._northEast.lng + bbox._southWest.lng) / 2)
-    .toFixed(constants.LatLngRoundingAccuracy);
+    .toFixed(LatLngRoundingAccuracy);
 
   storePosition(latLng(lat, lng), zoom);
 

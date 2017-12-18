@@ -6,6 +6,8 @@ export const mapBoxToken = 'pk.eyJ1IjoibXRoaSIsImEiOiJjajlzZHJqZGc2bGRxMnhxbTd0b
 export const initialPosition = latLng(46.87897, 8.23975); // aprox center of switzerland
 export const initialZoom = 8;
 
+export const LatLngRoundingAccuracy = 5;
+
 // state for osmApi (dev oder prod)
 const state = 'dev';
 
