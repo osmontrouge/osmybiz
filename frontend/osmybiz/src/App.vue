@@ -26,12 +26,6 @@
     en,
   });
 
-  /*
-  const test = [ {text: 'Banane'}, {text: 'Apfel'}, {text: 'Zopf'} ];
-  test.sort((a, b) => a.text > b.text);
-  console.log(test);
-  */
-
   export default {
     name: 'app',
     mounted() {
