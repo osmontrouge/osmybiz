@@ -19,12 +19,12 @@
           <span>{{user.name}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()">
+        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()" :title="t('header').messagetitle">
           <icon name="envelope"></icon>
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()">
+        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()" :title="t('header').updatestitle">
           <icon name="bell"></icon>
           <span class="unread" v-if="updateCount > 0">{{updateCount}}</span>
         </div>

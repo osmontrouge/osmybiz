@@ -1,6 +1,8 @@
 {
   "header": {
-    "about": "Über OSMyBiz"
+    "about": "Über OSMyBiz",
+    "messagetitle": "Nachrichten von OpenStreetMap",
+    "updatestitle": "Kartenänderungen von editierten Unternehmen"
   },
   "landing": {
     "search": "Suchen...",

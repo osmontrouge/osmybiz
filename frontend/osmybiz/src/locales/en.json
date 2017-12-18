@@ -1,6 +1,8 @@
 {
   "header": {
-    "about": "About OSMyBiz"
+    "about": "About OSMyBiz",
+    "messagetitle": "Messages from OpenStreetMap",
+    "updatestitle": "Updates of edited businesses"
   },
   "landing": {
     "search": "Search...",
