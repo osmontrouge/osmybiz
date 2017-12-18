@@ -35,7 +35,7 @@
     },
     "loginhelp": {
       "title": "Information",
-      "section1": "To make changes on the map you have to be logged in with an OpenStreetMap-Login.",
+      "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap-Login.",
       "section2": "But in this view you can already peer, how the website works."
     }
   },
@@ -119,12 +119,12 @@
       "node": {
         "title": "Already existing business",
         "section1": "At this position is already a business with exact same name and category",
-        "section2": "You have the possibility though to edit the already existing informations with a left click on the business."
+        "section2": "You have the possibility to edit the already existing informations with a left click on the business on the map."
       },
       "note": {
         "title": "Already existing changes",
         "section1": "For this business there already exists a change, which isn't processed yet.",
-        "section2": "You have the possibility though to leave a comment directly in OpenStreetMap:",
+        "section2": "You have the possibility to leave a comment directly in OpenStreetMap:",
         "comment": "Leave comment"
       }
     }

@@ -29,14 +29,14 @@
     },
     "help": {
       "title": "Hilfe",
-      "section1": "Zommen Sie mit Doppelklick oder mit dem '+' oben links in die Karte hinein oder suchen Sie ihre Adresse mittels Suchfeld oben in der Mitte.",
+      "section1": "Zoomen Sie mit Doppelklick oder mit dem '+' oben links in die Karte hinein oder suchen Sie ihre Adresse mittels Suchfeld oben in der Mitte.",
       "section2": "Mit einem Linksklick auf ein bestehendes Unternehmen (blauer Kreis) können Sie dieses bearbeiten.",
       "section3": "Mit einem Rechtsklick auf eine beliebige Position in der Karte können Sie ein neues Unternehmen erfassen."
     },
     "loginhelp": {
       "title": "Information",
-      "section1": "Um Änderungen in der Karte vorzunehmen müssen Sie sich mit einem OpenStreetMap-Login anmelden.",
-      "section2": "In dieser Ansicht können Sie aber bereits schauen, wie das ganze in Etwa funktioniert."
+      "section1": "Um Änderungen in der Karte vorzunehmen, müssen Sie sich mit einem OpenStreetMap-Login anmelden.",
+      "section2": "In dieser Ansicht können Sie aber bereits schauen, wie das ganze in etwa funktioniert."
     }
   },
   "detail": {
@@ -118,12 +118,12 @@
       "node": {
         "title": "Bereits bestehendes Unternehmen",
         "section1": "An dieser Stelle besteht bereits ein Unternehmen mit demselben Namen und Kategorie.",
-        "section2": "Sie haben jedoch die Möglichkeit mit einem Linksklick auf das Unternehmen, die bereits vorhandenen Informationen anzupassen."
+        "section2": "Sie haben die Möglichkeit mit einem Linksklick auf das Unternehmen auf der Karte, die bereits vorhandenen Informationen anzupassen."
       },
       "note": {
         "title": "Bereits bestehende Änderung",
         "section1": "Für dieses Unternehmen wurden bereits Änderungen vorgenommen, die noch nicht abgearbeitet wurden.",
-        "section2": "Sie haben jedoch die Möglichkeit über OpenStreetMap einen Kommentar dazu zu hinterlassen:",
+        "section2": "Sie haben die Möglichkeit über OpenStreetMap einen Kommentar dazu zu hinterlassen:",
         "comment": "Kommentar hinterlassen"
       }
     }
