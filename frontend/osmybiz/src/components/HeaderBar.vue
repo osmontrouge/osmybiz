@@ -104,7 +104,9 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   .header {
     position: fixed;
@@ -124,7 +126,7 @@
     font-size: 24px;
     font-weight:bold;
     margin: 0 24px;
-    color: #7ebc6f;
+    color: $secondary-color;
   }
 
   .buttons {

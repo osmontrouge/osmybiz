@@ -1,6 +1,6 @@
 <template>
 
-  <div class="confirm-dialog" v-if="isConfirm">
+  <div class="dialog" id="confirm-dialog" v-if="isConfirm">
     <div class="close-button" @click="toggle">
       <icon name="window-close"></icon>
     </div>
@@ -56,35 +56,13 @@
 </script>
 
 <style scoped>
-  .confirm-dialog {
-    position: fixed;
-    z-index: 100;
+
+  #confirm-dialog {
     width: 500px;
     margin-left: -250px;
     top: 45%;
     left: 50%;
-    background-color: white;
     border: 2px solid red;
-    padding: 12px;
-    font-size: 16px;
-    overflow-y: auto;
-  }
-
-  .section {
-    margin-bottom: 6px;
-    text-align: left;
-  }
-
-  .dialog-title {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-
-  .close-button {
-    float: right;
-    cursor: pointer;
   }
 
   .confirm-buttons {
@@ -96,4 +74,5 @@
   .confirm-button {
     width: 30%;
   }
+
 </style>

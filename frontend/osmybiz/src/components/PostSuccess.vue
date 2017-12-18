@@ -1,7 +1,7 @@
 <template>
 
-  <div class="success-wrapper" v-if="displaySuccess">
-    <div class="success-button" @click="toggleSuccess">
+  <div class="dialog" id="success-dialog" v-if="displaySuccess">
+    <div class="close-button" @click="toggleSuccess">
       <icon name="window-close"></icon>
     </div>
 
@@ -98,34 +98,15 @@
 </script>
 
 <style scoped>
-  .success-wrapper {
-    position: fixed;
-    z-index: 100;
+
+  #success-dialog {
     width: 500px;
     margin-left: -250px;
     bottom: 65px;
     left: 50%;
-    background-color: white;
     border: 2px solid #7ebc6f;
     padding: 12px;
     font-size: 16px;
-    overflow-y: auto;
   }
 
-  .section {
-    margin-bottom: 6px;
-    text-align: left;
-  }
-
-  .dialog-title {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-
-  .success-button {
-    float: right;
-    cursor: pointer;
-  }
 </style>
