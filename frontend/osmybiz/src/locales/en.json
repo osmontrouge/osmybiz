@@ -1,15 +1,6 @@
 {
-  "infoTexts": {
-    "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
-    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
-    "name": "Write the name of your business in this field. e.g. Migros",
-    "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
-    "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
-    "email": "Here comes the email address under which you, respectively your business, are reachable.",
-    "website": "In this field is the website of your business.",
-    "wheelchair": "Tick the box if your business is wheelchair accessible respectively how accessible it is.",
-    "description": "In this field you can include extra informations about your business. e.g. Our bakery is also a mail-administration center",
-    "note": "A note is used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement."
+  "header": {
+    "about": "About OSMyBiz"
   },
   "landing": {
     "search": "Search...",
@@ -99,6 +90,18 @@
       "reset": "Reset",
       "save": "Save"
     }
+  },
+  "infoTexts": {
+    "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
+    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
+    "name": "Write the name of your business in this field. e.g. Migros",
+    "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
+    "email": "Here comes the email address under which you, respectively your business, are reachable.",
+    "website": "In this field is the website of your business.",
+    "wheelchair": "Tick the box if your business is wheelchair accessible respectively how accessible it is.",
+    "description": "In this field you can include extra informations about your business. e.g. Our bakery is also a mail-administration center",
+    "note": "A note is used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement."
   },
   "popups": {
     "popuptitle": "New Business",

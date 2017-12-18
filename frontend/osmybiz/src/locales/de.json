@@ -1,15 +1,6 @@
 {
-  "infoTexts": {
-    "category": "Wählen Sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. Durchsuchen Sie die Daten nach einer passenden Kategorie und sollten Sie nicht fündig werden, drücken Sie \"Eigene Kategorie\" und geben eine eigene Kategorie ein.",
-    "address": "Die Adresse wird automatisch von dem Punkt geladen, den Sie ausgewählt haben. Nehmen Sie allfällige Änderungen vor. Das Feld \"Platz\" darf nur dann ausgefüllt werden, wenn für das Unternehmen sonst keine Adresse existiert.",
-    "name": "Schreiben Sie den Namen Ihres Unternehmens in dieses Feld. z.B. Migros",
-    "opening_hours": "In dieses Feld kommen die Öffnungszeiten Ihres Unternehmens. z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
-    "phone": "Hier kommt die Telefonnummer unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
-    "email": "Hier kommt die E-Mailadresse unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
-    "website": "In dieses Feld kommt die Webseite von Ihrem Unternehmen.",
-    "wheelchair": "Hier ein Häkchen setzen, wenn Ihr Unternehmen rollstuhlgängig ist bzw. wie rollstuhlgängig es ist.",
-    "description": "In diesem Feld können Sie zusätzliche Informationen über Ihr Unternehmen erfassen. z.B. Unsere Bäckerei ist auch eine Poststelle.",
-    "note": "Eine Notiz dient dazu, Informationen zum Element festzuhalten, die nicht offensichlich sind, die die Intention des Autors genauer beschreiben, oder die Hinweise zur weiteren Bearbeitung geben."
+  "header": {
+    "about": "Über OSMyBiz"
   },
   "landing": {
     "search": "Suchen...",
@@ -98,6 +89,18 @@
       "reset": "Zurücksetzen",
       "save": "Speichern"
     }
+  },
+  "infoTexts": {
+    "category": "Wählen Sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. Durchsuchen Sie die Daten nach einer passenden Kategorie und sollten Sie nicht fündig werden, drücken Sie \"Eigene Kategorie\" und geben eine eigene Kategorie ein.",
+    "address": "Die Adresse wird automatisch von dem Punkt geladen, den Sie ausgewählt haben. Nehmen Sie allfällige Änderungen vor. Das Feld \"Platz\" darf nur dann ausgefüllt werden, wenn für das Unternehmen sonst keine Adresse existiert.",
+    "name": "Schreiben Sie den Namen Ihres Unternehmens in dieses Feld. z.B. Migros",
+    "opening_hours": "In dieses Feld kommen die Öffnungszeiten Ihres Unternehmens. z.B. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Hier kommt die Telefonnummer unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
+    "email": "Hier kommt die E-Mailadresse unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
+    "website": "In dieses Feld kommt die Webseite von Ihrem Unternehmen.",
+    "wheelchair": "Hier ein Häkchen setzen, wenn Ihr Unternehmen rollstuhlgängig ist bzw. wie rollstuhlgängig es ist.",
+    "description": "In diesem Feld können Sie zusätzliche Informationen über Ihr Unternehmen erfassen. z.B. Unsere Bäckerei ist auch eine Poststelle.",
+    "note": "Eine Notiz dient dazu, Informationen zum Element festzuhalten, die nicht offensichlich sind, die die Intention des Autors genauer beschreiben, oder die Hinweise zur weiteren Bearbeitung geben."
   },
   "popups": {
     "popuptitle": "Neues Unternehmen",

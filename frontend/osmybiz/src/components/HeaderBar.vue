@@ -4,6 +4,12 @@
         OpenStreetMap My Business
       </div>
       <div class="buttons">
+        <div class="about">
+          <a href="http://wiki.openstreetmap.org/wiki/OSMyBiz" target="_blank">
+            {{t('header').about}}
+          </a>
+        </div>
+
         <select v-on:change="onSelect">
           <option value="de">Deutsch</option>
           <option value="en">English</option>
@@ -126,6 +132,16 @@
     flex-direction: row;
     margin: 0 24px;
     align-items: baseline;
+  }
+
+  .about {
+    font-size: 14px;
+    font-weight:bold;
+    margin: 0 10px;
+  }
+
+  .about a {
+    color: #7ebc6f;
   }
 
   .messages {

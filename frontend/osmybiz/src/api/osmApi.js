@@ -194,7 +194,6 @@ export function getNotes(lat, lng) {
   const bottom = lat - distance;
   const right = lng + (distance * Math.cos(lat));
   const top = lat + distance;
-  console.log(left, bottom, right, top);
   return new Promise((resolve) => {
     auth.xhr(
       {
