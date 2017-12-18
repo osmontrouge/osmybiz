@@ -1,31 +1,31 @@
-import {getLanguageTags} from '../store/locale'
+import { getLanguageTags } from '../store/locale';
 
-let _$translate
+let $translate;
 
-export function init ($translate) {
-  _$translate = $translate
+export function init(translate) {
+  $translate = translate;
 }
 
-export function get () {
-  return _$translate
+export function get() {
+  return $translate;
 }
 
-export function getTagName (tag) {
-  const tags = getLanguageTags()
-  return tags[tag] || tag
+export function getTagName(tag) {
+  const tags = getLanguageTags();
+  return tags[tag] || tag;
 }
 
-export function getInfoTexts () {
-  const infoMap = new Map()
-  infoMap.set('category', _$translate.locale.infoTexts.category)
-  infoMap.set('address', _$translate.locale.infoTexts.address)
-  infoMap.set('name', _$translate.locale.infoTexts.name)
-  infoMap.set('opening_hours', _$translate.locale.infoTexts.opening_hours)
-  infoMap.set('phone', _$translate.locale.infoTexts.phone)
-  infoMap.set('email', _$translate.locale.infoTexts.email)
-  infoMap.set('website', _$translate.locale.infoTexts.website)
-  infoMap.set('wheelchair', _$translate.locale.infoTexts.wheelchair)
-  infoMap.set('description', _$translate.locale.infoTexts.description)
-  infoMap.set('note', _$translate.locale.infoTexts.note)
-  return infoMap
+export function getInfoTexts() {
+  const infoMap = new Map();
+  infoMap.set('category', $translate.locale.infoTexts.category);
+  infoMap.set('address', $translate.locale.infoTexts.address);
+  infoMap.set('name', $translate.locale.infoTexts.name);
+  infoMap.set('opening_hours', $translate.locale.infoTexts.opening_hours);
+  infoMap.set('phone', $translate.locale.infoTexts.phone);
+  infoMap.set('email', $translate.locale.infoTexts.email);
+  infoMap.set('website', $translate.locale.infoTexts.website);
+  infoMap.set('wheelchair', $translate.locale.infoTexts.wheelchair);
+  infoMap.set('description', $translate.locale.infoTexts.description);
+  infoMap.set('note', $translate.locale.infoTexts.note);
+  return infoMap;
 }

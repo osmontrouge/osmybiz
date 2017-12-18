@@ -1,25 +1,27 @@
-import {addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe} from './../api/osmybizApi'
-import {getNode} from './../api/osmApi'
-import {getUpdate} from './../util/updateUtil'
-import * as _ from 'lodash'
+/* eslint-disable no-param-reassign */
+import * as _ from 'lodash';
+import { addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe } from './../api/osmybizApi';
+import { getNode } from './../api/osmApi';
+import util from './../util/updateUtil';
+
 
 const state = {
   updates: [],
   nodes: [],
-  showUpdates: false
-}
+  showUpdates: false,
+};
 
 const actions = {
-  loadUpdates ({commit}, user) {
+  loadUpdates({ commit }, user) {
     addOrUpdateUser(user.id, user.name).then(() => {
-      fetchnodes(user.id).then(ns => {
-        commit('setNodes', [])
+      fetchnodes(user.id).then((ns) => {
+        commit('setNodes', []);
 
-        ns.filter(n => n.recieveUpdates).forEach(n => {
-          getNode(n.osmId).then(node => {
-            const update = getUpdate(n, node)
+        ns.filter(n => n.recieveUpdates).forEach((n) => {
+          getNode(n.osmId).then((node) => {
+            const update = util.getUpdate(n, node);
             if (_.isObject(update)) {
-              commit('pushUpdate', update)
+              commit('pushUpdate', update);
             }
 
             if (_.isObject(node)) {
@@ -28,83 +30,82 @@ const actions = {
                 lat: n.lat,
                 lng: n.lng,
                 tags: node.tags,
-                mine: true
-              }
-              commit('pushNode', ownedNode)
+                mine: true,
+              };
+              commit('pushNode', ownedNode);
             }
-          })
-        })
-      })
-    }, (err) => {
-      console.log(err)
-    })
+          });
+        });
+      });
+    }, () => {
+    });
   },
 
-  confirmUpdate ({commit}, {user, update}) {
-    let promise
+  confirmUpdate({ commit }, { user, update }) {
+    let promise;
     if (update.kind === 'update') {
       promise = addOrUpdateNode(user.id, {
         osmId: update.id,
         version: update.newVersion,
         lat: update.coords.lat,
         lng: update.coords.lng,
-        recieveUpdates: true
-      })
+        recieveUpdates: true,
+      });
     } else {
-      promise = deleteNode(user.id, update.id)
+      promise = deleteNode(user.id, update.id);
     }
     promise.then(() => {
-      commit('removeUpdate', update)
-    })
+      commit('removeUpdate', update);
+    });
   },
 
-  ignoreFutureUpdates ({commit}, {update, user}) {
+  ignoreFutureUpdates({ commit }, { update, user }) {
     unsubscribe(user.id, update.id).then(() => {
-      commit('removeUpdate', update)
-    })
-  }
-}
+      commit('removeUpdate', update);
+    });
+  },
+};
 
 const mutations = {
-  setNodes (state, nodes) {
-    state.nodes = nodes
+  setNodes(s, nodes) {
+    s.nodes = nodes;
   },
-  pushUpdate (state, update) {
-    state.updates.push(update)
+  pushUpdate(s, update) {
+    s.updates.push(update);
   },
-  removeUpdate (state, update) {
-    const i = _.findIndex(state.updates, u => u.id === update.id)
+  removeUpdate(s, update) {
+    const i = _.findIndex(s.updates, u => u.id === update.id);
 
     if (i >= 0) {
-      state.updates.splice(i, 1)
+      s.updates.splice(i, 1);
     }
   },
-  toggleUpdates (state) {
-    state.showUpdates = !state.showUpdates
+  toggleUpdates(s) {
+    s.showUpdates = !s.showUpdates;
   },
-  pushNode (state, node) {
-    state.nodes.push(node)
-  }
-}
+  pushNode(s, node) {
+    s.nodes.push(node);
+  },
+};
 
 const getters = {
-  updates (state) {
-    return state.updates
+  updates(s) {
+    return s.updates;
   },
-  showUpdates (state) {
-    return state.showUpdates
+  showUpdates(s) {
+    return s.showUpdates;
   },
-  updateCount (state) {
-    return state.updates.length
+  updateCount(s) {
+    return s.updates.length;
   },
-  ownedNodes (state) {
-    return state.nodes
-  }
-}
+  ownedNodes(s) {
+    return s.nodes;
+  },
+};
 
 export default {
   state,
   actions,
   mutations,
-  getters
-}
+  getters,
+};

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import { mapGetters, mapActions, mapMutations } from 'vuex';
 
   export default {
     methods: {
@@ -39,28 +39,28 @@
         'setSearch',
         'selectPoint',
         'setMapPosition',
-        'resetSearch'
+        'resetSearch',
       ]),
-      pick (point) {
-        this.setMapPosition(point.coords)
-        this.selectPoint(point)
-      }
+      pick(point) {
+        this.setMapPosition(point.coords);
+        this.selectPoint(point);
+      },
     },
     computed: {
       ...mapGetters([
         'searchText',
-        'suggestions'
+        'suggestions',
       ]),
       search: {
-        get () { return this.searchText },
-        set (value) {
-          this.setSearch(value)
-          this.queryNominatim(value)
-        }
-      }
+        get() { return this.searchText; },
+        set(value) {
+          this.setSearch(value);
+          this.queryNominatim(value);
+        },
+      },
     },
-    name: 'search-bar'
-  }
+    name: 'search-bar',
+  };
 </script>
 
 <style>

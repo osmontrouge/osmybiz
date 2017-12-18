@@ -23,20 +23,20 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
-  import ExtraInputField from '../components/ExtraInputField'
+  import { mapGetters } from 'vuex';
+  import ExtraInputField from '../components/ExtraInputField.vue';
 
   export default {
     name: 'extra-info-fields',
     components: {
-      ExtraInputField
+      ExtraInputField,
     },
     computed: {
       ...mapGetters([
-        'details'
-      ])
-    }
-  }
+        'details',
+      ]),
+    },
+  };
 </script>
 
 <style scoped>

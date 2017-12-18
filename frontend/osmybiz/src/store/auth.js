@@ -1,53 +1,55 @@
-import {login, setOauthToken, loadUser, logout} from './../api/osmApi'
-import * as _ from 'lodash'
+/* eslint-disable no-param-reassign */
+import * as _ from 'lodash';
+import { login, setOauthToken, loadUser, logout } from './../api/osmApi';
+
 
 const state = {
   isLoggedIn: false,
-  user: null
-}
+  user: null,
+};
 
 const actions = {
-  authenticate () {
-    login()
+  authenticate() {
+    login();
   },
-  setToken (state, token) {
-    return setOauthToken(token)
+  setToken(token) {
+    return setOauthToken(token);
   },
-  loadUser ({commit}) {
-    loadUser().then(user => {
-      commit('setUser', user)
-    })
-  }
-}
+  loadUser({ commit }) {
+    loadUser().then((user) => {
+      commit('setUser', user);
+    });
+  },
+};
 
 const mutations = {
-  setUser (state, user) {
+  setUser(s, user) {
     if (_.isObject(user)) {
-      state.user = user
-      state.isLoggedIn = true
+      s.user = user;
+      s.isLoggedIn = true;
     } else {
-      state.isLoggedIn = false
+      s.isLoggedIn = false;
     }
   },
-  logout (state) {
-    logout()
-    state.user = null
-    state.isLoggedIn = false
-  }
-}
+  logout(s) {
+    logout();
+    s.user = null;
+    s.isLoggedIn = false;
+  },
+};
 
 const getters = {
-  user (state) {
-    return state.user
+  user(s) {
+    return s.user;
   },
-  isLoggedIn (state) {
-    return state.isLoggedIn
-  }
-}
+  isLoggedIn(s) {
+    return s.isLoggedIn;
+  },
+};
 
 export default {
   state,
   actions,
   mutations,
-  getters
-}
+  getters,
+};

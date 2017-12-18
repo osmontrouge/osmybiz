@@ -1,157 +1,156 @@
-import * as L from 'leaflet'
-import {mapBoxToken} from '../config/config'
-import {reverseQuery} from './../api/nominatimApi'
-import * as $ from 'jquery'
-import {get, getTagName} from './translate'
-import {getNodeCategoryKey} from './overPassNodeUtils'
-import {osmUrl} from './../config/config'
+import * as L from 'leaflet';
+import * as $ from 'jquery';
+import { mapBoxToken, osmUrl } from '../config/config';
+import { reverseQuery } from './../api/nominatimApi';
+import { get, getTagName } from './translate';
+import { getNodeCategoryKey } from './overPassNodeUtils';
 
-const mapbox = 'https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg70?access_token=' + mapBoxToken
-const osm = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+const mapbox = `https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg70?access_token=${mapBoxToken}`;
+const osm = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
 
 export const tileUrls = {
   tiles: osm,
-  satellite: mapbox
+  satellite: mapbox,
+};
+
+export function getTileUrl(mode) {
+  return tileUrls[mode];
 }
 
-export function getTileUrl (mode) {
-  return tileUrls[mode]
+export function makeTileLayer(mode) {
+  return L.tileLayer(tileUrls[mode], {});
 }
 
-export function makeTileLayer (mode) {
-  return L.tileLayer(tileUrls[mode], {})
-}
-
-function printAddress (address) {
-  let out = ''
-  let hasData = false
+function printAddress(address) {
+  let out = '';
+  let hasData = false;
   if (address.street) {
-    hasData = true
-    out += address.street
+    hasData = true;
+    out += address.street;
     if (address.housenumber) {
-      out += ' ' + address.housenumber
+      out += ` ${address.housenumber}`;
     }
   }
   if (address.city) {
-    out += (hasData ? ', ' : '') + address.city
+    out += (hasData ? ', ' : '') + address.city;
   }
-  return out
+  return out;
 }
 
-function loadAddress (coords) {
-  return reverseQuery(coords.lat, coords.lng).then(address => {
-    return $(`<div class="popup-entry">${printAddress(address)}</div>`)
-  })
+function loadAddress(coords) {
+  return reverseQuery(coords.lat, coords.lng).then(address => $(`<div class="popup-entry">${printAddress(address)}</div>`));
 }
 
 const bizMarker = L.icon({
+// eslint-disable-next-line global-require
   iconUrl: require('../assets/biz-marker.png'),
-  iconSize: [32, 32]
-})
+  iconSize: [32, 32],
+});
 
 const highlightedMarker = L.icon({
+// eslint-disable-next-line global-require
   iconUrl: require('../assets/highlighted-marker.png'),
-  iconSize: [32, 32]
-})
+  iconSize: [32, 32],
+});
 
-function getBizCategory (b) {
-  const key = getNodeCategoryKey(b)
-  return getTagName(key)
+function getBizCategory(b) {
+  const key = getNodeCategoryKey(b);
+  return getTagName(key);
 }
 
-function getTitle (title) {
-  return $(`<div class="popup-title">${title}</div>`)
+function getTitle(title) {
+  return $(`<div class="popup-title">${title}</div>`);
 }
 
-function getWrapper () {
-  return $('<div class="popup-data"></div>')
+function getWrapper() {
+  return $('<div class="popup-data"></div>');
 }
 
-function getMapErrorLink (coords) {
+function getMapErrorLink(coords) {
   return $(`<div class="popup-link">${get().locale.popups.feedback}</div>`).click(() => {
-    const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`
-    window.open(url, '_blank')
-  })
+    const url = `${osmUrl}/note/new?lat=${coords.lat}&lon=${coords.lng}#map=19/${coords.lat}/${coords.lng}&layers=N`;
+    window.open(url, '_blank');
+  });
 }
 
-function getMapLink (coords) {
+function getMapLink(coords) {
   return $(`<div class="popup-link">${get().locale.popups.mapLink}</div>`).click(() => {
-    const url = `${osmUrl}/#map=19/${coords.lat}/${coords.lng}&layers=N`
-    window.open(url, '_blank')
-  })
+    const url = `${osmUrl}/#map=19/${coords.lat}/${coords.lng}&layers=N`;
+    window.open(url, '_blank');
+  });
 }
 
-function createButton (text, isLoggedIn, callback, arg) {
+function createButton(text, isLoggedIn, callback, arg) {
   const btn = $(`<button class="popup-btn">${text}</button>`).click(() => {
-    callback(arg)
-  })
+    callback(arg);
+  });
   if (!isLoggedIn) {
-    btn.attr('title', get().locale.popups.buttontitle)
-    btn.attr('disabled', 'disabled')
+    btn.attr('title', get().locale.popups.buttontitle);
+    btn.attr('disabled', 'disabled');
   }
-  return btn
+  return btn;
 }
 
-function constructNewBusinessPopup (coords, isloggedIn, clickedCallBack) {
-  return loadAddress(coords).then(address => {
-    const wrapper = getWrapper()
-    const title = getTitle(get().locale.popups.popuptitle)
-    const btn = createButton(get().locale.popups.create, isloggedIn, clickedCallBack, coords)
-    wrapper.append(title)
-    wrapper.append(address)
-    wrapper.append(btn)
-    wrapper.append(getMapLink(coords))
-    wrapper.append(getMapErrorLink(coords))
+function constructNewBusinessPopup(coords, isloggedIn, clickedCallBack) {
+  return loadAddress(coords).then((address) => {
+    const wrapper = getWrapper();
+    const title = getTitle(get().locale.popups.popuptitle);
+    const btn = createButton(get().locale.popups.create, isloggedIn, clickedCallBack, coords);
+    wrapper.append(title);
+    wrapper.append(address);
+    wrapper.append(btn);
+    wrapper.append(getMapLink(coords));
+    wrapper.append(getMapErrorLink(coords));
 
-    return wrapper[0]
-  })
+    return wrapper[0];
+  });
 }
 
-function constructExistingBusinessPopup (business, coords, isloggedIn, clickedCallBack, setIsNote) {
-  setIsNote(true)
-  return loadAddress(coords).then(address => {
-    const wrapper = getWrapper()
-    const cat = getBizCategory(business)
-    const name = business.tags['name'] || ''
-    const btn = createButton(get().locale.popups.edit, isloggedIn, clickedCallBack, business)
-    const title = getTitle(`${cat.name} ${name}`)
+function constructExistingBusinessPopup(business, coords, isloggedIn, clickedCallBack, setIsNote) {
+  setIsNote(true);
+  return loadAddress(coords).then((address) => {
+    const wrapper = getWrapper();
+    const cat = getBizCategory(business);
+    const name = business.tags.name || '';
+    const btn = createButton(get().locale.popups.edit, isloggedIn, clickedCallBack, business);
+    const title = getTitle(`${cat.name} ${name}`);
 
-    wrapper.append(title)
-    wrapper.append(address)
-    wrapper.append(btn)
-    wrapper.append(getMapLink(coords))
-    wrapper.append(getMapErrorLink(coords))
+    wrapper.append(title);
+    wrapper.append(address);
+    wrapper.append(btn);
+    wrapper.append(getMapLink(coords));
+    wrapper.append(getMapErrorLink(coords));
 
-    return wrapper[0]
-  })
+    return wrapper[0];
+  });
 }
 
-function createExistingBusinessPopup (map, coords, business, isloggedIn, clb, setIsNote) {
-  constructExistingBusinessPopup(business, coords, isloggedIn, clb, setIsNote).then(content => {
+function createExistingBusinessPopup(map, coords, business, isloggedIn, clb, setIsNote) {
+  constructExistingBusinessPopup(business, coords, isloggedIn, clb, setIsNote).then((content) => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)
-      .openOn(map)
-  })
+      .openOn(map);
+  });
 }
 
-export function createNewBusinessPopup (map, coords, isloggedIn, clb) {
-  constructNewBusinessPopup(coords, isloggedIn, clb).then(content => {
+export function createNewBusinessPopup(map, coords, isloggedIn, clb) {
+  constructNewBusinessPopup(coords, isloggedIn, clb).then((content) => {
     L.popup()
       .setLatLng(coords)
       .setContent(content)
-      .openOn(map)
-  })
+      .openOn(map);
+  });
 }
 
-export function createMarker (business, map, isloggedIn, callback, setIsNote) {
-  const coords = L.latLng(business.lat, business.lng)
-  const icon = business.mine ? highlightedMarker : bizMarker
+export function createMarker(business, map, isloggedIn, callback, setIsNote) {
+  const coords = L.latLng(business.lat, business.lng);
+  const icon = business.mine ? highlightedMarker : bizMarker;
   const m = L.marker(coords, {
-    icon: icon
-  })
+    icon,
+  });
   m.on('click', () => {
-    createExistingBusinessPopup(map, coords, business, isloggedIn, callback, setIsNote)
-  })
-  return m
+    createExistingBusinessPopup(map, coords, business, isloggedIn, callback, setIsNote);
+  });
+  return m;
 }

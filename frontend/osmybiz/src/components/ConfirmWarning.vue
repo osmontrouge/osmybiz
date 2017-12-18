@@ -26,33 +26,33 @@
 </template>
 
 <script>
-  import 'vue-awesome/icons'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {mapGetters, mapMutations} from 'vuex'
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     name: 'confirm-warning',
     computed: {
       ...mapGetters([
         'isConfirm',
-        'action'
-      ])
+        'action',
+      ]),
     },
     methods: {
       ...mapMutations([
-        'setIsConfirm'
+        'setIsConfirm',
       ]),
-      toggle () {
-        this.setIsConfirm(false)
+      toggle() {
+        this.setIsConfirm(false);
       },
-      confirm () {
-        this.action()
-      }
+      confirm() {
+        this.action();
+      },
     },
     components: {
-      Icon
-    }
-  }
+      Icon,
+    },
+  };
 </script>
 
 <style scoped>

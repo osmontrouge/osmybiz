@@ -1,6 +1,7 @@
-import {query} from './../api/nominatimApi'
-import * as _ from 'lodash'
-import {queryBox} from '../api/overpassApi'
+/* eslint-disable no-param-reassign */
+import * as _ from 'lodash';
+import { query } from './../api/nominatimApi';
+import { queryBox } from '../api/overpassApi';
 
 const state = {
   mapPosition: null,
@@ -13,132 +14,132 @@ const state = {
   businesses: [],
   mode: 'tiles',
   showHelp: true,
-  showLoginHelp: true
-}
+  showLoginHelp: true,
+};
 
-const queryDebounceMs = 400
-const queryMinLength = 3
-const requestThrottleMs = 1000
+const queryDebounceMs = 400;
+const queryMinLength = 3;
+const requestThrottleMs = 1000;
 
-const minZoomBusinesses = 18
+const minZoomBusinesses = 18;
 
-function q (commit, search) {
+function q(commit, search) {
   if (!_.isString(search) || search.length < queryMinLength) {
-    commit('setSuggestions', [])
+    commit('setSuggestions', []);
   } else {
-    query(search).then(results => {
-      commit('setSuggestions', results)
-    })
+    query(search).then((results) => {
+      commit('setSuggestions', results);
+    });
   }
 }
 
-function qb (commit, viewPort) {
+function qb(commit, viewPort) {
   if (viewPort.zoom < minZoomBusinesses) {
-    commit('setBusinesses', [])
+    commit('setBusinesses', []);
   } else {
-    queryBox(viewPort.boundingBox).then(res => {
-      commit('setBusinesses', res)
-    })
+    queryBox(viewPort.boundingBox).then((res) => {
+      commit('setBusinesses', res);
+    });
   }
 }
 
-function convertToBoundingBox (topRight, bottomLeft) {
+function convertToBoundingBox(topRight, bottomLeft) {
   return {
     south: bottomLeft.lat,
     west: bottomLeft.lng,
     north: topRight.lat,
-    east: topRight.lng
-  }
+    east: topRight.lng,
+  };
 }
 
-const queryFn = _.debounce(_.throttle(q, requestThrottleMs), queryDebounceMs)
+const queryFn = _.debounce(_.throttle(q, requestThrottleMs), queryDebounceMs);
 
-const queryBoxFn = _.debounce(qb, queryDebounceMs)
+const queryBoxFn = _.debounce(qb, queryDebounceMs);
 
 const actions = {
-  queryNominatim ({commit}, search) {
-    queryFn(commit, search)
+  queryNominatim({ commit }, search) {
+    queryFn(commit, search);
   },
-  queryOverpass ({commit}, viewPort) {
-    queryBoxFn(commit, viewPort)
-  }
-}
+  queryOverpass({ commit }, viewPort) {
+    queryBoxFn(commit, viewPort);
+  },
+};
 
 const mutations = {
-  setPosition (state, pos) {
-    state.position = pos
+  setPosition(s, pos) {
+    s.position = pos;
   },
-  setMapPosition (state, pos) {
-    state.mapPosition = pos
-    state.position = pos
+  setMapPosition(s, pos) {
+    s.mapPosition = pos;
+    s.position = pos;
   },
-  setSearch (state, search) {
-    state.search = search
+  setSearch(s, search) {
+    s.search = search;
   },
-  setSuggestions (state, suggestions) {
-    state.suggestions = suggestions
+  setSuggestions(s, suggestions) {
+    s.suggestions = suggestions;
   },
-  selectPoint (state, point) {
-    state.suggestions = []
-    state.search = point.name
+  selectPoint(s, point) {
+    s.suggestions = [];
+    s.search = point.name;
   },
-  resetSearch (state) {
-    state.search = ''
-    state.suggestions = []
+  resetSearch(s) {
+    s.search = '';
+    s.suggestions = [];
   },
-  setViewPort (state, data) {
-    state.viewPort = {
+  setViewPort(s, data) {
+    s.viewPort = {
       boundingBox: convertToBoundingBox(data.topRight, data.bottomLeft),
-      zoom: data.zoom
-    }
+      zoom: data.zoom,
+    };
   },
-  setBusinesses (state, businesses) {
-    state.businesses = businesses
+  setBusinesses(s, businesses) {
+    s.businesses = businesses;
   },
-  setMode (state, mode) {
-    state.mode = mode
+  setMode(s, mode) {
+    s.mode = mode;
   },
-  setShowHelp (state, showHelp) {
-    state.showHelp = showHelp
+  setShowHelp(s, showHelp) {
+    s.showHelp = showHelp;
   },
-  setShowLoginHelp (state, showLoginHelp) {
-    state.showLoginHelp = showLoginHelp
-  }
-}
+  setShowLoginHelp(s, showLoginHelp) {
+    s.showLoginHelp = showLoginHelp;
+  },
+};
 
 const getters = {
-  searchText (state) {
-    return state.search
+  searchText(s) {
+    return s.search;
   },
-  suggestions (state) {
-    return state.suggestions
+  suggestions(s) {
+    return s.suggestions;
   },
-  position (state) {
-    return state.position
+  position(s) {
+    return s.position;
   },
-  mapPosition (state) {
-    return state.mapPosition
+  mapPosition(s) {
+    return s.mapPosition;
   },
-  viewPort (state) {
-    return state.viewPort
+  viewPort(s) {
+    return s.viewPort;
   },
-  businesses (state) {
-    return state.businesses
+  businesses(s) {
+    return s.businesses;
   },
-  mode (state) {
-    return state.mode
+  mode(s) {
+    return s.mode;
   },
-  showHelp (state) {
-    return state.showHelp
+  showHelp(s) {
+    return s.showHelp;
   },
-  showLoginHelp (state) {
-    return state.showLoginHelp
-  }
-}
+  showLoginHelp(s) {
+    return s.showLoginHelp;
+  },
+};
 
 export default {
   state,
   getters,
   mutations,
-  actions
-}
+  actions,
+};

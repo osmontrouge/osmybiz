@@ -15,9 +15,9 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions, mapMutations} from 'vuex'
-  import {routes} from './../router'
-  import {clearDetails} from './../store/detail'
+  import { mapGetters, mapActions, mapMutations } from 'vuex';
+  import { routes } from './../router';
+  import { clearDetails } from './../store/detail';
 
   export default {
     name: 'form-footer',
@@ -29,74 +29,74 @@
         'osmId',
         'lat',
         'lon',
-        'isDuplicate'
-      ])
+        'isDuplicate',
+      ]),
     },
     methods: {
       ...mapMutations([
         'setDetails',
         'setAddress',
         'setIsDuplicate',
-        'setIsConfirm'
+        'setIsConfirm',
       ]),
       ...mapActions([
         'postNote',
         'postNode',
         'checkDuplicateNode',
         'getConfirmation',
-        'loadUpdates'
+        'loadUpdates',
       ]),
-      submit () {
-        let promise
+      submit() {
+        let promise;
         if (this.isNote) {
-          promise = this.postNote({user: this.user, osmId: this.osmId}).then(() => true)
+          promise = this.postNote({ user: this.user, osmId: this.osmId }).then(() => true);
         } else {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
-              return this.postNode(this.user).then(() => true)
+              return this.postNode(this.user).then(() => true);
             }
-            return false
-          })
+            return false;
+          });
         }
         promise.then((success) => {
           if (success) {
-            this.loadUpdates(this.user)
-            this.$router.push({name: routes.Landing})
-            clearDetails()
+            this.loadUpdates(this.user);
+            this.$router.push({ name: routes.Landing });
+            clearDetails();
           }
-        })
+        });
       },
-      isRequiredFields () {
-        return this.details.category.text === '' || this.details.name === ''
+      isRequiredFields() {
+        return this.details.category.text === '' || this.details.name === '';
       },
-      reset () {
+      reset() {
         this.getConfirmation(() => {
-          const details = JSON.parse(localStorage.getItem('details'))
-          const address = JSON.parse(localStorage.getItem('address'))
-          let category = {
+          const details = JSON.parse(localStorage.getItem('details'));
+          const address = JSON.parse(localStorage.getItem('address'));
+          const category = {
             fields: details.category.fields,
             text: details.category.text,
-            value: details.category.value
-          }
+            value: details.category.value,
+          };
           if (this.details.category.text === details.category.text) {
-            this.details.category.fields.forEach(function (field, index) {
-              category.fields[index].label = field.label
-            })
+            this.details.category.fields.forEach((field, index) => {
+              category.fields[index].label = field.label;
+            });
           }
-          details.category = category
-          this.setDetails(details)
-          this.setAddress(address)
-          this.setIsConfirm(false)
-        })
+          details.category = category;
+          this.setDetails(details);
+          this.setAddress(address);
+          this.setIsConfirm(false);
+        });
       },
-      back () {
+      back() {
         this.getConfirmation(() => {
-          this.$router.push({name: routes.Landing})
-          this.setIsConfirm(false)
-        })
-      }
-    }
-  }
+          this.$router.push({ name: routes.Landing });
+          this.setIsConfirm(false);
+        });
+      },
+    },
+  };
 </script>
 
 <style scoped>

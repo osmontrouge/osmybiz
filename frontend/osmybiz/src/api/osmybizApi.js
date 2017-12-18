@@ -1,57 +1,56 @@
-import axios from 'axios'
-import {fakeOsmybizApi, osmyBizBackendUrl} from './../config/config'
+import axios from 'axios';
+import { fakeOsmybizApi, osmyBizBackendUrl } from './../config/config';
 import {
   mockAddOrUpdateUser, mockAddOrUpdateNode, mockFetchnodes, mockUnsubscribe,
-  mockDeleteNode
-} from './osmybizApiMock'
+  mockDeleteNode,
+} from './osmybizApiMock';
 
-const baseRoute = osmyBizBackendUrl + '/api/'
+const baseRoute = `${osmyBizBackendUrl}/api/`;
 
 if (fakeOsmybizApi) {
-  console.warn('Using fake osmybiz bakend')
+// eslint-disable-next-line no-console
+  console.warn('Using fake osmybiz bakend');
 }
 
-export function addOrUpdateUser (userId, displayName) {
+export function addOrUpdateUser(userId, displayName) {
   if (fakeOsmybizApi) {
-    return mockAddOrUpdateUser(userId, displayName)
+    return mockAddOrUpdateUser(userId, displayName);
   }
-  const route = baseRoute + 'user'
+  const route = `${baseRoute}user`;
   return axios.post(route, {
     osmId: userId,
-    username: displayName
-  })
+    username: displayName,
+  });
 }
 
-export function fetchnodes (userId) {
+export function fetchnodes(userId) {
   if (fakeOsmybizApi) {
-    return mockFetchnodes(userId)
+    return mockFetchnodes(userId);
   }
-  const route = baseRoute + `user/${userId}/node`
-  return axios.get(route).then(response => {
-    return response.data
-  })
+  const route = `${baseRoute}user/${userId}/node`;
+  return axios.get(route).then(response => response.data);
 }
 
-export function addOrUpdateNode (userId, node) {
+export function addOrUpdateNode(userId, node) {
   if (fakeOsmybizApi) {
-    return mockAddOrUpdateNode(userId, node)
+    return mockAddOrUpdateNode(userId, node);
   }
-  const route = baseRoute + `user/${userId}/node`
-  return axios.post(route, node)
+  const route = `${baseRoute}user/${userId}/node`;
+  return axios.post(route, node);
 }
 
-export function unsubscribe (userId, nodeId) {
+export function unsubscribe(userId, nodeId) {
   if (fakeOsmybizApi) {
-    return mockUnsubscribe(userId, nodeId)
+    return mockUnsubscribe(userId, nodeId);
   }
-  const route = baseRoute + `user/${userId}/node/${nodeId}/unsubscribe`
-  return axios.post(route)
+  const route = `${baseRoute}user/${userId}/node/${nodeId}/unsubscribe`;
+  return axios.post(route);
 }
 
-export function deleteNode (userId, nodeId) {
+export function deleteNode(userId, nodeId) {
   if (fakeOsmybizApi) {
-    return mockDeleteNode(userId, nodeId)
+    return mockDeleteNode(userId, nodeId);
   }
-  const route = baseRoute + `user/${userId}/node/${nodeId}/delete`
-  return axios.post(route)
+  const route = `${baseRoute}user/${userId}/node/${nodeId}/delete`;
+  return axios.post(route);
 }

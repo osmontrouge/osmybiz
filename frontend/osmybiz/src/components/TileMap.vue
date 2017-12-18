@@ -6,109 +6,110 @@
 </template>
 
 <script>
-  import Vue2Leaflet from 'vue2-leaflet'
-  import {mapGetters, mapMutations, mapActions} from 'vuex'
-  import {createNoteFromNode} from './../util/overPassNodeUtils'
-  import * as L from 'leaflet'
-  import {routes} from './../router'
-  import {makeTileLayer, getTileUrl, createNewBusinessPopup, createMarker} from './../util/mapUtils'
-  import {storeViewPort, getInitialPosition} from './../util/positionUtil'
-  import {setError} from '../store/error'
-  import * as _ from 'lodash'
 
-  const zoomOnSelect = 18
-  const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  import * as _ from 'lodash';
+  import * as L from 'leaflet';
+  import Vue2Leaflet from 'vue2-leaflet';
+  import { mapGetters, mapMutations, mapActions } from 'vuex';
+  import { createNoteFromNode } from './../util/overPassNodeUtils';
+  import { routes } from './../router';
+  import { makeTileLayer, getTileUrl, createNewBusinessPopup, createMarker } from './../util/mapUtils';
+  import { storeViewPort, getInitialPosition } from './../util/positionUtil';
+  import { setError } from '../store/error';
 
-  let map
-  let component
-  let tileLayer
+  const zoomOnSelect = 18;
+  const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
 
-  function setMapPosition (pos, zoom) {
-    map.setView(pos, zoom || zoomOnSelect)
+  let map;
+  let component;
+  let tileLayer;
+
+  function setMapPosition(pos, zoom) {
+    map.setView(pos, zoom || zoomOnSelect);
   }
 
-  let markers = []
+  let markers = [];
 
-  function clearMarkers () {
-    markers.forEach(m => {
-      map.removeLayer(m)
-    })
+  function clearMarkers() {
+    markers.forEach((m) => {
+      map.removeLayer(m);
+    });
   }
 
-  function addMarkers (bs, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
-    const mine = getNodesInViewPort(ownedNodes, viewport)
-    const merge = mergeNodes(bs, mine)
-    const ms = merge.map(b => {
+  function getNodesInViewPort(nodes, viewPort) {
+    const bbox = viewPort.boundingBox;
+    return nodes.filter(n =>
+      n.lat >= bbox.south && n.lat <= bbox.north && n.lng >= bbox.west && n.lng <= bbox.east,
+    );
+  }
+
+  function mergeNodes(all, mine) {
+    return _.unionBy(mine, all, b => b.id);
+  }
+
+  function addMarkers(bs, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
+    const mine = getNodesInViewPort(ownedNodes, viewport);
+    const merge = mergeNodes(bs, mine);
+    markers = merge.map((b) => {
       const m = createMarker(b, map, isloggedIn, (data) => {
         checkDuplicate(data).then((res) => {
           if (!res) {
-            component.edit(data)
+            component.edit(data);
           }
-        })
-      }, setIsNote)
-      map.addLayer(m)
-      return m
-    })
-
-    markers = ms
+        });
+      }, setIsNote);
+      map.addLayer(m);
+      return m;
+    });
   }
 
-  function mergeNodes (all, mine) {
-    return _.unionBy(mine, all, (b) => b.id)
+  function setTileMode(mode) {
+    tileLayer.setUrl(getTileUrl(mode), false);
   }
 
-  function getNodesInViewPort (nodes, viewPort) {
-    const bbox = viewPort.boundingBox
-    return nodes.filter(n => {
-      return n.lat >= bbox.south && n.lat <= bbox.north && n.lng >= bbox.west && n.lng <= bbox.east
-    })
+  function drawBusinesses(businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
+    clearMarkers();
+    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport);
   }
 
-  function setTileMode (mode) {
-    tileLayer.setUrl(getTileUrl(mode), false)
-  }
-
-  function drawBusinesses (businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
-    clearMarkers()
-    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport)
-  }
-
-  function drawContextMenu (coords, isloggedIn, setIsNote) {
+  function drawContextMenu(coords, isloggedIn, setIsNote) {
     createNewBusinessPopup(map, coords, isloggedIn, (latlng) => {
-      setIsNote(false)
-      component.createNew(latlng)
-    })
+      setIsNote(false);
+      component.createNew(latlng);
+    });
   }
 
   export default {
-    mounted () {
-      component = this
-      map = this.$refs.map.mapObject
-      tileLayer = makeTileLayer(this.mode)
-      map.addLayer(tileLayer)
+    mounted() {
+      component = this;
+      map = this.$refs.map.mapObject;
+      tileLayer = makeTileLayer(this.mode);
+      map.addLayer(tileLayer);
 
-      tileLayer.on('tileerror', function () {
-        setError('Karte konnte nicht geladen werden')
-      })
+      tileLayer.on('tileerror', () => {
+        setError('Karte konnte nicht geladen werden');
+      });
 
-      this.$store.subscribe(mut => {
+      this.$store.subscribe((mut) => {
         if (mut.type === 'setMapPosition') {
-          setMapPosition(this.position)
-          this.viewChange()
+          setMapPosition(this.position);
+          this.viewChange();
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.isLoggedIn, this.checkDuplicateNote, this.setIsNote, this.ownedNodes, this.viewPort)
+          drawBusinesses(this.businesses, this.isLoggedIn,
+            this.checkDuplicateNote, this.setIsNote, this.ownedNodes, this.viewPort);
         } else if (mut.type === 'setMode') {
-          setTileMode(this.mode)
+          setTileMode(this.mode);
         }
-      })
+      });
 
-      map.attributionControl.addAttribution(attribution)
+      map.attributionControl.addAttribution(attribution);
+
       if (this.position) {
-        setMapPosition(this.position)
+        setMapPosition(this.position);
       } else {
-        getInitialPosition(this.$router.currentRoute.params).then(pos => {
-          setMapPosition(pos.cords, pos.zoom)
-        })
+        getInitialPosition(this.$router.currentRoute.params).then((pos) => {
+          setMapPosition(pos.cords, pos.zoom);
+        });
       }
     },
     methods: {
@@ -119,41 +120,43 @@
         'setCoords',
         'setIsNote',
         'setPosition',
-        'setOsmId'
+        'setOsmId',
       ]),
-      viewChange () {
-        const bbox = map.getBounds()
-        const zoom = map.getZoom()
+      viewChange() {
+        const bbox = map.getBounds();
+        const zoom = map.getZoom();
         this.setViewPort({
+// eslint-disable-next-line no-underscore-dangle
           topRight: bbox._northEast,
+// eslint-disable-next-line no-underscore-dangle
           bottomLeft: bbox._southWest,
-          zoom: zoom
-        })
-        storeViewPort(bbox, zoom, this.$router)
-        this.queryOverpass(this.viewPort)
+          zoom,
+        });
+        storeViewPort(bbox, zoom, this.$router);
+        this.queryOverpass(this.viewPort);
       },
-      edit (business) {
-        const note = createNoteFromNode(business)
-        this.setDetails(note)
-        const pos = L.latLng(business.lat, business.lng)
-        this.setCoords(pos)
-        this.setOsmId(business.id)
-        this.setIsNote(true)
-        this.$router.push({name: routes.Detail})
+      edit(business) {
+        const note = createNoteFromNode(business);
+        this.setDetails(note);
+        const pos = L.latLng(business.lat, business.lng);
+        this.setCoords(pos);
+        this.setOsmId(business.id);
+        this.setIsNote(true);
+        this.$router.push({ name: routes.Detail });
       },
-      contextMenu (event) {
-        drawContextMenu(event.latlng, this.isLoggedIn, this.setIsNote)
+      contextMenu(event) {
+        drawContextMenu(event.latlng, this.isLoggedIn, this.setIsNote);
       },
-      createNew (coords) {
-        this.setCoords(coords)
-        this.setIsNote(false)
+      createNew(coords) {
+        this.setCoords(coords);
+        this.setIsNote(false);
         this.setDetails({
           category: {
             text: '',
             value: 0,
             fields: [
-              {key: '', name: '', value: ''}
-            ]
+              { key: '', name: '', value: '' },
+            ],
           },
           name: '',
           opening_hours: '',
@@ -162,10 +165,10 @@
           website: '',
           wheelchair: '',
           description: '',
-          note: ''
-        })
-        this.$router.push({name: routes.Detail})
-      }
+          note: '',
+        });
+        this.$router.push({ name: routes.Detail });
+      },
     },
     computed: {
       ...mapGetters([
@@ -175,17 +178,17 @@
         'businesses',
         'mode',
         'isLoggedIn',
-        'ownedNodes'
-      ])
+        'ownedNodes',
+      ]),
     },
 
     name: 'tile-map',
     components: {
       'v-map': Vue2Leaflet.Map,
       'v-tilelayer': Vue2Leaflet.TileLayer,
-      'v-marker': Vue2Leaflet.Marker
-    }
-  }
+      'v-marker': Vue2Leaflet.Marker,
+    },
+  };
 </script>
 
 <style>

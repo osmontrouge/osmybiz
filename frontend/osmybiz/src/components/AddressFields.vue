@@ -89,30 +89,30 @@
 </template>
 
 <script>
-  import {mapGetters, mapMutations} from 'vuex'
-  import {showPopup, hidePopup} from '../store/detail'
+  import { mapGetters, mapMutations } from 'vuex';
+  import { showPopup, hidePopup } from '../store/detail';
 
   export default {
     name: 'address-fields',
     computed: {
       ...mapGetters([
         'address',
-        'infoMap'
-      ])
+        'infoMap',
+      ]),
     },
     methods: {
       ...mapMutations([
         'setInfoText',
-        'setIsPopup'
+        'setIsPopup',
       ]),
-      show (key) {
-        showPopup(key)
+      show(key) {
+        showPopup(key);
       },
-      hide () {
-        hidePopup()
-      }
-    }
-  }
+      hide() {
+        hidePopup();
+      },
+    },
+  };
 </script>
 
 <style scoped>

@@ -1,48 +1,49 @@
-import tagsDe from '../assets/tags/de.json'
-import tagsEn from '../assets/tags/en.json'
+/* eslint-disable no-param-reassign */
+import tagsDe from '../assets/tags/de.json';
+import tagsEn from '../assets/tags/en.json';
 
 const state = {
   language: 'de',
   languageTags: tagsDe,
 
-  $translate: {}
-}
+  $translate: {},
+};
 
 const mutations = {
-  setLanguage (state, lng) {
-    state.language = lng
+  setLanguage(s, lng) {
+    s.language = lng;
   },
-  setTags (state, lng) {
+  setTags(s, lng) {
     switch (lng) {
-      case 'de': state.languageTags = tagsDe
-        break
-      case 'en': state.languageTags = tagsEn
-        break
+      case 'de': s.languageTags = tagsDe;
+        break;
+      case 'en': s.languageTags = tagsEn;
+        break;
       default:
-        state.languageTags = tagsDe
+        s.languageTags = tagsDe;
     }
-  }
-}
+  },
+};
 
 const getters = {
-  language (state) {
-    return state.language
+  language(s) {
+    return s.language;
   },
-  languageTags (state) {
-    return state.tags
-  }
+  languageTags(s) {
+    return s.tags;
+  },
+};
+
+export function getLanguage() {
+  return state.language;
 }
 
-export function getLanguage () {
-  return state.language
-}
-
-export function getLanguageTags () {
-  return state.languageTags
+export function getLanguageTags() {
+  return state.languageTags;
 }
 
 export default {
   state,
   mutations,
-  getters
-}
+  getters,
+};

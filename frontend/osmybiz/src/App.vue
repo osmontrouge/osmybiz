@@ -11,33 +11,33 @@
 </template>
 
 <script>
-  import HeaderBar from './components/HeaderBar'
-  import ErrorMessage from './components/ErrorMessage'
-  import PostSuccess from './components/PostSuccess'
-  import Vue from 'vue'
-  import VueTranslate from 'vue-translate-plugin'
-  import de from './locales/de.json'
-  import en from './locales/en.json'
-  import {init} from './util/translate'
+  import Vue from 'vue';
+  import VueTranslate from 'vue-translate-plugin';
+  import HeaderBar from './components/HeaderBar.vue';
+  import ErrorMessage from './components/ErrorMessage.vue';
+  import PostSuccess from './components/PostSuccess.vue';
+  import de from './locales/de.json';
+  import en from './locales/en.json';
+  import { init } from './util/translate';
 
-  Vue.use(VueTranslate)
+  Vue.use(VueTranslate);
   Vue.locales({
-    de: de,
-    en: en
-  })
+    de,
+    en,
+  });
 
   export default {
     name: 'app',
-    mounted () {
-      this.$translate.setLang('de')
-      init(this.$translate)
+    mounted() {
+      this.$translate.setLang('de');
+      init(this.$translate);
     },
     components: {
       HeaderBar,
       ErrorMessage,
-      PostSuccess
-    }
-  }
+      PostSuccess,
+    },
+  };
 </script>
 
 <style>

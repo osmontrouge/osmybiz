@@ -34,9 +34,9 @@
 </template>
 
 <script>
-  import 'vue-awesome/icons'
-  import Icon from 'vue-awesome/components/Icon.vue'
-  import {mapGetters, mapMutations} from 'vuex'
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     name: 'duplicate-warning',
@@ -44,21 +44,21 @@
       ...mapGetters([
         'isNote',
         'isDuplicate',
-        'noteLink'
-      ])
+        'noteLink',
+      ]),
     },
     methods: {
       ...mapMutations([
-        'setIsDuplicate'
+        'setIsDuplicate',
       ]),
-      toggle () {
-        this.setIsDuplicate(false)
-      }
+      toggle() {
+        this.setIsDuplicate(false);
+      },
     },
     components: {
-      Icon
-    }
-  }
+      Icon,
+    },
+  };
 </script>
 
 <style scoped>
