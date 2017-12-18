@@ -1,7 +1,7 @@
 import osmAuth from 'osm-auth';
 import xml2json from 'jquery-xml2json';
 import axios from 'axios';
-import { osmUrl, osmApiLevel, oauthKey, oauthSecret } from '../config/config';
+import { osmUrl, osmApiLevel, oauthKey, oauthSecret, searchradius } from '../config/config';
 import { setError } from '../store/error';
 import { get } from '../util/translate';
 import util from './../util/osmApiUtils';
@@ -187,10 +187,13 @@ export function postNote(note) {
 }
 
 export function getNotes(lat, lng) {
-  const left = lng - 0.00005;
-  const bottom = lat - 0.00005;
-  const right = lng + 0.00005;
-  const top = lat + 0.00005;
+  // 0.0001 lat equates to 11.1 meter
+  // to get the accuracy of lng you have to multiply the distance with the cosinus of lat
+  const distance = (0.0001 / 11.1) * searchradius;
+  const left = lng - (distance * Math.cos(lat));
+  const bottom = lat - distance;
+  const right = lng + (distance * Math.cos(lat));
+  const top = lat + distance;
   return new Promise((resolve) => {
     auth.xhr(
       {

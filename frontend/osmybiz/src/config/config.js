@@ -6,6 +6,9 @@ export const mapBoxToken = 'pk.eyJ1IjoibXRoaSIsImEiOiJjajlzZHJqZGc2bGRxMnhxbTd0b
 export const initialPosition = latLng(46.87897, 8.23975); // aprox center of switzerland
 export const initialZoom = 8;
 
+export const LatLngRoundingAccuracy = 5;
+export const searchradius = 10.0;
+
 // state for osmApi (dev oder prod)
 const state = 'dev';
 
@@ -29,7 +32,6 @@ export const nominatimReverseUrl = 'https://nominatim.openstreetmap.org/reverse'
 
 // overpass api url
 export const overpassUrl = 'https://overpass.osm.ch/api/interpreter';
-export const searchradius = 10.0;
 
 // fake the osmybiz backend with localstorage
 export const fakeOsmybizApi = true;

@@ -1,15 +1,8 @@
 {
-  "infoTexts": {
-    "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
-    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
-    "name": "Write the name of your business in this field. e.g. Migros",
-    "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
-    "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
-    "email": "Here comes the email address under which you, respectively your business, are reachable.",
-    "website": "In this field is the website of your business.",
-    "wheelchair": "Tick the box if your business is wheelchair accessible respectively how accessible it is.",
-    "description": "In this field you can include extra informations about your business. e.g. Our bakery is also a mail-administration center",
-    "note": "A note is used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement."
+  "header": {
+    "about": "About OSMyBiz",
+    "messagetitle": "Messages from OpenStreetMap",
+    "updatestitle": "Updates of edited businesses"
   },
   "landing": {
     "search": "Search...",
@@ -35,7 +28,7 @@
     },
     "loginhelp": {
       "title": "Information",
-      "section1": "To make changes on the map you have to be logged in with an OpenStreetMap-Login.",
+      "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap-Login.",
       "section2": "But in this view you can already peer, how the website works."
     }
   },
@@ -70,7 +63,7 @@
     "placeholders": {
       "category": "Choose Category...",
       "owncategory": "Insert Category",
-      "name": "Your name...",
+      "name": "Name of the business...",
       "street": "Mainstreet",
       "housenumber": "50",
       "place": "Island",
@@ -100,6 +93,18 @@
       "save": "Save"
     }
   },
+  "infoTexts": {
+    "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
+    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
+    "name": "Write the name of your business in this field. e.g. Migros",
+    "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
+    "email": "Here comes the email address under which you, respectively your business, are reachable.",
+    "website": "In this field is the website of your business.",
+    "wheelchair": "Tick the box if your business is wheelchair accessible respectively how accessible it is.",
+    "description": "In this field you can include extra informations about your business. e.g. Our bakery is also a mail-administration center",
+    "note": "A note is used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement."
+  },
   "popups": {
     "popuptitle": "New Business",
     "feedback": "Report Map Error",
@@ -119,12 +124,12 @@
       "node": {
         "title": "Already existing business",
         "section1": "At this position is already a business with exact same name and category",
-        "section2": "You have the possibility though to edit the already existing informations with a left click on the business."
+        "section2": "You have the possibility to edit the already existing informations with a left click on the business on the map."
       },
       "note": {
         "title": "Already existing changes",
         "section1": "For this business there already exists a change, which isn't processed yet.",
-        "section2": "You have the possibility though to leave a comment directly in OpenStreetMap:",
+        "section2": "You have the possibility to leave a comment directly in OpenStreetMap:",
         "comment": "Leave comment"
       }
     }
