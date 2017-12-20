@@ -183,7 +183,6 @@ function parseTags(nodeJson) {
 }
 
 function parseNode(nodeXml) {
-
   const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
   const nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;
 
@@ -207,8 +206,10 @@ function parseNode(nodeXml) {
 }
 
 function extractId(nodeDiff) {
-  console.log(nodeDiff);
-  return 1;
+  const xml = nodeDiff.getElementsByTagName('diffResult')[0].innerHTML;
+  const diffJson = JSON.parse(xml2json(xml, { compact: true })).node;
+
+  return getAttributes(diffJson).new_id;
 }
 
 
