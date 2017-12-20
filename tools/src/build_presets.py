@@ -169,7 +169,8 @@ def run():
             'fields': tags
         }
 
-    with open('../../frontend/osmybiz/src/assets/tags/' + lang + '.json', 'w', encoding="utf8") as outfile:
+    outpath = '../../frontend/osmybiz/src/assets/tags/' + lang + '.json'
+    with open(outpath, 'w', encoding="utf8") as outfile:
         json.dump(result, outfile, ensure_ascii=False, indent=2)
 
 
