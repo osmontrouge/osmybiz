@@ -1,30 +1,23 @@
 import * as _ from 'lodash';
 import { xml2json } from 'xml-js';
 
-function parseDetails(node) {
+function parseDetails(nodeTags) {
   const details = {};
-  const tags = [{
-    k: 'name',
-  }, {
-    k: 'opening_hours',
-  }, {
-    k: 'phone',
-  }, {
-    k: 'email',
-  }, {
-    k: 'website',
-  }, {
-    k: 'wheelchair',
-  }, {
-    k: 'description',
-  }, {
-    k: 'note',
-  }];
+  const tags = [
+    'name',
+    'opening_hours',
+    'phone',
+    'email',
+    'website',
+    'wheelchair',
+    'description',
+    'note',
+  ];
 
-  node.tag.forEach((nodeTag) => {
+  Object.keys(nodeTags).forEach((key) => {
     tags.forEach((tag) => {
-      if (tag.k === nodeTag.$.k) {
-        details[tag.k] = nodeTag.$.v;
+      if (tag === key) {
+        details[tag] = nodeTags[key];
       }
     });
   });
@@ -32,7 +25,7 @@ function parseDetails(node) {
   return details;
 }
 
-function parseAddress(node) {
+function parseAddress(nodeTags) {
   const address = {};
   const tags = [{
     k: 'addr:street',
@@ -51,10 +44,10 @@ function parseAddress(node) {
     v: 'city',
   }];
 
-  node.tag.forEach((nodeTag) => {
+  Object.keys(nodeTags).forEach((key) => {
     tags.forEach((tag) => {
-      if (tag.k === nodeTag.$.k) {
-        address[tag.v] = nodeTag.$.v;
+      if (tag.k === key) {
+        address[tag.v] = nodeTags[key];
       }
     });
   });
@@ -179,29 +172,43 @@ function constructUpload(node, changeSetId) {
   return xml;
 }
 
-function parseTags(tags) {
-  const res = {};
-  tags.forEach((tag) => {
-    res[tag.$.k] = tag.$.v;
+function parseTags(nodeJson) {
+  const tags = nodeJson.tag;
+  const result = {};
+  tags.forEach((t) => {
+    const tagAttributes = getAttributes(t);
+    result[tagAttributes.k] = tagAttributes.v;
   });
-  return res;
+  return result;
 }
 
-function parseNode(node, osmUrl) {
-  const address = parseAddress(node);
-  const details = parseDetails(node);
+function parseNode(nodeXml) {
+
+  const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
+  const nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;
+
+  const nodeAttributes = getAttributes(nodeJson);
+
+  const tags = parseTags(nodeJson);
+
+  const address = parseAddress(tags);
+  const details = parseDetails(tags);
 
   return {
-    id: node.$.id,
-    lat: node.$.lat,
-    lon: node.$.lon,
-    link: `${osmUrl}/node/${node.$.id}/#map=19/${node.$.lat}/${node.$.lon}&layers=D`,
+    id: nodeAttributes.id,
+    lat: nodeAttributes.lat,
+    lon: nodeAttributes.lon,
     address,
     details,
-    version: node.$.version,
-    changeSet: node.$.changeset,
-    tags: parseTags(node.tag),
+    version: nodeAttributes.version,
+    changeSet: nodeAttributes.changeset,
+    tags,
   };
+}
+
+function extractId(nodeDiff) {
+  console.log(nodeDiff);
+  return 1;
 }
 
 
@@ -209,4 +216,5 @@ export default {
   parseUser,
   constructUpload,
   parseNode,
+  extractId,
 };
