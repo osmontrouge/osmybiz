@@ -177,6 +177,13 @@ export function loadTags() {
       fields,
     });
   });
+
+  options.sort((a, b) => {
+    if (a.text < b.text) return -1;
+    if (a.text > b.text) return 1;
+    return 0;
+  });
+
   if (state) {
     state.tags = options;
     state.tags.forEach((tag) => {
