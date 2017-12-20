@@ -1,5 +1,5 @@
-import * as $ from 'jquery';
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
+import { xml2json } from 'xml-js';
 
 function parseDetails(node) {
   const details = {};
@@ -62,29 +62,40 @@ function parseAddress(node) {
   return address;
 }
 
-// function extractLanguages(langDoc) {
-//   const childNodes = langDoc.children();
-//   const languages = [];
-//   childNodes.forEach((node) => {
-//     const text = $(node).text();
-//     languages.push(text.slice(0, 2));
-//   });
-//   if (languages.length === 0) {
-//     languages.push('de');
-//   }
-//   return _.uniq(languages);
-// }
+function getText(obj) {
+// eslint-disable-next-line no-underscore-dangle
+  return obj._text;
+}
+
+function extractLanguages(userJson) {
+  const langs = userJson.languages.lang;
+
+  const languages = [];
+  langs.forEach((l) => {
+    languages.push(getText(l).slice(0, 2));
+  });
+  if (languages.length === 0) {
+    languages.push('de');
+  }
+  return _.uniq(languages);
+}
+
+function getAttributes(obj) {
+// eslint-disable-next-line no-underscore-dangle
+  return obj._attributes;
+}
 
 function parseUser(userXml) {
-  const doc = $(userXml);
-  const user = doc.find('user');
-  const messages = user.find('messages').find('received');
-  // const languages = user.find('languages');
+  const xml = userXml.getElementsByTagName('osm')[0].innerHTML;
+  const userJson = JSON.parse(xml2json(xml, { compact: true })).user;
+
+  const languages = extractLanguages(userJson);
+
   return {
-    name: user.attr('display_name'),
-    id: parseInt(user.attr('id'), 10),
-    unReadCount: messages.attr('unread'),
-    langPrefs: [],
+    name: getAttributes(userJson).display_name,
+    id: parseInt(getAttributes(userJson).id, 10),
+    unReadCount: getAttributes(userJson.messages.received).unread,
+    langPrefs: languages,
   };
 }
 

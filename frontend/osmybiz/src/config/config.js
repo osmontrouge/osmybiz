@@ -16,12 +16,12 @@ export const osmUrl = state === 'dev'
   : 'https://api.openstreetmap.org';
 
 // oauth dev
-// export const oauthSecret = 'tLZgaEwwAHn1eXoc79rsDLqdAwjHCi0Lh38T7ki7';
-// export const oauthKey = 'IRTx85wq5Mv1TT7gt6iJ1KbPJiUyMmASB8jfuRCK';
+export const oauthSecret = 'tLZgaEwwAHn1eXoc79rsDLqdAwjHCi0Lh38T7ki7';
+export const oauthKey = 'IRTx85wq5Mv1TT7gt6iJ1KbPJiUyMmASB8jfuRCK';
 
 // oauth staging
-export const oauthSecret = 'yjVBypkpNyJJbHlcoXA1SqyrmwdhAEL9pBNwitQ4';
-export const oauthKey = 'ZNNKpkLgobvrDT68TZzu5Dy94zvhn3TQ9qErsoLW';
+// export const oauthSecret = 'yjVBypkpNyJJbHlcoXA1SqyrmwdhAEL9pBNwitQ4';
+// export const oauthKey = 'ZNNKpkLgobvrDT68TZzu5Dy94zvhn3TQ9qErsoLW';
 
 // nominatim Urls
 export const nominatimUrl = 'https://nominatim.openstreetmap.org/search';

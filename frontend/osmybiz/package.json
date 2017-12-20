@@ -28,7 +28,8 @@
     "vue-translate-plugin": "^1.2.0",
     "vue2-leaflet": "0.0.55",
     "vuex": "^2.4.1",
-    "vuex-router-sync": "^4.3.2"
+    "vuex-router-sync": "^4.3.2",
+    "xml-js": "^1.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
