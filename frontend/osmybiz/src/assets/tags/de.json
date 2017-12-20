@@ -1,3476 +1,3135 @@
 {
-  "amenity/animal_boarding": {
-    "name": "Tierpension",
+  "amenity/register_office": {
     "fields": [
       {
-        "key": "animal_boarding",
-        "type": "semiCombo",
-        "label": "Tierpension"
-      },
-      {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Standesamt"
   },
-  "amenity/animal_breeding": {
-    "name": "Tierzucht",
-    "fields": [
-      {
-        "key": "animal_breeding",
-        "type": "semiCombo",
-        "label": "Tierzucht"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/animal_shelter": {
-    "name": "Tierheim",
-    "fields": [
-      {
-        "key": "animal_shelter",
-        "type": "semiCombo",
-        "label": "Tierheim"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/arts_centre": {
-    "name": "Kunstzentrum",
-    "fields": []
-  },
-  "amenity/bank": {
-    "name": "Bank-Filiale",
-    "fields": [
-      {
-        "key": "atm",
-        "type": "check",
-        "label": "Geldautomat"
-      },
-      {
-        "key": "drive_through",
-        "type": "check",
-        "label": "Durchfahrts-Service"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/bar": {
-    "name": "Bar",
+  "tourism/hostel": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
+        "label": "Betreiber",
+        "type": "text"
       },
       {
         "key": "smoking",
-        "type": "combo",
         "label": "Rauchen",
+        "type": "combo",
         "options": {
+          "no": "Rauchen überall verboten",
           "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
           "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
           "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
         }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Herberge"
   },
-  "amenity/bicycle_rental": {
-    "name": "Fahrradverleih",
+  "shop/frame": {
     "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Bilderrahmengeschäft"
+  },
+  "amenity/police": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Polizei"
+  },
+  "shop/kitchen": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kücheneinrichtungsgeschäft"
+  },
+  "shop/window_blind": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fensterladengeschäft"
+  },
+  "leisure/marina": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
       {
         "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
+        "label": "Kapazität",
+        "type": "number"
       },
       {
-        "key": "network",
-        "type": "text",
-        "label": "Netzwerk"
+        "key": "fee",
+        "label": "Gebühr",
+        "type": "check"
       },
       {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/biergarten": {
-    "name": "Biergarten",
-    "fields": [
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
+        "key": "sanitary_dump_station",
+        "label": "Toilettenentsorgungsanlage",
+        "type": "check"
       },
       {
-        "key": "smoking",
+        "key": "power_supply",
+        "label": "Stromversorgung",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
         "type": "combo",
-        "label": "Rauchen",
         "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
         }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Yachthafen"
   },
-  "amenity/boat_rental": {
-    "name": "Bootsvermietung",
+  "amenity/post_office": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Postfiliale"
+  },
+  "office/estate_agent": {
+    "fields": [],
+    "name": "Immobilienmakler"
+  },
+  "shop/florist": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Blumenhändler"
+  },
+  "shop/seafood": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fischgeschäft"
+  },
+  "leisure/miniature_golf": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Minigolf"
+  },
+  "shop/optician": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Optiker"
+  },
+  "office/telecommunication": {
+    "fields": [],
+    "name": "Telefongesellschaft"
   },
   "amenity/bureau_de_change": {
-    "name": "Geldwechselstube",
     "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
       {
         "key": "currency_multi",
-        "type": "multiCombo",
-        "label": "Währungen"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Währungen",
+        "type": "multiCombo"
       }
-    ]
-  },
-  "amenity/bus_station": {
-    "name": "Busbahnhof",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/cafe": {
-    "name": "Café",
-    "fields": [
-      {
-        "key": "cuisine",
-        "type": "semiCombo",
-        "label": "Küche"
-      },
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "amenity/car_rental": {
-    "name": "Autovermietung",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/car_sharing": {
-    "name": "Carsharing",
-    "fields": [
-      {
-        "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/car_wash": {
-    "name": "Autowäsche",
-    "fields": []
-  },
-  "amenity/casino": {
-    "name": "Kasino",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "amenity/childcare": {
-    "name": "Kindertagesstätte/Kinderbetreuung",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/cinema": {
-    "name": "Kino",
-    "fields": []
-  },
-  "amenity/clinic": {
-    "name": "Klinik",
-    "fields": [
-      {
-        "key": "healthcare/speciality",
-        "type": "semiCombo",
-        "label": "Spezialgebiete"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/clinic/abortion": {
-    "name": "Abtreibungsklinik",
-    "fields": [
-      {
-        "key": "healthcare/speciality",
-        "type": "semiCombo",
-        "label": "Spezialgebiete"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/clinic/fertility": {
-    "name": "Kinderwunschklinik",
-    "fields": [
-      {
-        "key": "healthcare/speciality",
-        "type": "semiCombo",
-        "label": "Spezialgebiete"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/college": {
-    "name": "Hochschulgelände",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/community_centre": {
-    "name": "Gemeindezentrum",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/courthouse": {
-    "name": "Gericht",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/crematorium": {
-    "name": "Krematorium",
-    "fields": []
-  },
-  "amenity/dentist": {
-    "name": "Zahnarzt",
-    "fields": [
-      {
-        "key": "healthcare/speciality",
-        "type": "semiCombo",
-        "label": "Spezialgebiete"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/doctors": {
-    "name": "Arzt",
-    "fields": [
-      {
-        "key": "healthcare/speciality",
-        "type": "semiCombo",
-        "label": "Spezialgebiete"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/dojo": {
-    "name": "Kampfsportstudio",
-    "fields": [
-      {
-        "key": "sport",
-        "type": "semiCombo",
-        "label": "Sport"
-      }
-    ]
-  },
-  "amenity/driving_school": {
-    "name": "Fahrschule",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/embassy": {
-    "name": "Botschaft",
-    "fields": [
-      {
-        "key": "country",
-        "type": "combo",
-        "label": "Land"
-      }
-    ]
-  },
-  "amenity/fast_food": {
-    "name": "Schnellimbiss",
-    "fields": [
-      {
-        "key": "cuisine",
-        "type": "semiCombo",
-        "label": "Küche"
-      },
-      {
-        "key": "delivery",
-        "type": "check",
-        "label": "Zustellung"
-      },
-      {
-        "key": "drive_through",
-        "type": "check",
-        "label": "Durchfahrts-Service"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      },
-      {
-        "key": "takeaway",
-        "type": "combo",
-        "label": "zum Mitnehmen",
-        "options": {
-          "no": "Nein",
-          "only": "nur zum Mitnehmen",
-          "yes": "Ja"
-        }
-      }
-    ]
-  },
-  "amenity/ferry_terminal": {
-    "name": "Fährhafen",
-    "fields": [
-      {
-        "key": "network",
-        "type": "text",
-        "label": "Netzwerk"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/fire_station": {
-    "name": "Feuerwehrhaus",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/food_court": {
-    "name": "Gemeinschaftlicher Gastronomiebereich",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "amenity/fuel": {
-    "name": "Tankstelle",
-    "fields": [
-      {
-        "key": "fuel_multi",
-        "type": "multiCombo",
-        "label": "Spritsorten"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/hospital": {
-    "name": "Krankenhaus",
-    "fields": [
-      {
-        "key": "emergency",
-        "type": "check",
-        "label": "Notfall"
-      },
-      {
-        "key": "healthcare/speciality",
-        "type": "semiCombo",
-        "label": "Spezialgebiete"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/ice_cream": {
-    "name": "Eisgeschäft",
-    "fields": [
-      {
-        "key": "delivery",
-        "type": "check",
-        "label": "Zustellung"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "takeaway",
-        "type": "combo",
-        "label": "zum Mitnehmen",
-        "options": {
-          "no": "Nein",
-          "only": "nur zum Mitnehmen",
-          "yes": "Ja"
-        }
-      }
-    ]
-  },
-  "amenity/internet_cafe": {
-    "name": "Internetcafé",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "amenity/kindergarten": {
-    "name": "Kindergarten",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/library": {
-    "name": "Bibliothek",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/marketplace": {
-    "name": "Wochenmarkt",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/nightclub": {
-    "name": "Nachtklub",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "amenity/nursing_home": {
-    "name": "Pflegeheim",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "social_facility",
-        "type": "combo",
-        "label": "Typ"
-      },
-      {
-        "key": "social_facility_for",
-        "type": "combo",
-        "label": "Unterstützter Personenkreis"
-      }
-    ]
+    ],
+    "name": "Geldwechselstube"
   },
   "amenity/pharmacy": {
-    "name": "Apotheke",
     "fields": [
       {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
         "key": "drive_through",
-        "type": "check",
-        "label": "Durchfahrts-Service"
+        "label": "Durchfahrts-Service",
+        "type": "check"
+      }
+    ],
+    "name": "Apotheke"
+  },
+  "shop/garden_centre": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gartenzentrum"
+  },
+  "amenity/ranger_station": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Ranger-Station"
+  },
+  "shop/trade": {
+    "fields": [
+      {
+        "key": "trade",
+        "label": "Typ",
+        "type": "typeCombo"
       },
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Baustoffhandel"
   },
-  "amenity/place_of_worship": {
-    "name": "Andachtsstätte",
+  "amenity/biergarten": {
     "fields": [
       {
-        "key": "denomination",
+        "key": "smoking",
+        "label": "Rauchen",
         "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Biergarten"
+  },
+  "tourism/zoo": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Zoo"
+  },
+  "shop/lottery": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Lottoannahmestelle"
+  },
+  "shop/farm": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Hofladen"
+  },
+  "shop/shoes": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schuhgeschäft"
+  },
+  "amenity/dentist": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Spezialgebiete",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Zahnarzt"
+  },
+  "shop/bathroom_furnishing": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Badeinrichtungsgeschäft"
+  },
+  "shop/erotic": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Erotikgeschäft"
+  },
+  "amenity/taxi": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Kapazität",
+        "type": "number"
+      }
+    ],
+    "name": "Taxistand"
+  },
+  "amenity/car_sharing": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Kapazität",
+        "type": "number"
+      }
+    ],
+    "name": "Carsharing"
+  },
+  "shop/doityourself": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Heimwerkerladen"
+  },
+  "amenity/college": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Hochschulgelände"
+  },
+  "amenity/ice_cream": {
+    "fields": [
+      {
+        "key": "takeaway",
+        "label": "zum Mitnehmen",
+        "type": "combo",
+        "options": {
+          "only": "nur zum Mitnehmen",
+          "no": "Nein",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Zustellung",
+        "type": "check"
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Eisgeschäft"
+  },
+  "amenity/kindergarten": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kindergarten"
+  },
+  "shop/toys": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Spielwarengeschäft"
+  },
+  "shop/supermarket": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Supermarkt"
+  },
+  "tourism/alpine_hut": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Schutzhütte"
+  },
+  "office/government": {
+    "fields": [],
+    "name": "Behörde"
+  },
+  "tourism/chalet": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Ferienhaus"
+  },
+  "amenity/cafe": {
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Küche",
+        "type": "semiCombo"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Café"
+  },
+  "shop/pet": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Tierhandlung"
+  },
+  "shop/religion": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
       },
       {
         "key": "religion",
-        "type": "combo",
-        "label": "Religion"
+        "label": "Religion",
+        "type": "combo"
       },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/buddhist": {
-    "name": "Buddhistischer Tempel",
-    "fields": [
       {
         "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
+        "label": "Glaubensrichtung, Konfession",
+        "type": "combo"
       }
-    ]
+    ],
+    "name": "Devotionalienhandlung"
   },
-  "amenity/place_of_worship/christian": {
-    "name": "Kirche",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/hindu": {
-    "name": "Hindutempel",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/jewish": {
-    "name": "Sy­n­a­go­ge",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/muslim": {
-    "name": "Moschee",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/shinto": {
-    "name": "Shintō-Schrein",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/sikh": {
-    "name": "Sikh-Tempel",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/place_of_worship/taoist": {
-    "name": "Tao-Tempel",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "service_times",
-        "type": "text",
-        "label": "Betriebszeiten, Gottesdienstzeiten"
-      }
-    ]
-  },
-  "amenity/planetarium": {
-    "name": "Planetarium",
+  "shop/paint": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Farbengeschäft"
   },
-  "amenity/police": {
-    "name": "Polizei",
+  "shop/cheese": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Käseladen"
   },
-  "amenity/post_office": {
-    "name": "Postfiliale",
+  "office/administrative": {
+    "fields": [],
+    "name": "Verwaltungsamt"
+  },
+  "shop/bakery": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Bäckerei"
   },
-  "amenity/prison": {
-    "name": "Gefängnisanlage",
+  "office/accountant": {
+    "fields": [],
+    "name": "Steuerberater"
+  },
+  "shop/mall": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Einkaufzentrum"
   },
-  "amenity/pub": {
-    "name": "Kneipe",
-    "fields": [
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "amenity/ranger_station": {
-    "name": "Ranger-Station",
+  "amenity/driving_school": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
-  },
-  "amenity/register_office": {
-    "name": "Standesamt",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/restaurant": {
-    "name": "Restaurant",
-    "fields": [
-      {
-        "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
-      },
-      {
-        "key": "cuisine",
-        "type": "semiCombo",
-        "label": "Küche"
-      },
-      {
-        "key": "delivery",
-        "type": "check",
-        "label": "Zustellung"
-      },
-      {
-        "key": "outdoor_seating",
-        "type": "check",
-        "label": "Außenbestuhlung"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      },
-      {
-        "key": "takeaway",
-        "type": "combo",
-        "label": "zum Mitnehmen",
-        "options": {
-          "no": "Nein",
-          "only": "nur zum Mitnehmen",
-          "yes": "Ja"
-        }
-      }
-    ]
-  },
-  "amenity/school": {
-    "name": "Schulgelände",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/scrapyard": {
-    "name": "Schrottplatz",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/social_facility": {
-    "name": "Sozialeinrichtung",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "social_facility",
-        "type": "combo",
-        "label": "Typ"
-      },
-      {
-        "key": "social_facility_for",
-        "type": "combo",
-        "label": "Unterstützter Personenkreis"
-      }
-    ]
-  },
-  "amenity/social_facility/food_bank": {
-    "name": "Essensausgabe",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "social_facility",
-        "type": "combo",
-        "label": "Typ"
-      },
-      {
-        "key": "social_facility_for",
-        "type": "combo",
-        "label": "Unterstützter Personenkreis"
-      }
-    ]
-  },
-  "amenity/social_facility/group_home": {
-    "name": "Seniorenresidenz",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "social_facility",
-        "type": "combo",
-        "label": "Typ"
-      },
-      {
-        "key": "social_facility_for",
-        "type": "combo",
-        "label": "Unterstützter Personenkreis"
-      }
-    ]
-  },
-  "amenity/social_facility/homeless_shelter": {
-    "name": "Obdachlosenheim",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "social_facility",
-        "type": "combo",
-        "label": "Typ"
-      },
-      {
-        "key": "social_facility_for",
-        "type": "combo",
-        "label": "Unterstützter Personenkreis"
-      }
-    ]
-  },
-  "amenity/social_facility/nursing_home": {
-    "name": "Seniorenpflegeheim",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "social_facility",
-        "type": "combo",
-        "label": "Typ"
-      },
-      {
-        "key": "social_facility_for",
-        "type": "combo",
-        "label": "Unterstützter Personenkreis"
-      }
-    ]
+    ],
+    "name": "Fahrschule"
   },
   "amenity/studio": {
-    "name": "Ton-/Fernsehstudio",
     "fields": [
       {
         "key": "studio",
-        "type": "combo",
-        "label": "Typ"
-      }
-    ]
-  },
-  "amenity/taxi": {
-    "name": "Taxistand",
-    "fields": [
-      {
-        "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/theatre": {
-    "name": "The­a­ter",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/townhall": {
-    "name": "Rathaus",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/university": {
-    "name": "Universitätsgelände",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "amenity/veterinary": {
-    "name": "Tierarzt",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/adult_gaming_centre": {
-    "name": "Spielothek für Erwachsene",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "leisure/bowling_alley": {
-    "name": "Bowlingbahn",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "leisure/dance": {
-    "name": "Tanzsaal",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/fitness_centre": {
-    "name": "Fitness Studio",
-    "fields": [
-      {
-        "key": "sport",
-        "type": "semiCombo",
-        "label": "Sport"
-      }
-    ]
-  },
-  "leisure/fitness_centre/yoga": {
-    "name": "Yoga-Studio",
-    "fields": [
-      {
-        "key": "sport",
-        "type": "semiCombo",
-        "label": "Sport"
-      }
-    ]
-  },
-  "leisure/golf_course": {
-    "name": "Golfplatz",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/hackerspace": {
-    "name": "Hackerspace",
-    "fields": []
-  },
-  "leisure/horse_riding": {
-    "name": "Reitanlage",
-    "fields": [
-      {
-        "key": "access_simple",
-        "type": "combo",
-        "label": "Erlaubter Zugang"
-      },
-      {
-        "key": "building",
-        "type": "combo",
-        "label": "Gebäude"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/ice_rink": {
-    "name": "Eislaufbahn",
-    "fields": [
-      {
-        "key": "building",
-        "type": "combo",
-        "label": "Gebäude"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "seasonal",
-        "type": "check",
-        "label": "Saisonal"
-      },
-      {
-        "key": "sport_ice",
-        "type": "semiCombo",
-        "label": "Sportarten"
-      }
-    ]
-  },
-  "leisure/marina": {
-    "name": "Yachthafen",
-    "fields": [
-      {
-        "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
-      },
-      {
-        "key": "fee",
-        "type": "check",
-        "label": "Gebühr"
-      },
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "power_supply",
-        "type": "check",
-        "label": "Stromversorgung"
-      },
-      {
-        "key": "sanitary_dump_station",
-        "type": "check",
-        "label": "Toilettenentsorgungsanlage"
-      }
-    ]
-  },
-  "leisure/miniature_golf": {
-    "name": "Minigolf",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/resort": {
-    "name": "Resort",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/sports_centre": {
-    "name": "Sportzentrum / -komplex",
-    "fields": [
-      {
-        "key": "sport",
-        "type": "semiCombo",
-        "label": "Sport"
-      }
-    ]
-  },
-  "leisure/sports_centre/swimming": {
-    "name": "Badeanstalt",
-    "fields": [
-      {
-        "key": "access_simple",
-        "type": "combo",
-        "label": "Erlaubter Zugang"
-      },
-      {
-        "key": "building",
-        "type": "combo",
-        "label": "Gebäude"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "leisure/stadium": {
-    "name": "Stadion",
-    "fields": [
-      {
-        "key": "sport",
-        "type": "semiCombo",
-        "label": "Sport"
-      }
-    ]
-  },
-  "leisure/water_park": {
-    "name": "Erlebnisbad",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "office/accountant": {
-    "name": "Steuerberater",
-    "fields": []
-  },
-  "office/administrative": {
-    "name": "Verwaltungsamt",
-    "fields": []
-  },
-  "office/architect": {
-    "name": "Architekt",
-    "fields": []
-  },
-  "office/educational_institution": {
-    "name": "Bildungseinrichtung",
-    "fields": []
-  },
-  "office/employment_agency": {
-    "name": "Arbeitsamt",
-    "fields": []
-  },
-  "office/estate_agent": {
-    "name": "Immobilienmakler",
-    "fields": []
-  },
-  "office/financial": {
-    "name": "Finanzberater",
-    "fields": []
-  },
-  "office/government": {
-    "name": "Behörde",
-    "fields": []
-  },
-  "office/government/register_office": {
-    "name": "Standesamt",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "office/insurance": {
-    "name": "Versicherung",
-    "fields": []
-  },
-  "office/it": {
-    "name": "IT-Büro",
-    "fields": []
-  },
-  "office/lawyer": {
-    "name": "Anwalt",
-    "fields": []
-  },
-  "office/lawyer/notary": {
-    "name": "Notariat",
-    "fields": []
-  },
-  "office/newspaper": {
-    "name": "Redaktion",
-    "fields": []
-  },
-  "office/ngo": {
-    "name": "Nichtregierungsorganisation",
-    "fields": [
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "office/physician": {
-    "name": "Arztpraxis",
-    "fields": []
-  },
-  "office/political_party": {
-    "name": "Partei",
-    "fields": []
-  },
-  "office/research": {
-    "name": "Forschungseinrichtung",
-    "fields": []
-  },
-  "office/telecommunication": {
-    "name": "Telefongesellschaft",
-    "fields": []
-  },
-  "office/therapist": {
-    "name": "Therapeut",
-    "fields": []
-  },
-  "office/travel_agent": {
-    "name": "Reisebüro",
-    "fields": []
-  },
-  "shop/alcohol": {
-    "name": "Spirituosenladen",
-    "fields": [
-      {
-        "key": "drive_through",
-        "type": "check",
-        "label": "Durchfahrts-Service"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/anime": {
-    "name": "Anime-Geschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/antiques": {
-    "name": "Antiquitätenladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/appliance": {
-    "name": "Haushaltselektrogerätegeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/art": {
-    "name": "Kunsthandlung",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/baby_goods": {
-    "name": "Babysachengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/bag": {
-    "name": "Taschen/Koffer-Geschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/bakery": {
-    "name": "Bäckerei",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/bathroom_furnishing": {
-    "name": "Badeinrichtungsgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/beauty": {
-    "name": "Kosmetikladen",
-    "fields": [
-      {
-        "key": "beauty",
-        "type": "combo",
-        "label": "Geschäftstyp"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/beauty/nails": {
-    "name": "Nagelstudio",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/beauty/tanning": {
-    "name": "Sonnenstudio",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/bed": {
-    "name": "Betten/Matratzengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/beverages": {
-    "name": "Getränkeladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/bicycle": {
-    "name": "Fahrradladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "service/bicycle",
-        "type": "multiCombo",
-        "label": "Fahrradservice"
-      }
-    ]
-  },
-  "shop/bookmaker": {
-    "name": "Buchmacher",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/books": {
-    "name": "Buchladen",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/boutique": {
-    "name": "Boutique",
-    "fields": [
-      {
-        "key": "clothes",
-        "type": "semiCombo",
-        "label": "Kleidung"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/butcher": {
-    "name": "Metzger",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/candles": {
-    "name": "Kerzengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/car": {
-    "name": "Autohändler",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "second_hand",
-        "type": "combo",
-        "label": "Second Hand",
-        "options": {
-          "no": "Nein",
-          "only": "ausschließlich",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "service/vehicle",
-        "type": "multiCombo",
-        "label": "Raststätte"
-      }
-    ]
-  },
-  "shop/car_parts": {
-    "name": "Autoteilehandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/car_repair": {
-    "name": "Autowerkstatt",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "service/vehicle",
-        "type": "multiCombo",
-        "label": "Raststätte"
-      }
-    ]
-  },
-  "shop/carpet": {
-    "name": "Teppichgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/charity": {
-    "name": "Sozialkaufhaus",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "second_hand",
-        "type": "combo",
-        "label": "Second Hand",
-        "options": {
-          "no": "Nein",
-          "only": "ausschließlich",
-          "yes": "Ja"
-        }
-      }
-    ]
-  },
-  "shop/cheese": {
-    "name": "Käseladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/chemist": {
-    "name": "Drogerie",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/chocolate": {
-    "name": "Schokoladeladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/clothes": {
-    "name": "Bekleidungsgeschäft",
-    "fields": [
-      {
-        "key": "clothes",
-        "type": "semiCombo",
-        "label": "Kleidung"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/coffee": {
-    "name": "Kaffeegeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/computer": {
-    "name": "Computerfachhandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/confectionery": {
-    "name": "Süßigkeitengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/convenience": {
-    "name": "Gemischtwarenhandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/copyshop": {
-    "name": "Kopierladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/cosmetics": {
-    "name": "Drogerie",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/craft": {
-    "name": "Kunsthandwerkgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/curtain": {
-    "name": "Vorhanggeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/dairy": {
-    "name": "Milchgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/deli": {
-    "name": "Feinkostladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/department_store": {
-    "name": "Kaufhaus",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/doityourself": {
-    "name": "Heimwerkerladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/dry_cleaning": {
-    "name": "Chemische Reinigung",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/e-cigarette": {
-    "name": "E-Zigarettengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/electronics": {
-    "name": "Elektronikfachgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/erotic": {
-    "name": "Erotikgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/fabric": {
-    "name": "Stoffgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/farm": {
-    "name": "Hofladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/fashion": {
-    "name": "Modegeschäft",
-    "fields": [
-      {
-        "key": "clothes",
-        "type": "semiCombo",
-        "label": "Kleidung"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/fishmonger": {
-    "name": "Fischhändler",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/florist": {
-    "name": "Blumenhändler",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/frame": {
-    "name": "Bilderrahmengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/funeral_directors": {
-    "name": "Beerdigungsinstitut",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "religion",
-        "type": "combo",
-        "label": "Religion"
-      }
-    ]
-  },
-  "shop/furnace": {
-    "name": "Heizungsfachgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/furniture": {
-    "name": "Möbelhaus",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/garden_centre": {
-    "name": "Gartenzentrum",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/gas": {
-    "name": "Gasflaschenverkauf",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/gift": {
-    "name": "Geschenkladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/greengrocer": {
-    "name": "Gemüsehändler",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/hairdresser": {
-    "name": "Friseur",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/hardware": {
-    "name": "Eisenwarenhandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/hearing_aids": {
-    "name": "Hörgerätegeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/herbalist": {
-    "name": "Kräuterladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/hifi": {
-    "name": "Hifi-Laden",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/houseware": {
-    "name": "Haushaltswarengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/interior_decoration": {
-    "name": "Innenausstattungsgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/jewelry": {
-    "name": "Juwelier",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/kiosk": {
-    "name": "Zeitungskiosk",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/kitchen": {
-    "name": "Kücheneinrichtungsgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/laundry": {
-    "name": "Wäscherei",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/leather": {
-    "name": "Lederbekleidungsgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/locksmith": {
-    "name": "Schlosser",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/lottery": {
-    "name": "Lottoannahmestelle",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/mall": {
-    "name": "Einkaufzentrum",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/massage": {
-    "name": "Massagesalon",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/medical_supply": {
-    "name": "Medizinbedarfgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/mobile_phone": {
-    "name": "Mobiltelefonladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/money_lender": {
-    "name": "Geldverleiher",
-    "fields": [
-      {
-        "key": "currency_multi",
-        "type": "multiCombo",
-        "label": "Währungen"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/motorcycle": {
-    "name": "Motorradhändler",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/music": {
-    "name": "Musikgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/musical_instrument": {
-    "name": "Musikinstrumentegeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/newsagent": {
-    "name": "Zeitungs-/Magazin-Geschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/nutrition_supplements": {
-    "name": "Nahrungsergänzungsmittelgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/optician": {
-    "name": "Optiker",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/organic": {
-    "name": "Bioladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/outdoor": {
-    "name": "Outdoorgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/paint": {
-    "name": "Farbengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/pastry": {
-    "name": "Konditorei",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/pawnbroker": {
-    "name": "Pfandleiher",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/perfumery": {
-    "name": "Parfümerie",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/pet": {
-    "name": "Tierhandlung",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/photo": {
-    "name": "Fotofachgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/pyrotechnics": {
-    "name": "Feuerwerksgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/radiotechnics": {
-    "name": "Radio/Elektronik-Geschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/religion": {
-    "name": "Devotionalienhandlung",
-    "fields": [
-      {
-        "key": "denomination",
-        "type": "combo",
-        "label": "Glaubensrichtung, Konfession"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "religion",
-        "type": "combo",
-        "label": "Religion"
-      }
-    ]
-  },
-  "shop/scuba_diving": {
-    "name": "Tauchwarengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/seafood": {
-    "name": "Fischgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/second_hand": {
-    "name": "Second-Hand-Laden",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "second_hand",
-        "type": "combo",
-        "label": "Second Hand",
-        "options": {
-          "no": "Nein",
-          "only": "ausschließlich",
-          "yes": "Ja"
-        }
-      }
-    ]
-  },
-  "shop/shoes": {
-    "name": "Schuhgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/sports": {
-    "name": "Sportgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/stationery": {
-    "name": "Schreibwarengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/storage_rental": {
-    "name": "Lagerraumvermieter",
-    "fields": [
-      {
-        "key": "building",
-        "type": "combo",
-        "label": "Gebäude"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/supermarket": {
-    "name": "Supermarkt",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/tailor": {
-    "name": "Schneider",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/tattoo": {
-    "name": "Tätowierungsladen",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/tea": {
-    "name": "Teegeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/ticket": {
-    "name": "Eintrittskartenverkäufer",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/tiles": {
-    "name": "Fliesenhändler",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/tobacco": {
-    "name": "Trafik",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/toys": {
-    "name": "Spielwarengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/trade": {
-    "name": "Baustoffhandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "trade",
-        "type": "typeCombo",
-        "label": "Typ"
-      }
-    ]
-  },
-  "shop/travel_agency": {
-    "name": "Reisebüro",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/tyres": {
-    "name": "Reifenhandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/vacuum_cleaner": {
-    "name": "Staubsaugergeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/variety_store": {
-    "name": "Gemischtwarenhandel",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/video": {
-    "name": "Videothek",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/video_games": {
-    "name": "Videospielgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/watches": {
-    "name": "Uhrengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/water_sports": {
-    "name": "Wassersportgeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/weapons": {
-    "name": "Waffengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/window_blind": {
-    "name": "Fensterladengeschäft",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "shop/wine": {
-    "name": "Vinothek",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "tourism/alpine_hut": {
-    "name": "Schutzhütte",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "tourism/apartment": {
-    "name": "Ferienwohnung",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "rooms",
-        "type": "number",
-        "label": "Räume"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
-  },
-  "tourism/aquarium": {
-    "name": "Aquarium",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "tourism/attraction": {
-    "name": "Touristenattraktion",
-    "fields": [
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "tourism/camp_site": {
-    "name": "Campingplatz",
-    "fields": [
-      {
-        "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
-      },
-      {
-        "key": "fee",
-        "type": "check",
-        "label": "Gebühr"
-      },
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      }
-    ]
-  },
-  "tourism/caravan_site": {
-    "name": "Wohnwagen-Campingplatz",
-    "fields": [
-      {
-        "key": "capacity",
-        "type": "number",
-        "label": "Kapazität"
-      },
-      {
-        "key": "fee",
-        "type": "check",
-        "label": "Gebühr"
-      },
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "power_supply",
-        "type": "check",
-        "label": "Stromversorgung"
-      },
-      {
-        "key": "sanitary_dump_station",
-        "type": "check",
-        "label": "Toilettenentsorgungsanlage"
-      }
-    ]
-  },
-  "tourism/chalet": {
-    "name": "Ferienhaus",
-    "fields": [
-      {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
-      }
-    ]
+        "label": "Typ",
+        "type": "combo"
+      }
+    ],
+    "name": "Ton-/Fernsehstudio"
   },
   "tourism/gallery": {
-    "name": "Kunstgalerie",
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Kunstgalerie"
   },
-  "tourism/guest_house": {
-    "name": "Pension, Gästehaus",
+  "shop/organic": {
     "fields": [
       {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Bioladen"
+  },
+  "shop/confectionery": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Süßigkeitengeschäft"
+  },
+  "shop/greengrocer": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gemüsehändler"
+  },
+  "amenity/university": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
         "key": "internet_access",
-        "type": "combo",
         "label": "Internetzugang",
+        "type": "combo",
         "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
           "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
           "yes": "Ja"
         }
       },
       {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
         "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
-        "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "rooms",
-        "type": "number",
-        "label": "Räume"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Universitätsgelände"
   },
-  "tourism/hostel": {
-    "name": "Herberge",
+  "shop/furniture": {
     "fields": [
       {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Möbelhaus"
+  },
+  "amenity/animal_shelter": {
+    "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       },
       {
-        "key": "rooms",
-        "type": "number",
-        "label": "Räume"
-      },
-      {
-        "key": "smoking",
-        "type": "combo",
-        "label": "Rauchen",
-        "options": {
-          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
-          "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
-          "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
-        }
+        "key": "animal_shelter",
+        "label": "Tierheim",
+        "type": "semiCombo"
       }
-    ]
+    ],
+    "name": "Tierheim"
   },
   "tourism/hotel": {
-    "name": "Hotel",
     "fields": [
       {
-        "key": "internet_access",
-        "type": "combo",
-        "label": "Internetzugang",
-        "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
-          "wlan": "Wi-Fi",
-          "yes": "Ja"
-        }
-      },
-      {
-        "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
-      },
-      {
-        "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
-      },
-      {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
-      },
-      {
-        "key": "rooms",
-        "type": "number",
-        "label": "Räume"
+        "label": "Betreiber",
+        "type": "text"
       },
       {
         "key": "smoking",
-        "type": "combo",
         "label": "Rauchen",
+        "type": "combo",
         "options": {
+          "no": "Rauchen überall verboten",
           "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
           "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
           "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
         }
       },
       {
         "key": "stars",
-        "type": "number",
-        "label": "Sterne"
-      }
-    ]
-  },
-  "tourism/motel": {
-    "name": "Motel",
-    "fields": [
+        "label": "Sterne",
+        "type": "number"
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
       {
         "key": "internet_access",
-        "type": "combo",
         "label": "Internetzugang",
+        "type": "combo",
         "options": {
-          "no": "Nein",
-          "terminal": "Terminal",
-          "wired": "kabelgebunden",
           "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
           "yes": "Ja"
         }
       },
       {
         "key": "internet_access/fee",
-        "type": "check",
-        "label": "Internetzugangsgebühr"
+        "label": "Internetzugangsgebühr",
+        "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "type": "text",
-        "label": "SSID (Netzwerk Name)"
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Hotel"
+  },
+  "amenity/animal_breeding": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "animal_breeding",
+        "label": "Tierzucht",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Tierzucht"
+  },
+  "shop/craft": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kunsthandwerkgeschäft"
+  },
+  "shop/chocolate": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schokoladeladen"
+  },
+  "amenity/planetarium": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Planetarium"
+  },
+  "shop/herbalist": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kräuterladen"
+  },
+  "amenity/arts_centre": {
+    "fields": [],
+    "name": "Kunstzentrum"
+  },
+  "shop/travel_agency": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Reisebüro"
+  },
+  "shop/deli": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Feinkostladen"
+  },
+  "amenity/courthouse": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gericht"
+  },
+  "shop/fashion": {
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Kleidung",
+        "type": "semiCombo"
       },
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Modegeschäft"
+  },
+  "shop/pyrotechnics": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Feuerwerksgeschäft"
+  },
+  "shop/pawnbroker": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Pfandleiher"
+  },
+  "office/research": {
+    "fields": [],
+    "name": "Forschungseinrichtung"
+  },
+  "shop/butcher": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Metzger"
+  },
+  "shop/locksmith": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schlosser"
+  },
+  "amenity/school": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schulgelände"
+  },
+  "amenity/pub": {
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
       },
       {
-        "key": "rooms",
-        "type": "number",
-        "label": "Räume"
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Kneipe"
+  },
+  "amenity/theatre": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "The­a­ter"
+  },
+  "shop/beauty": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "beauty",
+        "label": "Geschäftstyp",
+        "type": "combo"
+      }
+    ],
+    "name": "Kosmetikladen"
+  },
+  "office/therapist": {
+    "fields": [],
+    "name": "Therapeut"
+  },
+  "amenity/crematorium": {
+    "fields": [],
+    "name": "Krematorium"
+  },
+  "shop/curtain": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Vorhanggeschäft"
+  },
+  "shop/nutrition_supplements": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Nahrungsergänzungsmittelgeschäft"
+  },
+  "tourism/attraction": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Touristenattraktion"
+  },
+  "shop/dairy": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Milchgeschäft"
+  },
+  "shop/laundry": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Wäscherei"
+  },
+  "shop/hairdresser": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Friseur"
+  },
+  "shop/sports": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Sportgeschäft"
+  },
+  "shop/houseware": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Haushaltswarengeschäft"
+  },
+  "shop/books": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Buchladen"
+  },
+  "amenity/scrapyard": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schrottplatz"
+  },
+  "shop/beverages": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Getränkeladen"
+  },
+  "shop/candles": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kerzengeschäft"
+  },
+  "tourism/motel": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
       },
       {
         "key": "smoking",
-        "type": "combo",
         "label": "Rauchen",
+        "type": "combo",
         "options": {
+          "no": "Rauchen überall verboten",
           "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
           "isolated": "in Raucherzonen, baulich getrennt",
-          "no": "Rauchen überall verboten",
-          "outside": "im Freien erlaubt",
           "separated": "in Raucherzonen, nicht baulich getrennt",
-          "yes": "überall erlaubt"
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
         }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Motel"
   },
-  "tourism/museum": {
-    "name": "Museum",
+  "leisure/ice_rink": {
+    "fields": [
+      {
+        "key": "seasonal",
+        "label": "Saisonal",
+        "type": "check"
+      },
+      {
+        "key": "sport_ice",
+        "label": "Sportarten",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Gebäude",
+        "type": "combo"
+      }
+    ],
+    "name": "Eislaufbahn"
+  },
+  "amenity/car_wash": {
+    "fields": [],
+    "name": "Autowäsche"
+  },
+  "tourism/aquarium": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Aquarium"
+  },
+  "shop/bag": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Taschen/Koffer-Geschäft"
+  },
+  "shop/wine": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Vinothek"
+  },
+  "shop/electronics": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Elektronikfachgeschäft"
+  },
+  "shop/hearing_aids": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Hörgerätegeschäft"
+  },
+  "shop/photo": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fotofachgeschäft"
+  },
+  "office/lawyer": {
+    "fields": [],
+    "name": "Anwalt"
+  },
+  "shop/leather": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Lederbekleidungsgeschäft"
+  },
+  "tourism/camp_site": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Kapazität",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Gebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Campingplatz"
+  },
+  "shop/mobile_phone": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Mobiltelefonladen"
+  },
+  "amenity/doctors": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Spezialgebiete",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Arzt"
+  },
+  "shop/fishmonger": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fischhändler"
+  },
+  "shop/department_store": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kaufhaus"
+  },
+  "tourism/guest_house": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Pension, Gästehaus"
+  },
+  "shop/bookmaker": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Buchmacher"
+  },
+  "shop/motorcycle": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Motorradhändler"
+  },
+  "shop/watches": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Uhrengeschäft"
   },
   "tourism/theme_park": {
-    "name": "Themenpark",
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Themenpark"
   },
-  "tourism/zoo": {
-    "name": "Zoo",
+  "amenity/prison": {
     "fields": [
       {
         "key": "operator",
-        "type": "text",
-        "label": "Betreiber"
+        "label": "Betreiber",
+        "type": "text"
       }
-    ]
+    ],
+    "name": "Gefängnisanlage"
+  },
+  "leisure/dance": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Tanzsaal"
+  },
+  "amenity/dojo": {
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Sport",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Kampfsportstudio"
+  },
+  "shop/computer": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Computerfachhandel"
+  },
+  "shop/alcohol": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Durchfahrts-Service",
+        "type": "check"
+      }
+    ],
+    "name": "Spirituosenladen"
+  },
+  "shop/boutique": {
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Kleidung",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Boutique"
+  },
+  "amenity/food_court": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Gemeinschaftlicher Gastronomiebereich"
+  },
+  "shop/weapons": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Waffengeschäft"
+  },
+  "amenity/community_centre": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gemeindezentrum"
+  },
+  "amenity/clinic": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Spezialgebiete",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Klinik"
+  },
+  "tourism/caravan_site": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Kapazität",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Gebühr",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Toilettenentsorgungsanlage",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Stromversorgung",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Wohnwagen-Campingplatz"
+  },
+  "amenity/ferry_terminal": {
+    "fields": [
+      {
+        "key": "network",
+        "label": "Netzwerk",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fährhafen"
+  },
+  "leisure/stadium": {
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Sport",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Stadion"
+  },
+  "office/educational_institution": {
+    "fields": [],
+    "name": "Bildungseinrichtung"
+  },
+  "shop/tobacco": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Trafik"
+  },
+  "amenity/veterinary": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Tierarzt"
+  },
+  "shop/fabric": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Stoffgeschäft"
+  },
+  "shop/funeral_directors": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Religion",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Glaubensrichtung, Konfession",
+        "type": "combo"
+      }
+    ],
+    "name": "Beerdigungsinstitut"
+  },
+  "amenity/fuel": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "fuel_multi",
+        "label": "Spritsorten",
+        "type": "multiCombo"
+      }
+    ],
+    "name": "Tankstelle"
+  },
+  "shop/kiosk": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Zeitungskiosk"
+  },
+  "shop/scuba_diving": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Tauchwarengeschäft"
+  },
+  "shop/art": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kunsthandlung"
+  },
+  "leisure/fitness_centre": {
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Sport",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Fitness Studio"
+  },
+  "shop/variety_store": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gemischtwarenhandel"
+  },
+  "shop/car": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Second Hand",
+        "type": "combo",
+        "options": {
+          "only": "ausschließlich",
+          "no": "Nein",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Raststätte",
+        "type": "multiCombo"
+      }
+    ],
+    "name": "Autohändler"
+  },
+  "shop/convenience": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gemischtwarenhandel"
+  },
+  "office/newspaper": {
+    "fields": [],
+    "name": "Redaktion"
+  },
+  "shop/stationery": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schreibwarengeschäft"
+  },
+  "amenity/nightclub": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      }
+    ],
+    "name": "Nachtklub"
+  },
+  "shop/tattoo": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Tätowierungsladen"
+  },
+  "shop/coffee": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kaffeegeschäft"
+  },
+  "shop/hardware": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Eisenwarenhandel"
+  },
+  "leisure/sports_centre": {
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Sport",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Sportzentrum / -komplex"
+  },
+  "amenity/bar": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Bar"
+  },
+  "shop/money_lender": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Währungen",
+        "type": "multiCombo"
+      }
+    ],
+    "name": "Geldverleiher"
+  },
+  "shop/appliance": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Haushaltselektrogerätegeschäft"
+  },
+  "shop/antiques": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Antiquitätenladen"
+  },
+  "amenity/boat_rental": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Bootsvermietung"
+  },
+  "shop/massage": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Massagesalon"
+  },
+  "shop/music": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Musikgeschäft"
+  },
+  "shop/vacuum_cleaner": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Staubsaugergeschäft"
+  },
+  "shop/tyres": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Reifenhandel"
+  },
+  "tourism/museum": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Museum"
+  },
+  "leisure/hackerspace": {
+    "fields": [],
+    "name": "Hackerspace"
+  },
+  "office/financial": {
+    "fields": [],
+    "name": "Finanzberater"
+  },
+  "shop/baby_goods": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Babysachengeschäft"
+  },
+  "shop/car_parts": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Autoteilehandel"
+  },
+  "shop/gift": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Geschenkladen"
+  },
+  "shop/hifi": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Hifi-Laden"
+  },
+  "amenity/bus_station": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Busbahnhof"
+  },
+  "shop/carpet": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Teppichgeschäft"
+  },
+  "office/travel_agent": {
+    "fields": [],
+    "name": "Reisebüro"
+  },
+  "shop/perfumery": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Parfümerie"
+  },
+  "amenity/fire_station": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Feuerwehrhaus"
+  },
+  "amenity/animal_boarding": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "animal_boarding",
+        "label": "Tierpension",
+        "type": "semiCombo"
+      }
+    ],
+    "name": "Tierpension"
+  },
+  "shop/tiles": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fliesenhändler"
+  },
+  "amenity/internet_cafe": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Internetcafé"
+  },
+  "shop/chemist": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Drogerie"
+  },
+  "office/architect": {
+    "fields": [],
+    "name": "Architekt"
+  },
+  "amenity/casino": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      }
+    ],
+    "name": "Kasino"
+  },
+  "amenity/restaurant": {
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Küche",
+        "type": "semiCombo"
+      },
+      {
+        "key": "capacity",
+        "label": "Kapazität",
+        "type": "number"
+      },
+      {
+        "key": "takeaway",
+        "label": "zum Mitnehmen",
+        "type": "combo",
+        "options": {
+          "only": "nur zum Mitnehmen",
+          "no": "Nein",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Zustellung",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Restaurant"
+  },
+  "shop/charity": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Second Hand",
+        "type": "combo",
+        "options": {
+          "only": "ausschließlich",
+          "no": "Nein",
+          "yes": "Ja"
+        }
+      }
+    ],
+    "name": "Sozialkaufhaus"
+  },
+  "shop/radiotechnics": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Radio/Elektronik-Geschäft"
+  },
+  "shop/second_hand": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Second Hand",
+        "type": "combo",
+        "options": {
+          "only": "ausschließlich",
+          "no": "Nein",
+          "yes": "Ja"
+        }
+      }
+    ],
+    "name": "Second-Hand-Laden"
+  },
+  "amenity/childcare": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kindertagesstätte/Kinderbetreuung"
+  },
+  "leisure/water_park": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Erlebnisbad"
+  },
+  "shop/interior_decoration": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Innenausstattungsgeschäft"
+  },
+  "shop/tea": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Teegeschäft"
+  },
+  "amenity/embassy": {
+    "fields": [
+      {
+        "key": "country",
+        "label": "Land",
+        "type": "combo"
+      }
+    ],
+    "name": "Botschaft"
+  },
+  "tourism/apartment": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Ferienwohnung"
+  },
+  "shop/cosmetics": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Drogerie"
+  },
+  "shop/video_games": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Videospielgeschäft"
+  },
+  "leisure/bowling_alley": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      }
+    ],
+    "name": "Bowlingbahn"
+  },
+  "amenity/recycling_centre": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "recycling_accepts",
+        "label": "akzeptiert",
+        "type": "multiCombo"
+      }
+    ],
+    "name": "Wertstoffhof"
+  },
+  "amenity/nursing_home": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "social_facility",
+        "label": "Typ",
+        "type": "combo"
+      },
+      {
+        "key": "social_facility_for",
+        "label": "Unterstützter Personenkreis",
+        "type": "combo"
+      }
+    ],
+    "name": "Pflegeheim"
+  },
+  "leisure/horse_riding": {
+    "fields": [
+      {
+        "key": "access_simple",
+        "label": "Erlaubter Zugang",
+        "type": "combo"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Gebäude",
+        "type": "combo"
+      }
+    ],
+    "name": "Reitanlage"
+  },
+  "leisure/resort": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Resort"
+  },
+  "shop/musical_instrument": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Musikinstrumentegeschäft"
+  },
+  "amenity/car_rental": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Autovermietung"
+  },
+  "shop/dry_cleaning": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Chemische Reinigung"
+  },
+  "shop/outdoor": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Outdoorgeschäft"
+  },
+  "leisure/golf_course": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Golfplatz"
+  },
+  "amenity/library": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Internetzugang",
+        "type": "combo",
+        "options": {
+          "wlan": "Wi-Fi",
+          "terminal": "Terminal",
+          "no": "Nein",
+          "wired": "kabelgebunden",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Internetzugangsgebühr",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Netzwerk Name)",
+        "type": "text"
+      }
+    ],
+    "name": "Bibliothek"
+  },
+  "office/employment_agency": {
+    "fields": [],
+    "name": "Arbeitsamt"
+  },
+  "amenity/hospital": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Spezialgebiete",
+        "type": "semiCombo"
+      },
+      {
+        "key": "emergency",
+        "label": "Notfall",
+        "type": "check"
+      }
+    ],
+    "name": "Krankenhaus"
+  },
+  "shop/copyshop": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Kopierladen"
+  },
+  "office/political_party": {
+    "fields": [],
+    "name": "Partei"
+  },
+  "amenity/townhall": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Rathaus"
+  },
+  "shop/bed": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Betten/Matratzengeschäft"
+  },
+  "shop/water_sports": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Wassersportgeschäft"
+  },
+  "shop/video": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Videothek"
+  },
+  "shop/pastry": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Konditorei"
+  },
+  "office/it": {
+    "fields": [],
+    "name": "IT-Büro"
+  },
+  "shop/tailor": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Schneider"
+  },
+  "amenity/fast_food": {
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Küche",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "takeaway",
+        "label": "zum Mitnehmen",
+        "type": "combo",
+        "options": {
+          "only": "nur zum Mitnehmen",
+          "no": "Nein",
+          "yes": "Ja"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Zustellung",
+        "type": "check"
+      },
+      {
+        "key": "drive_through",
+        "label": "Durchfahrts-Service",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Außenbestuhlung",
+        "type": "check"
+      }
+    ],
+    "name": "Schnellimbiss"
+  },
+  "shop/anime": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Anime-Geschäft"
+  },
+  "shop/ticket": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Eintrittskartenverkäufer"
+  },
+  "shop/gas": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Gasflaschenverkauf"
+  },
+  "office/ngo": {
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      }
+    ],
+    "name": "Nichtregierungsorganisation"
+  },
+  "office/physician": {
+    "fields": [],
+    "name": "Arztpraxis"
+  },
+  "shop/newsagent": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Zeitungs-/Magazin-Geschäft"
+  },
+  "leisure/adult_gaming_centre": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Rauchen",
+        "type": "combo",
+        "options": {
+          "no": "Rauchen überall verboten",
+          "dedicated": "Für Raucher bestimmt (z. B. Raucherklub)",
+          "isolated": "in Raucherzonen, baulich getrennt",
+          "separated": "in Raucherzonen, nicht baulich getrennt",
+          "yes": "überall erlaubt",
+          "outside": "im Freien erlaubt"
+        }
+      }
+    ],
+    "name": "Spielothek für Erwachsene"
+  },
+  "shop/e-cigarette": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "E-Zigarettengeschäft"
+  },
+  "amenity/marketplace": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Wochenmarkt"
+  },
+  "shop/furnace": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Heizungsfachgeschäft"
+  },
+  "shop/jewelry": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Juwelier"
+  },
+  "shop/car_repair": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Raststätte",
+        "type": "multiCombo"
+      }
+    ],
+    "name": "Autowerkstatt"
+  },
+  "amenity/bicycle_rental": {
+    "fields": [
+      {
+        "key": "capacity",
+        "label": "Kapazität",
+        "type": "number"
+      },
+      {
+        "key": "network",
+        "label": "Netzwerk",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Fahrradverleih"
+  },
+  "amenity/cinema": {
+    "fields": [],
+    "name": "Kino"
+  },
+  "shop/clothes": {
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Kleidung",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Bekleidungsgeschäft"
+  },
+  "shop/medical_supply": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      }
+    ],
+    "name": "Medizinbedarfgeschäft"
+  },
+  "amenity/bank": {
+    "fields": [
+      {
+        "key": "atm",
+        "label": "Geldautomat",
+        "type": "check"
+      },
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Durchfahrts-Service",
+        "type": "check"
+      }
+    ],
+    "name": "Bank-Filiale"
+  },
+  "shop/bicycle": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "service/bicycle",
+        "label": "Fahrradservice",
+        "type": "multiCombo"
+      }
+    ],
+    "name": "Fahrradladen"
+  },
+  "shop/storage_rental": {
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Betreiber",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Gebäude",
+        "type": "combo"
+      }
+    ],
+    "name": "Lagerraumvermieter"
+  },
+  "office/insurance": {
+    "fields": [],
+    "name": "Versicherung"
   }
 }
