@@ -54,6 +54,9 @@
 
   export default {
     name: 'category-field',
+    mounted() {
+      this.setIsOwnCategory(false);
+    },
     computed: {
       ...mapGetters([
         'details',
@@ -67,6 +70,7 @@
         'setIsOwnCategory',
         'setInfoText',
         'setIsPopup',
+        'setIsNote',
       ]),
       hideInput() {
         this.setIsOwnCategory(false);
@@ -74,6 +78,7 @@
       },
       showInput() {
         this.setIsOwnCategory(true);
+        this.setIsNote(true);
         this.details.category = { value: 0, text: '' };
       },
       show(key) {

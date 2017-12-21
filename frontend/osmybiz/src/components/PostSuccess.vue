@@ -15,7 +15,7 @@
       </div>
 
       <div class="section">
-        {{t('success').address}}
+        {{t('success').address}}:
         <span v-if="node.address.street">
               {{node.address.street}}
               <span v-if="!node.address.housenumber">
@@ -39,7 +39,7 @@
             </span>
       </div>
       <div class="section">
-        {{t('success').name}}
+        {{t('success').name}}:
         {{node.details.name}}
       </div>
     </div>
@@ -53,12 +53,12 @@
       </div>
 
       <div class="section">
-        {{t('success').address}}
+        {{t('success').address}}:
         {{note.text.address}}
       </div>
 
       <div class="section">
-        {{t('success').name}}
+        {{t('success').name}}:
         {{note.text.name}}
       </div>
     </div>

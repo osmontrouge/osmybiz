@@ -111,7 +111,9 @@
     "mapLink": "View on OSM.org",
     "edit": "Edit",
     "create": "Create",
-    "buttontitle": "You have to be logged in for this function"
+    "buttontitle": "You have to be logged in for this function",
+    "warning": "There is already an open Note for this business.",
+    "comment": "Comment"
   },
   "warning": {
     "confirm": {

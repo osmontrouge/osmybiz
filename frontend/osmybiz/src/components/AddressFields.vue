@@ -39,9 +39,6 @@
         <span v-show="address.street === '' && address.place === ''"
               class="help is-danger"> {{t('detail').validate.streetOrPlace}}
           </span>
-        <span v-show="address.street !== '' && address.place !== ''"
-              class="help is-danger"> {{t('detail').validate.notStreetAndPlace}}
-          </span>
       </div>
 
       <div class="row">

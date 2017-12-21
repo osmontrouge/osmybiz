@@ -85,6 +85,7 @@
           </div>
 
           <input v-validate="'url'"
+                 :class="{'is-error': errors.has('website') }"
                  type="text"
                  name="website"
                  v-model="details.website"
@@ -105,32 +106,12 @@
                  src="../assets/info_black.png">
           </div>
 
-          <div class="checkboxes">
-            <div class="checkbox-wrapper">
-              <input class="radiobutton"
-                     type="radio"
-                     id="one"
-                     value="yes"
-                     v-model="details.wheelchair">
-              <label>{{t('detail').labels.yes}}</label>
-            </div>
-            <div class="checkbox-wrapper">
-              <input class="radiobutton"
-                     type="radio"
-                     id="two"
-                     value="limited"
-                     v-model="details.wheelchair">
-              <label>{{t('detail').labels.limited}}</label>
-            </div>
-            <div class="checkbox-wrapper">
-              <input class="radiobutton"
-                     type="radio"
-                     id="three"
-                     value="no"
-                     v-model="details.wheelchair">
-              <label>{{t('detail').labels.no}}</label>
-            </div>
-          </div>
+          <select v-model="details.wheelchair">
+            <option></option>
+            <option value="yes">{{t('detail').labels.yes}}</option>
+            <option value="limited">{{t('detail').labels.limited}}</option>
+            <option value="no">{{t('detail').labels.no}}</option>
+          </select>
         </div>
       </div>
 
