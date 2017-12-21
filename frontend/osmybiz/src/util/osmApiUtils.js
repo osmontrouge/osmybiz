@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 function parseDetails(node) {
   const details = {};
@@ -62,29 +62,29 @@ function parseAddress(node) {
   return address;
 }
 
-function extractLanguages(langDoc) {
-  const childNodes = langDoc.children();
-  const languages = [];
-  childNodes.forEach((node) => {
-    const text = $(node).text();
-    languages.push(text.slice(0, 2));
-  });
-  if (languages.length === 0) {
-    languages.push('de');
-  }
-  return _.uniq(languages);
-}
+// function extractLanguages(langDoc) {
+//   const childNodes = langDoc.children();
+//   const languages = [];
+//   childNodes.forEach((node) => {
+//     const text = $(node).text();
+//     languages.push(text.slice(0, 2));
+//   });
+//   if (languages.length === 0) {
+//     languages.push('de');
+//   }
+//   return _.uniq(languages);
+// }
 
 function parseUser(userXml) {
   const doc = $(userXml);
   const user = doc.find('user');
   const messages = user.find('messages').find('received');
-  const languages = user.find('languages');
+  // const languages = user.find('languages');
   return {
     name: user.attr('display_name'),
     id: parseInt(user.attr('id'), 10),
     unReadCount: messages.attr('unread'),
-    langPrefs: extractLanguages(languages),
+    langPrefs: [],
   };
 }
 

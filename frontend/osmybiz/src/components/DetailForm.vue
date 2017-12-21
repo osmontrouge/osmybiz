@@ -203,9 +203,6 @@
       hide() {
         hidePopup();
       },
-      onSelect(item) {
-        this.details.category = item;
-      },
     },
   };
 </script>

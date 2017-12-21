@@ -79,6 +79,9 @@
       show(key) {
         showPopup(key);
       },
+      onSelect(item) {
+        this.details.category = item;
+      },
       hide() {
         hidePopup();
       },
