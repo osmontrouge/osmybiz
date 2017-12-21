@@ -99,7 +99,7 @@ def unsub_user_from_node(user_id, node_id):
     if node is None:
         abort(404)
 
-    node.recieveUpdates = False
+    node.receive_updates = False
     node.save()
 
     return '', 200
