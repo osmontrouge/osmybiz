@@ -115,14 +115,16 @@
   .form-footer {
     position: fixed;
     height: 60px;
-    margin: 0 5% 0;
-    width: 90%;
+    margin: 0 auto;
+    max-width: 1000px;
     bottom: 0;
     background: white;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: flex-start;
+    left: 0;
+    right: 0;
   }
 
   .button {
