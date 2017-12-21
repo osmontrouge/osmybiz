@@ -190,9 +190,9 @@ export function getNotes(lat, lng) {
   // 0.0001 lat equates to 11.1 meter
   // to get the accuracy of lng you have to multiply the distance with the cosinus of lat
   const distance = (0.0001 / 11.1) * searchradius;
-  const left = lng - (distance * Math.cos(lat));
+  const left = lng + (distance * Math.cos(lat));
   const bottom = lat - distance;
-  const right = lng + (distance * Math.cos(lat));
+  const right = lng - (distance * Math.cos(lat));
   const top = lat + distance;
   return new Promise((resolve) => {
     auth.xhr(

@@ -34,12 +34,13 @@ const actions = {
           if (note.properties.status === 'open') {
             const text = note.properties.comments[0].text;
             const fields = text.split('\n');
-            const cat = fields[3].split(':')[1].substring(1);
-            if (fields[0] === '#OSMyBiz ' &&
-              fields[3] === `Category: ${cat}:${data.tags[cat]}` &&
-              fields[4] === `Name: ${data.tags.name}`) {
-              duplicate = true;
-              noteLink = `https://master.apis.dev.openstreetmap.org/note/${note.properties.id}/#map=19/${note.geometry.coordinates[1]}/${note.geometry.coordinates[0]}&layers=ND`;
+            if (fields[0] === '#OSMyBiz ') {
+              const cat = fields[3].split(':')[1].substring(1);
+              if (fields[3] === `Category: ${cat}:${data.tags[cat]}` &&
+                fields[4] === `Name: ${data.tags.name}`) {
+                duplicate = true;
+                noteLink = `https://master.apis.dev.openstreetmap.org/note/${note.properties.id}/#map=19/${note.geometry.coordinates[1]}/${note.geometry.coordinates[0]}&layers=ND`;
+              }
             }
           }
         });
