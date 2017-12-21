@@ -210,14 +210,17 @@
   };
 </script>
 
-<style>
+<style lang="scss">
+
+  @import "../scss/globals";
+
   .form-wrapper {
     margin: 0 10% 10px;
     width: 80%;
   }
 
   input[type="text"], input[type="number"], textarea, select {
-    border: 2px solid #7ebc6f;
+    border: 2px solid $primary-color;
     padding: 12px 20px;
     display: inline-block;
     box-sizing: border-box;
@@ -286,7 +289,7 @@
   }
 
   .field span {
-    color: red;
+    color: $error-color;
   }
 
   span {

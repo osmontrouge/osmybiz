@@ -126,7 +126,7 @@
     font-size: 24px;
     font-weight:bold;
     margin: 0 24px;
-    color: $secondary-color;
+    color: $primary-color;
   }
 
   .buttons {
@@ -143,7 +143,7 @@
   }
 
   .about a {
-    color: #7ebc6f;
+    color: $primary-color;
   }
 
   .messages {
@@ -173,7 +173,7 @@
   }
 
   select {
-    border: 2px solid #7ebc6f;
+    border: 2px solid $primary-color;
     margin-right: 10px;
     padding: 7px 8px;
     outline: none;

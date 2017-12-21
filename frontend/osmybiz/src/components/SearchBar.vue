@@ -63,7 +63,9 @@
   };
 </script>
 
-<style>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   .search-bar-wrapper {
     position: fixed;
@@ -77,7 +79,7 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    border: 2px solid #7ebc6f;
+    border: 2px solid $primary-color;
   }
 
   .search-bar {
@@ -112,7 +114,7 @@
     flex-direction: column;
     justify-content: space-around;
     top: 110px;
-    border: 2px solid #7ebc6f;
+    border: 2px solid $primary-color;
     border-top: none;
   }
 

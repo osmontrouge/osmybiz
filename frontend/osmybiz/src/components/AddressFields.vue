@@ -115,7 +115,10 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
+
   .address-wrapper {
     margin: 0 10% 0;
     width: 80%;
@@ -158,6 +161,6 @@
   }
 
   span {
-    color: red;
+    color: $error-color;
   }
 </style>

@@ -28,9 +28,12 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
+
   .popup {
-    background: #7ebc6f;
+    background: $primary-color;
     display: block;
     position: absolute;
     z-index: 100;

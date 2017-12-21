@@ -89,7 +89,10 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
+
   .category-wrapper {
     margin: 15px 10% 0;
     width: 80%;
@@ -111,11 +114,11 @@
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
-    border: 2px solid #7ebc6f !important;
+    border: 2px solid $primary-color !important;
   }
 
   .menu {
-    border: 2px solid #7ebc6f !important;
+    border: 2px solid $primary-color !important;
     border-top: none !important;
     margin: 0px -2px !important;
     min-width: calc(100% + 2px) !important;

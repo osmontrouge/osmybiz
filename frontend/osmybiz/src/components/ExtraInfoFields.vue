@@ -39,10 +39,12 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   .extra-wrapper {
-    border-top: 1px solid #7ebc6f;
+    border-top: 1px solid $primary-color;
     margin: 0 10% 0;
     width: 80%;
   }

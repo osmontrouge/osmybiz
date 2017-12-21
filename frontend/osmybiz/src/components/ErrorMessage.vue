@@ -38,9 +38,6 @@
     border: 2px solid $error-color;
     display: flex;
     flex-direction: column;
-  }
-
-  .dialog-title {
     font-size: 18px;
   }
 

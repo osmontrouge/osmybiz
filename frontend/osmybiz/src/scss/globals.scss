@@ -1,5 +1,5 @@
-$primary-color: #55834a;
-$secondary-color: #7ebc6f;
+$primary-color: #7ebc6f;
+$secondary-color: #55834a;
 $error-color: #EA5C5C;
 
 #app {
@@ -9,11 +9,11 @@ $error-color: #EA5C5C;
 }
 
 button {
-  background-color: $secondary-color;
+  background-color: $primary-color;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid $primary-color;
+  border: 2px solid $secondary-color;
   padding: 6px 12px;
   border-radius: 5px;
 }
