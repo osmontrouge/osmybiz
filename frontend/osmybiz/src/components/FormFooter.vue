@@ -113,12 +113,6 @@
     justify-content: flex-start;
   }
 
-  button:disabled {
-    border: 2px solid darkgray;
-    background-color: lightgrey;
-    color: black;
-  }
-
   .button {
     flex-grow: 1;
     margin: 10px 0;

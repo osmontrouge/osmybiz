@@ -4,9 +4,9 @@
         {{t('error').title}}
       </div>
 
-      <div class="section">
-        <img src="../assets/error.png" alt="">
-        <span>{{error}}</span>
+      <div id="error-section" class="section">
+        <img id="error-img" src="../assets/error.png" alt="">
+        <span id="error-message">{{error}}</span>
       </div>
     </div>
 </template>
@@ -41,19 +41,19 @@
     font-size: 18px;
   }
 
-  .section {
+  #error-section {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
 
-  img {
+  #error-img {
     height: 50px;
     width: 50px;
     opacity: 0.9;
   }
 
-  span {
+  #error-message {
     font-size: 16px;
     margin-left: 10px;
   }

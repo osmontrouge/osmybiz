@@ -55,14 +55,16 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   #confirm-dialog {
     width: 500px;
     margin-left: -250px;
     top: 45%;
     left: 50%;
-    border: 2px solid red;
+    border: 2px solid $error-color;
   }
 
   .confirm-buttons {

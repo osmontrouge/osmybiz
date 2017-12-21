@@ -23,7 +23,8 @@
       </div>
     </div>
     <select v-if="checkType()==='combo'"
-            v-model="field.value">
+            v-model="field.value"
+            class="extra-select">
       <option></option>
       <option v-for="option in field.options" v-bind:value="option.key">
         {{option.text}}
@@ -61,7 +62,7 @@
     justify-content: stretch;
   }
 
-  input[type="text"], input[type="number"], select {
-    width: 100%;
+  .extra-select {
+    margin: 0;
   }
 </style>

@@ -61,14 +61,16 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   #duplicate-dialog {
     width: 500px;
     margin-left: -250px;
     bottom: 65px;
     left: 50%;
-    border: 2px solid red;
+    border: 2px solid $error-color;
     overflow-y: auto;
   }
 

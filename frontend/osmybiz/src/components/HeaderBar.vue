@@ -10,7 +10,8 @@
           </a>
         </div>
 
-        <select v-on:change="onSelect">
+        <select id="translation-select"
+                v-on:change="onSelect">
           <option value="de">Deutsch</option>
           <option value="en">English</option>
         </select>
@@ -137,9 +138,10 @@
   }
 
   .about {
-    font-size: 14px;
+    font-size: 18px;
     font-weight:bold;
     margin: 0 10px;
+    flex-grow: 1;
   }
 
   .about a {
@@ -172,8 +174,7 @@
     margin: 8px 0 10px 10px;
   }
 
-  select {
-    border: 2px solid $primary-color;
+  #translation-select {
     margin-right: 10px;
     padding: 7px 8px;
     outline: none;

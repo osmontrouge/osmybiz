@@ -154,13 +154,4 @@
     flex-basis: 2%;
   }
 
-  .field {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 12px;
-  }
-
-  span {
-    color: $error-color;
-  }
 </style>

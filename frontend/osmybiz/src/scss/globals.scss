@@ -24,10 +24,45 @@ button:hover {
 }
 
 button:disabled {
-  background-color: grey;
-  color: white;
-  cursor: default;
-  border: none;
+  border: 2px solid darkgray;
+  background-color: lightgrey;
+  color: black;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+  border: 2px solid $primary-color;
+  padding: 12px 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  outline: none;
+  width: 100%;
+}
+
+input::placeholder, textarea::placeholder {
+  color: lightgrey;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-grow: 1;
+  padding-bottom: 12px;
+}
+
+.field label {
+  text-align: left;
+}
+
+.field span {
+  color: $error-color;
+  text-align: left;
+}
+
+.field-label {
+  display: flex;
+  flex-direction: row;
 }
 
 

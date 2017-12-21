@@ -216,18 +216,6 @@
     width: 80%;
   }
 
-  input[type="text"], input[type="number"], textarea, select {
-    border: 2px solid $primary-color;
-    padding: 12px 20px;
-    display: inline-block;
-    box-sizing: border-box;
-    outline: none;
-  }
-
-  input::placeholder, textarea::placeholder {
-    color: lightgrey;
-  }
-
   .area {
     flex-grow: 1;
   }
@@ -270,32 +258,6 @@
     flex-direction: column;
     align-items:stretch;
     justify-content: space-around;
-  }
-
-  .field {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-grow: 1;
-    padding-bottom: 12px;
-  }
-
-  .field label {
-    text-align: left;
-  }
-
-  .field span {
-    color: $error-color;
-  }
-
-  span {
-    text-align: left;
-  }
-
-  .field-label {
-    display: flex;
-    flex-direction: row;
   }
 
 </style>
