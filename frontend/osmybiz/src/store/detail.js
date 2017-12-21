@@ -19,10 +19,10 @@ const state = {
   details: {
     category: {
       text: '',
-      value: 0,
       fields: [
         { key: '', name: '', value: '' },
       ],
+      value: 0,
     },
     name: '',
     opening_hours: '',
@@ -55,7 +55,8 @@ function constructNote() {
       if (state.address.housenumber) {
         address += `${state.address.housenumber}, `;
       }
-    } else {
+    }
+    if (state.address.place) {
       address += `${state.address.place}, `;
     }
     if (state.address.postcode) {
@@ -70,8 +71,12 @@ function constructNote() {
     text += `Address: ${address}\n`;
   }
   if (state.details.category.text.length !== 0) {
-    const category = state.details.category.value.split('/');
-    text += `Category: ${category[0]}:${category[1]}\n`;
+    if (state.isOwnCategory) {
+      text += `Category: ${state.details.category.text}\n`;
+    } else {
+      const category = state.details.category.value.split('/');
+      text += `Category: ${category[0]}:${category[1]}\n`;
+    }
   }
   if (state.details.name.length !== 0) {
     text += `Name: ${state.details.name}\n`;
@@ -98,11 +103,13 @@ function constructNote() {
     text += `Note: ${state.details.note}\n`;
   }
 
-  state.details.category.fields.forEach((field) => {
-    if (field.value.length !== 0) {
-      text += `${field.label}: ${field.value}\n`;
-    }
-  });
+  if (!state.isOwnCategory) {
+    state.details.category.fields.forEach((field) => {
+      if (field.value.length !== 0) {
+        text += `${field.label}: ${field.value}\n`;
+      }
+    });
+  }
 
   return {
     lat: state.lat,
