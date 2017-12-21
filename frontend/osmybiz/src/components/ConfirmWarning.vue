@@ -14,10 +14,10 @@
     </div>
 
     <div class="confirm-buttons">
-      <button class="confirm-button" @click="toggle">
+      <button class="no-button" @click="toggle">
         {{t('warning').confirm.no}}
       </button>
-      <button class="confirm-button" @click="confirm">
+      <button class="yes-button" @click="confirm">
         {{t('warning').confirm.yes}}
       </button>
     </div>
@@ -73,8 +73,19 @@
     justify-content: space-between;
   }
 
-  .confirm-button {
+  .no-button {
     width: 30%;
+  }
+
+  .yes-button {
+    width: 30%;
+    background-color: $error-color;
+    border: none;
+  }
+
+  .yes-button:hover {
+    background-color: $error-color;
+    color: white;
   }
 
 </style>
