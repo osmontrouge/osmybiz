@@ -50,6 +50,7 @@ const actions = {
         lat: update.coords.lat,
         lng: update.coords.lng,
         recieveUpdates: true,
+        name: update.name,
       });
     } else {
       promise = deleteNode(user.id, update.id);
