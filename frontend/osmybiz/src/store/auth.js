@@ -12,7 +12,7 @@ const actions = {
   authenticate() {
     login();
   },
-  setToken(token) {
+  setToken(s, token) {
     return setOauthToken(token);
   },
   loadUser({ commit }) {

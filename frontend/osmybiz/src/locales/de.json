@@ -110,7 +110,9 @@
     "mapLink": "Auf OSM.org ansehen",
     "edit": "Bearbeiten",
     "create": "Erstellen",
-    "buttontitle": "Für diese Funktion muss man eingeloggt sein"
+    "buttontitle": "Für diese Funktion muss man eingeloggt sein",
+    "warning": "Für dieses Unternehmen existiert bereits eine offene Notiz.",
+    "comment": "Kommentieren"
   },
   "warning": {
     "confirm": {

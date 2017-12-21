@@ -1,5 +1,4 @@
 import osmAuth from 'osm-auth';
-import xml2json from 'jquery-xml2json';
 import axios from 'axios';
 import { osmUrl, osmApiLevel, oauthKey, oauthSecret, searchradius } from '../config/config';
 import { setError } from '../store/error';
@@ -55,6 +54,7 @@ export function loadUser() {
         if (err) {
           setError(get().locale.error.osm.loadUser);
           resolve(null);
+          return;
         }
         resolve(util.parseUser(response));
       });
@@ -64,10 +64,7 @@ export function loadUser() {
 
 // temporary fix to redirect to live api, because dev environment is currentliy borken
 function getNode2(nodeId) {
-  return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then((res) => {
-    const parsed = xml2json(res.data);
-    return util.parseNode(parsed.osm.node);
-  });
+  return axios.get(`https://api.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => util.parseNode(res.data));
 }
 
 export function getNode(nodeId) {
@@ -91,7 +88,7 @@ export function getNode(nodeId) {
           reject(err);
         }
       } else {
-        resolve(util.parseNode(xml2json(response)['#document'].osm.node));
+        resolve(util.parseNode(response));
       }
     });
   });
@@ -129,7 +126,8 @@ function uploadChangeset(node, changesetId) {
         resolve(null);
       }
       closeChangeset(changesetId);
-      resolve(getNode(xml2json(response)['#document'].diffResult.node.$.new_id));
+
+      resolve(getNode(util.extractId(response)));
     });
   });
 }

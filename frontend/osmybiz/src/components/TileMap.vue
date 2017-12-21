@@ -13,12 +13,13 @@
   import { mapGetters, mapMutations, mapActions } from 'vuex';
   import { createNoteFromNode } from './../util/overPassNodeUtils';
   import { routes } from './../router';
-  import { makeTileLayer, getTileUrl, createNewBusinessPopup, createMarker } from './../util/mapUtils';
+  import mapUtils from './../util/mapUtils';
   import { storeViewPort, getInitialPosition } from './../util/positionUtil';
   import { setError } from '../store/error';
 
   const zoomOnSelect = 18;
-  const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+  const osmAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+  const mapBoxAttribution = '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>';
 
   let map;
   let component;
@@ -26,6 +27,14 @@
 
   function setMapPosition(pos, zoom) {
     map.setView(pos, zoom || zoomOnSelect);
+  }
+
+  function setAttribution(mode) {
+    if (mode === 'tiles') {
+      map.attributionControl.addAttribution(osmAttribution);
+    } else {
+      map.attributionControl.addAttribution(mapBoxAttribution);
+    }
   }
 
   let markers = [];
@@ -47,62 +56,49 @@
     return _.unionBy(mine, all, b => b.id);
   }
 
-  function addMarkers(bs, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
+  function addMarkers(bs, ownedNodes, viewport) {
     const mine = getNodesInViewPort(ownedNodes, viewport);
     const merge = mergeNodes(bs, mine);
     markers = merge.map((b) => {
-      const m = createMarker(b, map, isloggedIn, (data) => {
-        checkDuplicate(data).then((res) => {
-          if (!res) {
-            component.edit(data);
-          }
-        });
-      }, setIsNote);
+      const m = mapUtils.createMarker(b, map, component);
       map.addLayer(m);
       return m;
     });
   }
 
   function setTileMode(mode) {
-    tileLayer.setUrl(getTileUrl(mode), false);
+    tileLayer.setUrl(mapUtils.getTileUrl(mode), false);
   }
 
-  function drawBusinesses(businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport) {
+  function drawBusinesses(businesses, ownedNodes, viewport) {
     clearMarkers();
-    addMarkers(businesses, isloggedIn, checkDuplicate, setIsNote, ownedNodes, viewport);
-  }
-
-  function drawContextMenu(coords, isloggedIn, setIsNote) {
-    createNewBusinessPopup(map, coords, isloggedIn, (latlng) => {
-      setIsNote(false);
-      component.createNew(latlng);
-    });
+    addMarkers(businesses, ownedNodes, viewport);
   }
 
   export default {
     mounted() {
       component = this;
       map = this.$refs.map.mapObject;
-      tileLayer = makeTileLayer(this.mode);
+      tileLayer = mapUtils.makeTileLayer(this.mode);
       map.addLayer(tileLayer);
 
       tileLayer.on('tileerror', () => {
         setError('Karte konnte nicht geladen werden');
       });
 
+      setAttribution('tiles');
+
       this.$store.subscribe((mut) => {
         if (mut.type === 'setMapPosition') {
           setMapPosition(this.position);
           this.viewChange();
         } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.isLoggedIn,
-            this.checkDuplicateNote, this.setIsNote, this.ownedNodes, this.viewPort);
+          drawBusinesses(this.businesses, this.ownedNodes, this.viewPort);
         } else if (mut.type === 'setMode') {
+          setAttribution(this.mode);
           setTileMode(this.mode);
         }
       });
-
-      map.attributionControl.addAttribution(attribution);
 
       if (this.position) {
         setMapPosition(this.position);
@@ -113,7 +109,7 @@
       }
     },
     methods: {
-      ...mapActions(['queryOverpass', 'checkDuplicateNote']),
+      ...mapActions(['queryOverpass']),
       ...mapMutations([
         'setViewPort',
         'setDetails',
@@ -145,7 +141,7 @@
         this.$router.push({ name: routes.Detail });
       },
       contextMenu(event) {
-        drawContextMenu(event.latlng, this.isLoggedIn, this.setIsNote);
+        mapUtils.createPopup(map, event.latlng, this);
       },
       createNew(coords) {
         this.setCoords(coords);
@@ -203,20 +199,5 @@
   .map {
     height: 100%;
     width: 100%;
-  }
-
-  .map-popup {
-    display: flex;
-    flex-direction:column;
-    font-size: 16px
-  }
-
-  .popup-title {
-    font-weight: bold;
-  }
-
-  .popup-link {
-    cursor: pointer;
-    text-decoration: underline;
   }
 </style>
