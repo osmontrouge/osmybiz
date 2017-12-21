@@ -30,7 +30,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .popup {
     background: $primary-color;

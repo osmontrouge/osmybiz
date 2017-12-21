@@ -57,7 +57,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   #confirm-dialog {
     width: 500px;

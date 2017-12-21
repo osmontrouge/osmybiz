@@ -22,15 +22,15 @@
 <script>
   import { mapGetters, mapMutations, mapActions } from 'vuex';
   import * as _ from 'lodash';
-  import DetailForm from '../components/DetailForm.vue';
-  import PostSuccess from '../components/PostSuccess.vue';
-  import AddressFields from '../components/AddressFields.vue';
-  import CategoryField from '../components/CategoryField.vue';
-  import FormPopup from '../components/FormPopup.vue';
-  import ExtraInfoFields from '../components/ExtraInfoFields.vue';
-  import FormFooter from '../components/FormFooter.vue';
-  import DuplicateWarning from '../components/DuplicateWarning.vue';
-  import ConfirmWarning from '../components/ConfirmWarning.vue';
+  import DetailForm from '../components/detail/DetailForm.vue';
+  import PostSuccess from '../components/landing/PostSuccess.vue';
+  import AddressFields from '../components/detail/AddressFields.vue';
+  import CategoryField from '../components/detail/CategoryField.vue';
+  import FormPopup from '../components/detail/FormPopup.vue';
+  import ExtraInfoFields from '../components/detail/ExtraInfoFields.vue';
+  import FormFooter from '../components/detail/FormFooter.vue';
+  import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
+  import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
 
   import { routes } from './../router';
   import { getInfoTexts } from '../util/translate';

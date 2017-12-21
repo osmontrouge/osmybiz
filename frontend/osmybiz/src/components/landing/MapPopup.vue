@@ -24,10 +24,10 @@
 </template>
 
 <script>
-  import { get } from './../util/translate';
-  import { osmUrl } from './../config/config';
-  import { reverseQuery } from './../api/nominatimApi';
-  import { getNotes } from './../api/osmApi';
+  import { get } from '../../util/translate';
+  import { osmUrl } from '../../config/config';
+  import { reverseQuery } from '../../api/nominatimApi';
+  import { getNotes } from '../../api/osmApi';
 
   function checkDuplicateNote(data) {
     return getNotes(data.lat, data.lng).then((ps) => {

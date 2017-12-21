@@ -65,7 +65,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .search-bar-wrapper {
     position: fixed;

@@ -6,7 +6,7 @@
         <img class="info"
              @mouseenter="show('category')"
              @mouseleave="hide()"
-             src="../assets/info_black.png">
+             src="../../assets/info_black.png">
       </div>
 
       <div v-show="!isOwnCategory" class="category-field">
@@ -47,7 +47,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../store/detail';
+  import { showPopup, hidePopup } from '../../store/detail';
 
 
   Vue.use(VeeValidate);
@@ -99,7 +99,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .category-field {
     display: flex;

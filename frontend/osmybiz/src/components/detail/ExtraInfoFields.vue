@@ -24,7 +24,7 @@
 
 <script>
   import { mapGetters } from 'vuex';
-  import ExtraInputField from '../components/ExtraInputField.vue';
+  import ExtraInputField from './ExtraInputField.vue';
 
   export default {
     name: 'extra-info-fields',
@@ -41,7 +41,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .extra-wrapper {
     border-top: 1px solid $primary-color;

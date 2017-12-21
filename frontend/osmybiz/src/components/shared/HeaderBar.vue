@@ -41,9 +41,9 @@
   import Icon from 'vue-awesome/components/Icon.vue';
   import 'vue-awesome/icons';
   import { mapGetters, mapActions, mapMutations } from 'vuex';
-  import { loadTags } from '../store/detail';
-  import { osmUrl } from './../config/config';
-  import { getInfoTexts } from '../util/translate';
+  import { loadTags } from '../../store/detail';
+  import { osmUrl } from '../../config/config';
+  import { getInfoTexts } from '../../util/translate';
 
   const messageUrl = `${osmUrl}/user/`;
 
@@ -107,7 +107,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .header {
     position: fixed;

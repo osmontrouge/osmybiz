@@ -43,7 +43,7 @@
   import { mapGetters, mapMutations, mapActions } from 'vuex';
   import 'vue-awesome/icons';
   import Icon from 'vue-awesome/components/Icon.vue';
-  import { osmUrl } from './../config/config';
+  import { osmUrl } from '../../config/config';
 
   export default {
     methods: {
@@ -85,7 +85,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .update-wrapper {
     position: fixed;

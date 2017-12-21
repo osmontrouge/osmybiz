@@ -1,7 +1,7 @@
 import * as L from 'leaflet';
 import Vue from 'vue';
 import { mapBoxToken } from '../config/config';
-import popup from './../components/MapPopup.vue';
+import popup from '../components/landing/MapPopup.vue';
 
 const mapbox = `https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.jpg70?access_token=${mapBoxToken}`;
 const osm = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
