@@ -119,11 +119,6 @@
 
   @import "../scss/globals";
 
-  .address-wrapper {
-    margin: 0 10% 0;
-    width: 80%;
-  }
-
   .address-fields {
     display: flex;
     flex-flow: column;

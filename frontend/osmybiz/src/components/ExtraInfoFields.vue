@@ -45,8 +45,6 @@
 
   .extra-wrapper {
     border-top: 1px solid $primary-color;
-    margin: 0 10% 0;
-    width: 80%;
   }
 
   .extra-wrapper h3 {

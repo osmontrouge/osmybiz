@@ -211,11 +211,6 @@
 
   @import "../scss/globals";
 
-  .form-wrapper {
-    margin: 0 10% 10px;
-    width: 80%;
-  }
-
   .area {
     flex-grow: 1;
   }

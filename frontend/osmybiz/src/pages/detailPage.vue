@@ -1,22 +1,21 @@
 <template>
   <div class="detail-wrapper">
+    <div class="detailcontent-wrapper">
 
-    <div>
-      <h2>{{t('detail').title}}</h2>
+      <div class="content-wrapper">
+        <h2>{{t('detail').title}}</h2>
 
-      <category-field></category-field>
-      <address-fields></address-fields>
-      <detail-form></detail-form>
-      <extra-info-fields></extra-info-fields>
+        <category-field></category-field>
+        <address-fields></address-fields>
+        <detail-form></detail-form>
+        <extra-info-fields></extra-info-fields>
+      </div>
+
+      <duplicate-warning></duplicate-warning>
+      <confirm-warning></confirm-warning>
+      <form-popup v-if="isPopup"></form-popup>
     </div>
-
-    <duplicate-warning></duplicate-warning>
-    <confirm-warning></confirm-warning>
-
     <form-footer></form-footer>
-
-    <form-popup v-if="isPopup"></form-popup>
-
   </div>
 </template>
 
@@ -87,11 +86,14 @@
 <style>
   h2 {
     text-align: left;
-    margin: 0 10% 0;
-    width: 80%;
   }
 
-  .detail-wrapper {
+  .detailcontent-wrapper {
+    margin: auto;
+    max-width: 1000px;
+  }
+
+  .content-wrapper {
     margin-top: 50px;
     margin-bottom: 60px;
   }
@@ -100,18 +102,5 @@
     width: 15px;
     height: 15px;
     margin-left: 5px;
-  }
-
-  .duplicateText {
-    position: fixed;
-    top: 40%;
-    margin: 0 10% 10px;
-    width: 80%;
-    font-size: 24px;
-  }
-
-  .duplicateFormular {
-    opacity: 0.2;
-    filter: alpha(opacity=20);
   }
 </style>

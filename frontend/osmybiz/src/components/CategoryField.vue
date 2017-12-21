@@ -96,11 +96,6 @@
 
   @import "../scss/globals";
 
-  .category-wrapper {
-    margin: 15px 10% 0;
-    width: 80%;
-  }
-
   .category-field {
     display: flex;
     flex-direction: row;

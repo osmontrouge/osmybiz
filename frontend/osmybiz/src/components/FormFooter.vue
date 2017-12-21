@@ -103,8 +103,8 @@
   .form-footer {
     position: fixed;
     height: 60px;
-    margin: 0 10% 0;
-    width: 80%;
+    margin: 0 5% 0;
+    width: 90%;
     bottom: 0;
     background: white;
     display: flex;
