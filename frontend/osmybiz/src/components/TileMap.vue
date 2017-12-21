@@ -18,7 +18,8 @@
   import { setError } from '../store/error';
 
   const zoomOnSelect = 18;
-  const attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+  const osmAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+  const mapBoxAttribution = '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>';
 
   let map;
   let component;
@@ -26,6 +27,14 @@
 
   function setMapPosition(pos, zoom) {
     map.setView(pos, zoom || zoomOnSelect);
+  }
+
+  function setAttribution(mode) {
+    if (mode === 'tiles') {
+      map.attributionControl.addAttribution(osmAttribution);
+    } else {
+      map.attributionControl.addAttribution(mapBoxAttribution);
+    }
   }
 
   let markers = [];
@@ -77,6 +86,8 @@
         setError('Karte konnte nicht geladen werden');
       });
 
+      setAttribution('tiles');
+
       this.$store.subscribe((mut) => {
         if (mut.type === 'setMapPosition') {
           setMapPosition(this.position);
@@ -84,11 +95,10 @@
         } else if (mut.type === 'setBusinesses') {
           drawBusinesses(this.businesses, this.ownedNodes, this.viewPort);
         } else if (mut.type === 'setMode') {
+          setAttribution(this.mode);
           setTileMode(this.mode);
         }
       });
-
-      map.attributionControl.addAttribution(attribution);
 
       if (this.position) {
         setMapPosition(this.position);
