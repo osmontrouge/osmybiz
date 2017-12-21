@@ -63,7 +63,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   #duplicate-dialog {
     width: 500px;

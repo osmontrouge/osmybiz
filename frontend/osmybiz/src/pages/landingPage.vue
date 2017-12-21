@@ -15,14 +15,14 @@
 <script>
   import { mapActions, mapMutations } from 'vuex';
   import * as _ from 'lodash';
-  import TileMap from './../components/TileMap.vue';
-  import SearchBar from './../components/SearchBar.vue';
-  import HelpText from './../components/HelpText.vue';
-  import UpdateList from './../components/UpdateList.vue';
-  import PostSuccess from './../components/PostSuccess.vue';
-  import ToggleButton from './../components/ToggleButton.vue';
-  import LoginHelpText from '../components/LoginHelpText.vue';
-  import DuplicateWarning from '../components/DuplicateWarning.vue';
+  import TileMap from '../components/landing/TileMap.vue';
+  import SearchBar from '../components/landing/SearchBar.vue';
+  import HelpText from '../components/landing/HelpText.vue';
+  import UpdateList from '../components/landing/UpdateList.vue';
+  import PostSuccess from '../components/landing/PostSuccess.vue';
+  import ToggleButton from '../components/landing/ToggleButton.vue';
+  import LoginHelpText from '../components/landing/LoginHelpText.vue';
+  import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
 
 
   function extractToken(url) {

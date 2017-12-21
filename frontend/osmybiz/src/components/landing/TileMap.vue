@@ -11,11 +11,11 @@
   import * as L from 'leaflet';
   import Vue2Leaflet from 'vue2-leaflet';
   import { mapGetters, mapMutations, mapActions } from 'vuex';
-  import { createNoteFromNode } from './../util/overPassNodeUtils';
-  import { routes } from './../router';
-  import mapUtils from './../util/mapUtils';
-  import { storeViewPort, getInitialPosition } from './../util/positionUtil';
-  import { setError } from '../store/error';
+  import { createNoteFromNode } from '../../util/overPassNodeUtils';
+  import { routes } from '../../router/index';
+  import mapUtils from '../../util/mapUtils';
+  import { storeViewPort, getInitialPosition } from '../../util/positionUtil';
+  import { setError } from '../../store/error';
 
   const zoomOnSelect = 18;
   const osmAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';

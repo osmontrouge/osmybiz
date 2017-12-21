@@ -5,7 +5,7 @@
       </div>
 
       <div id="error-section" class="section">
-        <img id="error-img" src="../assets/error.png" alt="">
+        <img id="error-img" src="../../assets/error.png" alt="">
         <span id="error-message">{{error}}</span>
       </div>
     </div>
@@ -27,7 +27,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   #error-dialog {
     bottom:50px;

@@ -16,8 +16,8 @@
 
 <script>
   import { mapGetters, mapActions, mapMutations } from 'vuex';
-  import { routes } from './../router';
-  import { clearDetails } from './../store/detail';
+  import { routes } from '../../router/index';
+  import { clearDetails } from '../../store/detail';
 
   export default {
     name: 'form-footer',

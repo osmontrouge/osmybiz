@@ -6,7 +6,7 @@
       <img class="info"
            @mouseenter="show('address')"
            @mouseleave="hide()"
-           src="../assets/info_black.png">
+           src="../../assets/info_black.png">
     </div>
     <div class="address-fields">
       <div class="row">
@@ -87,7 +87,7 @@
 
 <script>
   import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../store/detail';
+  import { showPopup, hidePopup } from '../../store/detail';
 
   export default {
     name: 'address-fields',
@@ -114,7 +114,7 @@
 
 <style lang="scss">
 
-  @import "../scss/globals";
+  @import "../../scss/globals";
 
   .address-fields {
     display: flex;
