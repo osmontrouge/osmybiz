@@ -1,4 +1,6 @@
 import * as $ from 'jquery';
+import { osmUrl } from '../config/config';
+
 // import * as _ from 'lodash';
 
 function parseDetails(node) {
@@ -95,7 +97,8 @@ function createAddressTags(node) {
     if (node.address.housenumber) {
       text += `<tag k="addr:housenumber" v="${node.address.housenumber}"/>`;
     }
-  } else if (node.address.place) {
+  }
+  if (node.address.place) {
     text += `<tag k="addr:place" v="${node.address.place}"/>`;
   }
   if (node.address.postcode) {
@@ -176,7 +179,7 @@ function parseTags(tags) {
   return res;
 }
 
-function parseNode(node, osmUrl) {
+function parseNode(node) {
   const address = parseAddress(node);
   const details = parseDetails(node);
 

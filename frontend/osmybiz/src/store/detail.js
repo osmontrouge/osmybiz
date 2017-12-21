@@ -55,7 +55,8 @@ function constructNote() {
       if (state.address.housenumber) {
         address += `${state.address.housenumber}, `;
       }
-    } else {
+    }
+    if (state.address.place) {
       address += `${state.address.place}, `;
     }
     if (state.address.postcode) {
