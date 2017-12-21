@@ -99,7 +99,7 @@
       }
     },
     methods: {
-      ...mapActions(['queryOverpass', 'checkDuplicateNote']),
+      ...mapActions(['queryOverpass']),
       ...mapMutations([
         'setViewPort',
         'setDetails',
