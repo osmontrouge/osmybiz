@@ -1,5 +1,6 @@
 $primary-color: #55834a;
 $secondary-color: #7ebc6f;
+$error-color: #EA5C5C;
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -30,7 +31,6 @@ button:disabled {
 }
 
 
-// dialogs
 .dialog {
   position: fixed;
   z-index: 100;

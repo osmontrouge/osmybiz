@@ -25,14 +25,17 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
+
   #error-dialog {
     bottom:50px;
     width: 500px;
     margin-left: -250px;
     left: 50%;
-    color: red;
-    border: 2px solid red;
+    color: $error-color;
+    border: 2px solid $error-color;
     display: flex;
     flex-direction: column;
   }
@@ -50,6 +53,7 @@
   img {
     height: 50px;
     width: 50px;
+    opacity: 0.9;
   }
 
   span {
