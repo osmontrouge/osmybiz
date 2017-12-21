@@ -183,8 +183,13 @@ function parseTags(nodeJson) {
 }
 
 function parseNode(nodeXml) {
-  const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
-  const nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;
+  let nodeJson;
+  if (typeof nodeXml === 'string') {
+    nodeJson = JSON.parse(xml2json(nodeXml, { compact: true })).osm.node;
+  } else {
+    const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
+    nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;
+  }
 
   const nodeAttributes = getAttributes(nodeJson);
 

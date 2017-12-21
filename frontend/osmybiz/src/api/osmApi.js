@@ -188,18 +188,10 @@ export function getNotes(lat, lng) {
   const bottom = lat - 0.00005;
   const right = lng + 0.00005;
   const top = lat + 0.00005;
-  return new Promise((resolve) => {
-    auth.xhr(
-      {
-        method: 'GET',
-        path: `${createNotePath}?bbox=${left},${bottom},${right},${top}`,
-      }, (err, response) => {
-      if (err) {
-        setError(get().error.osm.load);
-        resolve(null);
-      }
-      const data = JSON.parse(response);
-      resolve(data.features);
+
+  return axios.get(`${osmUrl}${createNotePath}?bbox=${left},${bottom},${right},${top}`).then(response => response.data.features)
+    .catch(() => {
+      setError(get().locale.error.osm.load);
+      return [];
     });
-  });
 }
