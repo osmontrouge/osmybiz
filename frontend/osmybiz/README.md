@@ -1,4 +1,4 @@
-# osmybiz
+# OSMyBiz
 
 > A Vue.js project
 
