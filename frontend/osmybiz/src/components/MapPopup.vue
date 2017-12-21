@@ -36,11 +36,13 @@
         if (note.properties.status === 'open') {
           const text = note.properties.comments[0].text;
           const fields = text.split('\n');
-          const cat = fields[3].split(':')[1].substring(1);
-          if (fields[0] === '#OSMyBiz ' &&
-            fields[3] === `Category: ${cat}:${data.tags[cat]}` &&
-            fields[4] === `Name: ${data.tags.name}`) {
-            existingNoteLink = `https://master.apis.dev.openstreetmap.org/note/${note.properties.id}/#map=19/${note.geometry.coordinates[1]}/${note.geometry.coordinates[0]}&layers=ND`;
+          if (fields.length >= 2) {
+            const cat = fields[3].split(':')[1].substring(1);
+            if (fields[0] === '#OSMyBiz ' &&
+              fields[3] === `Category: ${cat}:${data.tags[cat]}` &&
+              fields[4] === `Name: ${data.tags.name}`) {
+              existingNoteLink = `https://master.apis.dev.openstreetmap.org/note/${note.properties.id}/#map=19/${note.geometry.coordinates[1]}/${note.geometry.coordinates[0]}&layers=ND`;
+            }
           }
         }
       });
