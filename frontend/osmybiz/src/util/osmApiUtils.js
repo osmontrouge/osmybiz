@@ -1,32 +1,24 @@
-import * as $ from 'jquery';
+import * as _ from 'lodash';
+import { xml2json } from 'xml-js';
 import { osmUrl } from '../config/config';
 
-// import * as _ from 'lodash';
-
-function parseDetails(node) {
+function parseDetails(nodeTags) {
   const details = {};
-  const tags = [{
-    k: 'name',
-  }, {
-    k: 'opening_hours',
-  }, {
-    k: 'phone',
-  }, {
-    k: 'email',
-  }, {
-    k: 'website',
-  }, {
-    k: 'wheelchair',
-  }, {
-    k: 'description',
-  }, {
-    k: 'note',
-  }];
+  const tags = [
+    'name',
+    'opening_hours',
+    'phone',
+    'email',
+    'website',
+    'wheelchair',
+    'description',
+    'note',
+  ];
 
-  node.tag.forEach((nodeTag) => {
+  Object.keys(nodeTags).forEach((key) => {
     tags.forEach((tag) => {
-      if (tag.k === nodeTag.$.k) {
-        details[tag.k] = nodeTag.$.v;
+      if (tag === key) {
+        details[tag] = nodeTags[key];
       }
     });
   });
@@ -34,7 +26,7 @@ function parseDetails(node) {
   return details;
 }
 
-function parseAddress(node) {
+function parseAddress(nodeTags) {
   const address = {};
   const tags = [{
     k: 'addr:street',
@@ -53,10 +45,10 @@ function parseAddress(node) {
     v: 'city',
   }];
 
-  node.tag.forEach((nodeTag) => {
+  Object.keys(nodeTags).forEach((key) => {
     tags.forEach((tag) => {
-      if (tag.k === nodeTag.$.k) {
-        address[tag.v] = nodeTag.$.v;
+      if (tag.k === key) {
+        address[tag.v] = nodeTags[key];
       }
     });
   });
@@ -64,29 +56,40 @@ function parseAddress(node) {
   return address;
 }
 
-// function extractLanguages(langDoc) {
-//   const childNodes = langDoc.children();
-//   const languages = [];
-//   childNodes.forEach((node) => {
-//     const text = $(node).text();
-//     languages.push(text.slice(0, 2));
-//   });
-//   if (languages.length === 0) {
-//     languages.push('de');
-//   }
-//   return _.uniq(languages);
-// }
+function getText(obj) {
+// eslint-disable-next-line no-underscore-dangle
+  return obj._text;
+}
+
+function extractLanguages(userJson) {
+  const langs = userJson.languages.lang;
+
+  const languages = [];
+  langs.forEach((l) => {
+    languages.push(getText(l).slice(0, 2));
+  });
+  if (languages.length === 0) {
+    languages.push('de');
+  }
+  return _.uniq(languages);
+}
+
+function getAttributes(obj) {
+// eslint-disable-next-line no-underscore-dangle
+  return obj._attributes;
+}
 
 function parseUser(userXml) {
-  const doc = $(userXml);
-  const user = doc.find('user');
-  const messages = user.find('messages').find('received');
-  // const languages = user.find('languages');
+  const xml = userXml.getElementsByTagName('osm')[0].innerHTML;
+  const userJson = JSON.parse(xml2json(xml, { compact: true })).user;
+
+  const languages = extractLanguages(userJson);
+
   return {
-    name: user.attr('display_name'),
-    id: parseInt(user.attr('id'), 10),
-    unReadCount: messages.attr('unread'),
-    langPrefs: [],
+    name: getAttributes(userJson).display_name,
+    id: parseInt(getAttributes(userJson).id, 10),
+    unReadCount: getAttributes(userJson.messages.received).unread,
+    langPrefs: languages,
   };
 }
 
@@ -171,29 +174,50 @@ function constructUpload(node, changeSetId) {
   return xml;
 }
 
-function parseTags(tags) {
-  const res = {};
-  tags.forEach((tag) => {
-    res[tag.$.k] = tag.$.v;
+function parseTags(nodeJson) {
+  const tags = nodeJson.tag;
+  const result = {};
+  tags.forEach((t) => {
+    const tagAttributes = getAttributes(t);
+    result[tagAttributes.k] = tagAttributes.v;
   });
-  return res;
+  return result;
 }
 
-function parseNode(node) {
-  const address = parseAddress(node);
-  const details = parseDetails(node);
+function parseNode(nodeXml) {
+  let nodeJson;
+  if (typeof nodeXml === 'string') {
+    nodeJson = JSON.parse(xml2json(nodeXml, { compact: true })).osm.node;
+  } else {
+    const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
+    nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;
+  }
+
+  const nodeAttributes = getAttributes(nodeJson);
+
+  const tags = parseTags(nodeJson);
+
+  const address = parseAddress(tags);
+  const details = parseDetails(tags);
 
   return {
-    id: node.$.id,
-    lat: node.$.lat,
-    lon: node.$.lon,
-    link: `${osmUrl}/node/${node.$.id}/#map=19/${node.$.lat}/${node.$.lon}&layers=D`,
+    id: nodeAttributes.id,
+    lat: nodeAttributes.lat,
+    lon: nodeAttributes.lon,
+    link: `${osmUrl}/node/${nodeAttributes.id}/#map=19/${nodeAttributes.lat}/${nodeAttributes.lon}&layers=D`,
     address,
     details,
-    version: node.$.version,
-    changeSet: node.$.changeset,
-    tags: parseTags(node.tag),
+    version: nodeAttributes.version,
+    changeSet: nodeAttributes.changeset,
+    tags,
   };
+}
+
+function extractId(nodeDiff) {
+  const xml = nodeDiff.getElementsByTagName('diffResult')[0].innerHTML;
+  const diffJson = JSON.parse(xml2json(xml, { compact: true })).node;
+
+  return getAttributes(diffJson).new_id;
 }
 
 
@@ -201,4 +225,5 @@ export default {
   parseUser,
   constructUpload,
   parseNode,
+  extractId,
 };

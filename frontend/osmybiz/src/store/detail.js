@@ -243,14 +243,18 @@ const actions = {
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
 
-      return getNode(osmId).then(node => addOrUpdateNode(user.id, {
-        lat: parseFloat(node.lat),
-        lng: parseFloat(node.lon),
-        version: parseInt(node.version, 10),
-        osmId: parseInt(node.id, 10),
-        recieveUpdates: true,
-        name,
-      }));
+      return getNode(osmId).then((node) => {
+        if (node) {
+          addOrUpdateNode(user.id, {
+            lat: parseFloat(node.lat),
+            lng: parseFloat(node.lon),
+            version: parseInt(node.version, 10),
+            osmId: parseInt(node.id, 10),
+            recieveUpdates: true,
+            name,
+          });
+        }
+      });
     });
   },
   getAddress({ commit }) {
