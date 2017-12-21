@@ -98,7 +98,7 @@
         window.open(this.link, '_blank');
       },
       toOsm() {
-        const url = `${osmUrl}/#map=19/${this.coords.lat}/${this.coords.lng}&layers=N`;
+        const url = `${osmUrl}/#map=19/${this.coords.lat}/${this.coords.lng}&layers=ND`;
         window.open(url, '_blank');
       },
       toOsmError() {
