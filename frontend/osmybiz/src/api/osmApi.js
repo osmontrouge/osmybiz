@@ -54,6 +54,7 @@ export function loadUser() {
         if (err) {
           setError(get().locale.error.osm.loadUser);
           resolve(null);
+          return;
         }
         resolve(util.parseUser(response));
       });
