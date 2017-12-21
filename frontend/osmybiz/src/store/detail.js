@@ -19,10 +19,10 @@ const state = {
   details: {
     category: {
       text: '',
-      value: 0,
       fields: [
         { key: '', name: '', value: '' },
       ],
+      value: 0,
     },
     name: '',
     opening_hours: '',

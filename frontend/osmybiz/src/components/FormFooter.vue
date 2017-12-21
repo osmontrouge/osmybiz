@@ -8,20 +8,16 @@
             @click="reset()">
       {{t('detail').buttons.reset}}</button>
     <button class="button"
-            :disabled="isRequiredFields() || isDuplicate"
+            :disabled="isRequiredFields() || isDuplicate || hasNoChanges()"
             @click="submit()">
       {{t('detail').buttons.save}}</button>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue';
-  import VeeValidate from 'vee-validate';
   import { mapGetters, mapActions, mapMutations } from 'vuex';
   import { routes } from './../router';
   import { clearDetails } from './../store/detail';
-
-  Vue.use(VeeValidate);
 
   export default {
     name: 'form-footer',
@@ -79,13 +75,19 @@
           this.address.country === '' ||
           this.details.name === '';
       },
+      hasNoChanges() {
+        const details = JSON.parse(localStorage.getItem('details'));
+        const address = JSON.parse(localStorage.getItem('address'));
+        return JSON.stringify(details) === JSON.stringify(this.details) &&
+          JSON.stringify(address) === JSON.stringify(this.address);
+      },
       reset() {
         this.getConfirmation(() => {
           const details = JSON.parse(localStorage.getItem('details'));
           const address = JSON.parse(localStorage.getItem('address'));
           const category = {
-            fields: details.category.fields,
             text: details.category.text,
+            fields: details.category.fields,
             value: details.category.value,
           };
           if (this.details.category.text === details.category.text) {
