@@ -112,11 +112,9 @@
   };
 </script>
 
-<style scoped>
-  .address-wrapper {
-    margin: 0 10% 0;
-    width: 80%;
-  }
+<style lang="scss">
+
+  @import "../scss/globals";
 
   .address-fields {
     display: flex;
@@ -148,13 +146,4 @@
     flex-basis: 2%;
   }
 
-  .field {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 12px;
-  }
-
-  span {
-    color: red;
-  }
 </style>

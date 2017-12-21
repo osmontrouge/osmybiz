@@ -6,7 +6,7 @@
       </button>
     </div>
 
-    <div class="help-dialog" v-if="showHelp">
+    <div class="dialog" id="help-dialog" v-if="showHelp">
       <div class="close-button" @click="toggle">
         <icon name="window-close"></icon>
       </div>
@@ -56,6 +56,7 @@
 </script>
 
 <style>
+
   .help-dialog-icon {
     position: fixed;
     z-index: 99;
@@ -64,30 +65,12 @@
     font-size: 16px;
   }
 
-  .help-dialog {
-    position: fixed;
-    z-index: 99;
+  #help-dialog {
     bottom: 50px;
     left: 100px;
-    font-size: 16px;
-    background-color: white;
-    padding: 12px;
     border-radius: 5px;
     max-width: 300px;
     max-height: 450px;
-    overflow-y: auto;
-  }
-  .section {
-    margin-bottom: 6px;
-    text-align: left;
-  }
-  .dialog-title {
-    font-weight: bold;
-    text-align: left;
   }
 
-  .close-button {
-    float: right;
-    cursor: pointer;
-  }
 </style>

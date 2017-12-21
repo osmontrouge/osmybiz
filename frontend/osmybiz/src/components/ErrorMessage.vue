@@ -1,12 +1,12 @@
 <template>
-    <div class="error-dialog" v-if="isError">
+    <div class="dialog" id="error-dialog" v-if="isError">
       <div class="dialog-title">
         {{t('error').title}}
       </div>
 
-      <div class="section">
-        <img src="../assets/error.png" alt="">
-        <span>{{error}}</span>
+      <div id="error-section" class="section">
+        <img id="error-img" src="../assets/error.png" alt="">
+        <span id="error-message">{{error}}</span>
       </div>
     </div>
 </template>
@@ -25,44 +25,35 @@
   };
 </script>
 
-<style scoped>
-  .error-dialog {
-    position: fixed;
-    z-index: 99;
+<style lang="scss">
+
+  @import "../scss/globals";
+
+  #error-dialog {
     bottom:50px;
     width: 500px;
     margin-left: -250px;
     left: 50%;
-    color: red;
-    border: 2px solid red;
-    background: white;
+    color: $error-color;
+    border: 2px solid $error-color;
     display: flex;
     flex-direction: column;
-
-    padding: 5px;
-  }
-
-  .dialog-title {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 5px;
     font-size: 18px;
   }
 
-  .section {
-    margin-bottom: 6px;
-    text-align: left;
+  #error-section {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
 
-  img {
+  #error-img {
     height: 50px;
     width: 50px;
+    opacity: 0.9;
   }
 
-  span {
+  #error-message {
     font-size: 16px;
     margin-left: 10px;
   }

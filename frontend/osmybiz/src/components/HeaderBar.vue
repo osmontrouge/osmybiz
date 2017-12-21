@@ -10,7 +10,8 @@
           </a>
         </div>
 
-        <select v-on:change="onSelect">
+        <select id="translation-select"
+                v-on:change="onSelect">
           <option value="de">Deutsch</option>
           <option value="en">English</option>
         </select>
@@ -104,7 +105,9 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   .header {
     position: fixed;
@@ -124,7 +127,7 @@
     font-size: 24px;
     font-weight:bold;
     margin: 0 24px;
-    color: #7ebc6f;
+    color: $primary-color;
   }
 
   .buttons {
@@ -135,13 +138,14 @@
   }
 
   .about {
-    font-size: 14px;
+    font-size: 18px;
     font-weight:bold;
     margin: 0 10px;
+    flex-grow: 1;
   }
 
   .about a {
-    color: #7ebc6f;
+    color: $primary-color;
   }
 
   .messages {
@@ -170,8 +174,7 @@
     margin: 8px 0 10px 10px;
   }
 
-  select {
-    border: 2px solid #7ebc6f;
+  #translation-select {
     margin-right: 10px;
     padding: 7px 8px;
     outline: none;

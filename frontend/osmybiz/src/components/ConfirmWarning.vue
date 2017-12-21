@@ -1,6 +1,6 @@
 <template>
 
-  <div class="confirm-dialog" v-if="isConfirm">
+  <div class="dialog" id="confirm-dialog" v-if="isConfirm">
     <div class="close-button" @click="toggle">
       <icon name="window-close"></icon>
     </div>
@@ -14,10 +14,10 @@
     </div>
 
     <div class="confirm-buttons">
-      <button class="confirm-button" @click="toggle">
+      <button class="no-button" @click="toggle">
         {{t('warning').confirm.no}}
       </button>
-      <button class="confirm-button" @click="confirm">
+      <button class="yes-button" @click="confirm">
         {{t('warning').confirm.yes}}
       </button>
     </div>
@@ -55,36 +55,16 @@
   };
 </script>
 
-<style scoped>
-  .confirm-dialog {
-    position: fixed;
-    z-index: 100;
+<style lang="scss">
+
+  @import "../scss/globals";
+
+  #confirm-dialog {
     width: 500px;
     margin-left: -250px;
     top: 45%;
     left: 50%;
-    background-color: white;
-    border: 2px solid red;
-    padding: 12px;
-    font-size: 16px;
-    overflow-y: auto;
-  }
-
-  .section {
-    margin-bottom: 6px;
-    text-align: left;
-  }
-
-  .dialog-title {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-
-  .close-button {
-    float: right;
-    cursor: pointer;
+    border: 2px solid $error-color;
   }
 
   .confirm-buttons {
@@ -93,7 +73,19 @@
     justify-content: space-between;
   }
 
-  .confirm-button {
+  .no-button {
     width: 30%;
   }
+
+  .yes-button {
+    width: 30%;
+    background-color: $error-color;
+    border: none;
+  }
+
+  .yes-button:hover {
+    background-color: $error-color;
+    color: white;
+  }
+
 </style>

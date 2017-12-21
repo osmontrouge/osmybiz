@@ -9,7 +9,7 @@
              src="../assets/info_black.png">
       </div>
 
-      <div v-show="!isOwnCategory" class="Category-field">
+      <div v-show="!isOwnCategory" class="category-field">
         <basic-select v-show="!isOwnCategory"
                       :options="this.tags"
                       :selected-option="details.category"
@@ -24,7 +24,7 @@
       </div>
 
 
-      <div v-show="isOwnCategory" class="Category-field">
+      <div v-show="isOwnCategory" class="category-field">
         <input v-model="details.category.text"
                type="text"
                :placeholder="t('detail').placeholders.owncategory"
@@ -97,33 +97,31 @@
   };
 </script>
 
-<style scoped>
-  .category-wrapper {
-    margin: 15px 10% 0;
-    width: 80%;
-  }
+<style lang="scss">
 
-  .Category-field {
+  @import "../scss/globals";
+
+  .category-field {
     display: flex;
     flex-direction: row;
   }
 
-  .Category-field input, .basic-select {
+  .category-field input, .basic-select {
     flex-grow: 5 !important;
   }
 
-  .Category-field button {
+  .category-field button {
     flex: 0 0;
     flex-basis: auto;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
   }
 
   .basic-select, .basic-select:hover, .basic-select:focus {
-    border: 2px solid #7ebc6f !important;
+    border: 2px solid $primary-color !important;
   }
 
   .menu {
-    border: 2px solid #7ebc6f !important;
+    border: 2px solid $primary-color !important;
     border-top: none !important;
     margin: 0px -2px !important;
     min-width: calc(100% + 2px) !important;

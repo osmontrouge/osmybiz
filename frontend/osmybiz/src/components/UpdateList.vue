@@ -83,7 +83,9 @@
   };
 </script>
 
-<style>
+<style lang="scss">
+
+  @import "../scss/globals";
 
   .update-wrapper {
     position: fixed;
@@ -94,7 +96,7 @@
     width: 250px;
     font-size: 14px;
     background-color: white;
-    border: 2px solid #7ebc6f;
+    border: 2px solid $primary-color;
     padding: 12px;
     overflow-y: auto;
   }

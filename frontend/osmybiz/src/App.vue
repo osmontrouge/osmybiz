@@ -44,34 +44,6 @@
 
   @import "./../node_modules/leaflet/dist/leaflet.css";
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-  button {
-    background-color: #7ebc6f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #55834a;
-    padding: 6px 12px;
-    border-radius: 5px;
-  }
-
-  button:hover {
-    background-color: #55834a;
-    color: white;
-  }
-
-  button:disabled {
-    background-color: grey;
-    color: white;
-    cursor: default;
-    border: none;
-  }
+  @import "scss/globals.scss";
 
 </style>

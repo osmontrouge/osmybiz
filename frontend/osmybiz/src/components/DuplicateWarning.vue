@@ -1,6 +1,6 @@
 <template>
 
-  <div class="duplicate-dialog" v-if="isDuplicate">
+  <div class="dialog" id="duplicate-dialog" v-if="isDuplicate">
     <div class="close-button" @click="toggle">
       <icon name="window-close"></icon>
     </div>
@@ -61,35 +61,17 @@
   };
 </script>
 
-<style scoped>
-  .duplicate-dialog {
-    position: fixed;
-    z-index: 100;
+<style lang="scss">
+
+  @import "../scss/globals";
+
+  #duplicate-dialog {
     width: 500px;
     margin-left: -250px;
     bottom: 65px;
     left: 50%;
-    background-color: white;
-    border: 2px solid red;
-    padding: 12px;
-    font-size: 16px;
+    border: 2px solid $error-color;
     overflow-y: auto;
   }
 
-  .section {
-    margin-bottom: 6px;
-    text-align: left;
-  }
-
-  .dialog-title {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-
-  .close-button {
-    float: right;
-    cursor: pointer;
-  }
 </style>
