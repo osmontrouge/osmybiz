@@ -85,6 +85,7 @@
           </div>
 
           <input v-validate="'url'"
+                 :class="{'is-error': errors.has('website') }"
                  type="text"
                  name="website"
                  v-model="details.website"

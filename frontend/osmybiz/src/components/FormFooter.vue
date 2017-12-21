@@ -15,9 +15,13 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+  import VeeValidate from 'vee-validate';
   import { mapGetters, mapActions, mapMutations } from 'vuex';
   import { routes } from './../router';
   import { clearDetails } from './../store/detail';
+
+  Vue.use(VeeValidate);
 
   export default {
     name: 'form-footer',
@@ -25,6 +29,7 @@
       ...mapGetters([
         'isNote',
         'details',
+        'address',
         'user',
         'osmId',
         'lat',
@@ -67,7 +72,12 @@
         });
       },
       isRequiredFields() {
-        return this.details.category.text === '' || this.details.name === '';
+        return this.details.category.text === '' ||
+          (this.address.street === '' && this.address.place === '') ||
+          this.address.postcode === '' ||
+          this.address.city === '' ||
+          this.address.country === '' ||
+          this.details.name === '';
       },
       reset() {
         this.getConfirmation(() => {
