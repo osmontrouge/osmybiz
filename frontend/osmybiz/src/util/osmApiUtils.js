@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import { xml2json } from 'xml-js';
+import { osmUrl } from '../config/config';
 
 function parseDetails(nodeTags) {
   const details = {};
@@ -99,7 +100,8 @@ function createAddressTags(node) {
     if (node.address.housenumber) {
       text += `<tag k="addr:housenumber" v="${node.address.housenumber}"/>`;
     }
-  } else if (node.address.place) {
+  }
+  if (node.address.place) {
     text += `<tag k="addr:place" v="${node.address.place}"/>`;
   }
   if (node.address.postcode) {
@@ -202,6 +204,7 @@ function parseNode(nodeXml) {
     id: nodeAttributes.id,
     lat: nodeAttributes.lat,
     lon: nodeAttributes.lon,
+    link: `${osmUrl}/node/${nodeAttributes.id}/#map=19/${nodeAttributes.lat}/${nodeAttributes.lon}&layers=D`,
     address,
     details,
     version: nodeAttributes.version,

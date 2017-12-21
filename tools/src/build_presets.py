@@ -140,6 +140,7 @@ def run():
     tag_locale = locale.get('presets', {})
 
     result = {}
+    keys = []
 
     for osm_tag, tag_data in presets.items():
 
@@ -157,6 +158,7 @@ def run():
         if not has_relevant_value(tag):
             continue
 
+        keys.append(tag[0] + '=' + tag[1])
         name = translateTag(tag_locale, osm_tag)
 
         if name is None:
@@ -169,9 +171,15 @@ def run():
             'fields': tags
         }
 
-    outpath = '../../frontend/osmybiz/src/assets/tags/' + lang + '.json'
-    with open(outpath, 'w', encoding="utf8") as outfile:
+    out_path = '../../frontend/osmybiz/src/assets/tags/' + lang + '.json'
+    with open(out_path, 'w', encoding="utf8") as outfile:
         json.dump(result, outfile, ensure_ascii=False, indent=2)
+
+    tags_text = ',\n'.join(sorted(keys))
+    key_out_path = '../../frontend/osmybiz/tags.md'
+    with open (key_out_path, 'w', encoding='utf8') as key_file:
+        key_file.write('## Tags supported by OSMyBiz\n\n')
+        key_file.write(tags_text)
 
 
 run()
