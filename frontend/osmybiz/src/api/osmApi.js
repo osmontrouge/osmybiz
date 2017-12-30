@@ -136,7 +136,7 @@ export function postNode(node) {
   const create =
     '<osm>' +
     '<changeset>' +
-    '<tag k="comment" v="#OsMyBiz"/>' +
+    '<tag k="comment" v="#OSMyBiz"/>' +
     '<tag k="created_by" v="OSMyBiz"/>' +
     '<tag k="changesets_count" v="1"/>' +
     '</changeset>' +
