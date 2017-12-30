@@ -89,3 +89,13 @@ input::placeholder, textarea::placeholder {
   font-weight: bold;
   text-align: left;
 }
+
+.link-icon {
+  margin-left: 2px;
+  padding-top: 2px;
+}
+
+.external-link {
+  display: flex;
+  flex-direction: row;
+}

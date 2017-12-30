@@ -11,7 +11,12 @@
       </div>
 
       <div class="section">
-        <a :href="node.link" target="_blank">{{t('success').link}}</a>
+        <a :href="node.link"
+           class="external-link"
+           target="_blank">
+          {{t('success').link}}
+          <icon class="link-icon" name="external-link"></icon>
+        </a>
       </div>
 
       <div class="section">
@@ -49,7 +54,12 @@
         {{t('success').note.title}}
       </div>
       <div class="section">
-        <a :href="note.link" target="_blank">{{t('success').link}}</a>
+        <a :href="note.link"
+           class="external-link"
+           target="_blank">
+          {{t('success').link}}
+          <icon class="link-icon" name="external-link"></icon>
+        </a>
       </div>
 
       <div class="section">

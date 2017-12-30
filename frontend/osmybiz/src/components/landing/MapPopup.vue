@@ -12,18 +12,29 @@
 
       <div v-if="!canEdit && link">
         <div>{{warning}}</div>
-        <button @click="toComment()" :disabled="!parent.isLoggedIn" :title="helpText" class="popup-btn">{{comment}}</button>
+        <button @click="toComment()" :disabled="!parent.isLoggedIn" :title="helpText" class="popup-btn">
+          {{comment}}
+          <icon class="link-icon" name="external-link"></icon>
+        </button>
       </div>
 
     </div>
 
 
-    <div @click="toOsm()" class="popup-link">{{maplink}}</div>
-    <div @click="toOsmError()" class="popup-link">{{feedback}}</div>
+    <div @click="toOsm()" class="popup-link">
+      <span>{{maplink}}</span>
+      <icon class="link-icon" name="external-link"></icon>
+    </div>
+    <div @click="toOsmError()" class="popup-link">
+      <span>{{feedback}}</span>
+      <icon class="link-icon" name="external-link"></icon>
+    </div>
   </div>
 </template>
 
 <script>
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
   import { get } from '../../util/translate';
   import { osmUrl } from '../../config/config';
   import { reverseQuery } from '../../api/nominatimApi';
@@ -146,6 +157,9 @@
       },
     },
     props: ['text', 'parent', 'isNew', 'coords', 'business'],
+    components: {
+      Icon,
+    },
     name: 'map-popup',
   };
 </script>
