@@ -235,7 +235,7 @@ const actions = {
       });
     });
   },
-  postNote({ commit }, { user, osmId }) {
+  postSelectedCategoryNote({ commit }, { user, osmId }) {
     const note = constructNote();
     const name = state.details.name;
     return postNote(note).then((ps) => {
@@ -255,6 +255,14 @@ const actions = {
           });
         }
       });
+    });
+  },
+  postOwnCategoryNote({ commit }) {
+    const note = constructNote();
+    return postNote(note).then((ps) => {
+      state.displaySuccess = true;
+      const displayNote = constructDisplayNote(ps);
+      commit('setNote', displayNote);
     });
   },
   getAddress({ commit }) {

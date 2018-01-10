@@ -90,7 +90,8 @@
       "back": "Zurück",
       "reset": "Zurücksetzen",
       "save": "Speichern"
-    }
+    },
+    "ownCategoryInfo": "Wenn Sie eine eigene Kategorie eingeben, wird eine Notiz erzeugt. Diese muss erst von einem Mitglied der OpenStreetMap-Community abgearbeitet werden."
   },
   "infoTexts": {
     "category": "Wählen Sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. Durchsuchen Sie die Daten nach einer passenden Kategorie und sollten Sie nicht fündig werden, drücken Sie \"Eigene Kategorie\" und geben eine eigene Kategorie ein.",

@@ -24,6 +24,7 @@
     computed: {
       ...mapGetters([
         'isNote',
+        'isOwnCategory',
         'details',
         'address',
         'user',
@@ -41,7 +42,8 @@
         'setIsConfirm',
       ]),
       ...mapActions([
-        'postNote',
+        'postSelectedCategoryNote',
+        'postOwnCategoryNote',
         'postNode',
         'checkDuplicateNode',
         'getConfirmation',
@@ -49,8 +51,11 @@
       ]),
       submit() {
         let promise;
-        if (this.isNote) {
-          promise = this.postNote({ user: this.user, osmId: this.osmId }).then(() => true);
+        if (this.isNote && !this.isOwnCategory) {
+          promise = this.postSelectedCategoryNote({ user: this.user, osmId: this.osmId })
+            .then(() => true);
+        } else if (this.isOwnCategory) {
+          promise = this.postOwnCategoryNote().then(() => true);
         } else {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {

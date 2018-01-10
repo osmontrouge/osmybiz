@@ -24,14 +24,19 @@
       </div>
 
 
-      <div v-show="isOwnCategory" class="category-field">
-        <input v-model="details.category.text"
-               type="text"
-               :placeholder="t('detail').placeholders.owncategory"
-               name="category-input"/>
-        <button class="button" @click="hideInput()">
-          {{t('detail').buttons.choosecategory}}
-        </button>
+      <div v-show="isOwnCategory">
+        <div class="category-field">
+          <input v-model="details.category.text"
+                 type="text"
+                 :placeholder="t('detail').placeholders.owncategory"
+                 name="category-input"/>
+          <button class="button" @click="hideInput()">
+            {{t('detail').buttons.choosecategory}}
+          </button>
+        </div>
+        <div>
+           {{t('detail').ownCategoryInfo}}
+        </div>
       </div>
 
       <span v-show="details.category.text === ''"

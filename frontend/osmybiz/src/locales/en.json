@@ -91,7 +91,8 @@
       "back": "Back",
       "reset": "Reset",
       "save": "Save"
-    }
+    },
+    "ownCategoryInfo": "If you choose to enter an own Category this resolves in a note. This note must be processed by a member of the OpenStreetMap-Community."
   },
   "infoTexts": {
     "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
