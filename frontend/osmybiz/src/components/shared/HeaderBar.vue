@@ -1,7 +1,9 @@
 <template>
     <div class="header">
       <div class="title">
-        OpenStreetMap My Business
+        <a href="/">
+          OpenStreetMap My Business
+        </a>
       </div>
       <div class="buttons">
         <div class="about">
@@ -147,7 +149,7 @@
     flex-grow: 1;
   }
 
-  .about a {
+  .about a, .title a{
     color: $primary-color;
   }
 
