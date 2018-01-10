@@ -66,7 +66,7 @@
       "name": "Name of the business...",
       "street": "Mainstreet",
       "housenumber": "50",
-      "place": "Island",
+      "place": "Station square",
       "postcode": "8405",
       "city": "Winterthur",
       "country": "Switzerland",
@@ -102,8 +102,8 @@
     "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
     "email": "Here comes the email address under which you, respectively your business, are reachable.",
     "website": "In this field is the website of your business.",
-    "wheelchair": "Tick the box if your business is wheelchair accessible respectively how accessible it is.",
-    "description": "In this field you can include extra informations about your business. e.g. Our bakery is also a mail-administration center",
+    "wheelchair": "Choose how accessible your business is with a wheelchair. What the different options exactly mean, you can read on https://wiki.openstreetmap.org/wiki/Key:wheelchair",
+    "description": "In this field you can add information for the end map user.",
     "note": "A note is used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement."
   },
   "popups": {
