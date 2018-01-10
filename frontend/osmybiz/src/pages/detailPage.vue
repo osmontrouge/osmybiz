@@ -3,7 +3,8 @@
     <div class="detailcontent-wrapper">
 
       <div class="content-wrapper">
-        <h2>{{t('detail').title}}</h2>
+        <h2 v-show="isNew">{{t('detail').titles.create}}</h2>
+        <h2 v-show="!isNew">{{t('detail').titles.edit}}</h2>
 
         <category-field></category-field>
         <address-fields></address-fields>
@@ -46,6 +47,8 @@
       localStorage.setItem('details', JSON.stringify(this.details));
 
       this.setInfoMap(getInfoTexts());
+
+      this.setIsNew(!this.isNote);
     },
     components: {
       ConfirmWarning,
@@ -68,6 +71,7 @@
         'isNote',
         'address',
         'isDuplicate',
+        'isNew',
       ]),
     },
     methods: {
@@ -75,6 +79,7 @@
         'setDisplaySuccess',
         'setDisplayConfirmation',
         'setInfoMap',
+        'setIsNew',
       ]),
       ...mapActions([
         'getAddress',

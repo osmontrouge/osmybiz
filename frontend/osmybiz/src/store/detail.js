@@ -10,6 +10,7 @@ const state = {
   // detailPage
   displaySuccess: false,
   osmId: null,
+  isNew: true,
 
   // DetailForm
   tags: initalOptions,
@@ -314,6 +315,9 @@ const mutations = {
   setOsmId(s, id) {
     s.osmId = id;
   },
+  setIsNew(s, isNew) {
+    s.isNew = isNew;
+  },
 };
 
 const getters = {
@@ -359,11 +363,11 @@ const getters = {
   infoMap(s) {
     return s.infoMap;
   },
-  isLoading(s) {
-    return s.isLoading;
-  },
   osmId(s) {
     return s.osmId;
+  },
+  isNew(s) {
+    return s.isNew;
   },
 };
 

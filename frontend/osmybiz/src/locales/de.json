@@ -33,8 +33,9 @@
     }
   },
   "detail": {
-    "title": "Unternehmen erfassen",
     "titles": {
+      "create": "Unternehmen erfassen",
+      "edit": "Unternehmen bearbeiten",
       "category": "Kategorie",
       "address": "Adresse",
       "details": "Details",

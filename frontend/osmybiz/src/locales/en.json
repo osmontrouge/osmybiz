@@ -33,9 +33,9 @@
     }
   },
   "detail": {
-    "title": "Create Business",
-    "subtitle": "Extra informations",
     "titles": {
+      "create": "Create Business",
+      "edit": "Edit Business",
       "category": "Category",
       "address": "Address",
       "details": "Details",

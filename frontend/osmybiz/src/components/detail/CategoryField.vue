@@ -54,7 +54,6 @@
   import { mapGetters, mapMutations } from 'vuex';
   import { showPopup, hidePopup } from '../../store/detail';
 
-
   Vue.use(VeeValidate);
 
   export default {
@@ -68,6 +67,8 @@
         'tags',
         'isOwnCategory',
         'infoMap',
+        'isNote',
+        'isNew',
       ]),
     },
     methods: {
@@ -78,12 +79,15 @@
         'setIsNote',
       ]),
       hideInput() {
+        if (this.isNew) {
+          this.setIsNote(false);
+        }
         this.setIsOwnCategory(false);
         this.details.category = { value: 0, text: '' };
       },
       showInput() {
-        this.setIsOwnCategory(true);
         this.setIsNote(true);
+        this.setIsOwnCategory(true);
         this.details.category = { value: 0, text: '' };
       },
       show(key) {
