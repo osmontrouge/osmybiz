@@ -162,5 +162,6 @@
       "query": "Unternehmen konnten nicht geladen werden.",
       "surrounding": "Es besteht ein Problem mit dem Hochladen der Daten nach OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
     }
-  }
+  },
+  "about": "\"OpenStreetMap My Business\" (kurz OSMyBiz) ist eine Webapp mit der Geschäfte - namentlch Hotels, Restaurants, Bars und Shops - und ihre Daten (z.B. Addresse (Hausnummer, Strassse), Öffnungszeiten, Kontakt-Telefonnummer und Website) auf einfache Weise in OpenStreetMap eintragen und verwaltet werden können. Es ist ähnlich wie Onosm.org, umfasst jedoch viel mehr Funktionen, die benutzerfreundlich gestaltet sind."
 }
