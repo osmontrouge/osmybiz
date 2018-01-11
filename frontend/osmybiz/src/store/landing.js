@@ -15,6 +15,7 @@ const state = {
   mode: 'tiles',
   showHelp: false,
   showLoginHelp: false,
+  applyOffset: false,
 };
 
 const queryDebounceMs = 400;
@@ -105,6 +106,9 @@ const mutations = {
   setShowLoginHelp(s, showLoginHelp) {
     s.showLoginHelp = showLoginHelp;
   },
+  setApplyOffset(s, applyOffset) {
+    s.applyOffset = applyOffset;
+  },
 };
 
 const getters = {
@@ -134,6 +138,9 @@ const getters = {
   },
   showLoginHelp(s) {
     return s.showLoginHelp;
+  },
+  applyOffset(s) {
+    return s.applyOffset;
   },
 };
 

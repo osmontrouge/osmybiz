@@ -29,12 +29,9 @@
     map.setView(pos, zoom || zoomOnSelect);
   }
 
-  function setAttribution(mode) {
-    if (mode === 'tiles') {
-      map.attributionControl.addAttribution(osmAttribution);
-    } else {
-      map.attributionControl.addAttribution(mapBoxAttribution);
-    }
+  function setAttribution() {
+    map.attributionControl.addAttribution(osmAttribution);
+    map.attributionControl.addAttribution(mapBoxAttribution);
   }
 
   let markers = [];
@@ -56,11 +53,11 @@
     return _.unionBy(mine, all, b => b.id);
   }
 
-  function addMarkers(bs, ownedNodes, viewport) {
+  function addMarkers(bs, ownedNodes, viewport, applyOffset) {
     const mine = getNodesInViewPort(ownedNodes, viewport);
     const merge = mergeNodes(bs, mine);
     markers = merge.map((b) => {
-      const m = mapUtils.createMarker(b, map, component);
+      const m = mapUtils.createMarker(b, map, component, applyOffset);
       map.addLayer(m);
       return m;
     });
@@ -70,9 +67,9 @@
     tileLayer.setUrl(mapUtils.getTileUrl(mode), false);
   }
 
-  function drawBusinesses(businesses, ownedNodes, viewport) {
+  function drawBusinesses(businesses, ownedNodes, viewport, applyOffset) {
     clearMarkers();
-    addMarkers(businesses, ownedNodes, viewport);
+    addMarkers(businesses, ownedNodes, viewport, applyOffset);
   }
 
   export default {
@@ -86,16 +83,15 @@
         setError('Karte konnte nicht geladen werden');
       });
 
-      setAttribution('tiles');
+      setAttribution();
 
       this.$store.subscribe((mut) => {
         if (mut.type === 'setMapPosition') {
           setMapPosition(this.position);
           this.viewChange();
-        } else if (mut.type === 'setBusinesses') {
-          drawBusinesses(this.businesses, this.ownedNodes, this.viewPort);
+        } else if (mut.type === 'setBusinesses' || mut.type === 'setNodes') {
+          drawBusinesses(this.businesses, this.ownedNodes, this.viewPort, this.applyOffset);
         } else if (mut.type === 'setMode') {
-          setAttribution(this.mode);
           setTileMode(this.mode);
         }
       });
@@ -175,6 +171,7 @@
         'mode',
         'isLoggedIn',
         'ownedNodes',
+        'applyOffset',
       ]),
     },
 

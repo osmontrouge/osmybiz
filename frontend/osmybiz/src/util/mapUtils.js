@@ -19,7 +19,10 @@ function getTileUrl(mode) {
 }
 
 function makeTileLayer(mode) {
-  return L.tileLayer(tileUrls[mode], {});
+  return L.tileLayer(tileUrls[mode], {
+    maxZoom: 19,
+    maxNativeZoom: 18,
+  });
 }
 
 
@@ -70,8 +73,10 @@ function editPopup(map, coords, parent, business) {
   }).$mount(`#${mountPoint}`);
 }
 
-function createMarker(business, map, parent) {
-  const coords = L.latLng(business.lat, business.lng);
+function createMarker(business, map, parent, applyOffset) {
+  const coords = applyOffset
+    ? L.latLng(business.lat, business.lng + 0.000028)
+    : L.latLng(business.lat, business.lng);
   const icon = business.mine ? highlightedMarker : bizMarker;
   const m = L.marker(coords, {
     icon,
