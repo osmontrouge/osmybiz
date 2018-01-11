@@ -134,6 +134,7 @@
         this.setCoords(pos);
         this.setOsmId(business.id);
         this.setIsNote(true);
+        this.setPosition(pos);
         this.$router.push({ name: routes.Detail });
       },
       contextMenu(event) {
@@ -159,6 +160,7 @@
           description: '',
           note: '',
         });
+        this.setPosition(coords);
         this.$router.push({ name: routes.Detail });
       },
     },
