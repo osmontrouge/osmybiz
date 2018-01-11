@@ -59,7 +59,7 @@ const testAction = (action, payload, state, expectedMutations, done) => {
 describe('detail store', () => {
   describe('actions', () => {
     it('should post note', (done) => {
-      testAction(actions.default.actions.postNote,
+      testAction(actions.default.actions.postSelectedCategoryNote,
         { user: {}, osmId: 0 },
         {
           details: {
