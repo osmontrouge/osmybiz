@@ -162,6 +162,9 @@
   Vue.use(VeeValidate);
 
   export default {
+    mounted() {
+      this.setApplyOffset(true);
+    },
     name: 'detail-form',
     computed: {
       ...mapGetters([
@@ -177,6 +180,7 @@
         'setIsOwnCategory',
         'setIsPopup',
         'setInfoText',
+        'setApplyOffset',
       ]),
       show(key) {
         showPopup(key);
