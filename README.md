@@ -1,10 +1,9 @@
-OpenStreetMap My Business 
-=========================
+# OpenStreetMap My Business 
 
 
 Testable Prototype: https://geometalab.gitlab.io/osmybiz
 
-###Local Development
+## Local Development
 
 Run the whole application locally using
 
