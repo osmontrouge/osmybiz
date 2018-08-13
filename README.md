@@ -1,14 +1,11 @@
 # OpenStreetMap My Business 
 
+Homepage https://osmybiz.osm.ch/ 
 
-Testable Prototype: https://geometalab.gitlab.io/osmybiz
+## Testing and Local Development
 
-## Local Development
+Prototype https://geometalab.gitlab.io/osmybiz .
 
-Run the whole application locally using
-
-`docker-compose up`
-
-requires docker and docker-compose
-
-for specific instructions per project visit the readme.md files in the corresponding folder.
+Run the whole application locally using `docker-compose up` . 
+Requires docker and docker-compose for specific instructions per project
+ visit the readme.md files in the corresponding folder.
