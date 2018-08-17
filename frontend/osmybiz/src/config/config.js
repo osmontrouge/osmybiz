@@ -5,8 +5,8 @@ export const mapBoxToken = 'pk.eyJ1IjoibXRoaSIsImEiOiJjajlzZHJqZGc2bGRxMnhxbTd0b
 
 // export const initialPosition = latLng(46.87897, 8.23975) // aprox center of switzerland
 // export const initialZoom = 8
-export const initialPosition = latLng(46.77537, 10.15224);
-export const initialZoom = 18;
+export const initialPosition = latLng(46.87897, 8.23975);
+export const initialZoom = 11;
 
 export const LatLngRoundingAccuracy = 5;
 export const searchradius = 10.0;
