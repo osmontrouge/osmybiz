@@ -32,7 +32,8 @@ const actions = {
         let noteLink = '';
         ps.forEach((note) => {
           if (note.properties.status === 'open') {
-            const text = note.properties.comments[0].text;
+            const [tmp] = note.properties.comments;
+            const { text } = tmp;
             const fields = text.split('\n');
             if (fields[0] === '#OSMyBiz ') {
               const cat = fields[3].split(':')[1].substring(1);

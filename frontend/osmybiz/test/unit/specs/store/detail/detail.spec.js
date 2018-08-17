@@ -1,3 +1,4 @@
+import { latLng } from 'leaflet';
 import store from './../../../../../src/store/detail';
 
 describe('detail store', () => {
@@ -22,10 +23,7 @@ describe('detail store', () => {
     it('should set coords', () => {
       const state = {};
       const { setCoords } = store.mutations;
-      const pos = {
-        lat: 1,
-        lng: 1,
-      };
+      const pos = latLng(1, 1);
       setCoords(state, pos);
       expect(state.lat).to.equal(1);
       expect(state.lon).to.equal(1);

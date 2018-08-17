@@ -6,7 +6,10 @@
 
       <div id="error-section" class="section">
         <img id="error-img" src="../../assets/error.png" alt="">
-        <span id="error-message">{{error}}</span>
+        <span v-if="errorSplitted.length === 4" id="error-message">{{t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]][errorSplitted[3]]}}</span>
+        <span v-if="errorSplitted.length === 3" id="error-message">{{t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]]}}</span>
+        <span v-if="errorSplitted.length === 2" id="error-message">{{t(errorSplitted[0])[errorSplitted[1]]}}</span>
+        <span v-if="errorSplitted.length === 1" id="error-message">{{t(errorSplitted[0])}}</span>
       </div>
     </div>
 </template>
@@ -21,6 +24,12 @@
         'error',
         'isError',
       ]),
+      errorSplitted() {
+        if (this.error) {
+          return this.error.split('.');
+        }
+        return ['Unknown Error'];
+      },
     },
   };
 </script>

@@ -5,16 +5,16 @@ import { queryBox } from '../api/overpassApi';
 
 const state = {
   mapPosition: null,
-  position: null,
+  mapZoom: null,
 
   search: null,
   suggestions: [],
   viewPort: null,
 
   businesses: [],
-  mode: 'tiles',
-  showHelp: false,
-  showLoginHelp: false,
+  mode: 'vector',
+  showHelp: true,
+  showLoginHelp: true,
   applyOffset: false,
 };
 
@@ -24,11 +24,11 @@ const requestThrottleMs = 1000;
 
 const minZoomBusinesses = 18;
 
-function q(commit, search) {
+function q(commit, search, language) {
   if (!_.isString(search) || search.length < queryMinLength) {
     commit('setSuggestions', []);
   } else {
-    query(search).then((results) => {
+    query(search, language).then((results) => {
       commit('setSuggestions', results);
     });
   }
@@ -44,12 +44,12 @@ function qb(commit, viewPort) {
   }
 }
 
-function convertToBoundingBox(topRight, bottomLeft) {
+function convertToBoundingBox(bounds) {
   return {
-    south: bottomLeft.lat,
-    west: bottomLeft.lng,
-    north: topRight.lat,
-    east: topRight.lng,
+    south: bounds.getSouth(),
+    west: bounds.getWest(),
+    north: bounds.getNorth(),
+    east: bounds.getEast(),
   };
 }
 
@@ -58,21 +58,20 @@ const queryFn = _.debounce(_.throttle(q, requestThrottleMs), queryDebounceMs);
 const queryBoxFn = _.debounce(qb, queryDebounceMs);
 
 const actions = {
-  queryNominatim({ commit }, search) {
-    queryFn(commit, search);
+  queryNominatim({ commit }, search, language) {
+    queryFn(commit, search, language);
   },
-  queryOverpass({ commit }, viewPort) {
-    queryBoxFn(commit, viewPort);
+  queryOverpass({ commit }) {
+    queryBoxFn(commit, state.viewPort);
   },
 };
 
 const mutations = {
-  setPosition(s, pos) {
-    s.position = pos;
-  },
   setMapPosition(s, pos) {
     s.mapPosition = pos;
-    s.position = pos;
+  },
+  setMapZoom(s, zoom) {
+    s.mapZoom = zoom;
   },
   setSearch(s, search) {
     s.search = search;
@@ -90,7 +89,7 @@ const mutations = {
   },
   setViewPort(s, data) {
     s.viewPort = {
-      boundingBox: convertToBoundingBox(data.topRight, data.bottomLeft),
+      boundingBox: convertToBoundingBox(data.bounds),
       zoom: data.zoom,
     };
   },
@@ -118,11 +117,11 @@ const getters = {
   suggestions(s) {
     return s.suggestions;
   },
-  position(s) {
-    return s.position;
-  },
   mapPosition(s) {
     return s.mapPosition;
+  },
+  mapZoom(s) {
+    return s.mapZoom;
   },
   viewPort(s) {
     return s.viewPort;

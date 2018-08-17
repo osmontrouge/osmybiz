@@ -2,7 +2,6 @@ import axios from 'axios';
 import { overpassUrl, searchradius } from '../config/config';
 import tags from '../assets/tags/de.json';
 import { setError } from '../store/error';
-import { get } from '../util/translate';
 
 export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure'];
 
@@ -50,7 +49,7 @@ function filterTags(node) {
 export function queryBox(bbox) {
   return axios.post(overpassUrl, buildQuery(bbox))
     .then(res => parseData(res.data).filter(filterTags), () => {
-      setError(get().locale.error.overpass.query);
+      setError('error.overpass.query');
       return [];
     });
 }
@@ -58,7 +57,7 @@ export function queryBox(bbox) {
 export function surroundingQueryNode(details, lat, lon) {
   return axios.post(overpassUrl, buildSurroundingQuery(details, lat, lon))
     .then(res => res.data.elements.length > 0, () => {
-      setError(get().locale.error.overpass.surrounding);
+      setError('error.overpass.surrounding');
       return false;
     });
 }

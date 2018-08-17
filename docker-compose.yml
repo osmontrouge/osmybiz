@@ -1,10 +1,11 @@
 version: '3.3'
 services:
   api: &api
-    image: geometalab/osmmybiz-backend
     build:
       context: backend/
       dockerfile: Dockerfile
+    environment:
+      SQLALCHEMY_DATABASE_URI: 'postgresql+psycopg2://osmybiz:123456@database:5432/osmybiz'
     volumes:
       - ./backend/api:/opt/backend
     links:
@@ -22,25 +23,24 @@ services:
     build:
       context: frontend/
       dockerfile: Dockerfile
+    environment:
+      OSM_URL: 'https://master.apis.dev.openstreetmap.org'
+      OSM_API_URL: 'https://master.apis.dev.openstreetmap.org'
+      # OSM_URL: 'https://www.openstreetmap.org'
+      # OSM_API_URL: 'https://api.openstreetmap.org'
+      API_URL: '/api/'
     volumes:
       - ./frontend/osmybiz/src:/opt/frontend/src
       - ./frontend/osmybiz/static:/opt/frontend/static
       - ./frontend/osmybiz/index.html:/opt/frontend/index.html
       - ./frontend/osmybiz/package.json:/opt/frontend/package.json
       - ./frontend/osmybiz/package-lock.json:/opt/frontend/package-lock.json
-  frontend-build:
-    image: geometalab/osmmybiz-frontend
-    build:
-      context: frontend/
-      dockerfile: Dockerfile.nginx
-    command: []
   nginx:
-    image: geometalab/osmmybiz-nginx
     build:
       context: nginx/
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "8089:80"
     environment:
       - VIRTUAL_HOST=localhost,127.0.0.1
     links:

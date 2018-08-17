@@ -1,0 +1,8 @@
+flask
+flask-sqlalchemy
+flask-migrate
+flask-script
+psycopg2
+pytest-flask
+pytest-flake8
+raven[flask]

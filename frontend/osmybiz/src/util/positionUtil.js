@@ -35,7 +35,7 @@ export function storeViewPort(bbox, zoom, $router) {
 // eslint-disable-next-line no-underscore-dangle
   const lat = ((bbox._northEast.lat + bbox._southWest.lat) / 2)
     .toFixed(LatLngRoundingAccuracy);
-// eslint-disable-next-line no-underscore-dangle
+  // eslint-disable-next-line no-underscore-dangle
   const lng = ((bbox._northEast.lng + bbox._southWest.lng) / 2)
     .toFixed(LatLngRoundingAccuracy);
 
@@ -49,7 +49,7 @@ function extractHash(params) {
   const lat = parseFloat(params.lat);
   const lng = parseFloat(params.lng);
 
-  if (!isNaN(lat) && !isNaN(lng)) {
+  if (!Number.isNaN(lat) && !Number.isNaN(lng)) {
     return {
       cords: latLng(lat, lng),
       zoom,

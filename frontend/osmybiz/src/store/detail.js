@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { latLng } from 'leaflet';
 import { postNode, postNote, getNode } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
@@ -17,6 +18,7 @@ const state = {
   address: {},
   lat: null,
   lon: null,
+  businessPosition: null,
   details: {
     category: {
       text: '',
@@ -238,7 +240,7 @@ const actions = {
   },
   postSelectedCategoryNote({ commit }, { user, osmId }) {
     const note = constructNote();
-    const name = state.details.name;
+    const { name } = state.details;
     return postNote(note).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
@@ -266,8 +268,8 @@ const actions = {
       commit('setNote', displayNote);
     });
   },
-  getAddress({ commit }) {
-    reverseQuery(state.lat, state.lon).then((ps) => {
+  getAddress({ commit }, position) {
+    reverseQuery(position).then((ps) => {
       commit('setAddress', ps);
       localStorage.setItem('address', JSON.stringify(ps));
     });
@@ -297,6 +299,7 @@ const mutations = {
     s.isNote = isNote;
   },
   setCoords(s, pos) {
+    s.businessPosition = pos;
     s.lat = pos.lat;
     s.lon = pos.lng;
   },
@@ -326,6 +329,12 @@ const getters = {
   },
   lon(s) {
     return s.lon;
+  },
+  businessPosition(s) {
+    if (!s.businessPosition) {
+      return latLng(s.lat, s.lon);
+    }
+    return s.businessPosition;
   },
   details(s) {
     return s.details;
@@ -378,9 +387,8 @@ export default {
   getters,
 };
 
-
-export function showPopup(key) {
-  state.infoText = state.infoMap.get(key);
+export function showPopup(text) {
+  state.infoText = text;
   state.isPopup = true;
 }
 
