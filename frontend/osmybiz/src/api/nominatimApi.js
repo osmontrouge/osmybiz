@@ -3,7 +3,6 @@ import { latLng } from 'leaflet';
 import * as _ from 'lodash';
 import { nominatimReverseUrl, nominatimUrl } from '../config/config';
 import { setError } from '../store/error';
-import { get } from '../util/translate';
 
 const queryMax = 10;
 
@@ -11,7 +10,7 @@ function parseCoords(lat, lng) {
   const latNr = parseFloat(lat);
   const lngNr = parseFloat(lng);
 
-  if (isNaN(latNr) || isNaN(lngNr)) {
+  if (Number.isNaN(latNr) || Number.isNaN(lngNr)) {
     return null;
   }
 
@@ -48,26 +47,28 @@ function mapResults(results) {
   return points.splice(0, 5);
 }
 
-function buildRequest(q, count) {
+function buildRequest(q, count, language) {
   const c = count > queryMax ? queryMax : count;
-  return `${nominatimUrl}?format=json&q=${q}&limit=${c}&addressdetails=1&accept-language=${get().lang}`;
+  return `${nominatimUrl}?format=json&q=${q}&limit=${c}&addressdetails=1&accept-language=${language}`;
 }
 
-export function query(queryString) {
-  return axios.get(buildRequest(queryString, 7))
+export function query(queryString, language) {
+  return axios.get(buildRequest(queryString, 7, language))
     .then(response => mapResults(response.data))
     .catch(() => {
-      setError(get().locale.error.nominatim);
+      setError('error.nominatim');
     });
 }
-function buildReverseRequest(lat, lon) {
-  return `${nominatimReverseUrl}?format=json&lat=${lat}&lon=${lon}&addressdetails=1&zoom=18`;
+
+function buildReverseRequest(position) {
+  return `${nominatimReverseUrl}?format=json&lat=${position.lat}&lon=${position.lng}&addressdetails=1&zoom=18`;
 }
 
-export function reverseQuery(lat, lon) {
-  return axios.get(buildReverseRequest(lat, lon))
+export function reverseQuery(position) {
+  return axios.get(buildReverseRequest(position))
     .then(response => parseAddress(response.data.address))
-    .catch(() => {
-      setError(get().locale.error.nominatim);
+    .catch((e) => {
+      setError('error.nominatim');
+      console.error(e);
     });
 }

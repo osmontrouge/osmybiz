@@ -1,7 +1,4 @@
 .idea/
-__pycache__/
 node_modules/
 .cache/
-.py[o|c]
 .bash_history
-.pytest_cache/

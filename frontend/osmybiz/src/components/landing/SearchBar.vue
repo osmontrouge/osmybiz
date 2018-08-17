@@ -55,7 +55,7 @@
         get() { return this.searchText; },
         set(value) {
           this.setSearch(value);
-          this.queryNominatim(value);
+          this.queryNominatim(value, this.$translate.lang);
         },
       },
     },

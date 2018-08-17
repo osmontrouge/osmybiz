@@ -5,7 +5,7 @@ import {
   mockDeleteNode,
 } from './osmybizApiMock';
 
-const baseRoute = `${osmyBizBackendUrl}/api/`;
+const baseRoute = osmyBizBackendUrl;
 
 if (fakeOsmybizApi) {
 // eslint-disable-next-line no-console

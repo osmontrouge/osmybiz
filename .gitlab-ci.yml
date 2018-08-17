@@ -7,6 +7,15 @@ cache:
   paths:
     - frontend/osmybiz/node_modules/
 
+backend-test:
+  image: python:3.6
+  stage: test
+  script:
+    - cd backend/api
+    - pip install -r requirements.txt
+    - flake8
+    - pytest
+
 client-build:
   image: node:8.4
   stage: build

@@ -1,7 +1,7 @@
 import { categoryTags } from '../api/overpassApi';
 import { getTagName } from './translate';
 
-export function getNodeCategoryKey(node) {
+function getNodeCategoryKey(node) {
   let result = '';
   categoryTags.forEach((t) => {
     if (node.tags[t]) {
@@ -14,7 +14,8 @@ export function getNodeCategoryKey(node) {
 function getBizCategory(node) {
   const key = getNodeCategoryKey(node);
   const fields = [];
-  getTagName(key).fields.forEach((field) => {
+  const tagFields = getTagName(key).fields || [];
+  tagFields.forEach((field) => {
     let value = '';
     if (node.tags[field.key]) {
       value = node.tags[field.key];
@@ -59,7 +60,7 @@ function extractWheelchair(node) {
   return value === 'yes' || value === 'limited';
 }
 
-export function createNoteFromNode(node) {
+function createNoteFromNode(node) {
   return {
     category: getBizCategory(node),
     name: extractTag(node, 'name'),
@@ -72,3 +73,9 @@ export function createNoteFromNode(node) {
     note: '',
   };
 }
+
+export {
+  getNodeCategoryKey,
+  getBizCategory,
+  createNoteFromNode,
+};

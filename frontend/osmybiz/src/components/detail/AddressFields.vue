@@ -103,7 +103,7 @@
         'setIsPopup',
       ]),
       show(key) {
-        showPopup(key);
+        showPopup(this.$translate.text(key));
       },
       hide() {
         hidePopup();

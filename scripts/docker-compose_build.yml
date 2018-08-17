@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  api:
+    image: geometalab/osmybiz-backend
+    build:
+      context: ../backend/
+      dockerfile: Dockerfile
+  frontend:
+    build:
+      context: ../frontend/
+      dockerfile: Dockerfile
+    environment:
+      API_URL: ${API_URL}
+      OSM_URL: ${OSM_URL}
+      OSM_OAUTH_KEY: ${OSM_OAUTH_KEY}
+      OSM_OAUTH_SECRET: ${OSM_OAUTH_SECRET}
+    volumes:
+      - ./frontend_prod/frontend_build:/opt/frontend/dist
+  frontend-build:
+    image: geometalab/osmybiz-frontend:${IMAGE_POSTFIX}
+    build:
+      context: ./frontend_prod/
+      dockerfile: Dockerfile.nginx
+    command: echo true
+  nginx:
+    image: geometalab/osmybiz-nginx
+    build:
+      context: ../nginx/
+      dockerfile: Dockerfile
+  cleanup:
+    build:
+      context: ../nginx/
+      dockerfile: Dockerfile
+    command: ['rm', '-rf', '/cleanit/frontend_build']
+    volumes:
+      - ./frontend_prod:/cleanit

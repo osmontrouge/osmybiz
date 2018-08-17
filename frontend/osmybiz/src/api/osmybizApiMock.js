@@ -37,7 +37,7 @@ export function mockFetchnodes(userId) {
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
-    return Promise.reject('User not found');
+    return Promise.reject(new Error('User not found'));
   }
 
   const nodes = loadNodes().filter(n => n.userId === userId);
@@ -49,7 +49,7 @@ export function mockAddOrUpdateNode(userId, node) {
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
-    return Promise.reject('User not found');
+    return Promise.reject(new Error('User not found'));
   }
   const nodes = loadNodes();
   let existingNode = nodes.filter(n => n.osmId === node.osmId && n.userId === userId)[0];
@@ -72,12 +72,12 @@ export function mockUnsubscribe(userId, nodeId) {
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
-    return Promise.reject('User not found');
+    return Promise.reject(new Error('User not found'));
   }
   const nodes = loadNodes();
   const node = nodes.filter(n => n.osmId === nodeId && n.userId === userId)[0];
   if (!_.isObject(node)) {
-    return Promise.reject('Node not found');
+    return Promise.reject(new Error('User not found'));
   }
 
   node.recieveUpdates = false;
@@ -90,12 +90,12 @@ export function mockDeleteNode(userId, nodeId) {
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
-    return Promise.reject('User not found');
+    return Promise.reject(new Error('User not found'));
   }
   const nodes = loadNodes();
   const node = nodes.filter(n => n.osmId === nodeId && n.userId === userId)[0];
   if (!_.isObject(node)) {
-    return Promise.reject('Node not found');
+    return Promise.reject(new Error('User not found'));
   }
 
   const index = nodes.indexOf(node);

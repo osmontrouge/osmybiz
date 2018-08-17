@@ -11,7 +11,7 @@
              class="external-link"
              target="_self">
             {{t('header').about}}
-            <icon class="link-icon" name="external-link"></icon>
+            <icon class="link-icon" name="external-link-alt"></icon>
           </a>
         </div>
 
@@ -43,12 +43,10 @@
 </template>
 
 <script>
-  import Icon from 'vue-awesome/components/Icon.vue';
-  import 'vue-awesome/icons';
   import { mapGetters, mapActions, mapMutations } from 'vuex';
-  import { loadTags } from '../../store/detail';
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
   import { osmUrl } from '../../config/config';
-  import { getInfoTexts } from '../../util/translate';
 
   const messageUrl = `${osmUrl}/user/`;
 
@@ -98,10 +96,6 @@
       },
       onSelect(e) {
         this.$translate.setLang(e.target.value);
-        this.setLanguage(e.target.value);
-        this.setTags(e.target.value);
-        this.setInfoMap(getInfoTexts());
-        loadTags();
       },
     },
     components: {

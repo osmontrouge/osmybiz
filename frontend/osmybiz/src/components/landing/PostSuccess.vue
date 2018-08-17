@@ -15,7 +15,7 @@
            class="external-link"
            target="_blank">
           {{t('success').link}}
-          <icon class="link-icon" name="external-link"></icon>
+          <icon class="link-icon" name="external-link-alt"></icon>
         </a>
       </div>
 
@@ -58,7 +58,7 @@
            class="external-link"
            target="_blank">
           {{t('success').link}}
-          <icon class="link-icon" name="external-link"></icon>
+          <icon class="link-icon" name="external-link-alt"></icon>
         </a>
       </div>
 

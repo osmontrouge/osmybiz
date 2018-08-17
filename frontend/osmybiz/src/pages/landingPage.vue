@@ -39,7 +39,7 @@
       const token = extractToken(window.location.href);
       if (_.isString(token) && !_.isEmpty(token)) {
         this.setToken(token).then(() => {
-          window.location.href = location.pathname;
+          window.location.href = window.location.pathname;
         });
       }
       this.setIsDuplicate(false);

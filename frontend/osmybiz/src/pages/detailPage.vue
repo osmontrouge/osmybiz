@@ -34,20 +34,17 @@
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
 
   import { routes } from './../router';
-  import { getInfoTexts } from '../util/translate';
 
   export default {
     mounted() {
-      if (!_.isNumber(this.lat) || !_.isNumber(this.lon) || !this.isLoggedIn) {
+      if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
         this.$router.push({ name: routes.Landing });
       }
       this.setDisplaySuccess(false);
 
-      this.getAddress();
+      this.getAddress(this.businessPosition);
       localStorage.setItem('details', JSON.stringify(this.details));
-
-      this.setInfoMap(getInfoTexts());
-
+      this.setInfoMap(this.$translate.locale);
       this.setIsNew(!this.isNote);
     },
     components: {
@@ -63,8 +60,8 @@
     },
     computed: {
       ...mapGetters([
-        'lat',
-        'lon',
+        'businessPosition',
+        'mapPosition',
         'details',
         'isLoggedIn',
         'isPopup',

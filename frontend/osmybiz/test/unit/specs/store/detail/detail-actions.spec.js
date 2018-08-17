@@ -59,7 +59,8 @@ const testAction = (action, payload, state, expectedMutations, done) => {
 describe('detail store', () => {
   describe('actions', () => {
     it('should post note', (done) => {
-      testAction(actions.default.actions.postSelectedCategoryNote,
+      testAction(
+        actions.default.actions.postSelectedCategoryNote,
         { user: {}, osmId: 0 },
         {
           details: {
@@ -82,7 +83,8 @@ describe('detail store', () => {
         },
         [
           { type: 'setNote', payload: { text: { address: 'test', name: 'test' } } },
-        ], done);
+        ], done,
+      );
     });
   });
 });

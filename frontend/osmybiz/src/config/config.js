@@ -3,28 +3,20 @@ import { latLng } from 'leaflet';
 // accesstoken for satellite imagery of mapbox can be generated with mapbox account
 export const mapBoxToken = 'pk.eyJ1IjoibXRoaSIsImEiOiJjajlzZHJqZGc2bGRxMnhxbTd0bjVibDNjIn0.11MBq0_6S30JBIw7oo9O7A';
 
-export const initialPosition = latLng(46.87897, 8.23975); // aprox center of switzerland
-export const initialZoom = 8;
+// export const initialPosition = latLng(46.87897, 8.23975) // aprox center of switzerland
+// export const initialZoom = 8
+export const initialPosition = latLng(46.77537, 10.15224);
+export const initialZoom = 18;
 
 export const LatLngRoundingAccuracy = 5;
 export const searchradius = 10.0;
 
-// state for osmApi (dev oder prod)
-const state = 'dev';
-
 // change between development (dev) and production (prod)
 export const osmApiLevel = '/api/0.6/';
-export const osmUrl = state === 'dev'
-  ? 'https://master.apis.dev.openstreetmap.org'
-  : 'https://api.openstreetmap.org';
+export const osmUrl = process.env.OSM_URL;
 
-// oauth dev
-// export const oauthSecret = 'tLZgaEwwAHn1eXoc79rsDLqdAwjHCi0Lh38T7ki7';
-// export const oauthKey = 'IRTx85wq5Mv1TT7gt6iJ1KbPJiUyMmASB8jfuRCK';
-
-// oauth staging
-export const oauthSecret = 'yjVBypkpNyJJbHlcoXA1SqyrmwdhAEL9pBNwitQ4';
-export const oauthKey = 'ZNNKpkLgobvrDT68TZzu5Dy94zvhn3TQ9qErsoLW';
+export const oauthSecret = process.env.OSM_OAUTH_SECRET;
+export const oauthKey = process.env.OSM_OAUTH_KEY;
 
 // nominatim Urls
 export const nominatimUrl = 'https://nominatim.openstreetmap.org/search';
@@ -35,6 +27,4 @@ export const overpassUrl = 'https://lz4.overpass-api.de/api/interpreter';
 
 // fake the osmybiz backend with localstorage
 export const fakeOsmybizApi = false;
-
-// export const osmyBizBackendUrl = 'http://localhost:8080';
-export const osmyBizBackendUrl = 'https://osmybiz.infs.ch';
+export const osmyBizBackendUrl = process.env.API_URL;

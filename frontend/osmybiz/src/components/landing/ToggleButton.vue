@@ -1,8 +1,8 @@
 <template>
 
   <div class="toggle-wrapper">
-    <button @click="setSatellite()" v-if="isTiles">{{t('landing').satelite}}</button>
-    <button @click="setTiles()" v-if="isSatellite">{{t('landing').map}}</button>
+    <button @click="setSatellite()" v-if="isVector">{{t('landing').satelite}}</button>
+    <button @click="setVector()" v-if="isSatellite">{{t('landing').map}}</button>
   </div>
 
 </template>
@@ -10,15 +10,14 @@
   import { mapGetters, mapMutations } from 'vuex';
 
   export default {
+    name: 'toggle-button',
     methods: {
       ...mapMutations(['setMode']),
-
-      setTiles() {
-        this.setMode('tiles');
-      },
-
       setSatellite() {
         this.setMode('satellite');
+      },
+      setVector() {
+        this.setMode('vector');
       },
 
     },
@@ -29,11 +28,10 @@
       isSatellite() {
         return this.mode === 'satellite';
       },
-      isTiles() {
-        return this.mode === 'tiles';
+      isVector() {
+        return this.mode === 'vector';
       },
     },
-    name: 'toggle-button',
   };
 </script>
 <style>
