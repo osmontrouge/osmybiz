@@ -31,7 +31,7 @@ export const nominatimUrl = 'https://nominatim.openstreetmap.org/search';
 export const nominatimReverseUrl = 'https://nominatim.openstreetmap.org/reverse';
 
 // overpass api url
-export const overpassUrl = 'https://overpass.osm.ch/api/interpreter';
+export const overpassUrl = 'https://lz4.overpass-api.de/api/interpreter';
 
 // fake the osmybiz backend with localstorage
 export const fakeOsmybizApi = false;
