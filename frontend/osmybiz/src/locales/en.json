@@ -6,7 +6,7 @@
   },
   "landing": {
     "search": "Search...",
-    "satelite": "Satelite",
+    "satelite": "Satellite",
     "map": "Map",
     "update": {
       "title": "Map changes",
@@ -29,7 +29,7 @@
     "loginhelp": {
       "title": "Information",
       "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap-Login.",
-      "section2": "But in this view you can already peer, how the website works."
+      "section2": "In this view you can already get an impression how the website works."
     }
   },
   "detail": {
