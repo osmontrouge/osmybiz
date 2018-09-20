@@ -19,6 +19,14 @@
                 v-on:change="onSelect">
           <option value="de">Deutsch</option>
           <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="he">עברית</option>
+          <option value="hu">Magyar</option>
+          <option value="it">Italiano</option>
+          <option value="pl">Polski</option>
+          <option value="ru">русский</option>
+          <option value="sv">Svenska</option>
+          <option value="zhTW">汉语</option>
         </select>
 
         <div v-if="isLoggedIn" class="user" >

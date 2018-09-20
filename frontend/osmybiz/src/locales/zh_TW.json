@@ -1,0 +1,167 @@
+{
+  "header": {
+    "about": "關於",
+    "messagetitle": "來自開放街圖的訊息",
+    "updatestitle": "編輯的商家更新"
+  },
+  "landing": {
+    "search": "搜尋...",
+    "satelite": "衛星",
+    "map": "地圖",
+    "update": {
+      "title": "地圖變更",
+      "noChanges": "無改變",
+      "changeText1": "商家",
+      "changeText2": "已經更新。",
+      "deleteText1": "商家",
+      "deleteText2": "已經搬離。",
+      "confirmHelp": "標示為已讀",
+      "zoomHelp": "在地圖上顯示",
+      "changesetHelp": "瀏覽變更集",
+      "muteHelp": "關掉通知"
+    },
+    "help": {
+      "title": "幫助",
+      "section1": "要放大則點兩下，或是按左上角的 '+'，或是用上面的搜尋框搜尋你的地址。",
+      "section2": "當既有的商家用左鍵點 (藍色圓圈)，你則可以編輯商家。",
+      "section3": "當在地圖上面任何位置按右鍵，你則可以建立新商家。"
+    },
+    "loginhelp": {
+      "title": "資訊",
+      "section1": "要更改地圖上的東西，你要用開放街圖登入畫面登入。",
+      "section2": "在這個畫面中你已經看到了，網站如何運作。"
+    }
+  },
+  "detail": {
+    "titles": {
+      "create": "建立商家",
+      "edit": "編輯商家",
+      "category": "分類",
+      "address": "地址",
+      "details": "詳情",
+      "extras": "其他資訊"
+    },
+    "labels": {
+      "street": "道路名稱",
+      "housenumber": "門牌號碼",
+      "place": "地方",
+      "postcode": "郵遞區號",
+      "city": "城市",
+      "country": "國家",
+      "name": "名稱",
+      "opening_hours": "開放時間",
+      "phone": "電話號碼",
+      "email": "E-Maill 地址",
+      "website": "網站",
+      "wheelchair": "輪椅通行",
+      "yes": "可",
+      "limited": "有限制",
+      "no": "否",
+      "description": "商家的敘述",
+      "note": "畫地圖人員的註解"
+    },
+    "placeholders": {
+      "category": "選擇分類...",
+      "owncategory": "插入分類",
+      "name": "商家名稱...",
+      "street": "主要道路",
+      "housenumber": "50",
+      "place": "道路廣場",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Winterthur",
+      "opening_hours": "Tu-Su 08:00-17:00",
+      "phone": "+41 11 111 11 11",
+      "email": "example@example.com",
+      "website": "http://www.example.com",
+      "description": "敘述",
+      "note": "註解"
+    },
+    "validate": {
+      "required": "必須欄位",
+      "email": "E-Mail 地址無效",
+      "website": "網址無效",
+      "streetOrPlace": "道路或是地方名稱是必須的",
+      "notStreetAndPlace": "無法同時填寫道路或地方名稱",
+      "subtitle": "有 * 的欄位是必須的 (有(*)的欄位只需要一次)"
+    },
+    "buttons": {
+      "owncategory": "自己的分類",
+      "choosecategory": "選擇分類",
+      "back": "回復",
+      "reset": "重設",
+      "save": "儲存"
+    },
+    "ownCategoryInfo": "如果你輸入自己的分類，會解決註解。註解必須被開放街圖社群成員處理。"
+  },
+  "infoTexts": {
+    "category": "請選擇適合辨別商家的分類，如果沒找到可以搜尋資料挑選適當分類，點\"自己的分類\"來定議你的分類。",
+    "address": "地址會自動從你選擇的點載入，如果需要改變請動手。欄位\"地點\"只有在沒有地址時才使用。",
+    "name": "請在欄位填寫商家名稱，例如 Migros",
+    "opening_hours": "在欄位中填寫商家營業時間，例如 Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "在這邊填寫你，或是你代表的商家，可以聯繫到的電話號碼。",
+    "email": "在這邊填寫你，或是你代表的商家，可以聯繫到的電子郵件。",
+    "website": "這個欄位是商家的網站。",
+    "wheelchair": "請在這裡選擇你商家的輪椅通行程度，這些不同的選項具體定義，請閱讀 https://wiki.openstreetmap.org/wiki/Key:wheelchair",
+    "description": "在這個欄位你可以增加給地圖使用者的資訊。",
+    "note": "註記是用來通知其他圖客，關於元件沒那麼明顯的資訊，新建者背後的理由，以及其他進一步改進的指引。"
+  },
+  "popups": {
+    "popuptitle": "新商家",
+    "feedback": "回報地圖錯誤",
+    "mapLink": "在 OSM.org 瀏覽",
+    "edit": "編輯",
+    "create": "建立",
+    "buttontitle": "你必須登入才能使用這個功能",
+    "warning": "商家這邊已經有開啟的註解。",
+    "comment": "留言"
+  },
+  "warning": {
+    "confirm": {
+      "title": "你確定嗎？",
+      "section": "如果你按是的話你所有的變動都會遺失。",
+      "yes": "可",
+      "no": "否"
+    },
+    "duplicate": {
+      "node": {
+        "title": "已經存在的商家",
+        "section1": "這個位子上已經有一樣名稱和類別的商家",
+        "section2": "你可能可以用左鍵在地圖上編輯既有的商家資訊。"
+      },
+      "note": {
+        "title": "已經存在的變更",
+        "section1": "這個商家已經有變更了，但還沒有處理。",
+        "section2": "你可能可以直接在開放街圖留言。",
+        "comment": "留下留言"
+      }
+    }
+  },
+  "success": {
+    "address": "地址",
+    "name": "名稱",
+    "link": "連到開放街圖",
+    "node": {
+      "title": "已建立新商家"
+    },
+    "note": {
+      "title": "變更已儲存"
+    }
+  },
+  "error": {
+    "title": "錯誤",
+    "nominatim": "連線可能有問題，請檢查你的網路連線，或是稍後再試一次。",
+    "osm": {
+      "login": "使用者無法登入。",
+      "loadUser": "無法載入使用者。",
+      "postNode": "無法更新商家。",
+      "postNote": "無法儲存變更。",
+      "load": "從開放街圖讀取資料出現問題，請檢查網路連線，或是稍後再試一次。"
+    },
+    "overpass": {
+      "query": "商家無法讀取。",
+      "surrounding": "上傳開放街圖資料出現問題，請檢查網路連線，或是稍後再試一次。"
+    }
+  },
+  "about": "\"OpenStreetMap My Business\" (簡稱 OSMyBiz) 是處理商家的網路程式，像是旅館、餐廳、酒吧和商店，可以輸入和管理他們的資訊 (例如地址(道路名稱、門牌號碼)、開放時間、電話號碼和網站)"
+}
