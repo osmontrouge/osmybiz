@@ -1,0 +1,167 @@
+{
+  "header": {
+    "about": "Informazioni",
+    "messagetitle": "Messaggi da OpenStreetMap",
+    "updatestitle": "Aggiornamenti alle attività modificate"
+  },
+  "landing": {
+    "search": "Cerca...",
+    "satelite": "Satellite",
+    "map": "Mappa",
+    "update": {
+      "title": "Modifiche alla mappa",
+      "noChanges": "Nessuna modifica",
+      "changeText1": "L’attività",
+      "changeText2": "è stata aggiornata.",
+      "deleteText1": "L’attività",
+      "deleteText2": "è stata rimossa.",
+      "confirmHelp": "Contrassegna come letto",
+      "zoomHelp": "Mostra sulla mappa",
+      "changesetHelp": "Vedi gruppo di modifiche",
+      "muteHelp": "Disabilita notifiche"
+    },
+    "help": {
+      "title": "Aiuto",
+      "section1": "Ingrandisci con un doppio click o con il ‘+’ nell’angolo in alto a sinistra oppure cerca l’indirizzo usando la barra di ricerca in alto.",
+      "section2": "È possibile modificare un’attività cliccando con il tasto sinistro del mouse su un’attività già esistente (cerchio blu).",
+      "section3": "Per creare una nuova attività, cliccare con il tasto destro del mouse in un qualsiasi punto della mappa."
+    },
+    "loginhelp": {
+      "title": "Informazioni",
+      "section1": "Per modificare la mappa devi aver effettuato l’accesso con un account OpenStreetMap.",
+      "section2": "Puoi comunque usare questa schermata per vedere come funziona questo sito web."
+    }
+  },
+  "detail": {
+    "titles": {
+      "create": "Crea attività",
+      "edit": "Modifica attività",
+      "category": "Categoria",
+      "address": "Indirizzo",
+      "details": "Dettagli",
+      "extras": "Altri dettagli"
+    },
+    "labels": {
+      "street": "Strada",
+      "housenumber": "Numero civico",
+      "place": "Luogo",
+      "postcode": "Codice postale",
+      "city": "Città",
+      "country": "Nazione",
+      "name": "Nome",
+      "opening_hours": "Orari di apertura",
+      "phone": "Numero di telefono",
+      "email": "Indirizzo e-mail",
+      "website": "Sito web",
+      "wheelchair": "Accesso ai disabili",
+      "yes": "Sì",
+      "limited": "Limitato",
+      "no": "No",
+      "description": "Descrizione dell’attività",
+      "note": "Nota per il mappatore"
+    },
+    "placeholders": {
+      "category": "Scegli categoria...",
+      "owncategory": "Inserisci categoria",
+      "name": "Nome dell’attività...",
+      "street": "Via Giosuè Carducci",
+      "housenumber": "50",
+      "place": "Piazza della stazione",
+      "postcode": "00118",
+      "city": "Roma",
+      "country": "Italia",
+      "opening_hours": "Tu-Su 08:00-17:00",
+      "phone": "+39 123 4567890",
+      "email": "esempio@esempio.com",
+      "website": "http://www.esempio.it",
+      "description": "Descrizione",
+      "note": "Nota"
+    },
+    "validate": {
+      "required": "Questo campo è obbligatorio",
+      "email": "L’indirizzo e-mail non è valido",
+      "website": "Il sito web non è valido",
+      "streetOrPlace": "La strada o il luogo sono obbligatori",
+      "notStreetAndPlace": "Non è possibile inserire sia la strada che il luogo",
+      "subtitle": "I campi contrassegnati con * sono obbligatori (quelli con ‘(*)’ significa che ne va compilato soltanto uno di essi)"
+    },
+    "buttons": {
+      "owncategory": "Categoria diversa",
+      "choosecategory": "Scegli categoria",
+      "back": "Indietro",
+      "reset": "Ripristina",
+      "save": "Salva"
+    },
+    "ownCategoryInfo": "Se si sceglie di inserire una categoria diversa verrà creata una nota. Tale nota dovrà essere elaborata da un membro della comunità di OpenStreetMap."
+  },
+  "infoTexts": {
+    "category": "Scegli una categoria per la tua attività in modo da semplificare l’identificazione del tipo di impresa. Cerca tra i dati una categoria appropriata altrimenti clicca su “Categoria diversa” per inserirne una nuova.",
+    "address": "L’indirizzo è caricato automaticamente in base dal punto scelto. Modificalo se necessario. Il campo “Località” è consentito solamente se l’attività non ha altro indirizzo.",
+    "name": "Scrivi il nome della tua attività in questo campo. Ad esempio Bar Sport",
+    "opening_hours": "In questo campo vanno gli orari di apertura della tua attività. Ad esempio Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Qui va il numero di telefono al quale tu e di conseguenza la tua attività, sarete rintracciabili.",
+    "email": "Qui va il tuo indirizzo e-mail al quale tu e di conseguenza la tua attività, sarete rintracciabili.",
+    "website": "In questo campo va il sito web della tua attività.",
+    "wheelchair": "Indica quanto la tua attività sia accessibile ai disabili. Puoi conoscere meglio il significato di ciascuna opzione andando su https://wiki.openstreetmap.org/wiki/IT:Key:wheelchair",
+    "description": "In questo campo inserisci informazioni per il mappatore finale.",
+    "note": "Le note sono utilizzare per dare indicazioni agli altri mappatori circa informazioni non ovvie che riguardano un elemento, le intenzioni dell’autore che lo ha creato oppure consigli per un ulteriore miglioramento."
+  },
+  "popups": {
+    "popuptitle": "Nuova attività",
+    "feedback": "Segnala un errore nella mappa",
+    "mapLink": "Vedi su OSM.org",
+    "edit": "Modifica",
+    "create": "Crea",
+    "buttontitle": "Devi aver effettuato l’accesso affinché ciò funzioni",
+    "warning": "Esiste già una nota aperta per questa attività.",
+    "comment": "Commenta"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Sei sicuro?",
+      "section": "Se premi ‘Sì’ tutte le tue modifiche andranno perdute.",
+      "yes": "Sì",
+      "no": "No"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Attività già esistente",
+        "section1": "In questo punto esiste già un’attività con lo stesso nome e categoria",
+        "section2": "Puoi modificare le informazioni già esistenti cliccando con il tasto sinistro del mouse sull’attività nella mappa."
+      },
+      "note": {
+        "title": "Modifiche già esistenti",
+        "section1": "Per questa attività è già presente una modifica che non è stata ancora elaborata.",
+        "section2": "Puoi lasciare un commento direttamente su OpenStreetMap:",
+        "comment": "Lascia un commento"
+      }
+    }
+  },
+  "success": {
+    "address": "Indirizzo",
+    "name": "Nome",
+    "link": "Collegamento a OpenStreetMap",
+    "node": {
+      "title": "Nuova attività creata"
+    },
+    "note": {
+      "title": "Modifiche salvate"
+    }
+  },
+  "error": {
+    "title": "Errore",
+    "nominatim": "C’è un problema con la connessione. Controlla la connessione a Internet o riprova più tardi.",
+    "osm": {
+      "login": "L’utente dovrebbe aver effettuato l’accesso.",
+      "loadUser": "Impossibile caricare l’utente.",
+      "postNode": "Impossibile caricare l’attività sul server.",
+      "postNote": "Impossibile salvare le modifiche.",
+      "load": "C’è un problema con il caricamento dei dati da OpenStreetMap. Controlla la tua connessione a Internet o riprova più tardi."
+    },
+    "overpass": {
+      "query": "Impossibile caricare le attività.",
+      "surrounding": "C'è un problema con il caricamento dei dati su OpenStreetMap. Controlla la tua connessione a Internet o riprova più tardi."
+    }
+  },
+  "about": "“OpenStreetMap My Business” (OSMyBiz in breve) è una app web dove le attività (come hotel, ristoranti, bar e negozi) possono essere inserite e dove è possibile gestire facilmente le loro informazioni (ad esempio l’indirizzo (strada e numero civico), gli orari di apertura, il numero di telefono e il sito web) presenti su OpenStreetMap. È simile a Onosm.org ma ha più funzioni che sono state progettate per essere semplici per l’utente."
+}
