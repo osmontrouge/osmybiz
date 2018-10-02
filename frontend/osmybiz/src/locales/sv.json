@@ -1,0 +1,167 @@
+{
+  "header": {
+    "about": "Om",
+    "messagetitle": "Meddelanden från OpenStreetMap",
+    "updatestitle": "Uppdateringar av redigerade företag"
+  },
+  "landing": {
+    "search": "Sök...",
+    "satelite": "Satelit",
+    "map": "Karta",
+    "update": {
+      "title": "Kartändringar",
+      "noChanges": "Inga ändringar",
+      "changeText1": "Företagen",
+      "changeText2": "har uppdaterats.",
+      "deleteText1": "Företagen",
+      "deleteText2": "har tagits bort.",
+      "confirmHelp": "Markera som läst",
+      "zoomHelp": "Visa på kartan",
+      "changesetHelp": "Visa ändringsset",
+      "muteHelp": "Inaktivera notifieringar"
+    },
+    "help": {
+      "title": "Hjälp",
+      "section1": "Zooma in med dubbelklick eller '+' högst upp i vänstra hörnet eller genom att söka på din adress med sökfältet högst upp.",
+      "section2": "Med ett vänsterklick på ett existerande företag (blå cirkel) kan du redigera detta företag.",
+      "section3": "Med ett högerklick var som helst på kartan kan du skapa ett nytt företag."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "För att göra ändringar på kartan måste du vara inloggad med ett OpenStreetMap-login.",
+      "section2": "Men med denna vy kan du redan granska hur webbsidan fungerar. "
+    }
+  },
+  "detail": {
+    "titles": {
+      "create": "Skapa företag",
+      "edit": "Redigera företag",
+      "category": "Kategori",
+      "address": "Adress",
+      "details": "Detaljer",
+      "extras": "Extra information"
+    },
+    "labels": {
+      "street": "Gata",
+      "housenumber": "Husnummer",
+      "place": "Plats",
+      "postcode": "Postnummer",
+      "city": "Ort",
+      "country": "Land",
+      "name": "Namn",
+      "opening_hours": "Öppettider",
+      "phone": "Telefonnummer",
+      "email": "E-postadress",
+      "website": "Hemsida",
+      "wheelchair": "Handikappanpassat",
+      "yes": "Ja",
+      "limited": "Begränsat",
+      "no": "Nej",
+      "description": "Beskrivning av företaget",
+      "note": "Notering till kartläggare"
+    },
+    "placeholders": {
+      "category": "Välj kategori...",
+      "owncategory": "Lägg till kategori",
+      "name": "Namn på företaget",
+      "street": "Storgatan",
+      "housenumber": "50",
+      "place": "Nordstan",
+      "postcode": "123 45",
+      "city": "Göteborg",
+      "country": "Sverige",
+      "opening_hours": "Tu-Su 08:00-17:00",
+      "phone": "+46 31 123 45 67",
+      "email": "exempel@exempel.se",
+      "website": "http://www.exempel.se",
+      "description": "Beskrivning",
+      "note": "Notering"
+    },
+    "validate": {
+      "required": "Detta fält är obligatoriskt",
+      "email": "E-postadress är felaktig",
+      "website": "Hemsideadress är felaktig",
+      "streetOrPlace": "Gata eller plats är obligatoriskt",
+      "notStreetAndPlace": "Gata och plats kan inte båda vara ifyllda",
+      "subtitle": "Fält med * är obligatoriska (För fält med (*) är bara en åt gången obligatorisk)"
+    },
+    "buttons": {
+      "owncategory": "Egen kategori",
+      "choosecategory": "Välj kategori",
+      "back": "Tillbaka",
+      "reset": "Återställ",
+      "save": "Spara"
+    },
+    "ownCategoryInfo": "Om du väljer att ange en egen kategori skapas en notering. Denna notering måste hanteras av en medlem i OpenStreetMap-gemenskapen. "
+  },
+  "infoTexts": {
+    "category": "Välj en kategori för ditt företag så att det är enklare att identifiera vad ditt företag handlar om. Sök efter passande kategori och om du inte hittar någon, klicka på \"Egen kategori\" för att definiera din egna kategori. ",
+    "address": "Adressen laddas automatiskt utifrån platsen du har valt. Gör lämpliga korrigeringar om det behövs. Fället \"Plats\" är bara tillåten om företaget inte har någon annan adress.",
+    "name": "Skriv namnet på företaget i detta fält, t.ex. IKEA",
+    "opening_hours": "I detta fällt anges öppettiderna för ditt företag, t.ex. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Här anges det telefonnumret under vilket du eller ditt företag är nåbart på.",
+    "email": "Här anges den e-postadress under vilken du eller ditt företag är nåbart på.",
+    "website": "I detta fällt anges hemsideadressen för ditt företag.",
+    "wheelchair": "Ange hur åtkomligt ditt företag är med rullstol. Vad exakt de olika valen betyder, kan du läsa på https://wiki.openstreetmap.org/wiki/Key:wheelchair",
+    "description": "I detta fält kan du lägga till information för kartläggare.",
+    "note": "En notering är till för att informera andra kartläggare om ej uppenbar information kring detta element, författarens intention vid skapandet av det, eller ett tips för framtida förbättringar."
+  },
+  "popups": {
+    "popuptitle": "Nytt företag",
+    "feedback": "Rapportera kartproblem",
+    "mapLink": "Visa på OSM.org",
+    "edit": "Redigera",
+    "create": "Skapa",
+    "buttontitle": "Du måste vara inloggad för denna funktion",
+    "warning": "Det finns redan en öppen notering för detta företag.",
+    "comment": "Kommentera"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Är du säker?",
+      "section": "Om du trycker Ja kommer alla dina ändringar gå förlorade.",
+      "yes": "Ja",
+      "no": "Nej"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Redan existerande företag",
+        "section1": "På denna plats finns redan ett företag med exakt samma namn och kategori",
+        "section2": "Du har möjlighet att redigera den redan existerande informationen med ett vänsterklick på företaget på kartan."
+      },
+      "note": {
+        "title": "Redan existerande ändringar",
+        "section1": "För detta företag existerar det redan en ändring som inte är hanterad än.",
+        "section2": "Du har möjlighet att lämna en kommentar direkt i OpenStreetMap:",
+        "comment": "Lämna kommentar"
+      }
+    }
+  },
+  "success": {
+    "address": "Adress",
+    "name": "Namn",
+    "link": "Länk till OpenStreetMap",
+    "node": {
+      "title": "Nytt företag skapat"
+    },
+    "note": {
+      "title": "Ändringar sparade"
+    }
+  },
+  "error": {
+    "title": "Fel",
+    "nominatim": "Det är ett problem med anslutningen. Kontrollera din internetanslutning eller försök igen senare.",
+    "osm": {
+      "login": "Användaren kunde inte loggas in.",
+      "loadUser": "Användare kunde inte laddas.",
+      "postNode": "Företag kunde inte laddas upp.",
+      "postNote": "Ändring kunde inte sparas.",
+      "load": "Det är ett problem med laddningen av data från OpenStreetMap. Kontrollera din internetanslutning eller försök igen senare."
+    },
+    "overpass": {
+      "query": "Företag kunde inte laddas.",
+      "surrounding": "Det är ett problem med uppladdningen av data till OpenStreetMap. Kontrollera din internetanslutning eller försök igen senare."
+    }
+  },
+  "about": "\"OpenStreetMap My Business\" (kort OSMyBiz) är en webbapp där företag (så som hotell, restauranger, barer och affärer) kan ange och hantera informationen om dem (t.ex. adress, öppettider, telefonnummer och hemsideadress) i OpenStreetMap på ett enkelt sätt. Det liknar Onosm.org med innehåller mer funktionalitet som är designade för att vara enkla att använda."
+}
