@@ -9,7 +9,7 @@
         <div class="about">
           <a href="http://wiki.openstreetmap.org/wiki/OSMyBiz"
              class="external-link"
-             target="_self">
+             target="_blank">
             {{t('header').about}}
             <icon class="link-icon" name="external-link-alt"></icon>
           </a>
