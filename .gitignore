@@ -5,3 +5,4 @@ node_modules/
 .py[o|c]
 .bash_history
 .pytest_cache/
+.env-openstreetmap-dev

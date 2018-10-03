@@ -1,0 +1,167 @@
+{
+  "header": {
+    "about": "Névjegy",
+    "messagetitle": "Üzenetek az OpenStreetMapről",
+    "updatestitle": "Szerkesztett vállalkozások frissítései"
+  },
+  "landing": {
+    "search": "Keresés…",
+    "satelite": "Műholdkép",
+    "map": "Térkép",
+    "update": {
+      "title": "Térkép változásai",
+      "noChanges": "Nincs változás",
+      "changeText1": "A vállalkozás",
+      "changeText2": "frissült.",
+      "deleteText1": "A vállalkozás",
+      "deleteText2": "eltávolíttatott.",
+      "confirmHelp": "Megjelölés olvasottként",
+      "zoomHelp": "Megjelenítés a térképen",
+      "changesetHelp": "Módosításcsomag megtekintése",
+      "muteHelp": "Értesítések kikapcsolása"
+    },
+    "help": {
+      "title": "Súgó",
+      "section1": "Nagyítson dupla kattintással vagy a térkép bal felső sarkában található '+' jellel, vagy keresse meg címét a fenti keresősávval.",
+      "section2": "Ha egy meglévő vállalkozásra (kék kör) kattint, akkor szerkesztheti az adatait.",
+      "section3": "Ha a jobb egérgombbal bárhová kattint a térképen, akkor létrehozhat egy új vállalkozást."
+    },
+    "loginhelp": {
+      "title": "Tájékoztatás",
+      "section1": "A térkép szerkesztéséhez be kell lépnie egy OpenStreetMap-fiókkal,",
+      "section2": "azonban már a jelenlegi nézetben is megnézheti, hogyan működik a weboldal."
+    }
+  },
+  "detail": {
+    "titles": {
+      "create": "Vállalkozás létrehozása",
+      "edit": "Vállalkozás szerkesztése",
+      "category": "Kategória",
+      "address": "Cím",
+      "details": "Adatok",
+      "extras": "Kiegészítő információk"
+    },
+    "labels": {
+      "street": "Utca",
+      "housenumber": "Házszám",
+      "place": "Hely",
+      "postcode": "Irányítószám",
+      "city": "Település",
+      "country": "Ország",
+      "name": "Név",
+      "opening_hours": "Nyitva tartás",
+      "phone": "Telefonszám",
+      "email": "E-mail cím",
+      "website": "Weboldal",
+      "wheelchair": "Akadálymentes-e?",
+      "yes": "igen",
+      "limited": "korlátozottan (1 lépcsőfok)",
+      "no": "nem",
+      "description": "Vállalkozás leírása",
+      "note": "Megjegyzés térképszerkesztőknek"
+    },
+    "placeholders": {
+      "category": "Kategória kiválasztása…",
+      "owncategory": "Kategória megadása",
+      "name": "Vállalkozás neve…",
+      "street": "Fő utca",
+      "housenumber": "50",
+      "place": "Szabadság tér",
+      "postcode": "8405",
+      "city": "Sajószentpéter",
+      "country": "Magyarország",
+      "opening_hours": "Mo-Fr 08:00-17:00 (napok angol rövidítéssel)",
+      "phone": "+36 29 123456",
+      "email": "pelda@vallalkozas.hu",
+      "website": "http://www.vallalkozas.hu",
+      "description": "Leírás",
+      "note": "Megjegyzés"
+    },
+    "validate": {
+      "required": "Ez a mező kötelező",
+      "email": "Érvénytelen e-mail cím",
+      "website": "Érvénytelen weboldal",
+      "streetOrPlace": "Az utcát vagy helyet meg kell adni",
+      "notStreetAndPlace": "Az utca és a hely nem lehet egyszerre kitöltve",
+      "subtitle": "A *-gal jelölt mezőket kötelező kitölteni. (A (*)-gal jelöltek közül csak az egyiket kell kitölteni.)"
+    },
+    "buttons": {
+      "owncategory": "Saját kategória",
+      "choosecategory": "Válasszon kategóriát",
+      "back": "Vissza",
+      "reset": "Mezők törlése",
+      "save": "Mentés"
+    },
+    "ownCategoryInfo": "Ha saját kategóriát ad meg, az egy megjegyzés formájában fog megjelenni a térképen. Ezt a megjegyzést fel kell dolgoznia az OpenStreetMap közösség egy tagjának."
+  },
+  "infoTexts": {
+    "category": "Úgy válasszon kategóriát vállalkozásának, hogy minél egyszerűbb legyen kitalálni, mivel is foglalkozik. Gondosan nézze át a lehetséges kategóriákat, és ha nem talál köztük megfelelőt, kattintson a „Saját kategória” gombra, és adjon meg egy saját kategóriát.",
+    "address": "A cím automatikusan töltődik be a térképen kijelölt pont alapján. Szükség esetén módosítsa. A „Hely” mezőt csak azok a vállalkozások használhatják, amelyeknek másként nem határozható meg a címe.",
+    "name": "Írja ide vállalkozása nevét, pl. Kovács virágbolt",
+    "opening_hours": "Ebbe a mezőbe kerül a vállalkozás nyitva tartása, pl. Mo-Fr 08:00-16:30 A hét napjainál a kétbetűs angol rövidítéseket kell használni.",
+    "phone": "Ide az a telefonszám kerül, amelyen Önt, illetve vállalkozását el lehet érni.",
+    "email": "Ide azt az e-mail címet kell írni, amelyen Önt, illetve vállalkozását el lehet érni.",
+    "website": "Ide írja vállalkozása weboldalának címét. (Az elején mindig szerepeljen a http:// vagy https:// előtag.)",
+    "wheelchair": "Válassza ki, vállalkozása milyen mértékben érhető el kerekesszékkel vagy babakocsival. Az opciók pontos meghatározását megtalálja itt: https://wiki.openstreetmap.org/wiki/Hu:Key:wheelchair",
+    "description": "Ebbe a mezőbe olyasmit írhat, amely a térkép felhasználóinak hasznos lehet.",
+    "note": "A megjegyzést arra használjuk, hogy a többi térképszerkesztőt tájékoztassuk a térképre felvitt objektum nem magától értetődő információiról, az objektumot létrehozó szerző szándékairól vagy további javítási elképzelésekről."
+  },
+  "popups": {
+    "popuptitle": "Új vállalkozás",
+    "feedback": "Térképhiba jelentése",
+    "mapLink": "Megtekintés az OSM.org oldalon",
+    "edit": "Szerkesztés",
+    "create": "Létrehozás",
+    "buttontitle": "Ehhez a funkcióhoz be kell jelentkeznie",
+    "warning": "Ehhez a vállalkozáshoz már van egy nyitott megjegyzés.",
+    "comment": "Hozzászólás"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Biztos benne?",
+      "section": "Ha az Igen-re kattint, minden módosítása elvész.",
+      "yes": "igen",
+      "no": "nem"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Ez a vállalkozás már fenn van a térképen",
+        "section1": "Ezen a helyen már van egy pontosan ugyanilyen nevű és kategóriájú vállalkozás",
+        "section2": "A bal egérgombbal a vállalkozásra kattintva szerkesztheti a már meglévő információkat."
+      },
+      "note": {
+        "title": "Már elvégzett módosítás",
+        "section1": "Ezen a vállalkozáson már eszközöltek egy módosítást, amely még nincs feldolgozva.",
+        "section2": "Hozzászólhat közvetlenül az OpenStreetMapen is:",
+        "comment": "Hozzászólás"
+      }
+    }
+  },
+  "success": {
+    "address": "Cím",
+    "name": "Név",
+    "link": "Link az OpenStreetMaphez",
+    "node": {
+      "title": "Az új vállalkozás létrejött a térképen"
+    },
+    "note": {
+      "title": "Módosítások mentve"
+    }
+  },
+  "error": {
+    "title": "Hiba",
+    "nominatim": "Hiba a kapcsolattal. Ellenőrizze internetkapcsolatát, vagy próbálkozzék később újra.",
+    "osm": {
+      "login": "A felhasználónak nem sikerült bejelentkeznie.",
+      "loadUser": "A felhasználót nem sikerült betölteni.",
+      "postNode": "A vállalkozást nem sikerült feltölteni.",
+      "postNote": "A módosításokat nem sikerült menteni",
+      "load": "Hiba történt az adatok OpenStreetMapről történő letöltésekor. Ellenőrizze internetkapcsolatát, vagy próbálkozzék később újra."
+    },
+    "overpass": {
+      "query": "A vállalkozásokat nem sikerült betölteni.",
+      "surrounding": "Hiba történt az adatok OpenStreetMapre történő feltöltésekor. Ellenőrizze internetkapcsolatát, vagy próbálkozzék később újra."
+    }
+  },
+  "about": "Az „OpenStreetMap My Business” (OpenStreetMap Vállalkozásom, röviden OSMyBiz) olyan webes alkalmazás, amellyel a vállalkozások – például vendégházak, éttermek, kocsmák és boltok – egyszerűen tölthetik és kezelhetik adataikat (például cím, nyitva tartás, telefonszám és weboldal) az OpenStreetMap térképfelületen. Hasonlít az onosm.org-hoz, de több funkciója van, és felhasználóbarátabb."
+}

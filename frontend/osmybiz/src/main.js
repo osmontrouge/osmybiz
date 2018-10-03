@@ -7,11 +7,27 @@ import App from './App.vue';
 import router from './router';
 import de from './locales/de.json';
 import en from './locales/en.json';
+import fr from './locales/fr.json';
+import he from './locales/he.json';
+import hu from './locales/hu.json';
+import it from './locales/it.json';
+import pl from './locales/pl.json';
+import ru from './locales/ru.json';
+import sv from './locales/sv.json';
+import zhTW from './locales/zh_TW.json';
 
 Vue.use(VueTranslate);
 Vue.locales({
   de,
   en,
+  fr,
+  he,
+  hu,
+  it,
+  pl,
+  ru,
+  sv,
+  zhTW,
 });
 
 sync(store, router);

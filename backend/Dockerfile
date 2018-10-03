@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 MAINTAINER Max Luethi, Simon Heller
 
 ENV DOCKERIZE_VERSION v0.6.1

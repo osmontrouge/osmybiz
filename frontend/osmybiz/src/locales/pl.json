@@ -1,0 +1,167 @@
+{
+  "header": {
+    "about": "O programie",
+    "messagetitle": "Wiadomości z OpenStreetMap",
+    "updatestitle": "Aktualizacje edytowanej firmy"
+  },
+  "landing": {
+    "search": "Szukaj...",
+    "satelite": "Satelita",
+    "map": "Mapa",
+    "update": {
+      "title": "Zmiany mapy",
+      "noChanges": "Brak zmian",
+      "changeText1": "Firma",
+      "changeText2": "została zaktualizowana.",
+      "deleteText1": "Firma",
+      "deleteText2": "została usunięta.",
+      "confirmHelp": "Oznacz jako przeczytane",
+      "zoomHelp": "Pokaż na mapie",
+      "changesetHelp": "Zobacz zestaw zmian",
+      "muteHelp": "Wyłącz powiadomienia"
+    },
+    "help": {
+      "title": "Pomoc",
+      "section1": "Przybliż dwukrotnie klikając myszą lub przyciskiem '+' w lewym górnym rogu albo wyszukaj adres w górnym pasku.",
+      "section2": "Klikając lewym przyciskiem myszy na istniejącej firmie (niebieskie kółko) możesz ją edytować.",
+      "section3": "Klikając prawym przyciskiem myszy gdziekolwiek na mapie możesz utworzyć nową firmę."
+    },
+    "loginhelp": {
+      "title": "Informacje",
+      "section1": "Aby wprowadzać zmiany na mapie musisz być zalogowanym przy użyciu loginu z OpenStreetMap.",
+      "section2": "Natomiast w tym widoku możesz już podejrzeć, jak działa ta strona."
+    }
+  },
+  "detail": {
+    "titles": {
+      "create": "Utwórz firmę",
+      "edit": "Edytuj firmę",
+      "category": "Kategoria",
+      "address": "Adres",
+      "details": "Szczegóły",
+      "extras": "Dodatkowe informacje"
+    },
+    "labels": {
+      "street": "Ulica",
+      "housenumber": "Numer domu",
+      "place": "Miejsce",
+      "postcode": "Kod pocztowy",
+      "city": "Miasto",
+      "country": "Państwo",
+      "name": "Nazwa",
+      "opening_hours": "Godziny otwarcia",
+      "phone": "Numer telefonu",
+      "email": "Adres email",
+      "website": "Strona internetowa",
+      "wheelchair": "Dostępność dla wózków inwalidzkich",
+      "yes": "Tak",
+      "limited": "Ograniczona",
+      "no": "Nie",
+      "description": "Opis firmy",
+      "note": "Notatka dla osoby mapującej"
+    },
+    "placeholders": {
+      "category": "Wybierz kategorię...",
+      "owncategory": "Wprowadź kategorię",
+      "name": "Nazwa firmy...",
+      "street": "Dworcowa",
+      "housenumber": "50",
+      "place": "Plac Wolności",
+      "postcode": "01-855",
+      "city": "Konin",
+      "country": "Polska",
+      "opening_hours": "Pon-Pt 08:00-17:00",
+      "phone": "+48 12 345 67 89",
+      "email": "example@example.com",
+      "website": "http://www.example.com",
+      "description": "Opis",
+      "note": "Notatka"
+    },
+    "validate": {
+      "required": "To pole jest wymagane",
+      "email": "Nieprawidłowy adres email",
+      "website": "Nieprawidłowa strona www",
+      "streetOrPlace": "Ulica lub miejsce są wymagane",
+      "notStreetAndPlace": "Ulica i miejsce nie mogą być wypełnione jedocześnie",
+      "subtitle": "Pola z * są wymagane (tylko jedno z pól (*) jest wymagane)"
+    },
+    "buttons": {
+      "owncategory": "Własna kategoria",
+      "choosecategory": "Wybierz kategorię",
+      "back": "Wstecz",
+      "reset": "Resetuj",
+      "save": "Zapisz"
+    },
+    "ownCategoryInfo": "Jeżeli wybierzesz własną kategorię, to pojawi się ona jako notatka. Będzie ona musiała być przejrzana przez członka społeczności OpenStreetMap."
+  },
+  "infoTexts": {
+    "category": "Wybierz kategorię dla swojej firmy, aby łatwiej było określić, czy się ona zajmuje. Przejrzyj listę dostępnych kategorii, a jeśli nie znajdziesz odpowiedniej kliknij na \"Własna kategoria\", aby zdefiniować swoją własną.",
+    "address": "Adres jest pobierany automatycznie na podstawie wybranej lokalizacji. Możesz wprowadzić ewentualne zmiany, jeśli to konieczne. Pole \"Miejsce\" jest dopuszczalne tylko, jeśli firma nie posiada innego adresu.",
+    "name": "W tym polu wpisz nazwę swojej firmy, np. Migros",
+    "opening_hours": "W tym polu są godziny otwarcia Twojej firmy, np. Pon-Pt 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Tutaj podaj numer telefonu, pod którym Twoja firma jest dostępna.",
+    "email": "Tutaj podaj adres email, pod którym Twoja firma jest dostępna.",
+    "website": "W tym polu jest strona internetowa Twojej firmy.",
+    "wheelchair": "Wybierz na ile Twoja firma jest dostępna dla wózków inwalidzkich. Dokładny opis każdej opcji możesz znaleźć na https://wiki.openstreetmap.org/wiki/Pl:Key:wheelchair",
+    "description": "W tym polu możesz dodać informacje dla użytkowników mapy.",
+    "note": "Notatki są używane, aby poinformować innych maperów o nieoczywistych informacjach dotyczących elementu, zamiarach autora przy tworzeniu lub wskazówkach do dalszych ulepszeń."
+  },
+  "popups": {
+    "popuptitle": "Nowa firma",
+    "feedback": "Zgłoś błąd mapy",
+    "mapLink": "Zobacz na OSM.org",
+    "edit": "Edytuj",
+    "create": "Utwórz",
+    "buttontitle": "Musisz być zalogowany, aby skorzystać z tej funkcji",
+    "warning": "Już istnieje otwarta notatka dla tej firmy.",
+    "comment": "Komentarz"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Czy jesteś pewien?",
+      "section": "Jeśli klikniesz Tak, wszystkie Twoje zmiany zostaną utracone.",
+      "yes": "Tak",
+      "no": "Nie"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Istniejąca firma",
+        "section1": "W tej lokalizacji istnieje już firma o tej samej nazwie i kategorii",
+        "section2": "Możesz edytować już istniejące informacje klikając lewym przyciskiem myszy firmę na mapie."
+      },
+      "note": {
+        "title": "Istniejące zmiany",
+        "section1": "Dla tej firmy już istnieją zmiany, które nie zostały jeszcze przetworzone.",
+        "section2": "Możesz pozostawić komentarz bezpośrednio na OpenStreetMap:",
+        "comment": "Zostaw komentarz"
+      }
+    }
+  },
+  "success": {
+    "address": "Adres",
+    "name": "Nazwa",
+    "link": "Link do OpenStreetMap",
+    "node": {
+      "title": "Utworzono nową firmę"
+    },
+    "note": {
+      "title": "Zapisano zmiany"
+    }
+  },
+  "error": {
+    "title": "Błąd",
+    "nominatim": "Wystąpił problem z połączeniem. Sprawdź swoje połączenie internetowe lub spróbuj ponownie później.",
+    "osm": {
+      "login": "Nie można zalogować użytkownika.",
+      "loadUser": "Nie można załadować użytkownika.",
+      "postNode": "Nie można przesłać firmy.",
+      "postNote": "Nie można zapisać zmian.",
+      "load": "Wystąpił problem podczas ładowania danych z OpenStreetMap. Sprawdź swoje połączenie internetowe lub spróbuj ponownie później."
+    },
+    "overpass": {
+      "query": "Nie można załadować firmy.",
+      "surrounding": "Wystąpił problem podczas przesyłania danych do OpenStreetMap. Sprawdź swoje połączenie internetowe lub spróbuj ponownie później."
+    }
+  },
+  "about": "\"OpenStreetMap My Business\" (skrót OSMyBiz), to aplikacja internetowa, w której firmy - hotele, restauracje, bary, sklepy - mogą w prosty sposób dodawać i zarządzać informacjami o nich (np. adres (numer budynku, ulica), godziny otwarcia, numer telefonu i strona www) na OpenStreetMap. Aplikacja jest podobna do Onosm.org, ale zawiera więcej funkcji i jest bardziej przyjazna dla użytkownika."
+}

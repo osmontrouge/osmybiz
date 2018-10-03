@@ -1,0 +1,167 @@
+{
+  "header": {
+    "about": "À propos",
+    "messagetitle": "Messages de la part d'OpenStreetMap",
+    "updatestitle": "Mises à jour des commerces modifiés"
+  },
+  "landing": {
+    "search": "Recherche...",
+    "satelite": "Satellite",
+    "map": "Carte",
+    "update": {
+      "title": "Changements sur la carte",
+      "noChanges": "Pas de changements",
+      "changeText1": "Le commerce",
+      "changeText2": "a été mis à jour.",
+      "deleteText1": "Le commerce",
+      "deleteText2": "a été supprimé.",
+      "confirmHelp": "Marquer comme lu",
+      "zoomHelp": "Voir sur la carte",
+      "changesetHelp": "Voir le groupe de modifications",
+      "muteHelp": "Désactiver les notifications"
+    },
+    "help": {
+      "title": "Aide",
+      "section1": "Zoomez avec un double-clic ou le « + » dans le coin supérieur gauche, ou cherchez votre adresse grâce à la barre de recherche en haut.",
+      "section2": "Grâce à un clic gauche sur un commerce existant (disque bleu), vous pouvez modifier ce commerce.",
+      "section3": "Grâce à un clic droit n'importe où sur la carte, vous pouvez créer un nouveau commerce."
+    },
+    "loginhelp": {
+      "title": "Information",
+      "section1": "Pour modifier la carte, vous devez être authentifié avec un compte OpenStreetMap.",
+      "section2": "Mais dans cette vue vous pouvez déjà voir comment ce site web fonctionne."
+    }
+  },
+  "detail": {
+    "titles": {
+      "create": "Créer un commerce",
+      "edit": "Modifier un commerce",
+      "category": "Catégorie",
+      "address": "Adresse",
+      "details": "Détails",
+      "extras": "Informations supplémentaires "
+    },
+    "labels": {
+      "street": "Rue, Voie",
+      "housenumber": "Numéro de rue",
+      "place": "Lieu-dit",
+      "postcode": "Code postal",
+      "city": "Grande ville (plus de 100 000 habitants)",
+      "country": "Pays",
+      "name": "Nom",
+      "opening_hours": "Horaires d'ouverture",
+      "phone": "Numéro de téléphone",
+      "email": "Adresse E-Mail",
+      "website": "Site Web",
+      "wheelchair": "Accessible en fauteuil roulant ",
+      "yes": "Oui",
+      "limited": "Limité",
+      "no": "Non",
+      "description": "Description du commerce",
+      "note": "Note pour le cartographe"
+    },
+    "placeholders": {
+      "category": "Choisir la catégorie...",
+      "owncategory": "Insérer une catégorie",
+      "name": "Nom du commerce...",
+      "street": "Mainstreet",
+      "housenumber": "50",
+      "place": "Station square",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Switzerland",
+      "opening_hours": "Tu-Su 08:00-17:00",
+      "phone": "+41 11 111 11 11",
+      "email": "example@example.com",
+      "website": "http://www.example.com",
+      "description": "Description",
+      "note": "Note"
+    },
+    "validate": {
+      "required": "Ce champ est requis",
+      "email": "L'adresse de courriel n'est pas valide",
+      "website": "Le site web n'est pas valide",
+      "streetOrPlace": "La rue ou le lieu-dit sont requis",
+      "notStreetAndPlace": "La rue et le lieu-dit ne peuvent être tous les deux remplis",
+      "subtitle": "Les champs avec un * sont requis (les champs avec (*) ne sont requis qu'une fois)"
+    },
+    "buttons": {
+      "owncategory": "Catégorie propre",
+      "choosecategory": "Choisir la catégorie",
+      "back": "Retour",
+      "reset": "Réinitialiser",
+      "save": "Sauvegarder"
+    },
+    "ownCategoryInfo": "Si vous choisissez une catégorie propre, cela produira une note. Cette note devra être traitée par un membre de la communauté OpenStreetMap."
+  },
+  "infoTexts": {
+    "category": "Choisissez une catégorie pour votre commerce, de façon à ce qu'il soit plus facile à identifier. Recherchez la catégorie qui correspond le mieux et si vous ne trouvez rien, cliquez sur « Catégorie propre » pour créer voir propre catégorie.",
+    "address": "L'adresse est chargée automatiquement depuis le point que vous avez choisi. Vous pouvez la changer si nécessaire. Le champ « Lieu-dit » n'est autorisé que si le commerce n'a pas d'autre adresse.",
+    "name": "Indiquez le nom de votre commerce dans ce champ. p. ex. Auchan",
+    "opening_hours": "Indiquez les horaires d'ouvertures de votre commerce dans ce champ. p. ex. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Indiquez ici le numéro de téléphone auquel vous, respectivement votre commerce, êtes joignable.",
+    "email": "Indiquez ici l'adresse de courriel à laquelle vous, respectivement votre commerce, êtes joignable.",
+    "website": "Indiquez dans ce champ le site web de votre commerce.",
+    "wheelchair": "Choisissez le niveau d'accessibilité en fauteuil roulant de votre commerce. Pour la signification précise de chaque option, vous pouvez lire : https://wiki.openstreetmap.org/wiki/FR:Key:wheelchair",
+    "description": "Dans ce champ vous pouvez ajouter des informations pour l'utilisateur final de la carte.",
+    "note": "Une note permet d'informer les autres cartographes de choses qui ne serait pas évidentes, de l'intention de l'auteur, ou de possibilités d'améliorations."
+  },
+  "popups": {
+    "popuptitle": "Nouveau commerce",
+    "feedback": "Signaler une erreur de la carte",
+    "mapLink": "Visualiser sur OSM.org",
+    "edit": "Modifier",
+    "create": "Créer",
+    "buttontitle": "Vous devez être authentifié pour cette fonction",
+    "warning": "Il y a déjà une Note ouverte pour ce commerce.",
+    "comment": "Commentaire"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Êtes-vous sûr·e ?",
+      "section": "Si vous cliquez Oui, tous vos changements seront perdus.",
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "duplicate": {
+      "node": {
+        "title": "Le commerce existe déjà",
+        "section1": "À cet endroit il y a déjà un commerce avec exactement le même nom et la même catégorie",
+        "section2": "Vous pouvez modifier les informations existantes avec un clic gauche sur le commerce sur la carte."
+      },
+      "note": {
+        "title": "Changements déjà existants ",
+        "section1": "Pour ce commerce il y a déjà un changement, qui n'est pas encore traité.",
+        "section2": "Vous pouvez laisser un commentaire directement sur OpenStreetMap :",
+        "comment": "Laisser un commentaire"
+      }
+    }
+  },
+  "success": {
+    "address": "Adresse",
+    "name": "Nom",
+    "link": "Lien vers OpenStreetMap",
+    "node": {
+      "title": "Nouveau commerce créé"
+    },
+    "note": {
+      "title": "Modifications prises en compte"
+    }
+  },
+  "error": {
+    "title": "Erreur",
+    "nominatim": "Il y a un problème avec la connexion. Vérifiez votre connexion à Internet, ou réessayez plus tard.",
+    "osm": {
+      "login": "L'utilisateur ne peut être connecté.",
+      "loadUser": "L'utilisateur ne peut être chargé.",
+      "postNode": "Le commerce ne peut être envoyé.",
+      "postNote": "Les changements ne peuvent être sauvegardés.",
+      "load": "Il y a un problème pour charger les données depuis OpenStreetMap. Vérifiez votre connexion Internet ou réessayez plus tard."
+    },
+    "overpass": {
+      "query": "Les commerces ne peuvent être chargés.",
+      "surrounding": "Il y a un problème pour envoyer les données vers OpenStreetMap. Vérifiez votre connexion Internet ou réessayez plus tard."
+    }
+  },
+  "about": "« OpenStreetMap My Business » (raccourci en OSMyBiz) est une application web où les commerces — comme les hôtels, les restaurants, les bars et les magasins — peuvent insérer et gérer leurs informations (par exemple l'adresse, les horaires d'ouverture, le numéro de téléphone et le site web) dans OpenStreetMap de façon simple. C'est similaire à Onosm.org mais avec plus de fonctions, prévues pour être simples à utiliser."
+}

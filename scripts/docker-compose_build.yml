@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   api:
-    image: geometalab/osmybiz-backend
+    image: geometalab/osmybiz-backend:${IMAGE_POSTFIX}
     build:
       context: ../backend/
       dockerfile: Dockerfile
@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile.nginx
     command: echo true
   nginx:
-    image: geometalab/osmybiz-nginx
+    image: geometalab/osmybiz-nginx:${IMAGE_POSTFIX}
     build:
       context: ../nginx/
       dockerfile: Dockerfile

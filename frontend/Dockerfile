@@ -10,4 +10,4 @@ RUN npm install
 COPY ./osmybiz ${HOME}
 
 WORKDIR ${HOME}
-CMD ["npm", "run", "dev"]
+CMD npm install && npm run dev
