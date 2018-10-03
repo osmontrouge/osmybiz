@@ -22,6 +22,7 @@
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
+        :key="business.id"
         :business="business"
       ></v-business-marker-popup>
       <v-new-business-popup
