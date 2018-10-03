@@ -27,6 +27,7 @@
       ></v-business-marker-popup>
       <v-new-business-popup
         v-for="newBusinessPosition in newBusinessPositions"
+        :key="`${newBusinessPosition.lat}_${newBusinessPosition.lng}`"
         :businessPosition="newBusinessPosition"
       ></v-new-business-popup>
     </l-map>
