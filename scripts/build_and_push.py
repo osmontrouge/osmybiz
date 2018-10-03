@@ -23,7 +23,6 @@ URLS = {
 
 COMPOSE_DIR = os.path.abspath(dirname(__file__))
 COMPOSE_FILE = 'docker-compose_build.yml'
-BUILD_VERSION = environ.get('BUILD_VERSION', 'latest')
 
 
 def build():
@@ -35,7 +34,7 @@ def build():
     environ['OSM_URL'] = config['OSM_URL']
     environ['OSM_OAUTH_KEY'] = config['osm_key']
     environ['OSM_OAUTH_SECRET'] = config['osm_secret']
-    environ['IMAGE_POSTFIX'] = '{}'.format(url_without_prefix, variant)
+    environ['IMAGE_POSTFIX'] = '{}_{}'.format(url_without_prefix, variant)
     environ['COMPOSE_PROJECT_NAME'] = url_without_prefix
     commands = [
         [
