@@ -29,20 +29,28 @@ services:
       # OSM_URL: 'https://www.openstreetmap.org'
       # OSM_API_URL: 'https://api.openstreetmap.org'
       API_URL: '/api/'
+    env_file:
+      - .env-openstreetmap-dev
     volumes:
-      - ./frontend/osmybiz/src:/opt/frontend/src
-      - ./frontend/osmybiz/static:/opt/frontend/static
-      - ./frontend/osmybiz/index.html:/opt/frontend/index.html
-      - ./frontend/osmybiz/package.json:/opt/frontend/package.json
-      - ./frontend/osmybiz/package-lock.json:/opt/frontend/package-lock.json
+      - ./frontend/osmybiz:/opt/frontend
+      - node_modules:/opt/frontend/node_modules
+      - config:/opt/frontend/.config
+      - gyp:/opt/frontend/.node-gyp
+      - npm:/opt/frontend/.npm
   nginx:
     build:
       context: nginx/
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     ports:
-      - "8089:80"
+      - "8089:443"
     environment:
       - VIRTUAL_HOST=localhost,127.0.0.1
     links:
       - "api:backend"
       - "frontend:frontend"
+
+volumes:
+  node_modules: {}
+  config: {}
+  gyp: {}
+  npm: {}
