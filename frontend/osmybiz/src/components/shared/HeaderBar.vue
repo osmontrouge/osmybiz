@@ -93,7 +93,6 @@
       ]),
       ...mapMutations([
         'logout',
-        'setLanguage',
         'setTags',
         'toggleUpdates',
         'setInfoMap',
