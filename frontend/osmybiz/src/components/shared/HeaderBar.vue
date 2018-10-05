@@ -60,14 +60,6 @@
 
   export default {
     mounted() {
-      if (this.$translate.$cookies.get('lang')) {
-        this.$translate.setLang(this.$translate.$cookies.get('lang'));
-        document.getElementById('translation-select').value = this.$translate.$cookies.get('lang');
-      } else {
-        // default language
-        this.$translate.setLang('de');
-        document.getElementById('translation-select').value = 'de';
-      }
       this.loadUser();
       this.$store.subscribe((mut) => {
         if (mut.type === 'setUser') {
@@ -111,7 +103,7 @@
       },
       onSelect(e) {
         this.$translate.setLang(e.target.value);
-        this.$translate.$cookies.set('lang', e.target.value, 30);
+        this.$translate.$cookies.set('lang', e.target.value, '30d');
       },
     },
     components: {
