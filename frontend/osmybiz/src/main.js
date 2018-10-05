@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import Vue from 'vue';
+import VueCookies from 'vue-cookies';
 import VueTranslate from 'vue-translate-plugin';
 import { sync } from 'vuex-router-sync';
 import store from './store';
@@ -17,6 +18,7 @@ import sv from './locales/sv.json';
 import zhTW from './locales/zh_TW.json';
 
 Vue.use(VueTranslate);
+Vue.use(VueCookies);
 Vue.locales({
   de,
   en,
