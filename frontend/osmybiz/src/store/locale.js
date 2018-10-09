@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-import tagsDe from '../assets/tags/de.json';
+import tagsEn from '../assets/tags/en.json';
 
 const state = {
-  language: 'de',
-  languageTags: tagsDe,
+  language: 'en',
+  languageTags: tagsEn,
   $translate: {},
 };
 

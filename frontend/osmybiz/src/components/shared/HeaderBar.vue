@@ -14,21 +14,7 @@
             <icon class="link-icon" name="external-link-alt"></icon>
           </a>
         </div>
-
-        <select id="translation-select"
-                v-on:change="onSelect">
-          <option value="de">Deutsch</option>
-          <option value="en">English</option>
-          <option value="fr">Français</option>
-          <option value="he">עברית</option>
-          <option value="hu">Magyar</option>
-          <option value="it">Italiano</option>
-          <option value="pl">Polski</option>
-          <option value="ru">русский</option>
-          <option value="sv">Svenska</option>
-          <option value="zhTW">汉语</option>
-        </select>
-
+        <language-drop-down></language-drop-down>
         <div v-if="isLoggedIn" class="user" >
           <span>{{user.name}}</span>
         </div>
@@ -55,6 +41,7 @@
   import 'vue-awesome/icons';
   import Icon from 'vue-awesome/components/Icon.vue';
   import { osmUrl } from '../../config/config';
+  import LanguageDropDown from './LanguageDropDown.vue';
 
   const messageUrl = `${osmUrl}/user/`;
 
@@ -101,13 +88,10 @@
           window.open(`${messageUrl + this.user.name}/inbox`, '_blank');
         }
       },
-      onSelect(e) {
-        this.$translate.setLang(e.target.value);
-        this.$translate.$cookies.set('lang', e.target.value, '30d');
-      },
     },
     components: {
       Icon,
+      LanguageDropDown,
     },
   };
 </script>

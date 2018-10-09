@@ -31,7 +31,6 @@ Vue.locales({
   sv,
   zhTW,
 });
-
 sync(store, router);
 
 Vue.config.productionTip = false;
@@ -44,7 +43,8 @@ new Vue({
   template: '<App/>',
   components: { App },
   created() {
-    this.$translate.setLang('de');
+    // default language
+    this.$translate.setLang('en');
   },
 });
 
