@@ -1,825 +1,825 @@
 {
   "amenity/nursing_home": {
-    "name": "Nursing Home",
+    "name": "養老院",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "social_facility",
-        "label": "Type",
+        "label": "種類",
         "type": "combo"
       },
       {
         "key": "social_facility_for",
-        "label": "People Served",
+        "label": "服務對象",
         "type": "combo"
       }
     ]
   },
   "amenity/register_office": {
-    "name": "Register Office",
+    "name": "戶政事務所",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/scrapyard": {
-    "name": "Scrap Yard",
+    "name": "汽車廢料場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/animal_boarding": {
-    "name": "Animal Boarding Facility",
+    "name": "寵物度假村",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "animal_boarding",
-        "label": "For Animals",
+        "label": "動物",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_breeding": {
-    "name": "Animal Breeding Facility",
+    "name": "動物繁殖場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "animal_breeding",
-        "label": "For Animals",
+        "label": "動物",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_shelter": {
-    "name": "Animal Shelter",
+    "name": "動物收容中心",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "animal_shelter",
-        "label": "For Animals",
+        "label": "動物",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/arts_centre": {
-    "name": "Arts Center",
+    "name": "藝文中心",
     "fields": []
   },
   "amenity/bank": {
-    "name": "Bank",
+    "name": "銀行",
     "fields": [
       {
         "key": "atm",
-        "label": "ATM",
+        "label": "自動櫃員機",
         "type": "check"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "得來速",
         "type": "check"
       }
     ]
   },
   "amenity/bar": {
-    "name": "Bar",
+    "name": "酒吧",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/bicycle_rental": {
-    "name": "Bicycle Rental",
+    "name": "單車出租",
     "fields": [
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       },
       {
         "key": "network",
-        "label": "Network",
+        "label": "網路",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/biergarten": {
-    "name": "Beer Garden",
+    "name": "啤酒花園 ",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/boat_rental": {
-    "name": "Boat Rental",
+    "name": "小艇出租",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/bureau_de_change": {
-    "name": "Currency Exchange",
+    "name": "外幣兌換",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "貨幣種類",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/bus_station": {
-    "name": "Bus Station",
+    "name": "客運站",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "amenity/cafe": {
-    "name": "Cafe",
+    "name": "咖啡廳",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "菜系",
         "type": "semiCombo"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/car_rental": {
-    "name": "Car Rental",
+    "name": "汽車租車店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/car_sharing": {
-    "name": "Car Sharing",
+    "name": "汽車共享站",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       }
     ]
   },
   "amenity/car_wash": {
-    "name": "Car Wash",
+    "name": "洗車店",
     "fields": []
   },
   "amenity/casino": {
-    "name": "Casino",
+    "name": "賭場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       }
     ]
   },
   "amenity/childcare": {
-    "name": "Nursery/Childcare",
+    "name": "托兒所/托嬰處",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/cinema": {
-    "name": "Cinema",
+    "name": "電影院",
     "fields": []
   },
   "amenity/clinic": {
-    "name": "Clinic",
+    "name": "診所",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "專科",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/college": {
-    "name": "College Grounds",
+    "name": "學院範圍",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "amenity/community_centre": {
-    "name": "Community Center",
+    "name": "社區中心",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/courthouse": {
-    "name": "Courthouse",
+    "name": "法院",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/crematorium": {
-    "name": "Crematorium",
+    "name": "火葬場",
     "fields": []
   },
   "amenity/dentist": {
-    "name": "Dentist",
+    "name": "牙醫",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "專科",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/doctors": {
-    "name": "Doctor",
+    "name": "醫生",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "專科",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/dojo": {
-    "name": "Dojo / Martial Arts Academy",
+    "name": "道場/武術研習班",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "運動",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/driving_school": {
-    "name": "Driving School",
+    "name": "駕訓班",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/embassy": {
-    "name": "Embassy",
+    "name": "使館",
     "fields": [
       {
         "key": "country",
-        "label": "Country",
+        "label": "國家",
         "type": "combo"
       }
     ]
   },
   "amenity/fast_food": {
-    "name": "Fast Food",
+    "name": "速食餐廳",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "菜系",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "外帶",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "可以",
+          "no": "不行",
+          "only": "只能外帶"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "外送",
         "type": "check"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "得來速",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/ferry_terminal": {
-    "name": "Ferry Terminal",
+    "name": "水運碼頭",
     "fields": [
       {
         "key": "network",
-        "label": "Network",
+        "label": "網路",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/fire_station": {
-    "name": "Fire Station",
+    "name": "消防局",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/food_court": {
-    "name": "Food Court",
+    "name": "美食街",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/fuel": {
-    "name": "Gas Station",
+    "name": "加油站",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "fuel_multi",
-        "label": "Fuel Types",
+        "label": "燃料種類",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/hospital": {
-    "name": "Hospital Grounds",
+    "name": "醫院用地",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "專科",
         "type": "semiCombo"
       },
       {
         "key": "emergency",
-        "label": "Emergency",
+        "label": "緊急",
         "type": "check"
       }
     ]
   },
   "amenity/ice_cream": {
-    "name": "Ice Cream Shop",
+    "name": "冰淇淋店",
     "fields": [
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "外帶",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "可以",
+          "no": "不行",
+          "only": "只能外帶"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "外送",
         "type": "check"
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/internet_cafe": {
-    "name": "Internet Cafe",
+    "name": "網咖",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/kindergarten": {
-    "name": "Preschool/Kindergarten Grounds",
+    "name": "育幼院/幼兒園範圍",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/library": {
-    "name": "Library",
+    "name": "圖書館",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "amenity/marketplace": {
-    "name": "Marketplace",
+    "name": "市場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/nightclub": {
-    "name": "Nightclub",
+    "name": "夜總會",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       }
     ]
   },
   "amenity/pharmacy": {
-    "name": "Pharmacy",
+    "name": "藥房",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "得來速",
         "type": "check"
       }
     ]
   },
   "amenity/planetarium": {
-    "name": "Planetarium",
+    "name": "天文臺",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/police": {
-    "name": "Police",
+    "name": "警察局",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/post_office": {
-    "name": "Post Office",
+    "name": "郵局",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/prison": {
-    "name": "Prison Grounds",
+    "name": "監獄範圍",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
@@ -829,2401 +829,2401 @@
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/ranger_station": {
-    "name": "Ranger Station",
+    "name": "國家公園管理站",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/recycling_centre": {
-    "name": "Recycling Center",
+    "name": "資源回收中心",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "recycling_accepts",
-        "label": "Accepts",
+        "label": "接受",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/restaurant": {
-    "name": "Restaurant",
+    "name": "餐廳",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "菜系",
         "type": "semiCombo"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "外帶",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "可以",
+          "no": "不行",
+          "only": "只能外帶"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "外送",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "戶外座位",
         "type": "check"
       }
     ]
   },
   "amenity/school": {
-    "name": "School Grounds",
+    "name": "中小學範圍",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/studio": {
-    "name": "Studio",
+    "name": "工作室",
     "fields": [
       {
         "key": "studio",
-        "label": "Type",
+        "label": "種類",
         "type": "combo"
       }
     ]
   },
   "amenity/taxi": {
-    "name": "Taxi Stand",
+    "name": "計程車招呼站",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       }
     ]
   },
   "amenity/theatre": {
-    "name": "Theater",
+    "name": "戲劇院",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/townhall": {
-    "name": "Town Hall",
+    "name": "市政廳",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "amenity/university": {
-    "name": "University Grounds",
+    "name": "大學範圍",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "amenity/veterinary": {
-    "name": "Veterinary",
+    "name": "獸醫院",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "leisure/adult_gaming_centre": {
-    "name": "Adult Gaming Center",
+    "name": "成人遊戲中心",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       }
     ]
   },
   "leisure/bowling_alley": {
-    "name": "Bowling Alley",
+    "name": "保齡球館",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       }
     ]
   },
   "leisure/dance": {
-    "name": "Dance Hall",
+    "name": "舞廳",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "leisure/fitness_centre": {
-    "name": "Gym / Fitness Center",
+    "name": "健身房／健身中心",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "運動",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/golf_course": {
-    "name": "Golf Course",
+    "name": "高爾夫球場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "leisure/hackerspace": {
-    "name": "Hackerspace",
+    "name": "駭客空間",
     "fields": []
   },
   "leisure/horse_riding": {
-    "name": "Horseback Riding Facility",
+    "name": "騎馬場",
     "fields": [
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "允許通行",
         "type": "combo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "建築物",
         "type": "combo"
       }
     ]
   },
   "leisure/ice_rink": {
-    "name": "Ice Rink",
+    "name": "溜冰場",
     "fields": [
       {
         "key": "seasonal",
-        "label": "Seasonal",
+        "label": "季節性",
         "type": "check"
       },
       {
         "key": "sport_ice",
-        "label": "Sports",
+        "label": "運動",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "建築物",
         "type": "combo"
       }
     ]
   },
   "leisure/marina": {
-    "name": "Marina",
+    "name": "遊艇碼頭",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "費用",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "廁所處理方式",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "電源供應器",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "leisure/miniature_golf": {
-    "name": "Miniature Golf",
+    "name": "迷你高爾夫",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "leisure/resort": {
-    "name": "Resort",
+    "name": "度假勝地",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "leisure/sauna": {
-    "name": "Sauna",
+    "name": "桑拿",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "允許通行",
         "type": "combo"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "費用",
         "type": "check"
       }
     ]
   },
   "leisure/sports_centre": {
-    "name": "Sports Center / Complex",
+    "name": "體育中心／設施",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "運動",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/stadium": {
-    "name": "Stadium",
+    "name": "體育場",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "運動",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/water_park": {
-    "name": "Water Park",
+    "name": "水上樂園",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "office/physician": {
-    "name": "Physician",
+    "name": "醫務所",
     "fields": []
   },
   "office/travel_agent": {
-    "name": "Travel Agency",
+    "name": "旅行社",
     "fields": []
   },
   "office/accountant": {
-    "name": "Accountant Office",
+    "name": "會計師事務所",
     "fields": []
   },
   "office/administrative": {
-    "name": "Administrative Office",
+    "name": "行政辦公室",
     "fields": []
   },
   "office/adoption_agency": {
-    "name": "Adoption Agency",
+    "name": "領養代理",
     "fields": []
   },
   "office/advertising_agency": {
-    "name": "Advertising Agency",
+    "name": "廣告代理公司",
     "fields": []
   },
   "office/architect": {
-    "name": "Architect Office",
+    "name": "建築師事務所",
     "fields": []
   },
   "office/association": {
-    "name": "Nonprofit Organization Office",
+    "name": "非營利組織辦公室",
     "fields": []
   },
   "office/charity": {
-    "name": "Charity Office",
+    "name": "慈善事業辦公室",
     "fields": []
   },
   "office/educational_institution": {
-    "name": "Educational Institution",
+    "name": "教育機構",
     "fields": []
   },
   "office/employment_agency": {
-    "name": "Employment Agency",
+    "name": "就業服務站",
     "fields": []
   },
   "office/energy_supplier": {
-    "name": "Energy Supplier Office",
+    "name": "電力供應辦公室",
     "fields": []
   },
   "office/estate_agent": {
-    "name": "Real Estate Office",
+    "name": "房地產仲介",
     "fields": []
   },
   "office/financial": {
-    "name": "Financial Office",
+    "name": "金融機構辦公室",
     "fields": []
   },
   "office/forestry": {
-    "name": "Forestry Office",
+    "name": "林務辦公室",
     "fields": []
   },
   "office/foundation": {
-    "name": "Foundation Office",
+    "name": "基金會辦公室",
     "fields": []
   },
   "office/government": {
-    "name": "Government Office",
+    "name": "政府辦公室",
     "fields": []
   },
   "office/guide": {
-    "name": "Tour Guide Office",
+    "name": "導遊辦公室",
     "fields": []
   },
   "office/insurance": {
-    "name": "Insurance Office",
+    "name": "保險公司辦公室",
     "fields": []
   },
   "office/it": {
-    "name": "Information Technology Office",
+    "name": "資訊公司辦公室",
     "fields": []
   },
   "office/lawyer": {
-    "name": "Law Office",
+    "name": "律師事務所",
     "fields": []
   },
   "office/moving_company": {
-    "name": "Moving Company Office",
+    "name": "搬家公司辦公室",
     "fields": []
   },
   "office/newspaper": {
-    "name": "Newspaper Office",
+    "name": "報社辦公室",
     "fields": []
   },
   "office/ngo": {
-    "name": "NGO Office",
+    "name": "非政府機構辦公室",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       }
     ]
   },
   "office/notary": {
-    "name": "Notary Office",
+    "name": "公證處",
     "fields": []
   },
   "office/political_party": {
-    "name": "Political Party",
+    "name": "政黨辦公室",
     "fields": []
   },
   "office/private_investigator": {
-    "name": "Private Investigator Office",
+    "name": "私家偵探辦公室",
     "fields": []
   },
   "office/quango": {
-    "name": "Quasi-NGO Office",
+    "name": "準非政府組織辦公室",
     "fields": []
   },
   "office/research": {
-    "name": "Research Office",
+    "name": "研究機構",
     "fields": []
   },
   "office/surveyor": {
-    "name": "Surveyor Office",
+    "name": "測量員辦公室",
     "fields": []
   },
   "office/tax_advisor": {
-    "name": "Tax Advisor Office",
+    "name": "稅務顧問辦公室",
     "fields": []
   },
   "office/telecommunication": {
-    "name": "Telecom Office",
+    "name": "電信公司辦事處",
     "fields": []
   },
   "office/therapist": {
-    "name": "Therapist Office",
+    "name": "治療師辦公室",
     "fields": []
   },
   "office/water_utility": {
-    "name": "Water Utility Office",
+    "name": "自來水設施辦公室",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/fishmonger": {
-    "name": "Fishmonger",
+    "name": "魚販",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/furnace": {
-    "name": "Furnace Store",
+    "name": "火爐店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/alcohol": {
-    "name": "Liquor Store",
+    "name": "酒類專賣店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "得來速",
         "type": "check"
       }
     ]
   },
   "shop/anime": {
-    "name": "Anime Shop",
+    "name": "動漫店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/antiques": {
-    "name": "Antiques Shop",
+    "name": "古董店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/appliance": {
-    "name": "Appliance Store",
+    "name": "家用電器店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/art": {
-    "name": "Art Store",
+    "name": "藝術商店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/baby_goods": {
-    "name": "Baby Goods Store",
+    "name": "嬰兒用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/bag": {
-    "name": "Bag/Luggage Store",
+    "name": "包包/行李店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/bakery": {
-    "name": "Bakery",
+    "name": "麵包店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/bathroom_furnishing": {
-    "name": "Bathroom Furnishing Store",
+    "name": "衛浴用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/beauty": {
-    "name": "Beauty Shop",
+    "name": "美容店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "beauty",
-        "label": "Shop Type",
+        "label": "商店類型",
         "type": "combo"
       }
     ]
   },
   "shop/bed": {
-    "name": "Bedding/Mattress Store",
+    "name": "床具/寐具店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/beverages": {
-    "name": "Beverage Store",
+    "name": "飲品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/bicycle": {
-    "name": "Bicycle Shop",
+    "name": "單車店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "service/bicycle",
-        "label": "Services",
+        "label": "服務",
         "type": "multiCombo"
       }
     ]
   },
   "shop/bookmaker": {
-    "name": "Bookmaker",
+    "name": "書商",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/books": {
-    "name": "Book Store",
+    "name": "書店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "shop/boutique": {
-    "name": "Boutique",
+    "name": "服飾店",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "服飾",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/butcher": {
-    "name": "Butcher",
+    "name": "肉販",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/candles": {
-    "name": "Candle Shop",
+    "name": "燈具店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/car_parts": {
-    "name": "Car Parts Store",
+    "name": "汽車零件店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/car_repair": {
-    "name": "Car Repair Shop",
+    "name": "汽車維修店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "服務",
         "type": "multiCombo"
       }
     ]
   },
   "shop/car": {
-    "name": "Car Dealership",
+    "name": "汽車行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "販售二手商品",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "可以",
+          "no": "不行",
+          "only": "只能"
         }
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "服務",
         "type": "multiCombo"
       }
     ]
   },
   "shop/carpet": {
-    "name": "Carpet Store",
+    "name": "地毯店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/charity": {
-    "name": "Charity Store",
+    "name": "慈善商店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "販售二手商品",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "可以",
+          "no": "不行",
+          "only": "只能"
         }
       }
     ]
   },
   "shop/cheese": {
-    "name": "Cheese Store",
+    "name": "起士店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/chemist": {
-    "name": "Drugstore",
+    "name": "藥妝店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/chocolate": {
-    "name": "Chocolate Store",
+    "name": "巧克力店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/clothes": {
-    "name": "Clothing Store",
+    "name": "服飾店",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "服飾",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/coffee": {
-    "name": "Coffee Store",
+    "name": "咖啡店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/computer": {
-    "name": "Computer Store",
+    "name": "電腦店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/confectionery": {
-    "name": "Candy Store",
+    "name": "糖果店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/convenience": {
-    "name": "Convenience Store",
+    "name": "便利商店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/copyshop": {
-    "name": "Copy Store",
+    "name": "影印店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/cosmetics": {
-    "name": "Cosmetics Store",
+    "name": "化妝品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/craft": {
-    "name": "Arts and Crafts Store",
+    "name": "工藝品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/curtain": {
-    "name": "Curtain Store",
+    "name": "窗廉店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/dairy": {
-    "name": "Dairy Store",
+    "name": "奶製品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/deli": {
-    "name": "Deli",
+    "name": "美食店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/department_store": {
-    "name": "Department Store",
+    "name": "百貨公司",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/doityourself": {
-    "name": "DIY Store",
+    "name": "DIY商店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/dry_cleaning": {
-    "name": "Dry Cleaner",
+    "name": "乾洗店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/e-cigarette": {
-    "name": "E-Cigarette Shop",
+    "name": "電子菸商店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/electronics": {
-    "name": "Electronics Store",
+    "name": "電器店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/erotic": {
-    "name": "Erotic Store",
+    "name": "情趣用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/fabric": {
-    "name": "Fabric Store",
+    "name": "帆布店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/farm": {
-    "name": "Produce Stand",
+    "name": "產地直銷店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/fashion": {
-    "name": "Fashion Store",
+    "name": "時尚店",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "服飾",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/florist": {
-    "name": "Florist",
+    "name": "花店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/frame": {
-    "name": "Framing Shop",
+    "name": "表框店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/funeral_directors": {
-    "name": "Funeral Home",
+    "name": "生命禮儀公司",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "religion",
-        "label": "Religion",
+        "label": "宗教",
         "type": "combo"
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "教派",
         "type": "combo"
       }
     ]
   },
   "shop/furniture": {
-    "name": "Furniture Store",
+    "name": "傢具店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/garden_centre": {
-    "name": "Garden Center",
+    "name": "園藝中心",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/gas": {
-    "name": "Bottled Gas Shop",
+    "name": "瓦斯店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/gift": {
-    "name": "Gift Shop",
+    "name": "禮品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/greengrocer": {
-    "name": "Greengrocer",
+    "name": "蔬果店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/hairdresser": {
-    "name": "Hairdresser",
+    "name": "理髮店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/hardware": {
-    "name": "Hardware Store",
+    "name": "五金店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/hearing_aids": {
-    "name": "Hearing Aids Store",
+    "name": "助聽器店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/herbalist": {
-    "name": "Herbalist",
+    "name": "草藥店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/hifi": {
-    "name": "Hifi Store",
+    "name": "音響店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/houseware": {
-    "name": "Houseware Store",
+    "name": "家庭用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/interior_decoration": {
-    "name": "Interior Decoration Store",
+    "name": "室內設計店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/jewelry": {
-    "name": "Jeweler",
+    "name": "珠寶店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/kiosk": {
-    "name": "Kiosk",
+    "name": "販賣亭",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/kitchen": {
-    "name": "Kitchen Design Store",
+    "name": "廚房設計行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/laundry": {
-    "name": "Laundry",
+    "name": "洗衣店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/leather": {
-    "name": "Leather Store",
+    "name": "皮革店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/locksmith": {
-    "name": "Locksmith",
+    "name": "鎖匠",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/lottery": {
-    "name": "Lottery Shop",
+    "name": "彩券行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/mall": {
-    "name": "Mall",
+    "name": "購物中心",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/massage": {
-    "name": "Massage Shop",
+    "name": "按摩店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/medical_supply": {
-    "name": "Medical Supply Store",
+    "name": "醫療器材行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/mobile_phone": {
-    "name": "Mobile Phone Store",
+    "name": "行動電話店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/money_lender": {
-    "name": "Money Lender",
+    "name": "地下錢莊",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "貨幣種類",
         "type": "multiCombo"
       }
     ]
   },
   "shop/motorcycle": {
-    "name": "Motorcycle Dealership",
+    "name": "機車行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/music": {
-    "name": "Music Store",
+    "name": "音樂店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/musical_instrument": {
-    "name": "Musical Instrument Store",
+    "name": "音樂樂器行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/newsagent": {
-    "name": "Newspaper/Magazine Shop",
+    "name": "報紙/雜誌攤",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/nutrition_supplements": {
-    "name": "Nutrition Supplements Store",
+    "name": "營養補充品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/optician": {
-    "name": "Optician",
+    "name": "眼鏡行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/organic": {
-    "name": "Organic Goods Store",
+    "name": "有機產品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/outdoor": {
-    "name": "Outdoors Store",
+    "name": "戶外用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/paint": {
-    "name": "Paint Store",
+    "name": "油漆行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/pastry": {
-    "name": "Pastry Shop",
+    "name": "糕餅店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/pawnbroker": {
-    "name": "Pawn Shop",
+    "name": "汽機車借款",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/perfumery": {
-    "name": "Perfume Store",
+    "name": "香水店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/pet": {
-    "name": "Pet Store",
+    "name": "寵物店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/photo": {
-    "name": "Photography Store",
+    "name": "攝影用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/pyrotechnics": {
-    "name": "Fireworks Store",
+    "name": "煙火商",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/radiotechnics": {
-    "name": "Radio/Electronic Component Store",
+    "name": "無線電/電子零件店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/religion": {
-    "name": "Religious Store",
+    "name": "宗教用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "religion",
-        "label": "Religion",
+        "label": "宗教",
         "type": "combo"
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "教派",
         "type": "combo"
       }
     ]
   },
   "shop/scuba_diving": {
-    "name": "Scuba Diving Shop",
+    "name": "潛水用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/seafood": {
-    "name": "Seafood Shop",
+    "name": "海產店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/second_hand": {
-    "name": "Consignment/Thrift Store",
+    "name": "格仔鋪/二手店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "販售二手商品",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "可以",
+          "no": "不行",
+          "only": "只能"
         }
       }
     ]
   },
   "shop/shoes": {
-    "name": "Shoe Store",
+    "name": "鞋店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/sports": {
-    "name": "Sporting Goods Store",
+    "name": "運動用品店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/stationery": {
-    "name": "Stationery Store",
+    "name": "文具店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/storage_rental": {
-    "name": "Storage Rental",
+    "name": "儲物空間出租",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "建築物",
         "type": "combo"
       }
     ]
   },
   "shop/supermarket": {
-    "name": "Supermarket",
+    "name": "超級市場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/tailor": {
-    "name": "Tailor",
+    "name": "裁縫",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/tattoo": {
-    "name": "Tattoo Parlor",
+    "name": "刺青店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/tea": {
-    "name": "Tea Store",
+    "name": "茶行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/ticket": {
-    "name": "Ticket Seller",
+    "name": "賣票亭",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/tiles": {
-    "name": "Tile Shop",
+    "name": "磁磚商店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/tobacco": {
-    "name": "Tobacco Shop",
+    "name": "菸店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/toys": {
-    "name": "Toy Store",
+    "name": "玩具店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/trade": {
-    "name": "Trade Shop",
+    "name": "材料行",
     "fields": [
       {
         "key": "trade",
-        "label": "Type",
+        "label": "類型",
         "type": "typeCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/travel_agency": {
-    "name": "Travel Agency",
+    "name": "旅行社",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/tyres": {
-    "name": "Tire Store",
+    "name": "輪胎店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/vacuum_cleaner": {
-    "name": "Vacuum Cleaner Store",
+    "name": "吸塵器店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/variety_store": {
-    "name": "Variety Store",
+    "name": "雜貨店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/video_games": {
-    "name": "Video Game Store",
+    "name": "電子遊戲店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/video": {
-    "name": "Video Store",
+    "name": "錄影帶店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/watches": {
-    "name": "Watches Shop",
+    "name": "鐘錶行",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/water_sports": {
-    "name": "Watersport/Swim Shop",
+    "name": "水上活動/泳具店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/weapons": {
-    "name": "Weapon Shop",
+    "name": "武器店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/window_blind": {
-    "name": "Window Blind Store",
+    "name": "窗廉店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "shop/wine": {
-    "name": "Wine Shop",
+    "name": "販酒店",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/alpine_hut": {
-    "name": "Alpine Hut",
+    "name": "高山小屋",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/apartment": {
-    "name": "Guest Apartment / Condo",
+    "name": "假日公寓",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "房間數",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/aquarium": {
-    "name": "Aquarium",
+    "name": "水族館（展覽館）",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/attraction": {
-    "name": "Tourist Attraction",
+    "name": "觀光景點",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/camp_site": {
-    "name": "Campground",
+    "name": "露營地",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "費用",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/caravan_site": {
-    "name": "RV Park",
+    "name": "露營車停車場",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "容量",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "費用",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "廁所處理方式",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "電源供應器",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/chalet": {
-    "name": "Holiday Cottage",
+    "name": "假日小屋",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/gallery": {
-    "name": "Art Gallery",
+    "name": "藝廊",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/guest_house": {
-    "name": "Guest House",
+    "name": "招待所",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "房間數",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/hostel": {
-    "name": "Hostel",
+    "name": "旅舍",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "房間數",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/hotel": {
-    "name": "Hotel",
+    "name": "旅館",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "stars",
-        "label": "Stars",
+        "label": "星等",
         "type": "number"
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "房間數",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/motel": {
-    "name": "Motel",
+    "name": "汽車旅館",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "吸煙",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "禁止吸煙",
+          "separated": "無隔離空間的吸煙區",
+          "isolated": "有隔離空間的吸煙區",
+          "outside": "室外允許吸煙",
+          "yes": "允許吸煙",
+          "dedicated": "吸煙者專屬 (例如吸煙者酒吧)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "房間數",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "網際網絡存取",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "有",
+          "no": "無",
+          "wlan": "無線網絡",
+          "wired": "有線網絡",
+          "terminal": "終端"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "網路存取費用",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (網路名稱)",
         "type": "text"
       }
     ]
   },
   "tourism/museum": {
-    "name": "Museum",
+    "name": "博物館",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/theme_park": {
-    "name": "Theme Park",
+    "name": "主題公園",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/wilderness_hut": {
-    "name": "Wilderness Hut",
+    "name": "野外小屋",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
   },
   "tourism/zoo": {
-    "name": "Zoo",
+    "name": "動物園",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "營運商",
         "type": "text"
       }
     ]
