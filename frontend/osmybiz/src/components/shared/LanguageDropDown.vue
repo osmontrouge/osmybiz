@@ -1,7 +1,7 @@
 <template>
 
   <select id="translation-select" @click="onSelect" v-model="selected" >
-    <option v-for="language in supportedLanguageList" v-bind:value="language.value">
+    <option v-for="language in supportedLanguagesOptions" v-bind:value="language.value">
       {{ language.label }}
     </option>
   </select>
@@ -10,7 +10,7 @@
 <script>
   import VueCookies from 'vue-cookies';
 
-  const supportedLanguageList = [
+  const SUPPORTEDLANGUAGESOPTIONS = [
     { label: 'Deutsch', value: 'de' },
     { label: 'English', value: 'en' },
     { label: 'Français', value: 'fr' },
@@ -20,42 +20,56 @@
     { label: 'Polski', value: 'pl' },
     { label: 'русский', value: 'ru' },
     { label: 'Svenska', value: 'sv' },
-    { label: '汉语', value: 'zhTW' },
+    { label: '汉语', value: 'zh_TW' },
   ];
 
-  function isSupportedLanguage(languageValue) {
-    for (let i = 0; i < supportedLanguageList.length; i += 1) {
-      if (languageValue === supportedLanguageList[i].value) {
-        return true;
+  function getBrowserLanguages() {
+    const browserLanguages = window.navigator.languages || [window.navigator.language
+    || window.navigator.userLanguage];
+    const browserLanguagesList = [];
+    for (let i = 0; i < browserLanguages.length; i += 1) {
+      browserLanguagesList.push(browserLanguages[i].replace('-', '_'));
+      if (browserLanguages[i].length > 2) {
+        browserLanguagesList.push(browserLanguages[i].slice(0, 2));
       }
     }
-    return false;
+    return browserLanguagesList;
+  }
+
+  function getSupportedLanguages() {
+    const supportedLanguagesList = [];
+    for (let i = 0; i < SUPPORTEDLANGUAGESOPTIONS.length; i += 1) {
+      supportedLanguagesList.push(SUPPORTEDLANGUAGESOPTIONS[i].value);
+    }
+    return supportedLanguagesList;
+  }
+
+  function setBrowserLanguageIfSupported(object) {
+    const browserLanguagesList = getBrowserLanguages();
+    const supportedLanguagesList = getSupportedLanguages();
+    for (let i = 0; i < browserLanguagesList.length; i += 1) {
+      const browserLanguage = browserLanguagesList[i];
+      if (supportedLanguagesList.indexOf(browserLanguage) >= 0) {
+        object.$translate.setLang(browserLanguage);
+        return;
+      }
+    }
   }
 
   export default {
-    created() {
+    mounted() {
       if (this.$cookies.get('language')) {
         this.$translate.setLang(this.$cookies.get('language'));
       } else {
-        let browserLanguages = [];
-        if (window.navigator.languages) {
-          browserLanguages = window.navigator.languages;
-        } else {
-          browserLanguages.push(window.navigator.userLanguage);
-        }
-        for (let i = 0; i < browserLanguages.length; i += 1) {
-          if (isSupportedLanguage(browserLanguages[i].slice(0, 2))) {
-            this.$translate.setLang(browserLanguages[i].slice(0, 2));
-            break;
-          }
-        }
+        setBrowserLanguageIfSupported(this);
       }
       this.selected = this.$translate.lang;
     },
     name: 'language-drop-down',
     data() {
       return {
-        supportedLanguageList,
+        selected: '',
+        supportedLanguagesOptions: SUPPORTEDLANGUAGESOPTIONS,
       };
     },
     methods: {

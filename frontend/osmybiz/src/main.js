@@ -15,7 +15,8 @@ import it from './locales/it.json';
 import pl from './locales/pl.json';
 import ru from './locales/ru.json';
 import sv from './locales/sv.json';
-import zhTW from './locales/zh_TW.json';
+/* eslint-disable-next-line camelcase */
+import zh_TW from './locales/zh_TW.json';
 
 Vue.use(VueTranslate);
 Vue.use(VueCookies);
@@ -29,8 +30,9 @@ Vue.locales({
   pl,
   ru,
   sv,
-  zhTW,
+  zh_TW,
 });
+
 sync(store, router);
 
 Vue.config.productionTip = false;
