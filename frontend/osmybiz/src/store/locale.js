@@ -11,6 +11,20 @@ import tagsSv from '../assets/tags/sv.json';
 /* eslint-disable-next-line camelcase */
 import tagsZh_TW from '../assets/tags/zh-TW.json';
 
+const SUPPORTEDLANGUAGESOPTIONS = {
+  de: tagsDe,
+  en: tagsEn,
+  fr: tagsFr,
+  he: tagsHe,
+  hu: tagsHu,
+  it: tagsIt,
+  pl: tagsPl,
+  ru: tagsRu,
+  sv: tagsSv,
+  /* eslint-disable-next-line camelcase */
+  zh_TW: tagsZh_TW,
+};
+
 const state = {
   languageTags: tagsEn,
   $translate: {},
@@ -24,31 +38,7 @@ const getters = {
 
 const mutations = {
   setTags(s, lng) {
-    switch (lng) {
-      case 'de': s.languageTags = tagsDe;
-        break;
-      case 'en': s.languageTags = tagsEn;
-        break;
-      case 'fr': s.languageTags = tagsFr;
-        break;
-      case 'he': s.languageTags = tagsHe;
-        break;
-      case 'hu': s.languageTags = tagsHu;
-        break;
-      case 'it': s.languageTags = tagsIt;
-        break;
-      case 'pl': s.languageTags = tagsPl;
-        break;
-      case 'ru': s.languageTags = tagsRu;
-        break;
-      case 'sv': s.languageTags = tagsSv;
-        break;
-      /* eslint-disable-next-line camelcase */
-      case 'zh_TW': s.languageTags = tagsZh_TW;
-        break;
-      default:
-        s.languageTags = tagsEn;
-    }
+    s.languageTags = SUPPORTEDLANGUAGESOPTIONS[lng] || tagsEn;
   },
 };
 
