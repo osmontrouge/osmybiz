@@ -50,6 +50,7 @@
     for (let i = 0; i < browserLanguagesList.length; i += 1) {
       const browserLanguage = browserLanguagesList[i];
       if (supportedLanguagesList.indexOf(browserLanguage) >= 0) {
+        object.$store.commit('setTags', browserLanguage);
         object.$translate.setLang(browserLanguage);
         return;
       }
@@ -59,6 +60,7 @@
   export default {
     mounted() {
       if (this.$cookies.get('language')) {
+        this.$store.commit('setTags', this.$cookies.get('language'));
         this.$translate.setLang(this.$cookies.get('language'));
       } else {
         setBrowserLanguageIfSupported(this);
@@ -75,6 +77,7 @@
     methods: {
       onSelect(e) {
         this.$translate.setLang(e.target.value);
+        this.$store.commit('setTags', e.target.value);
         this.$cookies.set('language', e.target.value, '30d');
       },
     },

@@ -1,0 +1,3231 @@
+{
+  "amenity/nursing_home": {
+    "name": "Дом престарелых/Дом инвалидов (устаревший тег)",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "social_facility",
+        "label": "Тип",
+        "type": "combo"
+      },
+      {
+        "key": "social_facility_for",
+        "label": "Обслуживаемые лица",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/register_office": {
+    "name": "ЗАГС / регистраторы смерти и браков",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/scrapyard": {
+    "name": "Склад металлолома/свалка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/animal_boarding": {
+    "name": "Передержка животных",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "animal_boarding",
+        "label": "Для каких животных?",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/animal_breeding": {
+    "name": "Питомник",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "animal_breeding",
+        "label": "Для каких животных?",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/animal_shelter": {
+    "name": "Приют для животных",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "animal_shelter",
+        "label": "Для каких животных?",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/arts_centre": {
+    "name": "Центр Искусств",
+    "fields": []
+  },
+  "amenity/bank": {
+    "name": "Банк",
+    "fields": [
+      {
+        "key": "atm",
+        "label": "Банкомат",
+        "type": "check"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Доступен без выхода из машины",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/bar": {
+    "name": "Бар",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/bicycle_rental": {
+    "name": "Велопрокат",
+    "fields": [
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      },
+      {
+        "key": "network",
+        "label": "Сеть",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/biergarten": {
+    "name": "Пивной сад",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/boat_rental": {
+    "name": "Аренда Лодок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/bureau_de_change": {
+    "name": "Пункт обмена валюты",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Типы валюты",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/bus_station": {
+    "name": "Автобусная станция/терминал",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/cafe": {
+    "name": "Кафе",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Кухня",
+        "type": "semiCombo"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/car_rental": {
+    "name": "Аренда автомобилей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/car_sharing": {
+    "name": "Каршеринг",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      }
+    ]
+  },
+  "amenity/car_wash": {
+    "name": "Автомойка",
+    "fields": []
+  },
+  "amenity/casino": {
+    "name": "Казино",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      }
+    ]
+  },
+  "amenity/childcare": {
+    "name": "Детская комната",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/cinema": {
+    "name": "Кинотеатр",
+    "fields": []
+  },
+  "amenity/clinic": {
+    "name": "Клиника",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Специальности",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/college": {
+    "name": "Территория колледжа",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/community_centre": {
+    "name": "Культурный центр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/courthouse": {
+    "name": "Суд",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/crematorium": {
+    "name": "Крематорий",
+    "fields": []
+  },
+  "amenity/dentist": {
+    "name": "Стоматология",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Специальности",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/doctors": {
+    "name": "Кабинет врача",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Специальности",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/dojo": {
+    "name": "Додзё / Школа боевых искусств",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Вид спорта",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/driving_school": {
+    "name": "Автошкола",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/embassy": {
+    "name": "Посольство",
+    "fields": [
+      {
+        "key": "country",
+        "label": "Страна",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/fast_food": {
+    "name": "Фаст-фуд",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Кухня",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "takeaway",
+        "label": "Еда на вынос",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "only": "Только на вынос"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Доставка",
+        "type": "check"
+      },
+      {
+        "key": "drive_through",
+        "label": "Доступен без выхода из машины",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ferry_terminal": {
+    "name": "Пристань/терминал для парома",
+    "fields": [
+      {
+        "key": "network",
+        "label": "Сеть",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/fire_station": {
+    "name": "Пожарная часть",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/food_court": {
+    "name": "Ресторанный дворик",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/fuel": {
+    "name": "АЗС",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "fuel_multi",
+        "label": "Виды топлива",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/hospital": {
+    "name": "Больница",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Специальности",
+        "type": "semiCombo"
+      },
+      {
+        "key": "emergency",
+        "label": "Экстренные службы",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ice_cream": {
+    "name": "Прилавок с мороженным",
+    "fields": [
+      {
+        "key": "takeaway",
+        "label": "Еда на вынос",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "only": "Только на вынос"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Доставка",
+        "type": "check"
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/internet_cafe": {
+    "name": "Интернет-кафе",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/kindergarten": {
+    "name": "Детский сад/ясли",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/library": {
+    "name": "Библиотека",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/marketplace": {
+    "name": "Рынок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/nightclub": {
+    "name": "Ночной клуб",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      }
+    ]
+  },
+  "amenity/pharmacy": {
+    "name": "Аптека",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Доступен без выхода из машины",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/planetarium": {
+    "name": "Планетарий",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/police": {
+    "name": "Полиция",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/post_office": {
+    "name": "Почтовое отделение",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/prison": {
+    "name": "Тюрьма",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/pub": {
+    "name": "Паб",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ranger_station": {
+    "name": "Лесничество",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/recycling_centre": {
+    "name": "Пункт приёма отходов для переработки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "recycling_accepts",
+        "label": "Принимает",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/restaurant": {
+    "name": "Ресторан",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Кухня",
+        "type": "semiCombo"
+      },
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      },
+      {
+        "key": "takeaway",
+        "label": "Еда на вынос",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "only": "Только на вынос"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Доставка",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Места на открытом воздухе",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/school": {
+    "name": "Школа",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/studio": {
+    "name": "Студия",
+    "fields": [
+      {
+        "key": "studio",
+        "label": "Тип",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/taxi": {
+    "name": "Стоянка такси",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      }
+    ]
+  },
+  "amenity/theatre": {
+    "name": "Театр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/townhall": {
+    "name": "Администрация",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/university": {
+    "name": "Университет / Институт",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/veterinary": {
+    "name": "Ветеринар",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/adult_gaming_centre": {
+    "name": "Игровые автоматы (азартные, на деньги)",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      }
+    ]
+  },
+  "leisure/bowling_alley": {
+    "name": "Боулинг центр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      }
+    ]
+  },
+  "leisure/dance": {
+    "name": "Танцевальный зал",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/fitness_centre": {
+    "name": "Спортзал, фитнес-центр",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Вид спорта",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/golf_course": {
+    "name": "Площадка для гольфа",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/hackerspace": {
+    "name": "Хакерспейс",
+    "fields": []
+  },
+  "leisure/horse_riding": {
+    "name": "Площадка для верховой езды",
+    "fields": [
+      {
+        "key": "access_simple",
+        "label": "Доступ для всех",
+        "type": "combo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Тип здания / конструкция",
+        "type": "combo"
+      }
+    ]
+  },
+  "leisure/ice_rink": {
+    "name": "Каток",
+    "fields": [
+      {
+        "key": "seasonal",
+        "label": "Сезонный объект",
+        "type": "check"
+      },
+      {
+        "key": "sport_ice",
+        "label": "Вид спорта",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Тип здания / конструкция",
+        "type": "combo"
+      }
+    ]
+  },
+  "leisure/marina": {
+    "name": "Стоянка для яхт",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Платная (-ый)",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Ассенизационная сливная станция",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Разъем питания",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/miniature_golf": {
+    "name": "Мини-гольф",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/resort": {
+    "name": "База отдыха / санаторий / пасионат / детский лагерь",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/sauna": {
+    "name": "Сауна",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "access_simple",
+        "label": "Доступ для всех",
+        "type": "combo"
+      },
+      {
+        "key": "fee",
+        "label": "Платная (-ый)",
+        "type": "check"
+      }
+    ]
+  },
+  "leisure/sports_centre": {
+    "name": "Спортивный центр/комплекс",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Вид спорта",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/stadium": {
+    "name": "Стадион (территория)",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Вид спорта",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/water_park": {
+    "name": "Аквапарк",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "office/physician": {
+    "name": "Врач",
+    "fields": []
+  },
+  "office/travel_agent": {
+    "name": "Турагентство (устаревший тег)",
+    "fields": []
+  },
+  "office/accountant": {
+    "name": "Бухгалтер",
+    "fields": []
+  },
+  "office/administrative": {
+    "name": "Местная администрация и надзирающие органы",
+    "fields": []
+  },
+  "office/adoption_agency": {
+    "name": "Агенство по усыновлению",
+    "fields": []
+  },
+  "office/advertising_agency": {
+    "name": "Рекламное агенство",
+    "fields": []
+  },
+  "office/architect": {
+    "name": "Архитектурное бюро",
+    "fields": []
+  },
+  "office/association": {
+    "name": "Ассоциация (союз)",
+    "fields": []
+  },
+  "office/charity": {
+    "name": "Благотворительная организация",
+    "fields": []
+  },
+  "office/educational_institution": {
+    "name": "Администрация общеобразовательного учреждения",
+    "fields": []
+  },
+  "office/employment_agency": {
+    "name": "Кадровое агентство",
+    "fields": []
+  },
+  "office/energy_supplier": {
+    "name": "Поставщик топлива",
+    "fields": []
+  },
+  "office/estate_agent": {
+    "name": "Агентство недвижимости",
+    "fields": []
+  },
+  "office/financial": {
+    "name": "Финансовая организация",
+    "fields": []
+  },
+  "office/forestry": {
+    "name": "Лесоводство",
+    "fields": []
+  },
+  "office/foundation": {
+    "name": "Фонд",
+    "fields": []
+  },
+  "office/government": {
+    "name": "Государственное учреждение",
+    "fields": []
+  },
+  "office/guide": {
+    "name": "Туристические гиды",
+    "fields": []
+  },
+  "office/insurance": {
+    "name": "Страховая компания",
+    "fields": []
+  },
+  "office/it": {
+    "name": "Офис IT-компании",
+    "fields": []
+  },
+  "office/lawyer": {
+    "name": "Юридические услуги",
+    "fields": []
+  },
+  "office/moving_company": {
+    "name": "Помощь при переезде",
+    "fields": []
+  },
+  "office/newspaper": {
+    "name": "Редакция газеты",
+    "fields": []
+  },
+  "office/ngo": {
+    "name": "Общественная организация",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      }
+    ]
+  },
+  "office/notary": {
+    "name": "Нотариус",
+    "fields": []
+  },
+  "office/political_party": {
+    "name": "Политическая партия",
+    "fields": []
+  },
+  "office/private_investigator": {
+    "name": "Частный сыщик",
+    "fields": []
+  },
+  "office/quango": {
+    "name": "Полу-независимая некоммерческая организация",
+    "fields": []
+  },
+  "office/research": {
+    "name": "Научно-исследовательская организация",
+    "fields": []
+  },
+  "office/surveyor": {
+    "name": "Организация оценки и статистики",
+    "fields": []
+  },
+  "office/tax_advisor": {
+    "name": "Офис консультанта по налогам",
+    "fields": []
+  },
+  "office/telecommunication": {
+    "name": "Офис телекоммуникационной компании",
+    "fields": []
+  },
+  "office/therapist": {
+    "name": "Офис терапевта",
+    "fields": []
+  },
+  "office/water_utility": {
+    "name": "Офис водопроводной компании",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fishmonger": {
+    "name": "Рыбный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/furnace": {
+    "name": "Магазин систем отопления (устаревший тег)",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/alcohol": {
+    "name": "Алкогольный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Доступен без выхода из машины",
+        "type": "check"
+      }
+    ]
+  },
+  "shop/anime": {
+    "name": "Магазин аниме",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/antiques": {
+    "name": "Магазин антиквариата",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/appliance": {
+    "name": "Магазин бытовой техники",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/art": {
+    "name": "Магазин произведений искусства",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/baby_goods": {
+    "name": "Магазин детских товаров",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bag": {
+    "name": "Магазин сумок и саквояжа",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bakery": {
+    "name": "Булочная",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bathroom_furnishing": {
+    "name": "Магазин продающий мебель для ванных комнат",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/beauty": {
+    "name": "Салон красоты",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "beauty",
+        "label": "Тип магазина",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/bed": {
+    "name": "Магазин матрасов и постельных принадлежностей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/beverages": {
+    "name": "Магазин по продаже алкогольных и безалкогольных напитков",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bicycle": {
+    "name": "Веломагазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "service/bicycle",
+        "label": "Услуги",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/bookmaker": {
+    "name": "Букмекерская контора",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/books": {
+    "name": "Книжный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/boutique": {
+    "name": "Бутик",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Одежда",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/butcher": {
+    "name": "Мясной",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/candles": {
+    "name": "Свечной магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/car_parts": {
+    "name": "Автозапчасти",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/car_repair": {
+    "name": "Автомастерская",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Услуги",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/car": {
+    "name": "Автодилер",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Продажа подержанного товара",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "only": "Только"
+        }
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Услуги",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/carpet": {
+    "name": "Магазин ковров",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/charity": {
+    "name": "Благотворительный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Продажа подержанного товара",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "only": "Только"
+        }
+      }
+    ]
+  },
+  "shop/cheese": {
+    "name": "Магазин сыров",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/chemist": {
+    "name": "Бытовая химия",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/chocolate": {
+    "name": "Магазин шоколада",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/clothes": {
+    "name": "Магазин одежды",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Одежда",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/coffee": {
+    "name": "Магазин кофе",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/computer": {
+    "name": "Компьютерный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/confectionery": {
+    "name": "Кондитерская",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/convenience": {
+    "name": "Магазин у дома",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/copyshop": {
+    "name": "Магазин копирования, печати",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/cosmetics": {
+    "name": "Магазин косметики",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/craft": {
+    "name": "Магазин художественных принадлежностей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/curtain": {
+    "name": "Магазин штор и драпировок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/dairy": {
+    "name": "Магазин молочных продуктов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/deli": {
+    "name": "Магазин деликатесов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/department_store": {
+    "name": "Универсальный магазин (с отделами)",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/doityourself": {
+    "name": "Строительный гипермаркет",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/dry_cleaning": {
+    "name": "Химчистка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/e-cigarette": {
+    "name": "Магазин электронных сигарет",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/electronics": {
+    "name": "Магазин бытовой электроники",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/erotic": {
+    "name": "Секс-шоп",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fabric": {
+    "name": "Магазин тканей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/farm": {
+    "name": "Магазин свежих продуктов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fashion": {
+    "name": "Магазин модной брендовой одежды",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Одежда",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/florist": {
+    "name": "Цветочный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/frame": {
+    "name": "Магазин рамок для фотографий и картин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/funeral_directors": {
+    "name": "Бюро похоронных услуг",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Религия",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Конфессия",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/furniture": {
+    "name": "Мебельный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/garden_centre": {
+    "name": "Садовые принадлежности",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/gas": {
+    "name": "Магазин газовых баллонов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/gift": {
+    "name": "Магазин сувениров",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/greengrocer": {
+    "name": "Магазин овощей и фруктов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hairdresser": {
+    "name": "Парикмахерская",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hardware": {
+    "name": "Хозяйственный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hearing_aids": {
+    "name": "Магазин по продаже слуховых аппаратов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/herbalist": {
+    "name": "Магазин трав и лекарственных растений",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hifi": {
+    "name": "Магазин по продаже Hi-Fi",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/houseware": {
+    "name": "Магазин посуды, домашней утвари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/interior_decoration": {
+    "name": "Магазин предметов интерьера",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/jewelry": {
+    "name": "Ювелирный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/kiosk": {
+    "name": "Магазин в виде киоска",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/kitchen": {
+    "name": "Магазин кухонь",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/laundry": {
+    "name": "Прачечная",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/leather": {
+    "name": "Магазин кожаных изделий",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/locksmith": {
+    "name": "Изготовление ключей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/lottery": {
+    "name": "Продажа лотерейных билетов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/mall": {
+    "name": "Торговый центр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/massage": {
+    "name": "Массажный салон",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/medical_supply": {
+    "name": "Медицинские принадлежности",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/mobile_phone": {
+    "name": "Магазин мобильных телефонов и аксессуаров",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/money_lender": {
+    "name": "Ростовщик",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Типы валюты",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/motorcycle": {
+    "name": "Магазин мотоциклов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/music": {
+    "name": "Музыкальный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/musical_instrument": {
+    "name": "Магазин музыкальных инструментов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/newsagent": {
+    "name": "Газеты/пресса/журналы",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/nutrition_supplements": {
+    "name": "Магазин пищевых добавок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/optician": {
+    "name": "Оптика",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/organic": {
+    "name": "Магазин преимущественно натуральных продукутов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/outdoor": {
+    "name": "Магазин снаряжения для активного отдыха",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/paint": {
+    "name": "Магазин красочных изделий",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pastry": {
+    "name": "Пироги",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pawnbroker": {
+    "name": "Ломбард",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/perfumery": {
+    "name": "Парфюмерия",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pet": {
+    "name": "Зоомагазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/photo": {
+    "name": "Фототовары",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pyrotechnics": {
+    "name": "Магазин фейерверков",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/radiotechnics": {
+    "name": "Магазин радиодеталей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/religion": {
+    "name": "Религиозная лавка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Религия",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Конфессия",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/scuba_diving": {
+    "name": "Магазин подводного снаряжения",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/seafood": {
+    "name": "Магазин морепродуктов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/second_hand": {
+    "name": "Магазин секонд хенда",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Продажа подержанного товара",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "only": "Только"
+        }
+      }
+    ]
+  },
+  "shop/shoes": {
+    "name": "Обувь",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/sports": {
+    "name": "Спорттовары",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/stationery": {
+    "name": "Канцелярские товары",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/storage_rental": {
+    "name": "Аренда складских помещений",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Тип здания / конструкция",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/supermarket": {
+    "name": "Супермаркет",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tailor": {
+    "name": "Портной",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tattoo": {
+    "name": "Тату салон",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tea": {
+    "name": "Чайный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/ticket": {
+    "name": "Билетная касса",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tiles": {
+    "name": "Магазин плитки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tobacco": {
+    "name": "Табачный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/toys": {
+    "name": "Игрушки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/trade": {
+    "name": "Оптовая база",
+    "fields": [
+      {
+        "key": "trade",
+        "label": "Тип",
+        "type": "typeCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/travel_agency": {
+    "name": "Бюро путешествий",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tyres": {
+    "name": "Шины",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/vacuum_cleaner": {
+    "name": "Магазин по продаже пылесосов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/variety_store": {
+    "name": "Товары по одной цене",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/video_games": {
+    "name": "Магазин видеоигр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/video": {
+    "name": "Видеомагазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/watches": {
+    "name": "Магазин часов",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/water_sports": {
+    "name": "Водный спорт/ Спорттовары",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/weapons": {
+    "name": "Оружейный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/window_blind": {
+    "name": "Магазин жалюзей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/wine": {
+    "name": "Винный магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/alpine_hut": {
+    "name": "Горный приют",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/apartment": {
+    "name": "Гостевые апартаменты/квартира",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Номера",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/aquarium": {
+    "name": "Аквариум",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/attraction": {
+    "name": "Достопримечательность",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/camp_site": {
+    "name": "Кемпинг/туристический приют",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Платная (-ый)",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/caravan_site": {
+    "name": "Стоянка трейлеров",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Вместимость",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Платная (-ый)",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Ассенизационная сливная станция",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Разъем питания",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/chalet": {
+    "name": "Коттедж под аренду",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/gallery": {
+    "name": "Художественная галерея",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/guest_house": {
+    "name": "Гостевой дом",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Номера",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/hostel": {
+    "name": "Хостел",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Номера",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/hotel": {
+    "name": "Гостиница",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "stars",
+        "label": "Звёзды",
+        "type": "number"
+      },
+      {
+        "key": "rooms",
+        "label": "Номера",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/motel": {
+    "name": "Мотель",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Курение",
+        "type": "combo",
+        "options": {
+          "no": "Курить запрещено везде",
+          "separated": "В зоне для курящих, не отделённой физически",
+          "isolated": "В зоне для курящих, отделённой физически",
+          "outside": "Разрешено снаружи",
+          "yes": "Разрешено везде",
+          "dedicated": "Предназначено для курящих (например, сигарный клуб)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Номера",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ в Интернет",
+        "type": "combo",
+        "options": {
+          "yes": "Да",
+          "no": "Нет",
+          "wlan": "Wi-Fi",
+          "wired": "Проводной",
+          "terminal": "Терминал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ в Интернет",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Название сети)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/museum": {
+    "name": "Музей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/theme_park": {
+    "name": "Парк развлечений",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/wilderness_hut": {
+    "name": "Охотничий домик",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/zoo": {
+    "name": "Зоопарк",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Обслуживающая компания",
+        "type": "text"
+      }
+    ]
+  }
+}
