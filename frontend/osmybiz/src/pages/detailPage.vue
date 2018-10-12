@@ -33,6 +33,7 @@
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
 
+  import { isNotModified } from '../store/detail';
   import { routes } from './../router';
 
   export default {
@@ -69,6 +70,7 @@
         'address',
         'isDuplicate',
         'isNew',
+        'hasPermissionToLeaveDetailPage',
       ]),
     },
     methods: {
@@ -80,7 +82,22 @@
       ]),
       ...mapActions([
         'getAddress',
+        'getConfirmation',
       ]),
+    },
+    beforeRouteLeave(to, from, next) {
+      if (isNotModified(this)) {
+        next();
+      } else {
+        this.getConfirmation(() => {
+          if (this.hasPermissionToLeaveDetailPage) {
+            this.$store.commit('setHasPermissionToLeaveDetailPage', false);
+            next();
+          } else {
+            next(false);
+          }
+        });
+      }
     },
   };
 </script>

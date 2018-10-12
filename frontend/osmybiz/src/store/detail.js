@@ -41,6 +41,7 @@ const state = {
   isNote: false,
   infoText: '',
   infoMap: new Map(),
+  hasPermissionToLeaveDetailPage: false,
 
   // PostSuccess
   note: {},
@@ -129,6 +130,13 @@ function constructDisplayNote(note) {
     name,
   };
   return note;
+}
+
+export function isNotModified(store) {
+  const details = JSON.parse(localStorage.getItem('details'));
+  const address = JSON.parse(localStorage.getItem('address'));
+  return JSON.stringify(details) === JSON.stringify(store.details) &&
+    JSON.stringify(address) === JSON.stringify(store.address);
 }
 
 export function clearDetails() {
@@ -321,6 +329,9 @@ const mutations = {
   setIsNew(s, isNew) {
     s.isNew = isNew;
   },
+  setHasPermissionToLeaveDetailPage(s, hasPermissionToLeaveDetailPage) {
+    s.hasPermissionToLeaveDetailPage = hasPermissionToLeaveDetailPage;
+  },
 };
 
 const getters = {
@@ -377,6 +388,9 @@ const getters = {
   },
   isNew(s) {
     return s.isNew;
+  },
+  hasPermissionToLeaveDetailPage(s) {
+    return s.hasPermissionToLeaveDetailPage;
   },
 };
 

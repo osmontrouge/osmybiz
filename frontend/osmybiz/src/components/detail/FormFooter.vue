@@ -8,7 +8,7 @@
             @click="reset()">
       {{t('detail').buttons.reset}}</button>
     <button class="button"
-            :disabled="isRequiredFields() || isDuplicate || hasNoChanges()"
+            :disabled="isRequiredFields() || isDuplicate || isNotModified(this)"
             @click="submit()">
       {{t('detail').buttons.save}}</button>
   </div>
@@ -17,7 +17,7 @@
 <script>
   import { mapGetters, mapActions, mapMutations } from 'vuex';
   import { routes } from '../../router/index';
-  import { clearDetails } from '../../store/detail';
+  import { clearDetails, isNotModified } from '../../store/detail';
 
   export default {
     name: 'form-footer',
@@ -80,12 +80,6 @@
           this.address.country === '' ||
           this.details.name === '';
       },
-      hasNoChanges() {
-        const details = JSON.parse(localStorage.getItem('details'));
-        const address = JSON.parse(localStorage.getItem('address'));
-        return JSON.stringify(details) === JSON.stringify(this.details) &&
-          JSON.stringify(address) === JSON.stringify(this.address);
-      },
       reset() {
         this.getConfirmation(() => {
           const details = JSON.parse(localStorage.getItem('details'));
@@ -106,11 +100,9 @@
           this.setIsConfirm(false);
         });
       },
+      isNotModified,
       back() {
-        this.getConfirmation(() => {
-          this.$router.push({ name: routes.Landing });
-          this.setIsConfirm(false);
-        });
+        this.$router.go(-1);
       },
     },
   };
