@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
+import deepEqual from 'deep-equal';
 import { postNode, postNote, getNode } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
@@ -135,8 +136,7 @@ function constructDisplayNote(note) {
 export function isNotModified(store) {
   const details = JSON.parse(localStorage.getItem('details'));
   const address = JSON.parse(localStorage.getItem('address'));
-  return JSON.stringify(details) === JSON.stringify(store.details) &&
-    JSON.stringify(address) === JSON.stringify(store.address);
+  return deepEqual(details, store.details) && deepEqual(address, store.address);
 }
 
 export function clearDetails() {

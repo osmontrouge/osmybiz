@@ -31,7 +31,8 @@
     "vuex-router": "^1.1.5",
     "vuex-router-sync": "^5.0.0",
     "xml-js": "^1.6.2",
-    "vue-cookies": "^1.5.7"
+    "vue-cookies": "^1.5.7",
+    "deep-equal": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
