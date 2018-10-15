@@ -40,6 +40,7 @@
         'setAddress',
         'setIsDuplicate',
         'setIsConfirm',
+        'setHasSavedChanges',
       ]),
       ...mapActions([
         'postSelectedCategoryNote',
@@ -51,6 +52,7 @@
       ]),
       submit() {
         let promise;
+        this.setHasSavedChanges(true);
         if (this.isNote && !this.isOwnCategory) {
           promise = this.postSelectedCategoryNote({ user: this.user, osmId: this.osmId })
             .then(() => true);
@@ -84,17 +86,6 @@
         this.getConfirmation(() => {
           const details = JSON.parse(localStorage.getItem('details'));
           const address = JSON.parse(localStorage.getItem('address'));
-          const category = {
-            text: details.category.text,
-            fields: details.category.fields,
-            value: details.category.value,
-          };
-          if (this.details.category.text === details.category.text) {
-            this.details.category.fields.forEach((field, index) => {
-              category.fields[index].label = field.label;
-            });
-          }
-          details.category = category;
           this.setDetails(details);
           this.setAddress(address);
           this.setIsConfirm(false);
@@ -102,7 +93,7 @@
       },
       isNotModified,
       back() {
-        this.$router.go(-1);
+        this.$router.push({ name: routes.Landing });
       },
     },
   };

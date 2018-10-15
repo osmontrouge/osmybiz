@@ -22,7 +22,6 @@
 
 <script>
   import { mapGetters, mapMutations, mapActions } from 'vuex';
-  import * as _ from 'lodash';
   import DetailForm from '../components/detail/DetailForm.vue';
   import PostSuccess from '../components/landing/PostSuccess.vue';
   import AddressFields from '../components/detail/AddressFields.vue';
@@ -33,17 +32,20 @@
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
 
-  import { isNotModified } from '../store/detail';
+  import { isNotModified, getUnsavedChangesFromCookies } from '../store/detail';
   import { routes } from './../router';
 
   export default {
     mounted() {
-      if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
+      if (!this.isLoggedIn) {
         this.$router.push({ name: routes.Landing });
       }
+      if (this.isEditingUnsavedChanges) {
+        getUnsavedChangesFromCookies(this);
+      } else {
+        this.getAddress(this.businessPosition);
+      }
       this.setDisplaySuccess(false);
-
-      this.getAddress(this.businessPosition);
       localStorage.setItem('details', JSON.stringify(this.details));
       this.setInfoMap(this.$translate.locale);
       this.setIsNew(!this.isNote);
@@ -70,7 +72,10 @@
         'address',
         'isDuplicate',
         'isNew',
-        'hasPermissionToLeaveDetailPage',
+        'osmId',
+        'isEditingUnsavedChanges',
+        'hasSavedChanges',
+        'isOwnCategory',
       ]),
     },
     methods: {
@@ -79,6 +84,14 @@
         'setDisplayConfirmation',
         'setInfoMap',
         'setIsNew',
+        'setDisplayUnsavedChangesNotification',
+        'setIsEditingUnsavedChanges',
+        'setDetails',
+        'setAddress',
+        'setOsmId',
+        'setIsNote',
+        'setHasSavedChanges',
+        'setIsOwnCategory',
       ]),
       ...mapActions([
         'getAddress',
@@ -86,17 +99,28 @@
       ]),
     },
     beforeRouteLeave(to, from, next) {
-      if (isNotModified(this)) {
+      this.setIsEditingUnsavedChanges(false);
+      if (isNotModified(this) || this.hasSavedChanges) {
+        this.setHasSavedChanges(false);
+        // For the case when DisplayUnsavedChangesNotication is still true (5 sec
+        // time out has not been up yet)
+        this.setDisplayUnsavedChangesNotification(false);
         next();
       } else {
-        this.getConfirmation(() => {
-          if (this.hasPermissionToLeaveDetailPage) {
-            this.$store.commit('setHasPermissionToLeaveDetailPage', false);
-            next();
-          } else {
-            next(false);
-          }
-        });
+        this.setDisplayUnsavedChangesNotification(true);
+        setTimeout(() => {
+          this.setDisplayUnsavedChangesNotification(false);
+        }, 5000);
+        const unsavedChanges = {
+          address: this.address,
+          details: this.details,
+          business: this.business,
+          isNote: this.isNote,
+          osmId: this.osmId,
+          isOwnCategory: this.isOwnCategory,
+        };
+        this.$cookies.set('unsavedChanges', unsavedChanges, '30');
+        next();
       }
     },
   };

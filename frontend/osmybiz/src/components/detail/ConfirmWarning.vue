@@ -41,14 +41,11 @@
     methods: {
       ...mapMutations([
         'setIsConfirm',
-        'setHasPermissionToLeaveDetailPage',
       ]),
       toggle() {
-        this.$store.commit('setHasPermissionToLeaveDetailPage', false);
         this.setIsConfirm(false);
       },
       confirm() {
-        this.$store.commit('setHasPermissionToLeaveDetailPage', true);
         this.setIsConfirm(false);
         this.action();
       },

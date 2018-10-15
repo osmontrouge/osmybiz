@@ -11,8 +11,11 @@ let initalOptions = [];
 const state = {
   // detailPage
   displaySuccess: false,
+  displayUnsavedChangesNotification: false,
   osmId: null,
   isNew: true,
+  hasSavedChanges: false,
+  isEditingUnsavedChanges: false,
 
   // DetailForm
   tags: initalOptions,
@@ -42,7 +45,6 @@ const state = {
   isNote: false,
   infoText: '',
   infoMap: new Map(),
-  hasPermissionToLeaveDetailPage: false,
 
   // PostSuccess
   note: {},
@@ -294,6 +296,9 @@ const mutations = {
   setDisplaySuccess(s, displaySuccess) {
     s.displaySuccess = displaySuccess;
   },
+  setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
+    s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
+  },
   setDisplayConfirmation(s, displayConfirmation) {
     s.displayConfirmation = displayConfirmation;
   },
@@ -329,8 +334,11 @@ const mutations = {
   setIsNew(s, isNew) {
     s.isNew = isNew;
   },
-  setHasPermissionToLeaveDetailPage(s, hasPermissionToLeaveDetailPage) {
-    s.hasPermissionToLeaveDetailPage = hasPermissionToLeaveDetailPage;
+  setIsEditingUnsavedChanges(s, isEditingUnsavedChanges) {
+    s.isEditingUnsavedChanges = isEditingUnsavedChanges;
+  },
+  setHasSavedChanges(s, hasSavedChanges) {
+    s.hasSavedChanges = hasSavedChanges;
   },
 };
 
@@ -362,6 +370,9 @@ const getters = {
   displaySuccess(s) {
     return s.displaySuccess;
   },
+  displayUnsavedChangesNotification(s) {
+    return s.displayUnsavedChangesNotification;
+  },
   displayConfirmation(s) {
     return s.displayConfirmation;
   },
@@ -389,8 +400,11 @@ const getters = {
   isNew(s) {
     return s.isNew;
   },
-  hasPermissionToLeaveDetailPage(s) {
-    return s.hasPermissionToLeaveDetailPage;
+  isEditingUnsavedChanges(s) {
+    return s.isEditingUnsavedChanges;
+  },
+  hasSavedChanges(s) {
+    return s.hasSavedChanges;
   },
 };
 
@@ -409,3 +423,14 @@ export function showPopup(text) {
 export function hidePopup() {
   state.isPopup = false;
 }
+
+export function getUnsavedChangesFromCookies(context) {
+  const unsavedChangesCookie = context.$cookies.get('unsavedChanges');
+  context.setDetails(unsavedChangesCookie.details);
+  context.setAddress(unsavedChangesCookie.address);
+  context.setOsmId(unsavedChangesCookie.osmId);
+  context.setIsNote(unsavedChangesCookie.isNote);
+  context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
+  localStorage.setItem('address', JSON.stringify(context.address));
+}
+

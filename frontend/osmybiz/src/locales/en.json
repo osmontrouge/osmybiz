@@ -148,6 +148,9 @@
       "title": "Changes saved"
     }
   },
+  "unsavedchanges": {
+    "title": "Unsaved Changes"
+  },
   "error": {
     "title": "Error",
     "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",

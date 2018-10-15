@@ -1,13 +1,10 @@
 <template>
     <div class="header">
       <div class="title">
-        <a v-if="isDetailPage">
+        <a>
           <router-link to="/">
             OpenStreetMap My Business
           </router-link>
-        </a>
-        <a v-else href="/">
-          OpenStreetMap My Business
         </a>
       </div>
       <div class="buttons">
@@ -68,9 +65,6 @@
         'isLoggedIn',
         'updateCount',
       ]),
-      isDetailPage() {
-        return this.$route.path === '/detail';
-      },
     },
     methods: {
       ...mapActions([

@@ -9,6 +9,7 @@
 
     <post-success></post-success>
     <duplicate-warning></duplicate-warning>
+    <unsaved-changes-notification></unsaved-changes-notification>
   </div>
 </template>
 
@@ -23,7 +24,7 @@
   import ToggleButton from '../components/landing/ToggleButton.vue';
   import LoginHelpText from '../components/landing/LoginHelpText.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
-
+  import UnsavedChangesNotification from '../components/landing/UnsavedChangesNotification.vue';
 
   function extractToken(url) {
     const tokenRegex = /\?oauth_token=(.*)#\//;
@@ -64,6 +65,7 @@
       UpdateList,
       PostSuccess,
       DuplicateWarning,
+      UnsavedChangesNotification,
     },
   };
 
