@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
-import { postNode, postNote, getNode } from './../api/osmApi';
+import { postNode, postMapNote, getNode } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateNode } from './../api/osmybizApi';
@@ -241,7 +241,7 @@ const actions = {
   postSelectedCategoryNote({ commit }, { user, osmId }) {
     const note = constructNote();
     const { name } = state.details;
-    return postNote(note).then((ps) => {
+    return postMapNote(note).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
@@ -262,7 +262,7 @@ const actions = {
   },
   postOwnCategoryNote({ commit }) {
     const note = constructNote();
-    return postNote(note).then((ps) => {
+    return postMapNote(note).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);

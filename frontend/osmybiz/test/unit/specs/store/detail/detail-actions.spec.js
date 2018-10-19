@@ -5,7 +5,7 @@ const actionsInjector = require('inject-loader!../../../../../src/store/detail')
 
 const actions = actionsInjector({
   './../api/osmApi': {
-    postNote() {
+    postMapNote() {
       return Promise.resolve({ text: 'test Address: test\n Category: test\n Name: test\n Wheelchair: true' });
     },
     getNode() {

@@ -5,6 +5,7 @@ import { setError } from '../store/error';
 import util from './../util/osmApiUtils';
 
 const createNotePath = `${osmApiLevel}notes.json`;
+const mapNotePath = `${osmApiLevel}notes/`;
 const createChangesetPath = `${osmApiLevel}changeset/create`;
 const uploadChangesetPath = `${osmApiLevel}changeset/`;
 const closeChangesetPath = `${osmApiLevel}changeset/`;
@@ -157,15 +158,15 @@ export function postNode(node) {
   });
 }
 
-export function postNote(note) {
+export function postMapNote(mapNote) {
   return new Promise((resolve) => {
     auth.xhr({
       method: 'POST',
       path: createNotePath,
-      content: `lat=${note.lat}&lon=${note.lon}&text=${note.text}`,
+      content: `lat=${mapNote.lat}&lon=${mapNote.lon}&text=${mapNote.text}`,
     }, (err, response) => {
       if (err) {
-        setError('error.osm.postNote');
+        setError('error.osm.postMapNote');
         resolve(null);
       }
       const data = JSON.parse(response);
@@ -174,6 +175,35 @@ export function postNote(note) {
         text: data.properties.comments[0].text,
         id: data.properties.id,
         link: `${osmUrl}/note/${data.properties.id}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+        status: data.properties.status,
+      });
+    });
+  });
+}
+
+export function postMapNoteAsComment(mapNote, mapNoteId) {
+  return new Promise((resolve) => {
+    auth.xhr({
+      method: 'POST',
+      path: `${mapNotePath}${mapNoteId}/comment.json`,
+      content: `text=${mapNote.text}`,
+    }, (err, response) => {
+      if (err) {
+        // err status 409 raised when if map note has been resolved
+        if (err.status === 409) {
+          resolve(postMapNote(mapNote));
+        } else {
+          setError('error.osm.postMapNoteAsComment');
+          resolve(null);
+        }
+      }
+      const data = JSON.parse(response);
+      const mostRecentCommentIndex = data.properties.comments.length - 1;
+      resolve({
+        html: data.properties.comments[mostRecentCommentIndex].html,
+        text: data.properties.comments[mostRecentCommentIndex].text,
+        id: data.properties.id,
+        link: `${osmUrl}/note/${mapNoteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
         status: data.properties.status,
       });
     });
