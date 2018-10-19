@@ -8,6 +8,7 @@ user_fields = {
 
 node_fields = {
     'osmId': int,
+    'mapNoteId': int,
     'lat': float,
     'lng': float,
     'version': int,
@@ -18,6 +19,8 @@ node_fields = {
 
 def check_fields(obj, required_fields):
     for field_name, field_type in required_fields.items():
+        if field_name == 'mapNoteId' and obj[field_name] is None:
+            continue
         if field_name not in obj or not isinstance(obj[field_name], field_type):
             print('{} is invalid'.format(field_name), file=sys.stderr)
             return False
