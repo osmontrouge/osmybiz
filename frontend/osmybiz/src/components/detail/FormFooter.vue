@@ -32,6 +32,7 @@
         'lat',
         'lon',
         'isDuplicate',
+        'mapNoteId',
       ]),
     },
     methods: {
@@ -42,27 +43,28 @@
         'setIsConfirm',
       ]),
       ...mapActions([
-        'postSelectedCategoryNote',
+        'postMapNoteToOsmAndBackend',
         'postOwnCategoryNote',
-        'postNode',
+        'postNodeToOsmAndBackend',
         'checkDuplicateNode',
         'getConfirmation',
         'loadUpdates',
       ]),
       submit() {
         let promise;
-        if (this.isNote && !this.isOwnCategory) {
-          promise = this.postSelectedCategoryNote({ user: this.user, osmId: this.osmId })
-            .then(() => true);
-        } else if (this.isOwnCategory) {
-          promise = this.postOwnCategoryNote().then(() => true);
-        } else {
+        if (!this.isNote && !this.isOwnCategory) {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
-              return this.postNode(this.user).then(() => true);
+              return this.postNodeToOsmAndBackend(this.user).then(() => true);
             }
             return false;
           });
+        } else {
+          promise = this.postMapNoteToOsmAndBackend({
+            user: this.user,
+            osmId: this.osmId,
+            mapNoteId: this.mapNoteId,
+          }).then(() => true);
         }
         promise.then((success) => {
           if (success) {

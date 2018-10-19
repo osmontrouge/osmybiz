@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
-import { postNode, postMapNote, getNode } from './../api/osmApi';
+import { postNode, postMapNote, getNode, postMapNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateNode } from './../api/osmybizApi';
@@ -41,6 +41,8 @@ const state = {
   isNote: false,
   infoText: '',
   infoMap: new Map(),
+
+  mapNoteId: null,
 
   // PostSuccess
   note: {},
@@ -217,7 +219,7 @@ export function loadTags() {
 loadTags();
 
 const actions = {
-  postNode({ commit }, user) {
+  postNodeToOsmAndBackend({ commit }, user) {
     const node = {
       lat: state.lat,
       lon: state.lon,
@@ -235,13 +237,36 @@ const actions = {
         osmId: parseInt(ps.id, 10),
         recieveUpdates: true,
         name: ps.details.name,
+        mapNoteId: null,
       });
     });
   },
-  postSelectedCategoryNote({ commit }, { user, osmId }) {
+  postMapNoteToOsmAndBackend({ commit }, { user, osmId, mapNoteId }) {
     const note = constructNote();
     const { name } = state.details;
-    return postMapNote(note).then((ps) => {
+
+    if (!mapNoteId) {
+      return postMapNote(note).then((ps) => {
+        state.displaySuccess = true;
+        const displayNote = constructDisplayNote(ps);
+        commit('setNote', displayNote);
+
+        return getNode(osmId).then((node) => {
+          if (node) {
+            addOrUpdateNode(user.id, {
+              lat: parseFloat(node.lat),
+              lng: parseFloat(node.lon),
+              version: parseInt(node.version, 10),
+              osmId: parseInt(node.id, 10),
+              recieveUpdates: true,
+              name,
+              mapNoteId: parseInt(displayNote.id, 10),
+            });
+          }
+        });
+      });
+    }
+    return postMapNoteAsComment(note, mapNoteId).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
@@ -255,6 +280,7 @@ const actions = {
             osmId: parseInt(node.id, 10),
             recieveUpdates: true,
             name,
+            mapNoteId: displayNote.id,
           });
         }
       });
@@ -321,6 +347,9 @@ const mutations = {
   setIsNew(s, isNew) {
     s.isNew = isNew;
   },
+  setMapNoteId(s, mapNoteId) {
+    s.mapNoteId = mapNoteId;
+  },
 };
 
 const getters = {
@@ -377,6 +406,9 @@ const getters = {
   },
   isNew(s) {
     return s.isNew;
+  },
+  mapNoteId(s) {
+    return s.mapNoteId;
   },
 };
 

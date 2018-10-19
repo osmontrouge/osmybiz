@@ -141,6 +141,7 @@
         'setCoords',
         'setIsNote',
         'setOsmId',
+        'setMapNoteId',
       ]),
       loadAddress() {
         reverseQuery(this.position).then((address) => {
@@ -154,6 +155,7 @@
         this.setCoords(pos);
         this.setOsmId(this.business.id);
         this.setIsNote(true);
+        this.setMapNoteId(this.business.mapNoteId);
         this.$router.push({ name: routes.Detail });
       },
     },

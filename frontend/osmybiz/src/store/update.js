@@ -4,7 +4,6 @@ import { addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe }
 import { getNode } from './../api/osmApi';
 import util from './../util/updateUtil';
 
-
 const state = {
   updates: [],
   nodes: [],
@@ -16,7 +15,6 @@ const actions = {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
-
         ns.filter(n => n.recieveUpdates).forEach((n) => {
           getNode(n.osmId).then((node) => {
             const update = util.getUpdate(n, node);
@@ -31,6 +29,7 @@ const actions = {
                 lng: n.lng,
                 tags: node.tags,
                 mine: true,
+                mapNoteId: n.mapNoteId,
               };
               commit('pushNode', ownedNode);
             }
@@ -51,6 +50,7 @@ const actions = {
         lng: update.coords.lng,
         recieveUpdates: true,
         name: update.name,
+        mapNoteId: update.mapNoteId,
       });
     } else {
       promise = deleteNode(user.id, update.id);
