@@ -181,6 +181,30 @@ export function postMapNote(mapNote) {
   });
 }
 
+export function reopenClosedMapNoteAndAddComment(mapNote, mapNoteId) {
+  return new Promise((resolve) => {
+    auth.xhr({
+      method: 'POST',
+      path: `${mapNotePath}${mapNoteId}/reopen.json`,
+      content: `text=${mapNote.text}`,
+    }, (err, response) => {
+      if (err) {
+        setError('error.osm.reopenClosedMapNoteAndAddComment');
+        resolve(null);
+      }
+      const data = JSON.parse(response);
+      const mostRecentCommentIndex = data.properties.comments.length - 1;
+      resolve({
+        html: data.properties.comments[mostRecentCommentIndex].html,
+        text: data.properties.comments[mostRecentCommentIndex].text,
+        id: data.properties.id,
+        link: `${osmUrl}/note/${mapNoteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+        status: data.properties.status,
+      });
+    });
+  });
+}
+
 export function postMapNoteAsComment(mapNote, mapNoteId) {
   return new Promise((resolve) => {
     auth.xhr({
@@ -188,10 +212,10 @@ export function postMapNoteAsComment(mapNote, mapNoteId) {
       path: `${mapNotePath}${mapNoteId}/comment.json`,
       content: `text=${mapNote.text}`,
     }, (err, response) => {
+      const mapNoteIsClosed = 409;
       if (err) {
-        // err status 409 raised when if map note has been resolved
-        if (err.status === 409) {
-          resolve(postMapNote(mapNote));
+        if (err.status === mapNoteIsClosed) {
+          resolve(reopenClosedMapNoteAndAddComment(mapNote, mapNoteId));
         } else {
           setError('error.osm.postMapNoteAsComment');
           resolve(null);
