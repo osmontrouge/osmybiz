@@ -9,10 +9,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.name') }}*</label>
-            <img class="info"
-                 @mouseenter="show('name')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <input type="text"
@@ -29,10 +25,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.opening_hours') }}</label>
-            <img class="info"
-                 @mouseenter="show('opening_hours')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <input type="text"
@@ -43,10 +35,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.phone') }}</label>
-            <img class="info"
-                 @mouseenter="show('phone')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
           <input type="text"
                  v-model="details.phone"
@@ -56,10 +44,6 @@
         <div class="field" :class="{ 'control': true }">
           <div class="field-label">
             <label>{{ $t('detail.labels.email') }}</label>
-            <img class="info"
-                 @mouseenter="show('email')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <input v-validate="'email'"
@@ -78,10 +62,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.website') }}</label>
-            <img class="info"
-                 @mouseenter="show('website')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <input v-validate="'url'"
@@ -100,10 +80,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.wheelchair') }}</label>
-            <img class="info"
-                 @mouseenter="show('wheelchair')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <select v-model="details.wheelchair">
@@ -119,10 +95,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.description') }}</label>
-            <img class="info"
-                 @mouseenter="show('description')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <textarea class="area"
@@ -133,10 +105,6 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.note') }}</label>
-            <img class="info"
-                 @mouseenter="show('note')"
-                 @mouseleave="hide()"
-                 src="../../assets/info_black.png">
           </div>
 
           <textarea class="area"
@@ -157,7 +125,6 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import { showPopup, hidePopup } from '../../store/detail';
 
   Vue.use(VeeValidate);
 
@@ -182,12 +149,6 @@
         'setInfoText',
         'setApplyOffset',
       ]),
-      show(key) {
-        showPopup(this.$translate.text(key));
-      },
-      hide() {
-        hidePopup();
-      },
     },
   };
 </script>

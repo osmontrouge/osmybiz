@@ -3,10 +3,6 @@
     <div class="field">
       <div class="field-label">
         <h3>{{ $t('detail.titles.category') }}*</h3>
-        <img class="info"
-             @mouseenter="show('category')"
-             @mouseleave="hide()"
-             src="../../assets/info_black.png">
       </div>
 
       <div v-show="!isOwnCategory" class="category-field">
@@ -52,7 +48,6 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../../store/detail';
 
   Vue.use(VeeValidate);
 
@@ -90,14 +85,8 @@
         this.setIsOwnCategory(true);
         this.details.category = { value: 0, text: '' };
       },
-      show(key) {
-        showPopup(this.$translate.text(key));
-      },
       onSelect(item) {
         this.details.category = item;
-      },
-      hide() {
-        hidePopup();
       },
     },
     components: {
