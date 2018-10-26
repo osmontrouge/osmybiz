@@ -171,7 +171,6 @@
         'address',
         'tags',
         'isOwnCategory',
-        'infoMap',
       ]),
     },
     methods: {

@@ -81,7 +81,6 @@
         'setTags',
         'toggleBookmarks',
         'toggleUpdates',
-        'setInfoMap',
       ]),
       login() {
         this.authenticate();
