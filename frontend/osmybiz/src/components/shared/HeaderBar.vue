@@ -165,7 +165,7 @@
     margin: 8px 0 10px 10px;
   }
 
-  #translation-select {
+  #locale-select {
     margin-right: 10px;
     padding: 7px 8px;
     outline: none;
