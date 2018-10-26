@@ -10,7 +10,7 @@
           <a href="http://wiki.openstreetmap.org/wiki/OSMyBiz"
              class="external-link"
              target="_blank">
-            {{t('header').about}}
+            {{ $t('header.about') }}
             <icon class="link-icon" name="external-link-alt"></icon>
           </a>
         </div>
@@ -19,12 +19,12 @@
           <span>{{user.name}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()" :title="t('header').messagetitle">
+        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()" :title="$t('header.messagetitle')">
           <icon name="envelope"></icon>
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()" :title="t('header').updatestitle">
+        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()" :title="$t('header.updatestitle')">
           <icon name="bell"></icon>
           <span class="unread" v-if="updateCount > 0">{{updateCount}}</span>
         </div>

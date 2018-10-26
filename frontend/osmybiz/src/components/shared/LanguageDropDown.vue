@@ -1,10 +1,15 @@
 <template>
+  <div>
+    <select id="translation-select" @click="onSelect" v-model="selected" >
+      <option v-for="language in supportedLanguagesOptions" v-bind:value="language.value">
+        {{ language.label }}
+      </option>
+    </select>
+    <select v-model="$i18n.locale">
+      <option v-for="(lang) in langs" :value="lang.value">{{ lang.label }}</option>
+    </select>
+  </div>
 
-  <select id="translation-select" @click="onSelect" v-model="selected" >
-    <option v-for="language in supportedLanguagesOptions" v-bind:value="language.value">
-      {{ language.label }}
-    </option>
-  </select>
 </template>
 
 <script>
@@ -70,6 +75,7 @@
     name: 'language-drop-down',
     data() {
       return {
+        langs: SUPPORTEDLANGUAGESOPTIONS,
         selected: '',
         supportedLanguagesOptions: SUPPORTEDLANGUAGESOPTIONS,
       };

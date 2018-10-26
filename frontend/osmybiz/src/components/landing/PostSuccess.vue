@@ -7,20 +7,20 @@
 
     <div class="node-success" v-if="!isNote">
       <div class="dialog-title">
-        {{t('success').node.title}}
+        {{ $t('success.node.title') }}
       </div>
 
       <div class="section">
         <a :href="node.link"
            class="external-link"
            target="_blank">
-          {{t('success').link}}
+          {{ $t('success.link') }}
           <icon class="link-icon" name="external-link-alt"></icon>
         </a>
       </div>
 
       <div class="section">
-        {{t('success').address}}:
+        {{ $t('success.address') }}:
         <span v-if="node.address.street">
               {{node.address.street}}
               <span v-if="!node.address.housenumber">
@@ -44,31 +44,31 @@
             </span>
       </div>
       <div class="section">
-        {{t('success').name}}:
+        {{ $t('success.name') }}:
         {{node.details.name}}
       </div>
     </div>
 
     <div class="note-success" v-if="isNote">
       <div class="dialog-title">
-        {{t('success').note.title}}
+        {{ $t('success.note.title') }}
       </div>
       <div class="section">
         <a :href="note.link"
            class="external-link"
            target="_blank">
-          {{t('success').link}}
+          {{ $t('success.link') }}
           <icon class="link-icon" name="external-link-alt"></icon>
         </a>
       </div>
 
       <div class="section">
-        {{t('success').address}}:
+        {{ $t('success.address') }}:
         {{note.text.address}}
       </div>
 
       <div class="section">
-        {{t('success').name}}:
+        {{ $t('success.name') }}:
         {{note.text.name}}
       </div>
     </div>
