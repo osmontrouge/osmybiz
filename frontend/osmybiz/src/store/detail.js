@@ -44,7 +44,6 @@ const state = {
   isPopup: false,
   isNote: false,
   infoText: '',
-  infoMap: new Map(),
 
   // PostSuccess
   note: {},
@@ -311,9 +310,6 @@ const mutations = {
     s.lat = pos.lat;
     s.lon = pos.lng;
   },
-  setInfoMap(s, infoMap) {
-    s.infoMap = infoMap;
-  },
   setInfoText(s, infoText) {
     s.infoText = infoText;
   },
@@ -382,9 +378,6 @@ const getters = {
   },
   infoText(s) {
     return s.infoText;
-  },
-  infoMap(s) {
-    return s.infoMap;
   },
   osmId(s) {
     return s.osmId;

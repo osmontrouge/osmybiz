@@ -89,7 +89,6 @@
     computed: {
       ...mapGetters([
         'address',
-        'infoMap',
       ]),
     },
     methods: {

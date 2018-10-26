@@ -76,7 +76,6 @@
         'logout',
         'setTags',
         'toggleUpdates',
-        'setInfoMap',
       ]),
       login() {
         this.authenticate();
