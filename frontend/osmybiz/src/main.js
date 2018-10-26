@@ -2,6 +2,7 @@ import * as L from 'leaflet';
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
 import VueTranslate from 'vue-translate-plugin';
+import VueI18n from 'vue-i18n';
 import { sync } from 'vuex-router-sync';
 import store from './store';
 import App from './App.vue';
@@ -20,6 +21,8 @@ import zh_TW from './locales/zh_TW.json';
 
 Vue.use(VueTranslate);
 Vue.use(VueCookies);
+Vue.use(VueI18n);
+
 Vue.locales({
   de,
   en,
@@ -33,6 +36,25 @@ Vue.locales({
   zh_TW,
 });
 
+const messages = ({
+  de,
+  en,
+  fr,
+  he,
+  hu,
+  it,
+  pl,
+  ru,
+  sv,
+  zh_TW,
+});
+
+const i18n = new VueI18n({
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages,
+});
+
 sync(store, router);
 
 Vue.config.productionTip = false;
@@ -42,6 +64,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   template: '<App/>',
   components: { App },
   created() {
