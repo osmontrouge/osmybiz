@@ -10,6 +10,7 @@ import tagsRu from '../assets/tags/ru.json';
 import tagsSv from '../assets/tags/sv.json';
 /* eslint-disable-next-line camelcase */
 import tagsZh_TW from '../assets/tags/zh-TW.json';
+import { loadTags } from './detail';
 
 const SUPPORTEDLANGUAGESOPTIONS = {
   de: tagsDe,
@@ -39,6 +40,7 @@ const getters = {
 const mutations = {
   setTags(s, lng) {
     s.languageTags = SUPPORTEDLANGUAGESOPTIONS[lng] || tagsEn;
+    loadTags();
   },
 };
 

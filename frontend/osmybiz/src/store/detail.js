@@ -214,8 +214,6 @@ export function loadTags() {
   }
 }
 
-loadTags();
-
 const actions = {
   postNode({ commit }, user) {
     const node = {
