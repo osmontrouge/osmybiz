@@ -2,7 +2,7 @@
 
   <div class="form-wrapper">
 
-    <h3>Details</h3>
+    <h3>{{ $t('detail.titles.title') }}</h3>
 
     <div class="form-fields">
       <div class="column">
