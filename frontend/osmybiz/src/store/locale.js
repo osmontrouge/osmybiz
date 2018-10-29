@@ -28,7 +28,6 @@ const SUPPORTEDLANGUAGESOPTIONS = {
 
 const state = {
   languageTags: tagsEn,
-  $translate: {},
 };
 
 const getters = {
@@ -46,6 +45,10 @@ const mutations = {
 
 export function getLanguageTags() {
   return state.languageTags;
+}
+
+export function getTagName(tag) {
+  return getLanguageTags()[tag] || tag;
 }
 
 export default {

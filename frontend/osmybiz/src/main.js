@@ -1,7 +1,6 @@
 import * as L from 'leaflet';
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
-import VueTranslate from 'vue-translate-plugin';
 import VueI18n from 'vue-i18n';
 import { sync } from 'vuex-router-sync';
 import store from './store';
@@ -19,22 +18,8 @@ import sv from './locales/sv.json';
 /* eslint-disable-next-line camelcase */
 import zh_TW from './locales/zh_TW.json';
 
-Vue.use(VueTranslate);
 Vue.use(VueCookies);
 Vue.use(VueI18n);
-
-Vue.locales({
-  de,
-  en,
-  fr,
-  he,
-  hu,
-  it,
-  pl,
-  ru,
-  sv,
-  zh_TW,
-});
 
 const messages = ({
   de,
@@ -67,10 +52,6 @@ new Vue({
   i18n,
   template: '<App/>',
   components: { App },
-  created() {
-    // default language
-    this.$translate.setLang('en');
-  },
 });
 
 // eslint-disable-next-line no-underscore-dangle

@@ -44,7 +44,7 @@
 
       this.getAddress(this.businessPosition);
       localStorage.setItem('details', JSON.stringify(this.details));
-      this.setInfoMap(this.$translate.locale);
+      this.setInfoMap(this.$i18n.locale);
       this.setIsNew(!this.isNote);
     },
     components: {
