@@ -1,91 +1,91 @@
 {
   "amenity/nursing_home": {
-    "name": "Nursing Home",
+    "name": "Vårdhem",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "social_facility",
-        "label": "Type",
+        "label": "Typ",
         "type": "combo"
       },
       {
         "key": "social_facility_for",
-        "label": "People Served",
+        "label": "Människohjälp",
         "type": "combo"
       }
     ]
   },
   "amenity/register_office": {
-    "name": "Register Office",
+    "name": "Registreringsbyrå",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/scrapyard": {
-    "name": "Scrap Yard",
+    "name": "Bilskrot",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/animal_boarding": {
-    "name": "Animal Boarding Facility",
+    "name": "Djurhotell",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "animal_boarding",
-        "label": "For Animals",
+        "label": "För djur",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_breeding": {
-    "name": "Animal Breeding Facility",
+    "name": "Djuruppfödning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "animal_breeding",
-        "label": "For Animals",
+        "label": "För djur",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_shelter": {
-    "name": "Animal Shelter",
+    "name": "Djurhem",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "animal_shelter",
-        "label": "For Animals",
+        "label": "För djur",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/arts_centre": {
-    "name": "Arts Center",
+    "name": "Konstcenter",
     "fields": []
   },
   "amenity/bank": {
@@ -93,17 +93,17 @@
     "fields": [
       {
         "key": "atm",
-        "label": "ATM",
+        "label": "Uttagsautomat",
         "type": "check"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Genomkörning (Drive-through)",
         "type": "check"
       }
     ]
@@ -113,673 +113,673 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/bicycle_rental": {
-    "name": "Bicycle Rental",
+    "name": "Cykeluthyrning",
     "fields": [
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       },
       {
         "key": "network",
-        "label": "Network",
+        "label": "Nätverk",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/biergarten": {
-    "name": "Beer Garden",
+    "name": "Ölträdgård",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/boat_rental": {
-    "name": "Boat Rental",
+    "name": "Båtuthyrning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/bureau_de_change": {
-    "name": "Currency Exchange",
+    "name": "Växlingskontor",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "Valutor",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/bus_station": {
-    "name": "Bus Station",
+    "name": "Busstation / Bussterminal",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "amenity/cafe": {
-    "name": "Cafe",
+    "name": "Café",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "Typer av mat",
         "type": "semiCombo"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/car_rental": {
-    "name": "Car Rental",
+    "name": "Biluthyrning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/car_sharing": {
-    "name": "Car Sharing",
+    "name": "Bilpool",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       }
     ]
   },
   "amenity/car_wash": {
-    "name": "Car Wash",
+    "name": "Biltvätt",
     "fields": []
   },
   "amenity/casino": {
-    "name": "Casino",
+    "name": "Kasino",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       }
     ]
   },
   "amenity/childcare": {
-    "name": "Nursery/Childcare",
+    "name": "Barnomsorg",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/cinema": {
-    "name": "Cinema",
+    "name": "Biograf",
     "fields": []
   },
   "amenity/clinic": {
-    "name": "Clinic",
+    "name": "Vårdcentral",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialiteter",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/college": {
-    "name": "College Grounds",
+    "name": "Collegeområde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "amenity/community_centre": {
-    "name": "Community Center",
+    "name": "Samlingslokal",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/courthouse": {
-    "name": "Courthouse",
+    "name": "Domstol",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/crematorium": {
-    "name": "Crematorium",
+    "name": "Krematorium",
     "fields": []
   },
   "amenity/dentist": {
-    "name": "Dentist",
+    "name": "Tandläkare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialiteter",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/doctors": {
-    "name": "Doctor",
+    "name": "Doktor",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialiteter",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/dojo": {
-    "name": "Dojo / Martial Arts Academy",
+    "name": "Dojo / Akademi för kampsport",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sporter",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/driving_school": {
-    "name": "Driving School",
+    "name": "Trafikskola",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/embassy": {
-    "name": "Embassy",
+    "name": "Ambassad",
     "fields": [
       {
         "key": "country",
-        "label": "Country",
+        "label": "Land",
         "type": "combo"
       }
     ]
   },
   "amenity/fast_food": {
-    "name": "Fast Food",
+    "name": "Snabbmat",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "Typer av mat",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "Hämtmat",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "Ja",
+          "no": "Nej",
+          "only": "Enbart hämtmat"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "Hemleverans",
         "type": "check"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Genomkörning (Drive-through)",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/ferry_terminal": {
-    "name": "Ferry Terminal",
+    "name": "Färjeterminal / Färjehållplats / Färjestation",
     "fields": [
       {
         "key": "network",
-        "label": "Network",
+        "label": "Nätverk",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/fire_station": {
-    "name": "Fire Station",
+    "name": "Brandstation",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/food_court": {
-    "name": "Food Court",
+    "name": "Restaurangtorg",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/fuel": {
-    "name": "Gas Station",
+    "name": "Bensinstation",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "fuel_multi",
-        "label": "Fuel Types",
+        "label": "Bränslen",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/hospital": {
-    "name": "Hospital Grounds",
+    "name": "Sjukhusområde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialiteter",
         "type": "semiCombo"
       },
       {
         "key": "emergency",
-        "label": "Emergency",
+        "label": "Akut",
         "type": "check"
       }
     ]
   },
   "amenity/ice_cream": {
-    "name": "Ice Cream Shop",
+    "name": "Glassaffär",
     "fields": [
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "Hämtmat",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "Ja",
+          "no": "Nej",
+          "only": "Enbart hämtmat"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "Hemleverans",
         "type": "check"
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/internet_cafe": {
-    "name": "Internet Cafe",
+    "name": "Internetkafé",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/kindergarten": {
-    "name": "Preschool/Kindergarten Grounds",
+    "name": "Förskoleområde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/library": {
-    "name": "Library",
+    "name": "Bibliotek",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "amenity/marketplace": {
-    "name": "Marketplace",
+    "name": "Marknadsplats",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/nightclub": {
-    "name": "Nightclub",
+    "name": "Nattklubb",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       }
     ]
   },
   "amenity/pharmacy": {
-    "name": "Pharmacy",
+    "name": "Läkemedel",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Genomkörning (Drive-through)",
         "type": "check"
       }
     ]
@@ -789,37 +789,37 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/police": {
-    "name": "Police",
+    "name": "Polis",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/post_office": {
-    "name": "Post Office",
+    "name": "Postkontor",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/prison": {
-    "name": "Prison Grounds",
+    "name": "Fängelseområde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -829,103 +829,103 @@
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/ranger_station": {
-    "name": "Ranger Station",
+    "name": "Friluftsanläggningen",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/recycling_centre": {
-    "name": "Recycling Center",
+    "name": "Återvinningscentral",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "recycling_accepts",
-        "label": "Accepts",
+        "label": "Accepterar",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/restaurant": {
-    "name": "Restaurant",
+    "name": "Restaurang",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "Typer av mat",
         "type": "semiCombo"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "Hämtmat",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "Ja",
+          "no": "Nej",
+          "only": "Enbart hämtmat"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "Hemleverans",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Utomhusplatser",
         "type": "check"
       }
     ]
   },
   "amenity/school": {
-    "name": "School Grounds",
+    "name": "Skolområde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -935,155 +935,155 @@
     "fields": [
       {
         "key": "studio",
-        "label": "Type",
+        "label": "Typ",
         "type": "combo"
       }
     ]
   },
   "amenity/taxi": {
-    "name": "Taxi Stand",
+    "name": "Taxihållplats",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       }
     ]
   },
   "amenity/theatre": {
-    "name": "Theater",
+    "name": "Teater",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/townhall": {
-    "name": "Town Hall",
+    "name": "Kommunhus",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "amenity/university": {
-    "name": "University Grounds",
+    "name": "Universitetsområde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "amenity/veterinary": {
-    "name": "Veterinary",
+    "name": "Veterinär ",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "leisure/adult_gaming_centre": {
-    "name": "Adult Gaming Center",
+    "name": "Center för vuxenspel",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       }
     ]
   },
   "leisure/bowling_alley": {
-    "name": "Bowling Alley",
+    "name": "Bowlinghall",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       }
     ]
   },
   "leisure/dance": {
-    "name": "Dance Hall",
+    "name": "Dansbana",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "leisure/fitness_centre": {
-    "name": "Gym / Fitness Center",
+    "name": "Gym / Fitnesscenter",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sporter",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/golf_course": {
-    "name": "Golf Course",
+    "name": "Golfbana",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -1093,46 +1093,46 @@
     "fields": []
   },
   "leisure/horse_riding": {
-    "name": "Horseback Riding Facility",
+    "name": "Ridskola",
     "fields": [
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "Tillåten åtkomst",
         "type": "combo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "Byggnad",
         "type": "combo"
       }
     ]
   },
   "leisure/ice_rink": {
-    "name": "Ice Rink",
+    "name": "Skridskobana ",
     "fields": [
       {
         "key": "seasonal",
-        "label": "Seasonal",
+        "label": "Säsongsöppen",
         "type": "check"
       },
       {
         "key": "sport_ice",
-        "label": "Sports",
+        "label": "Sporter",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "Byggnad",
         "type": "combo"
       }
     ]
@@ -1142,59 +1142,59 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Avgift",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "Latrintömning ",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "Strömförsörjning",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "leisure/miniature_golf": {
-    "name": "Miniature Golf",
+    "name": "Minigolf",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -1204,37 +1204,37 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "leisure/sauna": {
-    "name": "Sauna",
+    "name": "Bastu",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "Tillåten åtkomst",
         "type": "combo"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Avgift",
         "type": "check"
       }
     ]
   },
   "leisure/sports_centre": {
-    "name": "Sports Center / Complex",
+    "name": "Sportcenter / -anläggning",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sporter",
         "type": "semiCombo"
       }
     ]
@@ -1244,735 +1244,735 @@
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sporter",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/water_park": {
-    "name": "Water Park",
+    "name": "Äventyrsbad / Vattenpark",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "office/physician": {
-    "name": "Physician",
+    "name": "Läkare",
     "fields": []
   },
   "office/travel_agent": {
-    "name": "Travel Agency",
+    "name": "Resebyrå ",
     "fields": []
   },
   "office/accountant": {
-    "name": "Accountant Office",
+    "name": "Bokhållare",
     "fields": []
   },
   "office/administrative": {
-    "name": "Administrative Office",
+    "name": "Lokal myndighet",
     "fields": []
   },
   "office/adoption_agency": {
-    "name": "Adoption Agency",
+    "name": "Adoptionsbyrå",
     "fields": []
   },
   "office/advertising_agency": {
-    "name": "Advertising Agency",
+    "name": "Reklambyrå",
     "fields": []
   },
   "office/architect": {
-    "name": "Architect Office",
+    "name": "Arkitektbyrå",
     "fields": []
   },
   "office/association": {
-    "name": "Nonprofit Organization Office",
+    "name": "Frivilligorganisation",
     "fields": []
   },
   "office/charity": {
-    "name": "Charity Office",
+    "name": "Välgörenhetsorganisation",
     "fields": []
   },
   "office/educational_institution": {
-    "name": "Educational Institution",
+    "name": "Utbildningskontor",
     "fields": []
   },
   "office/employment_agency": {
-    "name": "Employment Agency",
+    "name": "Arbetsförmedling",
     "fields": []
   },
   "office/energy_supplier": {
-    "name": "Energy Supplier Office",
+    "name": "Energibolag",
     "fields": []
   },
   "office/estate_agent": {
-    "name": "Real Estate Office",
+    "name": "Mäklare/bostadsförmedling",
     "fields": []
   },
   "office/financial": {
-    "name": "Financial Office",
+    "name": "Bankkontor",
     "fields": []
   },
   "office/forestry": {
-    "name": "Forestry Office",
+    "name": "Skogsbolag",
     "fields": []
   },
   "office/foundation": {
-    "name": "Foundation Office",
+    "name": "Stiftelse",
     "fields": []
   },
   "office/government": {
-    "name": "Government Office",
+    "name": "Myndighet",
     "fields": []
   },
   "office/guide": {
-    "name": "Tour Guide Office",
+    "name": "Guidekontor",
     "fields": []
   },
   "office/insurance": {
-    "name": "Insurance Office",
+    "name": "Försäkringskontor",
     "fields": []
   },
   "office/it": {
-    "name": "Information Technology Office",
+    "name": "IT-kontor",
     "fields": []
   },
   "office/lawyer": {
-    "name": "Law Office",
+    "name": "Advokatkontor",
     "fields": []
   },
   "office/moving_company": {
-    "name": "Moving Company Office",
+    "name": "Flyttfirma",
     "fields": []
   },
   "office/newspaper": {
-    "name": "Newspaper Office",
+    "name": "Tidningsredaktion",
     "fields": []
   },
   "office/ngo": {
-    "name": "NGO Office",
+    "name": "Icke-statlig organisation",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       }
     ]
   },
   "office/notary": {
-    "name": "Notary Office",
+    "name": "Notarie",
     "fields": []
   },
   "office/political_party": {
-    "name": "Political Party",
+    "name": "Politiskt parti",
     "fields": []
   },
   "office/private_investigator": {
-    "name": "Private Investigator Office",
+    "name": "Privatdetektiv",
     "fields": []
   },
   "office/quango": {
-    "name": "Quasi-NGO Office",
+    "name": "Kvasiautonom icke-statlig organisation",
     "fields": []
   },
   "office/research": {
-    "name": "Research Office",
+    "name": "Forskning och utveckling",
     "fields": []
   },
   "office/surveyor": {
-    "name": "Surveyor Office",
+    "name": "Undersökning/inspektion",
     "fields": []
   },
   "office/tax_advisor": {
-    "name": "Tax Advisor Office",
+    "name": "Skatterådgivning",
     "fields": []
   },
   "office/telecommunication": {
-    "name": "Telecom Office",
+    "name": "Telekom",
     "fields": []
   },
   "office/therapist": {
-    "name": "Therapist Office",
+    "name": "Terapeut",
     "fields": []
   },
   "office/water_utility": {
-    "name": "Water Utility Office",
+    "name": "Vattenleverantör",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/fishmonger": {
-    "name": "Fishmonger",
+    "name": "Fiskhandlare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/furnace": {
-    "name": "Furnace Store",
+    "name": "Värmepannor",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/alcohol": {
-    "name": "Liquor Store",
+    "name": "Vin-och-spritaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Genomkörning (Drive-through)",
         "type": "check"
       }
     ]
   },
   "shop/anime": {
-    "name": "Anime Shop",
+    "name": "Anime-affär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/antiques": {
-    "name": "Antiques Shop",
+    "name": "Antikaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/appliance": {
-    "name": "Appliance Store",
+    "name": "Vitvaror",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/art": {
-    "name": "Art Store",
+    "name": "Konstaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/baby_goods": {
-    "name": "Baby Goods Store",
+    "name": "Babyprodukter",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/bag": {
-    "name": "Bag/Luggage Store",
+    "name": "Väskaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/bakery": {
-    "name": "Bakery",
+    "name": "Bageri",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/bathroom_furnishing": {
-    "name": "Bathroom Furnishing Store",
+    "name": "Badrumsinredning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/beauty": {
-    "name": "Beauty Shop",
+    "name": "Skönhetssalong",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "beauty",
-        "label": "Shop Type",
+        "label": "Typ av affär",
         "type": "combo"
       }
     ]
   },
   "shop/bed": {
-    "name": "Bedding/Mattress Store",
+    "name": "Sängaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/beverages": {
-    "name": "Beverage Store",
+    "name": "Dryckaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/bicycle": {
-    "name": "Bicycle Shop",
+    "name": "Cykelaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "service/bicycle",
-        "label": "Services",
+        "label": "Tjänster",
         "type": "multiCombo"
       }
     ]
   },
   "shop/bookmaker": {
-    "name": "Bookmaker",
+    "name": "Vadslagning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/books": {
-    "name": "Book Store",
+    "name": "Bokhandel",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "shop/boutique": {
-    "name": "Boutique",
+    "name": "Boutique (Dyra kläder och accessoarer)",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "Kläder",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/butcher": {
-    "name": "Butcher",
+    "name": "Slaktare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/candles": {
-    "name": "Candle Shop",
+    "name": "Ljusaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/car_parts": {
-    "name": "Car Parts Store",
+    "name": "Biltillbehör",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/car_repair": {
-    "name": "Car Repair Shop",
+    "name": "Bilverkstad",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "Tjänster",
         "type": "multiCombo"
       }
     ]
   },
   "shop/car": {
-    "name": "Car Dealership",
+    "name": "Bilhandlare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "Second hand",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "Ja",
+          "no": "Nej",
+          "only": "Enbart"
         }
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "Tjänster",
         "type": "multiCombo"
       }
     ]
   },
   "shop/carpet": {
-    "name": "Carpet Store",
+    "name": "Mattaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/charity": {
-    "name": "Charity Store",
+    "name": "Second hand-butik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "Second hand",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "Ja",
+          "no": "Nej",
+          "only": "Enbart"
         }
       }
     ]
   },
   "shop/cheese": {
-    "name": "Cheese Store",
+    "name": "Ostaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/chemist": {
-    "name": "Drugstore",
+    "name": "Kemiaffär (hygien,  kosmetika & städ)",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/chocolate": {
-    "name": "Chocolate Store",
+    "name": "Chokladaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/clothes": {
-    "name": "Clothing Store",
+    "name": "Klädaffär",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "Kläder",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/coffee": {
-    "name": "Coffee Store",
+    "name": "Kaffeaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/computer": {
-    "name": "Computer Store",
+    "name": "Datorbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/confectionery": {
-    "name": "Candy Store",
+    "name": "Godisaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/convenience": {
-    "name": "Convenience Store",
+    "name": "Närbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/copyshop": {
-    "name": "Copy Store",
+    "name": "Tryckeri",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/cosmetics": {
-    "name": "Cosmetics Store",
+    "name": "Sminkaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/craft": {
-    "name": "Arts and Crafts Store",
+    "name": "Konst- och hantverksbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/curtain": {
-    "name": "Curtain Store",
+    "name": "Gardinaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/dairy": {
-    "name": "Dairy Store",
+    "name": "Mejeriaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/deli": {
-    "name": "Deli",
+    "name": "Delikatessaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/department_store": {
-    "name": "Department Store",
+    "name": "Varuhus",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/doityourself": {
-    "name": "DIY Store",
+    "name": "Byggmarknad",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/dry_cleaning": {
-    "name": "Dry Cleaner",
+    "name": "Kemtvätt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/e-cigarette": {
-    "name": "E-Cigarette Shop",
+    "name": "Affär för elektroniska cigaretter",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/electronics": {
-    "name": "Electronics Store",
+    "name": "Elektronikbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/erotic": {
-    "name": "Erotic Store",
+    "name": "Sexshop",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/fabric": {
-    "name": "Fabric Store",
+    "name": "Tygaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/farm": {
-    "name": "Produce Stand",
+    "name": "Gårdsbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/fashion": {
-    "name": "Fashion Store",
+    "name": "Modebutik",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "Kläder",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -1982,27 +1982,27 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/frame": {
-    "name": "Framing Shop",
+    "name": "Ramaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/funeral_directors": {
-    "name": "Funeral Home",
+    "name": "Begravningsbyrå",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
@@ -2012,137 +2012,137 @@
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "Samfund",
         "type": "combo"
       }
     ]
   },
   "shop/furniture": {
-    "name": "Furniture Store",
+    "name": "Möbelaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/garden_centre": {
-    "name": "Garden Center",
+    "name": "Trädgårdscenter",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/gas": {
-    "name": "Bottled Gas Shop",
+    "name": "Försäljning av gas",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/gift": {
-    "name": "Gift Shop",
+    "name": "Presentbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/greengrocer": {
-    "name": "Greengrocer",
+    "name": "Grönsakshandlare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/hairdresser": {
-    "name": "Hairdresser",
+    "name": "Hårfrisör",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/hardware": {
-    "name": "Hardware Store",
+    "name": "Järnaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/hearing_aids": {
-    "name": "Hearing Aids Store",
+    "name": "Hörapparater",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/herbalist": {
-    "name": "Herbalist",
+    "name": "Medicinalväxter",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/hifi": {
-    "name": "Hifi Store",
+    "name": "HiFi-butik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/houseware": {
-    "name": "Houseware Store",
+    "name": "Husgeråd",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/interior_decoration": {
-    "name": "Interior Decoration Store",
+    "name": "Inredningsaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/jewelry": {
-    "name": "Jeweler",
+    "name": "Juvelerare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -2152,282 +2152,282 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/kitchen": {
-    "name": "Kitchen Design Store",
+    "name": "Köksinredning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/laundry": {
-    "name": "Laundry",
+    "name": "Tvättinrättning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/leather": {
-    "name": "Leather Store",
+    "name": "Läderaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/locksmith": {
-    "name": "Locksmith",
+    "name": "Låssmed",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/lottery": {
-    "name": "Lottery Shop",
+    "name": "Lotteri",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/mall": {
-    "name": "Mall",
+    "name": "Köpcenter",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/massage": {
-    "name": "Massage Shop",
+    "name": "Massage",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/medical_supply": {
-    "name": "Medical Supply Store",
+    "name": "Medicinsk utrustning ",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/mobile_phone": {
-    "name": "Mobile Phone Store",
+    "name": "Mobiltelefoner",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/money_lender": {
-    "name": "Money Lender",
+    "name": "Långivare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "Valutor",
         "type": "multiCombo"
       }
     ]
   },
   "shop/motorcycle": {
-    "name": "Motorcycle Dealership",
+    "name": "Återförsäljare av motorcyklar",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/music": {
-    "name": "Music Store",
+    "name": "Musikaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/musical_instrument": {
-    "name": "Musical Instrument Store",
+    "name": "Musikinstrument",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/newsagent": {
-    "name": "Newspaper/Magazine Shop",
+    "name": "Tidningsaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/nutrition_supplements": {
-    "name": "Nutrition Supplements Store",
+    "name": "Hälsokost",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/optician": {
-    "name": "Optician",
+    "name": "Optiker",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/organic": {
-    "name": "Organic Goods Store",
+    "name": "Ekologiska livsmedel",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/outdoor": {
-    "name": "Outdoors Store",
+    "name": "Friluftsaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/paint": {
-    "name": "Paint Store",
+    "name": "Färgbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/pastry": {
-    "name": "Pastry Shop",
+    "name": "Konditori",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/pawnbroker": {
-    "name": "Pawn Shop",
+    "name": "Pantbank",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/perfumery": {
-    "name": "Perfume Store",
+    "name": "Parfymbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/pet": {
-    "name": "Pet Store",
+    "name": "Djurbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/photo": {
-    "name": "Photography Store",
+    "name": "Fotoaffär ",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/pyrotechnics": {
-    "name": "Fireworks Store",
+    "name": "Fyrverkerier",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/radiotechnics": {
-    "name": "Radio/Electronic Component Store",
+    "name": "Radio/Elektronikbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/religion": {
-    "name": "Religious Store",
+    "name": "Religiös butik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
@@ -2437,703 +2437,703 @@
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "Samfund",
         "type": "combo"
       }
     ]
   },
   "shop/scuba_diving": {
-    "name": "Scuba Diving Shop",
+    "name": "Dykarbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/seafood": {
-    "name": "Seafood Shop",
+    "name": "Fiskaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/second_hand": {
-    "name": "Consignment/Thrift Store",
+    "name": "Second hand",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "Second hand",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "Ja",
+          "no": "Nej",
+          "only": "Enbart"
         }
       }
     ]
   },
   "shop/shoes": {
-    "name": "Shoe Store",
+    "name": "Skoaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/sports": {
-    "name": "Sporting Goods Store",
+    "name": "Sportaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/stationery": {
-    "name": "Stationery Store",
+    "name": "Pappershandel",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/storage_rental": {
-    "name": "Storage Rental",
+    "name": "Hyrlager",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "Byggnad",
         "type": "combo"
       }
     ]
   },
   "shop/supermarket": {
-    "name": "Supermarket",
+    "name": "Snabbköp",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/tailor": {
-    "name": "Tailor",
+    "name": "Skräddare",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/tattoo": {
-    "name": "Tattoo Parlor",
+    "name": "Tatueringsstudio",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/tea": {
-    "name": "Tea Store",
+    "name": "Te-butik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/ticket": {
-    "name": "Ticket Seller",
+    "name": "Biljettförsäljning",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/tiles": {
-    "name": "Tile Shop",
+    "name": "Kakelbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/tobacco": {
-    "name": "Tobacco Shop",
+    "name": "Tobaksbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/toys": {
-    "name": "Toy Store",
+    "name": "Leksaksaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/trade": {
-    "name": "Trade Shop",
+    "name": "Proffshandel",
     "fields": [
       {
         "key": "trade",
-        "label": "Type",
+        "label": "Typ",
         "type": "typeCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/travel_agency": {
-    "name": "Travel Agency",
+    "name": "Resebyrå",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/tyres": {
-    "name": "Tire Store",
+    "name": "Däckfirma",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/vacuum_cleaner": {
-    "name": "Vacuum Cleaner Store",
+    "name": "Dammsugarbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/variety_store": {
-    "name": "Variety Store",
+    "name": "Fyndbutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/video_games": {
-    "name": "Video Game Store",
+    "name": "TV-spel",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/video": {
-    "name": "Video Store",
+    "name": "Videobutik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/watches": {
-    "name": "Watches Shop",
+    "name": "Klockaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/water_sports": {
-    "name": "Watersport/Swim Shop",
+    "name": "Vattensport/simning ",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/weapons": {
-    "name": "Weapon Shop",
+    "name": "Vapenaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/window_blind": {
-    "name": "Window Blind Store",
+    "name": "Persienner",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "shop/wine": {
-    "name": "Wine Shop",
+    "name": "Vinaffär",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "tourism/alpine_hut": {
-    "name": "Alpine Hut",
+    "name": "Fjällstation",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/apartment": {
-    "name": "Guest Apartment / Condo",
+    "name": "Turistlägenhet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Rum",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/aquarium": {
-    "name": "Aquarium",
+    "name": "Akvarium",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "tourism/attraction": {
-    "name": "Tourist Attraction",
+    "name": "Turistattraktion",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "tourism/camp_site": {
-    "name": "Campground",
+    "name": "Campingplats",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Avgift",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/caravan_site": {
-    "name": "RV Park",
+    "name": "Ställplats",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitet",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Avgift",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "Latrintömning ",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "Strömförsörjning",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/chalet": {
-    "name": "Holiday Cottage",
+    "name": "Stuga",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/gallery": {
-    "name": "Art Gallery",
+    "name": "Konstgalleri",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "tourism/guest_house": {
-    "name": "Guest House",
+    "name": "Gästhus",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Rum",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/hostel": {
-    "name": "Hostel",
+    "name": "Vandrarhem",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Rum",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
   },
   "tourism/hotel": {
-    "name": "Hotel",
+    "name": "Hotell",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "stars",
-        "label": "Stars",
+        "label": "Stjärnor",
         "type": "number"
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Rum",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
@@ -3143,47 +3143,47 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Rökning",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Rökning ej tillåtet",
+          "separated": "I rökområde, ej fysiskt separerat",
+          "isolated": "I rökområde, fysiskt separerat",
+          "outside": "Tillåtet utomhus",
+          "yes": "Tillåtet överallt",
+          "dedicated": "Dedikerat för rökare (t.ex. rökklubb)"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Rum",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetaccess",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
+          "yes": "Ja",
+          "no": "Nej",
           "wlan": "Wifi",
-          "wired": "Wired",
+          "wired": "Trådbunden",
           "terminal": "Terminal"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Avgift för internetåtkomst",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (Nätverksnamn)",
         "type": "text"
       }
     ]
@@ -3193,27 +3193,27 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "tourism/theme_park": {
-    "name": "Theme Park",
+    "name": "Nöjespark",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
   },
   "tourism/wilderness_hut": {
-    "name": "Wilderness Hut",
+    "name": "Stuga (för vandrare o.d.)",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]
@@ -3223,7 +3223,7 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Operatör",
         "type": "text"
       }
     ]

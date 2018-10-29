@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import Vue from 'vue';
+import VueCookies from 'vue-cookies';
 import VueTranslate from 'vue-translate-plugin';
 import { sync } from 'vuex-router-sync';
 import store from './store';
@@ -14,9 +15,11 @@ import it from './locales/it.json';
 import pl from './locales/pl.json';
 import ru from './locales/ru.json';
 import sv from './locales/sv.json';
-import zhTW from './locales/zh_TW.json';
+/* eslint-disable-next-line camelcase */
+import zh_TW from './locales/zh_TW.json';
 
 Vue.use(VueTranslate);
+Vue.use(VueCookies);
 Vue.locales({
   de,
   en,
@@ -27,7 +30,7 @@ Vue.locales({
   pl,
   ru,
   sv,
-  zhTW,
+  zh_TW,
 });
 
 sync(store, router);
@@ -42,7 +45,8 @@ new Vue({
   template: '<App/>',
   components: { App },
   created() {
-    this.$translate.setLang('de');
+    // default language
+    this.$translate.setLang('en');
   },
 });
 

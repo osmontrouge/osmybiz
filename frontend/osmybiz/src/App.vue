@@ -17,9 +17,6 @@
 
   export default {
     name: 'app',
-    mounted() {
-      this.$translate.setLang('de');
-    },
     components: {
       HeaderBar,
       ErrorMessage,

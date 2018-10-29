@@ -61,9 +61,19 @@ function getText(obj) {
   return obj._text;
 }
 
+function isIterable(obj) {
+  // checks for null and undefined
+  if (obj == null) {
+    return false;
+  }
+  return typeof obj[Symbol.iterator] === 'function';
+}
+
 function extractLanguages(userJson) {
   const langs = userJson.languages.lang;
-
+  if (!isIterable(langs)) {
+    return [langs];
+  }
   const languages = [];
   langs.forEach((l) => {
     languages.push(getText(l).slice(0, 2));

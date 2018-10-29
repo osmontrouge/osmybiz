@@ -1,3229 +1,3229 @@
 {
   "amenity/nursing_home": {
-    "name": "Nursing Home",
+    "name": "בית אבות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "social_facility",
-        "label": "Type",
+        "label": "סוג",
         "type": "combo"
       },
       {
         "key": "social_facility_for",
-        "label": "People Served",
+        "label": "כמות אנשים שניתן לשרת",
         "type": "combo"
       }
     ]
   },
   "amenity/register_office": {
-    "name": "Register Office",
+    "name": "משרד רישום",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/scrapyard": {
-    "name": "Scrap Yard",
+    "name": "מגרש גרוטאות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/animal_boarding": {
-    "name": "Animal Boarding Facility",
+    "name": "פנסיון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "animal_boarding",
-        "label": "For Animals",
+        "label": "לחיות",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_breeding": {
-    "name": "Animal Breeding Facility",
+    "name": "מתקן לגידול לבעלי חיים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "animal_breeding",
-        "label": "For Animals",
+        "label": "לחיות",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_shelter": {
-    "name": "Animal Shelter",
+    "name": "בית מחסה לחיות מחמד",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "animal_shelter",
-        "label": "For Animals",
+        "label": "לחיות",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/arts_centre": {
-    "name": "Arts Center",
+    "name": "מרכז אומנויות",
     "fields": []
   },
   "amenity/bank": {
-    "name": "Bank",
+    "name": "בנק",
     "fields": [
       {
         "key": "atm",
-        "label": "ATM",
+        "label": "כספומט",
         "type": "check"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "הזמנה-דרך-אשנב",
         "type": "check"
       }
     ]
   },
   "amenity/bar": {
-    "name": "Bar",
+    "name": "בר",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/bicycle_rental": {
-    "name": "Bicycle Rental",
+    "name": "השכרת אופניים",
     "fields": [
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       },
       {
         "key": "network",
-        "label": "Network",
+        "label": "רשת",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/biergarten": {
-    "name": "Beer Garden",
+    "name": "ביר גרדן",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/boat_rental": {
-    "name": "Boat Rental",
+    "name": "השכרת סירה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/bureau_de_change": {
-    "name": "Currency Exchange",
+    "name": "המרת מט״ח",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "סוגי מטבעות",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/bus_station": {
-    "name": "Bus Station",
+    "name": "תחנת אוטובוס",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "amenity/cafe": {
-    "name": "Cafe",
+    "name": "בית קפה",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "מטבחים",
         "type": "semiCombo"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/car_rental": {
-    "name": "Car Rental",
+    "name": "השכרת רכב",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/car_sharing": {
-    "name": "Car Sharing",
+    "name": "קארפול",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       }
     ]
   },
   "amenity/car_wash": {
-    "name": "Car Wash",
+    "name": "שטיפת רכב",
     "fields": []
   },
   "amenity/casino": {
-    "name": "Casino",
+    "name": "קזינו",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       }
     ]
   },
   "amenity/childcare": {
-    "name": "Nursery/Childcare",
+    "name": "גנון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/cinema": {
-    "name": "Cinema",
+    "name": "קולנוע",
     "fields": []
   },
   "amenity/clinic": {
-    "name": "Clinic",
+    "name": "מרפאה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "תחומי מומחיות",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/college": {
-    "name": "College Grounds",
+    "name": "גן המכללה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "amenity/community_centre": {
-    "name": "Community Center",
+    "name": "מרכז קהילתי",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/courthouse": {
-    "name": "Courthouse",
+    "name": "בית משפט",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/crematorium": {
-    "name": "Crematorium",
+    "name": "משרפה",
     "fields": []
   },
   "amenity/dentist": {
-    "name": "Dentist",
+    "name": "מרפאת שיניים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "תחומי מומחיות",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/doctors": {
-    "name": "Doctor",
+    "name": "רופא",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "תחומי מומחיות",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/dojo": {
-    "name": "Dojo / Martial Arts Academy",
+    "name": "דוג׳ו / מרכז לאומנויות לחימה",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "ספורט",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/driving_school": {
-    "name": "Driving School",
+    "name": "בית ספר לנהיגה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/embassy": {
-    "name": "Embassy",
+    "name": "שגרירות",
     "fields": [
       {
         "key": "country",
-        "label": "Country",
+        "label": "מדינה",
         "type": "combo"
       }
     ]
   },
   "amenity/fast_food": {
-    "name": "Fast Food",
+    "name": "מזון מהיר",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "מטבחים",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "איסוף עצמי",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "יש",
+          "no": "אין",
+          "only": "איסוף עצמי בלבד"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "משלוח",
         "type": "check"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "הזמנה-דרך-אשנב",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/ferry_terminal": {
-    "name": "Ferry Terminal",
+    "name": "מסוף מעבורת",
     "fields": [
       {
         "key": "network",
-        "label": "Network",
+        "label": "רשת",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/fire_station": {
-    "name": "Fire Station",
+    "name": "תחנת כיבוי אש",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/food_court": {
-    "name": "Food Court",
+    "name": "מתחם מזון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/fuel": {
-    "name": "Gas Station",
+    "name": "תחנת דלק",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "fuel_multi",
-        "label": "Fuel Types",
+        "label": "סוגי דלק",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/hospital": {
-    "name": "Hospital Grounds",
+    "name": "גן בית חולים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "תחומי מומחיות",
         "type": "semiCombo"
       },
       {
         "key": "emergency",
-        "label": "Emergency",
+        "label": "חירום",
         "type": "check"
       }
     ]
   },
   "amenity/ice_cream": {
-    "name": "Ice Cream Shop",
+    "name": "חנות גלידה",
     "fields": [
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "איסוף עצמי",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "יש",
+          "no": "אין",
+          "only": "איסוף עצמי בלבד"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "משלוח",
         "type": "check"
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/internet_cafe": {
-    "name": "Internet Cafe",
+    "name": "קפה אינטרנט",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/kindergarten": {
-    "name": "Preschool/Kindergarten Grounds",
+    "name": "גן חובה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/library": {
-    "name": "Library",
+    "name": "ספריה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "amenity/marketplace": {
-    "name": "Marketplace",
+    "name": "שוק",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/nightclub": {
-    "name": "Nightclub",
+    "name": "מועדון לילה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       }
     ]
   },
   "amenity/pharmacy": {
-    "name": "Pharmacy",
+    "name": "בית מרקחת",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "הזמנה-דרך-אשנב",
         "type": "check"
       }
     ]
   },
   "amenity/planetarium": {
-    "name": "Planetarium",
+    "name": "מצפה כוכבים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/police": {
-    "name": "Police",
+    "name": "משטרה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/post_office": {
-    "name": "Post Office",
+    "name": "סניף דואר",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/prison": {
-    "name": "Prison Grounds",
+    "name": "מגרש כלא",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/pub": {
-    "name": "Pub",
+    "name": "פאב",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/ranger_station": {
-    "name": "Ranger Station",
+    "name": "תחנת פקחים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/recycling_centre": {
-    "name": "Recycling Center",
+    "name": "מרכז מיחזור",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "recycling_accepts",
-        "label": "Accepts",
+        "label": "מקבל",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/restaurant": {
-    "name": "Restaurant",
+    "name": "מסעדה",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "מטבחים",
         "type": "semiCombo"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "איסוף עצמי",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "יש",
+          "no": "אין",
+          "only": "איסוף עצמי בלבד"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "משלוח",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "ישיבה בחוץ",
         "type": "check"
       }
     ]
   },
   "amenity/school": {
-    "name": "School Grounds",
+    "name": "מגרש בית ספר",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/studio": {
-    "name": "Studio",
+    "name": "סטודיו",
     "fields": [
       {
         "key": "studio",
-        "label": "Type",
+        "label": "סוג",
         "type": "combo"
       }
     ]
   },
   "amenity/taxi": {
-    "name": "Taxi Stand",
+    "name": "עמדת מוניות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       }
     ]
   },
   "amenity/theatre": {
-    "name": "Theater",
+    "name": "תאטרון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/townhall": {
-    "name": "Town Hall",
+    "name": "בניין עירייה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "amenity/university": {
-    "name": "University Grounds",
+    "name": "מתחם אוניברסיטה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "amenity/veterinary": {
-    "name": "Veterinary",
+    "name": "וטרינר",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "leisure/adult_gaming_centre": {
-    "name": "Adult Gaming Center",
+    "name": "מרכז בידור למבוגרים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       }
     ]
   },
   "leisure/bowling_alley": {
-    "name": "Bowling Alley",
+    "name": "אולם כדורת",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       }
     ]
   },
   "leisure/dance": {
-    "name": "Dance Hall",
+    "name": "היכל ריקודים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "leisure/fitness_centre": {
-    "name": "Gym / Fitness Center",
+    "name": "מכון כושר",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "ספורט",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/golf_course": {
-    "name": "Golf Course",
+    "name": "מגרש גולף",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "leisure/hackerspace": {
-    "name": "Hackerspace",
+    "name": "משרד היי טק משותף",
     "fields": []
   },
   "leisure/horse_riding": {
-    "name": "Horseback Riding Facility",
+    "name": "מתקן רכיבה על סוסים",
     "fields": [
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "הכניסה מותרת",
         "type": "combo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "בניין",
         "type": "combo"
       }
     ]
   },
   "leisure/ice_rink": {
-    "name": "Ice Rink",
+    "name": "החלקרח",
     "fields": [
       {
         "key": "seasonal",
-        "label": "Seasonal",
+        "label": "עונתי",
         "type": "check"
       },
       {
         "key": "sport_ice",
-        "label": "Sports",
+        "label": "ספורט",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "בניין",
         "type": "combo"
       }
     ]
   },
   "leisure/marina": {
-    "name": "Marina",
+    "name": "מרינה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "עמלה",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "תחנת סילוק",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "הספק חשמל",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "leisure/miniature_golf": {
-    "name": "Miniature Golf",
+    "name": "מיני-גולף",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "leisure/resort": {
-    "name": "Resort",
+    "name": "אתר נופש",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "leisure/sauna": {
-    "name": "Sauna",
+    "name": "סאונה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "הכניסה מותרת",
         "type": "combo"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "עמלה",
         "type": "check"
       }
     ]
   },
   "leisure/sports_centre": {
-    "name": "Sports Center / Complex",
+    "name": "מרכז ספורט",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "ספורט",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/stadium": {
-    "name": "Stadium",
+    "name": "אצטדיון",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "ספורט",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/water_park": {
-    "name": "Water Park",
+    "name": "פארק מים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "office/physician": {
-    "name": "Physician",
+    "name": "רופא",
     "fields": []
   },
   "office/travel_agent": {
-    "name": "Travel Agency",
+    "name": "סוכנות נסיעות",
     "fields": []
   },
   "office/accountant": {
-    "name": "Accountant Office",
+    "name": "משרד רואה חשבון",
     "fields": []
   },
   "office/administrative": {
-    "name": "Administrative Office",
+    "name": "משרד אדמינסטרטיבי",
     "fields": []
   },
   "office/adoption_agency": {
-    "name": "Adoption Agency",
+    "name": "סוכנות אימוץ",
     "fields": []
   },
   "office/advertising_agency": {
-    "name": "Advertising Agency",
+    "name": "סוכנות פרסום",
     "fields": []
   },
   "office/architect": {
-    "name": "Architect Office",
+    "name": "משרד אדריכלים",
     "fields": []
   },
   "office/association": {
-    "name": "Nonprofit Organization Office",
+    "name": "ארגון ללא מטרת רווח",
     "fields": []
   },
   "office/charity": {
-    "name": "Charity Office",
+    "name": "משרד צדקה",
     "fields": []
   },
   "office/educational_institution": {
-    "name": "Educational Institution",
+    "name": "מוסד חינוכי",
     "fields": []
   },
   "office/employment_agency": {
-    "name": "Employment Agency",
+    "name": "סוכנות כוח אדם",
     "fields": []
   },
   "office/energy_supplier": {
-    "name": "Energy Supplier Office",
+    "name": "משרד ספק חשמל",
     "fields": []
   },
   "office/estate_agent": {
-    "name": "Real Estate Office",
+    "name": "משרד נדל״ן",
     "fields": []
   },
   "office/financial": {
-    "name": "Financial Office",
+    "name": "משרד פיננסי",
     "fields": []
   },
   "office/forestry": {
-    "name": "Forestry Office",
+    "name": "משרד יעור",
     "fields": []
   },
   "office/foundation": {
-    "name": "Foundation Office",
+    "name": "משרד קרן",
     "fields": []
   },
   "office/government": {
-    "name": "Government Office",
+    "name": "משרד ממשלתי",
     "fields": []
   },
   "office/guide": {
-    "name": "Tour Guide Office",
+    "name": "משרד תיירות",
     "fields": []
   },
   "office/insurance": {
-    "name": "Insurance Office",
+    "name": "משרד ביטוח",
     "fields": []
   },
   "office/it": {
-    "name": "Information Technology Office",
+    "name": "משרד שירותי מחשוב",
     "fields": []
   },
   "office/lawyer": {
-    "name": "Law Office",
+    "name": "משרד עורכי דין",
     "fields": []
   },
   "office/moving_company": {
-    "name": "Moving Company Office",
+    "name": "משרד תובלה",
     "fields": []
   },
   "office/newspaper": {
-    "name": "Newspaper Office",
+    "name": "משרד עיתונאות",
     "fields": []
   },
   "office/ngo": {
-    "name": "NGO Office",
+    "name": "משרד ארגון לא ממשלתי",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       }
     ]
   },
   "office/notary": {
-    "name": "Notary Office",
+    "name": "משרד נוטריון",
     "fields": []
   },
   "office/political_party": {
-    "name": "Political Party",
+    "name": "משרד מפלגה פוליטית",
     "fields": []
   },
   "office/private_investigator": {
-    "name": "Private Investigator Office",
+    "name": "משרד חוקר פרטי",
     "fields": []
   },
   "office/quango": {
-    "name": "Quasi-NGO Office",
+    "name": "משרד ארגון חצי לא ממשלתי",
     "fields": []
   },
   "office/research": {
-    "name": "Research Office",
+    "name": "משרד מחקר",
     "fields": []
   },
   "office/surveyor": {
-    "name": "Surveyor Office",
+    "name": "משרד מודד",
     "fields": []
   },
   "office/tax_advisor": {
-    "name": "Tax Advisor Office",
+    "name": "משרד יועץ מס",
     "fields": []
   },
   "office/telecommunication": {
-    "name": "Telecom Office",
+    "name": "משרד חברת תקשורת",
     "fields": []
   },
   "office/therapist": {
-    "name": "Therapist Office",
+    "name": "משרד מטפל",
     "fields": []
   },
   "office/water_utility": {
-    "name": "Water Utility Office",
+    "name": "משרד לשירות ציבורי - מים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/fishmonger": {
-    "name": "Fishmonger",
+    "name": "דוכן דגים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/furnace": {
-    "name": "Furnace Store",
+    "name": "חנות כבשנים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/alcohol": {
-    "name": "Liquor Store",
+    "name": "חנות משקאות חריפים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "הזמנה-דרך-אשנב",
         "type": "check"
       }
     ]
   },
   "shop/anime": {
-    "name": "Anime Shop",
+    "name": "חנות אנימה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/antiques": {
-    "name": "Antiques Shop",
+    "name": "חנות עתיקות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/appliance": {
-    "name": "Appliance Store",
+    "name": "חנות כלים חשמלים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/art": {
-    "name": "Art Store",
+    "name": "חנות לחפצי אומנות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/baby_goods": {
-    "name": "Baby Goods Store",
+    "name": "חנות לדברי תינוקות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/bag": {
-    "name": "Bag/Luggage Store",
+    "name": "חנות מזוודות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/bakery": {
-    "name": "Bakery",
+    "name": "מאפייה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/bathroom_furnishing": {
-    "name": "Bathroom Furnishing Store",
+    "name": "חנות רהיטי שירותים/מקלחת",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/beauty": {
-    "name": "Beauty Shop",
+    "name": "חנות מוצרי יופי/טיפוח",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "beauty",
-        "label": "Shop Type",
+        "label": "סוג החנות",
         "type": "combo"
       }
     ]
   },
   "shop/bed": {
-    "name": "Bedding/Mattress Store",
+    "name": "חנות מזרנים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/beverages": {
-    "name": "Beverage Store",
+    "name": "חנות משקאות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/bicycle": {
-    "name": "Bicycle Shop",
+    "name": "חנות אופניים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "service/bicycle",
-        "label": "Services",
+        "label": "שירותים",
         "type": "multiCombo"
       }
     ]
   },
   "shop/bookmaker": {
-    "name": "Bookmaker",
+    "name": "כורך ספרים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/books": {
-    "name": "Book Store",
+    "name": "חנות ספרים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "shop/boutique": {
-    "name": "Boutique",
+    "name": "בוטיק",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "ביגוד",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/butcher": {
-    "name": "Butcher",
+    "name": "קצב",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/candles": {
-    "name": "Candle Shop",
+    "name": "חנות נרות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/car_parts": {
-    "name": "Car Parts Store",
+    "name": "חנות חלקי מכוניות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/car_repair": {
-    "name": "Car Repair Shop",
+    "name": "מוסך",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "שירותים",
         "type": "multiCombo"
       }
     ]
   },
   "shop/car": {
-    "name": "Car Dealership",
+    "name": "סוכנות רכב",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "מכירת משומשים",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "יש",
+          "no": "אין",
+          "only": "בלבד"
         }
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "שירותים",
         "type": "multiCombo"
       }
     ]
   },
   "shop/carpet": {
-    "name": "Carpet Store",
+    "name": "חנות שטיחים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/charity": {
-    "name": "Charity Store",
+    "name": "חנות צדקה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "מכירת משומשים",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "יש",
+          "no": "אין",
+          "only": "בלבד"
         }
       }
     ]
   },
   "shop/cheese": {
-    "name": "Cheese Store",
+    "name": "חנות גבינות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/chemist": {
-    "name": "Drugstore",
+    "name": "בית מרקחת",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/chocolate": {
-    "name": "Chocolate Store",
+    "name": "חנות שוקולד",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/clothes": {
-    "name": "Clothing Store",
+    "name": "חנות בגדים",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "ביגוד",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/coffee": {
-    "name": "Coffee Store",
+    "name": "חנות קפה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/computer": {
-    "name": "Computer Store",
+    "name": "חנות מחשבים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/confectionery": {
-    "name": "Candy Store",
+    "name": "חנות ממתקים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/convenience": {
-    "name": "Convenience Store",
+    "name": "חנות נוחות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/copyshop": {
-    "name": "Copy Store",
+    "name": "חנות  העתקות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/cosmetics": {
-    "name": "Cosmetics Store",
+    "name": "חנות קוסמטיקה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/craft": {
-    "name": "Arts and Crafts Store",
+    "name": "חנות חפצי אומנות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/curtain": {
-    "name": "Curtain Store",
+    "name": "חנות וילונות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/dairy": {
-    "name": "Dairy Store",
+    "name": "חנות מוצרי חלב",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/deli": {
-    "name": "Deli",
+    "name": "מעדניה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/department_store": {
-    "name": "Department Store",
+    "name": "חנות  כלבו",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/doityourself": {
-    "name": "DIY Store",
+    "name": "חנות עשה זאת בעצמך",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/dry_cleaning": {
-    "name": "Dry Cleaner",
+    "name": "ניקוי יבש",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/e-cigarette": {
-    "name": "E-Cigarette Shop",
+    "name": "חנות מוצרי עישון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/electronics": {
-    "name": "Electronics Store",
+    "name": "חנות אלקטרוניקה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/erotic": {
-    "name": "Erotic Store",
+    "name": "חנות ארוטיקה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/fabric": {
-    "name": "Fabric Store",
+    "name": "חנות אריגה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/farm": {
-    "name": "Produce Stand",
+    "name": "דוכן ירקות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/fashion": {
-    "name": "Fashion Store",
+    "name": "חנות אופנה",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "ביגוד",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/florist": {
-    "name": "Florist",
+    "name": "חנות פרחים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/frame": {
-    "name": "Framing Shop",
+    "name": "חנות חקלאות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/funeral_directors": {
-    "name": "Funeral Home",
+    "name": "קברן",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "religion",
-        "label": "Religion",
+        "label": "דת",
         "type": "combo"
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "פלג",
         "type": "combo"
       }
     ]
   },
   "shop/furniture": {
-    "name": "Furniture Store",
+    "name": "חנות רהיטים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/garden_centre": {
-    "name": "Garden Center",
+    "name": "חנות גננות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/gas": {
-    "name": "Bottled Gas Shop",
+    "name": "חנות גז",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/gift": {
-    "name": "Gift Shop",
+    "name": "חנות מתנות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/greengrocer": {
-    "name": "Greengrocer",
+    "name": "ירקן",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/hairdresser": {
-    "name": "Hairdresser",
+    "name": "מעצב שיער",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/hardware": {
-    "name": "Hardware Store",
+    "name": "חנות אספקה טכנית",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/hearing_aids": {
-    "name": "Hearing Aids Store",
+    "name": "חנות מכשירי שמיעה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/herbalist": {
-    "name": "Herbalist",
+    "name": "חנות צמחי מרפא",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/hifi": {
-    "name": "Hifi Store",
+    "name": "חנות הגברה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/houseware": {
-    "name": "Houseware Store",
+    "name": "חנות כלי בית",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/interior_decoration": {
-    "name": "Interior Decoration Store",
+    "name": "חנות עיצוב פנים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/jewelry": {
-    "name": "Jeweler",
+    "name": "תכשיטן",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/kiosk": {
-    "name": "Kiosk",
+    "name": "קיוסק",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/kitchen": {
-    "name": "Kitchen Design Store",
+    "name": "חנות עיצוב המטבח",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/laundry": {
-    "name": "Laundry",
+    "name": "כביסה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/leather": {
-    "name": "Leather Store",
+    "name": "חנות עור",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/locksmith": {
-    "name": "Locksmith",
+    "name": "מנעולן",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/lottery": {
-    "name": "Lottery Shop",
+    "name": "חנות לוטו",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/mall": {
-    "name": "Mall",
+    "name": "קניון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/massage": {
-    "name": "Massage Shop",
+    "name": "מכון עיסוי",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/medical_supply": {
-    "name": "Medical Supply Store",
+    "name": "חנות ציוד רפואי",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/mobile_phone": {
-    "name": "Mobile Phone Store",
+    "name": "חנות טלפונים ניידים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/money_lender": {
-    "name": "Money Lender",
+    "name": "מלווה בריבית",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "סוגי מטבעות",
         "type": "multiCombo"
       }
     ]
   },
   "shop/motorcycle": {
-    "name": "Motorcycle Dealership",
+    "name": "חנות אופנועים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/music": {
-    "name": "Music Store",
+    "name": "חנות מוזיקה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/musical_instrument": {
-    "name": "Musical Instrument Store",
+    "name": "חנות כלי נגינה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/newsagent": {
-    "name": "Newspaper/Magazine Shop",
+    "name": "חנות עיתונים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/nutrition_supplements": {
-    "name": "Nutrition Supplements Store",
+    "name": "חנות ויטמינים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/optician": {
-    "name": "Optician",
+    "name": "אופטיקאי",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/organic": {
-    "name": "Organic Goods Store",
+    "name": "חנות למוצרים אורגניים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/outdoor": {
-    "name": "Outdoors Store",
+    "name": "חנות רהיטי גינה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/paint": {
-    "name": "Paint Store",
+    "name": "חנות צבע",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/pastry": {
-    "name": "Pastry Shop",
+    "name": "בית מאפה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/pawnbroker": {
-    "name": "Pawn Shop",
+    "name": "חנות יד שניה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/perfumery": {
-    "name": "Perfume Store",
+    "name": "חנות בשמים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/pet": {
-    "name": "Pet Store",
+    "name": "חנות לחיות מחמד",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/photo": {
-    "name": "Photography Store",
+    "name": "חנות צילום",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/pyrotechnics": {
-    "name": "Fireworks Store",
+    "name": "חנות זיקוקים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/radiotechnics": {
-    "name": "Radio/Electronic Component Store",
+    "name": "חנות אלקטרוניקה ורדיו",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/religion": {
-    "name": "Religious Store",
+    "name": "חנות לתשמישי דת",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "religion",
-        "label": "Religion",
+        "label": "דת",
         "type": "combo"
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "פלג",
         "type": "combo"
       }
     ]
   },
   "shop/scuba_diving": {
-    "name": "Scuba Diving Shop",
+    "name": "חנות לצוללנים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/seafood": {
-    "name": "Seafood Shop",
+    "name": "חנות למאכלי ים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/second_hand": {
-    "name": "Consignment/Thrift Store",
+    "name": "חנות יד שניה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "מכירת משומשים",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "יש",
+          "no": "אין",
+          "only": "בלבד"
         }
       }
     ]
   },
   "shop/shoes": {
-    "name": "Shoe Store",
+    "name": "חנות נעליים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/sports": {
-    "name": "Sporting Goods Store",
+    "name": "חנות לאביזרי ספורט",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/stationery": {
-    "name": "Stationery Store",
+    "name": "חנות לדברי כתיבה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/storage_rental": {
-    "name": "Storage Rental",
+    "name": "שטח אחסון להשכרה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "בניין",
         "type": "combo"
       }
     ]
   },
   "shop/supermarket": {
-    "name": "Supermarket",
+    "name": "סופרמרקט",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/tailor": {
-    "name": "Tailor",
+    "name": "חייט",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/tattoo": {
-    "name": "Tattoo Parlor",
+    "name": "מכון קעקועים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/tea": {
-    "name": "Tea Store",
+    "name": "חנות תה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/ticket": {
-    "name": "Ticket Seller",
+    "name": "עמדת מכירת כרטיסים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/tiles": {
-    "name": "Tile Shop",
+    "name": "חנות מרצפות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/tobacco": {
-    "name": "Tobacco Shop",
+    "name": "חנות טבק",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/toys": {
-    "name": "Toy Store",
+    "name": "חנות צעצועים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/trade": {
-    "name": "Trade Shop",
+    "name": "חנות קמעונאית",
     "fields": [
       {
         "key": "trade",
-        "label": "Type",
+        "label": "סוג",
         "type": "typeCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/travel_agency": {
-    "name": "Travel Agency",
+    "name": "סוכנות נסיעות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/tyres": {
-    "name": "Tire Store",
+    "name": "חנות צמיגים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/vacuum_cleaner": {
-    "name": "Vacuum Cleaner Store",
+    "name": "חנות שואבי אבק",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/variety_store": {
-    "name": "Variety Store",
+    "name": "חנות מגוון מוצרים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/video_games": {
-    "name": "Video Game Store",
+    "name": "חנות למשחקי מחשב",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/video": {
-    "name": "Video Store",
+    "name": "חנות סרטים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/watches": {
-    "name": "Watches Shop",
+    "name": "שען",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/water_sports": {
-    "name": "Watersport/Swim Shop",
+    "name": "חנות שחייה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/weapons": {
-    "name": "Weapon Shop",
+    "name": "חנות נשק קר",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/window_blind": {
-    "name": "Window Blind Store",
+    "name": "חנות וילונות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "shop/wine": {
-    "name": "Wine Shop",
+    "name": "חנות יינות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/alpine_hut": {
-    "name": "Alpine Hut",
+    "name": "בקטה הררית",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/apartment": {
-    "name": "Guest Apartment / Condo",
+    "name": "דירה לאורחים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "חדרים",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/aquarium": {
-    "name": "Aquarium",
+    "name": "אקווריום",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/attraction": {
-    "name": "Tourist Attraction",
+    "name": "אתר תיירותי",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/camp_site": {
-    "name": "Campground",
+    "name": "אתר מחנאות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "עמלה",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/caravan_site": {
-    "name": "RV Park",
+    "name": "מגרש קרוונים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "קיבולת",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "עמלה",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "תחנת סילוק",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "הספק חשמל",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/chalet": {
-    "name": "Holiday Cottage",
+    "name": "בקתה לחגים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/gallery": {
-    "name": "Art Gallery",
+    "name": "גלריית אומנות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/guest_house": {
-    "name": "Guest House",
+    "name": "בית הארחה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "חדרים",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/hostel": {
-    "name": "Hostel",
+    "name": "אכסנייה",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "חדרים",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/hotel": {
-    "name": "Hotel",
+    "name": "מלון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "stars",
-        "label": "Stars",
+        "label": "כוכבים",
         "type": "number"
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "חדרים",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/motel": {
-    "name": "Motel",
+    "name": "מלון דרכים",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "העישון מותר",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "אסור לעשן",
+          "separated": "באזורי עישון, ללא הפרדה פיזית",
+          "isolated": "מותר לעשן באזור עישון",
+          "outside": "מותר לעשן בחוץ",
+          "yes": "מותר לעשן בכל המתחם",
+          "dedicated": "מיועד למעשנים"
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "חדרים",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "גישה לאינטרנט",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "יש",
+          "no": "אין",
+          "wlan": "אלחוטי",
+          "wired": "קווי",
+          "terminal": "מסוף"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "עמלת גישה לאינטרנט",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (שם הרשת)",
         "type": "text"
       }
     ]
   },
   "tourism/museum": {
-    "name": "Museum",
+    "name": "מוזיאון",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/theme_park": {
-    "name": "Theme Park",
+    "name": "לונה פארק",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/wilderness_hut": {
-    "name": "Wilderness Hut",
+    "name": "בקתת טבע",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]
   },
   "tourism/zoo": {
-    "name": "Zoo",
+    "name": "גן חיות",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "מפעיל",
         "type": "text"
       }
     ]

@@ -1,91 +1,91 @@
 {
   "amenity/nursing_home": {
-    "name": "Nursing Home",
+    "name": "Ápolóotthon",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "social_facility",
-        "label": "Type",
+        "label": "Típus",
         "type": "combo"
       },
       {
         "key": "social_facility_for",
-        "label": "People Served",
+        "label": "Célcsoport",
         "type": "combo"
       }
     ]
   },
   "amenity/register_office": {
-    "name": "Register Office",
+    "name": "Anyakönyvi hivatal",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/scrapyard": {
-    "name": "Scrap Yard",
+    "name": "Szeméttelep",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/animal_boarding": {
-    "name": "Animal Boarding Facility",
+    "name": "Állatpanzió",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "animal_boarding",
-        "label": "For Animals",
+        "label": "Állatoknak",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_breeding": {
-    "name": "Animal Breeding Facility",
+    "name": "Állattenyésztő",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "animal_breeding",
-        "label": "For Animals",
+        "label": "Állatoknak",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/animal_shelter": {
-    "name": "Animal Shelter",
+    "name": "Állatmenhely",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "animal_shelter",
-        "label": "For Animals",
+        "label": "Állatoknak",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/arts_centre": {
-    "name": "Arts Center",
+    "name": "Művészeti központ",
     "fields": []
   },
   "amenity/bank": {
@@ -93,3047 +93,2986 @@
     "fields": [
       {
         "key": "atm",
-        "label": "ATM",
+        "label": "Bankautomata",
         "type": "check"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Autóval használható",
         "type": "check"
       }
     ]
   },
   "amenity/bar": {
-    "name": "Bar",
+    "name": "Bár",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/bicycle_rental": {
-    "name": "Bicycle Rental",
+    "name": "Kerékpárkölcsönző",
     "fields": [
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       },
       {
         "key": "network",
-        "label": "Network",
+        "label": "Hálózat",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
-      }
-    ]
-  },
-  "amenity/biergarten": {
-    "name": "Beer Garden",
-    "fields": [
-      {
-        "key": "smoking",
-        "label": "Smoking",
-        "type": "combo",
-        "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
-        }
-      },
-      {
-        "key": "outdoor_seating",
-        "label": "Outdoor Seating",
-        "type": "check"
       }
     ]
   },
   "amenity/boat_rental": {
-    "name": "Boat Rental",
+    "name": "Hajókölcsönző",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/bureau_de_change": {
-    "name": "Currency Exchange",
+    "name": "Pénzváltó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "Pénznemtípusok",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/bus_station": {
-    "name": "Bus Station",
+    "name": "Buszpályaudvar",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "amenity/cafe": {
-    "name": "Cafe",
+    "name": "Kávézó",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "Konyhák",
         "type": "semiCombo"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/car_rental": {
-    "name": "Car Rental",
+    "name": "Autókölcsönző",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/car_sharing": {
-    "name": "Car Sharing",
+    "name": "Autómegosztó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       }
     ]
   },
   "amenity/car_wash": {
-    "name": "Car Wash",
+    "name": "Autómosó",
     "fields": []
   },
   "amenity/casino": {
-    "name": "Casino",
+    "name": "Kaszinó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       }
     ]
   },
   "amenity/childcare": {
-    "name": "Nursery/Childcare",
+    "name": "Bölcsőde",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/cinema": {
-    "name": "Cinema",
+    "name": "Mozi",
     "fields": []
   },
   "amenity/clinic": {
-    "name": "Clinic",
+    "name": "Rendelőintézet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialitások",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/college": {
-    "name": "College Grounds",
+    "name": "Főiskola",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "amenity/community_centre": {
-    "name": "Community Center",
+    "name": "Közösségi ház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/courthouse": {
-    "name": "Courthouse",
+    "name": "Bíróság",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/crematorium": {
-    "name": "Crematorium",
+    "name": "Krematórium",
     "fields": []
   },
   "amenity/dentist": {
-    "name": "Dentist",
+    "name": "Fogorvos",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialitások",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/doctors": {
-    "name": "Doctor",
+    "name": "Orvos",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialitások",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/dojo": {
-    "name": "Dojo / Martial Arts Academy",
+    "name": "Harcművészeti edzőterem / dodzso",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sportok",
         "type": "semiCombo"
       }
     ]
   },
   "amenity/driving_school": {
-    "name": "Driving School",
+    "name": "Autósiskola",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/embassy": {
-    "name": "Embassy",
+    "name": "Külképviselet",
     "fields": [
       {
         "key": "country",
-        "label": "Country",
+        "label": "Ország",
         "type": "combo"
       }
     ]
   },
   "amenity/fast_food": {
-    "name": "Fast Food",
+    "name": "Gyorsétterem",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "Konyhák",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "Ételek elvitelre ",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "Igen",
+          "no": "Nem",
+          "only": "Csak elvitel"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "Házhozszállítás",
         "type": "check"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Autóval használható",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/ferry_terminal": {
-    "name": "Ferry Terminal",
+    "name": "Kompállomás / Terminál",
     "fields": [
       {
         "key": "network",
-        "label": "Network",
+        "label": "Hálózat",
         "type": "text"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/fire_station": {
-    "name": "Fire Station",
+    "name": "Tűzoltóság",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/food_court": {
-    "name": "Food Court",
+    "name": "Étkezőtér",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/fuel": {
-    "name": "Gas Station",
+    "name": "Benzinkút",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "fuel_multi",
-        "label": "Fuel Types",
+        "label": "Üzemanyag típusok",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/hospital": {
-    "name": "Hospital Grounds",
+    "name": "Kórház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "healthcare/speciality",
-        "label": "Specialties",
+        "label": "Specialitások",
         "type": "semiCombo"
       },
       {
         "key": "emergency",
-        "label": "Emergency",
+        "label": "Vészhelyzet",
         "type": "check"
       }
     ]
   },
   "amenity/ice_cream": {
-    "name": "Ice Cream Shop",
+    "name": "Fagylaltozó",
     "fields": [
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "Ételek elvitelre ",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "Igen",
+          "no": "Nem",
+          "only": "Csak elvitel"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "Házhozszállítás",
         "type": "check"
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/internet_cafe": {
-    "name": "Internet Cafe",
+    "name": "Internetkávézó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/kindergarten": {
-    "name": "Preschool/Kindergarten Grounds",
+    "name": "Óvoda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/library": {
-    "name": "Library",
+    "name": "Könyvtár",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "amenity/marketplace": {
-    "name": "Marketplace",
+    "name": "Piac",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/nightclub": {
-    "name": "Nightclub",
+    "name": "Diszkó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       }
     ]
   },
   "amenity/pharmacy": {
-    "name": "Pharmacy",
+    "name": "Gyógyszertár",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Autóval használható",
         "type": "check"
       }
     ]
   },
   "amenity/planetarium": {
-    "name": "Planetarium",
+    "name": "Planetárium",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/police": {
-    "name": "Police",
+    "name": "Rendőrség",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/post_office": {
-    "name": "Post Office",
+    "name": "Posta",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/prison": {
-    "name": "Prison Grounds",
+    "name": "Börtön",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/pub": {
-    "name": "Pub",
+    "name": "Kocsma",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/ranger_station": {
-    "name": "Ranger Station",
+    "name": "Nemzeti park látogatóközpontja",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/recycling_centre": {
-    "name": "Recycling Center",
+    "name": "Hulladékudvar",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "recycling_accepts",
-        "label": "Accepts",
+        "label": "Elfogad",
         "type": "multiCombo"
       }
     ]
   },
   "amenity/restaurant": {
-    "name": "Restaurant",
+    "name": "Étterem",
     "fields": [
       {
         "key": "cuisine",
-        "label": "Cuisines",
+        "label": "Konyhák",
         "type": "semiCombo"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       },
       {
         "key": "takeaway",
-        "label": "Takeaway",
+        "label": "Ételek elvitelre ",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Takeaway Only"
+          "yes": "Igen",
+          "no": "Nem",
+          "only": "Csak elvitel"
         }
       },
       {
         "key": "delivery",
-        "label": "Delivery",
+        "label": "Házhozszállítás",
         "type": "check"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "outdoor_seating",
-        "label": "Outdoor Seating",
+        "label": "Kiülős helyek",
         "type": "check"
       }
     ]
   },
   "amenity/school": {
-    "name": "School Grounds",
+    "name": "Iskola",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/studio": {
-    "name": "Studio",
+    "name": "Stúdió",
     "fields": [
       {
         "key": "studio",
-        "label": "Type",
+        "label": "Típus",
         "type": "combo"
       }
     ]
   },
   "amenity/taxi": {
-    "name": "Taxi Stand",
+    "name": "Taxiállomás",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       }
     ]
   },
   "amenity/theatre": {
-    "name": "Theater",
+    "name": "Színház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/townhall": {
-    "name": "Town Hall",
+    "name": "Városháza",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "amenity/university": {
-    "name": "University Grounds",
+    "name": "Egyetem",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "amenity/veterinary": {
-    "name": "Veterinary",
+    "name": "Állatorvos",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "leisure/adult_gaming_centre": {
-    "name": "Adult Gaming Center",
+    "name": "Felnőtt játékközpont",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       }
     ]
   },
   "leisure/bowling_alley": {
-    "name": "Bowling Alley",
+    "name": "Bowlingpálya",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       }
     ]
   },
   "leisure/dance": {
-    "name": "Dance Hall",
+    "name": "Táncterem",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "leisure/fitness_centre": {
-    "name": "Gym / Fitness Center",
+    "name": "Edzőterem / Fitneszklub",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sportok",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/golf_course": {
-    "name": "Golf Course",
+    "name": "Golfpálya",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "leisure/hackerspace": {
-    "name": "Hackerspace",
+    "name": "Alkotóműhely",
     "fields": []
   },
   "leisure/horse_riding": {
-    "name": "Horseback Riding Facility",
+    "name": "Lovasiskola",
     "fields": [
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "Használat engedélyezett",
         "type": "combo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "Épület",
         "type": "combo"
       }
     ]
   },
   "leisure/ice_rink": {
-    "name": "Ice Rink",
+    "name": "Jégpálya",
     "fields": [
       {
         "key": "seasonal",
-        "label": "Seasonal",
+        "label": "Időszakos",
         "type": "check"
       },
       {
         "key": "sport_ice",
-        "label": "Sports",
+        "label": "Sportok",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "Épület",
         "type": "combo"
       }
     ]
   },
   "leisure/marina": {
-    "name": "Marina",
+    "name": "Kishajókikötő",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Díj",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "WC ártalmatlanítás",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "Elektromos csatlakozás",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "leisure/miniature_golf": {
-    "name": "Miniature Golf",
+    "name": "Minigolf",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "leisure/resort": {
-    "name": "Resort",
+    "name": "Üdülőhely",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "leisure/sauna": {
-    "name": "Sauna",
+    "name": "Szauna",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "access_simple",
-        "label": "Allowed Access",
+        "label": "Használat engedélyezett",
         "type": "combo"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Díj",
         "type": "check"
       }
     ]
   },
   "leisure/sports_centre": {
-    "name": "Sports Center / Complex",
+    "name": "Sportközpont / komplexum",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sportok",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/stadium": {
-    "name": "Stadium",
+    "name": "Stadion",
     "fields": [
       {
         "key": "sport",
-        "label": "Sports",
+        "label": "Sportok",
         "type": "semiCombo"
       }
     ]
   },
   "leisure/water_park": {
-    "name": "Water Park",
+    "name": "Élményfürdő",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "office/physician": {
-    "name": "Physician",
+    "name": "Orvosi rendelő",
     "fields": []
   },
   "office/travel_agent": {
-    "name": "Travel Agency",
+    "name": "Utazási iroda",
     "fields": []
   },
   "office/accountant": {
-    "name": "Accountant Office",
+    "name": "Könyvelő iroda",
     "fields": []
   },
   "office/administrative": {
-    "name": "Administrative Office",
+    "name": "Közigazgatási hivatal",
     "fields": []
   },
   "office/adoption_agency": {
-    "name": "Adoption Agency",
+    "name": "Örökbefogadási ügynökség",
     "fields": []
   },
   "office/advertising_agency": {
-    "name": "Advertising Agency",
+    "name": "Reklámügynökség",
     "fields": []
   },
   "office/architect": {
-    "name": "Architect Office",
+    "name": "Építészi iroda",
     "fields": []
   },
   "office/association": {
-    "name": "Nonprofit Organization Office",
+    "name": "Nonprofit szervezet iroda",
     "fields": []
   },
   "office/charity": {
-    "name": "Charity Office",
+    "name": "Jótékonysági iroda",
     "fields": []
   },
   "office/educational_institution": {
-    "name": "Educational Institution",
+    "name": "Oktatási intézmény",
     "fields": []
   },
   "office/employment_agency": {
-    "name": "Employment Agency",
+    "name": "Munkaügyi központ",
     "fields": []
   },
   "office/energy_supplier": {
-    "name": "Energy Supplier Office",
+    "name": "Energiaszolgáltató hivatal",
     "fields": []
   },
   "office/estate_agent": {
-    "name": "Real Estate Office",
+    "name": "Ingatlaniroda",
     "fields": []
   },
   "office/financial": {
-    "name": "Financial Office",
+    "name": "Pénzügyi vállalat irodája",
     "fields": []
   },
   "office/forestry": {
-    "name": "Forestry Office",
-    "fields": []
-  },
-  "office/foundation": {
-    "name": "Foundation Office",
+    "name": "Erdészeti hivatal",
     "fields": []
   },
   "office/government": {
-    "name": "Government Office",
-    "fields": []
-  },
-  "office/guide": {
-    "name": "Tour Guide Office",
+    "name": "Kormányzati hivatal",
     "fields": []
   },
   "office/insurance": {
-    "name": "Insurance Office",
+    "name": "Biztosító",
     "fields": []
   },
   "office/it": {
-    "name": "Information Technology Office",
+    "name": "Informatikai iroda",
     "fields": []
   },
   "office/lawyer": {
-    "name": "Law Office",
+    "name": "Ügyvéd",
     "fields": []
   },
   "office/moving_company": {
-    "name": "Moving Company Office",
+    "name": "Költözőcég iroda",
     "fields": []
   },
   "office/newspaper": {
-    "name": "Newspaper Office",
+    "name": "Újságírói iroda",
     "fields": []
   },
   "office/ngo": {
-    "name": "NGO Office",
+    "name": "Civil szervezet",
     "fields": [
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       }
     ]
   },
-  "office/notary": {
-    "name": "Notary Office",
-    "fields": []
-  },
   "office/political_party": {
-    "name": "Political Party",
+    "name": "Pártiroda",
     "fields": []
   },
   "office/private_investigator": {
-    "name": "Private Investigator Office",
-    "fields": []
-  },
-  "office/quango": {
-    "name": "Quasi-NGO Office",
+    "name": "Magánnyomozó iroda",
     "fields": []
   },
   "office/research": {
-    "name": "Research Office",
-    "fields": []
-  },
-  "office/surveyor": {
-    "name": "Surveyor Office",
-    "fields": []
-  },
-  "office/tax_advisor": {
-    "name": "Tax Advisor Office",
+    "name": "Kutatóintézet",
     "fields": []
   },
   "office/telecommunication": {
-    "name": "Telecom Office",
+    "name": "Távközlési cég irodája",
     "fields": []
-  },
-  "office/therapist": {
-    "name": "Therapist Office",
-    "fields": []
-  },
-  "office/water_utility": {
-    "name": "Water Utility Office",
-    "fields": [
-      {
-        "key": "operator",
-        "label": "Operator",
-        "type": "text"
-      }
-    ]
   },
   "shop/fishmonger": {
-    "name": "Fishmonger",
+    "name": "Halbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/furnace": {
-    "name": "Furnace Store",
+    "name": "Kazánbolt (elavult)",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/alcohol": {
-    "name": "Liquor Store",
+    "name": "Alkoholüzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "drive_through",
-        "label": "Drive-Through",
+        "label": "Autóval használható",
         "type": "check"
       }
     ]
   },
   "shop/anime": {
-    "name": "Anime Shop",
+    "name": "Anime képregényekkel kapcsolatos bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/antiques": {
-    "name": "Antiques Shop",
+    "name": "Régiségkereskedés",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/appliance": {
-    "name": "Appliance Store",
+    "name": "Háztartási gép üzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/art": {
-    "name": "Art Store",
+    "name": "Műalkotásbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/baby_goods": {
-    "name": "Baby Goods Store",
+    "name": "Bababolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/bag": {
-    "name": "Bag/Luggage Store",
+    "name": "Táska- és bőröndbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/bakery": {
-    "name": "Bakery",
+    "name": "Pékség",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/bathroom_furnishing": {
-    "name": "Bathroom Furnishing Store",
+    "name": "Fürdőszobabútor-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/beauty": {
-    "name": "Beauty Shop",
+    "name": "Szépségszalon",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "beauty",
-        "label": "Shop Type",
+        "label": "Bolttípus",
         "type": "combo"
       }
     ]
   },
   "shop/bed": {
-    "name": "Bedding/Mattress Store",
+    "name": "Ágy- és matracbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/beverages": {
-    "name": "Beverage Store",
+    "name": "Italbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/bicycle": {
-    "name": "Bicycle Shop",
+    "name": "Kerékpárbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "service/bicycle",
-        "label": "Services",
+        "label": "Szolgáltatások",
         "type": "multiCombo"
       }
     ]
   },
   "shop/bookmaker": {
-    "name": "Bookmaker",
+    "name": "Fogadóiroda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/books": {
-    "name": "Book Store",
+    "name": "Könyvesbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "shop/boutique": {
-    "name": "Boutique",
+    "name": "Butik",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "Ruha",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/butcher": {
-    "name": "Butcher",
+    "name": "Hentes",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/candles": {
-    "name": "Candle Shop",
+    "name": "Gyertya- és mécsesbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/car_parts": {
-    "name": "Car Parts Store",
+    "name": "Autóalkatrész-üzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/car_repair": {
-    "name": "Car Repair Shop",
+    "name": "Autószerelő",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "Szolgáltatások",
         "type": "multiCombo"
       }
     ]
   },
   "shop/car": {
-    "name": "Car Dealership",
+    "name": "Autókereskedés",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "Használt árut árul",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "Igen",
+          "no": "Nem",
+          "only": "Kizárólag"
         }
       },
       {
         "key": "service/vehicle",
-        "label": "Services",
+        "label": "Szolgáltatások",
         "type": "multiCombo"
       }
     ]
   },
   "shop/carpet": {
-    "name": "Carpet Store",
+    "name": "Szőnyegbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/charity": {
-    "name": "Charity Store",
+    "name": "Adománybolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "Használt árut árul",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "Igen",
+          "no": "Nem",
+          "only": "Kizárólag"
         }
       }
     ]
   },
   "shop/cheese": {
-    "name": "Cheese Store",
+    "name": "Sajtbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/chemist": {
-    "name": "Drugstore",
+    "name": "Drogéria",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/chocolate": {
-    "name": "Chocolate Store",
+    "name": "Csokoládébolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/clothes": {
-    "name": "Clothing Store",
+    "name": "Ruházati bolt",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "Ruha",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/coffee": {
-    "name": "Coffee Store",
+    "name": "Kávébolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/computer": {
-    "name": "Computer Store",
+    "name": "Számítógépbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/confectionery": {
-    "name": "Candy Store",
+    "name": "Édességbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/convenience": {
-    "name": "Convenience Store",
+    "name": "Kis élelmiszerbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/copyshop": {
-    "name": "Copy Store",
+    "name": "Fénymásoló",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/cosmetics": {
-    "name": "Cosmetics Store",
+    "name": "Kozmetikai bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/craft": {
-    "name": "Arts and Crafts Store",
+    "name": "Kézműveskellék-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/curtain": {
-    "name": "Curtain Store",
+    "name": "Függönybolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/dairy": {
-    "name": "Dairy Store",
+    "name": "Tejtermékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/deli": {
-    "name": "Deli",
+    "name": "Csemegebolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/department_store": {
-    "name": "Department Store",
+    "name": "Nagyáruház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/doityourself": {
-    "name": "DIY Store",
+    "name": "Barkácsáruház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/dry_cleaning": {
-    "name": "Dry Cleaner",
+    "name": "Vegytisztitó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/e-cigarette": {
-    "name": "E-Cigarette Shop",
+    "name": "E-cigaretta bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/electronics": {
-    "name": "Electronics Store",
+    "name": "Elektronikai bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/erotic": {
-    "name": "Erotic Store",
+    "name": "Szexbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/fabric": {
-    "name": "Fabric Store",
+    "name": "Rövidáru- és méterárubolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/farm": {
-    "name": "Produce Stand",
+    "name": "Termelői bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/fashion": {
-    "name": "Fashion Store",
+    "name": "Divatüzlet",
     "fields": [
       {
         "key": "clothes",
-        "label": "Clothes",
+        "label": "Ruha",
         "type": "semiCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/florist": {
-    "name": "Florist",
+    "name": "Virágárus",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/frame": {
-    "name": "Framing Shop",
+    "name": "Képkeretező",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/funeral_directors": {
-    "name": "Funeral Home",
+    "name": "Temetkezési iroda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "religion",
-        "label": "Religion",
+        "label": "Vallás",
         "type": "combo"
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "Felekezet",
         "type": "combo"
       }
     ]
   },
   "shop/furniture": {
-    "name": "Furniture Store",
+    "name": "Bútorbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/garden_centre": {
-    "name": "Garden Center",
+    "name": "Kertészet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/gas": {
-    "name": "Bottled Gas Shop",
+    "name": "Palackozottgáz-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/gift": {
-    "name": "Gift Shop",
+    "name": "Ajándékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/greengrocer": {
-    "name": "Greengrocer",
+    "name": "Zöldséges",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/hairdresser": {
-    "name": "Hairdresser",
+    "name": "Fodrász",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/hardware": {
-    "name": "Hardware Store",
+    "name": "Vas-műszaki bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/hearing_aids": {
-    "name": "Hearing Aids Store",
+    "name": "Hallókészülékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/herbalist": {
-    "name": "Herbalist",
+    "name": "Gyógynövénybolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/hifi": {
-    "name": "Hifi Store",
+    "name": "HiFi-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/houseware": {
-    "name": "Houseware Store",
+    "name": "Háztartási bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/interior_decoration": {
-    "name": "Interior Decoration Store",
+    "name": "Lakberendezési bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/jewelry": {
-    "name": "Jeweler",
+    "name": "Ékszerbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/kiosk": {
-    "name": "Kiosk",
+    "name": "Trafik",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/kitchen": {
-    "name": "Kitchen Design Store",
+    "name": "Konyhabútorbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/laundry": {
-    "name": "Laundry",
+    "name": "Mosoda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/leather": {
-    "name": "Leather Store",
+    "name": "Bőrdíszműbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/locksmith": {
-    "name": "Locksmith",
+    "name": "Lakatos",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/lottery": {
-    "name": "Lottery Shop",
+    "name": "Lottózó",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/mall": {
-    "name": "Mall",
+    "name": "Bevásárlóközpont",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/massage": {
-    "name": "Massage Shop",
+    "name": "Masszázsszalon",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/medical_supply": {
-    "name": "Medical Supply Store",
+    "name": "Gyógyászati segédeszközök boltja",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/mobile_phone": {
-    "name": "Mobile Phone Store",
+    "name": "Mobiltelefon-szaküzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/money_lender": {
-    "name": "Money Lender",
+    "name": "Pénzkölcsönző",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "currency_multi",
-        "label": "Currency Types",
+        "label": "Pénznemtípusok",
         "type": "multiCombo"
       }
     ]
   },
   "shop/motorcycle": {
-    "name": "Motorcycle Dealership",
+    "name": "Motorkerékpár-kereskedés",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/music": {
-    "name": "Music Store",
+    "name": "Hanglemezbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/musical_instrument": {
-    "name": "Musical Instrument Store",
+    "name": "Hangszerbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/newsagent": {
-    "name": "Newspaper/Magazine Shop",
+    "name": "Újságárus",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/nutrition_supplements": {
-    "name": "Nutrition Supplements Store",
+    "name": "Étrendkiegészítő-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/optician": {
-    "name": "Optician",
+    "name": "Látszerész",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/organic": {
-    "name": "Organic Goods Store",
+    "name": "Biobolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/outdoor": {
-    "name": "Outdoors Store",
+    "name": "Túrafelszerelés-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/paint": {
-    "name": "Paint Store",
+    "name": "Festékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/pastry": {
-    "name": "Pastry Shop",
+    "name": "Cukrászda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/pawnbroker": {
-    "name": "Pawn Shop",
+    "name": "Zálogház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/perfumery": {
-    "name": "Perfume Store",
+    "name": "Parfüméria",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/pet": {
-    "name": "Pet Store",
+    "name": "Kisállatkereskedés",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/photo": {
-    "name": "Photography Store",
+    "name": "Fotósbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/pyrotechnics": {
-    "name": "Fireworks Store",
+    "name": "Tűzijátékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/radiotechnics": {
-    "name": "Radio/Electronic Component Store",
+    "name": "Rádiótechnikai bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/religion": {
-    "name": "Religious Store",
+    "name": "Kegytárgybolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "religion",
-        "label": "Religion",
+        "label": "Vallás",
         "type": "combo"
       },
       {
         "key": "denomination",
-        "label": "Denomination",
+        "label": "Felekezet",
         "type": "combo"
       }
     ]
   },
   "shop/scuba_diving": {
-    "name": "Scuba Diving Shop",
+    "name": "Búvárfelszerelés-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/seafood": {
-    "name": "Seafood Shop",
+    "name": "Halbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/second_hand": {
-    "name": "Consignment/Thrift Store",
+    "name": "Használtáru-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "second_hand",
-        "label": "Sells Used",
+        "label": "Használt árut árul",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "only": "Only"
+          "yes": "Igen",
+          "no": "Nem",
+          "only": "Kizárólag"
         }
       }
     ]
   },
   "shop/shoes": {
-    "name": "Shoe Store",
+    "name": "Cipőbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/sports": {
-    "name": "Sporting Goods Store",
+    "name": "Sportbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/stationery": {
-    "name": "Stationery Store",
+    "name": "Írószerbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/storage_rental": {
-    "name": "Storage Rental",
+    "name": "Tárolóhely bérbeadása",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "building",
-        "label": "Building",
+        "label": "Épület",
         "type": "combo"
       }
     ]
   },
   "shop/supermarket": {
-    "name": "Supermarket",
+    "name": "Szupermarket",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/tailor": {
-    "name": "Tailor",
+    "name": "Szabóüzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/tattoo": {
-    "name": "Tattoo Parlor",
+    "name": "Tetováló szalon",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/tea": {
-    "name": "Tea Store",
+    "name": "Teaüzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/ticket": {
-    "name": "Ticket Seller",
+    "name": "Jegyárus",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/tiles": {
-    "name": "Tile Shop",
+    "name": "Csempebolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/tobacco": {
-    "name": "Tobacco Shop",
+    "name": "Dohánybolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/toys": {
-    "name": "Toy Store",
+    "name": "Játékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/trade": {
-    "name": "Trade Shop",
+    "name": "Kereskedelmi üzlet",
     "fields": [
       {
         "key": "trade",
-        "label": "Type",
+        "label": "Típus",
         "type": "typeCombo"
       },
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/travel_agency": {
-    "name": "Travel Agency",
+    "name": "Utazási iroda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/tyres": {
-    "name": "Tire Store",
+    "name": "Autógumibolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/vacuum_cleaner": {
-    "name": "Vacuum Cleaner Store",
+    "name": "Porszívóbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/variety_store": {
-    "name": "Variety Store",
+    "name": "100 forintos bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/video_games": {
-    "name": "Video Game Store",
+    "name": "Videojátékbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/video": {
-    "name": "Video Store",
+    "name": "Videófilmbolt vagy -kölcsönző",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/watches": {
-    "name": "Watches Shop",
+    "name": "Órabolt (karóra)",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/water_sports": {
-    "name": "Watersport/Swim Shop",
+    "name": "Vízisport-bolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/weapons": {
-    "name": "Weapon Shop",
+    "name": "Fegyverbolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/window_blind": {
-    "name": "Window Blind Store",
+    "name": "Redőnybolt",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "shop/wine": {
-    "name": "Wine Shop",
+    "name": "Borszaküzlet",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/alpine_hut": {
-    "name": "Alpine Hut",
+    "name": "Menedékház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/apartment": {
-    "name": "Guest Apartment / Condo",
+    "name": "Apartman",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Szobák",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/aquarium": {
-    "name": "Aquarium",
+    "name": "Akvárium",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/attraction": {
-    "name": "Tourist Attraction",
+    "name": "Turisztikai látványosság",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/camp_site": {
-    "name": "Campground",
+    "name": "Kemping",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Díj",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/caravan_site": {
-    "name": "RV Park",
+    "name": "Lakóautó park",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "capacity",
-        "label": "Capacity",
+        "label": "Kapacitás",
         "type": "number"
       },
       {
         "key": "fee",
-        "label": "Fee",
+        "label": "Díj",
         "type": "check"
       },
       {
         "key": "sanitary_dump_station",
-        "label": "Toilet Disposal",
+        "label": "WC ártalmatlanítás",
         "type": "check"
       },
       {
         "key": "power_supply",
-        "label": "Power Supply",
+        "label": "Elektromos csatlakozás",
         "type": "check"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/chalet": {
-    "name": "Holiday Cottage",
+    "name": "Nyaralóház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/gallery": {
-    "name": "Art Gallery",
+    "name": "Művészeti galéria",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/guest_house": {
-    "name": "Guest House",
+    "name": "Vendégház",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Szobák",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/hostel": {
-    "name": "Hostel",
+    "name": "Turistaszálló",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Szobák",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/hotel": {
-    "name": "Hotel",
+    "name": "Szálloda",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "stars",
-        "label": "Stars",
+        "label": "Csillagok",
         "type": "number"
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Szobák",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
@@ -3143,87 +3082,87 @@
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       },
       {
         "key": "smoking",
-        "label": "Smoking",
+        "label": "Dohányzás",
         "type": "combo",
         "options": {
-          "no": "No smoking anywhere",
-          "separated": "In smoking areas, not physically isolated",
-          "isolated": "In smoking areas, physically isolated",
-          "outside": "Allowed outside",
-          "yes": "Allowed everywhere",
-          "dedicated": "Dedicated to smokers (e.g. smokers' club)"
+          "no": "Mindenhol tilos",
+          "separated": "Csak külön helyiségben",
+          "isolated": "Csak fizikailag elszigetelt helyiségben",
+          "outside": "Az épületen kívül engedélyezett",
+          "yes": "Mindenhol engedélyezett",
+          "dedicated": "Kifejezetten dohányosoknak ( pl. dohányosklub) "
         }
       },
       {
         "key": "rooms",
-        "label": "Rooms",
+        "label": "Szobák",
         "type": "number"
       },
       {
         "key": "internet_access",
-        "label": "Internet Access",
+        "label": "Internetcsatlakozás",
         "type": "combo",
         "options": {
-          "yes": "Yes",
-          "no": "No",
-          "wlan": "Wifi",
-          "wired": "Wired",
-          "terminal": "Terminal"
+          "yes": "Van",
+          "no": "Nincs",
+          "wlan": "WiFi",
+          "wired": "Vezetékes",
+          "terminal": "Munkaállomás"
         }
       },
       {
         "key": "internet_access/fee",
-        "label": "Internet Access Fee",
+        "label": "Internetcsatlakozás díja",
         "type": "check"
       },
       {
         "key": "internet_access/ssid",
-        "label": "SSID (Network Name)",
+        "label": "SSID (hálózatnév)",
         "type": "text"
       }
     ]
   },
   "tourism/museum": {
-    "name": "Museum",
+    "name": "Múzeum",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/theme_park": {
-    "name": "Theme Park",
+    "name": "Vidámpark",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/wilderness_hut": {
-    "name": "Wilderness Hut",
+    "name": "Menedékház (személyzet nélkül)",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
   },
   "tourism/zoo": {
-    "name": "Zoo",
+    "name": "Állatkert",
     "fields": [
       {
         "key": "operator",
-        "label": "Operator",
+        "label": "Üzemeltető",
         "type": "text"
       }
     ]
