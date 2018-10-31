@@ -12,6 +12,9 @@ import tagsSv from '../assets/tags/sv.json';
 import tagsZh_TW from '../assets/tags/zh-TW.json';
 import { loadTags } from './detail';
 
+
+const FALLBACKTAG = tagsEn;
+
 const SUPPORTEDLANGUAGESOPTIONS = {
   de: tagsDe,
   en: tagsEn,
@@ -38,7 +41,14 @@ const getters = {
 
 const mutations = {
   setTags(s, lng) {
-    s.languageTags = SUPPORTEDLANGUAGESOPTIONS[lng] || tagsEn;
+    const tags = SUPPORTEDLANGUAGESOPTIONS[lng];
+    Object.keys(FALLBACKTAG).forEach((key) => {
+      if (tags[key]) {
+        s.languageTags[key] = tags[key];
+      } else {
+        s.languageTags[key] = FALLBACKTAG[key];
+      }
+    });
     loadTags();
   },
 };
