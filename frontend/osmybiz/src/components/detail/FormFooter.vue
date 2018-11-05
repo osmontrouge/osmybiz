@@ -2,15 +2,15 @@
   <div class="form-footer">
     <button class="button"
             @click="back()">
-      {{t('detail').buttons.back}}</button>
+      {{ $t('detail.buttons.back') }}</button>
     <button class="button"
             id="reset-button"
             @click="reset()">
-      {{t('detail').buttons.reset}}</button>
+      {{ $t('detail.buttons.reset') }}</button>
     <button class="button"
             :disabled="isRequiredFields() || isDuplicate || hasNoChanges()"
             @click="submit()">
-      {{t('detail').buttons.save}}</button>
+      {{ $t('detail.buttons.save') }}</button>
   </div>
 </template>
 

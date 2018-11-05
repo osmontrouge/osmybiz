@@ -1,15 +1,15 @@
 <template>
     <div class="dialog" id="error-dialog" v-if="isError">
       <div class="dialog-title">
-        {{t('error').title}}
+        {{ $t('error.title') }}
       </div>
 
       <div id="error-section" class="section">
         <img id="error-img" src="../../assets/error.png" alt="">
-        <span v-if="errorSplitted.length === 4" id="error-message">{{t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]][errorSplitted[3]]}}</span>
-        <span v-if="errorSplitted.length === 3" id="error-message">{{t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]]}}</span>
-        <span v-if="errorSplitted.length === 2" id="error-message">{{t(errorSplitted[0])[errorSplitted[1]]}}</span>
-        <span v-if="errorSplitted.length === 1" id="error-message">{{t(errorSplitted[0])}}</span>
+        <span v-if="errorSplitted.length === 4" id="error-message">{{$t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]][errorSplitted[3]]}}</span>
+        <span v-if="errorSplitted.length === 3" id="error-message">{{$t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]]}}</span>
+        <span v-if="errorSplitted.length === 2" id="error-message">{{$t(errorSplitted[0])[errorSplitted[1]]}}</span>
+        <span v-if="errorSplitted.length === 1" id="error-message">{{$t(errorSplitted[0])}}</span>
       </div>
     </div>
 </template>
