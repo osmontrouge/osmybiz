@@ -13,7 +13,7 @@ import tagsZh_TW from '../assets/tags/zh-TW.json';
 import { loadTags } from './detail';
 
 
-const FALLBACKTAG = tagsEn;
+export const FALLBACKLOCALE = 'en';
 
 const SUPPORTEDLANGUAGESOPTIONS = {
   de: tagsDe,
@@ -29,8 +29,10 @@ const SUPPORTEDLANGUAGESOPTIONS = {
   zh_TW: tagsZh_TW,
 };
 
+const FALLBACKTAGS = SUPPORTEDLANGUAGESOPTIONS[FALLBACKLOCALE];
+
 const state = {
-  languageTags: tagsEn,
+  languageTags: {},
 };
 
 const getters = {
@@ -42,11 +44,11 @@ const getters = {
 const mutations = {
   setTags(s, lng) {
     const tags = SUPPORTEDLANGUAGESOPTIONS[lng];
-    Object.keys(FALLBACKTAG).forEach((key) => {
+    Object.keys(FALLBACKTAGS).forEach((key) => {
       if (tags[key]) {
         s.languageTags[key] = tags[key];
       } else {
-        s.languageTags[key] = FALLBACKTAG[key];
+        s.languageTags[key] = FALLBACKTAGS[key];
       }
     });
     loadTags();

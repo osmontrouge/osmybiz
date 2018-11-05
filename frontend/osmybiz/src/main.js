@@ -17,6 +17,7 @@ import ru from './locales/ru.json';
 import sv from './locales/sv.json';
 /* eslint-disable-next-line camelcase */
 import zh_TW from './locales/zh_TW.json';
+import { FALLBACKLOCALE } from './store/locale';
 
 Vue.use(VueCookies);
 Vue.use(VueI18n);
@@ -36,7 +37,7 @@ const messages = ({
 
 const i18n = new VueI18n({
   locale: 'en',
-  fallbackLocale: 'en',
+  fallbackLocale: FALLBACKLOCALE,
   messages,
 });
 
