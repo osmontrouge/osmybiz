@@ -6,19 +6,19 @@
     </div>
 
     <div class="dialog-title">
-      {{t('warning').confirm.title}}
+      {{ $t('warning.confirm.title') }}
     </div>
 
     <div class="section">
-      {{t('warning').confirm.section}}
+      {{ $t('warning.confirm.section') }}
     </div>
 
     <div class="confirm-buttons">
       <button class="no-button" @click="toggle">
-        {{t('warning').confirm.no}}
+        {{ $t('warning.confirm.no') }}
       </button>
       <button class="yes-button" @click="confirm">
-        {{t('warning').confirm.yes}}
+        {{ $t('warning.confirm.yes') }}
       </button>
     </div>
   </div>

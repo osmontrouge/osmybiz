@@ -2,7 +2,7 @@
   <l-marker
     :lat-lng="businessPosition"
     :draggable="false"
-    :title="t('popups').popuptitle"
+    :title="$t('popups.popuptitle')"
   >
     <v-popup-open
       ref="actionpopup"
@@ -10,7 +10,7 @@
       class="popup-data"
       :lat-lng="position"
     >
-      <div class="popup-title">{{t('popups').popuptitle}}</div>
+      <div class="popup-title">{{ $t('popups.popuptitle') }}</div>
       <div v-if="prettyAddress">{{prettyAddress}}</div>
       <button
         v-if="!isLoggedIn"
@@ -18,17 +18,17 @@
         disabled="disabled"
         class="popup-btn"
       >
-        {{t('popups').create}}
+        {{ $t('popups.create') }}
       </button>
       <button
         v-else
         class="popup-btn"
         @click="createNew"
       >
-        {{t('popups').create}}
+        {{ $t('popups.create') }}
       </button>
-      <v-map-link class="popup-link" :link="`${osmUrl}/#map=19/${position.lat}/${position.lng}&layers=N`">{{t('popups').mapLink}}</v-map-link>
-      <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{t('popups').feedback}}</v-map-link>
+      <v-map-link class="popup-link" :link="`${osmUrl}/#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.mapLink') }}</v-map-link>
+      <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.feedback') }}</v-map-link>
     </v-popup-open>
   </l-marker>
 </template>

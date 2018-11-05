@@ -98,4 +98,5 @@ input::placeholder, textarea::placeholder {
 .external-link {
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 }

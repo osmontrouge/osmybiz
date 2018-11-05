@@ -3,8 +3,8 @@
     <div class="detailcontent-wrapper">
 
       <div class="content-wrapper">
-        <h2 v-show="isNew">{{t('detail').titles.create}}</h2>
-        <h2 v-show="!isNew">{{t('detail').titles.edit}}</h2>
+        <h2 v-show="isNew">{{ $t('detail.titles.create') }}</h2>
+        <h2 v-show="!isNew">{{ $t('detail.titles.edit') }}</h2>
 
         <category-field></category-field>
         <address-fields></address-fields>
@@ -47,7 +47,7 @@
       }
       this.setDisplaySuccess(false);
       localStorage.setItem('details', JSON.stringify(this.details));
-      this.setInfoMap(this.$translate.locale);
+      this.setInfoMap(this.$i18n.locale);
       this.setIsNew(!this.isNote);
     },
     components: {

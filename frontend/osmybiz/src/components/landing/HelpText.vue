@@ -11,18 +11,18 @@
         <icon name="window-close"></icon>
       </div>
 
-      <div class="dialog-title">{{t('landing').help.title}}</div>
+      <div class="dialog-title">{{ $t('landing.help.title') }}</div>
 
       <div class="section">
-        {{t('landing').help.section1}}
+        {{ $t('landing.help.section1') }}
       </div>
 
       <div class="section">
-        {{t('landing').help.section2}}
+        {{ $t('landing.help.section2') }}
       </div>
 
       <div class="section">
-        {{t('landing').help.section3}}
+        {{ $t('landing.help.section3') }}
       </div>
     </div>
 

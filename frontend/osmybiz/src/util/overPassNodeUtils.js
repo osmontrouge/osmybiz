@@ -1,5 +1,5 @@
 import { categoryTags } from '../api/overpassApi';
-import { getTagName } from './translate';
+import { getTagName } from '../store/locale';
 
 function getNodeCategoryKey(node) {
   let result = '';

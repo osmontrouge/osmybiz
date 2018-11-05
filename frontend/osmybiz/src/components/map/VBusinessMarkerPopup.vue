@@ -18,17 +18,17 @@
         disabled="disabled"
         class="popup-btn"
       >
-        {{t('popups').edit}}
+        {{ $t('popups.edit') }}
       </button>
       <button
         v-else
         class="popup-btn"
         @click="edit"
       >
-        {{t('popups').edit}}
+        {{ $t('popups.edit') }}
       </button>
-      <v-map-link class="popup-link" :link="`${osmUrl}/#map=19/${position.lat}/${position.lng}&layers=N`">{{t('popups').mapLink}}</v-map-link>
-      <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{t('popups').feedback}}</v-map-link>
+      <v-map-link class="popup-link" :link="`${osmUrl}/#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.mapLink') }}</v-map-link>
+      <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.feedback') }}</v-map-link>
     </l-popup>
     <l-tooltip :content="tooltipText" />
   </l-marker>

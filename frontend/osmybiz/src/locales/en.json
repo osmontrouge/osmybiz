@@ -34,6 +34,7 @@
   },
   "detail": {
     "titles": {
+      "title": "Detail",
       "create": "Create Business",
       "edit": "Edit Business",
       "category": "Category",

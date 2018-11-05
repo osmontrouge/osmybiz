@@ -3,7 +3,7 @@
   <div class="dialog" id="error-dialog" v-if="displayUnsavedChangesNotification">
     <div class="node-success">
       <div class="dialog-title">
-        {{t('unsavedchanges').title}}
+        {{ $t('unsavedchanges.title') }}
         <div class="close-button" @click="toggleSuccess">
          <icon name="window-close"></icon>
         </div>
@@ -11,9 +11,8 @@
 
       <div id="error-section" class="section">
         <p>
-          <!-- // how should i translate this? -->
           You have some unsaved changes, click
-          <a href="javascript:void(0);" v-on:click="edit()">
+          <a href="" v-on:click.prevent="edit()">
             here
           </a>
           to recover the changes.
