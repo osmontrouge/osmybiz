@@ -22,6 +22,7 @@
 
 <script>
   import { mapGetters, mapMutations, mapActions } from 'vuex';
+  import * as _ from 'lodash';
   import DetailForm from '../components/detail/DetailForm.vue';
   import PostSuccess from '../components/landing/PostSuccess.vue';
   import AddressFields from '../components/detail/AddressFields.vue';
@@ -37,7 +38,7 @@
 
   export default {
     mounted() {
-      if (!this.isLoggedIn) {
+      if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
         this.$router.push({ name: routes.Landing });
       }
       if (this.isEditingUnsavedChanges) {
@@ -110,7 +111,7 @@
         this.setDisplayUnsavedChangesNotification(true);
         setTimeout(() => {
           this.setDisplayUnsavedChangesNotification(false);
-        }, 5000);
+        }, 30000);
         const unsavedChanges = {
           address: this.address,
           details: this.details,
@@ -119,7 +120,7 @@
           osmId: this.osmId,
           isOwnCategory: this.isOwnCategory,
         };
-        this.$cookies.set('unsavedChanges', unsavedChanges, '30');
+        this.$cookies.set('unsavedChanges', unsavedChanges, '32');
         next();
       }
     },

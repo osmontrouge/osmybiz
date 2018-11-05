@@ -150,7 +150,9 @@
     }
   },
   "unsavedchanges": {
-    "title": "Unsaved Changes"
+    "title": "Unsaved Changes",
+    "section": "You have {time} seconds to recover the unsaved changes. Click {here} to recover the changes.",
+    "here": "here"
   },
   "error": {
     "title": "Error",

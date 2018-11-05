@@ -11,11 +11,12 @@
 
       <div id="error-section" class="section">
         <p>
-          You have some unsaved changes, click
-          <a href="" v-on:click.prevent="edit()">
-            here
-          </a>
-          to recover the changes.
+          <i18n path="unsavedchanges.section">
+            <strong place="time">{{ timeLeft }}</strong>
+            <a place="here" href="" @click.prevent="edit()">
+              {{ $t('unsavedchanges.here') }}
+            </a>
+          </i18n>
         </p>
       </div>
     </div>
@@ -30,10 +31,21 @@
 
   export default {
     name: 'unsaved-changes-notification',
+    data() {
+      return {
+        time: 30,
+      };
+    },
     computed: {
       ...mapGetters([
         'displayUnsavedChangesNotification',
       ]),
+      timeLeft() {
+        setTimeout(() => {
+          this.time = this.time - 1;
+        }, 1000);
+        return this.time;
+      },
     },
     methods: {
       ...mapMutations([
