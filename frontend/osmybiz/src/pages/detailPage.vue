@@ -36,6 +36,8 @@
   import { isNotModified, getUnsavedChangesFromCookies } from '../store/detail';
   import { routes } from './../router';
 
+  export const UNSAVEDCHANGESTIME = 30;
+
   export default {
     mounted() {
       if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
@@ -111,7 +113,7 @@
         this.setDisplayUnsavedChangesNotification(true);
         setTimeout(() => {
           this.setDisplayUnsavedChangesNotification(false);
-        }, 30000);
+        }, UNSAVEDCHANGESTIME * 1000);
         const unsavedChanges = {
           address: this.address,
           details: this.details,
@@ -120,7 +122,7 @@
           osmId: this.osmId,
           isOwnCategory: this.isOwnCategory,
         };
-        this.$cookies.set('unsavedChanges', unsavedChanges, '32');
+        this.$cookies.set('unsavedChanges', unsavedChanges, UNSAVEDCHANGESTIME + 2);
         next();
       }
     },

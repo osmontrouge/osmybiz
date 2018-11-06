@@ -28,12 +28,13 @@
   import Icon from 'vue-awesome/components/Icon.vue';
   import { mapGetters, mapMutations } from 'vuex';
   import { routes } from '../../router';
-
+  import { UNSAVEDCHANGESTIME } from '../../pages/detailPage.vue';
+  
   export default {
     name: 'unsaved-changes-notification',
     data() {
       return {
-        time: 30,
+        time: UNSAVEDCHANGESTIME,
       };
     },
     computed: {
