@@ -10,6 +10,10 @@ import tagsRu from '../assets/tags/ru.json';
 import tagsSv from '../assets/tags/sv.json';
 /* eslint-disable-next-line camelcase */
 import tagsZh_TW from '../assets/tags/zh-TW.json';
+import { loadTags } from './detail';
+
+
+export const FALLBACKLOCALE = 'en';
 
 const SUPPORTEDLANGUAGESOPTIONS = {
   de: tagsDe,
@@ -25,9 +29,10 @@ const SUPPORTEDLANGUAGESOPTIONS = {
   zh_TW: tagsZh_TW,
 };
 
+const FALLBACKTAGS = SUPPORTEDLANGUAGESOPTIONS[FALLBACKLOCALE];
+
 const state = {
-  languageTags: tagsEn,
-  $translate: {},
+  languageTags: {},
 };
 
 const getters = {
@@ -38,12 +43,24 @@ const getters = {
 
 const mutations = {
   setTags(s, lng) {
-    s.languageTags = SUPPORTEDLANGUAGESOPTIONS[lng] || tagsEn;
+    const tags = SUPPORTEDLANGUAGESOPTIONS[lng];
+    Object.keys(FALLBACKTAGS).forEach((key) => {
+      if (tags[key]) {
+        s.languageTags[key] = tags[key];
+      } else {
+        s.languageTags[key] = FALLBACKTAGS[key];
+      }
+    });
+    loadTags();
   },
 };
 
 export function getLanguageTags() {
   return state.languageTags;
+}
+
+export function getTagName(tag) {
+  return getLanguageTags()[tag] || tag;
 }
 
 export default {

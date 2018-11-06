@@ -34,6 +34,7 @@
   },
   "detail": {
     "titles": {
+      "title": "Detail",
       "create": "Create Business",
       "edit": "Edit Business",
       "category": "Category",
@@ -147,6 +148,11 @@
     "note": {
       "title": "Changes saved"
     }
+  },
+  "unsavedchanges": {
+    "title": "Unsaved Changes",
+    "section": "You have {time} seconds to recover the unsaved changes. Click {here} to recover the changes.",
+    "here": "here"
   },
   "error": {
     "title": "Error",

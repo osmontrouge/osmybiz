@@ -1,7 +1,7 @@
 import * as L from 'leaflet';
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
-import VueTranslate from 'vue-translate-plugin';
+import VueI18n from 'vue-i18n';
 import { sync } from 'vuex-router-sync';
 import store from './store';
 import App from './App.vue';
@@ -17,10 +17,12 @@ import ru from './locales/ru.json';
 import sv from './locales/sv.json';
 /* eslint-disable-next-line camelcase */
 import zh_TW from './locales/zh_TW.json';
+import { FALLBACKLOCALE } from './store/locale';
 
-Vue.use(VueTranslate);
 Vue.use(VueCookies);
-Vue.locales({
+Vue.use(VueI18n);
+
+const messages = ({
   de,
   en,
   fr,
@@ -33,6 +35,12 @@ Vue.locales({
   zh_TW,
 });
 
+const i18n = new VueI18n({
+  locale: 'en',
+  fallbackLocale: FALLBACKLOCALE,
+  messages,
+});
+
 sync(store, router);
 
 Vue.config.productionTip = false;
@@ -42,12 +50,9 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   template: '<App/>',
   components: { App },
-  created() {
-    // default language
-    this.$translate.setLang('en');
-  },
 });
 
 // eslint-disable-next-line no-underscore-dangle

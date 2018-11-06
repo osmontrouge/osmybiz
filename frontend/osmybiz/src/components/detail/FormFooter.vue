@@ -2,22 +2,22 @@
   <div class="form-footer">
     <button class="button"
             @click="back()">
-      {{t('detail').buttons.back}}</button>
+      {{ $t('detail.buttons.back') }}</button>
     <button class="button"
             id="reset-button"
             @click="reset()">
-      {{t('detail').buttons.reset}}</button>
+      {{ $t('detail.buttons.reset') }}</button>
     <button class="button"
-            :disabled="isRequiredFields() || isDuplicate || hasNoChanges()"
+            :disabled="isRequiredFields() || isDuplicate || isNotModified(this)"
             @click="submit()">
-      {{t('detail').buttons.save}}</button>
+      {{ $t('detail.buttons.save') }}</button>
   </div>
 </template>
 
 <script>
   import { mapGetters, mapActions, mapMutations } from 'vuex';
   import { routes } from '../../router/index';
-  import { clearDetails } from '../../store/detail';
+  import { clearDetails, isNotModified } from '../../store/detail';
 
   export default {
     name: 'form-footer',
@@ -41,6 +41,7 @@
         'setAddress',
         'setIsDuplicate',
         'setIsConfirm',
+        'setHasSavedChanges',
       ]),
       ...mapActions([
         'postNote',
@@ -52,6 +53,7 @@
       ]),
       submit() {
         let promise;
+        this.setHasSavedChanges(true);
         if (!this.isNote && !this.isOwnCategory) {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
@@ -82,37 +84,18 @@
           this.address.country === '' ||
           this.details.name === '';
       },
-      hasNoChanges() {
-        const details = JSON.parse(localStorage.getItem('details'));
-        const address = JSON.parse(localStorage.getItem('address'));
-        return JSON.stringify(details) === JSON.stringify(this.details) &&
-          JSON.stringify(address) === JSON.stringify(this.address);
-      },
       reset() {
         this.getConfirmation(() => {
           const details = JSON.parse(localStorage.getItem('details'));
           const address = JSON.parse(localStorage.getItem('address'));
-          const category = {
-            text: details.category.text,
-            fields: details.category.fields,
-            value: details.category.value,
-          };
-          if (this.details.category.text === details.category.text) {
-            this.details.category.fields.forEach((field, index) => {
-              category.fields[index].label = field.label;
-            });
-          }
-          details.category = category;
           this.setDetails(details);
           this.setAddress(address);
           this.setIsConfirm(false);
         });
       },
+      isNotModified,
       back() {
-        this.getConfirmation(() => {
-          this.$router.push({ name: routes.Landing });
-          this.setIsConfirm(false);
-        });
+        this.$router.push({ name: routes.Landing });
       },
     },
   };

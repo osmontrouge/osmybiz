@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
+import deepEqual from 'deep-equal';
 import { postNode, postNote, getNode, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
@@ -10,8 +11,11 @@ let initalOptions = [];
 const state = {
   // detailPage
   displaySuccess: false,
+  displayUnsavedChangesNotification: false,
   osmId: null,
   isNew: true,
+  hasSavedChanges: false,
+  isEditingUnsavedChanges: false,
 
   // DetailForm
   tags: initalOptions,
@@ -133,6 +137,12 @@ function constructDisplayNote(note) {
   return note;
 }
 
+export function isNotModified(store) {
+  const details = JSON.parse(localStorage.getItem('details'));
+  const address = JSON.parse(localStorage.getItem('address'));
+  return deepEqual(details, store.details) && deepEqual(address, store.address);
+}
+
 export function clearDetails() {
   state.details = {
     category: {
@@ -215,8 +225,6 @@ export function loadTags() {
     initalOptions = options;
   }
 }
-
-loadTags();
 
 const actions = {
   postNodeToOsmAndBackend({ commit }, user) {
@@ -312,6 +320,9 @@ const mutations = {
   setDisplaySuccess(s, displaySuccess) {
     s.displaySuccess = displaySuccess;
   },
+  setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
+    s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
+  },
   setDisplayConfirmation(s, displayConfirmation) {
     s.displayConfirmation = displayConfirmation;
   },
@@ -350,6 +361,12 @@ const mutations = {
   setNoteId(s, noteId) {
     s.noteId = noteId;
   },
+  setIsEditingUnsavedChanges(s, isEditingUnsavedChanges) {
+    s.isEditingUnsavedChanges = isEditingUnsavedChanges;
+  },
+  setHasSavedChanges(s, hasSavedChanges) {
+    s.hasSavedChanges = hasSavedChanges;
+  },
 };
 
 const getters = {
@@ -379,6 +396,9 @@ const getters = {
   },
   displaySuccess(s) {
     return s.displaySuccess;
+  },
+  displayUnsavedChangesNotification(s) {
+    return s.displayUnsavedChangesNotification;
   },
   displayConfirmation(s) {
     return s.displayConfirmation;
@@ -410,6 +430,12 @@ const getters = {
   noteId(s) {
     return s.noteId;
   },
+  isEditingUnsavedChanges(s) {
+    return s.isEditingUnsavedChanges;
+  },
+  hasSavedChanges(s) {
+    return s.hasSavedChanges;
+  },
 };
 
 export default {
@@ -427,3 +453,14 @@ export function showPopup(text) {
 export function hidePopup() {
   state.isPopup = false;
 }
+
+export function getUnsavedChangesFromCookies(context) {
+  const unsavedChangesCookie = context.$cookies.get('unsavedChanges');
+  context.setDetails(unsavedChangesCookie.details);
+  context.setAddress(unsavedChangesCookie.address);
+  context.setOsmId(unsavedChangesCookie.osmId);
+  context.setIsNote(unsavedChangesCookie.isNote);
+  context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
+  localStorage.setItem('address', JSON.stringify(context.address));
+}
+
