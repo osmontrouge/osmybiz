@@ -5,7 +5,7 @@ import { setError } from '../store/error';
 import util from './../util/osmApiUtils';
 
 const createNotePath = `${osmApiLevel}notes.json`;
-const mapNotePath = `${osmApiLevel}notes/`;
+const notePath = `${osmApiLevel}notes/`;
 const createChangesetPath = `${osmApiLevel}changeset/create`;
 const uploadChangesetPath = `${osmApiLevel}changeset/`;
 const closeChangesetPath = `${osmApiLevel}changeset/`;
@@ -158,15 +158,15 @@ export function postNode(node) {
   });
 }
 
-export function postMapNote(mapNote) {
+export function postNote(note) {
   return new Promise((resolve) => {
     auth.xhr({
       method: 'POST',
       path: createNotePath,
-      content: `lat=${mapNote.lat}&lon=${mapNote.lon}&text=${mapNote.text}`,
+      content: `lat=${note.lat}&lon=${note.lon}&text=${note.text}`,
     }, (err, response) => {
       if (err) {
-        setError('error.osm.postMapNote');
+        setError('error.osm.postNote');
         resolve(null);
       }
       const data = JSON.parse(response);
@@ -181,15 +181,15 @@ export function postMapNote(mapNote) {
   });
 }
 
-export function reopenClosedMapNoteAndAddComment(mapNote, mapNoteId) {
+export function reopenClosedNoteAndAddComment(note, noteId) {
   return new Promise((resolve) => {
     auth.xhr({
       method: 'POST',
-      path: `${mapNotePath}${mapNoteId}/reopen.json`,
-      content: `text=${mapNote.text}`,
+      path: `${notePath}${noteId}/reopen.json`,
+      content: `text=${note.text}`,
     }, (err, response) => {
       if (err) {
-        setError('error.osm.reopenClosedMapNoteAndAddComment');
+        setError('error.osm.reopenClosedNoteAndAddComment');
         resolve(null);
       }
       const data = JSON.parse(response);
@@ -198,26 +198,26 @@ export function reopenClosedMapNoteAndAddComment(mapNote, mapNoteId) {
         html: data.properties.comments[mostRecentCommentIndex].html,
         text: data.properties.comments[mostRecentCommentIndex].text,
         id: data.properties.id,
-        link: `${osmUrl}/note/${mapNoteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+        link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
         status: data.properties.status,
       });
     });
   });
 }
 
-export function postMapNoteAsComment(mapNote, mapNoteId) {
+export function postNoteAsComment(note, noteId) {
   return new Promise((resolve) => {
     auth.xhr({
       method: 'POST',
-      path: `${mapNotePath}${mapNoteId}/comment.json`,
-      content: `text=${mapNote.text}`,
+      path: `${notePath}${noteId}/comment.json`,
+      content: `text=${note.text}`,
     }, (err, response) => {
-      const mapNoteIsClosed = 409;
+      const noteIsClosed = 409;
       if (err) {
-        if (err.status === mapNoteIsClosed) {
-          resolve(reopenClosedMapNoteAndAddComment(mapNote, mapNoteId));
+        if (err.status === noteIsClosed) {
+          resolve(reopenClosedNoteAndAddComment(note, noteId));
         } else {
-          setError('error.osm.postMapNoteAsComment');
+          setError('error.osm.postNoteAsComment');
           resolve(null);
         }
       }
@@ -227,7 +227,7 @@ export function postMapNoteAsComment(mapNote, mapNoteId) {
         html: data.properties.comments[mostRecentCommentIndex].html,
         text: data.properties.comments[mostRecentCommentIndex].text,
         id: data.properties.id,
-        link: `${osmUrl}/note/${mapNoteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+        link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
         status: data.properties.status,
       });
     });

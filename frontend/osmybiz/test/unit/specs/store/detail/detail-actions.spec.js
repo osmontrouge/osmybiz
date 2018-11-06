@@ -5,7 +5,7 @@ const actionsInjector = require('inject-loader!../../../../../src/store/detail')
 
 const actions = actionsInjector({
   './../api/osmApi': {
-    postMapNote() {
+    postNote() {
       return Promise.resolve({ text: 'test Address: test\n Category: test\n Name: test\n Wheelchair: true' });
     },
     getNode() {
@@ -60,7 +60,7 @@ describe('detail store', () => {
   describe('actions', () => {
     it('should post note', (done) => {
       testAction(
-        actions.default.actions.postMapNoteToOsmAndBackend,
+        actions.default.actions.postNote,
         { user: {}, osmId: 0 },
         {
           details: {

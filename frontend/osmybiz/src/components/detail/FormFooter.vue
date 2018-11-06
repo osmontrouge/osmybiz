@@ -32,7 +32,7 @@
         'lat',
         'lon',
         'isDuplicate',
-        'mapNoteId',
+        'noteId',
       ]),
     },
     methods: {
@@ -43,7 +43,7 @@
         'setIsConfirm',
       ]),
       ...mapActions([
-        'postMapNoteToOsmAndBackend',
+        'postNote',
         'postOwnCategoryNote',
         'postNodeToOsmAndBackend',
         'checkDuplicateNode',
@@ -60,10 +60,10 @@
             return false;
           });
         } else {
-          promise = this.postMapNoteToOsmAndBackend({
+          promise = this.postNote({
             user: this.user,
             osmId: this.osmId,
-            mapNoteId: this.mapNoteId,
+            noteId: this.noteId,
           }).then(() => true);
         }
         promise.then((success) => {

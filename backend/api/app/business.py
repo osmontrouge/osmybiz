@@ -74,7 +74,7 @@ def add_or_update_node(user_id, node_data):
         existing_node.version = node.version
         existing_node.receive_updates = node.receive_updates
         existing_node.name = node.name
-        existing_node.map_note_id = node.map_note_id
+        existing_node.osm_note_id = node.osm_note_id
 
     existing_node.save()
 

@@ -28,7 +28,7 @@ class Node(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     osm_id = db.Column(db.BigInteger)
-    map_note_id = db.Column(db.BigInteger)
+    osm_note_id = db.Column(db.BigInteger)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
     version = db.Column(db.Integer)
@@ -39,11 +39,11 @@ class Node(db.Model):
         db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-    def __init__(self, user_id, name, osm_id, map_note_id, lat, lng,
+    def __init__(self, user_id, name, osm_id, osm_note_id, lat, lng,
                  version, receive_updates):
         self.user_id = user_id
         self.osm_id = osm_id
-        self.map_note_id = map_note_id
+        self.osm_note_id = osm_note_id
         self.lat = lat
         self.lng = lng
         self.version = version

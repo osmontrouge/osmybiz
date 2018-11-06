@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
-import { postNode, postMapNote, getNode, postMapNoteAsComment } from './../api/osmApi';
+import { postNode, postNote, getNode, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateNode } from './../api/osmybizApi';
@@ -42,7 +42,7 @@ const state = {
   infoText: '',
   infoMap: new Map(),
 
-  mapNoteId: null,
+  noteId: null,
 
   // PostSuccess
   note: {},
@@ -237,16 +237,16 @@ const actions = {
         osmId: parseInt(ps.id, 10),
         recieveUpdates: true,
         name: ps.details.name,
-        mapNoteId: null,
+        noteId: null,
       });
     });
   },
-  postMapNoteToOsmAndBackend({ commit }, { user, osmId, mapNoteId }) {
+  postNote({ commit }, { user, osmId, noteId }) {
     const note = constructNote();
     const { name } = state.details;
 
-    if (!mapNoteId) {
-      return postMapNote(note).then((ps) => {
+    if (!noteId) {
+      return postNote(note).then((ps) => {
         state.displaySuccess = true;
         const displayNote = constructDisplayNote(ps);
         commit('setNote', displayNote);
@@ -260,13 +260,13 @@ const actions = {
               osmId: parseInt(node.id, 10),
               recieveUpdates: true,
               name,
-              mapNoteId: parseInt(displayNote.id, 10),
+              noteId: parseInt(displayNote.id, 10),
             });
           }
         });
       });
     }
-    return postMapNoteAsComment(note, mapNoteId).then((ps) => {
+    return postNoteAsComment(note, noteId).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
@@ -280,7 +280,7 @@ const actions = {
             osmId: parseInt(node.id, 10),
             recieveUpdates: true,
             name,
-            mapNoteId: displayNote.id,
+            noteId: displayNote.id,
           });
         }
       });
@@ -288,7 +288,7 @@ const actions = {
   },
   postOwnCategoryNote({ commit }) {
     const note = constructNote();
-    return postMapNote(note).then((ps) => {
+    return postNote(note).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
@@ -347,8 +347,8 @@ const mutations = {
   setIsNew(s, isNew) {
     s.isNew = isNew;
   },
-  setMapNoteId(s, mapNoteId) {
-    s.mapNoteId = mapNoteId;
+  setNoteId(s, noteId) {
+    s.noteId = noteId;
   },
 };
 
@@ -407,8 +407,8 @@ const getters = {
   isNew(s) {
     return s.isNew;
   },
-  mapNoteId(s) {
-    return s.mapNoteId;
+  noteId(s) {
+    return s.noteId;
   },
 };
 

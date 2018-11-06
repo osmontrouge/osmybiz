@@ -106,7 +106,7 @@
         'setCoords',
         'setIsNote',
         'setOsmId',
-        'setMapNoteId',
+        'setNoteId',
       ]),
       reset() {
         this.address = null;
@@ -137,7 +137,7 @@
           description: '',
           note: '',
         });
-        this.setMapNoteId(null);
+        this.setNoteId(null);
         this.$router.push({ name: routes.Detail });
       },
     },

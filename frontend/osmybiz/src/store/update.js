@@ -29,7 +29,7 @@ const actions = {
                 lng: n.lng,
                 tags: node.tags,
                 mine: true,
-                mapNoteId: n.mapNoteId,
+                noteId: n.noteId,
               };
               commit('pushNode', ownedNode);
             }
@@ -50,7 +50,7 @@ const actions = {
         lng: update.coords.lng,
         recieveUpdates: true,
         name: update.name,
-        mapNoteId: update.mapNoteId,
+        noteId: update.noteId,
       });
     } else {
       promise = deleteNode(user.id, update.id);
