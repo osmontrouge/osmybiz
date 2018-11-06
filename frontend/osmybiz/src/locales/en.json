@@ -149,6 +149,11 @@
       "title": "Changes saved"
     }
   },
+  "unsavedchanges": {
+    "title": "Unsaved Changes",
+    "section": "You have {time} seconds to recover the unsaved changes. Click {here} to recover the changes.",
+    "here": "here"
+  },
   "error": {
     "title": "Error",
     "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",

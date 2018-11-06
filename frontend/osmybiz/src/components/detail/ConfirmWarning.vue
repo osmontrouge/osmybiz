@@ -46,6 +46,7 @@
         this.setIsConfirm(false);
       },
       confirm() {
+        this.setIsConfirm(false);
         this.action();
       },
     },

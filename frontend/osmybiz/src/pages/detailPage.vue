@@ -33,16 +33,22 @@
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
 
+  import { isNotModified, getUnsavedChangesFromCookies } from '../store/detail';
   import { routes } from './../router';
+
+  export const UNSAVEDCHANGESTIME = 30;
 
   export default {
     mounted() {
       if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
         this.$router.push({ name: routes.Landing });
       }
+      if (this.isEditingUnsavedChanges) {
+        getUnsavedChangesFromCookies(this);
+      } else {
+        this.getAddress(this.businessPosition);
+      }
       this.setDisplaySuccess(false);
-
-      this.getAddress(this.businessPosition);
       localStorage.setItem('details', JSON.stringify(this.details));
       this.setInfoMap(this.$i18n.locale);
       this.setIsNew(!this.isNote);
@@ -69,6 +75,10 @@
         'address',
         'isDuplicate',
         'isNew',
+        'osmId',
+        'isEditingUnsavedChanges',
+        'hasSavedChanges',
+        'isOwnCategory',
       ]),
     },
     methods: {
@@ -77,10 +87,44 @@
         'setDisplayConfirmation',
         'setInfoMap',
         'setIsNew',
+        'setDisplayUnsavedChangesNotification',
+        'setIsEditingUnsavedChanges',
+        'setDetails',
+        'setAddress',
+        'setOsmId',
+        'setIsNote',
+        'setHasSavedChanges',
+        'setIsOwnCategory',
       ]),
       ...mapActions([
         'getAddress',
+        'getConfirmation',
       ]),
+    },
+    beforeRouteLeave(to, from, next) {
+      this.setIsEditingUnsavedChanges(false);
+      if (isNotModified(this) || this.hasSavedChanges) {
+        this.setHasSavedChanges(false);
+        // For the case when DisplayUnsavedChangesNotication is still true (5 sec
+        // time out has not been up yet)
+        this.setDisplayUnsavedChangesNotification(false);
+        next();
+      } else {
+        this.setDisplayUnsavedChangesNotification(true);
+        setTimeout(() => {
+          this.setDisplayUnsavedChangesNotification(false);
+        }, UNSAVEDCHANGESTIME * 1000);
+        const unsavedChanges = {
+          address: this.address,
+          details: this.details,
+          business: this.business,
+          isNote: this.isNote,
+          osmId: this.osmId,
+          isOwnCategory: this.isOwnCategory,
+        };
+        this.$cookies.set('unsavedChanges', unsavedChanges, UNSAVEDCHANGESTIME + 2);
+        next();
+      }
     },
   };
 </script>

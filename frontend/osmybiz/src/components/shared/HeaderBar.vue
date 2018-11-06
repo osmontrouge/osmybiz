@@ -1,8 +1,10 @@
 <template>
     <div class="header">
       <div class="title">
-        <a href="/">
-          OpenStreetMap My Business
+        <a>
+          <router-link to="/">
+            OpenStreetMap My Business
+          </router-link>
         </a>
       </div>
       <div class="buttons">
