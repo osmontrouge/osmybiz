@@ -227,7 +227,7 @@ export function loadTags() {
 }
 
 const actions = {
-  postNodeToOsmAndBackend({ commit }, user) {
+  postNode({ commit }, user) {
     const node = {
       lat: state.lat,
       lon: state.lon,

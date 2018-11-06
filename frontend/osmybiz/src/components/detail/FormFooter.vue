@@ -46,7 +46,7 @@
       ...mapActions([
         'postNote',
         'postOwnCategoryNote',
-        'postNodeToOsmAndBackend',
+        'postNode',
         'checkDuplicateNode',
         'getConfirmation',
         'loadUpdates',
@@ -57,7 +57,7 @@
         if (!this.isNote && !this.isOwnCategory) {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
-              return this.postNodeToOsmAndBackend(this.user).then(() => true);
+              return this.postNode(this.user).then(() => true);
             }
             return false;
           });
