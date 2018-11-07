@@ -6,6 +6,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     osm_id = db.Column(db.BigInteger)
+    note_without_node_id = db.Column(db.BigInteger)
     osm_name = db.Column(db.String)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
@@ -15,6 +16,7 @@ class User(db.Model):
     def __init__(self, osm_id, osm_name):
         self.osm_id = osm_id
         self.osm_name = osm_name
+        self.note_without_node_id = -1
 
     def save(self):
         db.session.add(self)

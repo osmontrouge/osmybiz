@@ -4,7 +4,7 @@ import deepEqual from 'deep-equal';
 import { postNode, postNote, getNode, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
-import { addOrUpdateNode } from './../api/osmybizApi';
+import { addOrUpdateNode, getNoteWithoutNodeId } from './../api/osmybizApi';
 
 let initalOptions = [];
 
@@ -259,18 +259,31 @@ const actions = {
         const displayNote = constructDisplayNote(ps);
         commit('setNote', displayNote);
 
-        return getNode(osmId).then((node) => {
-          if (node) {
-            addOrUpdateNode(user.id, {
-              lat: parseFloat(node.lat),
-              lng: parseFloat(node.lon),
-              version: parseInt(node.version, 10),
-              osmId: parseInt(node.id, 10),
-              recieveUpdates: true,
-              name,
-              noteId: parseInt(displayNote.id, 10),
-            });
-          }
+        if (osmId) {
+          return getNode(osmId).then((node) => {
+            if (node) {
+              addOrUpdateNode(user.id, {
+                lat: parseFloat(node.lat),
+                lng: parseFloat(node.lon),
+                version: parseInt(node.version, 10),
+                osmId: parseInt(node.id, 10),
+                recieveUpdates: true,
+                name,
+                noteId: parseInt(displayNote.id, 10),
+              });
+            }
+          });
+        }
+        return getNoteWithoutNodeId(user.id).then((noteWithoutNodeId) => {
+          addOrUpdateNode(user.id, {
+            lat: parseFloat(state.lat),
+            lng: parseFloat(state.lon),
+            recieveUpdates: true,
+            version: 0,
+            name,
+            osmId: noteWithoutNodeId,
+            noteId: parseInt(displayNote.id, 10),
+          });
         });
       });
     }
@@ -460,6 +473,7 @@ export function getUnsavedChangesFromCookies(context) {
   context.setAddress(unsavedChangesCookie.address);
   context.setOsmId(unsavedChangesCookie.osmId);
   context.setIsNote(unsavedChangesCookie.isNote);
+  context.setNoteId(unsavedChangesCookie.noteId);
   context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
   localStorage.setItem('address', JSON.stringify(context.address));
 }

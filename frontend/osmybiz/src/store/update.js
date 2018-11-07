@@ -10,30 +10,46 @@ const state = {
   showUpdates: false,
 };
 
+function isNoteWithoutNode(osmId) {
+  return (osmId < 0);
+}
+
 const actions = {
   loadUpdates({ commit }, user) {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
         ns.filter(n => n.recieveUpdates).forEach((n) => {
-          getNode(n.osmId).then((node) => {
-            const update = util.getUpdate(n, node);
-            if (_.isObject(update)) {
-              commit('pushUpdate', update);
-            }
+          console.log(n);
+          if (isNoteWithoutNode(n.osmId)) {
+            const ownedNode = {
+              id: n.osmId,
+              lat: n.lat,
+              lng: n.lng,
+              mine: true,
+              noteId: n.noteId,
+            };
+            commit('pushNode', ownedNode);
+          } else {
+            getNode(n.osmId).then((node) => {
+              const update = util.getUpdate(n, node);
+              if (_.isObject(update)) {
+                commit('pushUpdate', update);
+              }
 
-            if (_.isObject(node)) {
-              const ownedNode = {
-                id: n.osmId,
-                lat: n.lat,
-                lng: n.lng,
-                tags: node.tags,
-                mine: true,
-                noteId: n.noteId,
-              };
-              commit('pushNode', ownedNode);
-            }
-          });
+              if (_.isObject(node)) {
+                const ownedNode = {
+                  id: n.osmId,
+                  lat: n.lat,
+                  lng: n.lng,
+                  tags: node.tags,
+                  mine: true,
+                  noteId: n.noteId,
+                };
+                commit('pushNode', ownedNode);
+              }
+            });
+          }
         });
       });
     }, () => {

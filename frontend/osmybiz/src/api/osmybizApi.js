@@ -39,6 +39,15 @@ export function addOrUpdateNode(userId, node) {
   return axios.post(route, node);
 }
 
+export function getNoteWithoutNodeId(userId) {
+  // NOT IMPLEMENTED for fakeOsmmybiz
+  // if (fakeOsmybizApi) {
+  //    return mockAddOrUpdateNote(userId);
+  // }
+  const route = `${baseRoute}user/${userId}/noteWithoutNodeId`;
+  return axios.get(route).then(response => response.data);
+}
+
 export function unsubscribe(userId, nodeId) {
   if (fakeOsmybizApi) {
     return mockUnsubscribe(userId, nodeId);

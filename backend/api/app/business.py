@@ -4,7 +4,6 @@ from app.validation import is_user_valid, is_node_valid
 from app.serialization import serialize_node, serialize_user,\
     deserialize_node, deserialize_user
 
-
 def find_user_by_osmid(osmid):
     return User.query.filter(User.osm_id == osmid).first()
 
@@ -62,7 +61,6 @@ def add_or_update_node(user_id, node_data):
         abort(400)
 
     node = deserialize_node(node_data)
-
     existing_node = find_node_by_user_and_id(user.id, node.osm_id)
 
     if existing_node is None:
@@ -77,6 +75,9 @@ def add_or_update_node(user_id, node_data):
         existing_node.osm_note_id = node.osm_note_id
 
     existing_node.save()
+    if node.osm_id < 0:
+        user.note_without_node_id = user.note_without_node_id - 1
+        user.save()
 
     return '', 200
 
@@ -86,6 +87,11 @@ def get_nodes_for_user(user_id):
 
     nodes = find_nodes_by_user_id(user.id)
     return list(map(lambda n: serialize_node(n), nodes))
+
+
+def get_note_without_node_id_for_user(user_id):
+    user = ensure_user(user_id)
+    return user.note_without_node_id
 
 
 def load_node(user_id, node_id):
