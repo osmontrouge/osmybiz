@@ -9,6 +9,7 @@ const state = {
   updates: [],
   nodes: [],
   showUpdates: false,
+  showBusinessRecord: false,
 };
 
 const actions = {
@@ -65,6 +66,13 @@ const actions = {
       commit('removeUpdate', update);
     });
   },
+
+  deleteOwnedNode({ commit }, { ownedNode, user }) {
+    console.log(this.nodes);
+    deleteNode(user.id, ownedNode.id).then(() => {
+      commit('removeNode', ownedNode);
+    });
+  },
 };
 
 const mutations = {
@@ -81,8 +89,18 @@ const mutations = {
       s.updates.splice(i, 1);
     }
   },
+  removeNode(s, node) {
+    const i = _.findIndex(s.nodes, u => u.id === node.id);
+
+    if (i >= 0) {
+      s.nodes.splice(i, 1);
+    }
+  },
   toggleUpdates(s) {
     s.showUpdates = !s.showUpdates;
+  },
+  toggleBusinessRecord(s) {
+    s.showBusinessRecord = !s.showBusinessRecord;
   },
   pushNode(s, node) {
     s.nodes.push(node);
@@ -95,6 +113,9 @@ const getters = {
   },
   showUpdates(s) {
     return s.showUpdates;
+  },
+  showBusinessRecord(s) {
+    return s.showBusinessRecord;
   },
   updateCount(s) {
     return s.updates.length;
