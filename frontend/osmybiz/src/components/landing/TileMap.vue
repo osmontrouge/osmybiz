@@ -79,17 +79,20 @@
       }
     },
     mounted() {
-      this.map = this.$refs.map.mapObject;
-      let { lat, lng, zoom } = this.$router.currentRoute.params;
-      [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
-      if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom)) {
-        const mapCenter = L.latLng(lat, lng);
-        this.map.setView(mapCenter, zoom);
-        this.queryOverpass(this.viewPort);
+      const lastKnownPosition = this.$cookies.get('lastKnownPosition');
+      const urlParams = this.$route.params;
+      const hasUrlParams = (urlParams.zoom && urlParams.lat && urlParams.lng);
+      if (lastKnownPosition && !hasUrlParams) {
+        this.map = this.$refs.map.mapObject;
+        this.map.setView(lastKnownPosition.coords, lastKnownPosition.zoom);
       } else {
-        // on load trigger manually if no predefined values from route
-        this.viewChange();
+        this.setMapPositionBasedOnUrl();
       }
+    },
+    watch: {
+      getUrl: function setMapPositionBasedOnUrl() {
+        this.setMapPositionBasedOnUrl();
+      },
     },
     methods: {
       ...mapActions(['queryOverpass', 'checkDuplicateNote']),
@@ -105,11 +108,12 @@
       viewChange() {
         const zoom = this.map.getZoom();
         const bounds = this.map.getBounds();
+        const coords = this.map.getCenter();
         this.setViewPort({
           bounds,
           zoom,
         });
-        storeViewPort(bounds, zoom, this.$router);
+        storeViewPort(coords, zoom, this.$router);
         this.queryOverpass(this.viewPort);
       },
       getOwnedNodesInViewPort() {
@@ -132,6 +136,19 @@
           this.newBusinessPositions.push(latLng);
         }, 100, event.latlng);
       },
+      setMapPositionBasedOnUrl() {
+        this.map = this.$refs.map.mapObject;
+        let { lat, lng, zoom } = this.$router.currentRoute.params;
+        [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
+        if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom)) {
+          const mapCenter = L.latLng(lat, lng);
+          this.map.setView(mapCenter, zoom);
+          this.queryOverpass(this.viewPort);
+        } else {
+          // on load trigger manually if no predefined values from route
+          this.viewChange();
+        }
+      },
     },
     computed: {
       ...mapGetters([
@@ -149,6 +166,9 @@
           mine = this.getOwnedNodesInViewPort();
         }
         return _.unionBy(mine, this.businesses, b => b.id);
+      },
+      getUrl() {
+        return this.$route.params;
       },
     },
   };
