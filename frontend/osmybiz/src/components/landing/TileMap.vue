@@ -79,7 +79,15 @@
       }
     },
     mounted() {
-      this.setMapPositionBasedOnUrl();
+      const lastKnownPosition = this.$cookies.get('lastKnownPosition');
+      const urlParams = this.$route.params;
+      const hasUrlParams = (urlParams.zoom && urlParams.lat && urlParams.lng);
+      if (lastKnownPosition && !hasUrlParams) {
+        this.map = this.$refs.map.mapObject;
+        this.map.setView(lastKnownPosition.coords, lastKnownPosition.zoom);
+      } else {
+        this.setMapPositionBasedOnUrl();
+      }
     },
     watch: {
       getUrl: function setMapPositionBasedOnUrl() {

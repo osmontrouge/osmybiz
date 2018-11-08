@@ -67,6 +67,11 @@
       DuplicateWarning,
       UnsavedChangesNotification,
     },
+    beforeRouteLeave(to, from, next) {
+      const pos = localStorage.getItem('MAP_POSITION_KEY');
+      this.$cookies.set('lastKnownPosition', pos, '30d');
+      next();
+    },
   };
 
 </script>
