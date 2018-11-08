@@ -23,23 +23,23 @@ function getStoredPosition() {
   return null;
 }
 
-function storePosition(cords, zoom) {
+function storePosition(coords, zoom) {
   const pos = {
-    cords,
+    coords,
     zoom,
   };
   localStorage.setItem(positionKey, JSON.stringify(pos));
 }
 
-export function storeViewPort(bbox, zoom, $router) {
+export function storeViewPort(coords, zoom, $router) {
 // eslint-disable-next-line no-underscore-dangle
-  const lat = ((bbox._northEast.lat + bbox._southWest.lat) / 2)
+  const lat = (coords.lat)
     .toFixed(LatLngRoundingAccuracy);
   // eslint-disable-next-line no-underscore-dangle
-  const lng = ((bbox._northEast.lng + bbox._southWest.lng) / 2)
+  const lng = (coords.lng)
     .toFixed(LatLngRoundingAccuracy);
 
-  storePosition(latLng(lat, lng), zoom);
+  storePosition(coords, zoom);
 
   $router.push({ name: routes.Landing, params: { zoom, lat, lng } });
 }

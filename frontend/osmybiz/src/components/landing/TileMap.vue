@@ -105,11 +105,12 @@
       viewChange() {
         const zoom = this.map.getZoom();
         const bounds = this.map.getBounds();
+        const coords = this.map.getCenter();
         this.setViewPort({
           bounds,
           zoom,
         });
-        storeViewPort(bounds, zoom, this.$router);
+        storeViewPort(coords, zoom, this.$router);
         this.queryOverpass(this.viewPort);
       },
       getOwnedNodesInViewPort() {
