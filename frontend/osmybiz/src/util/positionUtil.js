@@ -32,15 +32,10 @@ function storePosition(coords, zoom) {
 }
 
 export function storeViewPort(coords, zoom, $router) {
-// eslint-disable-next-line no-underscore-dangle
-  const lat = (coords.lat)
-    .toFixed(LatLngRoundingAccuracy);
-  // eslint-disable-next-line no-underscore-dangle
-  const lng = (coords.lng)
-    .toFixed(LatLngRoundingAccuracy);
+  const lat = (coords.lat).toFixed(LatLngRoundingAccuracy);
+  const lng = (coords.lng).toFixed(LatLngRoundingAccuracy);
 
   storePosition(coords, zoom);
-
   $router.push({ name: routes.Landing, params: { zoom, lat, lng } });
 }
 

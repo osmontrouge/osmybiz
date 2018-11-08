@@ -79,17 +79,12 @@
       }
     },
     mounted() {
-      this.map = this.$refs.map.mapObject;
-      let { lat, lng, zoom } = this.$router.currentRoute.params;
-      [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
-      if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom)) {
-        const mapCenter = L.latLng(lat, lng);
-        this.map.setView(mapCenter, zoom);
-        this.queryOverpass(this.viewPort);
-      } else {
-        // on load trigger manually if no predefined values from route
-        this.viewChange();
-      }
+      this.setMapPositionBasedOnUrl();
+    },
+    watch: {
+      getUrl: function setMapPositionBasedOnUrl() {
+        this.setMapPositionBasedOnUrl();
+      },
     },
     methods: {
       ...mapActions(['queryOverpass', 'checkDuplicateNote']),
@@ -133,6 +128,19 @@
           this.newBusinessPositions.push(latLng);
         }, 100, event.latlng);
       },
+      setMapPositionBasedOnUrl() {
+        this.map = this.$refs.map.mapObject;
+        let { lat, lng, zoom } = this.$router.currentRoute.params;
+        [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
+        if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom)) {
+          const mapCenter = L.latLng(lat, lng);
+          this.map.setView(mapCenter, zoom);
+          this.queryOverpass(this.viewPort);
+        } else {
+          // on load trigger manually if no predefined values from route
+          this.viewChange();
+        }
+      },
     },
     computed: {
       ...mapGetters([
@@ -150,6 +158,9 @@
           mine = this.getOwnedNodesInViewPort();
         }
         return _.unionBy(mine, this.businesses, b => b.id);
+      },
+      getUrl() {
+        return this.$route.params;
       },
     },
   };
