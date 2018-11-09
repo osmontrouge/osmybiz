@@ -297,9 +297,6 @@ const mutations = {
   setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
     s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
   },
-  setDisplayConfirmation(s, displayConfirmation) {
-    s.displayConfirmation = displayConfirmation;
-  },
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
   },
@@ -370,9 +367,6 @@ const getters = {
   },
   displayUnsavedChangesNotification(s) {
     return s.displayUnsavedChangesNotification;
-  },
-  displayConfirmation(s) {
-    return s.displayConfirmation;
   },
   isOwnCategory(s) {
     return s.isOwnCategory;
