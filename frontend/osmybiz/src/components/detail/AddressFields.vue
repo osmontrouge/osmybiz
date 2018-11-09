@@ -3,6 +3,10 @@
   <div class="address-wrapper">
     <div class="field-label">
       <h3>{{ $t('detail.titles.address') }}</h3>
+      <img class="info"
+           @mouseenter="show('address')"
+           @mouseleave="hide()"
+           src="../../assets/info_black.png">
     </div>
     <div class="address-fields">
       <div class="row">
@@ -83,6 +87,7 @@
 
 <script>
   import { mapGetters, mapMutations } from 'vuex';
+  import { showPopup, hidePopup } from '../../store/detail';
 
   export default {
     name: 'address-fields',
@@ -97,6 +102,12 @@
         'setInfoText',
         'setIsPopup',
       ]),
+      show(key) {
+        showPopup(this.$translate.text(key));
+      },
+      hide() {
+        hidePopup();
+      },
     },
   };
 </script>
