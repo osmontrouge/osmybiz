@@ -183,7 +183,7 @@
         'setApplyOffset',
       ]),
       show(key) {
-        showPopup(this.$translate.text(key));
+        showPopup(this, key);
       },
       hide() {
         hidePopup();

@@ -91,7 +91,7 @@
         this.details.category = { value: 0, text: '' };
       },
       show(key) {
-        showPopup(this.$translate.text(key));
+        showPopup(this, key);
       },
       onSelect(item) {
         this.details.category = item;

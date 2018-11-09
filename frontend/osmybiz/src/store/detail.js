@@ -413,7 +413,9 @@ export default {
   getters,
 };
 
-export function showPopup(text) {
+export function showPopup(context, key) {
+  const infoTextPath = 'infoTexts.'.concat(key);
+  const text = context.$i18n.t(infoTextPath);
   state.infoText = text;
   state.isPopup = true;
 }
