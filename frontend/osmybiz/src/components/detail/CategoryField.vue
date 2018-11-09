@@ -4,8 +4,8 @@
       <div class="field-label">
         <h3>{{ $t('detail.titles.category') }}*</h3>
         <img class="info"
-             @mouseenter="show('category')"
-             @mouseleave="hide()"
+             @mouseenter="showPopup($t('infoTexts.category'))"
+             @mouseleave="hidePopup()"
              src="../../assets/info_black.png">
       </div>
 
@@ -52,7 +52,6 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../../store/detail';
 
   Vue.use(VeeValidate);
 
@@ -74,9 +73,9 @@
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
-        'setInfoText',
-        'setIsPopup',
         'setIsNote',
+        'showPopup',
+        'hidePopup',
       ]),
       hideInput() {
         if (this.isNew) {
@@ -90,14 +89,8 @@
         this.setIsOwnCategory(true);
         this.details.category = { value: 0, text: '' };
       },
-      show(key) {
-        showPopup(this, key);
-      },
       onSelect(item) {
         this.details.category = item;
-      },
-      hide() {
-        hidePopup();
       },
     },
     components: {

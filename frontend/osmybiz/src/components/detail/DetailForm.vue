@@ -10,8 +10,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.name') }}*</label>
             <img class="info"
-                 @mouseenter="show('name')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.name'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -30,8 +30,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.opening_hours') }}</label>
             <img class="info"
-                 @mouseenter="show('opening_hours')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.opening_hours'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -44,8 +44,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.phone') }}</label>
             <img class="info"
-                 @mouseenter="show('phone')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.phone'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
           <input type="text"
@@ -57,8 +57,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.email') }}</label>
             <img class="info"
-                 @mouseenter="show('email')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.email'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -79,8 +79,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.website') }}</label>
             <img class="info"
-                 @mouseenter="show('website')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.website'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -101,8 +101,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.wheelchair') }}</label>
             <img class="info"
-                 @mouseenter="show('wheelchair')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.wheelchair'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -120,8 +120,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.description') }}</label>
             <img class="info"
-                 @mouseenter="show('description')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.description'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -134,8 +134,8 @@
           <div class="field-label">
             <label>{{ $t('detail.labels.note') }}</label>
             <img class="info"
-                 @mouseenter="show('note')"
-                 @mouseleave="hide()"
+                 @mouseenter="showPopup($t('infoTexts.note'))"
+                 @mouseleave="hidePopup()"
                  src="../../assets/info_black.png">
           </div>
 
@@ -157,7 +157,6 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import { showPopup, hidePopup } from '../../store/detail';
 
   Vue.use(VeeValidate);
 
@@ -178,16 +177,10 @@
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
-        'setIsPopup',
-        'setInfoText',
         'setApplyOffset',
+        'showPopup',
+        'hidePopup',
       ]),
-      show(key) {
-        showPopup(this, key);
-      },
-      hide() {
-        hidePopup();
-      },
     },
   };
 </script>
