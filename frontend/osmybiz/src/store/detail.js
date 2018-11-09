@@ -6,7 +6,7 @@ import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateNode } from './../api/osmybizApi';
 
-let initalOptions = [];
+let initialOptions = [];
 
 const state = {
   // detailPage
@@ -18,7 +18,7 @@ const state = {
   isEditingUnsavedChanges: false,
 
   // DetailForm
-  tags: initalOptions,
+  tags: initialOptions,
   address: {},
   lat: null,
   lon: null,
@@ -220,7 +220,7 @@ export function loadTags() {
       }
     });
   } else {
-    initalOptions = options;
+    initialOptions = options;
   }
 }
 
