@@ -89,7 +89,6 @@
         'node',
         'isNote',
         'displaySuccess',
-        'hasUpdates',
       ]),
     },
     methods: {
