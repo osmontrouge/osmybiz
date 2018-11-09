@@ -18,7 +18,7 @@ const actions = {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
 
-        ns.filter(n => n.recieveUpdates).forEach((n) => {
+        ns.filter(n => n.receiveUpdates).forEach((n) => {
           getNode(n.osmId).then((node) => {
             const update = util.getUpdate(n, node);
             if (_.isObject(update)) {
@@ -50,7 +50,7 @@ const actions = {
         version: update.newVersion,
         lat: update.coords.lat,
         lng: update.coords.lng,
-        recieveUpdates: true,
+        receiveUpdates: true,
         name: update.name,
       });
     } else {

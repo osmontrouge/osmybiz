@@ -241,7 +241,7 @@ const actions = {
         lng: parseFloat(ps.lon),
         version: parseInt(ps.version, 10),
         osmId: parseInt(ps.id, 10),
-        recieveUpdates: true,
+        receiveUpdates: true,
         name: ps.details.name,
       });
     });
@@ -261,7 +261,7 @@ const actions = {
             lng: parseFloat(node.lon),
             version: parseInt(node.version, 10),
             osmId: parseInt(node.id, 10),
-            recieveUpdates: true,
+            receiveUpdates: true,
             name,
           });
         }
