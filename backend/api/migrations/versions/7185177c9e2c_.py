@@ -33,7 +33,7 @@ def upgrade():
     sa.Column('lat', sa.Float(), nullable=True),
     sa.Column('lng', sa.Float(), nullable=True),
     sa.Column('version', sa.Integer(), nullable=True),
-    sa.Column('recieveUpdates', sa.Boolean(), nullable=True),
+    sa.Column('receiveUpdates', sa.Boolean(), nullable=True),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('date_created', sa.DateTime(), nullable=True),
     sa.Column('date_modified', sa.DateTime(), nullable=True),
