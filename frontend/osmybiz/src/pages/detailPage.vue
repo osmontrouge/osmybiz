@@ -84,7 +84,6 @@
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setDisplayConfirmation',
         'setInfoMap',
         'setIsNew',
         'setDisplayUnsavedChangesNotification',
