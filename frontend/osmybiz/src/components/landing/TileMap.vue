@@ -7,7 +7,7 @@
       :min-zoom="3"
       :center="mapCenter"
       :max-bounds="bounds"
-      @update:bounds="updateMap($event)"
+      @moveend="updateMap()"
       @contextmenu="contextMenu($event)"
       @click="cleanNewBusinessPopups"
     >
@@ -104,7 +104,7 @@
         'setOsmId',
         'setMapZoom',
       ]),
-      updateMap(bounds) {
+      updateMap() {
         const zoom = this.map.getZoom();
         const coords = this.map.getCenter();
         const lat = coords.lat.toFixed(LatLngRoundingAccuracy);
@@ -112,6 +112,7 @@
         // update url to leaflet position
         this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
 
+        const bounds = this.map.getBounds();
         this.setViewPort({
           bounds,
           zoom,
