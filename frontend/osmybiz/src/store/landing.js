@@ -4,7 +4,7 @@ import { query } from './../api/nominatimApi';
 import { queryBox } from '../api/overpassApi';
 
 const state = {
-  mapPosition: null,
+  mapCenter: null,
   mapZoom: null,
 
   search: null,
@@ -67,8 +67,8 @@ const actions = {
 };
 
 const mutations = {
-  setMapPosition(s, pos) {
-    s.mapPosition = pos;
+  setMapCenter(s, pos) {
+    s.mapCenter = pos;
   },
   setMapZoom(s, zoom) {
     s.mapZoom = zoom;
@@ -117,8 +117,8 @@ const getters = {
   suggestions(s) {
     return s.suggestions;
   },
-  mapPosition(s) {
-    return s.mapPosition;
+  mapCenter(s) {
+    return s.mapCenter;
   },
   mapZoom(s) {
     return s.mapZoom;

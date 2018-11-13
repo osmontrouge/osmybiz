@@ -5,10 +5,10 @@ describe('landing store', () => {
   describe('mutations', () => {
     it('should set positions', () => {
       const state = {};
-      const { setMapPosition } = store.mutations;
-      setMapPosition(state, latLng(1, 1));
-      expect(state.mapPosition.lat).to.equal(1);
-      expect(state.mapPosition.lng).to.equal(1);
+      const { setMapCenter } = store.mutations;
+      setMapCenter(state, latLng(1, 1));
+      expect(state.mapCenter.lat).to.equal(1);
+      expect(state.mapCenter.lng).to.equal(1);
     });
   });
 });

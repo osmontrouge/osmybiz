@@ -1,100 +1,74 @@
 import * as _ from 'lodash';
 import { latLng } from 'leaflet';
-import { initialPosition, initialZoom, LatLngRoundingAccuracy } from '../config/config';
-import { routes } from '../router';
+import { initialPosition, initialZoom } from '../config/config';
 
-function fallBackPosition() {
-  return {
-    cords: initialPosition,
-    zoom: initialZoom,
-  };
-}
-
-const positionKey = 'MAP_POSITION_KEY';
-const zoomOnSpecifigLocation = 18;
+export const FALLBACKPOSITION = { coords: initialPosition, zoom: initialZoom };
+const position = 'last_known_position';
 
 function getStoredPosition() {
-  const stored = JSON.parse(localStorage.getItem(positionKey));
-
-  if (stored && stored.cords && _.isNumber(stored.zoom) &&
-    _.isNumber(stored.cords.lat) && _.isNumber(stored.cords.lng)) {
+  const stored = JSON.parse(localStorage.getItem(position));
+  if (_.isObject(stored)) {
     return stored;
   }
   return null;
 }
 
-function storePosition(coords, zoom) {
+export function storePosition(coords, zoom) {
   const pos = {
     coords,
     zoom,
   };
-  localStorage.setItem(positionKey, JSON.stringify(pos));
+  localStorage.setItem(position, JSON.stringify(pos));
 }
 
-export function storeViewPort(coords, zoom, $router) {
-  const lat = (coords.lat).toFixed(LatLngRoundingAccuracy);
-  const lng = (coords.lng).toFixed(LatLngRoundingAccuracy);
-
-  storePosition(coords, zoom);
-  $router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+function isNumberLatLngZoom(latLngZoom) {
+  let { lat, lng, zoom } = latLngZoom;
+  [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
+  return !Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom);
 }
 
-function extractHash(params) {
-  const zoom = parseInt(params.zoom, 10) || zoomOnSpecifigLocation;
-  const lat = parseFloat(params.lat);
-  const lng = parseFloat(params.lng);
+function isValidPositionParams(params) {
+  if (!params) {
+    return false;
+  }
+  const { coords, zoom } = params;
+  const { lat, lng } = coords;
+  return isNumberLatLngZoom({ lat, lng, zoom });
+}
 
-  if (!Number.isNaN(lat) && !Number.isNaN(lng)) {
-    return {
-      cords: latLng(lat, lng),
-      zoom,
-    };
+function latLngZoomToCoordsZoom(latLngZoom) {
+  if (isNumberLatLngZoom(latLngZoom)) {
+    const coords = latLng(latLngZoom.lat, latLngZoom.lng);
+    const { zoom } = latLngZoom;
+    return { coords, zoom };
   }
   return null;
 }
 
-function getBrowserLocation() {
-  return new Promise((resolve) => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((location) => {
-        const pos = {
-          cords: latLng(location.coords.latitude, location.coords.longitude),
-          zoom: zoomOnSpecifigLocation,
-        };
-        resolve(pos);
-      }, () => {
-        resolve(null);
-      }, {
-        timeout: 5000,
-      });
-    } else {
-      resolve(null);
-    }
-  });
+function getCoordsZoomFromUrl(context) {
+  const latLngZoom = context.getUrlParams;
+  const coordsZoom = latLngZoomToCoordsZoom(latLngZoom);
+  if (isValidPositionParams(coordsZoom)) {
+    return coordsZoom;
+  }
+  return null;
 }
 
-export function getInitialPosition(params) {
-  return new Promise((resolve) => {
-    const fromUrl = extractHash(params);
 
-    if (_.isObject(fromUrl)) {
-      resolve(fromUrl);
-      return;
-    }
-
-    const stored = getStoredPosition();
-
-    if (_.isObject(stored)) {
-      resolve(stored);
-      return;
-    }
-
-    getBrowserLocation().then((pos) => {
-      if (_.isObject(pos)) {
-        resolve(pos);
-      } else {
-        resolve(fallBackPosition());
-      }
-    });
-  });
+export function getPositionFromUrl(context) {
+  const posFromUrl = getCoordsZoomFromUrl(context);
+  if (isValidPositionParams(posFromUrl)) {
+    return posFromUrl;
+  }
+  const posFromLocalStorage = getStoredPosition();
+  if (isValidPositionParams(posFromLocalStorage)) {
+    return posFromLocalStorage;
+  }
+  return FALLBACKPOSITION;
 }
+
+export function setPosition(context) {
+  const pos = getPositionFromUrl(context);
+  context.map.setView(pos.coords, pos.zoom);
+}
+
