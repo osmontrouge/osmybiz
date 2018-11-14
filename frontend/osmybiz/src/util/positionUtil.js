@@ -5,7 +5,7 @@ import { initialPosition, initialZoom } from '../config/config';
 export const FALLBACKPOSITION = { coords: initialPosition, zoom: initialZoom };
 const position = 'last_known_position';
 
-function getStoredPosition() {
+function getCoordsZoomFromLocalStorage() {
   const stored = JSON.parse(localStorage.getItem(position));
   if (_.isObject(stored)) {
     return stored;
@@ -13,7 +13,7 @@ function getStoredPosition() {
   return null;
 }
 
-export function storePosition(coords, zoom) {
+export function setCoordsZoomInLocalStorage(coords, zoom) {
   const pos = {
     coords,
     zoom,
@@ -46,7 +46,7 @@ function latLngZoomToCoordsZoom(latLngZoom) {
 }
 
 function getCoordsZoomFromUrl(context) {
-  const latLngZoom = context.getUrlParams;
+  const latLngZoom = context.urlParams;
   const coordsZoom = latLngZoomToCoordsZoom(latLngZoom);
   if (isValidPositionParams(coordsZoom)) {
     return coordsZoom;
@@ -60,15 +60,10 @@ export function getPositionFromUrl(context) {
   if (isValidPositionParams(posFromUrl)) {
     return posFromUrl;
   }
-  const posFromLocalStorage = getStoredPosition();
+  const posFromLocalStorage = getCoordsZoomFromLocalStorage();
   if (isValidPositionParams(posFromLocalStorage)) {
     return posFromLocalStorage;
   }
   return FALLBACKPOSITION;
-}
-
-export function setPosition(context) {
-  const pos = getPositionFromUrl(context);
-  context.map.setView(pos.coords, pos.zoom);
 }
 

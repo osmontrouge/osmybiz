@@ -44,7 +44,6 @@
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
-  import { storePosition, setPosition } from '../../util/positionUtil';
   import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
   import { routes } from '../../router';
 
@@ -71,7 +70,6 @@
           token: mapBoxToken,
         },
         newBusinessPositions: [],
-        map: null,
         bounds: L.latLngBounds(L.latLng(-89.98155760646617, -180), L.latLng(89.99346179538875, 180)),
       };
     },
@@ -85,13 +83,13 @@
     },
     mounted() {
       this.$nextTick(() => {
-        this.map = this.$refs.map.mapObject;
-        setPosition(this);
+        this.setMap(this.$refs.map.mapObject);
+        this.setMapView();
       });
     },
     watch: {
-      getUrlParams: function updatePosition() {
-        setPosition(this);
+      urlParams: function updatePosition() {
+        this.setMapView();
       },
     },
     methods: {
@@ -104,6 +102,9 @@
         'setMapCenter',
         'setOsmId',
         'setMapZoom',
+        'setMapView',
+        'setUrlParams',
+        'setMap',
       ]),
       updateMap() {
         const zoom = this.map.getZoom();
@@ -119,8 +120,6 @@
           zoom,
         });
 
-        // save leaflet position to local storage
-        storePosition(coords, zoom);
         // update business by making overpass query based on the leaflet bounds
         this.queryOverpass(this.viewPort);
       },
@@ -154,6 +153,8 @@
         'mode',
         'isLoggedIn',
         'ownedNodes',
+        'urlParams',
+        'map',
       ]),
       allBusinesses() {
         let mine = [];
@@ -162,8 +163,10 @@
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },
-      getUrlParams() {
-        return this.$route.params;
+      urlParams() {
+        const { params } = this.$route;
+        this.setUrlParams(params);
+        return params;
       },
     },
   };
