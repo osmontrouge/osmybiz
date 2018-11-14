@@ -22,12 +22,12 @@
 
   export default {
     methods: {
-      ...mapMutations(['setMapPosition', 'setMapZoom']),
+      ...mapMutations(['setMapCenter', 'setMapZoom']),
       ...mapActions(['deleteOwnedNode']),
       zoomOverToTheMarker(ownedNode) {
         const coords = latLng(ownedNode.lat, ownedNode.lng);
         this.setMapZoom(18);
-        this.setMapPosition(coords);
+        this.setMapCenter(coords);
       },
       removeMarker(ownedNode) {
         this.deleteOwnedNode({ ownedNode, user: this.user });
