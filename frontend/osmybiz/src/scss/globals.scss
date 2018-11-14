@@ -100,3 +100,7 @@ input::placeholder, textarea::placeholder {
   flex-direction: row;
   white-space: nowrap;
 }
+
+.info:hover {
+  cursor: help;
+}
