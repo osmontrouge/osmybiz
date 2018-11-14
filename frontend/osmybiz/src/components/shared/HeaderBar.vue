@@ -26,7 +26,7 @@
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="toggleEditsRecord()" :title="'Show Business Record'">
+        <div class="messages" v-if="isLoggedIn" @click="toggleEditsRecord()" :title="$t('header.editsrecordtitle')">
           <icon name="list"></icon>
         </div>
 

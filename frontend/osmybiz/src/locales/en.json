@@ -2,7 +2,8 @@
   "header": {
     "about": "About",
     "messagetitle": "Messages from OpenStreetMap",
-    "updatestitle": "Updates of edited businesses"
+    "updatestitle": "Updates of edited businesses",
+    "editsrecordtitle" : "Show your edits"
   },
   "landing": {
     "search": "Search...",
@@ -19,6 +20,9 @@
       "zoomHelp": "Show on map",
       "changesetHelp": "View changeset",
       "muteHelp": "Disable notifications"
+    },
+    "editsrecord": {
+      "title": "Your Edits"
     },
     "help": {
       "title": "Help",

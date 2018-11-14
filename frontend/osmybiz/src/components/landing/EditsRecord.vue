@@ -1,7 +1,7 @@
 <template>
   <div class="own-edits-wrapper" v-if="showEditsRecord">
     <div class="own-edits-title">
-      Your Edits
+      {{ $t('landing.editsrecord.title') }}
     </div>
     <div class="own-edits" v-for="ownedNode in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
       <div class="own-edits-name">
