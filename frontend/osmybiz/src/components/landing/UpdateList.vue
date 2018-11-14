@@ -47,11 +47,11 @@
 
   export default {
     methods: {
-      ...mapMutations(['setMapPosition']),
+      ...mapMutations(['setMapCenter']),
       ...mapActions(['confirmUpdate', 'ignoreFutureUpdates']),
 
       zoom(coords) {
-        this.setMapPosition(coords);
+        this.setMapCenter(coords);
       },
 
       changeSet(changeSet) {
