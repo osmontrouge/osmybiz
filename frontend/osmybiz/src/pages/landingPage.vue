@@ -6,7 +6,7 @@
     <login-help-text></login-help-text>
     <help-text></help-text>
     <update-list></update-list>
-    <business-record></business-record>
+    <bookmarks></bookmarks>
 
     <post-success></post-success>
     <duplicate-warning></duplicate-warning>
@@ -24,7 +24,7 @@
   import PostSuccess from '../components/landing/PostSuccess.vue';
   import ToggleButton from '../components/landing/ToggleButton.vue';
   import LoginHelpText from '../components/landing/LoginHelpText.vue';
-  import BusinessRecord from '../components/landing/EditsRecord.vue';
+  import Bookmarks from '../components/landing/Bookmarks.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import UnsavedChangesNotification from '../components/landing/UnsavedChangesNotification.vue';
 
@@ -68,7 +68,7 @@
       PostSuccess,
       DuplicateWarning,
       UnsavedChangesNotification,
-      BusinessRecord,
+      Bookmarks,
     },
   };
 

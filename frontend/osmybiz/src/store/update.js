@@ -9,7 +9,7 @@ const state = {
   updates: [],
   nodes: [],
   showUpdates: false,
-  showEditsRecord: false,
+  showBookmarks: false,
 };
 
 const actions = {
@@ -98,13 +98,13 @@ const mutations = {
   },
   toggleUpdates(s) {
     s.showUpdates = !s.showUpdates;
-    if (s.showEditsRecord && s.showUpdates) {
-      s.showEditsRecord = false;
+    if (s.showBookmarks && s.showUpdates) {
+      s.showBookmarks = false;
     }
   },
-  toggleEditsRecord(s) {
-    s.showEditsRecord = !s.showEditsRecord;
-    if (s.showEditsRecord && s.showUpdates) {
+  toggleBookmarks(s) {
+    s.showBookmarks = !s.showBookmarks;
+    if (s.showBookmarks && s.showUpdates) {
       s.showUpdates = false;
     }
   },
@@ -120,8 +120,8 @@ const getters = {
   showUpdates(s) {
     return s.showUpdates;
   },
-  showEditsRecord(s) {
-    return s.showEditsRecord;
+  showBookmarks(s) {
+    return s.showBookmarks;
   },
   updateCount(s) {
     return s.updates.length;

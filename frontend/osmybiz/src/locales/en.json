@@ -3,7 +3,7 @@
     "about": "About",
     "messagetitle": "Messages from OpenStreetMap",
     "updatestitle": "Updates of edited businesses",
-    "editsrecordtitle" : "Show your edits"
+    "bookmarkstitle" : "Show your bookmarks"
   },
   "landing": {
     "search": "Search...",
@@ -21,8 +21,8 @@
       "changesetHelp": "View changeset",
       "muteHelp": "Disable notifications"
     },
-    "editsrecord": {
-      "title": "Your Edits"
+    "bookmarks": {
+      "title": "Your Bookmarks"
     },
     "help": {
       "title": "Help",

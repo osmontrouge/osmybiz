@@ -1,10 +1,10 @@
 <template>
-  <div class="own-edits-wrapper" v-if="showEditsRecord">
-    <div class="own-edits-title">
-      {{ $t('landing.editsrecord.title') }}
+  <div class="bookmarks-wrapper" v-if="showBookmarks">
+    <div class="bookmarks-title">
+      {{ $t('landing.bookmarks.title') }}
     </div>
-    <div class="own-edits" v-for="ownedNode in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
-      <div class="own-edits-name">
+    <div class="bookmarks" v-for="ownedNode in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
+      <div class="bookmarks-name">
         {{ownedNode.tags.name}}
       </div>
       <div @click="removeMarker(ownedNode)">
@@ -37,13 +37,13 @@
       ...mapGetters([
         'ownedNodes',
         'user',
-        'showEditsRecord',
+        'showBookmarks',
       ]),
     },
     components: {
       Icon,
     },
-    name: 'edits-record',
+    name: 'bookmarks',
   };
 </script>
 
@@ -55,13 +55,13 @@
     color: $error-color;
   }
 
-  .own-edits-name {
+  .bookmarks-name {
     border-bottom: dashed 1px $primary-color;
     width: -webkit-fill-available;
 
   }
 
-  .own-edits-wrapper {
+  .bookmarks-wrapper {
     position: fixed;
     z-index: 99;
     bottom: 110px;
@@ -75,13 +75,13 @@
     overflow-y: auto;
   }
 
-  .own-edits-title {
+  .bookmarks-title {
     font-size:20px;
     font-weight:bold;
     text-align: left;
   }
 
-  .own-edits {
+  .bookmarks {
     margin-top: 12px;
     margin-bottom: 12px;
     text-align: left;
@@ -90,7 +90,7 @@
     align-items: center;
   }
 
-  .own-edits:hover {
+  .bookmarks:hover {
     background-color: rgba(126, 188, 111, 0.71);
     cursor: pointer;
   }
