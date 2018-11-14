@@ -24,7 +24,7 @@
   import PostSuccess from '../components/landing/PostSuccess.vue';
   import ToggleButton from '../components/landing/ToggleButton.vue';
   import LoginHelpText from '../components/landing/LoginHelpText.vue';
-  import BusinessRecord from '../components/landing/BusinessRecord.vue';
+  import BusinessRecord from '../components/landing/EditsRecord.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import UnsavedChangesNotification from '../components/landing/UnsavedChangesNotification.vue';
 

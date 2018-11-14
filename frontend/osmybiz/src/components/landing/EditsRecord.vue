@@ -1,10 +1,10 @@
 <template>
-  <div class="own-business-wrapper" v-if="showBusinessRecord">
-    <div class="own-business-title">
+  <div class="own-edits-wrapper" v-if="showEditsRecord">
+    <div class="own-edits-title">
       Your Edits
     </div>
-    <div class="own-business" v-for="ownedNode in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
-      <div class="own-business-name">
+    <div class="own-edits" v-for="ownedNode in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
+      <div class="own-edits-name">
         {{ownedNode.tags.name}}
       </div>
       <div @click="removeMarker(ownedNode)">
@@ -37,13 +37,13 @@
       ...mapGetters([
         'ownedNodes',
         'user',
-        'showBusinessRecord',
+        'showEditsRecord',
       ]),
     },
     components: {
       Icon,
     },
-    name: 'business-record',
+    name: 'edits-record',
   };
 </script>
 
@@ -55,13 +55,13 @@
     color: $error-color;
   }
 
-  .own-business-name {
+  .own-edits-name {
     border-bottom: dashed 1px $primary-color;
     width: -webkit-fill-available;
 
   }
 
-  .own-business-wrapper {
+  .own-edits-wrapper {
     position: fixed;
     z-index: 99;
     bottom: 110px;
@@ -75,14 +75,13 @@
     overflow-y: auto;
   }
 
-  .own-business-title {
+  .own-edits-title {
     font-size:20px;
     font-weight:bold;
     text-align: left;
-    color: $primary-color;
   }
 
-  .own-business {
+  .own-edits {
     margin-top: 12px;
     margin-bottom: 12px;
     text-align: left;
@@ -91,7 +90,7 @@
     align-items: center;
   }
 
-  .own-business:hover {
+  .own-edits:hover {
     background-color: rgba(126, 188, 111, 0.71);
     cursor: pointer;
   }
