@@ -7,6 +7,7 @@
       :min-zoom="3"
       :center="mapCenter"
       :max-bounds="bounds"
+      :max-bounds-viscosity="1"
       @moveend="updateMap()"
       @contextmenu="contextMenu($event)"
       @click="cleanNewBusinessPopups"
