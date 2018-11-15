@@ -2,7 +2,7 @@
 import * as _ from 'lodash';
 import { query } from './../api/nominatimApi';
 import { queryBox } from '../api/overpassApi';
-import { getPositionFromUrl, setCoordsZoomInLocalStorage } from '../util/positionUtil';
+import { getPositionFromUrl } from '../util/positionUtil';
 
 const state = {
   map: null,
@@ -79,10 +79,12 @@ const mutations = {
   setMapZoom(s, zoom) {
     s.mapZoom = zoom;
   },
-  setMapView(s) {
+  setMapViewToUrl(s) {
     const pos = getPositionFromUrl(s);
     s.map.setView(pos.coords, pos.zoom);
-    setCoordsZoomInLocalStorage(pos.coords, pos.zoom);
+  },
+  setMapViewToCoordsZoom(s, { coords, zoom }) {
+    s.map.setView(coords, zoom);
   },
   setMap(s, mapObject) {
     s.map = mapObject;

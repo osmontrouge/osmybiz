@@ -46,6 +46,7 @@
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
   import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
   import { routes } from '../../router';
+  import { savesCoordsZoomIntoLocalStorage } from '../../util/positionUtil';
 
   export default {
     name: 'tile-map',
@@ -84,12 +85,12 @@
     mounted() {
       this.$nextTick(() => {
         this.setMap(this.$refs.map.mapObject);
-        this.setMapView();
+        this.setMapViewToUrl();
       });
     },
     watch: {
       urlParams: function updatePosition() {
-        this.setMapView();
+        this.setMapViewToUrl();
       },
     },
     methods: {
@@ -102,7 +103,7 @@
         'setMapCenter',
         'setOsmId',
         'setMapZoom',
-        'setMapView',
+        'setMapViewToUrl',
         'setUrlParams',
         'setMap',
       ]),
@@ -111,8 +112,12 @@
         const coords = this.map.getCenter();
         const lat = coords.lat.toFixed(LatLngRoundingAccuracy);
         const lng = coords.lng.toFixed(LatLngRoundingAccuracy);
+
         // update url to leaflet position
         this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+
+        // saves last-known-position in local storage
+        savesCoordsZoomIntoLocalStorage(coords, zoom);
 
         const bounds = this.map.getBounds();
         this.setViewPort({

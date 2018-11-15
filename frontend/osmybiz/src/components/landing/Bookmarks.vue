@@ -24,22 +24,19 @@
   import { latLng } from 'leaflet';
   import deepEqual from 'deep-equal';
   import Icon from 'vue-awesome/components/Icon.vue';
-  import { routes } from '../../router';
 
   export default {
     methods: {
-      ...mapMutations(['setMapCenter', 'setMapZoom']),
+      ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
       ...mapActions(['deleteOwnedNode']),
       zoomOverToTheMarker(ownedNode) {
         const coords = latLng(ownedNode.lat, ownedNode.lng);
         const zoom = 17;
-        const { lat, lng } = ownedNode;
-        this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+        this.setMapViewToCoordsZoom({ coords, zoom });
         /* eslint-disable */
         // needs to wait for the map to update.
         setTimeout(() => {
           const targets = this.map._targets;
-          console.log(targets);
           for (let i in targets) {
             if (deepEqual(targets[i]._latlng, coords)) {
               const popup = targets[i].dragging._marker._popup;
