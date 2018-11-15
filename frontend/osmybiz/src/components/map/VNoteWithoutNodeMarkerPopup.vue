@@ -9,22 +9,14 @@
     @click="loadAddress"
   >
     <l-popup :options="{minWidth: 240, maxWidth: 240, autoPanPadding: autoPanPadding}" class="popup-data">
+      <div class="popup-title">This is just a note</div>
       <button
-        v-if="!isLoggedIn"
-        title="${this.t('popups').buttontitle}"
-        disabled="disabled"
-        class="popup-btn"
-      >
-        {{ $t('popups.edit') }}
-      </button>
-      <button
-        v-else
         class="popup-btn"
         @click="edit"
       >
         {{ $t('popups.edit') }}
       </button>
-      <v-map-link class="popup-link" :link="`${osmUrl}/#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.mapLink') }}</v-map-link>
+      <v-map-link class="popup-link" :link="`${osmUrl}/note/${business.noteId}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.mapLink') }}</v-map-link>
       <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.feedback') }}</v-map-link>
     </l-popup>
   </l-marker>
@@ -37,7 +29,7 @@
   import VMapLink from './VMapLink.vue';
   import { reverseQuery } from '../../api/nominatimApi';
   import { routes } from '../../router';
-  import { getNodeCategoryKey, createNoteFromNode, getBizCategory } from '../../util/overPassNodeUtils';
+  import { getNodeCategoryKey, getBizCategory } from '../../util/overPassNodeUtils';
   import { osmUrl } from '../../config/config';
 
   const bizIcon = require('../../assets/biz-marker.png');
@@ -145,11 +137,9 @@
         });
       },
       edit() {
-        const note = createNoteFromNode(this.business);
-        this.setDetails(note);
         const pos = L.latLng(this.business.lat, this.business.lng);
         this.setCoords(pos);
-        this.setOsmId(this.business.id);
+        this.setOsmId(null);
         this.setIsNote(true);
         this.setNoteId(this.business.noteId);
         this.$router.push({ name: routes.Detail });
