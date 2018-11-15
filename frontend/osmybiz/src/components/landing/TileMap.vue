@@ -25,16 +25,10 @@
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
-        v-if="business.id > 0"
+        v-if="business.id"
         :key="business.id"
         :business="business"
       ></v-business-marker-popup>
-      <v-note-without-node-marker-popup
-        v-for="business in allBusinesses"
-        v-if="business.id < 0"
-        :key="business.id"
-        :business="business"
-      ></v-note-without-node-marker-popup>
       <v-new-business-popup
         v-for="newBusinessPosition in newBusinessPositions"
         :key="`${newBusinessPosition.lat}_${newBusinessPosition.lng}`"
@@ -51,7 +45,6 @@
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
-  import VNoteWithoutNodeMarkerPopup from '../map/VNoteWithoutNodeMarkerPopup.vue';
   import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
   import { routes } from '../../router';
 
@@ -65,7 +58,6 @@
       LTooltip,
       VNewBusinessPopup,
       VBusinessMarkerPopup,
-      VNoteWithoutNodeMarkerPopup,
     },
     data() {
       return {
