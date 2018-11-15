@@ -3,11 +3,15 @@
     <div class="bookmarks-title">
       {{ $t('landing.bookmarks.title') }}
     </div>
-    <div class="bookmarks" v-for="ownedNode in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
-      <div class="bookmarks-name">
-        {{ownedNode.tags.name}}
+    <div class="bookmarks" v-for="(ownedNode, index) in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
+      <div class="bookmarks-index">
+        {{ index }}
       </div>
-      <div @click="removeMarker(ownedNode)">
+      <div class="bookmarks-name">
+        <span v-if="ownedNode.tags.name"> {{ownedNode.tags.name}} </span>
+        <span v-else> Name not found </span>
+      </div>
+      <div class="bookmarks-remove" @click="removeMarker(ownedNode)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -72,10 +76,19 @@
     color: $error-color;
   }
 
+  .bookmarks-index {
+    padding-right: 7px;
+  }
+
   .bookmarks-name {
     border-bottom: dashed 1px $primary-color;
     width: -webkit-fill-available;
 
+  }
+
+  .bookmarks-name:hover {
+    background-color: rgba(126, 188, 111, 0.71);
+    cursor: pointer;
   }
 
   .bookmarks-wrapper {
@@ -96,6 +109,7 @@
     font-size:20px;
     font-weight:bold;
     text-align: left;
+    border-bottom: #006600;
   }
 
   .bookmarks {
@@ -105,11 +119,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-weight: bold;
   }
 
-  .bookmarks:hover {
-    background-color: rgba(126, 188, 111, 0.71);
+  .bookmarks-remove {
+    padding-left: 7px;
+  }
+
+  .bookmarks-remove:hover {
     cursor: pointer;
+    opacity: 0.5;
   }
 
   .actions {
@@ -117,5 +136,4 @@
     justify-content: flex-start;
     margin-top: 12px;
   }
-
 </style>
