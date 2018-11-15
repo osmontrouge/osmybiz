@@ -18,7 +18,9 @@
   import { mapGetters, mapMutations, mapActions } from 'vuex';
   import 'vue-awesome/icons';
   import { latLng } from 'leaflet';
+  import deepEqual from 'deep-equal';
   import Icon from 'vue-awesome/components/Icon.vue';
+  import { routes } from '../../router';
 
   export default {
     methods: {
@@ -26,8 +28,22 @@
       ...mapActions(['deleteOwnedNode']),
       zoomOverToTheMarker(ownedNode) {
         const coords = latLng(ownedNode.lat, ownedNode.lng);
-        this.setMapZoom(18);
-        this.setMapCenter(coords);
+        const zoom = 17;
+        const { lat, lng } = ownedNode;
+        this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+        /* eslint-disable */
+        // needs to wait for the map to update.
+        setTimeout(() => {
+          const targets = this.map._targets;
+          console.log(targets);
+          for (let i in targets) {
+            if (deepEqual(targets[i]._latlng, coords)) {
+              const popup = targets[i].dragging._marker._popup;
+              this.map.openPopup(popup._content, coords, popup.options);
+            }
+          }
+        }, 500);
+        /* eslint-enable */
       },
       removeMarker(ownedNode) {
         this.deleteOwnedNode({ ownedNode, user: this.user });
@@ -38,6 +54,7 @@
         'ownedNodes',
         'user',
         'showBookmarks',
+        'map',
       ]),
     },
     components: {
