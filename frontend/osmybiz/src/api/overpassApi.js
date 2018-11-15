@@ -7,7 +7,7 @@ export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure'];
 
 const tagRegex = categoryTags.join('|');
 
-const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`;
+const query = `[out:json];nwr[~"^${tagRegex}$"~"."]({{bbox}});out center;`;
 const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"="{{name}}"];out;`;
 
 function buildQuery(bbox) {
@@ -24,12 +24,19 @@ function buildSurroundingQuery(details, lat, lon) {
 }
 
 function parseData(data) {
-  return data.elements.map(e => ({
-    id: e.id,
-    lat: e.lat,
-    lng: e.lon,
-    tags: e.tags,
-  }));
+  return data.elements.map((e) => {
+    if (e.type !== 'node') {
+      e.lat = e.center.lat;
+      e.lon = e.center.lon;
+    }
+    return {
+      type: e.type,
+      id: e.id,
+      lat: e.lat,
+      lng: e.lon,
+      tags: e.tags,
+    };
+  });
 }
 
 function filterTags(node) {
