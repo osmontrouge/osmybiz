@@ -19,6 +19,8 @@ services:
       - POSTGRES_USER=osmybiz
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=osmybiz
+    ports:
+      - "54333:5432"
   frontend:
     build:
       context: frontend/
