@@ -20,7 +20,6 @@ const actions = {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
         ns.filter(n => n.recieveUpdates).forEach((n) => {
-          console.log(n);
           if (isNoteWithoutNode(n.osmId)) {
             const ownedNode = {
               id: n.osmId,

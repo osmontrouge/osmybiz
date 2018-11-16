@@ -2,7 +2,7 @@ import sys
 
 user_fields = {
     'osmId': {int},
-    'username': {str}
+    'username': {str},
 }
 
 

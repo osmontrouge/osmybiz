@@ -20,7 +20,7 @@ def serialize_node(node):
         'version': node.version,
         'recieveUpdates': node.receive_updates,
         'name': node.name,
-        'noteId': node.osm_note_id
+        'noteId': node.osm_note_id,
     }
 
 
