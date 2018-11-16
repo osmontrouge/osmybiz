@@ -3,7 +3,7 @@
     <div class="bookmarks-title">
       {{ $t('landing.bookmarks.title') }}
     </div>
-    <div class="bookmarks" v-for="(ownedNode, index) in ownedNodes" @click="zoomOverToTheMarker(ownedNode)">
+    <div class="bookmarks" v-for="(ownedNode, index) in ownedNodes" @click="panToMarker(ownedNode)">
       <div class="bookmarks-index">
         {{ index }}
       </div>
@@ -29,21 +29,21 @@
     methods: {
       ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
       ...mapActions(['deleteOwnedNode']),
-      zoomOverToTheMarker(ownedNode) {
+      panToMarker(ownedNode) {
         const coords = latLng(ownedNode.lat, ownedNode.lng);
         const zoom = 17;
         this.setMapViewToCoordsZoom({ coords, zoom });
         /* eslint-disable */
-        // needs to wait for the map to update.
-        setTimeout(() => {
+        this.$nextTick(() => {
           const targets = this.map._targets;
           for (let i in targets) {
             if (deepEqual(targets[i]._latlng, coords)) {
+              // TODO refactor this ugly code. Can refer to https://leafletjs.com/reference-1.3.4.html#popup
               const popup = targets[i].dragging._marker._popup;
               this.map.openPopup(popup._content, coords, popup.options);
             }
           }
-        }, 500);
+        });
         /* eslint-enable */
       },
       removeMarker(ownedNode) {

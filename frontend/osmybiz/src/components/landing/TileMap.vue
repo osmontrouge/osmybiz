@@ -46,7 +46,6 @@
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
   import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
   import { routes } from '../../router';
-  import { savesCoordsZoomIntoLocalStorage } from '../../util/positionUtil';
 
   export default {
     name: 'tile-map',
@@ -106,6 +105,7 @@
         'setMapViewToUrl',
         'setUrlParams',
         'setMap',
+        'setLastKnownPosition',
       ]),
       updateMap() {
         const zoom = this.map.getZoom();
@@ -117,7 +117,7 @@
         this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
 
         // saves last-known-position in local storage
-        savesCoordsZoomIntoLocalStorage(coords, zoom);
+        this.setLastKnownPosition({ coords, zoom });
 
         const bounds = this.map.getBounds();
         this.setViewPort({

@@ -2,7 +2,7 @@
 import * as _ from 'lodash';
 import { query } from './../api/nominatimApi';
 import { queryBox } from '../api/overpassApi';
-import { getPositionFromUrl } from '../util/positionUtil';
+import { saveCoordsZoomIntoLocalStorage, getPositionFromUrl } from '../util/positionUtil';
 
 const state = {
   map: null,
@@ -123,6 +123,9 @@ const mutations = {
   },
   setApplyOffset(s, applyOffset) {
     s.applyOffset = applyOffset;
+  },
+  setLastKnownPosition(s, { coords, zoom }) {
+    saveCoordsZoomIntoLocalStorage(coords, zoom);
   },
 };
 
