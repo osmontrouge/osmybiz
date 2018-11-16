@@ -70,7 +70,6 @@
     computed: {
       ...mapGetters([
         'updates',
-        'hasUpdates',
         'user',
         'showUpdates',
         'updateCount',

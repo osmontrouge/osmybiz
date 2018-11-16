@@ -6,7 +6,7 @@ import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateNode } from './../api/osmybizApi';
 
-let initalOptions = [];
+let initialOptions = [];
 
 const state = {
   // detailPage
@@ -18,7 +18,7 @@ const state = {
   isEditingUnsavedChanges: false,
 
   // DetailForm
-  tags: initalOptions,
+  tags: initialOptions,
   address: {},
   lat: null,
   lon: null,
@@ -44,7 +44,6 @@ const state = {
   isPopup: false,
   isNote: false,
   infoText: '',
-  infoMap: new Map(),
 
   // PostSuccess
   note: {},
@@ -220,7 +219,7 @@ export function loadTags() {
       }
     });
   } else {
-    initalOptions = options;
+    initialOptions = options;
   }
 }
 
@@ -241,7 +240,7 @@ const actions = {
         lng: parseFloat(ps.lon),
         version: parseInt(ps.version, 10),
         osmId: parseInt(ps.id, 10),
-        recieveUpdates: true,
+        receiveUpdates: true,
         name: ps.details.name,
       });
     });
@@ -261,7 +260,7 @@ const actions = {
             lng: parseFloat(node.lon),
             version: parseInt(node.version, 10),
             osmId: parseInt(node.id, 10),
-            recieveUpdates: true,
+            receiveUpdates: true,
             name,
           });
         }
@@ -297,9 +296,6 @@ const mutations = {
   setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
     s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
   },
-  setDisplayConfirmation(s, displayConfirmation) {
-    s.displayConfirmation = displayConfirmation;
-  },
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
   },
@@ -310,9 +306,6 @@ const mutations = {
     s.businessPosition = pos;
     s.lat = pos.lat;
     s.lon = pos.lng;
-  },
-  setInfoMap(s, infoMap) {
-    s.infoMap = infoMap;
   },
   setAddress(s, address) {
     s.address = address;
@@ -373,9 +366,6 @@ const getters = {
   displayUnsavedChangesNotification(s) {
     return s.displayUnsavedChangesNotification;
   },
-  displayConfirmation(s) {
-    return s.displayConfirmation;
-  },
   isOwnCategory(s) {
     return s.isOwnCategory;
   },
@@ -390,9 +380,6 @@ const getters = {
   },
   infoText(s) {
     return s.infoText;
-  },
-  infoMap(s) {
-    return s.infoMap;
   },
   osmId(s) {
     return s.osmId;
