@@ -38,11 +38,11 @@
       ...mapMutations([
         'setSearch',
         'selectPoint',
-        'setMapPosition',
+        'setMapCenter',
         'resetSearch',
       ]),
       pick(point) {
-        this.setMapPosition(point.coords);
+        this.setMapCenter(point.coords);
         this.selectPoint(point);
       },
     },

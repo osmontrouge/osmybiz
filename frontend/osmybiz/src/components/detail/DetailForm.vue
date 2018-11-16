@@ -9,6 +9,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.name') }}*</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.name'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <input type="text"
@@ -25,6 +29,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.opening_hours') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.opening_hours'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <input type="text"
@@ -35,6 +43,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.phone') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.phone'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
           <input type="text"
                  v-model="details.phone"
@@ -44,6 +56,10 @@
         <div class="field" :class="{ 'control': true }">
           <div class="field-label">
             <label>{{ $t('detail.labels.email') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.email'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <input v-validate="'email'"
@@ -62,6 +78,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.website') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.website'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <input v-validate="'url'"
@@ -80,6 +100,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.wheelchair') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.wheelchair'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <select v-model="details.wheelchair">
@@ -95,6 +119,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.description') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.description'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <textarea class="area"
@@ -105,6 +133,10 @@
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.note') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.note'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
           </div>
 
           <textarea class="area"
@@ -144,9 +176,9 @@
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
-        'setIsPopup',
-        'setInfoText',
         'setApplyOffset',
+        'showPopup',
+        'hidePopup',
       ]),
     },
   };

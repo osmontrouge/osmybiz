@@ -66,7 +66,7 @@
     computed: {
       ...mapGetters([
         'businessPosition',
-        'mapPosition',
+        'mapCenter',
         'details',
         'isLoggedIn',
         'isPopup',

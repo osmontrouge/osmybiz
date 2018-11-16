@@ -299,9 +299,6 @@ const mutations = {
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
   },
-  setIsPopup(s, isPopup) {
-    s.isPopup = isPopup;
-  },
   setIsNote(s, isNote) {
     s.isNote = isNote;
   },
@@ -309,9 +306,6 @@ const mutations = {
     s.businessPosition = pos;
     s.lat = pos.lat;
     s.lon = pos.lng;
-  },
-  setInfoText(s, infoText) {
-    s.infoText = infoText;
   },
   setAddress(s, address) {
     s.address = address;
@@ -330,6 +324,14 @@ const mutations = {
   },
   setHasSavedChanges(s, hasSavedChanges) {
     s.hasSavedChanges = hasSavedChanges;
+  },
+  showPopup(s, text) {
+    s.infoText = text;
+    s.isPopup = true;
+  },
+  hidePopup(s) {
+    s.infoText = '';
+    s.isPopup = false;
   },
 };
 
@@ -399,15 +401,6 @@ export default {
   mutations,
   getters,
 };
-
-export function showPopup(text) {
-  state.infoText = text;
-  state.isPopup = true;
-}
-
-export function hidePopup() {
-  state.isPopup = false;
-}
 
 export function getUnsavedChangesFromCookies(context) {
   const unsavedChangesCookie = context.$cookies.get('unsavedChanges');

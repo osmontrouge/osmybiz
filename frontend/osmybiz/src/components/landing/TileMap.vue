@@ -4,8 +4,11 @@
       ref="map"
       class="map"
       :zoom="mapZoom"
-      :center="mapPosition"
-      @update:bounds="viewChange"
+      :min-zoom="3"
+      :center="mapCenter"
+      :max-bounds="bounds"
+      :max-bounds-viscosity="1"
+      @moveend="updateMap()"
       @contextmenu="contextMenu($event)"
       @click="cleanNewBusinessPopups"
     >
@@ -41,8 +44,8 @@
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
-  import { storeViewPort } from '../../util/positionUtil';
-  import { initialPosition, initialZoom, mapBoxToken } from '../../config/config';
+  import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
+  import { routes } from '../../router';
 
   export default {
     name: 'tile-map',
@@ -67,31 +70,26 @@
           token: mapBoxToken,
         },
         newBusinessPositions: [],
-        map: null,
+        bounds: L.latLngBounds(L.latLng(-89.98155760646617, -180), L.latLng(89.99346179538875, 180)),
       };
     },
     created() {
-      if (!this.position) {
-        this.setMapPosition(initialPosition);
+      if (!this.mapCenter) {
+        this.setMapCenter(initialPosition);
       }
       if (!this.mapZoom) {
         this.setMapZoom(initialZoom);
       }
     },
     mounted() {
-      const lastKnownPosition = this.$cookies.get('lastKnownPosition');
-      const urlParams = this.$route.params;
-      const hasUrlParams = (urlParams.zoom && urlParams.lat && urlParams.lng);
-      if (lastKnownPosition && !hasUrlParams) {
-        this.map = this.$refs.map.mapObject;
-        this.map.setView(lastKnownPosition.coords, lastKnownPosition.zoom);
-      } else {
-        this.setMapPositionBasedOnUrl();
-      }
+      this.$nextTick(() => {
+        this.setMap(this.$refs.map.mapObject);
+        this.setMapView();
+      });
     },
     watch: {
-      getUrl: function setMapPositionBasedOnUrl() {
-        this.setMapPositionBasedOnUrl();
+      urlParams: function updatePosition() {
+        this.setMapView();
       },
     },
     methods: {
@@ -101,19 +99,28 @@
         'setDetails',
         'setCoords',
         'setIsNote',
-        'setMapPosition',
+        'setMapCenter',
         'setOsmId',
         'setMapZoom',
+        'setMapView',
+        'setUrlParams',
+        'setMap',
       ]),
-      viewChange() {
+      updateMap() {
         const zoom = this.map.getZoom();
-        const bounds = this.map.getBounds();
         const coords = this.map.getCenter();
+        const lat = coords.lat.toFixed(LatLngRoundingAccuracy);
+        const lng = coords.lng.toFixed(LatLngRoundingAccuracy);
+        // update url to leaflet position
+        this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+
+        const bounds = this.map.getBounds();
         this.setViewPort({
           bounds,
           zoom,
         });
-        storeViewPort(coords, zoom, this.$router);
+
+        // update business by making overpass query based on the leaflet bounds
         this.queryOverpass(this.viewPort);
       },
       getOwnedNodesInViewPort() {
@@ -136,29 +143,18 @@
           this.newBusinessPositions.push(latLng);
         }, 100, event.latlng);
       },
-      setMapPositionBasedOnUrl() {
-        this.map = this.$refs.map.mapObject;
-        let { lat, lng, zoom } = this.$router.currentRoute.params;
-        [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
-        if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom)) {
-          const mapCenter = L.latLng(lat, lng);
-          this.map.setView(mapCenter, zoom);
-          this.queryOverpass(this.viewPort);
-        } else {
-          // on load trigger manually if no predefined values from route
-          this.viewChange();
-        }
-      },
     },
     computed: {
       ...mapGetters([
-        'mapPosition',
+        'mapCenter',
         'mapZoom',
         'viewPort',
         'businesses',
         'mode',
         'isLoggedIn',
         'ownedNodes',
+        'urlParams',
+        'map',
       ]),
       allBusinesses() {
         let mine = [];
@@ -167,8 +163,10 @@
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },
-      getUrl() {
-        return this.$route.params;
+      urlParams() {
+        const { params } = this.$route;
+        this.setUrlParams(params);
+        return params;
       },
     },
   };

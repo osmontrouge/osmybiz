@@ -3,6 +3,10 @@
   <div class="address-wrapper">
     <div class="field-label">
       <h3>{{ $t('detail.titles.address') }}</h3>
+      <img class="info"
+           @mouseenter="showPopup($t('infoTexts.address'))"
+           @mouseleave="hidePopup()"
+           src="../../assets/info_black.png">
     </div>
     <div class="address-fields">
       <div class="row">
@@ -93,8 +97,8 @@
     },
     methods: {
       ...mapMutations([
-        'setInfoText',
-        'setIsPopup',
+        'showPopup',
+        'hidePopup',
       ]),
     },
   };

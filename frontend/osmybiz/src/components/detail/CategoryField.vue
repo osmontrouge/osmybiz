@@ -3,6 +3,10 @@
     <div class="field">
       <div class="field-label">
         <h3>{{ $t('detail.titles.category') }}*</h3>
+        <img class="info"
+             @mouseenter="showPopup($t('infoTexts.category'))"
+             @mouseleave="hidePopup()"
+             src="../../assets/info_black.png">
       </div>
 
       <div v-show="!isOwnCategory" class="category-field">
@@ -68,9 +72,9 @@
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
-        'setInfoText',
-        'setIsPopup',
         'setIsNote',
+        'showPopup',
+        'hidePopup',
       ]),
       hideInput() {
         if (this.isNew) {
