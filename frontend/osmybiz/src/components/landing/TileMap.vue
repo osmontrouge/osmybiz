@@ -108,6 +108,11 @@
         'setLastKnownPosition',
       ]),
       updateMap() {
+        /* Note that the moveend event is triggered in the landing page as well
+        so the following line is required */
+        if (this.isDetailPage) {
+          return;
+        }
         const zoom = this.map.getZoom();
         const coords = this.map.getCenter();
         const lat = coords.lat.toFixed(LatLngRoundingAccuracy);
@@ -172,6 +177,9 @@
         const { params } = this.$route;
         this.setUrlParams(params);
         return params;
+      },
+      isDetailPage() {
+        return (this.$route.name === routes.Detail);
       },
     },
   };
