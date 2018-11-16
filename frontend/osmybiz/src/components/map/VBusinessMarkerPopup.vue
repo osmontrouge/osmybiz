@@ -41,7 +41,7 @@
   import VMapLink from './VMapLink.vue';
   import { reverseQuery } from '../../api/nominatimApi';
   import { routes } from '../../router';
-  import { getNodeCategoryKey, createNoteFromNode, getBizCategory } from '../../util/overPassNodeUtils';
+  import { createNoteFromNode, getBizCategory } from '../../util/overPassNodeUtils';
   import { osmUrl } from '../../config/config';
 
   const bizIcon = require('../../assets/biz-marker.png');
@@ -98,15 +98,6 @@
           out += (out !== '' ? ', ' : '') + this.address.city;
         }
         return out;
-      },
-      bizCategory() {
-        if (this.business) {
-          return getNodeCategoryKey(this.business);
-        }
-        return '';
-      },
-      existing() {
-        return !!this.business;
       },
       icon() {
         return this.business.mine ? highlightedMarker : bizMarker;
