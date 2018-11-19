@@ -9,6 +9,7 @@ const state = {
   updates: [],
   nodes: [],
   showUpdates: false,
+  showBookmarks: false,
 };
 
 const actions = {
@@ -65,6 +66,13 @@ const actions = {
       commit('removeUpdate', update);
     });
   },
+
+  deleteOwnedNode({ commit }, { ownedNode, user }) {
+    console.log(this.nodes);
+    deleteNode(user.id, ownedNode.id).then(() => {
+      commit('removeNode', ownedNode);
+    });
+  },
 };
 
 const mutations = {
@@ -81,8 +89,24 @@ const mutations = {
       s.updates.splice(i, 1);
     }
   },
+  removeNode(s, node) {
+    const i = _.findIndex(s.nodes, u => u.id === node.id);
+
+    if (i >= 0) {
+      s.nodes.splice(i, 1);
+    }
+  },
   toggleUpdates(s) {
     s.showUpdates = !s.showUpdates;
+    if (s.showBookmarks && s.showUpdates) {
+      s.showBookmarks = false;
+    }
+  },
+  toggleBookmarks(s) {
+    s.showBookmarks = !s.showBookmarks;
+    if (s.showBookmarks && s.showUpdates) {
+      s.showUpdates = false;
+    }
   },
   pushNode(s, node) {
     s.nodes.push(node);
@@ -95,6 +119,9 @@ const getters = {
   },
   showUpdates(s) {
     return s.showUpdates;
+  },
+  showBookmarks(s) {
+    return s.showBookmarks;
   },
   updateCount(s) {
     return s.updates.length;
