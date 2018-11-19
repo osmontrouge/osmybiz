@@ -8,7 +8,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     osm_id = db.Column(db.BigInteger)
-    temporary_osm_id = db.Column(db.BigInteger)
+    temporary_osm_id = db.Column(db.BigInteger, nullable=False)
     osm_name = db.Column(db.String)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
