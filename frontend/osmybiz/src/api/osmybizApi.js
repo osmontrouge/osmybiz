@@ -39,12 +39,12 @@ export function addOrUpdateNode(userId, node) {
   return axios.post(route, node);
 }
 
-export function getNoteWithoutNodeId(userId) {
+export function getTemporaryOsmId(userId) {
   // NOT IMPLEMENTED for fakeOsmmybiz
   // if (fakeOsmybizApi) {
   //    return mockAddOrUpdateNote(userId);
   // }
-  const route = `${baseRoute}user/${userId}/noteWithoutNodeId`;
+  const route = `${baseRoute}user/${userId}/temporaryosmid`;
   return axios.get(route).then(response => response.data);
 }
 

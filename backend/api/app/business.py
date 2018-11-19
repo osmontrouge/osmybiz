@@ -76,7 +76,7 @@ def add_or_update_node(user_id, node_data):
 
     existing_node.save()
     if node.osm_id < 0:
-        user.note_without_node_id = user.note_without_node_id - 1
+        user.temporary_osm_id = user.temporary_osm_id - 1
         user.save()
 
     return '', 200
@@ -89,9 +89,9 @@ def get_nodes_for_user(user_id):
     return list(map(lambda n: serialize_node(n), nodes))
 
 
-def get_note_without_node_id_for_user(user_id):
+def get_temporary_osm_id_for_user(user_id):
     user = ensure_user(user_id)
-    return user.note_without_node_id
+    return user.temporary_osm_id
 
 
 def load_node(user_id, node_id):

@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 import json
 from app.business import get_all_users, get_all_nodes, \
     add_or_update_user, add_or_update_node, get_nodes_for_user, \
-    unsub_user_from_node, delete_node, get_note_without_node_id_for_user
+    unsub_user_from_node, delete_node, get_temporary_osm_id_for_user
 
 
 api = Blueprint('api', __name__, url_prefix='/api')
@@ -49,8 +49,8 @@ def delete(userid, nodeid):
     return delete_node(userid, nodeid)
 
 
-@api.route('/user/<int:userid>/noteWithoutNodeId', methods=['GET'])
+@api.route('/user/<int:userid>/temporaryosmid', methods=['GET'])
 def fetch_noteId(userid):
-    noteWithoutNodeId = get_note_without_node_id_for_user(userid)
-    return jsonify(noteWithoutNodeId)
+    temporaryOsmId = get_temporary_osm_id_for_user(userid)
+    return jsonify(temporaryOsmId)
 

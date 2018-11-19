@@ -4,7 +4,7 @@ import deepEqual from 'deep-equal';
 import { postNode, postNote, getNode, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
-import { addOrUpdateNode, getNoteWithoutNodeId } from './../api/osmybizApi';
+import { addOrUpdateNode, getTemporaryOsmId } from './../api/osmybizApi';
 
 let initalOptions = [];
 
@@ -274,14 +274,14 @@ const actions = {
             }
           });
         }
-        return getNoteWithoutNodeId(user.id).then((noteWithoutNodeId) => {
+        return getTemporaryOsmId(user.id).then((temporaryOsmId) => {
           addOrUpdateNode(user.id, {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
             recieveUpdates: true,
             version: 0,
             name,
-            osmId: noteWithoutNodeId,
+            osmId: temporaryOsmId,
             noteId: parseInt(displayNote.id, 10),
           });
         });
