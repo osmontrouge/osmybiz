@@ -13,7 +13,7 @@ function getCoordsZoomFromLocalStorage() {
   return null;
 }
 
-export function setCoordsZoomInLocalStorage(coords, zoom) {
+export function saveCoordsZoomIntoLocalStorage(coords, zoom) {
   const pos = {
     coords,
     zoom,
