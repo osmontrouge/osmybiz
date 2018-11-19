@@ -96,10 +96,13 @@
       ...mapActions([
         'getAddress',
         'getConfirmation',
+        'setNoteId',
       ]),
     },
     beforeRouteLeave(to, from, next) {
       this.setIsEditingUnsavedChanges(false);
+      this.setOsmId = null;
+      this.setNoteId = null;
       if (isNotModified(this) || this.hasSavedChanges) {
         this.setHasSavedChanges(false);
         // For the case when DisplayUnsavedChangesNotication is still true (5 sec
@@ -118,6 +121,7 @@
           isNote: this.isNote,
           osmId: this.osmId,
           isOwnCategory: this.isOwnCategory,
+          noteId: this.noteId,
         };
         this.$cookies.set('unsavedChanges', unsavedChanges, UNSAVEDCHANGESTIME + 2);
         next();

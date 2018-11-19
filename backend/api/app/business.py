@@ -62,7 +62,6 @@ def add_or_update_node(user_id, node_data):
         abort(400)
 
     node = deserialize_node(node_data)
-
     existing_node = find_node_by_user_and_id(user.id, node.osm_id)
 
     if existing_node is None:
@@ -74,8 +73,12 @@ def add_or_update_node(user_id, node_data):
         existing_node.version = node.version
         existing_node.receive_updates = node.receive_updates
         existing_node.name = node.name
+        existing_node.osm_note_id = node.osm_note_id
 
     existing_node.save()
+    if node.osm_id < 0:
+        user.temporary_osm_id = user.temporary_osm_id - 1
+        user.save()
 
     return '', 200
 
@@ -85,6 +88,11 @@ def get_nodes_for_user(user_id):
 
     nodes = find_nodes_by_user_id(user.id)
     return list(map(lambda n: serialize_node(n), nodes))
+
+
+def get_temporary_osm_id_for_user(user_id):
+    user = ensure_user(user_id)
+    return user.temporary_osm_id
 
 
 def load_node(user_id, node_id):

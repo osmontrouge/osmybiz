@@ -1,24 +1,25 @@
 import sys
 
 user_fields = {
-    'osmId': int,
-    'username': str
+    'osmId': {int},
+    'username': {str},
 }
 
 
 node_fields = {
-    'osmId': int,
-    'lat': float,
-    'lng': float,
-    'version': int,
-    'receiveUpdates': bool,
-    'name': str,
+    'osmId': {int},
+    'noteId': {int, type(None)},
+    'lat': {float},
+    'lng': {float},
+    'version': {int},
+    'receiveUpdates': {bool},
+    'name': {str},
 }
 
 
 def check_fields(obj, required_fields):
-    for field_name, field_type in required_fields.items():
-        if field_name not in obj or not isinstance(obj[field_name], field_type):
+    for field_name, field_types in required_fields.items():
+        if field_name not in obj or not (type(obj[field_name]) in field_types):
             print('{} is invalid'.format(field_name), file=sys.stderr)
             return False
     return True

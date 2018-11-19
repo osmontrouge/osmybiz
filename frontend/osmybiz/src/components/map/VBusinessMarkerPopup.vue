@@ -1,33 +1,24 @@
 <template>
   <l-marker
-    v-if="business"
+    v-if="business && isLoggedIn"
     :key="business.id"
     :visible="visibility"
     :draggable="draggable"
     :lat-lng="position"
     :icon="icon"
-    :title="tooltipText"
     @click="loadAddress"
   >
     <l-popup :options="{minWidth: 240, maxWidth: 240, autoPanPadding: autoPanPadding}" class="popup-data">
-      <div class="popup-title">{{tooltipText}}</div>
-      <div>{{prettyAddress}}</div>
-      <button
-        v-if="!isLoggedIn"
-        title="${this.t('popups').buttontitle}"
-        disabled="disabled"
-        class="popup-btn"
-      >
+      <div class="popup-title">
+        {{tooltipText}}
+      </div>
+      <div v-if="hasOsmId">
+        {{prettyAddress}}
+      </div>
+      <button class="popup-btn" @click="edit">
         {{ $t('popups.edit') }}
       </button>
-      <button
-        v-else
-        class="popup-btn"
-        @click="edit"
-      >
-        {{ $t('popups.edit') }}
-      </button>
-      <v-map-link class="popup-link" :link="`${osmUrl}/node/${business.id}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.mapLink') }}</v-map-link>
+      <v-map-link class="popup-link" :link="linkToOsm">{{ $t('popups.mapLink') }}</v-map-link>
       <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.feedback') }}</v-map-link>
     </l-popup>
     <l-tooltip :content="tooltipText" />
@@ -103,8 +94,8 @@
         return this.business.mine ? highlightedMarker : bizMarker;
       },
       tooltipText() {
-        if (this.business.isNew) {
-          return 'New Business';
+        if (!this.hasOsmId) {
+          return 'This is just a note';
         }
         const category = getBizCategory(this.business);
         const name = this.business.tags.name || '';
@@ -124,6 +115,15 @@
         // TODO: maybe filter for visibility visible:
         // n.lat >= bbox.south && n.lat <= bbox.north && n.lng >= bbox.west && n.lng <= bbox.east,
       },
+      hasOsmId() {
+        return (this.business.id > 0);
+      },
+      linkToOsm() {
+        if (this.hasOsmId) {
+          return `${osmUrl}/node/${this.business.id}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
+        }
+        return `${osmUrl}/note/${this.business.noteId}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
+      },
     },
     methods: {
       ...mapMutations([
@@ -132,6 +132,7 @@
         'setCoords',
         'setIsNote',
         'setOsmId',
+        'setNoteId',
       ]),
       loadAddress() {
         reverseQuery(this.position).then((address) => {
@@ -139,12 +140,17 @@
         });
       },
       edit() {
-        const note = createNoteFromNode(this.business);
-        this.setDetails(note);
+        if (this.business.id > 0) {
+          const note = createNoteFromNode(this.business);
+          this.setDetails(note);
+          this.setOsmId(this.business.id);
+        } else {
+          this.setOsmId(null);
+        }
+        this.setIsNote(true);
         const pos = L.latLng(this.business.lat, this.business.lng);
         this.setCoords(pos);
-        this.setOsmId(this.business.id);
-        this.setIsNote(true);
+        this.setNoteId(this.business.noteId);
         this.$router.push({ name: routes.Detail });
       },
     },

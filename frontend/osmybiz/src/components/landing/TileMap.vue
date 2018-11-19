@@ -25,6 +25,7 @@
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
+        v-if="business.id"
         :key="business.id"
         :business="business"
       ></v-business-marker-popup>
@@ -88,7 +89,7 @@
       });
     },
     watch: {
-      urlParams: function updatePosition() {
+      computedUrlParams: function updatePosition() {
         this.setMapViewToUrl();
       },
     },
@@ -173,7 +174,7 @@
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },
-      urlParams() {
+      computedUrlParams() {
         const { params } = this.$route;
         this.setUrlParams(params);
         return params;

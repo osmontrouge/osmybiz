@@ -60,7 +60,7 @@ describe('detail store', () => {
   describe('actions', () => {
     it('should post note', (done) => {
       testAction(
-        actions.default.actions.postSelectedCategoryNote,
+        actions.default.actions.postNote,
         { user: {}, osmId: 0 },
         {
           details: {

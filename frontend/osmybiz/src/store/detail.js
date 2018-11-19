@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
 import deepEqual from 'deep-equal';
-import { postNode, postNote, getNode } from './../api/osmApi';
+import { postNode, postNote, getNode, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
-import { addOrUpdateNode } from './../api/osmybizApi';
+import { addOrUpdateNode, getTemporaryOsmId } from './../api/osmybizApi';
 
 let initialOptions = [];
 
@@ -44,6 +44,8 @@ const state = {
   isPopup: false,
   isNote: false,
   infoText: '',
+
+  noteId: null,
 
   // PostSuccess
   note: {},
@@ -242,13 +244,50 @@ const actions = {
         osmId: parseInt(ps.id, 10),
         receiveUpdates: true,
         name: ps.details.name,
+        noteId: null,
       });
     });
   },
-  postSelectedCategoryNote({ commit }, { user, osmId }) {
+  postNote({ commit }, { user, osmId, noteId }) {
     const note = constructNote();
     const { name } = state.details;
-    return postNote(note).then((ps) => {
+
+    if (!noteId) {
+      return postNote(note).then((ps) => {
+        state.displaySuccess = true;
+        const displayNote = constructDisplayNote(ps);
+        commit('setNote', displayNote);
+
+        if (osmId) {
+          return getNode(osmId).then((node) => {
+            if (node) {
+              addOrUpdateNode(user.id, {
+                lat: parseFloat(node.lat),
+                lng: parseFloat(node.lon),
+                version: parseInt(node.version, 10),
+                osmId: parseInt(node.id, 10),
+                receiveUpdates: true,
+                name,
+                noteId: parseInt(displayNote.id, 10),
+              });
+            }
+            // TODO handle error status code 410 if the element has been deleted
+          });
+        }
+        return getTemporaryOsmId(user.id).then((temporaryOsmId) => {
+          addOrUpdateNode(user.id, {
+            lat: parseFloat(state.lat),
+            lng: parseFloat(state.lon),
+            receiveUpdates: true,
+            version: 0,
+            name,
+            osmId: temporaryOsmId,
+            noteId: parseInt(displayNote.id, 10),
+          });
+        });
+      });
+    }
+    return postNoteAsComment(note, noteId).then((ps) => {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
@@ -262,6 +301,7 @@ const actions = {
             osmId: parseInt(node.id, 10),
             receiveUpdates: true,
             name,
+            noteId: displayNote.id,
           });
         }
       });
@@ -318,6 +358,9 @@ const mutations = {
   },
   setIsNew(s, isNew) {
     s.isNew = isNew;
+  },
+  setNoteId(s, noteId) {
+    s.noteId = noteId;
   },
   setIsEditingUnsavedChanges(s, isEditingUnsavedChanges) {
     s.isEditingUnsavedChanges = isEditingUnsavedChanges;
@@ -387,6 +430,9 @@ const getters = {
   isNew(s) {
     return s.isNew;
   },
+  noteId(s) {
+    return s.noteId;
+  },
   isEditingUnsavedChanges(s) {
     return s.isEditingUnsavedChanges;
   },
@@ -408,6 +454,7 @@ export function getUnsavedChangesFromCookies(context) {
   context.setAddress(unsavedChangesCookie.address);
   context.setOsmId(unsavedChangesCookie.osmId);
   context.setIsNote(unsavedChangesCookie.isNote);
+  context.setNoteId(unsavedChangesCookie.noteId);
   context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
   localStorage.setItem('address', JSON.stringify(context.address));
 }

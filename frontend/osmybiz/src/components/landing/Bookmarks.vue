@@ -5,7 +5,7 @@
     </div>
     <div class="bookmarks" v-for="(ownedNode, index) in ownedNodes" @click="panToMarker(ownedNode)">
       <div class="bookmarks-index">
-        {{ index }}
+        {{ index + 1 }}
       </div>
       <div class="bookmarks-name">
         <span v-if="ownedNode.tags.name"> {{ownedNode.tags.name}} </span>
