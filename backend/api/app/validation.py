@@ -12,7 +12,7 @@ node_fields = {
     'lat': {float},
     'lng': {float},
     'version': {int},
-    'recieveUpdates': {bool},
+    'receiveUpdates': {bool},
     'name': {str},
 }
 

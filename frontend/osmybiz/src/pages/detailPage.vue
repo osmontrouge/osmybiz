@@ -50,7 +50,6 @@
       }
       this.setDisplaySuccess(false);
       localStorage.setItem('details', JSON.stringify(this.details));
-      this.setInfoMap(this.$i18n.locale);
       this.setIsNew(!this.isNote);
     },
     components: {
@@ -84,8 +83,6 @@
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
-        'setDisplayConfirmation',
-        'setInfoMap',
         'setIsNew',
         'setDisplayUnsavedChangesNotification',
         'setIsEditingUnsavedChanges',

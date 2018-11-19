@@ -65,7 +65,6 @@
         'details',
         'tags',
         'isOwnCategory',
-        'infoMap',
         'isNote',
         'isNew',
       ]),
