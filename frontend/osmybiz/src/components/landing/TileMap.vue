@@ -89,7 +89,7 @@
       });
     },
     watch: {
-      urlParams: function updatePosition() {
+      computeUrlParams: function updatePosition() {
         this.setMapViewToUrl();
       },
     },
@@ -174,7 +174,7 @@
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },
-      urlParams() {
+      computeUrlParams() {
         const { params } = this.$route;
         this.setUrlParams(params);
         return params;

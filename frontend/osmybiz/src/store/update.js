@@ -21,7 +21,6 @@ const actions = {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
         ns.filter(n => n.receiveUpdates).forEach((n) => {
-          console.log(n);
           const ownedNode = {
             id: n.osmId,
             lat: n.lat,
@@ -79,7 +78,6 @@ const actions = {
   },
 
   deleteOwnedNode({ commit }, { ownedNode, user }) {
-    console.log(this.nodes);
     deleteNode(user.id, ownedNode.id).then(() => {
       commit('removeNode', ownedNode);
     });
