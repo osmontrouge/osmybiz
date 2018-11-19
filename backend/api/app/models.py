@@ -2,6 +2,7 @@ from app.db import db
 
 INITIAL_TEMPORARY_OSM_ID = -1
 
+
 class User(db.Model):
     __tablename__ = 'user'
 
@@ -25,7 +26,6 @@ class User(db.Model):
 
 
 class Node(db.Model):
-
     __tablename__ = 'node'
 
     id = db.Column(db.Integer, primary_key=True)

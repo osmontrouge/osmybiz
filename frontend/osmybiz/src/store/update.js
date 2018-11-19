@@ -21,6 +21,7 @@ const actions = {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
         ns.filter(n => n.receiveUpdates).forEach((n) => {
+          console.log(n);
           const ownedNode = {
             id: n.osmId,
             lat: n.lat,
@@ -29,6 +30,8 @@ const actions = {
             noteId: n.noteId,
           };
           if (isTemporaryOsmId(n.osmId)) {
+            ownedNode.tags = {};
+            ownedNode.tags.name = n.name;
             commit('pushNode', ownedNode);
           } else {
             getNode(n.osmId).then((node) => {

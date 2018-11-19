@@ -4,6 +4,7 @@ from app.validation import is_user_valid, is_node_valid
 from app.serialization import serialize_node, serialize_user,\
     deserialize_node, deserialize_user
 
+
 def find_user_by_osmid(osmid):
     return User.query.filter(User.osm_id == osmid).first()
 
