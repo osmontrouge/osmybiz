@@ -10,7 +10,7 @@ const state = {
   showUpdates: false,
 };
 
-function isNoteWithoutNode(osmId) {
+function isTemporaryOsmId(osmId) {
   return (osmId < 0);
 }
 
@@ -20,14 +20,14 @@ const actions = {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
         ns.filter(n => n.recieveUpdates).forEach((n) => {
-          if (isNoteWithoutNode(n.osmId)) {
-            const ownedNode = {
-              id: n.osmId,
-              lat: n.lat,
-              lng: n.lng,
-              mine: true,
-              noteId: n.noteId,
-            };
+          const ownedNode = {
+            id: n.osmId,
+            lat: n.lat,
+            lng: n.lng,
+            mine: true,
+            noteId: n.noteId,
+          };
+          if (isTemporaryOsmId(n.osmId)) {
             commit('pushNode', ownedNode);
           } else {
             getNode(n.osmId).then((node) => {
@@ -37,14 +37,7 @@ const actions = {
               }
 
               if (_.isObject(node)) {
-                const ownedNode = {
-                  id: n.osmId,
-                  lat: n.lat,
-                  lng: n.lng,
-                  tags: node.tags,
-                  mine: true,
-                  noteId: n.noteId,
-                };
+                ownedNode.tags = node.tags;
                 commit('pushNode', ownedNode);
               }
             });

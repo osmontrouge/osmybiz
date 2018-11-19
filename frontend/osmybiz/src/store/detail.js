@@ -272,6 +272,7 @@ const actions = {
                 noteId: parseInt(displayNote.id, 10),
               });
             }
+            // TODO handle error status code 410 if the element has been deleted
           });
         }
         return getTemporaryOsmId(user.id).then((temporaryOsmId) => {
