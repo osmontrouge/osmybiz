@@ -53,4 +53,3 @@ def delete(userid, nodeid):
 def fetch_noteId(userid):
     temporaryOsmId = get_temporary_osm_id_for_user(userid)
     return jsonify(temporaryOsmId)
-
