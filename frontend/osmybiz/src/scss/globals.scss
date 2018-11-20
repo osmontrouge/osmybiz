@@ -101,6 +101,12 @@ input::placeholder, textarea::placeholder {
   white-space: nowrap;
 }
 
+.info {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+
 .info:hover {
   cursor: help;
 }
