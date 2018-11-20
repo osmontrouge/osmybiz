@@ -27,7 +27,7 @@ export function fetchnodes(userId) {
   if (fakeOsmybizApi) {
     return mockFetchnodes(userId);
   }
-  const route = `${baseRoute}user/${userId}/node`;
+  const route = `${baseRoute}user/${userId}/businesspoi`;
   return axios.get(route).then(response => response.data);
 }
 
@@ -35,7 +35,7 @@ export function addOrUpdateNode(userId, node) {
   if (fakeOsmybizApi) {
     return mockAddOrUpdateNode(userId, node);
   }
-  const route = `${baseRoute}user/${userId}/node`;
+  const route = `${baseRoute}user/${userId}/businesspoi`;
   return axios.post(route, node);
 }
 
@@ -52,7 +52,7 @@ export function unsubscribe(userId, nodeId) {
   if (fakeOsmybizApi) {
     return mockUnsubscribe(userId, nodeId);
   }
-  const route = `${baseRoute}user/${userId}/node/${nodeId}/unsubscribe`;
+  const route = `${baseRoute}user/${userId}/businesspoi/${nodeId}/unsubscribe`;
   return axios.post(route);
 }
 
@@ -60,6 +60,6 @@ export function deleteNode(userId, nodeId) {
   if (fakeOsmybizApi) {
     return mockDeleteNode(userId, nodeId);
   }
-  const route = `${baseRoute}user/${userId}/node/${nodeId}/delete`;
+  const route = `${baseRoute}user/${userId}/businesspoi/${nodeId}/delete`;
   return axios.post(route);
 }

@@ -25,8 +25,8 @@ class User(db.Model):
         db.session.commit()
 
 
-class Node(db.Model):
-    __tablename__ = 'node'
+class BusinessPoi(db.Model):
+    __tablename__ = 'business_poi'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
