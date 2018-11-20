@@ -14,6 +14,7 @@ business_poi_fields = {
     'version': {int},
     'receiveUpdates': {bool},
     'name': {str},
+    'osmType': {str},
 }
 
 
