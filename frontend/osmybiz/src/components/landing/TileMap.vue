@@ -25,6 +25,7 @@
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
+        v-if="business.id"
         :key="business.id"
         :business="business"
       ></v-business-marker-popup>
@@ -84,12 +85,12 @@
     mounted() {
       this.$nextTick(() => {
         this.setMap(this.$refs.map.mapObject);
-        this.setMapView();
+        this.setMapViewToUrl();
       });
     },
     watch: {
-      urlParams: function updatePosition() {
-        this.setMapView();
+      computedUrlParams: function updatePosition() {
+        this.setMapViewToUrl();
       },
     },
     methods: {
@@ -102,17 +103,27 @@
         'setMapCenter',
         'setOsmId',
         'setMapZoom',
-        'setMapView',
+        'setMapViewToUrl',
         'setUrlParams',
         'setMap',
+        'setLastKnownPosition',
       ]),
       updateMap() {
+        /* Note that the moveend event is triggered in the landing page as well
+        so the following line is required */
+        if (this.isDetailPage) {
+          return;
+        }
         const zoom = this.map.getZoom();
         const coords = this.map.getCenter();
         const lat = coords.lat.toFixed(LatLngRoundingAccuracy);
         const lng = coords.lng.toFixed(LatLngRoundingAccuracy);
+
         // update url to leaflet position
         this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+
+        // saves last-known-position in local storage
+        this.setLastKnownPosition({ coords, zoom });
 
         const bounds = this.map.getBounds();
         this.setViewPort({
@@ -163,10 +174,13 @@
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },
-      urlParams() {
+      computedUrlParams() {
         const { params } = this.$route;
         this.setUrlParams(params);
         return params;
+      },
+      isDetailPage() {
+        return (this.$route.name === routes.Detail);
       },
     },
   };

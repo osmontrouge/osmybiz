@@ -5,6 +5,7 @@ import { setError } from '../store/error';
 import util from './../util/osmApiUtils';
 
 const createNotePath = `${osmApiLevel}notes.json`;
+const notePath = `${osmApiLevel}notes/`;
 const createChangesetPath = `${osmApiLevel}changeset/create`;
 const uploadChangesetPath = `${osmApiLevel}changeset/`;
 const closeChangesetPath = `${osmApiLevel}changeset/`;
@@ -174,6 +175,59 @@ export function postNote(note) {
         text: data.properties.comments[0].text,
         id: data.properties.id,
         link: `${osmUrl}/note/${data.properties.id}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+        status: data.properties.status,
+      });
+    });
+  });
+}
+
+export function reopenClosedNoteAndAddComment(note, noteId) {
+  return new Promise((resolve) => {
+    auth.xhr({
+      method: 'POST',
+      path: `${notePath}${noteId}/reopen.json`,
+      content: `text=${note.text}`,
+    }, (err, response) => {
+      if (err) {
+        setError('error.osm.reopenClosedNoteAndAddComment');
+        resolve(null);
+      }
+      const data = JSON.parse(response);
+      const mostRecentCommentIndex = data.properties.comments.length - 1;
+      resolve({
+        html: data.properties.comments[mostRecentCommentIndex].html,
+        text: data.properties.comments[mostRecentCommentIndex].text,
+        id: data.properties.id,
+        link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+        status: data.properties.status,
+      });
+    });
+  });
+}
+
+export function postNoteAsComment(note, noteId) {
+  return new Promise((resolve) => {
+    auth.xhr({
+      method: 'POST',
+      path: `${notePath}${noteId}/comment.json`,
+      content: `text=${note.text}`,
+    }, (err, response) => {
+      const noteIsClosed = 409;
+      if (err) {
+        if (err.status === noteIsClosed) {
+          resolve(reopenClosedNoteAndAddComment(note, noteId));
+        } else {
+          setError('error.osm.postNoteAsComment');
+          resolve(null);
+        }
+      }
+      const data = JSON.parse(response);
+      const mostRecentCommentIndex = data.properties.comments.length - 1;
+      resolve({
+        html: data.properties.comments[mostRecentCommentIndex].html,
+        text: data.properties.comments[mostRecentCommentIndex].text,
+        id: data.properties.id,
+        link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
         status: data.properties.status,
       });
     });

@@ -2,7 +2,8 @@
   "header": {
     "about": "About",
     "messagetitle": "Messages from OpenStreetMap",
-    "updatestitle": "Updates of edited businesses"
+    "updatestitle": "Updates of edited businesses",
+    "bookmarkstitle" : "Show your bookmarks"
   },
   "landing": {
     "search": "Search...",
@@ -19,6 +20,9 @@
       "zoomHelp": "Show on map",
       "changesetHelp": "View changeset",
       "muteHelp": "Disable notifications"
+    },
+    "bookmarks": {
+      "title": "Your Bookmarks"
     },
     "help": {
       "title": "Help",
@@ -162,6 +166,8 @@
       "loadUser": "User could not be loaded.",
       "postNode": "Business could not be uploaded.",
       "postNote": "Changes could not be saved.",
+      "postNoteAsComments": "Note could not be saved.",
+      "reopenClosedNoteAndAddComment": "Note cannot be reopened or saved.",
       "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later."
     },
     "overpass": {

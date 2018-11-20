@@ -32,6 +32,7 @@
         'lat',
         'lon',
         'isDuplicate',
+        'noteId',
       ]),
     },
     methods: {
@@ -43,7 +44,7 @@
         'setHasSavedChanges',
       ]),
       ...mapActions([
-        'postSelectedCategoryNote',
+        'postNote',
         'postOwnCategoryNote',
         'postNode',
         'checkDuplicateNode',
@@ -53,18 +54,19 @@
       submit() {
         let promise;
         this.setHasSavedChanges(true);
-        if (this.isNote && !this.isOwnCategory) {
-          promise = this.postSelectedCategoryNote({ user: this.user, osmId: this.osmId })
-            .then(() => true);
-        } else if (this.isOwnCategory) {
-          promise = this.postOwnCategoryNote().then(() => true);
-        } else {
+        if (!this.isNote && !this.isOwnCategory) {
           promise = this.checkDuplicateNode().then((res) => {
             if (!res) {
               return this.postNode(this.user).then(() => true);
             }
             return false;
           });
+        } else {
+          promise = this.postNote({
+            user: this.user,
+            osmId: this.osmId,
+            noteId: this.noteId,
+          }).then(() => true);
         }
         promise.then((success) => {
           if (success) {

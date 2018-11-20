@@ -60,7 +60,7 @@ export function mockAddOrUpdateNode(userId, node) {
   existingNode.lat = node.lat;
   existingNode.lng = node.lng;
   existingNode.version = node.version;
-  existingNode.recieveUpdates = node.recieveUpdates;
+  existingNode.receiveUpdates = node.receiveUpdates;
   existingNode.name = node.name;
 
   saveNodes(nodes);
@@ -80,7 +80,7 @@ export function mockUnsubscribe(userId, nodeId) {
     return Promise.reject(new Error('User not found'));
   }
 
-  node.recieveUpdates = false;
+  node.receiveUpdates = false;
   saveNodes(nodes);
   return Promise.resolve();
 }
