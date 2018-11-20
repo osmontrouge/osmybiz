@@ -1,6 +1,6 @@
 <template>
   <l-marker
-    v-if="business && isLoggedIn"
+    v-if="business"
     :key="business.id"
     :visible="visibility"
     :draggable="draggable"
@@ -15,7 +15,10 @@
       <div v-if="hasOsmId">
         {{prettyAddress}}
       </div>
-      <button class="popup-btn" @click="edit">
+      <button class="popup-btn" v-if="isLoggedIn" @click="edit">
+        {{ $t('popups.edit') }}
+      </button>
+      <button class="popup-btn" v-else disabled="disabled" @click="edit">
         {{ $t('popups.edit') }}
       </button>
       <v-map-link class="popup-link" :link="linkToOsm">{{ $t('popups.mapLink') }}</v-map-link>
