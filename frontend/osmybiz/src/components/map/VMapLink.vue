@@ -20,7 +20,7 @@
     },
   };
 </script>
-<style>
+<style scoped>
   .popup-link {
     cursor: pointer;
     text-decoration: underline;

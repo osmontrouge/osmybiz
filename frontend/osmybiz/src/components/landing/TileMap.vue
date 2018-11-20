@@ -186,7 +186,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 
   .map-wrapper {
     position: fixed;

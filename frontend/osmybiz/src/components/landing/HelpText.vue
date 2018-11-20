@@ -55,7 +55,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 
   .help-dialog-icon {
     position: fixed;
