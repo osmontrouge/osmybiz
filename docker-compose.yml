@@ -39,6 +39,12 @@ services:
       - config:/opt/frontend/.config
       - gyp:/opt/frontend/.node-gyp
       - npm:/opt/frontend/.npm
+# use the following instead of the above `frontend` to test deployment builds
+# and be sure to run `npm run build` beforehand in the frontend/osmybiz directory
+#  frontend:
+#    image: geometalab/osmybiz-frontend:osmybiz.sifs0003.infs.ch_staging
+#    volumes:
+#    - ./frontend/osmybiz/dist:/var/www
   nginx:
     build:
       context: nginx/
