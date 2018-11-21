@@ -20,6 +20,7 @@ const actions = {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchnodes(user.id).then((ns) => {
         commit('setNodes', []);
+
         ns.filter(n => n.receiveUpdates).forEach((n) => {
           const ownedNode = {
             id: n.osmId,
@@ -27,13 +28,14 @@ const actions = {
             lng: n.lng,
             mine: true,
             noteId: n.noteId,
+            type: n.osmType,
           };
           if (isTemporaryOsmId(n.osmId)) {
             ownedNode.tags = {};
             ownedNode.tags.name = n.name;
             commit('pushNode', ownedNode);
           } else {
-            getNode(n.osmId).then((node) => {
+            getNode(n.osmType, n.osmId).then((node) => {
               const update = util.getUpdate(n, node);
               if (_.isObject(update)) {
                 commit('pushUpdate', update);

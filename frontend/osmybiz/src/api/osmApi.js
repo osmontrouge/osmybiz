@@ -9,8 +9,8 @@ const notePath = `${osmApiLevel}notes/`;
 const createChangesetPath = `${osmApiLevel}changeset/create`;
 const uploadChangesetPath = `${osmApiLevel}changeset/`;
 const closeChangesetPath = `${osmApiLevel}changeset/`;
-const getNodePath = `${osmApiLevel}node/`;
 const userPath = `${osmApiLevel}user/details.json`;
+const apiPath = `${osmApiLevel}`;
 
 
 const auth = osmAuth({
@@ -64,21 +64,21 @@ export function loadUser() {
 }
 
 // temporary fix to redirect to live api, because dev environment is currently broken
-function getNode2(nodeId) {
-  return axios.get(`https://www.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => util.parseNode(res.data));
+function getNode2(osmType, nodeId) {
+  return axios.get(`https://www.openstreetmap.org/api/0.6/${osmType}/${nodeId}`).then(res => util.parseNode(res.data, osmType));
 }
 
-export function getNode(nodeId) {
+export function getNode(osmType, nodeId) {
   return new Promise((resolve, reject) => {
     auth.xhr({
       method: 'GET',
-      path: getNodePath + nodeId,
+      path: `${apiPath}${osmType}/${nodeId}`,
     }, (err, response) => {
       if (err) {
         if (err.status === 410) {
           resolve(null);
         } else if (err.status === 404) {
-          getNode2(nodeId).then((res) => {
+          getNode2(osmType, nodeId).then((res) => {
             resolve(res);
           }).catch(() => {
             resolve(null);
@@ -124,8 +124,7 @@ function uploadChangeset(node, changesetId) {
         resolve(null);
       }
       closeChangeset(changesetId);
-
-      resolve(getNode(util.extractId(response)));
+      resolve(getNode('node', util.extractId(response)));
     });
   });
 }

@@ -13,6 +13,7 @@ const state = {
   displaySuccess: false,
   displayUnsavedChangesNotification: false,
   osmId: null,
+  osmType: null,
   isNew: true,
   hasSavedChanges: false,
   isEditingUnsavedChanges: false,
@@ -245,10 +246,12 @@ const actions = {
         receiveUpdates: true,
         name: ps.details.name,
         noteId: null,
+        osmType: 'node',
       });
     });
   },
-  postNote({ commit }, { user, osmId, noteId }) {
+  /* eslint-disable-next-line object-curly-newline */
+  postNote({ commit }, { user, osmId, noteId, osmType }) {
     const note = constructNote();
     const { name } = state.details;
 
@@ -259,16 +262,21 @@ const actions = {
         commit('setNote', displayNote);
 
         if (osmId) {
-          return getNode(osmId).then((node) => {
+          return getNode(osmType, osmId).then((node) => {
             if (node) {
+              if (node.lat === undefined && node.lng === undefined) {
+                node.lat = state.lat;
+                node.lon = state.lon;
+              }
               addOrUpdateNode(user.id, {
+                name,
+                osmId: parseInt(node.id, 10),
+                osmType,
+                noteId: parseInt(displayNote.id, 10),
                 lat: parseFloat(node.lat),
                 lng: parseFloat(node.lon),
                 version: parseInt(node.version, 10),
-                osmId: parseInt(node.id, 10),
                 receiveUpdates: true,
-                name,
-                noteId: parseInt(displayNote.id, 10),
               });
             }
             // TODO handle error status code 410 if the element has been deleted
@@ -283,6 +291,7 @@ const actions = {
             name,
             osmId: temporaryOsmId,
             noteId: parseInt(displayNote.id, 10),
+            osmType,
           });
         });
       });
@@ -292,7 +301,7 @@ const actions = {
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
 
-      return getNode(osmId).then((node) => {
+      return getNode(osmType, osmId).then((node) => {
         if (node) {
           addOrUpdateNode(user.id, {
             lat: parseFloat(node.lat),
@@ -302,6 +311,7 @@ const actions = {
             receiveUpdates: true,
             name,
             noteId: displayNote.id,
+            osmType,
           });
         }
       });
@@ -376,6 +386,9 @@ const mutations = {
     s.infoText = '';
     s.isPopup = false;
   },
+  setOsmType(s, osmType) {
+    s.osmType = osmType;
+  },
 };
 
 const getters = {
@@ -438,6 +451,9 @@ const getters = {
   },
   hasSavedChanges(s) {
     return s.hasSavedChanges;
+  },
+  osmType(s) {
+    return s.osmType;
   },
 };
 
