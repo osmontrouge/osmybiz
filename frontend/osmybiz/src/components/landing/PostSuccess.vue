@@ -7,11 +7,11 @@
 
     <div class="node-success" v-if="!isNote">
       <div class="dialog-title">
-        {{ $t('success.node.title') }}
+        {{ $t('success.businessPOI.title') }}
       </div>
 
       <div class="section">
-        <a :href="node.link"
+        <a :href="businessPOI.link"
            class="external-link"
            target="_blank">
           {{ $t('success.link') }}
@@ -21,31 +21,31 @@
 
       <div class="section">
         {{ $t('success.address') }}:
-        <span v-if="node.address.street">
-              {{node.address.street}}
-              <span v-if="!node.address.housenumber">
+        <span v-if="businessPOI.address.street">
+              {{businessPOI.address.street}}
+              <span v-if="!businessPOI.address.housenumber">
                 {{', '}}
               </span>
-              <span v-if="node.address.housenumber">
-                {{' ' + node.address.housenumber  + ', '}}
+              <span v-if="businessPOI.address.housenumber">
+                {{' ' + businessPOI.address.housenumber  + ', '}}
               </span>
             </span>
-        <span v-if="node.address.place">
-              {{node.address.place + ', '}}
+        <span v-if="businessPOI.address.place">
+              {{businessPOI.address.place + ', '}}
             </span>
-        <span v-if="node.address.postcode">
-                {{node.address.postcode}}
+        <span v-if="businessPOI.address.postcode">
+                {{businessPOI.address.postcode}}
             </span>
-        <span v-if="node.address.city">
-                {{' ' + node.address.city}}
+        <span v-if="businessPOI.address.city">
+                {{' ' + businessPOI.address.city}}
             </span>
-        <span v-if="node.address.country">
-                {{' ' + node.address.country}}
+        <span v-if="businessPOI.address.country">
+                {{' ' + businessPOI.address.country}}
             </span>
       </div>
       <div class="section">
         {{ $t('success.name') }}:
-        {{node.details.name}}
+        {{businessPOI.details.name}}
       </div>
     </div>
 
@@ -86,7 +86,7 @@
     computed: {
       ...mapGetters([
         'note',
-        'node',
+        'businessPOI',
         'isNote',
         'displaySuccess',
       ]),

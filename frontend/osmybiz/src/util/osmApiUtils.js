@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { xml2json } from 'xml-js';
 import { osmUrl } from '../config/config';
 
-function parseDetails(nodeTags) {
+function parseDetails(businessPOITags) {
   const details = {};
   const tags = [
     'name',
@@ -15,10 +15,10 @@ function parseDetails(nodeTags) {
     'note',
   ];
 
-  Object.keys(nodeTags).forEach((key) => {
+  Object.keys(businessPOITags).forEach((key) => {
     tags.forEach((tag) => {
       if (tag === key) {
-        details[tag] = nodeTags[key];
+        details[tag] = businessPOITags[key];
       }
     });
   });
@@ -26,7 +26,7 @@ function parseDetails(nodeTags) {
   return details;
 }
 
-function parseAddress(nodeTags) {
+function parseAddress(businessPOITags) {
   const address = {};
   const tags = [{
     k: 'addr:street',
@@ -45,10 +45,10 @@ function parseAddress(nodeTags) {
     v: 'city',
   }];
 
-  Object.keys(nodeTags).forEach((key) => {
+  Object.keys(businessPOITags).forEach((key) => {
     tags.forEach((tag) => {
       if (tag.k === key) {
-        address[tag.v] = nodeTags[key];
+        address[tag.v] = businessPOITags[key];
       }
     });
   });
@@ -103,52 +103,52 @@ function parseUser(userXml) {
   };
 }
 
-function createAddressTags(node) {
+function createAddressTags(businessPOI) {
   let text = '';
-  if (node.address.street) {
-    text += `<tag k="addr:street" v="${node.address.street}"/>`;
-    if (node.address.housenumber) {
-      text += `<tag k="addr:housenumber" v="${node.address.housenumber}"/>`;
+  if (businessPOI.address.street) {
+    text += `<tag k="addr:street" v="${businessPOI.address.street}"/>`;
+    if (businessPOI.address.housenumber) {
+      text += `<tag k="addr:housenumber" v="${businessPOI.address.housenumber}"/>`;
     }
   }
-  if (node.address.place) {
-    text += `<tag k="addr:place" v="${node.address.place}"/>`;
+  if (businessPOI.address.place) {
+    text += `<tag k="addr:place" v="${businessPOI.address.place}"/>`;
   }
-  if (node.address.postcode) {
-    text += `<tag k="addr:postcode" v="${node.address.postcode}"/>`;
+  if (businessPOI.address.postcode) {
+    text += `<tag k="addr:postcode" v="${businessPOI.address.postcode}"/>`;
   }
-  if (node.address.city) {
-    text += `<tag k="addr:city" v="${node.address.city}"/>`;
+  if (businessPOI.address.city) {
+    text += `<tag k="addr:city" v="${businessPOI.address.city}"/>`;
   }
   return text;
 }
 
-function createDetailTags(node) {
+function createDetailTags(businessPOI) {
   let text = '';
-  if (node.details.opening_hours.length !== 0) {
-    text += `<tag k="opening_hours" v="${node.details.opening_hours}"/>`;
+  if (businessPOI.details.opening_hours.length !== 0) {
+    text += `<tag k="opening_hours" v="${businessPOI.details.opening_hours}"/>`;
   }
-  if (node.details.phone.length !== 0) {
-    text += `<tag k="phone" v="${node.details.phone}"/>`;
+  if (businessPOI.details.phone.length !== 0) {
+    text += `<tag k="phone" v="${businessPOI.details.phone}"/>`;
   }
-  if (node.details.email.length !== 0) {
-    text += `<tag k="email" v="${node.details.email}"/>`;
+  if (businessPOI.details.email.length !== 0) {
+    text += `<tag k="email" v="${businessPOI.details.email}"/>`;
   }
-  if (node.details.website.length !== 0) {
-    text += `<tag k="website" v="${node.details.website}"/>`;
+  if (businessPOI.details.website.length !== 0) {
+    text += `<tag k="website" v="${businessPOI.details.website}"/>`;
   }
-  if (node.details.wheelchair.length !== 0) {
-    text += `<tag k="wheelchair" v="${node.details.wheelchair}"/>`;
+  if (businessPOI.details.wheelchair.length !== 0) {
+    text += `<tag k="wheelchair" v="${businessPOI.details.wheelchair}"/>`;
   }
-  if (node.details.description.length !== 0) {
-    text += `<tag k="description" v="${node.details.description}"/>`;
+  if (businessPOI.details.description.length !== 0) {
+    text += `<tag k="description" v="${businessPOI.details.description}"/>`;
   }
-  if (node.details.note.length !== 0) {
-    text += `<tag k="note" v="${node.details.note}"/>`;
+  if (businessPOI.details.note.length !== 0) {
+    text += `<tag k="note" v="${businessPOI.details.note}"/>`;
   }
 
-  if (node.details.category.fields) {
-    node.details.category.fields.forEach((field) => {
+  if (businessPOI.details.category.fields) {
+    businessPOI.details.category.fields.forEach((field) => {
       if (field.value.length !== 0) {
         text += `<tag k="${field.key}" v="${field.value}"/>`;
       }
@@ -158,24 +158,24 @@ function createDetailTags(node) {
   return text;
 }
 
-function constructUpload(node, changeSetId) {
+function constructUpload(businessPOI, changeSetId) {
   let xml = `${'' +
     '<osmChange version="0.6" generator="OSMyBiz">' +
     '<create>' +
     '<node id="-1" version="0"' +
-    ' lat="'}${node.lat}"` +
-    ` lon="${node.lon}"` +
+    ' lat="'}${businessPOI.lat}"` +
+    ` lon="${businessPOI.lon}"` +
     ` changeset="${changeSetId}">` +
-    `<tag k="name" v="${node.details.name}"/>`;
+    `<tag k="name" v="${businessPOI.details.name}"/>`;
 
-  if (node.details.category.value !== 0) {
-    const category = node.details.category.value.split('/');
+  if (businessPOI.details.category.value !== 0) {
+    const category = businessPOI.details.category.value.split('/');
     xml += `<tag k="${category[0]}" v="${category[1]}"/>`;
   }
 
-  xml += createAddressTags(node);
+  xml += createAddressTags(businessPOI);
 
-  xml += createDetailTags(node);
+  xml += createDetailTags(businessPOI);
 
   xml += '</node>' +
     '</create>' +
@@ -184,8 +184,8 @@ function constructUpload(node, changeSetId) {
   return xml;
 }
 
-function parseTags(nodeJson) {
-  const tags = nodeJson.tag;
+function parseTags(businessPOIJson) {
+  const tags = businessPOIJson.tag;
   const result = {};
   tags.forEach((t) => {
     const tagAttributes = getAttributes(t);
@@ -194,37 +194,38 @@ function parseTags(nodeJson) {
   return result;
 }
 
-function parseNode(nodeXml, osmType) {
-  let nodeJson;
-  if (typeof nodeXml === 'string') {
-    nodeJson = JSON.parse(xml2json(nodeXml, { compact: true })).osm[osmType];
+function parseBusinessPOI(businessPOIXml, osmType) {
+  let businessPOIJson;
+  if (typeof businessPOIXml === 'string') {
+    businessPOIJson = JSON.parse(xml2json(businessPOIXml, { compact: true })).osm[osmType];
   } else {
-    const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
-    nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;
+    const xml = businessPOIXml.getElementsByTagName('osm')[0].innerHTML;
+    businessPOIJson = JSON.parse(xml2json(xml, { compact: true })).node;
   }
 
-  const nodeAttributes = getAttributes(nodeJson);
+  const businessPOIAttributes = getAttributes(businessPOIJson);
 
-  const tags = parseTags(nodeJson);
+  const tags = parseTags(businessPOIJson);
 
   const address = parseAddress(tags);
   const details = parseDetails(tags);
 
   return {
-    id: nodeAttributes.id,
-    lat: nodeAttributes.lat,
-    lon: nodeAttributes.lon,
-    link: `${osmUrl}/node/${nodeAttributes.id}/#map=19/${nodeAttributes.lat}/${nodeAttributes.lon}&layers=D`,
+    id: businessPOIAttributes.id,
+    lat: businessPOIAttributes.lat,
+    lon: businessPOIAttributes.lon,
+    // KEITH
+    link: `${osmUrl}/node/${businessPOIAttributes.id}/#map=19/${businessPOIAttributes.lat}/${businessPOIAttributes.lon}&layers=D`,
     address,
     details,
-    version: nodeAttributes.version,
-    changeSet: nodeAttributes.changeset,
+    version: businessPOIAttributes.version,
+    changeSet: businessPOIAttributes.changeset,
     tags,
   };
 }
 
-function extractId(nodeDiff) {
-  const xml = nodeDiff.getElementsByTagName('diffResult')[0].innerHTML;
+function extractId(businessPOIDiff) {
+  const xml = businessPOIDiff.getElementsByTagName('diffResult')[0].innerHTML;
   const diffJson = JSON.parse(xml2json(xml, { compact: true })).node;
 
   return getAttributes(diffJson).new_id;
@@ -234,6 +235,6 @@ function extractId(nodeDiff) {
 export default {
   parseUser,
   constructUpload,
-  parseNode,
+  parseBusinessPOI,
   extractId,
 };

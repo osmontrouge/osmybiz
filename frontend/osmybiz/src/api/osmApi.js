@@ -64,21 +64,21 @@ export function loadUser() {
 }
 
 // temporary fix to redirect to live api, because dev environment is currently broken
-function getNode2(osmType, nodeId) {
-  return axios.get(`https://www.openstreetmap.org/api/0.6/${osmType}/${nodeId}`).then(res => util.parseNode(res.data, osmType));
+function getBusinessPOI2(osmType, osmId) {
+  return axios.get(`https://www.openstreetmap.org/api/0.6/${osmType}/${osmId}`).then(res => util.parseBusinessPOI(res.data, osmType));
 }
 
-export function getNode(osmType, nodeId) {
+export function getBusinessPOI(osmType, osmId) {
   return new Promise((resolve, reject) => {
     auth.xhr({
       method: 'GET',
-      path: `${apiPath}${osmType}/${nodeId}`,
+      path: `${apiPath}${osmType}/${osmId}`,
     }, (err, response) => {
       if (err) {
         if (err.status === 410) {
           resolve(null);
         } else if (err.status === 404) {
-          getNode2(osmType, nodeId).then((res) => {
+          getBusinessPOI2(osmType, osmId).then((res) => {
             resolve(res);
           }).catch(() => {
             resolve(null);
@@ -88,7 +88,7 @@ export function getNode(osmType, nodeId) {
           reject(err);
         }
       } else {
-        resolve(util.parseNode(response));
+        resolve(util.parseBusinessPOI(response));
       }
     });
   });
@@ -124,7 +124,7 @@ function uploadChangeset(node, changesetId) {
         resolve(null);
       }
       closeChangeset(changesetId);
-      resolve(getNode('node', util.extractId(response)));
+      resolve(getBusinessPOI('node', util.extractId(response)));
     });
   });
 }

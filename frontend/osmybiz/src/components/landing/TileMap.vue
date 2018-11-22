@@ -135,9 +135,9 @@
         // update business by making overpass query based on the leaflet bounds
         this.queryOverpass(this.viewPort);
       },
-      getOwnedNodesInViewPort() {
+      getOwnedBusinessPOIsInViewPort() {
         const bbox = this.viewPort.boundingBox;
-        return this.ownedNodes.filter(n =>
+        return this.ownedBusinessPOIs.filter(n =>
           (n.lat >= bbox.south)
           && (n.lat <= bbox.north)
           && (n.lng >= bbox.west)
@@ -164,14 +164,14 @@
         'businesses',
         'mode',
         'isLoggedIn',
-        'ownedNodes',
+        'ownedBusinessPOIs',
         'urlParams',
         'map',
       ]),
       allBusinesses() {
         let mine = [];
         if (this.viewPort) {
-          mine = this.getOwnedNodesInViewPort();
+          mine = this.getOwnedBusinessPOIsInViewPort();
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },

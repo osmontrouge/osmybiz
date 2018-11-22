@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
-import { addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe } from './../api/osmybizApi';
-import { getNode } from './../api/osmApi';
+import { addOrUpdateUser, fetchBusinessPOIs, addOrUpdateBusinessPOI, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
+import { getBusinessPOI } from './../api/osmApi';
 import util from './../util/updateUtil';
 
 const state = {
   updates: [],
-  nodes: [],
+  businessPOIs: [],
   showUpdates: false,
   showBookmarks: false,
 };
@@ -18,11 +18,11 @@ function isTemporaryOsmId(osmId) {
 const actions = {
   loadUpdates({ commit }, user) {
     addOrUpdateUser(user.id, user.name).then(() => {
-      fetchnodes(user.id).then((ns) => {
-        commit('setNodes', []);
+      fetchBusinessPOIs(user.id).then((ns) => {
+        commit('setBusinessPOIs', []);
 
         ns.filter(n => n.receiveUpdates).forEach((n) => {
-          const ownedNode = {
+          const ownedBusinessPOI = {
             id: n.osmId,
             lat: n.lat,
             lng: n.lng,
@@ -31,19 +31,19 @@ const actions = {
             type: n.osmType,
           };
           if (isTemporaryOsmId(n.osmId)) {
-            ownedNode.tags = {};
-            ownedNode.tags.name = n.name;
-            commit('pushNode', ownedNode);
+            ownedBusinessPOI.tags = {};
+            ownedBusinessPOI.tags.name = n.name;
+            commit('pushBusinessPOI', ownedBusinessPOI);
           } else {
-            getNode(n.osmType, n.osmId).then((node) => {
-              const update = util.getUpdate(n, node);
+            getBusinessPOI(n.osmType, n.osmId).then((businessPOI) => {
+              const update = util.getUpdate(n, businessPOI);
               if (_.isObject(update)) {
                 commit('pushUpdate', update);
               }
 
-              if (_.isObject(node)) {
-                ownedNode.tags = node.tags;
-                commit('pushNode', ownedNode);
+              if (_.isObject(businessPOI)) {
+                ownedBusinessPOI.tags = businessPOI.tags;
+                commit('pushBusinessPOI', ownedBusinessPOI);
               }
             });
           }
@@ -56,7 +56,7 @@ const actions = {
   confirmUpdate({ commit }, { user, update }) {
     let promise;
     if (update.kind === 'update') {
-      promise = addOrUpdateNode(user.id, {
+      promise = addOrUpdateBusinessPOI(user.id, {
         osmId: update.id,
         version: update.newVersion,
         lat: update.coords.lat,
@@ -66,7 +66,7 @@ const actions = {
         noteId: update.noteId,
       });
     } else {
-      promise = deleteNode(user.id, update.id);
+      promise = deleteBusinessPOI(user.id, update.id);
     }
     promise.then(() => {
       commit('removeUpdate', update);
@@ -79,16 +79,16 @@ const actions = {
     });
   },
 
-  deleteOwnedNode({ commit }, { ownedNode, user }) {
-    deleteNode(user.id, ownedNode.id).then(() => {
-      commit('removeNode', ownedNode);
+  deleteOwnedBusinessPOI({ commit }, { ownedBusinessPOI, user }) {
+    deleteBusinessPOI(user.id, ownedBusinessPOI.id).then(() => {
+      commit('removeBusinessPOI', ownedBusinessPOI);
     });
   },
 };
 
 const mutations = {
-  setNodes(s, nodes) {
-    s.nodes = nodes;
+  setBusinessPOIs(s, businessPOIs) {
+    s.businessPOIs = businessPOIs;
   },
   pushUpdate(s, update) {
     s.updates.push(update);
@@ -100,11 +100,11 @@ const mutations = {
       s.updates.splice(i, 1);
     }
   },
-  removeNode(s, node) {
-    const i = _.findIndex(s.nodes, u => u.id === node.id);
+  removeBusinessPOI(s, businessPOI) {
+    const i = _.findIndex(s.businessPOIs, u => u.id === businessPOI.id);
 
     if (i >= 0) {
-      s.nodes.splice(i, 1);
+      s.businessPOIs.splice(i, 1);
     }
   },
   toggleUpdates(s) {
@@ -119,8 +119,8 @@ const mutations = {
       s.showUpdates = false;
     }
   },
-  pushNode(s, node) {
-    s.nodes.push(node);
+  pushBusinessPOI(s, businessPOI) {
+    s.businessPOIs.push(businessPOI);
   },
 };
 
@@ -137,8 +137,8 @@ const getters = {
   updateCount(s) {
     return s.updates.length;
   },
-  ownedNodes(s) {
-    return s.nodes;
+  ownedBusinessPOIs(s) {
+    return s.businessPOIs;
   },
 };
 

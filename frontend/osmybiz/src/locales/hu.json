@@ -124,7 +124,7 @@
       "no": "nem"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Ez a vállalkozás már fenn van a térképen",
         "section1": "Ezen a helyen már van egy pontosan ugyanilyen nevű és kategóriájú vállalkozás",
         "section2": "A bal egérgombbal a vállalkozásra kattintva szerkesztheti a már meglévő információkat."
@@ -141,7 +141,7 @@
     "address": "Cím",
     "name": "Név",
     "link": "Link az OpenStreetMaphez",
-    "node": {
+    "businessPOI": {
       "title": "Az új vállalkozás létrejött a térképen"
     },
     "note": {

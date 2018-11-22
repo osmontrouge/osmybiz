@@ -124,7 +124,7 @@
       "no": "Nej"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Redan existerande företag",
         "section1": "På denna plats finns redan ett företag med exakt samma namn och kategori",
         "section2": "Du har möjlighet att redigera den redan existerande informationen med ett vänsterklick på företaget på kartan."
@@ -141,7 +141,7 @@
     "address": "Adress",
     "name": "Namn",
     "link": "Länk till OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "Nytt företag skapat"
     },
     "note": {

@@ -129,7 +129,7 @@
       "no": "No"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Already existing business",
         "section1": "At this position is already a business with exact same name and category",
         "section2": "You have the possibility to edit the already existing informations with a left click on the business on the map."
@@ -146,7 +146,7 @@
     "address": "Address",
     "name": "Name",
     "link": "Link to OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "New business created"
     },
     "note": {

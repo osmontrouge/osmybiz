@@ -124,7 +124,7 @@
       "no": "Nein"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Bereits bestehendes Unternehmen",
         "section1": "An dieser Stelle besteht bereits ein Unternehmen mit demselben Namen und Kategorie.",
         "section2": "Sie haben die Möglichkeit mit einem Linksklick auf das Unternehmen auf der Karte, die bereits vorhandenen Informationen anzupassen."
@@ -141,7 +141,7 @@
     "address": "Adresse",
     "name": "Name",
     "link": "Link zu OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "Neues Unternehmen erstellt"
     },
     "note": {
