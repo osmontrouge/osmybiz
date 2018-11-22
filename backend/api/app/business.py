@@ -10,8 +10,8 @@ def find_user_by_osmid(osmid):
 
 
 def find_business_poi_by_user_and_id(userid, osmid):
-    return BusinessPoi.query.filter(BusinessPoi.user_id == userid,
-                             BusinessPoi.osm_id == osmid).first()
+    return BusinessPoi.query.filter(
+        BusinessPoi.user_id == userid, BusinessPoi.osm_id == osmid).first()
 
 
 def find_business_pois_by_user_id(userid):

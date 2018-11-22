@@ -1,5 +1,6 @@
 from app.models import User, BusinessPoi
 
+
 def serialize_user(user):
     return {
         'osmId': user.osm_id,
