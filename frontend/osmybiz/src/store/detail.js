@@ -472,6 +472,7 @@ export function getUnsavedChangesFromCookies(context) {
   context.setIsNote(unsavedChangesCookie.isNote);
   context.setNoteId(unsavedChangesCookie.noteId);
   context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
+  context.setOsmType(unsavedChangesCookie.osmType);
   localStorage.setItem('address', JSON.stringify(context.address));
 }
 

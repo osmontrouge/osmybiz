@@ -78,6 +78,7 @@
         'isEditingUnsavedChanges',
         'hasSavedChanges',
         'isOwnCategory',
+        'osmType',
       ]),
     },
     methods: {
@@ -92,17 +93,19 @@
         'setIsNote',
         'setHasSavedChanges',
         'setIsOwnCategory',
+        'setNoteId',
+        'setOsmType',
       ]),
       ...mapActions([
         'getAddress',
         'getConfirmation',
-        'setNoteId',
       ]),
     },
     beforeRouteLeave(to, from, next) {
+      // TODO:  refactor this part https://stackoverflow.com/questions/42295340/how-to-clear-state-in-vuex-store
       this.setIsEditingUnsavedChanges(false);
-      this.setOsmId = null;
-      this.setNoteId = null;
+      this.setOsmId(null);
+      this.setNoteId(null);
       if (isNotModified(this) || this.hasSavedChanges) {
         this.setHasSavedChanges(false);
         // For the case when DisplayUnsavedChangesNotication is still true (5 sec
@@ -122,6 +125,7 @@
           osmId: this.osmId,
           isOwnCategory: this.isOwnCategory,
           noteId: this.noteId,
+          osmType: this.osmType,
         };
         this.$cookies.set('unsavedChanges', unsavedChanges, UNSAVEDCHANGESTIME + 2);
         next();
