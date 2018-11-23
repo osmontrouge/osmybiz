@@ -264,19 +264,19 @@ const actions = {
         if (osmId) {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
             if (businessPOI) {
-              if (businessPOI.lat === undefined && businessPOI.lng === undefined) {
+              if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
                 businessPOI.lat = state.lat;
                 businessPOI.lon = state.lon;
               }
               addOrUpdateBusinessPOI(user.id, {
-                name,
-                osmId: parseInt(businessPOI.id, 10),
-                osmType,
-                noteId: parseInt(displayNote.id, 10),
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
-                version: parseInt(businessPOI.version, 10),
                 receiveUpdates: true,
+                version: parseInt(businessPOI.version, 10),
+                name,
+                osmId: parseInt(businessPOI.id, 10),
+                noteId: parseInt(displayNote.id, 10),
+                osmType,
               });
             }
             // TODO handle error status code 410 if the element has been deleted
@@ -303,6 +303,10 @@ const actions = {
 
       return getBusinessPOI(osmType, osmId).then((businessPOI) => {
         if (businessPOI) {
+          if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
+            businessPOI.lat = state.lat;
+            businessPOI.lon = state.lon;
+          }
           addOrUpdateBusinessPOI(user.id, {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
