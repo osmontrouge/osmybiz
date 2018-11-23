@@ -34,7 +34,7 @@
     },
   };
 </script>
-<style>
+<style scoped>
   .toggle-wrapper {
     position: fixed;
     z-index: 99;

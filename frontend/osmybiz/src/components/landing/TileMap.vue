@@ -42,6 +42,7 @@
   import { LMap, LMarker, LPopup, LTileLayer, LTooltip } from 'vue2-leaflet';
   import { mapActions, mapGetters, mapMutations } from 'vuex';
   import * as L from 'leaflet';
+  import deepEqual from 'deep-equal';
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
@@ -176,6 +177,9 @@
       },
       computedUrlParams() {
         const { params } = this.$route;
+        if (deepEqual(this.urlParams, params)) {
+          return false;
+        }
         this.setUrlParams(params);
         return params;
       },
@@ -186,7 +190,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 
   .map-wrapper {
     position: fixed;

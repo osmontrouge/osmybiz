@@ -146,7 +146,7 @@
   };
 
 </script>
-<style>
+<style scoped>
   .popup-data {
     display: flex;
     flex-direction:column;

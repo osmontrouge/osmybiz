@@ -46,7 +46,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 
   #login-dialog {
     top: 55px;
