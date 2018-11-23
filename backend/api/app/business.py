@@ -1,7 +1,7 @@
 from app.models import User, Node
 from flask import abort
 from app.validation import is_user_valid, is_node_valid
-from app.serialization import serialize_node, serialize_user,\
+from app.serialization import serialize_node, \
     deserialize_node, deserialize_user
 
 
@@ -16,16 +16,6 @@ def find_node_by_user_and_id(userid, osmid):
 
 def find_nodes_by_user_id(userid):
     return Node.query.filter(Node.user_id == userid)
-
-
-def get_all_users():
-    users = User.query.all()
-    return list(map(lambda u: serialize_user(u), users))
-
-
-def get_all_nodes():
-    nodes = Node.query.all()
-    return list(map(lambda n: serialize_node(n), nodes))
 
 
 def add_or_update_user(user_data):
