@@ -1,4 +1,4 @@
-from app.models import User, BusinessPoi
+from app.models import User, BusinessPOI
 from flask import abort
 from app.validation import is_user_valid, is_business_poi_valid
 from app.serialization import serialize_business_poi, serialize_user,\
@@ -10,12 +10,12 @@ def find_user_by_osmid(osmid):
 
 
 def find_business_poi_by_user_and_id(userid, osmid):
-    return BusinessPoi.query.filter(
-        BusinessPoi.user_id == userid, BusinessPoi.osm_id == osmid).first()
+    return BusinessPOI.query.filter(
+        BusinessPOI.user_id == userid, BusinessPOI.osm_id == osmid).first()
 
 
 def find_business_pois_by_user_id(userid):
-    return BusinessPoi.query.filter(BusinessPoi.user_id == userid)
+    return BusinessPOI.query.filter(BusinessPOI.user_id == userid)
 
 
 def get_all_users():
@@ -24,7 +24,7 @@ def get_all_users():
 
 
 def get_all_business_pois():
-    business_pois = BusinessPoi.query.all()
+    business_pois = BusinessPOI.query.all()
     return list(map(lambda n: serialize_business_poi(n), business_pois))
 
 

@@ -25,7 +25,7 @@ class User(db.Model):
         db.session.commit()
 
 
-class BusinessPoi(db.Model):
+class BusinessPOI(db.Model):
     __tablename__ = 'business_poi'
 
     id = db.Column(db.Integer, primary_key=True)

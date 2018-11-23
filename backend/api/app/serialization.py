@@ -1,4 +1,4 @@
-from app.models import User, BusinessPoi
+from app.models import User, BusinessPOI
 
 
 def serialize_user(user):
@@ -26,7 +26,7 @@ def serialize_business_poi(business_poi):
 
 
 def deserialize_business_poi(business_poi_data):
-    return BusinessPoi(
+    return BusinessPOI(
         0,
         business_poi_data['name'],
         business_poi_data['osmId'],
