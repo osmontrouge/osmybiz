@@ -1,23 +1,10 @@
 from flask import Blueprint, request, jsonify
 import json
-from app.business import get_all_users, get_all_nodes, \
-    add_or_update_user, add_or_update_node, get_nodes_for_user, \
+from app.business import add_or_update_user, add_or_update_node, get_nodes_for_user, \
     unsub_user_from_node, delete_node, get_temporary_osm_id_for_user
 
 
 api = Blueprint('api', __name__, url_prefix='/api')
-
-
-@api.route('/')
-def hello_world():
-    data = get_all_users()
-    return jsonify(data)
-
-
-@api.route('/test')
-def hello_world2():
-    data = get_all_nodes()
-    return jsonify(data)
 
 
 @api.route('/user', methods=['POST'])
