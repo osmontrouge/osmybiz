@@ -1,8 +1,8 @@
 from app.models import User, BusinessPOI
 from flask import abort
-from app.validation import is_user_valid, is_node_valid
-from app.serialization import serialize_node, \
-    deserialize_node, deserialize_user
+from app.validation import is_user_valid, is_business_poi_valid
+from app.serialization import serialize_business_poi, \
+    deserialize_business_poi, deserialize_user
 
 
 def find_user_by_osmid(osmid):
