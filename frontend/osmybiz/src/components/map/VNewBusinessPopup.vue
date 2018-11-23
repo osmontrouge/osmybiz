@@ -106,6 +106,7 @@
         'setCoords',
         'setIsNote',
         'setOsmId',
+        'setOsmType',
         'setNoteId',
       ]),
       reset() {
@@ -120,6 +121,7 @@
       createNew() {
         this.setCoords(this.position);
         this.setIsNote(false);
+        this.setOsmType('node');
         this.setDetails({
           category: {
             text: '',

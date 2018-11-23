@@ -25,13 +25,14 @@ class User(db.Model):
         db.session.commit()
 
 
-class Node(db.Model):
-    __tablename__ = 'node'
+class BusinessPOI(db.Model):
+    __tablename__ = 'business_poi'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     osm_id = db.Column(db.BigInteger)
     osm_note_id = db.Column(db.BigInteger)
+    osm_type = db.Column(db.String(8))
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
     version = db.Column(db.Integer)
@@ -42,11 +43,12 @@ class Node(db.Model):
         db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-    def __init__(self, user_id, name, osm_id, osm_note_id, lat, lng,
+    def __init__(self, user_id, name, osm_id, osm_type, osm_note_id, lat, lng,
                  version, receive_updates):
         self.user_id = user_id
         self.osm_id = osm_id
         self.osm_note_id = osm_note_id
+        self.osm_type = osm_type
         self.lat = lat
         self.lng = lng
         self.version = version

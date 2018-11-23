@@ -194,10 +194,10 @@ function parseTags(nodeJson) {
   return result;
 }
 
-function parseNode(nodeXml) {
+function parseNode(nodeXml, osmType) {
   let nodeJson;
   if (typeof nodeXml === 'string') {
-    nodeJson = JSON.parse(xml2json(nodeXml, { compact: true })).osm.node;
+    nodeJson = JSON.parse(xml2json(nodeXml, { compact: true })).osm[osmType];
   } else {
     const xml = nodeXml.getElementsByTagName('osm')[0].innerHTML;
     nodeJson = JSON.parse(xml2json(xml, { compact: true })).node;

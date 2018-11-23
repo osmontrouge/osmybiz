@@ -123,7 +123,7 @@
       },
       linkToOsm() {
         if (this.hasOsmId) {
-          return `${osmUrl}/node/${this.business.id}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
+          return `${osmUrl}/${this.business.type}/${this.business.id}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
         }
         return `${osmUrl}/note/${this.business.noteId}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
       },
@@ -136,6 +136,7 @@
         'setIsNote',
         'setOsmId',
         'setNoteId',
+        'setOsmType',
       ]),
       loadAddress() {
         reverseQuery(this.position).then((address) => {
@@ -147,6 +148,7 @@
           const note = createNoteFromNode(this.business);
           this.setDetails(note);
           this.setOsmId(this.business.id);
+          this.setOsmType(this.business.type);
         } else {
           this.setOsmId(null);
         }

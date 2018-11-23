@@ -29,6 +29,7 @@
         'address',
         'user',
         'osmId',
+        'osmType',
         'lat',
         'lon',
         'isDuplicate',
@@ -66,6 +67,7 @@
             user: this.user,
             osmId: this.osmId,
             noteId: this.noteId,
+            osmType: this.osmType,
           }).then(() => true);
         }
         promise.then((success) => {

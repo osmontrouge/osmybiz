@@ -1,21 +1,21 @@
-from app.models import User, Node
+from app.models import User, BusinessPOI
 from flask import abort
-from app.validation import is_user_valid, is_node_valid
-from app.serialization import serialize_node, \
-    deserialize_node, deserialize_user
+from app.validation import is_user_valid, is_business_poi_valid
+from app.serialization import serialize_business_poi, \
+    deserialize_business_poi, deserialize_user
 
 
 def find_user_by_osmid(osmid):
     return User.query.filter(User.osm_id == osmid).first()
 
 
-def find_node_by_user_and_id(userid, osmid):
-    return Node.query.filter(Node.user_id == userid,
-                             Node.osm_id == osmid).first()
+def find_business_poi_by_user_and_id(userid, osmid):
+    return BusinessPOI.query.filter(
+        BusinessPOI.user_id == userid, BusinessPOI.osm_id == osmid).first()
 
 
-def find_nodes_by_user_id(userid):
-    return Node.query.filter(Node.user_id == userid)
+def find_business_pois_by_user_id(userid):
+    return BusinessPOI.query.filter(BusinessPOI.user_id == userid)
 
 
 def add_or_update_user(user_data):
@@ -44,40 +44,41 @@ def ensure_user(user_id):
     return user
 
 
-def add_or_update_node(user_id, node_data):
+def add_or_update_business_poi(user_id, business_poi_data):
 
     user = ensure_user(user_id)
 
-    if not is_node_valid(node_data):
+    if not is_business_poi_valid(business_poi_data):
         abort(400)
 
-    node = deserialize_node(node_data)
-    existing_node = find_node_by_user_and_id(user.id, node.osm_id)
+    business_poi = deserialize_business_poi(business_poi_data)
+    existing_business_poi = find_business_poi_by_user_and_id(user.id, business_poi.osm_id)
 
-    if existing_node is None:
-        existing_node = node
-        existing_node.user_id = user.id
+    if existing_business_poi is None:
+        existing_business_poi = business_poi
+        existing_business_poi.user_id = user.id
     else:
-        existing_node.lat = node.lat
-        existing_node.lng = node.lng
-        existing_node.version = node.version
-        existing_node.receive_updates = node.receive_updates
-        existing_node.name = node.name
-        existing_node.osm_note_id = node.osm_note_id
+        existing_business_poi.lat = business_poi.lat
+        existing_business_poi.lng = business_poi.lng
+        existing_business_poi.version = business_poi.version
+        existing_business_poi.receive_updates = business_poi.receive_updates
+        existing_business_poi.name = business_poi.name
+        existing_business_poi.osm_note_id = business_poi.osm_note_id
+        existing_business_poi.osm_type = business_poi.osm_type
 
-    existing_node.save()
-    if node.osm_id < 0:
+    existing_business_poi.save()
+    if business_poi.osm_id < 0:
         user.temporary_osm_id = user.temporary_osm_id - 1
         user.save()
 
     return '', 200
 
 
-def get_nodes_for_user(user_id):
+def get_business_pois_for_user(user_id):
     user = ensure_user(user_id)
 
-    nodes = find_nodes_by_user_id(user.id)
-    return list(map(lambda n: serialize_node(n), nodes))
+    business_pois = find_business_pois_by_user_id(user.id)
+    return list(map(lambda n: serialize_business_poi(n), business_pois))
 
 
 def get_temporary_osm_id_for_user(user_id):
@@ -85,29 +86,29 @@ def get_temporary_osm_id_for_user(user_id):
     return user.temporary_osm_id
 
 
-def load_node(user_id, node_id):
+def load_business_poi(user_id, business_poi_id):
     user = ensure_user(user_id)
 
-    return find_node_by_user_and_id(user.id, node_id)
+    return find_business_poi_by_user_and_id(user.id, business_poi_id)
 
 
-def unsub_user_from_node(user_id, node_id):
-    node = load_node(user_id, node_id)
+def unsub_user_from_business_poi(user_id, business_poi_id):
+    business_poi = load_business_poi(user_id, business_poi_id)
 
-    if node is None:
+    if business_poi is None:
         abort(404)
 
-    node.receive_updates = False
-    node.save()
+    business_poi.receive_updates = False
+    business_poi.save()
 
     return '', 200
 
 
-def delete_node(user_id, node_id):
+def delete_business_poi(user_id, business_poi_id):
 
-    node = load_node(user_id, node_id)
+    business_poi = load_business_poi(user_id, business_poi_id)
 
-    if node is not None:
-        node.delete()
+    if business_poi is not None:
+        business_poi.delete()
 
     return '', 200

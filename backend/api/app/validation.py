@@ -6,7 +6,7 @@ user_fields = {
 }
 
 
-node_fields = {
+business_poi_fields = {
     'osmId': {int},
     'noteId': {int, type(None)},
     'lat': {float},
@@ -14,6 +14,7 @@ node_fields = {
     'version': {int},
     'receiveUpdates': {bool},
     'name': {str},
+    'osmType': {str},
 }
 
 
@@ -29,5 +30,5 @@ def is_user_valid(user):
     return check_fields(user, user_fields)
 
 
-def is_node_valid(node):
-    return check_fields(node, node_fields)
+def is_business_poi_valid(business_poi):
+    return check_fields(business_poi, business_poi_fields)
