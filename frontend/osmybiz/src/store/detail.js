@@ -241,12 +241,12 @@ const actions = {
       return addOrUpdateBusinessPOI(user.id, {
         lat: parseFloat(ps.lat),
         lng: parseFloat(ps.lon),
-        version: parseInt(ps.version, 10),
-        osmId: parseInt(ps.id, 10),
-        receiveUpdates: true,
         name: ps.details.name,
         noteId: null,
+        osmId: parseInt(ps.id, 10),
         osmType: 'node',
+        receiveUpdates: true,
+        version: parseInt(ps.version, 10),
       });
     });
   },
@@ -273,12 +273,12 @@ const actions = {
               addOrUpdateBusinessPOI(user.id, {
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
+                name,
+                noteId: parseInt(displayNote.id, 10),
+                osmId: parseInt(businessPOI.id, 10),
+                osmType,
                 receiveUpdates: true,
                 version: parseInt(businessPOI.version, 10),
-                name,
-                osmId: parseInt(businessPOI.id, 10),
-                noteId: parseInt(displayNote.id, 10),
-                osmType,
               });
             }
             // TODO handle error status code 410 if the element has been deleted
@@ -288,12 +288,12 @@ const actions = {
           addOrUpdateBusinessPOI(user.id, {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
+            name,
+            noteId: parseInt(displayNote.id, 10),
+            osmId: temporaryOsmId,
+            osmType,
             receiveUpdates: true,
             version: 0,
-            name,
-            osmId: temporaryOsmId,
-            noteId: parseInt(displayNote.id, 10),
-            osmType,
           });
         });
       });
@@ -306,12 +306,12 @@ const actions = {
         return addOrUpdateBusinessPOI(user.id, {
           lat: parseFloat(state.lat),
           lng: parseFloat(state.lon),
+          name,
+          noteId: parseInt(displayNote.id, 10),
+          osmId: state.osmId,
+          osmType: state.osmType,
           receiveUpdates: true,
           version: 0,
-          name,
-          osmId: state.osmId,
-          noteId: parseInt(displayNote.id, 10),
-          osmType: state.osmType,
         });
       }
       return getBusinessPOI(osmType, osmId).then((businessPOI) => {
@@ -323,12 +323,12 @@ const actions = {
           addOrUpdateBusinessPOI(user.id, {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
-            version: parseInt(businessPOI.version, 10),
-            osmId: parseInt(businessPOI.id, 10),
-            receiveUpdates: true,
             name,
             noteId: displayNote.id,
+            osmId: parseInt(businessPOI.id, 10),
             osmType,
+            receiveUpdates: true,
+            version: parseInt(businessPOI.version, 10),
           });
         }
       });
