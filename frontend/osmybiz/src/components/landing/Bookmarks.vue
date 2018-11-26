@@ -3,15 +3,15 @@
     <div class="bookmarks-title">
       {{ $t('landing.bookmarks.title') }}
     </div>
-    <div class="bookmarks" v-for="(ownedNode, index) in ownedNodes" @click="panToMarker(ownedNode)">
+    <div class="bookmarks" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs" @click="panToMarker(ownedBusinessPOI)">
       <div class="bookmarks-index">
         {{ index + 1 }}
       </div>
       <div class="bookmarks-name">
-        <span v-if="ownedNode.tags.name"> {{ownedNode.tags.name}} </span>
+        <span v-if="ownedBusinessPOI.tags.name"> {{ownedBusinessPOI.tags.name}} </span>
         <span v-else> Name not found </span>
       </div>
-      <div class="bookmarks-remove" @click="removeMarker(ownedNode)">
+      <div class="bookmarks-remove" @click="removeMarker(ownedBusinessPOI)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -28,9 +28,9 @@
   export default {
     methods: {
       ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
-      ...mapActions(['deleteOwnedNode']),
-      panToMarker(ownedNode) {
-        const coords = latLng(ownedNode.lat, ownedNode.lng);
+      ...mapActions(['deleteOwnedBusinessPOI']),
+      panToMarker(ownedBusinessPOI) {
+        const coords = latLng(ownedBusinessPOI.lat, ownedBusinessPOI.lng);
         const zoom = 17;
         this.setMapViewToCoordsZoom({ coords, zoom });
         /* eslint-disable */
@@ -46,13 +46,13 @@
         });
         /* eslint-enable */
       },
-      removeMarker(ownedNode) {
-        this.deleteOwnedNode({ ownedNode, user: this.user });
+      removeMarker(ownedBusinessPOI) {
+        this.deleteOwnedBusinessPOI({ ownedBusinessPOI, user: this.user });
       },
     },
     computed: {
       ...mapGetters([
-        'ownedNodes',
+        'ownedBusinessPOIs',
         'user',
         'showBookmarks',
         'map',

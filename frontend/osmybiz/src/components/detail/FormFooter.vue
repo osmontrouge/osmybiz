@@ -48,7 +48,7 @@
         'postNote',
         'postOwnCategoryNote',
         'postNode',
-        'checkDuplicateNode',
+        'checkDuplicateBusinessPOI',
         'getConfirmation',
         'loadUpdates',
       ]),
@@ -56,7 +56,7 @@
         let promise;
         this.setHasSavedChanges(true);
         if (!this.isNote && !this.isOwnCategory) {
-          promise = this.checkDuplicateNode().then((res) => {
+          promise = this.checkDuplicateBusinessPOI().then((res) => {
             if (!res) {
               return this.postNode(this.user).then(() => true);
             }

@@ -124,7 +124,7 @@
       "no": "Non"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Le commerce existe déjà",
         "section1": "À cet endroit il y a déjà un commerce avec exactement le même nom et la même catégorie",
         "section2": "Vous pouvez modifier les informations existantes avec un clic gauche sur le commerce sur la carte."
@@ -141,7 +141,7 @@
     "address": "Adresse",
     "name": "Nom",
     "link": "Lien vers OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "Nouveau commerce créé"
     },
     "note": {

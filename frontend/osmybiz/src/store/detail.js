@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
 import deepEqual from 'deep-equal';
-import { postNode, postNote, getNode, postNoteAsComment } from './../api/osmApi';
+import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
-import { addOrUpdateNode, getTemporaryOsmId } from './../api/osmybizApi';
+import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
 
 let initialOptions = [];
 
@@ -50,7 +50,7 @@ const state = {
 
   // PostSuccess
   note: {},
-  node: {},
+  businessPOI: {},
 };
 
 
@@ -228,17 +228,17 @@ export function loadTags() {
 
 const actions = {
   postNode({ commit }, user) {
-    const node = {
+    const businessPOI = {
       lat: state.lat,
       lon: state.lon,
       details: state.details,
       address: state.address,
     };
-    return postNode(node).then((ps) => {
+    return postNode(businessPOI).then((ps) => {
       state.displaySuccess = true;
-      commit('setNode', ps);
+      commit('setBusinessPOI', ps);
 
-      return addOrUpdateNode(user.id, {
+      return addOrUpdateBusinessPOI(user.id, {
         lat: parseFloat(ps.lat),
         lng: parseFloat(ps.lon),
         version: parseInt(ps.version, 10),
@@ -262,20 +262,20 @@ const actions = {
         commit('setNote', displayNote);
 
         if (osmId) {
-          return getNode(osmType, osmId).then((node) => {
-            if (node) {
-              if (node.lat === undefined && node.lng === undefined) {
-                node.lat = state.lat;
-                node.lon = state.lon;
+          return getBusinessPOI(osmType, osmId).then((businessPOI) => {
+            if (businessPOI) {
+              if (businessPOI.lat === undefined && businessPOI.lng === undefined) {
+                businessPOI.lat = state.lat;
+                businessPOI.lon = state.lon;
               }
-              addOrUpdateNode(user.id, {
+              addOrUpdateBusinessPOI(user.id, {
                 name,
-                osmId: parseInt(node.id, 10),
+                osmId: parseInt(businessPOI.id, 10),
                 osmType,
                 noteId: parseInt(displayNote.id, 10),
-                lat: parseFloat(node.lat),
-                lng: parseFloat(node.lon),
-                version: parseInt(node.version, 10),
+                lat: parseFloat(businessPOI.lat),
+                lng: parseFloat(businessPOI.lon),
+                version: parseInt(businessPOI.version, 10),
                 receiveUpdates: true,
               });
             }
@@ -283,7 +283,7 @@ const actions = {
           });
         }
         return getTemporaryOsmId(user.id).then((temporaryOsmId) => {
-          addOrUpdateNode(user.id, {
+          addOrUpdateBusinessPOI(user.id, {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
             receiveUpdates: true,
@@ -301,13 +301,13 @@ const actions = {
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
 
-      return getNode(osmType, osmId).then((node) => {
-        if (node) {
-          addOrUpdateNode(user.id, {
-            lat: parseFloat(node.lat),
-            lng: parseFloat(node.lon),
-            version: parseInt(node.version, 10),
-            osmId: parseInt(node.id, 10),
+      return getBusinessPOI(osmType, osmId).then((businessPOI) => {
+        if (businessPOI) {
+          addOrUpdateBusinessPOI(user.id, {
+            lat: parseFloat(businessPOI.lat),
+            lng: parseFloat(businessPOI.lon),
+            version: parseInt(businessPOI.version, 10),
+            osmId: parseInt(businessPOI.id, 10),
             receiveUpdates: true,
             name,
             noteId: displayNote.id,
@@ -337,8 +337,8 @@ const mutations = {
   setNote(s, note) {
     s.note = note;
   },
-  setNode(s, node) {
-    s.node = node;
+  setBusinessPOI(s, businessPOI) {
+    s.businessPOI = businessPOI;
   },
   setDisplaySuccess(s, displaySuccess) {
     s.displaySuccess = displaySuccess;
@@ -413,8 +413,8 @@ const getters = {
   note(s) {
     return s.note;
   },
-  node(s) {
-    return s.node;
+  businessPOI(s) {
+    return s.businessPOI;
   },
   displaySuccess(s) {
     return s.displaySuccess;

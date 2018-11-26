@@ -39,13 +39,13 @@ function parseData(data) {
   });
 }
 
-function filterTags(node) {
+function filterTags(businessPOI) {
   return Object.keys(tags).some((f) => {
     const element = f.split('/');
     const key = element[0];
     const value = element[1];
-    if (node.tags[key]) {
-      if (node.tags[key].indexOf(value) === 0) {
+    if (businessPOI.tags[key]) {
+      if (businessPOI.tags[key].indexOf(value) === 0) {
         return true;
       }
     }
@@ -61,7 +61,7 @@ export function queryBox(bbox) {
     });
 }
 
-export function surroundingQueryNode(details, lat, lon) {
+export function surroundingQueryBusinessPOI(details, lat, lon) {
   return axios.post(overpassUrl, buildSurroundingQuery(details, lat, lon))
     .then(res => res.data.elements.length > 0, () => {
       setError('error.overpass.surrounding');

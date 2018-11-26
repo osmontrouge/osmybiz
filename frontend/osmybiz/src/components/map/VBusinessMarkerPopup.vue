@@ -35,7 +35,7 @@
   import VMapLink from './VMapLink.vue';
   import { reverseQuery } from '../../api/nominatimApi';
   import { routes } from '../../router';
-  import { createNoteFromNode, getBizCategory } from '../../util/overPassNodeUtils';
+  import { createNoteFromBusinessPOI, getBizCategory } from '../../util/overPassNodeUtils';
   import { osmUrl } from '../../config/config';
 
   const bizIcon = require('../../assets/biz-marker.png');
@@ -78,7 +78,7 @@
     computed: {
       ...mapGetters([
         'isLoggedIn',
-        'ownedNodes',
+        'ownedBusinessPOIs',
       ]),
       prettyAddress() {
         let out = '';
@@ -145,7 +145,7 @@
       },
       edit() {
         if (this.business.id > 0) {
-          const note = createNoteFromNode(this.business);
+          const note = createNoteFromBusinessPOI(this.business);
           this.setDetails(note);
           this.setOsmId(this.business.id);
           this.setOsmType(this.business.type);

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { fakeOsmybizApi, osmyBizBackendUrl } from './../config/config';
 import {
-  mockAddOrUpdateUser, mockAddOrUpdateNode, mockFetchnodes, mockUnsubscribe,
-  mockDeleteNode,
+  mockAddOrUpdateUser, mockAddOrUpdateBusinessPOI, mockFetchBusinessPOIs, mockUnsubscribe,
+  mockDeleteBusinessPOI,
 } from './osmybizApiMock';
 
 const baseRoute = osmyBizBackendUrl;
@@ -23,20 +23,20 @@ export function addOrUpdateUser(userId, displayName) {
   });
 }
 
-export function fetchnodes(userId) {
+export function fetchBusinessPOIs(userId) {
   if (fakeOsmybizApi) {
-    return mockFetchnodes(userId);
+    return mockFetchBusinessPOIs(userId);
   }
   const route = `${baseRoute}user/${userId}/business-poi`;
   return axios.get(route).then(response => response.data);
 }
 
-export function addOrUpdateNode(userId, node) {
+export function addOrUpdateBusinessPOI(userId, businessPOI) {
   if (fakeOsmybizApi) {
-    return mockAddOrUpdateNode(userId, node);
+    return mockAddOrUpdateBusinessPOI(userId, businessPOI);
   }
   const route = `${baseRoute}user/${userId}/business-poi`;
-  return axios.post(route, node);
+  return axios.post(route, businessPOI);
 }
 
 export function getTemporaryOsmId(userId) {
@@ -48,18 +48,18 @@ export function getTemporaryOsmId(userId) {
   return axios.get(route).then(response => response.data);
 }
 
-export function unsubscribe(userId, nodeId) {
+export function unsubscribe(userId, osmId) {
   if (fakeOsmybizApi) {
-    return mockUnsubscribe(userId, nodeId);
+    return mockUnsubscribe(userId, osmId);
   }
-  const route = `${baseRoute}user/${userId}/business-poi/${nodeId}/unsubscribe`;
+  const route = `${baseRoute}user/${userId}/business-poi/${osmId}/unsubscribe`;
   return axios.post(route);
 }
 
-export function deleteNode(userId, nodeId) {
+export function deleteBusinessPOI(userId, osmId) {
   if (fakeOsmybizApi) {
-    return mockDeleteNode(userId, nodeId);
+    return mockDeleteBusinessPOI(userId, osmId);
   }
-  const route = `${baseRoute}user/${userId}/business-poi/${nodeId}/delete`;
+  const route = `${baseRoute}user/${userId}/business-poi/${osmId}/delete`;
   return axios.post(route);
 }

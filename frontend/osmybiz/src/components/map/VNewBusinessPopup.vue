@@ -72,7 +72,7 @@
     computed: {
       ...mapGetters([
         'isLoggedIn',
-        'ownedNodes',
+        'ownedBusinessPOIs',
       ]),
       prettyAddress() {
         let out = '';

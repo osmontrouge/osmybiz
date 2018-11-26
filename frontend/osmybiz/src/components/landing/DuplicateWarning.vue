@@ -7,13 +7,13 @@
 
     <div class="node-warning" v-if="!isNote">
       <div class="dialog-title">
-        {{ $t('warning.duplicate.node.title') }}
+        {{ $t('warning.duplicate.businessPOI.title') }}
       </div>
       <div class="section">
-        {{ $t('warning.duplicate.node.section1') }}
+        {{ $t('warning.duplicate.businessPOI.section1') }}
       </div>
       <div class="section">
-        {{ $t('warning.duplicate.node.section2') }}
+        {{ $t('warning.duplicate.businessPOI.section2') }}
       </div>
     </div>
 

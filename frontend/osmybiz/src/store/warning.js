@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { getNotes } from './../api/osmApi';
-import { surroundingQueryNode } from '../api/overpassApi';
+import { surroundingQueryBusinessPOI } from '../api/overpassApi';
 import detail from '../store/detail';
 
 const state = {
@@ -11,13 +11,13 @@ const state = {
 };
 
 const actions = {
-  checkDuplicateNode({ commit }) {
+  checkDuplicateBusinessPOI({ commit }) {
     return new Promise((resolve) => {
       if (detail.state.details.category.value === 0) {
         resolve(false);
         commit('setIsDuplicate', false);
       } else {
-        surroundingQueryNode(detail.state.details, detail.state.lat, detail.state.lon)
+        surroundingQueryBusinessPOI(detail.state.details, detail.state.lat, detail.state.lon)
           .then((ps) => {
             resolve(ps);
             commit('setIsDuplicate', ps);
