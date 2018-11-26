@@ -121,7 +121,6 @@
       createNew() {
         this.setCoords(this.position);
         this.setIsNote(false);
-        this.setOsmType('node');
         this.setDetails({
           category: {
             text: '',
@@ -140,6 +139,7 @@
           note: '',
         });
         this.setNoteId(null);
+        this.setOsmType('node');
         this.$router.push({ name: routes.Detail });
       },
     },

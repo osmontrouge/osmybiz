@@ -79,6 +79,7 @@
         'hasSavedChanges',
         'isOwnCategory',
         'osmType',
+        'noteId',
       ]),
     },
     methods: {
@@ -106,6 +107,7 @@
       this.setIsEditingUnsavedChanges(false);
       this.setOsmId(null);
       this.setNoteId(null);
+      this.setOsmType(null);
       if (isNotModified(this) || this.hasSavedChanges) {
         this.setHasSavedChanges(false);
         // For the case when DisplayUnsavedChangesNotication is still true (5 sec

@@ -147,11 +147,9 @@
         if (this.business.id > 0) {
           const note = createNoteFromBusinessPOI(this.business);
           this.setDetails(note);
-          this.setOsmId(this.business.id);
-          this.setOsmType(this.business.type);
-        } else {
-          this.setOsmId(null);
         }
+        this.setOsmId(this.business.id);
+        this.setOsmType(this.business.type);
         this.setIsNote(true);
         const pos = L.latLng(this.business.lat, this.business.lng);
         this.setCoords(pos);

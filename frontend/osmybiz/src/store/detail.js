@@ -265,6 +265,8 @@ const actions = {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
             if (businessPOI) {
               if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
+                // lat & lng is undefined when it is a relation/way,
+                // TODO calculate the lat lon instead of using the state
                 businessPOI.lat = state.lat;
                 businessPOI.lon = state.lon;
               }
@@ -300,7 +302,18 @@ const actions = {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
-
+      if (state.osmType === 'note') {
+        return addOrUpdateBusinessPOI(user.id, {
+          lat: parseFloat(state.lat),
+          lng: parseFloat(state.lon),
+          receiveUpdates: true,
+          version: 0,
+          name,
+          osmId: state.osmId,
+          noteId: parseInt(displayNote.id, 10),
+          osmType: state.osmType,
+        });
+      }
       return getBusinessPOI(osmType, osmId).then((businessPOI) => {
         if (businessPOI) {
           if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
