@@ -241,12 +241,12 @@ const actions = {
       return addOrUpdateBusinessPOI(user.id, {
         lat: parseFloat(ps.lat),
         lng: parseFloat(ps.lon),
-        version: parseInt(ps.version, 10),
-        osmId: parseInt(ps.id, 10),
-        receiveUpdates: true,
         name: ps.details.name,
         noteId: null,
+        osmId: parseInt(ps.id, 10),
         osmType: 'node',
+        receiveUpdates: true,
+        version: parseInt(ps.version, 10),
       });
     });
   },
@@ -264,19 +264,21 @@ const actions = {
         if (osmId) {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
             if (businessPOI) {
-              if (businessPOI.lat === undefined && businessPOI.lng === undefined) {
+              if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
+                // lat & lng is undefined when it is a relation/way,
+                // TODO calculate the lat lon instead of using the state
                 businessPOI.lat = state.lat;
                 businessPOI.lon = state.lon;
               }
               addOrUpdateBusinessPOI(user.id, {
-                name,
-                osmId: parseInt(businessPOI.id, 10),
-                osmType,
-                noteId: parseInt(displayNote.id, 10),
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
-                version: parseInt(businessPOI.version, 10),
+                name,
+                noteId: parseInt(displayNote.id, 10),
+                osmId: parseInt(businessPOI.id, 10),
+                osmType,
                 receiveUpdates: true,
+                version: parseInt(businessPOI.version, 10),
               });
             }
             // TODO handle error status code 410 if the element has been deleted
@@ -286,12 +288,12 @@ const actions = {
           addOrUpdateBusinessPOI(user.id, {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
+            name,
+            noteId: parseInt(displayNote.id, 10),
+            osmId: temporaryOsmId,
+            osmType,
             receiveUpdates: true,
             version: 0,
-            name,
-            osmId: temporaryOsmId,
-            noteId: parseInt(displayNote.id, 10),
-            osmType,
           });
         });
       });
@@ -300,18 +302,33 @@ const actions = {
       state.displaySuccess = true;
       const displayNote = constructDisplayNote(ps);
       commit('setNote', displayNote);
-
+      if (state.osmType === 'note') {
+        return addOrUpdateBusinessPOI(user.id, {
+          lat: parseFloat(state.lat),
+          lng: parseFloat(state.lon),
+          name,
+          noteId: parseInt(displayNote.id, 10),
+          osmId: state.osmId,
+          osmType: state.osmType,
+          receiveUpdates: true,
+          version: 0,
+        });
+      }
       return getBusinessPOI(osmType, osmId).then((businessPOI) => {
         if (businessPOI) {
+          if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
+            businessPOI.lat = state.lat;
+            businessPOI.lon = state.lon;
+          }
           addOrUpdateBusinessPOI(user.id, {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
-            version: parseInt(businessPOI.version, 10),
-            osmId: parseInt(businessPOI.id, 10),
-            receiveUpdates: true,
             name,
             noteId: displayNote.id,
+            osmId: parseInt(businessPOI.id, 10),
             osmType,
+            receiveUpdates: true,
+            version: parseInt(businessPOI.version, 10),
           });
         }
       });

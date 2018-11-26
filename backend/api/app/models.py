@@ -29,31 +29,32 @@ class BusinessPOI(db.Model):
     __tablename__ = 'business_poi'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    lat = db.Column(db.Float)
+    lng = db.Column(db.Float)
+    name = db.Column(db.String)
     osm_id = db.Column(db.BigInteger)
     osm_note_id = db.Column(db.BigInteger)
     osm_type = db.Column(db.String(8))
-    lat = db.Column(db.Float)
-    lng = db.Column(db.Float)
-    version = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     receive_updates = db.Column(db.Boolean)
-    name = db.Column(db.String)
+    version = db.Column(db.Integer)
+
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
         db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-    def __init__(self, user_id, name, osm_id, osm_type, osm_note_id, lat, lng,
-                 version, receive_updates):
+    def __init__(self, user_id, lat, lng, name, osm_id, osm_note_id, osm_type,
+                 receive_updates, version):
         self.user_id = user_id
+        self.lat = lat
+        self.lng = lng
+        self.name = name
         self.osm_id = osm_id
         self.osm_note_id = osm_note_id
         self.osm_type = osm_type
-        self.lat = lat
-        self.lng = lng
-        self.version = version
         self.receive_updates = receive_updates
-        self.name = name
+        self.version = version
 
     def save(self):
         db.session.add(self)

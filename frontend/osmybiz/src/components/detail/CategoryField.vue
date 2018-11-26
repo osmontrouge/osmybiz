@@ -18,7 +18,7 @@
                       class="basic-select">
         </basic-select>
 
-        <button class="button" @click="showInput()">
+        <button class="button" @click="setOwnCategory()">
           {{ $t('detail.buttons.owncategory') }}
         </button>
       </div>
@@ -30,7 +30,7 @@
                  type="text"
                  :placeholder="$t('detail.placeholders.owncategory')"
                  name="category-input"/>
-          <button class="button" @click="hideInput()">
+          <button class="button" @click="setPredefinedCategory()">
             {{ $t('detail.buttons.choosecategory') }}
           </button>
         </div>
@@ -73,19 +73,24 @@
       ...mapMutations([
         'setIsOwnCategory',
         'setIsNote',
+        'setOsmType',
         'showPopup',
         'hidePopup',
       ]),
-      hideInput() {
+      setPredefinedCategory() {
         if (this.isNew) {
           this.setIsNote(false);
+          this.setOsmType('node');
         }
         this.setIsOwnCategory(false);
         this.details.category = { value: 0, text: '' };
       },
-      showInput() {
+      setOwnCategory() {
         this.setIsNote(true);
         this.setIsOwnCategory(true);
+        if (this.isNew) {
+          this.setOsmType('note');
+        }
         this.details.category = { value: 0, text: '' };
       },
       onSelect(item) {

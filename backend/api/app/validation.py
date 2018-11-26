@@ -7,14 +7,14 @@ user_fields = {
 
 
 business_poi_fields = {
-    'osmId': {int},
-    'noteId': {int, type(None)},
     'lat': {float},
     'lng': {float},
-    'version': {int},
-    'receiveUpdates': {bool},
     'name': {str},
+    'noteId': {int, type(None)},
+    'osmId': {int},
     'osmType': {str},
+    'receiveUpdates': {bool},
+    'version': {int},
 }
 
 
