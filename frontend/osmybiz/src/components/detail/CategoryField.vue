@@ -30,7 +30,7 @@
                  type="text"
                  :placeholder="$t('detail.placeholders.owncategory')"
                  name="category-input"/>
-          <button class="button" @click="setChooseCategory()">
+          <button class="button" @click="setPredefinedCategory()">
             {{ $t('detail.buttons.choosecategory') }}
           </button>
         </div>
@@ -77,7 +77,7 @@
         'showPopup',
         'hidePopup',
       ]),
-      setChooseCategory() {
+      setPredefinedCategory() {
         if (this.isNew) {
           this.setIsNote(false);
           this.setOsmType('node');
