@@ -18,7 +18,7 @@
                       class="basic-select">
         </basic-select>
 
-        <button class="button" @click="ownCategory()">
+        <button class="button" @click="setOwnCategory()">
           {{ $t('detail.buttons.owncategory') }}
         </button>
       </div>
@@ -30,7 +30,7 @@
                  type="text"
                  :placeholder="$t('detail.placeholders.owncategory')"
                  name="category-input"/>
-          <button class="button" @click="chooseCategory()">
+          <button class="button" @click="setChooseCategory()">
             {{ $t('detail.buttons.choosecategory') }}
           </button>
         </div>
@@ -77,7 +77,7 @@
         'showPopup',
         'hidePopup',
       ]),
-      chooseCategory() {
+      setChooseCategory() {
         if (this.isNew) {
           this.setIsNote(false);
           this.setOsmType('node');
@@ -85,7 +85,7 @@
         this.setIsOwnCategory(false);
         this.details.category = { value: 0, text: '' };
       },
-      ownCategory() {
+      setOwnCategory() {
         this.setIsNote(true);
         this.setIsOwnCategory(true);
         if (this.isNew) {
