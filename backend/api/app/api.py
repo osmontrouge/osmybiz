@@ -31,7 +31,7 @@ def unsubscribe(userid, osmid):
     return unsub_user_from_business_poi(userid, osmid)
 
 
-@api.route('/user/<int:userid>/business-poi/<int:osmid>/delete', methods=['POST'])
+@api.route('/user/<int:userid>/business-poi/<signed_int:osmid>/delete', methods=['POST'])
 def delete(userid, osmid):
     return delete_business_poi(userid, osmid)
 
