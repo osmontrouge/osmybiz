@@ -5,8 +5,8 @@
       class="map"
       :zoom="mapZoom"
       :min-zoom="3"
+      :max-bounds="maxBounds"
       :center="mapCenter"
-      :max-bounds="bounds"
       :max-bounds-viscosity="1"
       @moveend="updateMap()"
       @contextmenu="contextMenu($event)"
@@ -16,12 +16,14 @@
         :url="osmLayer.url"
         :attribution="osmLayer.attribution"
         :visible="mode === 'vector'"
+        :options="tileLayerZoomSettings"
       ></l-tile-layer>
       <l-tile-layer
         :url="mapBoxLayer.url"
         :attribution="mapBoxLayer.attribution"
         :token="mapBoxLayer.token"
         :visible="mode === 'satellite'"
+        :options="tileLayerZoomSettings"
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
@@ -41,7 +43,6 @@
 <script>
   import { LMap, LMarker, LPopup, LTileLayer, LTooltip } from 'vue2-leaflet';
   import { mapActions, mapGetters, mapMutations } from 'vuex';
-  import * as L from 'leaflet';
   import deepEqual from 'deep-equal';
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
@@ -72,7 +73,8 @@
           token: mapBoxToken,
         },
         newBusinessPositions: [],
-        bounds: L.latLngBounds(L.latLng(-89.98155760646617, -180), L.latLng(89.99346179538875, 180)),
+        maxBounds: [[-89.98155760646617, -180], [89.99346179538875, 180]],
+        tileLayerZoomSettings: { maxNativeZoom: 18, maxZoom: 21 },
       };
     },
     created() {
