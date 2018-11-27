@@ -17,7 +17,7 @@ def serialize_business_poi(business_poi):
         'lat': business_poi.lat,
         'lng': business_poi.lng,
         'name': business_poi.name,
-        'noteId': business_poi.osm_note_id,
+        'noteId': business_poi.note_id,
         'osmId': business_poi.osm_id,
         'osmType': business_poi.osm_type,
         'receiveUpdates': business_poi.receive_updates,

@@ -63,7 +63,7 @@ def add_or_update_business_poi(user_id, business_poi_data):
         existing_business_poi.version = business_poi.version
         existing_business_poi.receive_updates = business_poi.receive_updates
         existing_business_poi.name = business_poi.name
-        existing_business_poi.osm_note_id = business_poi.osm_note_id
+        existing_business_poi.note_id = business_poi.note_id
         existing_business_poi.osm_type = business_poi.osm_type
 
     existing_business_poi.save()
