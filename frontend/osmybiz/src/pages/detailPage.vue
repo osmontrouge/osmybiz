@@ -96,11 +96,15 @@
         'setIsOwnCategory',
         'setNoteId',
         'setOsmType',
+        'resetDetailState',
       ]),
       ...mapActions([
         'getAddress',
         'getConfirmation',
       ]),
+    },
+    destroyed() {
+      this.resetDetailState();
     },
     beforeRouteLeave(to, from, next) {
       // TODO:  refactor this part https://stackoverflow.com/questions/42295340/how-to-clear-state-in-vuex-store

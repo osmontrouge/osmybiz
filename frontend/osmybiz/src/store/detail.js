@@ -8,7 +8,7 @@ import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
 
 let initialOptions = [];
 
-const state = {
+const initialState = {
   // detailPage
   displaySuccess: false,
   displayUnsavedChangesNotification: false,
@@ -53,6 +53,7 @@ const state = {
   businessPOI: {},
 };
 
+const state = JSON.parse(JSON.stringify(initialState));
 
 function constructNote() {
   let text = '#OSMyBiz \n \n';
@@ -406,6 +407,16 @@ const mutations = {
   setOsmType(s, osmType) {
     s.osmType = osmType;
   },
+  reinitialiseDetailState(s) {
+    Object.keys(initialState).forEach((key) => {
+      s[key] = initialState[key];
+    });
+  },
+  setDetailState(s, copy) {
+    Object.keys(copy).forEach((key) => {
+      s[key] = copy[key];
+    });
+  },
 };
 
 const getters = {
@@ -483,6 +494,7 @@ export default {
 
 export function getUnsavedChangesFromCookies(context) {
   const unsavedChangesCookie = context.$cookies.get('unsavedChanges');
+  console.log('why', unsavedChangesCookie);
   context.setDetails(unsavedChangesCookie.details);
   context.setAddress(unsavedChangesCookie.address);
   context.setOsmId(unsavedChangesCookie.osmId);
