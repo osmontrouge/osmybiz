@@ -76,7 +76,6 @@
         'isOwnCategory',
         'osmType',
         'noteId',
-        'isFormSubmission',
       ]),
       needsBackup() {
         return !isNotModified(this) && !this.isFormSubmission;
