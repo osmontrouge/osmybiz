@@ -32,25 +32,21 @@
   import FormFooter from '../components/detail/FormFooter.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
-
-  import { isNotModified, getUnsavedChangesFromCookies } from '../store/detail';
+  import { isNotModified, backup } from '../store/detail';
   import { routes } from './../router';
 
-  export const UNSAVEDCHANGESTIME = 30;
 
   export default {
     mounted() {
       if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
         this.$router.push({ name: routes.Landing });
       }
-      if (this.isEditingUnsavedChanges) {
-        getUnsavedChangesFromCookies(this);
-      } else {
+      if (!this.isEditingUnsavedChanges) {
         this.getAddress(this.businessPosition);
+        this.setDisplaySuccess(false);
+        localStorage.setItem('details', JSON.stringify(this.details));
+        this.setIsNew(!this.isNote);
       }
-      this.setDisplaySuccess(false);
-      localStorage.setItem('details', JSON.stringify(this.details));
-      this.setIsNew(!this.isNote);
     },
     components: {
       ConfirmWarning,
@@ -81,12 +77,16 @@
         'osmType',
         'noteId',
       ]),
+      needsBackup() {
+        return !isNotModified(this) && !this.hasSavedChanges;
+      },
     },
     methods: {
       ...mapMutations([
         'setDisplaySuccess',
         'setIsNew',
         'setDisplayUnsavedChangesNotification',
+        'showUnsavedChangesNotification',
         'setIsEditingUnsavedChanges',
         'setDetails',
         'setAddress',
@@ -96,7 +96,7 @@
         'setIsOwnCategory',
         'setNoteId',
         'setOsmType',
-        'resetDetailState',
+        'reinitialiseDetailState',
       ]),
       ...mapActions([
         'getAddress',
@@ -104,37 +104,12 @@
       ]),
     },
     destroyed() {
-      this.resetDetailState();
-    },
-    beforeRouteLeave(to, from, next) {
-      // TODO:  refactor this part https://stackoverflow.com/questions/42295340/how-to-clear-state-in-vuex-store
-      this.setIsEditingUnsavedChanges(false);
-      this.setOsmId(null);
-      this.setNoteId(null);
-      this.setOsmType(null);
-      if (isNotModified(this) || this.hasSavedChanges) {
-        this.setHasSavedChanges(false);
-        // For the case when DisplayUnsavedChangesNotication is still true (5 sec
-        // time out has not been up yet)
-        this.setDisplayUnsavedChangesNotification(false);
-        next();
+      if (this.needsBackup) {
+        backup();
+        this.reinitialiseDetailState();
+        this.showUnsavedChangesNotification();
       } else {
-        this.setDisplayUnsavedChangesNotification(true);
-        setTimeout(() => {
-          this.setDisplayUnsavedChangesNotification(false);
-        }, UNSAVEDCHANGESTIME * 1000);
-        const unsavedChanges = {
-          address: this.address,
-          details: this.details,
-          business: this.business,
-          isNote: this.isNote,
-          osmId: this.osmId,
-          isOwnCategory: this.isOwnCategory,
-          noteId: this.noteId,
-          osmType: this.osmType,
-        };
-        this.$cookies.set('unsavedChanges', unsavedChanges, UNSAVEDCHANGESTIME + 2);
-        next();
+        this.reinitialiseDetailState();
       }
     },
   };

@@ -5,6 +5,7 @@ import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
+import { UNSAVEDCHANGESTIME } from '../config/config';
 
 let initialOptions = [];
 
@@ -227,6 +228,14 @@ export function loadTags() {
   }
 }
 
+export function backup() {
+  const unsavedChanges = JSON.stringify(state);
+  localStorage.setItem('unsavedChanges', unsavedChanges);
+  setTimeout(() => {
+    localStorage.setItem('unsavedChanges', '');
+  }, (UNSAVEDCHANGESTIME * 1000) + 2000);
+}
+
 const actions = {
   postNode({ commit }, user) {
     const businessPOI = {
@@ -364,6 +373,12 @@ const mutations = {
   setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
     s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
   },
+  showUnsavedChangesNotification(s) {
+    s.displayUnsavedChangesNotification = true;
+    setTimeout(() => {
+      s.displayUnsavedChangesNotification = false;
+    }, UNSAVEDCHANGESTIME * 1000);
+  },
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
   },
@@ -412,9 +427,10 @@ const mutations = {
       s[key] = initialState[key];
     });
   },
-  setDetailState(s, copy) {
-    Object.keys(copy).forEach((key) => {
-      s[key] = copy[key];
+  restoreDetailState(s) {
+    const unsavedChanges = JSON.parse(localStorage.getItem('unsavedChanges'));
+    Object.keys(unsavedChanges).forEach((key) => {
+      s[key] = unsavedChanges[key];
     });
   },
 };
@@ -491,17 +507,4 @@ export default {
   mutations,
   getters,
 };
-
-export function getUnsavedChangesFromCookies(context) {
-  const unsavedChangesCookie = context.$cookies.get('unsavedChanges');
-  console.log('why', unsavedChangesCookie);
-  context.setDetails(unsavedChangesCookie.details);
-  context.setAddress(unsavedChangesCookie.address);
-  context.setOsmId(unsavedChangesCookie.osmId);
-  context.setIsNote(unsavedChangesCookie.isNote);
-  context.setNoteId(unsavedChangesCookie.noteId);
-  context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
-  context.setOsmType(unsavedChangesCookie.osmType);
-  localStorage.setItem('address', JSON.stringify(context.address));
-}
 

@@ -28,7 +28,7 @@
   import Icon from 'vue-awesome/components/Icon.vue';
   import { mapGetters, mapMutations } from 'vuex';
   import { routes } from '../../router';
-  import { UNSAVEDCHANGESTIME } from '../../pages/detailPage.vue';
+  import { UNSAVEDCHANGESTIME } from '../../config/config';
   
   export default {
     name: 'unsaved-changes-notification',
@@ -57,11 +57,13 @@
         'setAddress',
         'setOsmId',
         'setIsEditingUnsavedChanges',
+        'restoreDetailState',
       ]),
       toggleSuccess() {
         this.setDisplayUnsavedChangesNotification(false);
       },
       edit() {
+        this.restoreDetailState();
         this.setIsEditingUnsavedChanges(true);
         this.$router.push({ name: routes.Detail });
       },
