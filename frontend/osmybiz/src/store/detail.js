@@ -54,6 +54,12 @@ const initialState = {
   businessPOI: {},
 };
 
+const reinitKeyIgnoreList = [
+  'note',
+  'displaySuccess',
+  'businessPOI',
+];
+
 const state = JSON.parse(JSON.stringify(initialState));
 
 function constructNote() {
@@ -424,7 +430,9 @@ const mutations = {
   },
   reinitialiseDetailState(s) {
     Object.keys(initialState).forEach((key) => {
-      s[key] = initialState[key];
+      if (reinitKeyIgnoreList.indexOf(key) === -1) {
+        s[key] = initialState[key];
+      }
     });
   },
   restoreDetailState(s) {
