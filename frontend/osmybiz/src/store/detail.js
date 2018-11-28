@@ -16,7 +16,7 @@ const initialState = {
   osmId: null,
   osmType: null,
   isNew: true,
-  hasSavedChanges: false,
+  isFormSubmission: false,
   isEditingUnsavedChanges: false,
 
   // DetailForm
@@ -408,8 +408,8 @@ const mutations = {
   setIsEditingUnsavedChanges(s, isEditingUnsavedChanges) {
     s.isEditingUnsavedChanges = isEditingUnsavedChanges;
   },
-  setHasSavedChanges(s, hasSavedChanges) {
-    s.hasSavedChanges = hasSavedChanges;
+  setIsFormSubmission(s, isFormSubmission) {
+    s.isFormSubmission = isFormSubmission;
   },
   showPopup(s, text) {
     s.infoText = text;
@@ -493,8 +493,8 @@ const getters = {
   isEditingUnsavedChanges(s) {
     return s.isEditingUnsavedChanges;
   },
-  hasSavedChanges(s) {
-    return s.hasSavedChanges;
+  isFormSubmission(s) {
+    return s.isFormSubmission;
   },
   osmType(s) {
     return s.osmType;

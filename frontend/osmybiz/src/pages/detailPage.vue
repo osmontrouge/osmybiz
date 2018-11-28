@@ -72,13 +72,13 @@
         'isNew',
         'osmId',
         'isEditingUnsavedChanges',
-        'hasSavedChanges',
         'isOwnCategory',
         'osmType',
         'noteId',
+        'isFormSubmission',
       ]),
       needsBackup() {
-        return !isNotModified(this) && !this.hasSavedChanges;
+        return !isNotModified(this) && !this.isFormSubmission;
       },
     },
     methods: {
@@ -92,7 +92,7 @@
         'setAddress',
         'setOsmId',
         'setIsNote',
-        'setHasSavedChanges',
+        'setIsFormSubmission',
         'setIsOwnCategory',
         'setNoteId',
         'setOsmType',

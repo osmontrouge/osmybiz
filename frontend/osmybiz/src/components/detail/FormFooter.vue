@@ -42,7 +42,7 @@
         'setAddress',
         'setIsDuplicate',
         'setIsConfirm',
-        'setHasSavedChanges',
+        'setIsFormSubmission',
       ]),
       ...mapActions([
         'postNote',
@@ -54,7 +54,7 @@
       ]),
       submit() {
         let promise;
-        this.setHasSavedChanges(true);
+        this.setIsFormSubmission(true);
         if (!this.isNote && !this.isOwnCategory) {
           promise = this.checkDuplicateBusinessPOI().then((res) => {
             if (!res) {
