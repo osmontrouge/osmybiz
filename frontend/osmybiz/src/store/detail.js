@@ -58,6 +58,7 @@ const reinitKeyIgnoreList = [
   'note',
   'displaySuccess',
   'businessPOI',
+  'tags',
 ];
 
 const state = JSON.parse(JSON.stringify(initialState));
