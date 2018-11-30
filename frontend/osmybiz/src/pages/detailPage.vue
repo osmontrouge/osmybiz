@@ -43,7 +43,7 @@
       }
       if (!this.isEditingUnsavedChanges) {
         this.getAddress(this.businessPosition);
-        this.setDisplaySuccess(false);
+        this.hideUserDialog();
         localStorage.setItem('details', JSON.stringify(this.details));
         this.setIsNew(!this.isNote);
       }
@@ -83,7 +83,6 @@
     },
     methods: {
       ...mapMutations([
-        'setDisplaySuccess',
         'setIsNew',
         'setDisplayUnsavedChangesNotification',
         'showUnsavedChangesNotification',
@@ -96,6 +95,7 @@
         'setNoteId',
         'setOsmType',
         'reinitialiseDetailState',
+        'hideUserDialog',
       ]),
       ...mapActions([
         'getAddress',

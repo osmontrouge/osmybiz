@@ -6,12 +6,15 @@ import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
 import { UNSAVEDCHANGESTIME } from '../config/config';
+import {
+  osmCreateNodeResponseToSuccessMessageParser,
+  osmNoteResponseToSuccessMessageParser,
+} from './userdialog';
 
 let initialOptions = [];
 
 const initialState = {
   // detailPage
-  displaySuccess: false,
   displayUnsavedChangesNotification: false,
   osmId: null,
   osmType: null,
@@ -51,13 +54,9 @@ const initialState = {
 
   // PostSuccess
   note: {},
-  businessPOI: {},
 };
 
 const reinitKeyIgnoreList = [
-  'note',
-  'displaySuccess',
-  'businessPOI',
   'tags',
 ];
 
@@ -134,16 +133,6 @@ function constructNote() {
     lon: state.lon,
     text,
   };
-}
-
-function constructDisplayNote(note) {
-  const address = note.text.split('Address: ')[1].split('\n')[0];
-  const name = note.text.split('Name: ')[1].split('\n')[0];
-  note.text = {
-    address,
-    name,
-  };
-  return note;
 }
 
 export function isNotModified(store) {
@@ -252,9 +241,8 @@ const actions = {
       address: state.address,
     };
     return postNode(businessPOI).then((ps) => {
-      state.displaySuccess = true;
-      commit('setBusinessPOI', ps);
-
+      const createNodeSuccessMessage = osmCreateNodeResponseToSuccessMessageParser(ps);
+      commit('setSuccessMessage', createNodeSuccessMessage);
       return addOrUpdateBusinessPOI(user.id, {
         lat: parseFloat(ps.lat),
         lng: parseFloat(ps.lon),
@@ -274,9 +262,8 @@ const actions = {
 
     if (!noteId) {
       return postNote(note).then((ps) => {
-        state.displaySuccess = true;
-        const displayNote = constructDisplayNote(ps);
-        commit('setNote', displayNote);
+        const noteSuccessMessage = osmNoteResponseToSuccessMessageParser(ps);
+        commit('setSuccessMessage', noteSuccessMessage);
 
         if (osmId) {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
@@ -291,7 +278,7 @@ const actions = {
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
                 name,
-                noteId: parseInt(displayNote.id, 10),
+                noteId: parseInt(ps.id, 10),
                 osmId: parseInt(businessPOI.id, 10),
                 osmType,
                 receiveUpdates: true,
@@ -306,7 +293,7 @@ const actions = {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
             name,
-            noteId: parseInt(displayNote.id, 10),
+            noteId: parseInt(ps.id, 10),
             osmId: temporaryOsmId,
             osmType,
             receiveUpdates: true,
@@ -316,15 +303,14 @@ const actions = {
       });
     }
     return postNoteAsComment(note, noteId).then((ps) => {
-      state.displaySuccess = true;
-      const displayNote = constructDisplayNote(ps);
-      commit('setNote', displayNote);
+      const noteSuccessMessage = osmNoteResponseToSuccessMessageParser(ps);
+      commit('setSuccessMessage', noteSuccessMessage);
       if (state.osmType === 'note') {
         return addOrUpdateBusinessPOI(user.id, {
           lat: parseFloat(state.lat),
           lng: parseFloat(state.lon),
           name,
-          noteId: parseInt(displayNote.id, 10),
+          noteId: parseInt(ps.id, 10),
           osmId: state.osmId,
           osmType: state.osmType,
           receiveUpdates: true,
@@ -341,7 +327,7 @@ const actions = {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
             name,
-            noteId: displayNote.id,
+            noteId: ps.id,
             osmId: parseInt(businessPOI.id, 10),
             osmType,
             receiveUpdates: true,
@@ -349,14 +335,6 @@ const actions = {
           });
         }
       });
-    });
-  },
-  postOwnCategoryNote({ commit }) {
-    const note = constructNote();
-    return postNote(note).then((ps) => {
-      state.displaySuccess = true;
-      const displayNote = constructDisplayNote(ps);
-      commit('setNote', displayNote);
     });
   },
   getAddress({ commit }, position) {
@@ -370,12 +348,6 @@ const actions = {
 const mutations = {
   setNote(s, note) {
     s.note = note;
-  },
-  setBusinessPOI(s, businessPOI) {
-    s.businessPOI = businessPOI;
-  },
-  setDisplaySuccess(s, displaySuccess) {
-    s.displaySuccess = displaySuccess;
   },
   setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
     s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
@@ -465,12 +437,6 @@ const getters = {
   },
   note(s) {
     return s.note;
-  },
-  businessPOI(s) {
-    return s.businessPOI;
-  },
-  displaySuccess(s) {
-    return s.displaySuccess;
   },
   displayUnsavedChangesNotification(s) {
     return s.displayUnsavedChangesNotification;

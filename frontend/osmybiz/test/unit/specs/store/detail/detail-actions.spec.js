@@ -82,7 +82,7 @@ describe('detail store', () => {
           },
         },
         [
-          { type: 'setNote', payload: { text: { address: 'test', name: 'test' } } },
+          { type: 'setSuccessMessage', payload: { address: 'test', name: 'test', isNote: true } },
         ], done,
       );
     });

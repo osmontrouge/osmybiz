@@ -1,17 +1,20 @@
 <template>
 
-  <div class="dialog" id="success-dialog" v-if="displaySuccess">
+  <div class="dialog" id="success-dialog" v-if="isShowSuccessMessage">
     <div class="close-button" @click="toggleSuccess">
       <icon name="window-close"></icon>
     </div>
 
-    <div class="node-success" v-if="!isNote">
-      <div class="dialog-title">
+    <div class="node-success">
+      <div class="dialog-title" v-if="successMessage.isNote">
+        {{ $t('success.note.title') }}
+      </div>
+      <div class="dialog-title" v-else>
         {{ $t('success.businessPOI.title') }}
       </div>
 
       <div class="section">
-        <a :href="businessPOI.link"
+        <a :href="successMessage.link"
            class="external-link"
            target="_blank">
           {{ $t('success.link') }}
@@ -21,55 +24,12 @@
 
       <div class="section">
         {{ $t('success.address') }}:
-        <span v-if="businessPOI.address.street">
-              {{businessPOI.address.street}}
-              <span v-if="!businessPOI.address.housenumber">
-                {{', '}}
-              </span>
-              <span v-if="businessPOI.address.housenumber">
-                {{' ' + businessPOI.address.housenumber  + ', '}}
-              </span>
-            </span>
-        <span v-if="businessPOI.address.place">
-              {{businessPOI.address.place + ', '}}
-            </span>
-        <span v-if="businessPOI.address.postcode">
-                {{businessPOI.address.postcode}}
-            </span>
-        <span v-if="businessPOI.address.city">
-                {{' ' + businessPOI.address.city}}
-            </span>
-        <span v-if="businessPOI.address.country">
-                {{' ' + businessPOI.address.country}}
-            </span>
-      </div>
-      <div class="section">
-        {{ $t('success.name') }}:
-        {{businessPOI.details.name}}
-      </div>
-    </div>
-
-    <div class="note-success" v-if="isNote">
-      <div class="dialog-title">
-        {{ $t('success.note.title') }}
-      </div>
-      <div class="section">
-        <a :href="note.link"
-           class="external-link"
-           target="_blank">
-          {{ $t('success.link') }}
-          <icon class="link-icon" name="external-link-alt"></icon>
-        </a>
-      </div>
-
-      <div class="section">
-        {{ $t('success.address') }}:
-        {{note.text.address}}
+        {{successMessage.address}}
       </div>
 
       <div class="section">
         {{ $t('success.name') }}:
-        {{note.text.name}}
+        {{successMessage.name}}
       </div>
     </div>
   </div>
@@ -85,19 +45,16 @@
     name: 'post-success',
     computed: {
       ...mapGetters([
-        'note',
-        'businessPOI',
-        'isNote',
-        'displaySuccess',
+        'isShowSuccessMessage',
+        'successMessage',
       ]),
     },
     methods: {
       ...mapMutations([
-        'setDisplaySuccess',
-        'setDetails',
+        'setIsShowSuccessMessage',
       ]),
       toggleSuccess() {
-        this.setDisplaySuccess(false);
+        this.setIsShowSuccessMessage(false);
       },
     },
     components: {
