@@ -11,6 +11,8 @@ const state = {
   },
 
   isShowUnsavedChangesNotification: false,
+
+  showDialogTimeLeft: '',
 };
 
 
@@ -77,9 +79,14 @@ const mutations = {
   },
   showUnsavedChangesNotification(s) {
     s.isShowUnsavedChangesNotification = true;
-    setTimeout(() => {
-      s.isShowUnsavedChangesNotification = false;
-    }, UNSAVEDCHANGESTIME * 1000);
+    s.showDialogTimeLeft = UNSAVEDCHANGESTIME / 1000;
+    const timer = setInterval(() => {
+      s.showDialogTimeLeft -= 1;
+      if (s.showDialogTimeLeft === 0) {
+        s.isShowUnsavedChangesNotification = false;
+        clearInterval(timer);
+      }
+    }, 1000);
   },
 };
 
@@ -92,6 +99,9 @@ const getters = {
   },
   isShowUnsavedChangesNotification(s) {
     return s.isShowUnsavedChangesNotification;
+  },
+  showDialogTimeLeft(s) {
+    return s.showDialogTimeLeft;
   },
 };
 

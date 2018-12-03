@@ -5,7 +5,7 @@ import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/
 import { reverseQuery } from './../api/nominatimApi';
 import { getLanguageTags } from './locale';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
-import { UNSAVEDCHANGESTIME } from '../config/config';
+import { UNSAVEDCHANGESTIME, BUFFER } from '../config/config';
 import {
   osmCreateNodeResponseToSuccessMessageParser,
   osmNoteResponseToSuccessMessageParser,
@@ -228,7 +228,7 @@ export function backup() {
   localStorage.setItem('unsavedChanges', unsavedChanges);
   setTimeout(() => {
     localStorage.setItem('unsavedChanges', '');
-  }, (UNSAVEDCHANGESTIME * 1000) + 2000);
+  }, UNSAVEDCHANGESTIME + BUFFER);
 }
 
 const actions = {

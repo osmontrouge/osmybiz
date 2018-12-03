@@ -29,4 +29,5 @@ export const overpassUrl = 'https://lz4.overpass-api.de/api/interpreter';
 export const fakeOsmybizApi = false;
 export const osmyBizBackendUrl = process.env.API_URL;
 
-export const UNSAVEDCHANGESTIME = 30;
+export const UNSAVEDCHANGESTIME = 30000;
+export const BUFFER = 2000;

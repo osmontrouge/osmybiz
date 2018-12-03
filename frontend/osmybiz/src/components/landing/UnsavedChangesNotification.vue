@@ -12,7 +12,7 @@
       <div id="error-section" class="section">
         <p>
           <i18n path="unsavedchanges.section">
-            <strong place="time">{{ timeLeft }}</strong>
+            <strong place="time">{{ showDialogTimeLeft }}</strong>
             <a place="here" href="" @click.prevent="edit()">
               {{ $t('unsavedchanges.here') }}
             </a>
@@ -40,13 +40,8 @@
     computed: {
       ...mapGetters([
         'isShowUnsavedChangesNotification',
+        'showDialogTimeLeft',
       ]),
-      timeLeft() {
-        setTimeout(() => {
-          this.time = this.time - 1;
-        }, 1000);
-        return this.time;
-      },
     },
     methods: {
       ...mapMutations([
