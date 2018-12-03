@@ -3,15 +3,12 @@ import { latLng } from 'leaflet';
 import deepEqual from 'deep-equal';
 import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
-import { getLanguageTags } from './locale';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
 import { UNSAVEDCHANGESTIME, BUFFER } from '../config/config';
 import {
   osmCreateNodeResponseToSuccessMessageParser,
   osmNoteResponseToSuccessMessageParser,
 } from './userdialog';
-
-let initialOptions = [];
 
 const initialState = {
   // detailPage
@@ -22,7 +19,6 @@ const initialState = {
   isEditingUnsavedChanges: false,
 
   // DetailForm
-  tags: initialOptions,
   address: {},
   lat: null,
   lon: null,
@@ -54,10 +50,6 @@ const initialState = {
   // PostSuccess
   note: {},
 };
-
-const reinitKeyIgnoreList = [
-  'tags',
-];
 
 const state = JSON.parse(JSON.stringify(initialState));
 
@@ -160,68 +152,6 @@ export function clearDetails() {
   };
 }
 
-export function loadTags() {
-  const tags = getLanguageTags();
-  const options = [];
-  Object.keys(tags).forEach((key) => {
-    const fields = [];
-    tags[key].fields.forEach((field) => {
-      if (field.options) {
-        const fieldOptions = [];
-        Object.keys(field.options).forEach((option) => {
-          fieldOptions.push({
-            key: option,
-            text: field.options[option],
-          });
-        });
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          options: fieldOptions,
-          value: '',
-        });
-      } else {
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          value: '',
-        });
-      }
-    });
-    options.push({
-      value: key,
-      text: tags[key].name,
-      fields,
-    });
-  });
-
-  options.sort((a, b) => {
-    if (a.text < b.text) return -1;
-    if (a.text > b.text) return 1;
-    return 0;
-  });
-
-  if (state) {
-    state.tags = options;
-    state.tags.forEach((tag) => {
-      if (tag.value === state.details.category.value) {
-        const category = {
-          fields: tag.fields,
-          text: tag.text,
-          value: tag.value,
-        };
-        state.details.category.fields.forEach((field, index) => {
-          category.fields[index].value = field.value;
-        });
-        state.details.category = category;
-      }
-    });
-  } else {
-    initialOptions = options;
-  }
-}
 
 export function backup() {
   const unsavedChanges = JSON.stringify(state);
@@ -393,9 +323,7 @@ const mutations = {
   },
   reinitialiseDetailState(s) {
     Object.keys(initialState).forEach((key) => {
-      if (reinitKeyIgnoreList.indexOf(key) === -1) {
-        s[key] = initialState[key];
-      }
+      s[key] = initialState[key];
     });
   },
   restoreDetailState(s) {
@@ -469,4 +397,3 @@ export default {
   mutations,
   getters,
 };
-
