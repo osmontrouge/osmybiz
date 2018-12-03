@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { UNSAVEDCHANGESTIME, SECONDS_TO_WIPE_OUT_THE_UNSAVED_CHANGES } from '../config/config';
+import { NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIF_DIALOG, NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA } from '../config/config';
 
 const state = {
   isShowSuccessMessage: false,
@@ -81,13 +81,13 @@ const mutations = {
   showUnsavedChangesNotification(s) {
     clearInterval(s.timer);
     s.isShowUnsavedChangesNotification = true;
-    s.showDialogTimeLeft = UNSAVEDCHANGESTIME;
+    s.showDialogTimeLeft = NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIF_DIALOG;
     s.timer = setInterval(() => {
       s.showDialogTimeLeft -= 1;
       if (s.showDialogTimeLeft === 0) {
         s.isShowUnsavedChangesNotification = false;
       }
-      if (s.showDialogTimeLeft === -SECONDS_TO_WIPE_OUT_THE_UNSAVED_CHANGES) {
+      if (s.showDialogTimeLeft === -NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA) {
         localStorage.setItem('unsavedChanges', '');
         clearInterval(s.timer);
       }
