@@ -28,19 +28,14 @@
   import Icon from 'vue-awesome/components/Icon.vue';
   import { mapGetters, mapMutations } from 'vuex';
   import { routes } from '../../router';
-  import { UNSAVEDCHANGESTIME } from '../../config/config';
-  
+
   export default {
     name: 'unsaved-changes-notification',
-    data() {
-      return {
-        time: UNSAVEDCHANGESTIME,
-      };
-    },
     computed: {
       ...mapGetters([
         'isShowUnsavedChangesNotification',
         'showDialogTimeLeft',
+        'timer',
       ]),
     },
     methods: {
@@ -53,6 +48,7 @@
         this.setIsShowUnsavedChangesNotification(false);
       },
       edit() {
+        clearInterval(this.timer);
         this.restoreDetailState();
         this.setIsEditingUnsavedChanges(true);
         this.$router.push({ name: routes.Detail });

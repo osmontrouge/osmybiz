@@ -4,7 +4,6 @@ import deepEqual from 'deep-equal';
 import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
-import { UNSAVEDCHANGESTIME, BUFFER } from '../config/config';
 import {
   osmCreateNodeResponseToSuccessMessageParser,
   osmNoteResponseToSuccessMessageParser,
@@ -156,9 +155,6 @@ export function clearDetails() {
 export function backup() {
   const unsavedChanges = JSON.stringify(state);
   localStorage.setItem('unsavedChanges', unsavedChanges);
-  setTimeout(() => {
-    localStorage.setItem('unsavedChanges', '');
-  }, UNSAVEDCHANGESTIME + BUFFER);
 }
 
 const actions = {
