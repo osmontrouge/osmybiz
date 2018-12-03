@@ -1,4 +1,6 @@
 /* eslint-disable no-param-reassign */
+import { UNSAVEDCHANGESTIME } from '../config/config';
+
 const state = {
   isShowSuccessMessage: false,
   successMessage: {
@@ -7,6 +9,8 @@ const state = {
     link: '',
     isNote: false,
   },
+
+  isShowUnsavedChangesNotification: false,
 };
 
 
@@ -68,6 +72,15 @@ const mutations = {
   hideUserDialog(s) {
     s.isShowSuccessMessage = false;
   },
+  setIsShowUnsavedChangesNotification(s, isShowUnsavedChangesNotification) {
+    s.setIsShowUnsavedChangesNotification = isShowUnsavedChangesNotification;
+  },
+  showUnsavedChangesNotification(s) {
+    s.isShowUnsavedChangesNotification = true;
+    setTimeout(() => {
+      s.isShowUnsavedChangesNotification = false;
+    }, UNSAVEDCHANGESTIME * 1000);
+  },
 };
 
 const getters = {
@@ -76,6 +89,9 @@ const getters = {
   },
   successMessage(s) {
     return s.successMessage;
+  },
+  isShowUnsavedChangesNotification(s) {
+    return s.isShowUnsavedChangesNotification;
   },
 };
 

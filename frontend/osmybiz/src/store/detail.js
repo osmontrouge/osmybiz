@@ -15,7 +15,6 @@ let initialOptions = [];
 
 const initialState = {
   // detailPage
-  displayUnsavedChangesNotification: false,
   osmId: null,
   osmType: null,
   isNew: true,
@@ -349,15 +348,6 @@ const mutations = {
   setNote(s, note) {
     s.note = note;
   },
-  setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
-    s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
-  },
-  showUnsavedChangesNotification(s) {
-    s.displayUnsavedChangesNotification = true;
-    setTimeout(() => {
-      s.displayUnsavedChangesNotification = false;
-    }, UNSAVEDCHANGESTIME * 1000);
-  },
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
   },
@@ -437,9 +427,6 @@ const getters = {
   },
   note(s) {
     return s.note;
-  },
-  displayUnsavedChangesNotification(s) {
-    return s.displayUnsavedChangesNotification;
   },
   isOwnCategory(s) {
     return s.isOwnCategory;

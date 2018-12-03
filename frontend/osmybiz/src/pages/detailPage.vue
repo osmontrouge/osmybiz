@@ -84,7 +84,6 @@
     methods: {
       ...mapMutations([
         'setIsNew',
-        'setDisplayUnsavedChangesNotification',
         'showUnsavedChangesNotification',
         'setIsEditingUnsavedChanges',
         'setDetails',
