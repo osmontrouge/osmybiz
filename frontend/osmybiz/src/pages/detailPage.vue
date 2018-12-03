@@ -93,7 +93,7 @@
         'setIsOwnCategory',
         'setNoteId',
         'setOsmType',
-        'reinitialiseDetailState',
+        'resetDetailState',
         'hideUserDialog',
       ]),
       ...mapActions([
@@ -104,10 +104,10 @@
     destroyed() {
       if (this.needsBackup) {
         backup();
-        this.reinitialiseDetailState();
+        this.resetDetailState();
         this.showUnsavedChangesNotification();
       } else {
-        this.reinitialiseDetailState();
+        this.resetDetailState();
       }
     },
   };

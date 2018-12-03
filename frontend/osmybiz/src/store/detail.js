@@ -321,7 +321,7 @@ const mutations = {
   setOsmType(s, osmType) {
     s.osmType = osmType;
   },
-  reinitialiseDetailState(s) {
+  resetDetailState(s) {
     Object.keys(initialState).forEach((key) => {
       s[key] = initialState[key];
     });
