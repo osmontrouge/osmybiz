@@ -2,7 +2,6 @@
 import { NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIFICATION_DIALOG, NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA } from '../config/config';
 
 const state = {
-  displaySuccessMessage: false,
   successMessage: {
     address: '',
     name: '',
@@ -67,14 +66,10 @@ export function osmCreateNodeResponseToSuccessMessageParser(response) {
 const mutations = {
   setSuccessMessage(s, successMessage) {
     s.successMessage = successMessage;
-    s.displaySuccessMessage = true;
-  },
-  setDisplaySuccessMessage(s, displaySuccessMessage) {
-    s.displaySuccessMessage = displaySuccessMessage;
   },
   hideUserDialog(s) {
-    s.displaySuccessMessage = false;
     s.displayUnsavedChangesNotification = false;
+    s.successMessage = '';
   },
   setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
     s.setDisplayUnsavedChangesNotification = displayUnsavedChangesNotification;
@@ -97,9 +92,6 @@ const mutations = {
 };
 
 const getters = {
-  displaySuccessMessage(s) {
-    return s.displaySuccessMessage;
-  },
   successMessage(s) {
     return s.successMessage;
   },
