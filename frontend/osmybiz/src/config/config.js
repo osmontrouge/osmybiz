@@ -29,5 +29,5 @@ export const overpassUrl = 'https://lz4.overpass-api.de/api/interpreter';
 export const fakeOsmybizApi = false;
 export const osmyBizBackendUrl = process.env.API_URL;
 
-export const NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIF_DIALOG = 30;
+export const NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIFICATION_DIALOG = 30;
 export const NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA = 2;

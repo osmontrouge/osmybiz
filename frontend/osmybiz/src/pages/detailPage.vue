@@ -32,7 +32,7 @@
   import FormFooter from '../components/detail/FormFooter.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
-  import { isNotModified, backup } from '../store/detail';
+  import { isNotModified, saveChangesTemporarily } from '../store/detail';
   import { routes } from './../router';
 
 
@@ -77,14 +77,14 @@
         'osmType',
         'noteId',
       ]),
-      needsBackup() {
+      isModifiedAndNotSubmited() {
         return !isNotModified(this) && !this.isFormSubmission;
       },
     },
     methods: {
       ...mapMutations([
         'setIsNew',
-        'showUnsavedChangesNotification',
+        'displayUnsavedChangesNotification',
         'setIsEditingUnsavedChanges',
         'setDetails',
         'setAddress',
@@ -102,13 +102,11 @@
       ]),
     },
     destroyed() {
-      if (this.needsBackup) {
-        backup();
-        this.resetDetailState();
-        this.showUnsavedChangesNotification();
-      } else {
-        this.resetDetailState();
+      if (this.isModifiedAndNotSubmited) {
+        saveChangesTemporarily();
+        this.displayUnsavedChangesNotification();
       }
+      this.resetDetailState();
     },
   };
 </script>

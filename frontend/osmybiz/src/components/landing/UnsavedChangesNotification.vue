@@ -1,6 +1,6 @@
 <template>
 
-  <div class="dialog" id="error-dialog" v-if="isShowUnsavedChangesNotification">
+  <div class="dialog" id="error-dialog" v-if="displayUnsavedChangesNotification">
     <div class="node-success">
       <div class="dialog-title">
         {{ $t('unsavedchanges.title') }}
@@ -33,22 +33,22 @@
     name: 'unsaved-changes-notification',
     computed: {
       ...mapGetters([
-        'isShowUnsavedChangesNotification',
+        'displayUnsavedChangesNotification',
         'showDialogTimeLeft',
-        'timer',
+        'timerId',
       ]),
     },
     methods: {
       ...mapMutations([
-        'setIsShowUnsavedChangesNotification',
+        'setDisplayUnsavedChangesNotification',
         'setIsEditingUnsavedChanges',
         'restoreDetailState',
       ]),
       toggleSuccess() {
-        this.setIsShowUnsavedChangesNotification(false);
+        this.setDisplayUnsavedChangesNotification(false);
       },
       edit() {
-        clearInterval(this.timer);
+        clearInterval(this.timerId);
         this.restoreDetailState();
         this.setIsEditingUnsavedChanges(true);
         this.$router.push({ name: routes.Detail });

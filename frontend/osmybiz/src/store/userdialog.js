@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIF_DIALOG, NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA } from '../config/config';
+import { NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIFICATION_DIALOG, NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA } from '../config/config';
 
 const state = {
-  isShowSuccessMessage: false,
+  displaySuccessMessage: false,
   successMessage: {
     address: '',
     name: '',
@@ -10,10 +10,10 @@ const state = {
     isNote: false,
   },
 
-  isShowUnsavedChangesNotification: false,
+  displayUnsavedChangesNotification: false,
 
   showDialogTimeLeft: '',
-  timer: '',
+  timerId: '',
 };
 
 
@@ -67,49 +67,50 @@ export function osmCreateNodeResponseToSuccessMessageParser(response) {
 const mutations = {
   setSuccessMessage(s, successMessage) {
     s.successMessage = successMessage;
-    s.isShowSuccessMessage = true;
+    s.displaySuccessMessage = true;
   },
-  setIsShowSuccessMessage(s, isShowSuccessMessage) {
-    s.isShowSuccessMessage = isShowSuccessMessage;
+  setDisplaySuccessMessage(s, displaySuccessMessage) {
+    s.displaySuccessMessage = displaySuccessMessage;
   },
   hideUserDialog(s) {
-    s.isShowSuccessMessage = false;
+    s.displaySuccessMessage = false;
+    s.displayUnsavedChangesNotification = false;
   },
-  setIsShowUnsavedChangesNotification(s, isShowUnsavedChangesNotification) {
-    s.setIsShowUnsavedChangesNotification = isShowUnsavedChangesNotification;
+  setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
+    s.setDisplayUnsavedChangesNotification = displayUnsavedChangesNotification;
   },
-  showUnsavedChangesNotification(s) {
-    clearInterval(s.timer);
-    s.isShowUnsavedChangesNotification = true;
-    s.showDialogTimeLeft = NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIF_DIALOG;
-    s.timer = setInterval(() => {
+  displayUnsavedChangesNotification(s) {
+    clearInterval(s.timerId);
+    s.displayUnsavedChangesNotification = true;
+    s.showDialogTimeLeft = NUM_OF_SECS_TO_SHOW_THE_UNSAVED_CHANGES_NOTIFICATION_DIALOG;
+    s.timerId = setInterval(() => {
       s.showDialogTimeLeft -= 1;
       if (s.showDialogTimeLeft === 0) {
-        s.isShowUnsavedChangesNotification = false;
+        s.displayUnsavedChangesNotification = false;
       }
       if (s.showDialogTimeLeft === -NUM_OF_SECS_BEFORE_DELETING_THE_UNSAVED_CHANGES_DATA) {
         localStorage.setItem('unsavedChanges', '');
-        clearInterval(s.timer);
+        clearInterval(s.timerId);
       }
     }, 1000);
   },
 };
 
 const getters = {
-  isShowSuccessMessage(s) {
-    return s.isShowSuccessMessage;
+  displaySuccessMessage(s) {
+    return s.displaySuccessMessage;
   },
   successMessage(s) {
     return s.successMessage;
   },
-  isShowUnsavedChangesNotification(s) {
-    return s.isShowUnsavedChangesNotification;
+  displayUnsavedChangesNotification(s) {
+    return s.displayUnsavedChangesNotification;
   },
   showDialogTimeLeft(s) {
     return s.showDialogTimeLeft;
   },
-  timer(s) {
-    return s.timer;
+  timerId(s) {
+    return s.timerId;
   },
 };
 

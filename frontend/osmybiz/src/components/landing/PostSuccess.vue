@@ -1,6 +1,6 @@
 <template>
 
-  <div class="dialog" id="success-dialog" v-if="isShowSuccessMessage">
+  <div class="dialog" id="success-dialog" v-if="displaySuccessMessage">
     <div class="close-button" @click="toggleSuccess">
       <icon name="window-close"></icon>
     </div>
@@ -45,16 +45,16 @@
     name: 'post-success',
     computed: {
       ...mapGetters([
-        'isShowSuccessMessage',
+        'displaySuccessMessage',
         'successMessage',
       ]),
     },
     methods: {
       ...mapMutations([
-        'setIsShowSuccessMessage',
+        'setDisplaySuccessMessage',
       ]),
       toggleSuccess() {
-        this.setIsShowSuccessMessage(false);
+        this.setDisplaySuccessMessage(false);
       },
     },
     components: {

@@ -152,7 +152,7 @@ export function clearDetails() {
 }
 
 
-export function backup() {
+export function saveChangesTemporarily() {
   const unsavedChanges = JSON.stringify(state);
   localStorage.setItem('unsavedChanges', unsavedChanges);
 }
