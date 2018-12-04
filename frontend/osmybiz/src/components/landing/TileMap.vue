@@ -95,6 +95,9 @@
       computedUrlParams: function updatePosition() {
         this.setMapViewToUrl();
       },
+      computedLocale: function updateBusinessInViewPort() {
+        this.queryOverpass(this.viewPort);
+      },
     },
     methods: {
       ...mapActions(['queryOverpass', 'checkDuplicateNote']),
@@ -187,6 +190,9 @@
       },
       isDetailPage() {
         return (this.$route.name === routes.Detail);
+      },
+      computedLocale() {
+        return this.$i18n.locale;
       },
     },
   };
