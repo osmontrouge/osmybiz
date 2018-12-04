@@ -85,6 +85,7 @@
       ...mapMutations([
         'setIsNew',
         'displayUnsavedChangesNotification',
+        'hideUnsavedChangesNotification',
         'setIsEditingUnsavedChanges',
         'setDetails',
         'setAddress',
@@ -105,6 +106,8 @@
       if (this.isModifiedAndNotSubmited) {
         saveChangesTemporarily();
         this.displayUnsavedChangesNotification();
+      } else {
+        this.hideUnsavedChangesNotification();
       }
       this.resetDetailState();
     },

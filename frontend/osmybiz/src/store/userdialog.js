@@ -71,8 +71,8 @@ const mutations = {
     s.displayUnsavedChangesNotification = false;
     s.successMessage = '';
   },
-  setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
-    s.setDisplayUnsavedChangesNotification = displayUnsavedChangesNotification;
+  hideUnsavedChangesNotification(s) {
+    s.displayUnsavedChangesNotification = false;
   },
   displayUnsavedChangesNotification(s) {
     clearInterval(s.timerId);
