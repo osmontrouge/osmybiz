@@ -3,23 +3,21 @@ import { latLng } from 'leaflet';
 import deepEqual from 'deep-equal';
 import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
-import { getLanguageTags } from './locale';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
+import {
+  osmCreateNodeResponseToSuccessMessageParser,
+  osmNoteResponseToSuccessMessageParser,
+} from './userdialog';
 
-let initialOptions = [];
-
-const state = {
+const initialState = {
   // detailPage
-  displaySuccess: false,
-  displayUnsavedChangesNotification: false,
   osmId: null,
   osmType: null,
   isNew: true,
-  hasSavedChanges: false,
+  isFormSubmission: false,
   isEditingUnsavedChanges: false,
 
   // DetailForm
-  tags: initialOptions,
   address: {},
   lat: null,
   lon: null,
@@ -50,9 +48,9 @@ const state = {
 
   // PostSuccess
   note: {},
-  businessPOI: {},
 };
 
+const state = JSON.parse(JSON.stringify(initialState));
 
 function constructNote() {
   let text = '#OSMyBiz \n \n';
@@ -127,16 +125,6 @@ function constructNote() {
   };
 }
 
-function constructDisplayNote(note) {
-  const address = note.text.split('Address: ')[1].split('\n')[0];
-  const name = note.text.split('Name: ')[1].split('\n')[0];
-  note.text = {
-    address,
-    name,
-  };
-  return note;
-}
-
 export function isNotModified(store) {
   const details = JSON.parse(localStorage.getItem('details'));
   const address = JSON.parse(localStorage.getItem('address'));
@@ -163,67 +151,10 @@ export function clearDetails() {
   };
 }
 
-export function loadTags() {
-  const tags = getLanguageTags();
-  const options = [];
-  Object.keys(tags).forEach((key) => {
-    const fields = [];
-    tags[key].fields.forEach((field) => {
-      if (field.options) {
-        const fieldOptions = [];
-        Object.keys(field.options).forEach((option) => {
-          fieldOptions.push({
-            key: option,
-            text: field.options[option],
-          });
-        });
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          options: fieldOptions,
-          value: '',
-        });
-      } else {
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          value: '',
-        });
-      }
-    });
-    options.push({
-      value: key,
-      text: tags[key].name,
-      fields,
-    });
-  });
 
-  options.sort((a, b) => {
-    if (a.text < b.text) return -1;
-    if (a.text > b.text) return 1;
-    return 0;
-  });
-
-  if (state) {
-    state.tags = options;
-    state.tags.forEach((tag) => {
-      if (tag.value === state.details.category.value) {
-        const category = {
-          fields: tag.fields,
-          text: tag.text,
-          value: tag.value,
-        };
-        state.details.category.fields.forEach((field, index) => {
-          category.fields[index].value = field.value;
-        });
-        state.details.category = category;
-      }
-    });
-  } else {
-    initialOptions = options;
-  }
+export function saveChangesTemporarily() {
+  const unsavedChanges = JSON.stringify(state);
+  localStorage.setItem('unsavedChanges', unsavedChanges);
 }
 
 const actions = {
@@ -235,9 +166,8 @@ const actions = {
       address: state.address,
     };
     return postNode(businessPOI).then((ps) => {
-      state.displaySuccess = true;
-      commit('setBusinessPOI', ps);
-
+      const createNodeSuccessMessage = osmCreateNodeResponseToSuccessMessageParser(ps);
+      commit('setSuccessMessage', createNodeSuccessMessage);
       return addOrUpdateBusinessPOI(user.id, {
         lat: parseFloat(ps.lat),
         lng: parseFloat(ps.lon),
@@ -257,9 +187,8 @@ const actions = {
 
     if (!noteId) {
       return postNote(note).then((ps) => {
-        state.displaySuccess = true;
-        const displayNote = constructDisplayNote(ps);
-        commit('setNote', displayNote);
+        const noteSuccessMessage = osmNoteResponseToSuccessMessageParser(ps);
+        commit('setSuccessMessage', noteSuccessMessage);
 
         if (osmId) {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
@@ -274,7 +203,7 @@ const actions = {
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
                 name,
-                noteId: parseInt(displayNote.id, 10),
+                noteId: parseInt(ps.id, 10),
                 osmId: parseInt(businessPOI.id, 10),
                 osmType,
                 receiveUpdates: true,
@@ -289,7 +218,7 @@ const actions = {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
             name,
-            noteId: parseInt(displayNote.id, 10),
+            noteId: parseInt(ps.id, 10),
             osmId: temporaryOsmId,
             osmType,
             receiveUpdates: true,
@@ -299,15 +228,14 @@ const actions = {
       });
     }
     return postNoteAsComment(note, noteId).then((ps) => {
-      state.displaySuccess = true;
-      const displayNote = constructDisplayNote(ps);
-      commit('setNote', displayNote);
+      const noteSuccessMessage = osmNoteResponseToSuccessMessageParser(ps);
+      commit('setSuccessMessage', noteSuccessMessage);
       if (state.osmType === 'note') {
         return addOrUpdateBusinessPOI(user.id, {
           lat: parseFloat(state.lat),
           lng: parseFloat(state.lon),
           name,
-          noteId: parseInt(displayNote.id, 10),
+          noteId: parseInt(ps.id, 10),
           osmId: state.osmId,
           osmType: state.osmType,
           receiveUpdates: true,
@@ -324,7 +252,7 @@ const actions = {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
             name,
-            noteId: displayNote.id,
+            noteId: ps.id,
             osmId: parseInt(businessPOI.id, 10),
             osmType,
             receiveUpdates: true,
@@ -332,14 +260,6 @@ const actions = {
           });
         }
       });
-    });
-  },
-  postOwnCategoryNote({ commit }) {
-    const note = constructNote();
-    return postNote(note).then((ps) => {
-      state.displaySuccess = true;
-      const displayNote = constructDisplayNote(ps);
-      commit('setNote', displayNote);
     });
   },
   getAddress({ commit }, position) {
@@ -353,15 +273,6 @@ const actions = {
 const mutations = {
   setNote(s, note) {
     s.note = note;
-  },
-  setBusinessPOI(s, businessPOI) {
-    s.businessPOI = businessPOI;
-  },
-  setDisplaySuccess(s, displaySuccess) {
-    s.displaySuccess = displaySuccess;
-  },
-  setDisplayUnsavedChangesNotification(s, displayUnsavedChangesNotification) {
-    s.displayUnsavedChangesNotification = displayUnsavedChangesNotification;
   },
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
@@ -392,8 +303,8 @@ const mutations = {
   setIsEditingUnsavedChanges(s, isEditingUnsavedChanges) {
     s.isEditingUnsavedChanges = isEditingUnsavedChanges;
   },
-  setHasSavedChanges(s, hasSavedChanges) {
-    s.hasSavedChanges = hasSavedChanges;
+  setIsFormSubmission(s, isFormSubmission) {
+    s.isFormSubmission = isFormSubmission;
   },
   showPopup(s, text) {
     s.infoText = text;
@@ -405,6 +316,17 @@ const mutations = {
   },
   setOsmType(s, osmType) {
     s.osmType = osmType;
+  },
+  resetDetailState(s) {
+    Object.keys(initialState).forEach((key) => {
+      s[key] = initialState[key];
+    });
+  },
+  restoreDetailState(s) {
+    const unsavedChanges = JSON.parse(localStorage.getItem('unsavedChanges'));
+    Object.keys(unsavedChanges).forEach((key) => {
+      s[key] = unsavedChanges[key];
+    });
   },
 };
 
@@ -429,15 +351,6 @@ const getters = {
   },
   note(s) {
     return s.note;
-  },
-  businessPOI(s) {
-    return s.businessPOI;
-  },
-  displaySuccess(s) {
-    return s.displaySuccess;
-  },
-  displayUnsavedChangesNotification(s) {
-    return s.displayUnsavedChangesNotification;
   },
   isOwnCategory(s) {
     return s.isOwnCategory;
@@ -466,8 +379,8 @@ const getters = {
   isEditingUnsavedChanges(s) {
     return s.isEditingUnsavedChanges;
   },
-  hasSavedChanges(s) {
-    return s.hasSavedChanges;
+  isFormSubmission(s) {
+    return s.isFormSubmission;
   },
   osmType(s) {
     return s.osmType;
@@ -480,16 +393,3 @@ export default {
   mutations,
   getters,
 };
-
-export function getUnsavedChangesFromCookies(context) {
-  const unsavedChangesCookie = context.$cookies.get('unsavedChanges');
-  context.setDetails(unsavedChangesCookie.details);
-  context.setAddress(unsavedChangesCookie.address);
-  context.setOsmId(unsavedChangesCookie.osmId);
-  context.setIsNote(unsavedChangesCookie.isNote);
-  context.setNoteId(unsavedChangesCookie.noteId);
-  context.setIsOwnCategory(unsavedChangesCookie.isOwnCategory);
-  context.setOsmType(unsavedChangesCookie.osmType);
-  localStorage.setItem('address', JSON.stringify(context.address));
-}
-

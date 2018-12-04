@@ -12,7 +12,7 @@
       <div id="error-section" class="section">
         <p>
           <i18n path="unsavedchanges.section">
-            <strong place="time">{{ timeLeft }}</strong>
+            <strong place="time">{{ showDialogTimeLeft }}</strong>
             <a place="here" href="" @click.prevent="edit()">
               {{ $t('unsavedchanges.here') }}
             </a>
@@ -28,40 +28,28 @@
   import Icon from 'vue-awesome/components/Icon.vue';
   import { mapGetters, mapMutations } from 'vuex';
   import { routes } from '../../router';
-  import { UNSAVEDCHANGESTIME } from '../../pages/detailPage.vue';
-  
+
   export default {
     name: 'unsaved-changes-notification',
-    data() {
-      return {
-        time: UNSAVEDCHANGESTIME,
-      };
-    },
     computed: {
       ...mapGetters([
         'displayUnsavedChangesNotification',
+        'showDialogTimeLeft',
+        'timerId',
       ]),
-      timeLeft() {
-        setTimeout(() => {
-          this.time = this.time - 1;
-        }, 1000);
-        return this.time;
-      },
     },
     methods: {
       ...mapMutations([
         'setDisplayUnsavedChangesNotification',
-        'setDetails',
-        'setCoords',
-        'setIsNote',
-        'setAddress',
-        'setOsmId',
         'setIsEditingUnsavedChanges',
+        'restoreDetailState',
       ]),
       toggleSuccess() {
         this.setDisplayUnsavedChangesNotification(false);
       },
       edit() {
+        clearInterval(this.timerId);
+        this.restoreDetailState();
         this.setIsEditingUnsavedChanges(true);
         this.$router.push({ name: routes.Detail });
       },

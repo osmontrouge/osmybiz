@@ -11,11 +11,12 @@
 
       <div v-show="!isOwnCategory" class="category-field">
         <basic-select v-show="!isOwnCategory"
-                      :options="this.tags"
+                      :options="this.tagOptions"
                       :selected-option="details.category"
                       :placeholder="$t('detail.placeholders.category')"
                       @select="onSelect"
-                      class="basic-select">
+                      class="basic-select"
+                      ref="categorySelection">
         </basic-select>
 
         <button class="button" @click="setOwnCategory()">
@@ -63,11 +64,30 @@
     computed: {
       ...mapGetters([
         'details',
-        'tags',
+        'tagOptions',
         'isOwnCategory',
         'isNote',
         'isNew',
+        'languageTags',
       ]),
+      computedTags() {
+        return this.tagOptions;
+      },
+    },
+    watch: {
+      computedTags: function updateSelectedOption() {
+        this.$nextTick(() => {
+          const { categorySelection } = this.$refs;
+          let option = {};
+          for (let i = 0; i < categorySelection.options.length; i += 1) {
+            option = categorySelection.options[i];
+            if (option.value === categorySelection.selectedOption.value) {
+              categorySelection.selectItem(option);
+              break;
+            }
+          }
+        });
+      },
     },
     methods: {
       ...mapMutations([
