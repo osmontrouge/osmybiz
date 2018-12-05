@@ -1,13 +1,12 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
-import { addOrUpdateUser, fetchBusinessPOIs, addOrUpdateBusinessPOI, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
+import { addOrUpdateUser, fetchBusinessPOIs, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
 import { getBusinessPOI } from './../api/osmApi';
 import util from './../util/updateUtil';
 
 const state = {
   updates: [],
   businessPOIs: [],
-  showUpdates: false,
   showBookmarks: false,
 };
 
@@ -53,26 +52,6 @@ const actions = {
     });
   },
 
-  confirmUpdate({ commit }, { user, update }) {
-    let promise;
-    if (update.kind === 'update') {
-      promise = addOrUpdateBusinessPOI(user.id, {
-        osmId: update.id,
-        version: update.newVersion,
-        lat: update.coords.lat,
-        lng: update.coords.lng,
-        receiveUpdates: true,
-        name: update.name,
-        noteId: update.noteId,
-      });
-    } else {
-      promise = deleteBusinessPOI(user.id, update.id);
-    }
-    promise.then(() => {
-      commit('removeUpdate', update);
-    });
-  },
-
   ignoreFutureUpdates({ commit }, { update, user }) {
     unsubscribe(user.id, update.id).then(() => {
       commit('removeUpdate', update);
@@ -107,17 +86,8 @@ const mutations = {
       s.businessPOIs.splice(i, 1);
     }
   },
-  toggleUpdates(s) {
-    s.showUpdates = !s.showUpdates;
-    if (s.showBookmarks && s.showUpdates) {
-      s.showBookmarks = false;
-    }
-  },
   toggleBookmarks(s) {
     s.showBookmarks = !s.showBookmarks;
-    if (s.showBookmarks && s.showUpdates) {
-      s.showUpdates = false;
-    }
   },
   pushBusinessPOI(s, businessPOI) {
     s.businessPOIs.push(businessPOI);
@@ -127,9 +97,6 @@ const mutations = {
 const getters = {
   updates(s) {
     return s.updates;
-  },
-  showUpdates(s) {
-    return s.showUpdates;
   },
   showBookmarks(s) {
     return s.showBookmarks;
