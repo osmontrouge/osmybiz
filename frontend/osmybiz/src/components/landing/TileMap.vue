@@ -43,7 +43,6 @@
 <script>
   import { LMap, LMarker, LPopup, LTileLayer, LTooltip } from 'vue2-leaflet';
   import { mapActions, mapGetters, mapMutations } from 'vuex';
-  import deepEqual from 'deep-equal';
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
   import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
@@ -88,14 +87,18 @@
     mounted() {
       this.$nextTick(() => {
         this.setMap(this.$refs.map.mapObject);
+        const { params } = this.$route;
+        this.setUrlParams(params);
         this.setMapViewToUrl();
       });
     },
     watch: {
-      computedUrlParams: function updatePosition() {
+      $route: function updatePosition(route) {
+        const { params } = route;
+        this.setUrlParams(params);
         this.setMapViewToUrl();
       },
-      computedLocale: function updateBusinessInViewPort() {
+      '$i18n.locale': function updateBusinessInViewPort() {
         this.queryOverpass(this.viewPort);
       },
     },
@@ -180,19 +183,8 @@
         }
         return _.unionBy(mine, this.businesses, b => b.id);
       },
-      computedUrlParams() {
-        const { params } = this.$route;
-        if (deepEqual(this.urlParams, params)) {
-          return false;
-        }
-        this.setUrlParams(params);
-        return params;
-      },
       isDetailPage() {
         return (this.$route.name === routes.Detail);
-      },
-      computedLocale() {
-        return this.$i18n.locale;
       },
     },
   };
