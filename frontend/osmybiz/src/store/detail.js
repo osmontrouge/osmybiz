@@ -51,71 +51,59 @@ const initialState = {
 };
 
 const state = JSON.parse(JSON.stringify(initialState));
+/* eslint-disable */
+
 
 function constructNote() {
-  let text = '#OSMyBiz \n \n';
+  let text = '#OSMyBiz \n';
+  text += '\nmodified tags are denominated with \'*\'\n\n';
 
-  if (state.address.length !== 0) {
-    let address = '';
-    if (state.address.street) {
-      address += `${state.address.street} `;
-      if (state.address.housenumber) {
-        address += `${state.address.housenumber}, `;
+  const originalAddress = JSON.parse(localStorage.getItem('address'));
+  const originalDetails = JSON.parse(localStorage.getItem('details'));
+
+  Object.keys(state.address).forEach((key) => {
+    if (deepEqual(originalAddress[key], state.address[key])) {
+      if (state.address[key]) {
+        text += (`addr:${key}: ${state.address[key]}\n`);
+      }
+    } else {
+      text += (`* addr:${key}: ${state.address[key]} *\n`);
+    }
+  });
+
+  Object.keys(state.details).forEach((key) => {
+    if (key !== 'category') {
+      if (deepEqual(originalDetails[key], state.details[key])) {
+        if (state.details[key]) {
+          text += (`${key}: ${state.details[key]}\n`);
+        }
+      } else {
+        text += (`*${key}: ${state.details[key]} *\n`);
       }
     }
-    if (state.address.place) {
-      address += `${state.address.place}, `;
-    }
-    if (state.address.postcode) {
-      address += `${state.address.postcode} `;
-    }
-    if (state.address.city) {
-      address += `${state.address.city}, `;
-    }
-    if (state.address.country) {
-      address += state.address.country;
-    }
-    text += `Address: ${address}\n`;
-  }
-  if (state.details.category.text.length !== 0) {
-    if (state.isOwnCategory) {
-      text += `Category: ${state.details.category.text}\n`;
-    } else {
-      const category = state.details.category.value.split('/');
-      text += `Category: ${category[0]}:${category[1]}\n`;
-    }
-  }
-  if (state.details.name.length !== 0) {
-    text += `Name: ${state.details.name}\n`;
-  }
-  if (state.details.opening_hours.length !== 0) {
-    text += `Opening hours: ${state.details.opening_hours}\n`;
-  }
-  if (state.details.phone.length !== 0) {
-    text += `Phone number: ${state.details.phone}\n`;
-  }
-  if (state.details.email.length !== 0) {
-    text += `Email: ${state.details.email}\n`;
-  }
-  if (state.details.website.length !== 0) {
-    text += `Website: ${state.details.website}\n`;
-  }
-  if (state.details.wheelchair !== 0) {
-    text += `Wheelchair accessible: ${state.details.wheelchair}\n`;
-  }
-  if (state.details.description.length !== 0) {
-    text += `Description: ${state.details.description}\n`;
-  }
-  if (state.details.note.length > 0) {
-    text += `Note: ${state.details.note}\n`;
-  }
+  });
 
   if (!state.isOwnCategory) {
-    state.details.category.fields.forEach((field) => {
-      if (field.value.length !== 0) {
-        text += `${field.label}: ${field.value}\n`;
+    const category = state.details.category.value.split('/');
+    if (deepEqual(state.details.category.value, originalDetails.category.value)){
+      text += (`${category[0]}: ${category[1]}\n`);
+    } else {
+      text += (`* ${category[0]}: ${category[1]} *\n`);
+    }
+
+    let field;
+    for (let i = 0; i < state.details.category.fields.length; i += 1) {
+      field = state.details.category.fields[i];
+      if (deepEqual(field.value, originalDetails.category.fields[i].value)) {
+        if (field.value) {
+          text += (`${field.key}: ${field.value}\n`);
+        }
+      } else {
+        text += (`* ${field.key}: ${field.value} *\n`);
       }
-    });
+    }
+  } else {
+    text += (`* ${state.details.category.text} *\n`);
   }
 
   return {
