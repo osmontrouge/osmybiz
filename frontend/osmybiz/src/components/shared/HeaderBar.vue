@@ -26,7 +26,7 @@
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="toggleBookmarks()" :title="$t('header.bookmarkstitle')">
+        <div class="messages" v-if="isLoggedIn" @click="toggleWatchList()" :title="$t('header.watchlisttitle')">
           <icon name="bookmark"></icon>
         </div>
 
@@ -79,7 +79,7 @@
       ...mapMutations([
         'logout',
         'setTags',
-        'toggleBookmarks',
+        'toggleWatchList',
         'toggleUpdates',
       ]),
       login() {

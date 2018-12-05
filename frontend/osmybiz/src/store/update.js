@@ -8,7 +8,7 @@ const state = {
   updates: [],
   businessPOIs: [],
   showUpdates: false,
-  showBookmarks: false,
+  showWatchList: false,
 };
 
 function isTemporaryOsmId(osmId) {
@@ -73,7 +73,7 @@ const actions = {
     });
   },
 
-  ignoreFutureUpdates({ commit }, { ownedBusinessPOI, user }) {
+  removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
     unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
       commit('removeUpdate', ownedBusinessPOI);
     });
@@ -110,13 +110,13 @@ const mutations = {
   },
   toggleUpdates(s) {
     s.showUpdates = !s.showUpdates;
-    if (s.showBookmarks && s.showUpdates) {
-      s.showBookmarks = false;
+    if (s.showWatchList && s.showUpdates) {
+      s.showWatchList = false;
     }
   },
-  toggleBookmarks(s) {
-    s.showBookmarks = !s.showBookmarks;
-    if (s.showBookmarks && s.showUpdates) {
+  toggleWatchList(s) {
+    s.showWatchList = !s.showWatchList;
+    if (s.showWatchList && s.showUpdates) {
       s.showUpdates = false;
     }
   },
@@ -132,8 +132,8 @@ const getters = {
   showUpdates(s) {
     return s.showUpdates;
   },
-  showBookmarks(s) {
-    return s.showBookmarks;
+  showWatchList(s) {
+    return s.showWatchList;
   },
   updateCount(s) {
     return s.updates.length;

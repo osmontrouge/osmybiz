@@ -48,7 +48,7 @@
   export default {
     methods: {
       ...mapMutations(['setMapCenter']),
-      ...mapActions(['confirmUpdate', 'ignoreFutureUpdates']),
+      ...mapActions(['confirmUpdate', 'removeFromWatchList']),
 
       zoom(coords) {
         this.setMapCenter(coords);
@@ -60,7 +60,7 @@
       },
 
       ignore(update) {
-        this.ignoreFutureUpdates({ update, user: this.user });
+        this.removeFromWatchList({ update, user: this.user });
       },
       confirm(update) {
         this.confirmUpdate({ update, user: this.user });
