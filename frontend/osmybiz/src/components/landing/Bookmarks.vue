@@ -28,7 +28,7 @@
   export default {
     methods: {
       ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
-      ...mapActions(['deleteOwnedBusinessPOI']),
+      ...mapActions(['ignoreFutureUpdates']),
       panToMarker(ownedBusinessPOI) {
         const coords = latLng(ownedBusinessPOI.lat, ownedBusinessPOI.lng);
         const zoom = 17;
@@ -47,7 +47,7 @@
         /* eslint-enable */
       },
       removeMarker(ownedBusinessPOI) {
-        this.deleteOwnedBusinessPOI({ ownedBusinessPOI, user: this.user });
+        this.ignoreFutureUpdates({ ownedBusinessPOI, user: this.user });
       },
     },
     computed: {

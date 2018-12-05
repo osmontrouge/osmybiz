@@ -73,10 +73,11 @@ const actions = {
     });
   },
 
-  ignoreFutureUpdates({ commit }, { update, user }) {
-    unsubscribe(user.id, update.id).then(() => {
-      commit('removeUpdate', update);
+  ignoreFutureUpdates({ commit }, { ownedBusinessPOI, user }) {
+    unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
+      commit('removeUpdate', ownedBusinessPOI);
     });
+    this.dispatch('loadUpdates', user);
   },
 
   deleteOwnedBusinessPOI({ commit }, { ownedBusinessPOI, user }) {
