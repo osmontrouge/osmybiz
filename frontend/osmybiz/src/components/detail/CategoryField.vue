@@ -11,7 +11,7 @@
 
       <div v-show="!isOwnCategory" class="category-field">
         <basic-select v-show="!isOwnCategory"
-                      :options="this.tagOptions"
+                      :options="this.categoryFields"
                       :selected-option="details.category"
                       :placeholder="$t('detail.placeholders.category')"
                       @select="onSelect"
@@ -64,18 +64,15 @@
     computed: {
       ...mapGetters([
         'details',
-        'tagOptions',
         'isOwnCategory',
+        'categoryFields',
         'isNote',
         'isNew',
         'languageTags',
       ]),
-      computedTags() {
-        return this.tagOptions;
-      },
     },
     watch: {
-      computedTags: function updateSelectedOption() {
+      'this.categoryFields': function updateSelectedOption() {
         this.$nextTick(() => {
           const { categorySelection } = this.$refs;
           let option = {};
