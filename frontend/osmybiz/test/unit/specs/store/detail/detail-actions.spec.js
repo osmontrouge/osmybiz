@@ -17,19 +17,6 @@ const actions = actionsInjector({
         id: 1,
       });
     },
-    getNode() {
-      return Promise.resolve({
-        lat: '1',
-        lon: '2',
-        version: '1',
-        id: '1',
-      });
-    },
-  },
-  './../api/osmybizApi': {
-    addOrUpdateNode() {
-      return Promise.resolve();
-    },
   },
 });
 
