@@ -76,6 +76,14 @@ describe('detail store', () => {
             description: '',
             note: '',
           },
+          address: {
+            street: 'Oberseestrasse',
+            housenumber: '10',
+            postalcode: '8640',
+            place: '',
+            city: 'Rapperswil-Jona',
+            country: 'Switzerland',
+          }
         }, [{
           type: 'setSuccessMessage',
           payload: {
