@@ -95,7 +95,8 @@
       "choosecategory": "Choose Category",
       "back": "Back",
       "reset": "Reset",
-      "save": "Save"
+      "save": "Save",
+      "pleasewait": "Please wait..."
     },
     "ownCategoryInfo": "If you choose to enter an own Category this resolves in a note. This note must be processed by a member of the OpenStreetMap-Community."
   },
