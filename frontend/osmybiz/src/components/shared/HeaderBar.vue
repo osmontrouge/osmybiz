@@ -26,13 +26,8 @@
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="toggleBookmarks()" :title="$t('header.bookmarkstitle')">
-          <icon name="bookmark"></icon>
-        </div>
-
-        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()" :title="$t('header.updatestitle')">
-          <icon name="bell"></icon>
-          <span class="unread" v-if="updateCount > 0">{{updateCount}}</span>
+        <div class="messages" v-if="isLoggedIn" @click="toggleWatchList()" :title="$t('header.watchlisttitle')">
+          <icon name="eye"></icon>
         </div>
 
         <button v-if="!isLoggedIn" @click="login()">Login</button>
@@ -54,20 +49,12 @@
   export default {
     mounted() {
       this.loadUser();
-      this.$store.subscribe((mut) => {
-        if (mut.type === 'setUser') {
-          if (this.isLoggedIn) {
-            this.loadUpdates(this.user);
-          }
-        }
-      });
     },
     name: 'header-bar',
     computed: {
       ...mapGetters([
         'user',
         'isLoggedIn',
-        'updateCount',
       ]),
     },
     methods: {
@@ -79,8 +66,7 @@
       ...mapMutations([
         'logout',
         'setTags',
-        'toggleBookmarks',
-        'toggleUpdates',
+        'toggleWatchList',
       ]),
       login() {
         this.authenticate();

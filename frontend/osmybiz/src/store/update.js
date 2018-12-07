@@ -1,14 +1,13 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
-import { addOrUpdateUser, fetchBusinessPOIs, addOrUpdateBusinessPOI, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
+import { addOrUpdateUser, fetchBusinessPOIs, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
 import { getBusinessPOI } from './../api/osmApi';
 import util from './../util/updateUtil';
 
 const state = {
   updates: [],
   businessPOIs: [],
-  showUpdates: false,
-  showBookmarks: false,
+  showWatchList: false,
 };
 
 function isTemporaryOsmId(osmId) {
@@ -52,31 +51,11 @@ const actions = {
     }, () => {
     });
   },
-
-  confirmUpdate({ commit }, { user, update }) {
-    let promise;
-    if (update.kind === 'update') {
-      promise = addOrUpdateBusinessPOI(user.id, {
-        osmId: update.id,
-        version: update.newVersion,
-        lat: update.coords.lat,
-        lng: update.coords.lng,
-        receiveUpdates: true,
-        name: update.name,
-        noteId: update.noteId,
-      });
-    } else {
-      promise = deleteBusinessPOI(user.id, update.id);
-    }
-    promise.then(() => {
-      commit('removeUpdate', update);
+  removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
+    unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
+      commit('removeUpdate', ownedBusinessPOI);
     });
-  },
-
-  ignoreFutureUpdates({ commit }, { update, user }) {
-    unsubscribe(user.id, update.id).then(() => {
-      commit('removeUpdate', update);
-    });
+    this.dispatch('loadUpdates', user);
   },
 
   deleteOwnedBusinessPOI({ commit }, { ownedBusinessPOI, user }) {
@@ -107,15 +86,9 @@ const mutations = {
       s.businessPOIs.splice(i, 1);
     }
   },
-  toggleUpdates(s) {
-    s.showUpdates = !s.showUpdates;
-    if (s.showBookmarks && s.showUpdates) {
-      s.showBookmarks = false;
-    }
-  },
-  toggleBookmarks(s) {
-    s.showBookmarks = !s.showBookmarks;
-    if (s.showBookmarks && s.showUpdates) {
+  toggleWatchList(s) {
+    s.showWatchList = !s.showWatchList;
+    if (s.showWatchList && s.showUpdates) {
       s.showUpdates = false;
     }
   },
@@ -128,11 +101,8 @@ const getters = {
   updates(s) {
     return s.updates;
   },
-  showUpdates(s) {
-    return s.showUpdates;
-  },
-  showBookmarks(s) {
-    return s.showBookmarks;
+  showWatchList(s) {
+    return s.showWatchList;
   },
   updateCount(s) {
     return s.updates.length;
