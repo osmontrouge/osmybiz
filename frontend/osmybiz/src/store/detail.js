@@ -39,7 +39,6 @@ const initialState = {
     description: '',
     note: '',
   },
-  categoryFields: [],
   isOwnCategory: false,
   isPopup: false,
   isNote: false,
@@ -329,51 +328,6 @@ const mutations = {
       s[key] = unsavedChanges[key];
     });
   },
-  setCategoryFields(s, languageTags) {
-    console.log(languageTags);
-    const options = [];
-    Object.keys(languageTags).forEach((key) => {
-      const fields = [];
-      languageTags[key].fields.forEach((field) => {
-        if (field.options) {
-          const fieldOptions = [];
-          Object.keys(field.options).forEach((option) => {
-            fieldOptions.push({
-              key: option,
-              text: field.options[option],
-            });
-          });
-          fields.push({
-            key: field.key,
-            label: field.label,
-            type: field.type,
-            options: fieldOptions,
-            value: '',
-          });
-        } else {
-          fields.push({
-            key: field.key,
-            label: field.label,
-            type: field.type,
-            value: '',
-          });
-        }
-      });
-      options.push({
-        value: key,
-        text: languageTags[key].name,
-        fields,
-      });
-    });
-
-    options.sort((a, b) => {
-      if (a.text < b.text) return -1;
-      if (a.text > b.text) return 1;
-      return 0;
-    });
-
-    s.categoryFields = options;
-  },
 };
 
 const getters = {
@@ -430,9 +384,6 @@ const getters = {
   },
   osmType(s) {
     return s.osmType;
-  },
-  categoryFields(s) {
-    return s.categoryFields;
   },
 };
 
