@@ -43,7 +43,6 @@
       }
       if (!this.isEditingUnsavedChanges) {
         this.getAddress(this.businessPosition);
-        this.setCategoryFields(this.languageTags);
         this.hideUserDialog();
         localStorage.setItem('details', JSON.stringify(this.details));
         this.setIsNew(!this.isNote);
@@ -77,7 +76,6 @@
         'isOwnCategory',
         'osmType',
         'noteId',
-        'languageTags',
       ]),
       isModifiedAndNotSubmited() {
         return !isNotModified(this) && !this.isFormSubmission;
@@ -98,7 +96,6 @@
         'setOsmType',
         'resetDetailState',
         'hideUserDialog',
-        'setCategoryFields',
       ]),
       ...mapActions([
         'getAddress',
