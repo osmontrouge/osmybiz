@@ -52,7 +52,7 @@
       ...mapMutations([
         'setSuccessMessage',
       ]),
-      toggleSuccess() {
+      hideMessage() {
         this.setSuccessMessage('');
       },
     },
