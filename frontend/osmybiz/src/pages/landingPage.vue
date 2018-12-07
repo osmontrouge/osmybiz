@@ -5,7 +5,7 @@
     <toggle-button></toggle-button>
     <login-help-text></login-help-text>
     <help-text></help-text>
-    <bookmarks></bookmarks>
+    <watch-list></watch-list>
 
     <post-success></post-success>
     <duplicate-warning></duplicate-warning>
@@ -22,7 +22,7 @@
   import PostSuccess from '../components/landing/PostSuccess.vue';
   import ToggleButton from '../components/landing/ToggleButton.vue';
   import LoginHelpText from '../components/landing/LoginHelpText.vue';
-  import Bookmarks from '../components/landing/Bookmarks.vue';
+  import WatchList from '../components/landing/WatchList.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import UnsavedChangesNotification from '../components/landing/UnsavedChangesNotification.vue';
 
@@ -65,7 +65,7 @@
       PostSuccess,
       DuplicateWarning,
       UnsavedChangesNotification,
-      Bookmarks,
+      WatchList,
     },
   };
 

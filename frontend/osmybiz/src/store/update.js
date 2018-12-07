@@ -7,7 +7,7 @@ import util from './../util/updateUtil';
 const state = {
   updates: [],
   businessPOIs: [],
-  showBookmarks: false,
+  showWatchList: false,
 };
 
 function isTemporaryOsmId(osmId) {
@@ -51,11 +51,11 @@ const actions = {
     }, () => {
     });
   },
-
-  ignoreFutureUpdates({ commit }, { update, user }) {
-    unsubscribe(user.id, update.id).then(() => {
-      commit('removeUpdate', update);
+  removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
+    unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
+      commit('removeUpdate', ownedBusinessPOI);
     });
+    this.dispatch('loadUpdates', user);
   },
 
   deleteOwnedBusinessPOI({ commit }, { ownedBusinessPOI, user }) {
@@ -86,8 +86,11 @@ const mutations = {
       s.businessPOIs.splice(i, 1);
     }
   },
-  toggleBookmarks(s) {
-    s.showBookmarks = !s.showBookmarks;
+  toggleWatchList(s) {
+    s.showWatchList = !s.showWatchList;
+    if (s.showWatchList && s.showUpdates) {
+      s.showUpdates = false;
+    }
   },
   pushBusinessPOI(s, businessPOI) {
     s.businessPOIs.push(businessPOI);
@@ -98,8 +101,8 @@ const getters = {
   updates(s) {
     return s.updates;
   },
-  showBookmarks(s) {
-    return s.showBookmarks;
+  showWatchList(s) {
+    return s.showWatchList;
   },
   updateCount(s) {
     return s.updates.length;
