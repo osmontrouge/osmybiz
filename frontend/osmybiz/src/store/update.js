@@ -1,13 +1,12 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
-import { addOrUpdateUser, fetchBusinessPOIs, addOrUpdateBusinessPOI, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
+import { addOrUpdateUser, fetchBusinessPOIs, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
 import { getBusinessPOI } from './../api/osmApi';
 import util from './../util/updateUtil';
 
 const state = {
   updates: [],
   businessPOIs: [],
-  showUpdates: false,
   showWatchList: false,
 };
 
@@ -52,27 +51,6 @@ const actions = {
     }, () => {
     });
   },
-
-  confirmUpdate({ commit }, { user, update }) {
-    let promise;
-    if (update.kind === 'update') {
-      promise = addOrUpdateBusinessPOI(user.id, {
-        osmId: update.id,
-        version: update.newVersion,
-        lat: update.coords.lat,
-        lng: update.coords.lng,
-        receiveUpdates: true,
-        name: update.name,
-        noteId: update.noteId,
-      });
-    } else {
-      promise = deleteBusinessPOI(user.id, update.id);
-    }
-    promise.then(() => {
-      commit('removeUpdate', update);
-    });
-  },
-
   removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
     unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
       commit('removeUpdate', ownedBusinessPOI);
@@ -108,12 +86,6 @@ const mutations = {
       s.businessPOIs.splice(i, 1);
     }
   },
-  toggleUpdates(s) {
-    s.showUpdates = !s.showUpdates;
-    if (s.showWatchList && s.showUpdates) {
-      s.showWatchList = false;
-    }
-  },
   toggleWatchList(s) {
     s.showWatchList = !s.showWatchList;
     if (s.showWatchList && s.showUpdates) {
@@ -128,9 +100,6 @@ const mutations = {
 const getters = {
   updates(s) {
     return s.updates;
-  },
-  showUpdates(s) {
-    return s.showUpdates;
   },
   showWatchList(s) {
     return s.showWatchList;
