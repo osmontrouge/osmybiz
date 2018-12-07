@@ -39,6 +39,7 @@ const initialState = {
     description: '',
     note: '',
   },
+  categoryFields: [],
   isOwnCategory: false,
   isPopup: false,
   isNote: false,
@@ -123,6 +124,46 @@ function constructNote() {
     lon: state.lon,
     text,
   };
+}
+
+function getFieldOptions(field) {
+  const fieldOptions = [];
+  Object.keys(field.options).forEach((option) => {
+    fieldOptions.push({
+      key: option,
+      text: field.options[option],
+    });
+  });
+  return fieldOptions;
+}
+
+function getFields(category) {
+  const fields = [];
+  category.fields.forEach((field) => {
+    const content = {
+      key: field.key,
+      label: field.label,
+      type: field.type,
+      value: '',
+    };
+    if (field.options) {
+      content.options = getFieldOptions(field);
+    }
+    fields.push(content);
+  });
+  return fields;
+}
+
+function getCategoryOptions(languageTags) {
+  const options = [];
+  Object.keys(languageTags).forEach((key) => {
+    options.push({
+      value: key,
+      text: languageTags[key].name,
+      fields: getFields(languageTags[key]),
+    });
+  });
+  return options;
 }
 
 export function isNotModified(store) {
@@ -328,6 +369,15 @@ const mutations = {
       s[key] = unsavedChanges[key];
     });
   },
+  setCategoryFields(s, languageTags) {
+    const options = getCategoryOptions(languageTags);
+    options.sort((a, b) => {
+      if (a.text < b.text) return -1;
+      if (a.text > b.text) return 1;
+      return 0;
+    });
+    s.categoryFields = options;
+  },
 };
 
 const getters = {
@@ -384,6 +434,9 @@ const getters = {
   },
   osmType(s) {
     return s.osmType;
+  },
+  categoryFields(s) {
+    return s.categoryFields;
   },
 };
 
