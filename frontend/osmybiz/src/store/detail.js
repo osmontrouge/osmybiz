@@ -126,6 +126,46 @@ function constructNote() {
   };
 }
 
+function getFieldOptions(field) {
+  const fieldOptions = [];
+  Object.keys(field.options).forEach((option) => {
+    fieldOptions.push({
+      key: option,
+      text: field.options[option],
+    });
+  });
+  return fieldOptions;
+}
+
+function getFields(category) {
+  const fields = [];
+  category.fields.forEach((field) => {
+    const content = {
+      key: field.key,
+      label: field.label,
+      type: field.type,
+      value: '',
+    };
+    if (field.options) {
+      content.options = getFieldOptions(field);
+    }
+    fields.push(content);
+  });
+  return fields;
+}
+
+function getCategoryOptions(languageTags) {
+  const options = [];
+  Object.keys(languageTags).forEach((key) => {
+    options.push({
+      value: key,
+      text: languageTags[key].name,
+      fields: getFields(languageTags[key]),
+    });
+  });
+  return options;
+}
+
 export function isNotModified(store) {
   const details = JSON.parse(localStorage.getItem('details'));
   const address = JSON.parse(localStorage.getItem('address'));
@@ -330,48 +370,12 @@ const mutations = {
     });
   },
   setCategoryFields(s, languageTags) {
-    console.log(languageTags);
-    const options = [];
-    Object.keys(languageTags).forEach((key) => {
-      const fields = [];
-      languageTags[key].fields.forEach((field) => {
-        if (field.options) {
-          const fieldOptions = [];
-          Object.keys(field.options).forEach((option) => {
-            fieldOptions.push({
-              key: option,
-              text: field.options[option],
-            });
-          });
-          fields.push({
-            key: field.key,
-            label: field.label,
-            type: field.type,
-            options: fieldOptions,
-            value: '',
-          });
-        } else {
-          fields.push({
-            key: field.key,
-            label: field.label,
-            type: field.type,
-            value: '',
-          });
-        }
-      });
-      options.push({
-        value: key,
-        text: languageTags[key].name,
-        fields,
-      });
-    });
-
+    const options = getCategoryOptions(languageTags);
     options.sort((a, b) => {
       if (a.text < b.text) return -1;
       if (a.text > b.text) return 1;
       return 0;
     });
-
     s.categoryFields = options;
   },
 };

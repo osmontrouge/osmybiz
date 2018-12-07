@@ -72,7 +72,7 @@
       ]),
     },
     watch: {
-      'this.categoryFields': function updateSelectedOption() {
+      categoryFields: function updateSelectedOption() {
         this.$nextTick(() => {
           const { categorySelection } = this.$refs;
           let option = {};
