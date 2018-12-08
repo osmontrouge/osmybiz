@@ -111,7 +111,8 @@
         this.details.category = { value: 0, text: '' };
       },
       onSelect(item) {
-        this.details.category = item;
+        // Intended to copy by value by stringify then parse it.
+        this.details.category = JSON.parse(JSON.stringify(item));
       },
     },
     components: {
