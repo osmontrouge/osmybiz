@@ -25,7 +25,7 @@ def fetch_business_pois(userid):
     return jsonify(data)
 
 
-@api.route('/user/<int:userid>/business-poi/<int:osmid>/unsubscribe',
+@api.route('/user/<int:userid>/business-poi/<signed_int:osmid>/unsubscribe',
            methods=['POST'])
 def unsubscribe(userid, osmid):
     return unsub_user_from_business_poi(userid, osmid)
