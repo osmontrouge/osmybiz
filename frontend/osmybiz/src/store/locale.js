@@ -32,63 +32,57 @@ const FALLBACKTAGS = SUPPORTEDLANGUAGESOPTIONS[FALLBACKLOCALE];
 
 const state = {
   languageTags: {},
-  tagOptions: [],
+  categoryFields: [],
 };
+
+function getFieldOptions(field) {
+  const fieldOptions = [];
+  Object.keys(field.options).forEach((option) => {
+    fieldOptions.push({
+      key: option,
+      text: field.options[option],
+    });
+  });
+  return fieldOptions;
+}
+
+function getFields(category) {
+  const fields = [];
+  category.fields.forEach((field) => {
+    const content = {
+      key: field.key,
+      label: field.label,
+      type: field.type,
+      value: '',
+    };
+    if (field.options) {
+      content.options = getFieldOptions(field);
+    }
+    fields.push(content);
+  });
+  return fields;
+}
+
+function getCategoryOptions(languageTags) {
+  const options = [];
+  Object.keys(languageTags).forEach((key) => {
+    options.push({
+      value: key,
+      text: languageTags[key].name,
+      fields: getFields(languageTags[key]),
+    });
+  });
+  return options;
+}
 
 const getters = {
   languageTags(s) {
-    return s.tags;
+    return s.languageTags;
   },
-  tagOptions(s) {
-    return s.tagOptions;
+  categoryFields(s) {
+    return s.categoryFields;
   },
 };
-
-
-function generateTagsForCategoryField() {
-  const options = [];
-  Object.keys(state.languageTags).forEach((key) => {
-    const fields = [];
-    state.languageTags[key].fields.forEach((field) => {
-      if (field.options) {
-        const fieldOptions = [];
-        Object.keys(field.options).forEach((option) => {
-          fieldOptions.push({
-            key: option,
-            text: field.options[option],
-          });
-        });
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          options: fieldOptions,
-          value: '',
-        });
-      } else {
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          value: '',
-        });
-      }
-    });
-    options.push({
-      value: key,
-      text: state.languageTags[key].name,
-      fields,
-    });
-  });
-
-  options.sort((a, b) => {
-    if (a.text < b.text) return -1;
-    if (a.text > b.text) return 1;
-    return 0;
-  });
-
-  state.tagOptions = options;
-}
 
 const mutations = {
   setTags(s, lng) {
@@ -100,7 +94,13 @@ const mutations = {
         s.languageTags[key] = FALLBACKTAGS[key];
       }
     });
-    generateTagsForCategoryField();
+    const options = getCategoryOptions(s.languageTags);
+    options.sort((a, b) => {
+      if (a.text < b.text) return -1;
+      if (a.text > b.text) return 1;
+      return 0;
+    });
+    s.categoryFields = options;
   },
 };
 

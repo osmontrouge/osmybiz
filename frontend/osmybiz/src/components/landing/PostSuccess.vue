@@ -1,7 +1,7 @@
 <template>
 
   <div class="dialog" id="success-dialog" v-if="successMessage.address">
-    <div class="close-button" @click="toggleSuccess">
+    <div class="close-button" @click="hideMessage">
       <icon name="window-close"></icon>
     </div>
 
@@ -52,7 +52,7 @@
       ...mapMutations([
         'setSuccessMessage',
       ]),
-      toggleSuccess() {
+      hideMessage() {
         this.setSuccessMessage('');
       },
     },

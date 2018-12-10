@@ -9,8 +9,8 @@
       {{ $t('detail.buttons.reset') }}</button>
     <button class="button"
             :disabled="isRequiredFields() || isDuplicate || isNotModified(this)"
-            @click="submit()">
-      {{ $t('detail.buttons.save') }}</button>
+            @click.once="submit()">
+      {{ message }}</button>
   </div>
 </template>
 
@@ -21,6 +21,11 @@
 
   export default {
     name: 'form-footer',
+    data() {
+      return {
+        message: this.$t('detail.buttons.save'),
+      };
+    },
     computed: {
       ...mapGetters([
         'isNote',
@@ -53,6 +58,7 @@
         'loadUpdates',
       ]),
       submit() {
+        this.message = this.$t('detail.buttons.pleasewait');
         let promise;
         this.setIsFormSubmission(true);
         if (!this.isNote && !this.isOwnCategory) {

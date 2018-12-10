@@ -4,7 +4,7 @@
     <div class="node-success">
       <div class="dialog-title">
         {{ $t('unsavedchanges.title') }}
-        <div class="close-button" @click="toggleSuccess">
+        <div class="close-button" @click="hideMessage">
          <icon name="window-close"></icon>
         </div>
       </div>
@@ -41,11 +41,11 @@
     methods: {
       ...mapMutations([
         'setDisplayUnsavedChangesNotification',
-        'setIsEditingUnsavedChanges',
+        'hideUnsavedChangesNotification',
         'restoreDetailState',
       ]),
-      toggleSuccess() {
-        this.setDisplayUnsavedChangesNotification(false);
+      hideMessage() {
+        this.hideUnsavedChangesNotification();
       },
       edit() {
         clearInterval(this.timerId);

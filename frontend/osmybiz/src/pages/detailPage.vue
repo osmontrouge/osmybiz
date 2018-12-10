@@ -76,6 +76,7 @@
         'isOwnCategory',
         'osmType',
         'noteId',
+        'languageTags',
       ]),
       isModifiedAndNotSubmited() {
         return !isNotModified(this) && !this.isFormSubmission;

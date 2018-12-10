@@ -1,17 +1,17 @@
 <template>
-  <div class="bookmarks-wrapper" v-if="showBookmarks">
-    <div class="bookmarks-title">
-      {{ $t('landing.bookmarks.title') }}
+  <div class="watchlist-wrapper" v-if="showWatchList">
+    <div class="watchlist-title">
+      {{ $t('landing.watchlist.title') }}
     </div>
-    <div class="bookmarks" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs" @click="panToMarker(ownedBusinessPOI)">
-      <div class="bookmarks-index">
+    <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs" @click="panToMarker(ownedBusinessPOI)">
+      <div class="watchlist-index">
         {{ index + 1 }}
       </div>
-      <div class="bookmarks-name">
+      <div class="watchlist-name">
         <span v-if="ownedBusinessPOI.tags.name"> {{ownedBusinessPOI.tags.name}} </span>
         <span v-else> Name not found </span>
       </div>
-      <div class="bookmarks-remove" @click="removeMarker(ownedBusinessPOI)">
+      <div class="watchlist-remove" @click="removeMarker(ownedBusinessPOI)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -28,7 +28,7 @@
   export default {
     methods: {
       ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
-      ...mapActions(['deleteOwnedBusinessPOI']),
+      ...mapActions(['removeFromWatchList']),
       panToMarker(ownedBusinessPOI) {
         const coords = latLng(ownedBusinessPOI.lat, ownedBusinessPOI.lng);
         const zoom = 17;
@@ -47,21 +47,21 @@
         /* eslint-enable */
       },
       removeMarker(ownedBusinessPOI) {
-        this.deleteOwnedBusinessPOI({ ownedBusinessPOI, user: this.user });
+        this.removeFromWatchList({ ownedBusinessPOI, user: this.user });
       },
     },
     computed: {
       ...mapGetters([
         'ownedBusinessPOIs',
         'user',
-        'showBookmarks',
+        'showWatchList',
         'map',
       ]),
     },
     components: {
       Icon,
     },
-    name: 'bookmarks',
+    name: 'watchlist',
   };
 </script>
 
@@ -73,22 +73,22 @@
     color: $error-color;
   }
 
-  .bookmarks-index {
+  .watchlist-index {
     padding-right: 7px;
   }
 
-  .bookmarks-name {
+  .watchlist-name {
     border-bottom: dashed 1px $primary-color;
     width: -webkit-fill-available;
 
   }
 
-  .bookmarks-name:hover {
+  .watchlist-name:hover {
     background-color: rgba(126, 188, 111, 0.71);
     cursor: pointer;
   }
 
-  .bookmarks-wrapper {
+  .watchlist-wrapper {
     position: fixed;
     z-index: 99;
     bottom: 110px;
@@ -102,14 +102,14 @@
     overflow-y: auto;
   }
 
-  .bookmarks-title {
+  .watchlist-title {
     font-size:20px;
     font-weight:bold;
     text-align: left;
     border-bottom: #006600;
   }
 
-  .bookmarks {
+  .watchlist {
     margin-top: 12px;
     margin-bottom: 12px;
     text-align: left;
@@ -119,11 +119,11 @@
     font-weight: bold;
   }
 
-  .bookmarks-remove {
+  .watchlist-remove {
     padding-left: 7px;
   }
 
-  .bookmarks-remove:hover {
+  .watchlist-remove:hover {
     cursor: pointer;
     opacity: 0.5;
   }
