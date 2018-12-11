@@ -2,13 +2,16 @@
 import * as _ from 'lodash';
 import { addOrUpdateUser, fetchBusinessPOIs, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
 import { getBusinessPOI } from './../api/osmApi';
-import util from './../util/updateUtil';
 
 const state = {
   updates: [],
   businessPOIs: [],
   showWatchList: false,
 };
+
+function hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI) {
+  return (osmBusinessPOI.version > ownedBusinessPOI.version);
+}
 
 function isTemporaryOsmId(osmId) {
   return (osmId < 0);
@@ -28,21 +31,23 @@ const actions = {
             mine: true,
             noteId: n.noteId,
             type: n.osmType,
+            version: n.version,
+            hasUpdate: false,
           };
-          if (isTemporaryOsmId(n.osmId)) {
+          if (isTemporaryOsmId(ownedBusinessPOI.id)) {
             ownedBusinessPOI.tags = {};
             ownedBusinessPOI.tags.name = n.name;
             commit('pushBusinessPOI', ownedBusinessPOI);
           } else {
-            getBusinessPOI(n.osmType, n.osmId).then((businessPOI) => {
-              const update = util.getUpdate(n, businessPOI);
-              if (_.isObject(update)) {
-                commit('pushUpdate', update);
-              }
-
-              if (_.isObject(businessPOI)) {
-                ownedBusinessPOI.tags = businessPOI.tags;
+            getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
+              if (_.isObject(osmBusinessPOI)) {
+                if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
+                  ownedBusinessPOI.hasUpdate = true;
+                }
+                ownedBusinessPOI.tags = osmBusinessPOI.tags;
                 commit('pushBusinessPOI', ownedBusinessPOI);
+              } else {
+                // TODO when the element has been deleted
               }
             });
           }
