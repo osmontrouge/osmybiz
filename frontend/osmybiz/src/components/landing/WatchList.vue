@@ -115,6 +115,11 @@
     cursor: pointer;
   }
 
+  .watchlist-name span {
+    word-break: break-word;
+  }
+
+
   .watchlist-wrapper {
     position: fixed;
     z-index: 99;
