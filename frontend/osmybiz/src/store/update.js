@@ -1,7 +1,8 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
 import { addOrUpdateUser, fetchBusinessPOIs, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
-import { getBusinessPOI } from './../api/osmApi';
+import { getBusinessPOI, getNotesByOsmId } from './../api/osmApi';
+import util from '../util/osmApiUtils';
 
 const state = {
   updates: [],
@@ -33,7 +34,17 @@ const actions = {
             type: n.osmType,
             version: n.version,
             hasUpdate: false,
+            noteIsResolved: false,
           };
+          if (ownedBusinessPOI.noteId) {
+            // update note status
+            getNotesByOsmId(ownedBusinessPOI.noteId).then((response) => {
+              const noteStatus = util.parseNoteStatus(response);
+              if (noteStatus === 'closed') {
+                ownedBusinessPOI.noteIsResolved = true;
+              }
+            });
+          }
           if (isTemporaryOsmId(ownedBusinessPOI.id)) {
             ownedBusinessPOI.tags = {};
             ownedBusinessPOI.tags.name = n.name;
