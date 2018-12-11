@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { fakeOsmybizApi, osmyBizBackendUrl } from './../config/config';
 import {
-  mockAddOrUpdateUser, mockAddOrUpdateBusinessPOI, mockFetchBusinessPOIs, mockUnsubscribe,
-  mockDeleteBusinessPOI,
+  mockAddOrUpdateUser,
+  mockAddOrUpdateBusinessPOI,
+  mockFetchBusinessPOIs,
+  mockUnsubscribe,
 } from './osmybizApiMock';
+import { setError } from '../store/error';
 
 const baseRoute = osmyBizBackendUrl;
 
@@ -17,10 +20,10 @@ export function addOrUpdateUser(userId, displayName) {
     return mockAddOrUpdateUser(userId, displayName);
   }
   const route = `${baseRoute}user`;
-  return axios.post(route, {
-    osmId: userId,
-    username: displayName,
-  });
+  return axios.post(route, { osmId: userId, username: displayName })
+    .catch((err) => {
+      setError(`OSMyBiz: ${err}`);
+    });
 }
 
 export function fetchBusinessPOIs(userId) {
@@ -28,7 +31,10 @@ export function fetchBusinessPOIs(userId) {
     return mockFetchBusinessPOIs(userId);
   }
   const route = `${baseRoute}user/${userId}/business-poi`;
-  return axios.get(route).then(response => response.data);
+  return axios.get(route).then(response => response.data)
+    .catch((err) => {
+      setError(`OSMyBiz: ${err}`);
+    });
 }
 
 export function addOrUpdateBusinessPOI(userId, businessPOI) {
@@ -36,7 +42,10 @@ export function addOrUpdateBusinessPOI(userId, businessPOI) {
     return mockAddOrUpdateBusinessPOI(userId, businessPOI);
   }
   const route = `${baseRoute}user/${userId}/business-poi`;
-  return axios.post(route, businessPOI);
+  return axios.post(route, businessPOI)
+    .catch((err) => {
+      setError(`OSMyBiz: ${err}`);
+    });
 }
 
 export function getTemporaryOsmId(userId) {
@@ -45,7 +54,11 @@ export function getTemporaryOsmId(userId) {
   //    return mockAddOrUpdateNote(userId);
   // }
   const route = `${baseRoute}user/${userId}/temporary-osm-id`;
-  return axios.get(route).then(response => response.data);
+  return axios.get(route)
+    .then(response => response.data)
+    .catch((err) => {
+      setError(`OSMyBiz: ${err}`);
+    });
 }
 
 export function unsubscribe(userId, osmId) {
@@ -53,13 +66,9 @@ export function unsubscribe(userId, osmId) {
     return mockUnsubscribe(userId, osmId);
   }
   const route = `${baseRoute}user/${userId}/business-poi/${osmId}/unsubscribe`;
-  return axios.post(route);
+  return axios.post(route)
+    .catch((err) => {
+      setError(`OSMyBiz: ${err}`);
+    });
 }
 
-export function deleteBusinessPOI(userId, osmId) {
-  if (fakeOsmybizApi) {
-    return mockDeleteBusinessPOI(userId, osmId);
-  }
-  const route = `${baseRoute}user/${userId}/business-poi/${osmId}/delete`;
-  return axios.post(route);
-}
