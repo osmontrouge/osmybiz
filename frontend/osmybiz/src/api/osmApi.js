@@ -247,3 +247,11 @@ export function getNotes(lat, lng) {
       return [];
     });
 }
+
+export function getNotesByOsmId(noteId) {
+  return axios.get(`${osmUrl}${osmApiLevel}notes/${noteId}`)
+    .catch(() => {
+      setError('error.osm.getNotesByOsmId');
+    });
+}
+

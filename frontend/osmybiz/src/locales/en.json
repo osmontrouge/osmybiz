@@ -163,6 +163,7 @@
     "title": "Error",
     "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",
     "osm": {
+      "getNotesByOsmId": "Unable to get note from OSM.org",
       "login": "User could not be logged in.",
       "loadUser": "User could not be loaded.",
       "postNode": "Business could not be uploaded.",
