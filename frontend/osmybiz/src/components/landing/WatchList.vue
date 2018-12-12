@@ -11,7 +11,16 @@
         <span v-if="ownedBusinessPOI.tags.name"> {{ownedBusinessPOI.tags.name}} </span>
         <span v-else> Name not found </span>
       </div>
-      <div class="watchlist-remove" @click="removeMarker(ownedBusinessPOI)">
+
+      <div class="watchlist-icons">
+        <img :src="noteIcon(ownedBusinessPOI.noteIsResolved)">
+      </div>
+
+      <div class="watchlist-icons">
+        <img style="width:14px" :src="updateIcon(ownedBusinessPOI.hasUpdate)">
+      </div>
+
+      <div class="watchlist-icons" @click="removeMarker(ownedBusinessPOI)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -24,8 +33,20 @@
   import { latLng } from 'leaflet';
   import deepEqual from 'deep-equal';
   import Icon from 'vue-awesome/components/Icon.vue';
+  import unresolvedNote from '../../assets/note.png';
+  import resolvedNote from '../../assets/note-green.png';
+  import notUpdatedIcon from '../../assets/update.png';
+  import updatedIcon from '../../assets/update-green.png';
 
   export default {
+    data() {
+      return {
+        unresolvedNote,
+        resolvedNote,
+        notUpdatedIcon,
+        updatedIcon,
+      };
+    },
     methods: {
       ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
       ...mapActions(['removeFromWatchList']),
@@ -48,6 +69,12 @@
       },
       removeMarker(ownedBusinessPOI) {
         this.removeFromWatchList({ ownedBusinessPOI, user: this.user });
+      },
+      noteIcon(noteIsResolved) {
+        return noteIsResolved ? resolvedNote : unresolvedNote;
+      },
+      updateIcon(hasUpdate) {
+        return hasUpdate ? updatedIcon : notUpdatedIcon;
       },
     },
     computed: {
@@ -119,11 +146,16 @@
     font-weight: bold;
   }
 
-  .watchlist-remove {
+  .watchlist img {
+    width: 12px;
+    height: 16px;
+  }
+
+  .watchlist-icons {
     padding-left: 7px;
   }
 
-  .watchlist-remove:hover {
+  .watchlist-icons:hover {
     cursor: pointer;
     opacity: 0.5;
   }
