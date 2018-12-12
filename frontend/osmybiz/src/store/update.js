@@ -34,35 +34,42 @@ const actions = {
             hasUpdate: false,
             noteIsResolved: false,
           };
-          if (ownedBusinessPOI.noteId) {
-            // update note status
-            getNotesByOsmId(ownedBusinessPOI.noteId).then((response) => {
-              const noteStatus = util.parseNoteStatus(response);
-              if (noteStatus === 'closed') {
-                ownedBusinessPOI.noteIsResolved = true;
-              }
-            });
-          }
-          if (isNoteWithoutOsmElement(ownedBusinessPOI.id)) {
-            ownedBusinessPOI.tags = {};
-            ownedBusinessPOI.tags.name = n.name;
-            commit('pushBusinessPOI', ownedBusinessPOI);
-          } else {
-            getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
-              if (_.isObject(osmBusinessPOI)) {
-                ownedBusinessPOI.tags = osmBusinessPOI.tags;
-                if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
-                  ownedBusinessPOI.hasUpdate = true;
+          const promise = new Promise((resolve) => {
+            if (ownedBusinessPOI.noteId) {
+              // update note status
+              getNotesByOsmId(ownedBusinessPOI.noteId).then((response) => {
+                const noteStatus = util.parseNoteStatus(response);
+                if (noteStatus === 'closed') {
+                  ownedBusinessPOI.noteIsResolved = true;
                 }
-                commit('pushBusinessPOI', ownedBusinessPOI);
-              } else {
-                // TODO handle the case when osm element has been deleted
-              }
-            });
-          }
+                resolve(ownedBusinessPOI);
+              });
+            } else {
+              resolve(ownedBusinessPOI);
+            }
+          });
+
+          promise.then(() => {
+            if (isNoteWithoutOsmElement(ownedBusinessPOI.id)) {
+              ownedBusinessPOI.tags = {};
+              ownedBusinessPOI.tags.name = n.name;
+              commit('pushBusinessPOI', ownedBusinessPOI);
+            } else {
+              getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
+                if (_.isObject(osmBusinessPOI)) {
+                  ownedBusinessPOI.tags = osmBusinessPOI.tags;
+                  if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
+                    ownedBusinessPOI.hasUpdate = true;
+                  }
+                  commit('pushBusinessPOI', ownedBusinessPOI);
+                } else {
+                  // TODO handle the case when osm element has been deleted
+                }
+              });
+            }
+          });
         });
       });
-    }, () => {
     });
   },
   /* eslint-disable-next-line */
