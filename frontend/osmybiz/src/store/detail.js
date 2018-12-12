@@ -197,7 +197,7 @@ const actions = {
         osmId: parseInt(ps.id, 10),
         osmType: 'node',
         receiveUpdates: true,
-        version: parseInt(ps.version, 10),
+        version: parseInt(0, 10),
       });
     });
   },

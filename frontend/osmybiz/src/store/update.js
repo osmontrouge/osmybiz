@@ -13,7 +13,7 @@ function hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI) {
   return (osmBusinessPOI.version > ownedBusinessPOI.version);
 }
 
-function isTemporaryOsmId(osmId) {
+function isNoteWithoutOsmElement(osmId) {
   return (osmId < 0);
 }
 
@@ -22,7 +22,6 @@ const actions = {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchBusinessPOIs(user.id).then((ns) => {
         commit('setBusinessPOIs', []);
-
         ns.filter(n => n.receiveUpdates).forEach((n) => {
           const ownedBusinessPOI = {
             id: n.osmId,
@@ -44,20 +43,20 @@ const actions = {
               }
             });
           }
-          if (isTemporaryOsmId(ownedBusinessPOI.id)) {
+          if (isNoteWithoutOsmElement(ownedBusinessPOI.id)) {
             ownedBusinessPOI.tags = {};
             ownedBusinessPOI.tags.name = n.name;
             commit('pushBusinessPOI', ownedBusinessPOI);
           } else {
             getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
               if (_.isObject(osmBusinessPOI)) {
+                ownedBusinessPOI.tags = osmBusinessPOI.tags;
                 if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
                   ownedBusinessPOI.hasUpdate = true;
                 }
-                ownedBusinessPOI.tags = osmBusinessPOI.tags;
                 commit('pushBusinessPOI', ownedBusinessPOI);
               } else {
-                // TODO when the element has been deleted
+                // TODO handle the case when osm element has been deleted
               }
             });
           }
