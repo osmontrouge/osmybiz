@@ -17,19 +17,6 @@ const actions = actionsInjector({
         id: 1,
       });
     },
-    getNode() {
-      return Promise.resolve({
-        lat: '1',
-        lon: '2',
-        version: '1',
-        id: '1',
-      });
-    },
-  },
-  './../api/osmybizApi': {
-    addOrUpdateNode() {
-      return Promise.resolve();
-    },
   },
 });
 
@@ -65,9 +52,16 @@ const testAction = (action, payload, state, expectedMutations, done) => {
   }
 };
 
+const mockData = {
+  category: {
+    value: ' ',
+  },
+};
+
 describe('detail store', () => {
   describe('actions', () => {
     it('should post note', (done) => {
+      localStorage.setItem('details', JSON.stringify(mockData));
       testAction(
         actions.default.actions.postNote,
         { user: {}, osmId: 0 },
@@ -89,11 +83,19 @@ describe('detail store', () => {
             description: '',
             note: '',
           },
+          address: {
+            street: '',
+            housenumber: '',
+            postalcode: '',
+            place: '',
+            city: '',
+            country: '',
+          },
         }, [{
           type: 'setSuccessMessage',
           payload: {
-            address: 'Oberseestrasse 10, 8640 Rapperswil-Jona, Switzerland',
-            name: 'HSR Hochschule für Technik Rapperswil',
+            address: '',
+            name: '',
             link: 'www.osm.org/note/1',
             isNote: true,
           },

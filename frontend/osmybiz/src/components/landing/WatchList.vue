@@ -2,16 +2,29 @@
   <div class="watchlist-wrapper" v-if="showWatchList">
     <div class="watchlist-title">
       {{ $t('landing.watchlist.title') }}
+      <img class="info"
+             @mouseenter="showPopup($t('landing.watchlist.info'))"
+             @mouseleave="hidePopup()"
+             src="../../assets/info_black.png">
     </div>
-    <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs" @click="panToMarker(ownedBusinessPOI)">
+    <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs">
       <div class="watchlist-index">
         {{ index + 1 }}
       </div>
-      <div class="watchlist-name">
+      <div class="watchlist-name" @click="panToMarker(ownedBusinessPOI)">
         <span v-if="ownedBusinessPOI.tags.name"> {{ownedBusinessPOI.tags.name}} </span>
         <span v-else> Name not found </span>
       </div>
-      <div class="watchlist-remove" @click="removeMarker(ownedBusinessPOI)">
+
+      <div class="watchlist-icons" :title="noteStatus(ownedBusinessPOI)">
+        <img :src="noteIcon(ownedBusinessPOI.noteIsResolved)">
+      </div>
+
+      <div class="watchlist-icons" :title="updateStatus(ownedBusinessPOI)">
+        <img style="width:14px" :src="updateIcon(ownedBusinessPOI.hasUpdate)">
+      </div>
+
+      <div class="watchlist-icons" :title="$t('landing.watchlist.icon.close')" @click="removeMarker(ownedBusinessPOI)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -24,10 +37,28 @@
   import { latLng } from 'leaflet';
   import deepEqual from 'deep-equal';
   import Icon from 'vue-awesome/components/Icon.vue';
+  import unresolvedNote from '../../assets/note.png';
+  import resolvedNote from '../../assets/note-green.png';
+  import notUpdatedIcon from '../../assets/update.png';
+  import updatedIcon from '../../assets/update-green.png';
 
   export default {
+    data() {
+      return {
+        unresolvedNote,
+        resolvedNote,
+        notUpdatedIcon,
+        updatedIcon,
+      };
+    },
     methods: {
-      ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
+      ...mapMutations([
+        'setMapCenter',
+        'setMapZoom',
+        'showPopup',
+        'hidePopup',
+        'setMapViewToCoordsZoom',
+      ]),
       ...mapActions(['removeFromWatchList']),
       panToMarker(ownedBusinessPOI) {
         const coords = latLng(ownedBusinessPOI.lat, ownedBusinessPOI.lng);
@@ -48,6 +79,27 @@
       },
       removeMarker(ownedBusinessPOI) {
         this.removeFromWatchList({ ownedBusinessPOI, user: this.user });
+      },
+      noteIcon(noteIsResolved) {
+        return noteIsResolved ? resolvedNote : unresolvedNote;
+      },
+      updateIcon(hasUpdate) {
+        return hasUpdate ? updatedIcon : notUpdatedIcon;
+      },
+      noteStatus(ownedBusinessPOI) {
+        if (ownedBusinessPOI.noteIsResolved) {
+          return this.$t('landing.watchlist.icon.noteResolved');
+        }
+        if (ownedBusinessPOI.noteId === null) {
+          return this.$t('landing.watchlist.icon.noteNull');
+        }
+        return this.$t('landing.watchlist.icon.notePending');
+      },
+      updateStatus(ownedBusinessPOI) {
+        if (ownedBusinessPOI.hasUpdate) {
+          return this.$t('landing.watchlist.icon.updateDetected');
+        }
+        return this.$t('landing.watchlist.icon.updatePending');
       },
     },
     computed: {
@@ -88,6 +140,11 @@
     cursor: pointer;
   }
 
+  .watchlist-name span {
+    word-break: break-word;
+  }
+
+
   .watchlist-wrapper {
     position: fixed;
     z-index: 99;
@@ -119,11 +176,16 @@
     font-weight: bold;
   }
 
-  .watchlist-remove {
+  .watchlist img {
+    width: 12px;
+    height: 16px;
+  }
+
+  .watchlist-icons {
     padding-left: 7px;
   }
 
-  .watchlist-remove:hover {
+  .watchlist-icons:hover {
     cursor: pointer;
     opacity: 0.5;
   }

@@ -122,9 +122,10 @@ function uploadChangeset(node, changesetId) {
       if (err) {
         setError('error.osm.load');
         resolve(null);
+      } else {
+        closeChangeset(changesetId);
+        resolve(getBusinessPOI('node', util.extractId(response)));
       }
-      closeChangeset(changesetId);
-      resolve(getBusinessPOI('node', util.extractId(response)));
     });
   });
 }
@@ -162,20 +163,21 @@ export function postNote(note) {
     auth.xhr({
       method: 'POST',
       path: createNotePath,
-      content: `lat=${note.lat}&lon=${note.lon}&text=${note.text}`,
+      content: `lat=${note.lat}&lon=${note.lon}&text=${encodeURIComponent(note.text)}`,
     }, (err, response) => {
       if (err) {
         setError('error.osm.postNote');
         resolve(null);
+      } else {
+        const data = JSON.parse(response);
+        resolve({
+          html: data.properties.comments[0].html,
+          text: data.properties.comments[0].text,
+          id: data.properties.id,
+          link: `${osmUrl}/note/${data.properties.id}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+          status: data.properties.status,
+        });
       }
-      const data = JSON.parse(response);
-      resolve({
-        html: data.properties.comments[0].html,
-        text: data.properties.comments[0].text,
-        id: data.properties.id,
-        link: `${osmUrl}/note/${data.properties.id}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
-        status: data.properties.status,
-      });
     });
   });
 }
@@ -185,21 +187,22 @@ export function reopenClosedNoteAndAddComment(note, noteId) {
     auth.xhr({
       method: 'POST',
       path: `${notePath}${noteId}/reopen.json`,
-      content: `text=${note.text}`,
+      content: `text=${encodeURIComponent(note.text)}`,
     }, (err, response) => {
       if (err) {
         setError('error.osm.reopenClosedNoteAndAddComment');
         resolve(null);
+      } else {
+        const data = JSON.parse(response);
+        const mostRecentCommentIndex = data.properties.comments.length - 1;
+        resolve({
+          html: data.properties.comments[mostRecentCommentIndex].html,
+          text: data.properties.comments[mostRecentCommentIndex].text,
+          id: data.properties.id,
+          link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+          status: data.properties.status,
+        });
       }
-      const data = JSON.parse(response);
-      const mostRecentCommentIndex = data.properties.comments.length - 1;
-      resolve({
-        html: data.properties.comments[mostRecentCommentIndex].html,
-        text: data.properties.comments[mostRecentCommentIndex].text,
-        id: data.properties.id,
-        link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
-        status: data.properties.status,
-      });
     });
   });
 }
@@ -209,7 +212,7 @@ export function postNoteAsComment(note, noteId) {
     auth.xhr({
       method: 'POST',
       path: `${notePath}${noteId}/comment.json`,
-      content: `text=${note.text}`,
+      content: `text=${encodeURIComponent(note.text)}`,
     }, (err, response) => {
       const noteIsClosed = 409;
       if (err) {
@@ -219,16 +222,17 @@ export function postNoteAsComment(note, noteId) {
           setError('error.osm.postNoteAsComment');
           resolve(null);
         }
+      } else {
+        const data = JSON.parse(response);
+        const mostRecentCommentIndex = data.properties.comments.length - 1;
+        resolve({
+          html: data.properties.comments[mostRecentCommentIndex].html,
+          text: data.properties.comments[mostRecentCommentIndex].text,
+          id: data.properties.id,
+          link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+          status: data.properties.status,
+        });
       }
-      const data = JSON.parse(response);
-      const mostRecentCommentIndex = data.properties.comments.length - 1;
-      resolve({
-        html: data.properties.comments[mostRecentCommentIndex].html,
-        text: data.properties.comments[mostRecentCommentIndex].text,
-        id: data.properties.id,
-        link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
-        status: data.properties.status,
-      });
     });
   });
 }
@@ -247,3 +251,11 @@ export function getNotes(lat, lng) {
       return [];
     });
 }
+
+export function getNotesByOsmId(noteId) {
+  return axios.get(`${osmUrl}${osmApiLevel}notes/${noteId}`)
+    .catch(() => {
+      setError('error.osm.getNotesByOsmId');
+    });
+}
+

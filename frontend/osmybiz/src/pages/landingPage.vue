@@ -10,11 +10,12 @@
     <post-success></post-success>
     <duplicate-warning></duplicate-warning>
     <unsaved-changes-notification></unsaved-changes-notification>
+    <form-popup v-if="isPopup" x-offset="-320"></form-popup>
   </div>
 </template>
 
 <script>
-  import { mapActions, mapMutations } from 'vuex';
+  import { mapActions, mapMutations, mapGetters } from 'vuex';
   import * as _ from 'lodash';
   import TileMap from '../components/landing/TileMap.vue';
   import SearchBar from '../components/landing/SearchBar.vue';
@@ -25,6 +26,7 @@
   import WatchList from '../components/landing/WatchList.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import UnsavedChangesNotification from '../components/landing/UnsavedChangesNotification.vue';
+  import FormPopup from '../components/detail/FormPopup.vue';
 
   function extractToken(url) {
     const tokenRegex = /\?oauth_token=(.*)#\//;
@@ -56,6 +58,11 @@
       ...mapActions(['setToken']),
       ...mapMutations(['setIsDuplicate', 'setShowHelp', 'setShowLoginHelp']),
     },
+    computed: {
+      ...mapGetters([
+        'isPopup',
+      ]),
+    },
     components: {
       LoginHelpText,
       SearchBar,
@@ -66,6 +73,7 @@
       DuplicateWarning,
       UnsavedChangesNotification,
       WatchList,
+      FormPopup,
     },
   };
 

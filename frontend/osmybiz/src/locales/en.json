@@ -22,7 +22,16 @@
       "muteHelp": "Disable notifications"
     },
     "watchlist": {
-      "title": "Watch List"
+      "title": "Watch List",
+      "info": "This shows the Business POIs that you are currently subscribed to.",
+      "icon": {
+        "close": "Remove from Watch List",
+        "noteResolved": "Note has been resolved",
+        "notePending": "Note is pending",
+        "noteNull": "No note",
+        "updatePending": "No update on OSM.org",
+        "updateDetected": "Update detected on OSM.org"
+      }
     },
     "help": {
       "title": "Help",
@@ -102,7 +111,7 @@
   },
   "infoTexts": {
     "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
-    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
+    "address": "The address is loaded automatically from the point you have chosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
     "name": "Write the name of your business in this field. e.g. Migros",
     "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
     "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
@@ -163,6 +172,7 @@
     "title": "Error",
     "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",
     "osm": {
+      "getNotesByOsmId": "Unable to get note from OSM.org",
       "login": "User could not be logged in.",
       "loadUser": "User could not be loaded.",
       "postNode": "Business could not be uploaded.",
