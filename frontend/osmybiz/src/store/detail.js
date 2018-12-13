@@ -218,6 +218,7 @@ const actions = {
     };
     return postNode(businessPOI).then((newlyCreatedNode) => {
       const isNote = false;
+      const nodeVersion = '0';
       const nodeSuccessMessage = constructSuccessMessage(newlyCreatedNode, isNote);
       commit('setSuccessMessage', nodeSuccessMessage);
       return addOrUpdateBusinessPOI(user.id, {
@@ -228,7 +229,7 @@ const actions = {
         osmId: parseInt(newlyCreatedNode.id, 10),
         osmType: 'node',
         receiveUpdates: true,
-        version: parseInt(newlyCreatedNode.version, 10),
+        version: parseInt(nodeVersion, 10),
       });
     });
   },

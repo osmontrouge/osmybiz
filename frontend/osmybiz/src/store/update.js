@@ -1,16 +1,19 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
-import { addOrUpdateUser, fetchBusinessPOIs, deleteBusinessPOI, unsubscribe } from './../api/osmybizApi';
-import { getBusinessPOI } from './../api/osmApi';
-import util from './../util/updateUtil';
+import { addOrUpdateUser, fetchBusinessPOIs, unsubscribe } from './../api/osmybizApi';
+import { getBusinessPOI, getNotesByOsmId } from './../api/osmApi';
+import util from '../util/osmApiUtils';
 
 const state = {
-  updates: [],
   businessPOIs: [],
   showWatchList: false,
 };
 
-function isTemporaryOsmId(osmId) {
+function hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI) {
+  return (osmBusinessPOI.version > ownedBusinessPOI.version);
+}
+
+function isNoteWithoutOsmElement(osmId) {
   return (osmId < 0);
 }
 
@@ -19,7 +22,6 @@ const actions = {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchBusinessPOIs(user.id).then((ns) => {
         commit('setBusinessPOIs', []);
-
         ns.filter(n => n.receiveUpdates).forEach((n) => {
           const ownedBusinessPOI = {
             id: n.osmId,
@@ -28,39 +30,52 @@ const actions = {
             mine: true,
             noteId: n.noteId,
             type: n.osmType,
+            version: n.version,
+            hasUpdate: false,
+            noteIsResolved: false,
           };
-          if (isTemporaryOsmId(n.osmId)) {
-            ownedBusinessPOI.tags = {};
-            ownedBusinessPOI.tags.name = n.name;
-            commit('pushBusinessPOI', ownedBusinessPOI);
-          } else {
-            getBusinessPOI(n.osmType, n.osmId).then((businessPOI) => {
-              const update = util.getUpdate(n, businessPOI);
-              if (_.isObject(update)) {
-                commit('pushUpdate', update);
-              }
+          const promise = new Promise((resolve) => {
+            if (ownedBusinessPOI.noteId) {
+              // update note status
+              getNotesByOsmId(ownedBusinessPOI.noteId).then((response) => {
+                const noteStatus = util.parseNoteStatus(response);
+                if (noteStatus === 'closed') {
+                  ownedBusinessPOI.noteIsResolved = true;
+                }
+                resolve(ownedBusinessPOI);
+              });
+            } else {
+              resolve(ownedBusinessPOI);
+            }
+          });
 
-              if (_.isObject(businessPOI)) {
-                ownedBusinessPOI.tags = businessPOI.tags;
-                commit('pushBusinessPOI', ownedBusinessPOI);
-              }
-            });
-          }
+          promise.then(() => {
+            if (isNoteWithoutOsmElement(ownedBusinessPOI.id)) {
+              ownedBusinessPOI.tags = {};
+              ownedBusinessPOI.tags.name = n.name;
+              commit('pushBusinessPOI', ownedBusinessPOI);
+            } else {
+              getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
+                if (_.isObject(osmBusinessPOI)) {
+                  ownedBusinessPOI.tags = osmBusinessPOI.tags;
+                  if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
+                    ownedBusinessPOI.hasUpdate = true;
+                  }
+                  commit('pushBusinessPOI', ownedBusinessPOI);
+                } else {
+                  // TODO handle the case when osm element has been deleted
+                }
+              });
+            }
+          });
         });
       });
-    }, () => {
     });
   },
+  /* eslint-disable-next-line */
   removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
     unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
-      commit('removeUpdate', ownedBusinessPOI);
-    });
-    this.dispatch('loadUpdates', user);
-  },
-
-  deleteOwnedBusinessPOI({ commit }, { ownedBusinessPOI, user }) {
-    deleteBusinessPOI(user.id, ownedBusinessPOI.id).then(() => {
-      commit('removeBusinessPOI', ownedBusinessPOI);
+      this.dispatch('loadUpdates', user);
     });
   },
 };
@@ -69,28 +84,8 @@ const mutations = {
   setBusinessPOIs(s, businessPOIs) {
     s.businessPOIs = businessPOIs;
   },
-  pushUpdate(s, update) {
-    s.updates.push(update);
-  },
-  removeUpdate(s, update) {
-    const i = _.findIndex(s.updates, u => u.id === update.id);
-
-    if (i >= 0) {
-      s.updates.splice(i, 1);
-    }
-  },
-  removeBusinessPOI(s, businessPOI) {
-    const i = _.findIndex(s.businessPOIs, u => u.id === businessPOI.id);
-
-    if (i >= 0) {
-      s.businessPOIs.splice(i, 1);
-    }
-  },
   toggleWatchList(s) {
     s.showWatchList = !s.showWatchList;
-    if (s.showWatchList && s.showUpdates) {
-      s.showUpdates = false;
-    }
   },
   pushBusinessPOI(s, businessPOI) {
     s.businessPOIs.push(businessPOI);
@@ -98,14 +93,8 @@ const mutations = {
 };
 
 const getters = {
-  updates(s) {
-    return s.updates;
-  },
   showWatchList(s) {
     return s.showWatchList;
-  },
-  updateCount(s) {
-    return s.updates.length;
   },
   ownedBusinessPOIs(s) {
     return s.businessPOIs;

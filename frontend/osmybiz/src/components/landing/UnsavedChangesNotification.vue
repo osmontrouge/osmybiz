@@ -41,6 +41,7 @@
     methods: {
       ...mapMutations([
         'setDisplayUnsavedChangesNotification',
+        'setIsEditingUnsavedChanges',
         'hideUnsavedChangesNotification',
         'restoreDetailState',
       ]),

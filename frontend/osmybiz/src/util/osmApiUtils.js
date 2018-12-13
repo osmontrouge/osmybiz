@@ -194,6 +194,11 @@ function parseTags(businessPOIJson) {
   return result;
 }
 
+function parseNoteStatus(noteXml) {
+  /* eslint-disable-next-line */
+  return JSON.parse(xml2json(noteXml.data, { compact: true })).osm.note.status._text;
+}
+
 function parseBusinessPOI(businessPOIXml, osmType) {
   let businessPOIJson;
   if (typeof businessPOIXml === 'string') {
@@ -215,7 +220,7 @@ function parseBusinessPOI(businessPOIXml, osmType) {
     lat: businessPOIAttributes.lat,
     lon: businessPOIAttributes.lon,
     // KEITH
-    link: `${osmUrl}/node/${businessPOIAttributes.id}/#map=19/${businessPOIAttributes.lat}/${businessPOIAttributes.lon}&layers=D`,
+    link: `${osmUrl}/${osmType}/${businessPOIAttributes.id}/#map=19/${businessPOIAttributes.lat}/${businessPOIAttributes.lon}&layers=D`,
     address,
     details,
     version: businessPOIAttributes.version,
@@ -237,4 +242,5 @@ export default {
   constructUpload,
   parseBusinessPOI,
   extractId,
+  parseNoteStatus,
 };
