@@ -17,7 +17,13 @@
         const x = e.clientX;
         const y = e.clientY;
         popup.style.top = `${y + 10 + window.scrollY}px`;
-        popup.style.left = `${x + 10}px`;
+        if (this.xOffset) {
+          popup.style.left = `${x + parseInt(this.xOffset, 10)}px`;
+          // overrides the width property as well
+          popup.style.width = `${(-1 * parseInt(this.xOffset, 10)) - 10}px`;
+        } else {
+          popup.style.left = `${x + 10}px`;
+        }
       };
     },
     computed: {
@@ -25,6 +31,7 @@
         'infoText',
       ]),
     },
+    props: ['xOffset'],
   };
 </script>
 

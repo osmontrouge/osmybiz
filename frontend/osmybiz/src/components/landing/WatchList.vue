@@ -2,6 +2,10 @@
   <div class="watchlist-wrapper" v-if="showWatchList">
     <div class="watchlist-title">
       {{ $t('landing.watchlist.title') }}
+      <img class="info"
+             @mouseenter="showPopup($t('landing.watchlist.info'))"
+             @mouseleave="hidePopup()"
+             src="../../assets/info_black.png">
     </div>
     <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs" @click="panToMarker(ownedBusinessPOI)">
       <div class="watchlist-index">
@@ -12,15 +16,15 @@
         <span v-else> Name not found </span>
       </div>
 
-      <div class="watchlist-icons">
+      <div class="watchlist-icons" :title="noteStatus(ownedBusinessPOI)">
         <img :src="noteIcon(ownedBusinessPOI.noteIsResolved)">
       </div>
 
-      <div class="watchlist-icons">
+      <div class="watchlist-icons" :title="updateStatus(ownedBusinessPOI)">
         <img style="width:14px" :src="updateIcon(ownedBusinessPOI.hasUpdate)">
       </div>
 
-      <div class="watchlist-icons" @click="removeMarker(ownedBusinessPOI)">
+      <div class="watchlist-icons" :title="$t('landing.watchlist.icon.close')" @click="removeMarker(ownedBusinessPOI)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -48,7 +52,13 @@
       };
     },
     methods: {
-      ...mapMutations(['setMapCenter', 'setMapZoom', 'setMapViewToCoordsZoom']),
+      ...mapMutations([
+        'setMapCenter',
+        'setMapZoom',
+        'showPopup',
+        'hidePopup',
+        'setMapViewToCoordsZoom',
+      ]),
       ...mapActions(['removeFromWatchList']),
       panToMarker(ownedBusinessPOI) {
         const coords = latLng(ownedBusinessPOI.lat, ownedBusinessPOI.lng);
@@ -75,6 +85,21 @@
       },
       updateIcon(hasUpdate) {
         return hasUpdate ? updatedIcon : notUpdatedIcon;
+      },
+      noteStatus(ownedBusinessPOI) {
+        if (ownedBusinessPOI.noteIsResolved) {
+          return this.$t('landing.watchlist.icon.noteResolved');
+        }
+        if (ownedBusinessPOI.noteId === null) {
+          return this.$t('landing.watchlist.icon.noteNull');
+        }
+        return this.$t('landing.watchlist.icon.notePending');
+      },
+      updateStatus(ownedBusinessPOI) {
+        if (ownedBusinessPOI.hasUpdate) {
+          return this.$t('landing.watchlist.icon.updateDetected');
+        }
+        return this.$t('landing.watchlist.icon.updatePending');
       },
     },
     computed: {
