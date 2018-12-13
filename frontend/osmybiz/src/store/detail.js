@@ -25,7 +25,7 @@ const initialState = {
       fields: [
         { key: '', name: '', value: '' },
       ],
-      value: 0,
+      value: '',
     },
     name: '',
     opening_hours: '',
@@ -84,7 +84,6 @@ function constructSuccessMessage(response, isNote) {
     link,
     isNote,
   };
-
   return successMessage;
 }
 
@@ -130,12 +129,15 @@ function constructCategoryNote(category, isOwnCategory) {
   let text = '';
   const originalDetails = JSON.parse(localStorage.getItem('details'));
   const originalCategory = originalDetails.category;
+  let categoryFormatted = '';
 
   if (isOwnCategory) {
     text += `${MODIFIED}category: ${category.text}\n`;
   } else {
     let field;
-    const categoryFormatted = category.value.replace('/', ': ');
+    if (category.value.indexOf('/') !== -1) {
+      categoryFormatted = category.value.replace('/', ': ');
+    }
     if (deepEqual(category.value, originalCategory.value)) {
       text += `${categoryFormatted}\n`;
       for (let i = 0; i < category.fields.length; i += 1) {
@@ -272,6 +274,8 @@ const actions = {
             version: 0,
           });
         });
+      }).catch((err) => {
+        console.log(err);
       });
     }
     const note = constructNote(true);
