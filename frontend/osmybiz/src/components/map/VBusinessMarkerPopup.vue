@@ -16,25 +16,28 @@
         {{prettyAddress}}
       </div>
       <div class="popup-options">
-        <div class="popup-option">
+        <div class="popup-option" :title="$t('popups.edit')">
           <div class="popup-clickable" v-if="isLoggedIn" @click="edit">
             <icon name="pen" scale="3"></icon>
           </div>
           <div v-else class="popup-not-clickable">
-            <icon name="user-edit" scale="3"></icon>
+            <icon name="pen" scale="3"></icon>
           </div>
         </div>
         <div class="popup-option">
           <a class="popup-clickable" v-if="this.business.noteId" :href="linkToOsmNote" target="_blank">
-            <icon name="user-edit" scale="3"></icon>
+            <img style="width: 40px" :src="noteGreen" :title="$t('popups.noteLink')">
           </a>
           <div class="popup-not-clickable" v-else>
-            <icon name="user-edit" scale="3"></icon>
+            <img style="width: 40px" :src="noteGrey" :title="$t('landing.watchlist.icon.noteNull')">
           </div>
         </div>
         <div class="popup-option">
-          <a class="popup-clickable" :href="linkToOsmElement" target="_blank">
-            <icon name="user-edit" scale="3"></icon>
+          <a class="popup-clickable" v-if="this.business.id > 0" :href="linkToOsmElement" target="_blank">
+            <img :src="updatedIcon" :title="$t('popups.mapLink')">
+          </a>
+          <a class="popup-not-clickable" v-else target="_blank">
+            <img :src="notUpdatedIcon" :title="$t('popups.noElement')">
           </a>
         </div>
       </div>
@@ -54,6 +57,10 @@
   import { routes } from '../../router';
   import { createNoteFromBusinessPOI, getBizCategory } from '../../util/overPassNodeUtils';
   import { osmUrl } from '../../config/config';
+  import noteGrey from '../../assets/note.png';
+  import noteGreen from '../../assets/note-green.png';
+  import notUpdatedIcon from '../../assets/update.png';
+  import updatedIcon from '../../assets/update-green.png';
 
   const bizIcon = require('../../assets/biz-marker.png');
   const highlightIcon = require('../../assets/highlighted-marker.png');
@@ -91,6 +98,10 @@
         draggable: false,
         autoPanPadding: L.point(100, 280),
         osmUrl,
+        noteGrey,
+        noteGreen,
+        notUpdatedIcon,
+        updatedIcon,
       };
     },
     computed: {
@@ -209,6 +220,11 @@
     margin: 15px;
   }
 
+  .popup-option img {
+    height: 48px;
+    width: 48px;
+  }
+
   .popup-clickable {
     color: $primary-color;
   }
@@ -219,5 +235,9 @@
 
   .popup-clickable:hover {
     cursor: pointer;
+  }
+
+  .popup-not-clickable:hover {
+    cursor: not-allowed;
   }
 </style>
