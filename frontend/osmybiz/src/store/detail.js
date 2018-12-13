@@ -90,14 +90,14 @@ function constructSuccessMessage(response, isNote) {
 function parseTagToString(tag, value, initialValue, additionalText) {
   if (deepEqual(value, initialValue)) {
     if (value) {
-      return `${additionalText}${tag}: ${value}\n`;
+      return `${additionalText}${tag} = ${value}\n`;
     }
     return '';
   }
   if (value) {
-    return `${MODIFIED}${additionalText}${tag}: ${value}\n`;
+    return `${MODIFIED}${additionalText}${tag} = ${value}\n`;
   }
-  return `${REMOVED}${additionalText}${tag}: ${initialValue}\n`;
+  return `${REMOVED}${additionalText}${tag} = ${initialValue}\n`;
 }
 
 function insertLineBreak(isNoteAsComment) {
@@ -136,7 +136,7 @@ function constructCategoryNote(category, isOwnCategory) {
   } else {
     let field;
     if (category.value.indexOf('/') !== -1) {
-      categoryFormatted = category.value.replace('/', ': ');
+      categoryFormatted = category.value.replace('/', ' = ');
     }
     if (deepEqual(category.value, originalCategory.value)) {
       text += `${categoryFormatted}\n`;
@@ -150,7 +150,7 @@ function constructCategoryNote(category, isOwnCategory) {
       for (let i = 0; i < category.fields.length; i += 1) {
         field = category.fields[i];
         if (field.value) {
-          text += `${MODIFIED}${field.key}: ${field.value}\n`;
+          text += `${MODIFIED}${field.key} = ${field.value}\n`;
         }
       }
     }
