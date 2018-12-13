@@ -216,18 +216,19 @@ const actions = {
       details: state.details,
       address: state.address,
     };
-    return postNode(businessPOI).then((ps) => {
-      const nodeSuccessMessage = constructSuccessMessage(ps, false);
+    return postNode(businessPOI).then((newlyCreatedNode) => {
+      const isNote = false;
+      const nodeSuccessMessage = constructSuccessMessage(newlyCreatedNode, isNote);
       commit('setSuccessMessage', nodeSuccessMessage);
       return addOrUpdateBusinessPOI(user.id, {
-        lat: parseFloat(ps.lat),
-        lng: parseFloat(ps.lon),
-        name: ps.details.name,
+        lat: parseFloat(newlyCreatedNode.lat),
+        lng: parseFloat(newlyCreatedNode.lon),
+        name: newlyCreatedNode.details.name,
         noteId: null,
-        osmId: parseInt(ps.id, 10),
+        osmId: parseInt(newlyCreatedNode.id, 10),
         osmType: 'node',
         receiveUpdates: true,
-        version: parseInt(ps.version, 10),
+        version: parseInt(newlyCreatedNode.version, 10),
       });
     });
   },
@@ -236,8 +237,9 @@ const actions = {
     const { name } = state.details;
     if (!noteId) {
       const note = constructNote(false);
-      return postNote(note).then((ps) => {
-        const noteSuccessMessage = constructSuccessMessage(ps, true);
+      return postNote(note).then((noteThatWasSent) => {
+        const isNote = true;
+        const noteSuccessMessage = constructSuccessMessage(noteThatWasSent, isNote);
         commit('setSuccessMessage', noteSuccessMessage);
         if (osmId) {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
@@ -252,7 +254,7 @@ const actions = {
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
                 name,
-                noteId: parseInt(ps.id, 10),
+                noteId: parseInt(noteThatWasSent.id, 10),
                 osmId: parseInt(businessPOI.id, 10),
                 osmType,
                 receiveUpdates: true,
@@ -267,7 +269,7 @@ const actions = {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
             name,
-            noteId: parseInt(ps.id, 10),
+            noteId: parseInt(noteThatWasSent.id, 10),
             osmId: temporaryOsmId,
             osmType,
             receiveUpdates: true,
@@ -279,15 +281,16 @@ const actions = {
       });
     }
     const note = constructNote(true);
-    return postNoteAsComment(note, noteId).then((ps) => {
-      const noteSuccessMessage = constructSuccessMessage(ps, true);
+    return postNoteAsComment(note, noteId).then((noteThatWasSent) => {
+      const isNote = true;
+      const noteSuccessMessage = constructSuccessMessage(noteThatWasSent, isNote);
       commit('setSuccessMessage', noteSuccessMessage);
       if (state.osmType === 'note') {
         return addOrUpdateBusinessPOI(user.id, {
           lat: parseFloat(state.lat),
           lng: parseFloat(state.lon),
           name,
-          noteId: parseInt(ps.id, 10),
+          noteId: parseInt(noteThatWasSent.id, 10),
           osmId: state.osmId,
           osmType: state.osmType,
           receiveUpdates: true,
@@ -304,7 +307,7 @@ const actions = {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
             name,
-            noteId: ps.id,
+            noteId: noteThatWasSent.id,
             osmId: parseInt(businessPOI.id, 10),
             osmType,
             receiveUpdates: true,
@@ -315,9 +318,9 @@ const actions = {
     });
   },
   getAddress({ commit }, position) {
-    reverseQuery(position).then((ps) => {
-      commit('setAddress', ps);
-      localStorage.setItem('address', JSON.stringify(ps));
+    reverseQuery(position).then((address) => {
+      commit('setAddress', address);
+      localStorage.setItem('address', JSON.stringify(address));
     });
   },
 };
