@@ -4,10 +4,7 @@ import deepEqual from 'deep-equal';
 import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
 import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
-import {
-  osmCreateNodeResponseToSuccessMessageParser,
-  osmNoteResponseToSuccessMessageParser,
-} from './userdialog';
+import { MODIFIED, REMOVED } from '../config/config';
 
 const initialState = {
   // detailPage
@@ -28,7 +25,7 @@ const initialState = {
       fields: [
         { key: '', name: '', value: '' },
       ],
-      value: 0,
+      value: '',
     },
     name: '',
     opening_hours: '',
@@ -52,71 +49,125 @@ const initialState = {
 
 const state = JSON.parse(JSON.stringify(initialState));
 
-function constructNote() {
-  let text = '#OSMyBiz \n \n';
+function getPrettifiedAddress() {
+  const {
+    street,
+    housenumber,
+    place,
+    postcode,
+    city,
+    country,
+  } = state.address;
 
-  if (state.address.length !== 0) {
-    let address = '';
-    if (state.address.street) {
-      address += `${state.address.street} `;
-      if (state.address.housenumber) {
-        address += `${state.address.housenumber}, `;
-      }
-    }
-    if (state.address.place) {
-      address += `${state.address.place}, `;
-    }
-    if (state.address.postcode) {
-      address += `${state.address.postcode} `;
-    }
-    if (state.address.city) {
-      address += `${state.address.city}, `;
-    }
-    if (state.address.country) {
-      address += state.address.country;
-    }
-    text += `Address: ${address}\n`;
+  let prettifiedAddress = '';
+  if (street) {
+    prettifiedAddress += street;
+    prettifiedAddress += housenumber ? ` ${housenumber},` : ',';
   }
-  if (state.details.category.text.length !== 0) {
-    if (state.isOwnCategory) {
-      text += `Category: ${state.details.category.text}\n`;
+  prettifiedAddress += place ? ` ${place},` : '';
+  prettifiedAddress += postcode ? ` ${postcode}` : '';
+  prettifiedAddress += city ? ` ${city}` : '';
+  prettifiedAddress += country ? ` ${country}` : '';
+
+  return prettifiedAddress;
+}
+
+function constructSuccessMessage(response, isNote) {
+  const {
+    link,
+  } = response;
+  const address = getPrettifiedAddress();
+  const { name } = state.details;
+  const successMessage = {
+    address,
+    name,
+    link,
+    isNote,
+  };
+  return successMessage;
+}
+
+function parseTagToString(tag, value, initialValue, additionalText) {
+  if (deepEqual(value, initialValue)) {
+    if (value) {
+      return `${additionalText}${tag}: ${value}\n`;
+    }
+    return '';
+  }
+  if (value) {
+    return `${MODIFIED}${additionalText}${tag}: ${value}\n`;
+  }
+  return `${REMOVED}${additionalText}${tag}: ${initialValue}\n`;
+}
+
+function insertLineBreak(isNoteAsComment) {
+  if (!isNoteAsComment) return '\n \n';
+  return '\n';
+}
+
+function constructAddrNote(address) {
+  let text = '';
+  const originalAddress = JSON.parse(localStorage.getItem('address'));
+  Object.keys(address).forEach((key) => {
+    text += parseTagToString(key, address[key], originalAddress[key], 'addr:');
+  });
+  return text;
+}
+
+function constructDetailNote(details) {
+  let text = '';
+  const originalDetails = JSON.parse(localStorage.getItem('details'));
+  Object.keys(details).forEach((key) => {
+    if (key !== 'category') {
+      text += parseTagToString(key, details[key], originalDetails[key], '');
+    }
+  });
+  return text;
+}
+
+function constructCategoryNote(category, isOwnCategory) {
+  let text = '';
+  const originalDetails = JSON.parse(localStorage.getItem('details'));
+  const originalCategory = originalDetails.category;
+  let categoryFormatted = '';
+
+  if (isOwnCategory) {
+    text += `${MODIFIED}category: ${category.text}\n`;
+  } else {
+    let field;
+    if (category.value.indexOf('/') !== -1) {
+      categoryFormatted = category.value.replace('/', ': ');
+    }
+    if (deepEqual(category.value, originalCategory.value)) {
+      text += `${categoryFormatted}\n`;
+      for (let i = 0; i < category.fields.length; i += 1) {
+        // the field here is the additonal tag options that is dependant on the category
+        field = category.fields[i];
+        text += parseTagToString(field.key, field.value, originalCategory.fields[i].value, '');
+      }
     } else {
-      const category = state.details.category.value.split('/');
-      text += `Category: ${category[0]}:${category[1]}\n`;
+      text += `${MODIFIED}${categoryFormatted}\n`;
+      for (let i = 0; i < category.fields.length; i += 1) {
+        field = category.fields[i];
+        if (field.value) {
+          text += `${MODIFIED}${field.key}: ${field.value}\n`;
+        }
+      }
     }
   }
-  if (state.details.name.length !== 0) {
-    text += `Name: ${state.details.name}\n`;
-  }
-  if (state.details.opening_hours.length !== 0) {
-    text += `Opening hours: ${state.details.opening_hours}\n`;
-  }
-  if (state.details.phone.length !== 0) {
-    text += `Phone number: ${state.details.phone}\n`;
-  }
-  if (state.details.email.length !== 0) {
-    text += `Email: ${state.details.email}\n`;
-  }
-  if (state.details.website.length !== 0) {
-    text += `Website: ${state.details.website}\n`;
-  }
-  if (state.details.wheelchair !== 0) {
-    text += `Wheelchair accessible: ${state.details.wheelchair}\n`;
-  }
-  if (state.details.description.length !== 0) {
-    text += `Description: ${state.details.description}\n`;
-  }
-  if (state.details.note.length > 0) {
-    text += `Note: ${state.details.note}\n`;
-  }
+  return text;
+}
 
-  if (!state.isOwnCategory) {
-    state.details.category.fields.forEach((field) => {
-      if (field.value.length !== 0) {
-        text += `${field.label}: ${field.value}\n`;
-      }
-    });
-  }
+function constructNote(isNoteAsComment) {
+  let text = 'This is a comment generated by #OSMyBiz.\n';
+  text += `Modified Tags = '${MODIFIED}', Removed Tags = '${REMOVED}'.\n \n`;
+  const { address, details, details: { category } } = state;
+
+  text += constructAddrNote(address);
+  text += insertLineBreak(isNoteAsComment);
+  text += constructDetailNote(details);
+  text += insertLineBreak(isNoteAsComment);
+  text += constructCategoryNote(category, state.isOwnCategory);
 
   return {
     lat: state.lat,
@@ -165,31 +216,31 @@ const actions = {
       details: state.details,
       address: state.address,
     };
-    return postNode(businessPOI).then((ps) => {
-      const createNodeSuccessMessage = osmCreateNodeResponseToSuccessMessageParser(ps);
-      commit('setSuccessMessage', createNodeSuccessMessage);
+    return postNode(businessPOI).then((newlyCreatedNode) => {
+      const isNote = false;
+      const nodeSuccessMessage = constructSuccessMessage(newlyCreatedNode, isNote);
+      commit('setSuccessMessage', nodeSuccessMessage);
       return addOrUpdateBusinessPOI(user.id, {
-        lat: parseFloat(ps.lat),
-        lng: parseFloat(ps.lon),
-        name: ps.details.name,
+        lat: parseFloat(newlyCreatedNode.lat),
+        lng: parseFloat(newlyCreatedNode.lon),
+        name: newlyCreatedNode.details.name,
         noteId: null,
-        osmId: parseInt(ps.id, 10),
+        osmId: parseInt(newlyCreatedNode.id, 10),
         osmType: 'node',
         receiveUpdates: true,
-        version: parseInt(ps.version, 10),
+        version: parseInt(newlyCreatedNode.version, 10),
       });
     });
   },
   /* eslint-disable-next-line object-curly-newline */
   postNote({ commit }, { user, osmId, noteId, osmType }) {
-    const note = constructNote();
     const { name } = state.details;
-
     if (!noteId) {
-      return postNote(note).then((ps) => {
-        const noteSuccessMessage = osmNoteResponseToSuccessMessageParser(ps);
+      const note = constructNote(false);
+      return postNote(note).then((noteThatWasSent) => {
+        const isNote = true;
+        const noteSuccessMessage = constructSuccessMessage(noteThatWasSent, isNote);
         commit('setSuccessMessage', noteSuccessMessage);
-
         if (osmId) {
           return getBusinessPOI(osmType, osmId).then((businessPOI) => {
             if (businessPOI) {
@@ -203,7 +254,7 @@ const actions = {
                 lat: parseFloat(businessPOI.lat),
                 lng: parseFloat(businessPOI.lon),
                 name,
-                noteId: parseInt(ps.id, 10),
+                noteId: parseInt(noteThatWasSent.id, 10),
                 osmId: parseInt(businessPOI.id, 10),
                 osmType,
                 receiveUpdates: true,
@@ -218,24 +269,28 @@ const actions = {
             lat: parseFloat(state.lat),
             lng: parseFloat(state.lon),
             name,
-            noteId: parseInt(ps.id, 10),
+            noteId: parseInt(noteThatWasSent.id, 10),
             osmId: temporaryOsmId,
             osmType,
             receiveUpdates: true,
             version: 0,
           });
         });
+      }).catch((err) => {
+        console.log(err);
       });
     }
-    return postNoteAsComment(note, noteId).then((ps) => {
-      const noteSuccessMessage = osmNoteResponseToSuccessMessageParser(ps);
+    const note = constructNote(true);
+    return postNoteAsComment(note, noteId).then((noteThatWasSent) => {
+      const isNote = true;
+      const noteSuccessMessage = constructSuccessMessage(noteThatWasSent, isNote);
       commit('setSuccessMessage', noteSuccessMessage);
       if (state.osmType === 'note') {
         return addOrUpdateBusinessPOI(user.id, {
           lat: parseFloat(state.lat),
           lng: parseFloat(state.lon),
           name,
-          noteId: parseInt(ps.id, 10),
+          noteId: parseInt(noteThatWasSent.id, 10),
           osmId: state.osmId,
           osmType: state.osmType,
           receiveUpdates: true,
@@ -252,7 +307,7 @@ const actions = {
             lat: parseFloat(businessPOI.lat),
             lng: parseFloat(businessPOI.lon),
             name,
-            noteId: ps.id,
+            noteId: noteThatWasSent.id,
             osmId: parseInt(businessPOI.id, 10),
             osmType,
             receiveUpdates: true,
@@ -263,9 +318,9 @@ const actions = {
     });
   },
   getAddress({ commit }, position) {
-    reverseQuery(position).then((ps) => {
-      commit('setAddress', ps);
-      localStorage.setItem('address', JSON.stringify(ps));
+    reverseQuery(position).then((address) => {
+      commit('setAddress', address);
+      localStorage.setItem('address', JSON.stringify(address));
     });
   },
 };
