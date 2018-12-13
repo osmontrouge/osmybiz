@@ -12,23 +12,27 @@
     >
       <div class="popup-title">{{ $t('popups.popuptitle') }}</div>
       <div v-if="prettyAddress">{{prettyAddress}}</div>
-      <button
-        v-if="!isLoggedIn"
-        title="${this.t('popups').buttontitle}"
-        disabled="disabled"
-        class="popup-btn"
-      >
-        {{ $t('popups.create') }}
-      </button>
-      <button
-        v-else
-        class="popup-btn"
-        @click="createNew"
-      >
-        {{ $t('popups.create') }}
-      </button>
-      <v-map-link class="popup-link" :link="`${osmUrl}/#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.mapLink') }}</v-map-link>
-      <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.feedback') }}</v-map-link>
+
+      <div class="popup-options">
+        <div class="popup-option" :title="$t('popups.create')">
+          <div class="popup-clickable" v-if="isLoggedIn" @click="createNew">
+            <icon name="pen" scale="3"></icon>
+          </div>
+          <div v-else class="popup-not-clickable">
+            <icon name="pen" scale="3"></icon>
+          </div>
+        </div>
+        <div class="popup-option">
+          <div class="popup-not-clickable">
+            <img style="width: 40px" :src="noteGrey" :title="$t('landing.watchlist.icon.noteNull')">
+          </div>
+        </div>
+        <div class="popup-option">
+          <a class="popup-not-clickable">
+            <img :src="notUpdatedIcon" :title="$t('popups.noElement')">
+          </a>
+        </div>
+      </div>
     </v-popup-open>
   </l-marker>
 </template>
@@ -37,11 +41,16 @@
   import { mapGetters, mapMutations } from 'vuex';
   import { LMarker, LTooltip } from 'vue2-leaflet';
   import * as L from 'leaflet';
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
   import VMapLink from './VMapLink.vue';
   import { reverseQuery } from '../../api/nominatimApi';
   import { routes } from '../../router';
   import { osmUrl } from '../../config/config';
   import VPopupOpen from './VPopupOpen.vue';
+  import noteGrey from '../../assets/note.png';
+  import notUpdatedIcon from '../../assets/update.png';
+
 
   const highlightIcon = require('../../assets/highlighted-marker.png');
 
@@ -57,6 +66,9 @@
       LMarker,
       VPopupOpen,
       LTooltip,
+      noteGrey,
+      notUpdatedIcon,
+      Icon,
     },
     data() {
       return {
@@ -67,6 +79,8 @@
           iconSize: [32, 32],
         }),
         address: null,
+        noteGrey,
+        notUpdatedIcon,
       };
     },
     computed: {
@@ -146,7 +160,9 @@
   };
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+  @import "../../scss/globals";
+
   .popup-data {
     display: flex;
     flex-direction:column;
@@ -159,8 +175,32 @@
     font-weight: bold;
   }
 
-  .popup-link {
+  .popup-options {
+    display: flex;
+  }
+
+  .popup-option {
+    margin: 15px;
+  }
+
+  .popup-option img {
+    height: 48px;
+    width: 48px;
+  }
+
+  .popup-clickable {
+    color: $primary-color;
+  }
+
+  .popup-not-clickable {
+    color: grey;
+  }
+
+  .popup-clickable:hover {
     cursor: pointer;
-    text-decoration: underline;
+  }
+
+  .popup-not-clickable:hover {
+    cursor: not-allowed;
   }
 </style>

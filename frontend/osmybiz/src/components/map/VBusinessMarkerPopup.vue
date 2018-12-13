@@ -36,7 +36,7 @@
           <a class="popup-clickable" v-if="this.business.id > 0" :href="linkToOsmElement" target="_blank">
             <img :src="updatedIcon" :title="$t('popups.mapLink')">
           </a>
-          <a class="popup-not-clickable" v-else target="_blank">
+          <a class="popup-not-clickable" v-else>
             <img :src="notUpdatedIcon" :title="$t('popups.noElement')">
           </a>
         </div>
@@ -205,11 +205,6 @@
 
   .popup-title {
     font-weight: bold;
-  }
-
-  .popup-link {
-    cursor: pointer;
-    text-decoration: underline;
   }
 
   .popup-options {
