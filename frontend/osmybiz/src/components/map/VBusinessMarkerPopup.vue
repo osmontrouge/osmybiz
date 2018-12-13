@@ -15,14 +15,29 @@
       <div v-if="hasOsmId">
         {{prettyAddress}}
       </div>
-      <button class="popup-btn" v-if="isLoggedIn" @click="edit">
-        {{ $t('popups.edit') }}
-      </button>
-      <button class="popup-btn" v-else disabled="disabled" @click="edit">
-        {{ $t('popups.edit') }}
-      </button>
-      <v-map-link class="popup-link" :link="linkToOsm">{{ $t('popups.mapLink') }}</v-map-link>
-      <v-map-link class="popup-link" :link="`${osmUrl}/note/new?lat=${position.lat}&lon=${position.lng}#map=19/${position.lat}/${position.lng}&layers=N`">{{ $t('popups.feedback') }}</v-map-link>
+      <div class="popup-options">
+        <div class="popup-option">
+          <div class="popup-clickable" v-if="isLoggedIn" @click="edit">
+            <icon name="pen" scale="3"></icon>
+          </div>
+          <div v-else class="popup-not-clickable">
+            <icon name="user-edit" scale="3"></icon>
+          </div>
+        </div>
+        <div class="popup-option">
+          <a class="popup-clickable" v-if="this.business.noteId" :href="linkToOsmNote" target="_blank">
+            <icon name="user-edit" scale="3"></icon>
+          </a>
+          <div class="popup-not-clickable" v-else>
+            <icon name="user-edit" scale="3"></icon>
+          </div>
+        </div>
+        <div class="popup-option">
+          <a class="popup-clickable" :href="linkToOsmElement" target="_blank">
+            <icon name="user-edit" scale="3"></icon>
+          </a>
+        </div>
+      </div>
     </l-popup>
     <l-tooltip :content="tooltipText" />
   </l-marker>
@@ -31,6 +46,8 @@
 <script>
   import { mapGetters, mapMutations } from 'vuex';
   import { LMarker, LPopup, LTooltip } from 'vue2-leaflet';
+  import 'vue-awesome/icons';
+  import Icon from 'vue-awesome/components/Icon.vue';
   import * as L from 'leaflet';
   import VMapLink from './VMapLink.vue';
   import { reverseQuery } from '../../api/nominatimApi';
@@ -54,6 +71,7 @@
   export default {
     name: 'v-business-marker-popup',
     components: {
+      Icon,
       VMapLink,
       LMarker,
       LPopup,
@@ -121,11 +139,14 @@
       hasOsmId() {
         return (this.business.id > 0);
       },
-      linkToOsm() {
+      linkToOsmElement() {
         if (this.hasOsmId) {
           return `${osmUrl}/${this.business.type}/${this.business.id}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
         }
         return `${osmUrl}/note/${this.business.noteId}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
+      },
+      linkToOsmNote() {
+        return `${osmUrl}/note/${this.business.noteId}#map=19/&layers=N`;
       },
     },
     methods: {
@@ -160,7 +181,9 @@
   };
 
 </script>
-<style scoped>
+<style scoped lang="scss">
+  @import "../../scss/globals";
+
   .popup-data {
     display: flex;
     flex-direction:column;
@@ -176,5 +199,25 @@
   .popup-link {
     cursor: pointer;
     text-decoration: underline;
+  }
+
+  .popup-options {
+    display: flex;
+  }
+
+  .popup-option {
+    margin: 15px;
+  }
+
+  .popup-clickable {
+    color: $primary-color;
+  }
+
+  .popup-not-clickable {
+    color: grey;
+  }
+
+  .popup-clickable:hover {
+    cursor: pointer;
   }
 </style>
