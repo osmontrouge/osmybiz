@@ -7,11 +7,11 @@
              @mouseleave="hidePopup()"
              src="../../assets/info_black.png">
     </div>
-    <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs" @click="panToMarker(ownedBusinessPOI)">
+    <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs">
       <div class="watchlist-index">
         {{ index + 1 }}
       </div>
-      <div class="watchlist-name">
+      <div class="watchlist-name" @click="panToMarker(ownedBusinessPOI)">
         <span v-if="ownedBusinessPOI.tags.name"> {{ownedBusinessPOI.tags.name}} </span>
         <span v-else> Name not found </span>
       </div>
