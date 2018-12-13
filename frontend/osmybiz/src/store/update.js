@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import { addOrUpdateUser, fetchBusinessPOIs, unsubscribe } from './../api/osmybizApi';
 import { getBusinessPOI, getNotesByOsmId } from './../api/osmApi';
 import util from '../util/osmApiUtils';
+import { setError } from './error';
 
 const state = {
   businessPOIs: [],
@@ -63,6 +64,10 @@ const actions = {
                   }
                   commit('pushBusinessPOI', ownedBusinessPOI);
                 } else {
+                  setError(['error.osm.osmElementDeleted', n.name]);
+                  ownedBusinessPOI.tags = {};
+                  ownedBusinessPOI.tags.name = n.name;
+                  commit('pushBusinessPOI', ownedBusinessPOI);
                   // TODO handle the case when osm element has been deleted
                 }
               });

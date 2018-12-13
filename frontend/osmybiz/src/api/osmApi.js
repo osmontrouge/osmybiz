@@ -26,7 +26,7 @@ const auth = osmAuth({
 export function login() {
   auth.authenticate((e) => {
     console.log(e);
-    setError('error.osm.login');
+    setError(['error.osm.login']);
   });
 }
 
@@ -53,7 +53,7 @@ export function loadUser() {
     } else {
       auth.xhr({ method: 'GET', path: userPath }, (err, response) => {
         if (err) {
-          setError('error.osm.loadUser');
+          setError(['error.osm.loadUser']);
           resolve(null);
           return;
         }
@@ -84,7 +84,7 @@ export function getBusinessPOI(osmType, osmId) {
             resolve(null);
           });
         } else {
-          setError('error.osm.load');
+          setError(['error.osm.load']);
           reject(err);
         }
       } else {
@@ -101,7 +101,7 @@ function closeChangeset(changesetId) {
     path: `${closeChangesetPath + changesetId}/close`,
   }, (err) => {
     if (err) {
-      setError('error.osm.load');
+      setError(['error.osm.load']);
     }
   });
 }
@@ -120,7 +120,7 @@ function uploadChangeset(node, changesetId) {
       },
     }, (err, response) => {
       if (err) {
-        setError('error.osm.load');
+        setError(['error.osm.load']);
         resolve(null);
       } else {
         closeChangeset(changesetId);
@@ -151,7 +151,7 @@ export function postNode(node) {
       },
     }, (err, changesetId) => {
       if (err) {
-        setError('error.osm.postNode');
+        setError(['error.osm.postNode']);
       }
       resolve(uploadChangeset(node, changesetId));
     });
@@ -166,7 +166,7 @@ export function postNote(note) {
       content: `lat=${note.lat}&lon=${note.lon}&text=${encodeURIComponent(note.text)}`,
     }, (err, response) => {
       if (err) {
-        setError('error.osm.postNote');
+        setError(['error.osm.postNote']);
         resolve(null);
       } else {
         const data = JSON.parse(response);
@@ -190,7 +190,7 @@ export function reopenClosedNoteAndAddComment(note, noteId) {
       content: `text=${encodeURIComponent(note.text)}`,
     }, (err, response) => {
       if (err) {
-        setError('error.osm.reopenClosedNoteAndAddComment');
+        setError(['error.osm.reopenClosedNoteAndAddComment']);
         resolve(null);
       } else {
         const data = JSON.parse(response);
@@ -219,7 +219,7 @@ export function postNoteAsComment(note, noteId) {
         if (err.status === noteIsClosed) {
           resolve(reopenClosedNoteAndAddComment(note, noteId));
         } else {
-          setError('error.osm.postNoteAsComment');
+          setError(['error.osm.postNoteAsComment']);
           resolve(null);
         }
       } else {
@@ -247,7 +247,7 @@ export function getNotes(lat, lng) {
   const top = lat + distance;
   return axios.get(`${osmUrl}${createNotePath}?bbox=${left},${bottom},${right},${top}`).then(response => response.data.features)
     .catch(() => {
-      setError('error.osm.load');
+      setError(['error.osm.load']);
       return [];
     });
 }
@@ -255,7 +255,7 @@ export function getNotes(lat, lng) {
 export function getNotesByOsmId(noteId) {
   return axios.get(`${osmUrl}${osmApiLevel}notes/${noteId}`)
     .catch(() => {
-      setError('error.osm.getNotesByOsmId');
+      setError(['error.osm.getNotesByOsmId']);
     });
 }
 

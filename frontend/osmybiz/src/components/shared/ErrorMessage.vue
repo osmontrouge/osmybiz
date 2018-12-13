@@ -6,10 +6,7 @@
 
       <div id="error-section" class="section">
         <img id="error-img" src="../../assets/error.png" alt="">
-        <span v-if="errorSplitted.length === 4" id="error-message">{{$t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]][errorSplitted[3]]}}</span>
-        <span v-if="errorSplitted.length === 3" id="error-message">{{$t(errorSplitted[0])[errorSplitted[1]][errorSplitted[2]]}}</span>
-        <span v-if="errorSplitted.length === 2" id="error-message">{{$t(errorSplitted[0])[errorSplitted[1]]}}</span>
-        <span v-if="errorSplitted.length === 1" id="error-message">{{$t(errorSplitted[0])}}</span>
+        <span id="error-message">{{ message }}</span>
       </div>
     </div>
 </template>
@@ -21,14 +18,15 @@
     name: 'error-message',
     computed: {
       ...mapGetters([
-        'error',
+        'errorMessageKey',
+        'placeholders',
         'isError',
       ]),
-      errorSplitted() {
-        if (this.error) {
-          return this.error.split('.');
+      message() {
+        if (this.placeholders.length === 0) {
+          return this.$t(this.errorMessageKey);
         }
-        return ['Unknown Error'];
+        return this.$t(this.errorMessageKey, this.placeholders);
       },
     },
   };

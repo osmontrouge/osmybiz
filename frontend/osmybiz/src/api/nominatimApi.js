@@ -56,7 +56,7 @@ export function query(queryString, language) {
   return axios.get(buildRequest(queryString, 7, language))
     .then(response => mapResults(response.data))
     .catch(() => {
-      setError('error.nominatim');
+      setError(['error.nominatim']);
     });
 }
 
@@ -68,7 +68,7 @@ export function reverseQuery(position) {
   return axios.get(buildReverseRequest(position))
     .then(response => parseAddress(response.data.address))
     .catch((e) => {
-      setError('error.nominatim');
+      setError(['error.nominatim']);
       console.error(e);
     });
 }

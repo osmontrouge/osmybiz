@@ -179,7 +179,8 @@
       "postNote": "Changes could not be saved.",
       "postNoteAsComments": "Note could not be saved.",
       "reopenClosedNoteAndAddComment": "Note cannot be reopened or saved.",
-      "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later."
+      "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later.",
+      "osmElementDeleted": "The Business POI {0} no longer exist on OSM.org"
     },
     "overpass": {
       "query": "Businesses could not be loaded.",
