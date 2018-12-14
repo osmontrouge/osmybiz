@@ -22,7 +22,7 @@
     "osm-auth": "^1.0.2",
     "vee-validate": "^2.0.6",
     "vue": "^2.5.16",
-    "vue-awesome": "^3.0.0",
+    "vue-awesome": "^3.2.0",
     "vue-router": "^3.0.1",
     "vue-search-select": "^2.6.1",
     "vue2-leaflet": "^1.2.3",

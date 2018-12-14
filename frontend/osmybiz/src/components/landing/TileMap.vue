@@ -27,15 +27,14 @@
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
-        v-if="business.id"
         :key="business.id"
         :business="business"
       ></v-business-marker-popup>
-      <v-new-business-popup
-        v-for="newBusinessPosition in newBusinessPositions"
-        :key="`${newBusinessPosition.lat}_${newBusinessPosition.lng}`"
-        :businessPosition="newBusinessPosition"
-      ></v-new-business-popup>
+      <v-business-marker-popup
+        v-if="positionWhereContextMenuIsTriggered"
+        :key="`${positionWhereContextMenuIsTriggered.lat}_${positionWhereContextMenuIsTriggered.lng}`"
+        :business="positionWhereContextMenuIsTriggered"
+      ></v-business-marker-popup>
     </l-map>
   </div>
 </template>
@@ -45,7 +44,6 @@
   import { mapActions, mapGetters, mapMutations } from 'vuex';
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
-  import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
   import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
   import { routes } from '../../router';
 
@@ -57,7 +55,6 @@
       LMarker,
       LPopup,
       LTooltip,
-      VNewBusinessPopup,
       VBusinessMarkerPopup,
     },
     data() {
@@ -71,7 +68,7 @@
           attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">&copy; Mapbox</a> <a href="https://openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap</a> <a class="mapbox-improve-map" href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a> <a href="https://www.digitalglobe.com/" target="_blank">&copy; DigitalGlobe</a>',
           token: mapBoxToken,
         },
-        newBusinessPositions: [],
+        positionWhereContextMenuIsTriggered: null,
         maxBounds: [[-89.98155760646617, -180], [89.99346179538875, 180]],
         tileLayerZoomSettings: { maxNativeZoom: 18, maxZoom: 21 },
       };
@@ -152,16 +149,11 @@
           && (n.lng <= bbox.east));
       },
       cleanNewBusinessPopups() {
-        if (this.newBusinessPositions.length >= 1) {
-          this.newBusinessPositions.splice(0, this.newBusinessPositions.length);
-        }
+        this.positionWhereContextMenuIsTriggered = null;
       },
       contextMenu(event) {
-        // TODO: Cleanup this ugly code!
         this.cleanNewBusinessPopups();
-        _.delay((latLng) => {
-          this.newBusinessPositions.push(latLng);
-        }, 100, event.latlng);
+        this.positionWhereContextMenuIsTriggered = event.latlng;
       },
     },
     computed: {

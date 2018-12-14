@@ -124,7 +124,9 @@
   "popups": {
     "popuptitle": "New Business",
     "feedback": "Report Map Error",
-    "mapLink": "View on OSM.org",
+    "mapLink": "View element on OSM.org",
+    "noteLink": "View note on OSM.org",
+    "noElement": "No element",
     "edit": "Edit",
     "create": "Create",
     "buttontitle": "You have to be logged in for this function",
