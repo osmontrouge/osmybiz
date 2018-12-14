@@ -1,15 +1,11 @@
 <template>
   <l-marker
-    :lat-lng="businessPosition"
+    ref="popup"
+    :lat-lng="position"
     :draggable="false"
     :title="$t('popups.popuptitle')"
   >
-    <v-popup-open
-      ref="actionpopup"
-      :options="{minWidth: 240, maxWidth: 240, autoPanPadding: autoPanPadding}"
-      class="popup-data"
-      :lat-lng="position"
-    >
+    <l-popup :lat-lng="position" :options="{minWidth: 240, maxWidth: 240, autoPanPadding: autoPanPadding}" class="popup-data">
       <div class="popup-title">{{ $t('popups.popuptitle') }}</div>
       <div v-if="prettyAddress">{{prettyAddress}}</div>
 
@@ -33,13 +29,14 @@
           </a>
         </div>
       </div>
-    </v-popup-open>
+
+    </l-popup>
   </l-marker>
 </template>
 
 <script>
   import { mapGetters, mapMutations } from 'vuex';
-  import { LMarker, LTooltip } from 'vue2-leaflet';
+  import { LMarker, LTooltip, LPopup } from 'vue2-leaflet';
   import * as L from 'leaflet';
   import 'vue-awesome/icons';
   import Icon from 'vue-awesome/components/Icon.vue';
@@ -47,15 +44,30 @@
   import { reverseQuery } from '../../api/nominatimApi';
   import { routes } from '../../router';
   import { osmUrl } from '../../config/config';
-  import VPopupOpen from './VPopupOpen.vue';
   import noteGrey from '../../assets/note.png';
   import notUpdatedIcon from '../../assets/update.png';
 
-
   const highlightIcon = require('../../assets/highlighted-marker.png');
+  const bizIcon = require('../../assets/biz-marker.png');
+
+  const bizMarker = L.icon({
+    iconUrl: bizIcon,
+    iconSize: [32, 32],
+  });
 
   export default {
     name: 'v-business-marker-popup',
+    mounted() {
+      /* eslint-disable no-underscore-dangle */
+      this.$nextTick(() => {
+        // clears the event
+        this.$refs.popup.mapObject._events.click = {};
+
+        const popup = this.$refs.popup.mapObject._popup;
+        this.map.openPopup(popup._content, popup._latlng, popup.options);
+      });
+      /* eslint-enable */
+    },
     props: {
       businessPosition: {
         required: true,
@@ -64,7 +76,7 @@
     components: {
       VMapLink,
       LMarker,
-      VPopupOpen,
+      LPopup,
       LTooltip,
       noteGrey,
       notUpdatedIcon,
@@ -81,12 +93,14 @@
         address: null,
         noteGrey,
         notUpdatedIcon,
+        bizMarker,
       };
     },
     computed: {
       ...mapGetters([
         'isLoggedIn',
         'ownedBusinessPOIs',
+        'map',
       ]),
       prettyAddress() {
         let out = '';

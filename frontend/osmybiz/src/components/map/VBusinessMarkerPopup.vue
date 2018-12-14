@@ -52,7 +52,6 @@
   import 'vue-awesome/icons';
   import Icon from 'vue-awesome/components/Icon.vue';
   import * as L from 'leaflet';
-  import VMapLink from './VMapLink.vue';
   import { reverseQuery } from '../../api/nominatimApi';
   import { routes } from '../../router';
   import { createNoteFromBusinessPOI, getBizCategory } from '../../util/overPassNodeUtils';
@@ -79,7 +78,6 @@
     name: 'v-business-marker-popup',
     components: {
       Icon,
-      VMapLink,
       LMarker,
       LPopup,
       LTooltip,
