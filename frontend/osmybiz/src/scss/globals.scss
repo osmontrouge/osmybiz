@@ -110,3 +110,12 @@ input::placeholder, textarea::placeholder {
 .info:hover {
   cursor: help;
 }
+
+.help {
+  text-align: left;
+}
+
+.is-danger {
+  color: $error-color;
+}
+
