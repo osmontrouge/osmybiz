@@ -30,7 +30,7 @@ export function fetchBusinessPOIs(userId) {
   if (fakeOsmybizApi) {
     return mockFetchBusinessPOIs(userId);
   }
-  const route = `${baseRoute}usera/${userId}/business-poi`;
+  const route = `${baseRoute}user/${userId}/business-poi`;
   return axios.get(route).then(response => response.data)
     .catch((err) => {
       setError(['error.osmybiz', err]);
