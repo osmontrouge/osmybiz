@@ -6,12 +6,12 @@ import util from '../util/osmApiUtils';
 import { setError } from './error';
 
 const state = {
-  businessPOIs: [],
+  subscribedBusinessPOIs: [],
   showWatchList: false,
 };
 
-function hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI) {
-  return (osmBusinessPOI.version > ownedBusinessPOI.version);
+function hasVersionUpdate(subscribedBusinessPOI, osmBusinessPOI) {
+  return (osmBusinessPOI.version > subscribedBusinessPOI.version);
 }
 
 function isNoteWithoutOsmElement(osmId) {
@@ -22,9 +22,9 @@ const actions = {
   loadUpdates({ commit }, user) {
     addOrUpdateUser(user.id, user.name).then(() => {
       fetchBusinessPOIs(user.id).then((ns) => {
-        commit('setBusinessPOIs', []);
+        commit('setSubscribedBusinessPOIs', []);
         ns.filter(n => n.receiveUpdates).forEach((n) => {
-          const ownedBusinessPOI = {
+          const subscribedBusinessPOI = {
             id: n.osmId,
             lat: n.lat,
             lng: n.lng,
@@ -36,33 +36,33 @@ const actions = {
             noteIsResolved: false,
           };
           const promise = new Promise((resolve) => {
-            if (ownedBusinessPOI.noteId) {
+            if (subscribedBusinessPOI.noteId) {
               // update note status
-              getNotesByOsmId(ownedBusinessPOI.noteId).then((response) => {
+              getNotesByOsmId(subscribedBusinessPOI.noteId).then((response) => {
                 const noteStatus = util.parseNoteStatus(response);
                 if (noteStatus === 'closed') {
-                  ownedBusinessPOI.noteIsResolved = true;
+                  subscribedBusinessPOI.noteIsResolved = true;
                 }
-                resolve(ownedBusinessPOI);
+                resolve(subscribedBusinessPOI);
               });
             } else {
-              resolve(ownedBusinessPOI);
+              resolve(subscribedBusinessPOI);
             }
           });
 
           promise.then(() => {
-            if (isNoteWithoutOsmElement(ownedBusinessPOI.id)) {
-              ownedBusinessPOI.tags = {};
-              ownedBusinessPOI.tags.name = n.name;
-              commit('pushBusinessPOI', ownedBusinessPOI);
+            if (isNoteWithoutOsmElement(subscribedBusinessPOI.id)) {
+              subscribedBusinessPOI.tags = {};
+              subscribedBusinessPOI.tags.name = n.name;
+              commit('pushSubscribedBusinessPOI', subscribedBusinessPOI);
             } else {
               getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
                 if (_.isObject(osmBusinessPOI)) {
-                  ownedBusinessPOI.tags = osmBusinessPOI.tags;
-                  if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
-                    ownedBusinessPOI.hasUpdate = true;
+                  subscribedBusinessPOI.tags = osmBusinessPOI.tags;
+                  if (hasVersionUpdate(subscribedBusinessPOI, osmBusinessPOI)) {
+                    subscribedBusinessPOI.hasUpdate = true;
                   }
-                  commit('pushBusinessPOI', ownedBusinessPOI);
+                  commit('pushSubscribedBusinessPOI', subscribedBusinessPOI);
                 } else {
                   setError({ errorMessageKey: 'error.osm.osmElementDeleted', placeholders: [n.name] });
                   ownedBusinessPOI.tags = {};
@@ -78,22 +78,22 @@ const actions = {
     });
   },
   /* eslint-disable-next-line */
-  removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
-    unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
+  removeFromWatchList({ commit }, { subscribedBusinessPOI, user }) {
+    unsubscribe(user.id, subscribedBusinessPOI.id).then(() => {
       this.dispatch('loadUpdates', user);
     });
   },
 };
 
 const mutations = {
-  setBusinessPOIs(s, businessPOIs) {
-    s.businessPOIs = businessPOIs;
+  setSubscribedBusinessPOIs(s, subscribedBusinessPOIs) {
+    s.subscribedBusinessPOIs = subscribedBusinessPOIs;
   },
   toggleWatchList(s) {
     s.showWatchList = !s.showWatchList;
   },
-  pushBusinessPOI(s, businessPOI) {
-    s.businessPOIs.push(businessPOI);
+  pushSubscribedBusinessPOI(s, subscribedBusinessPOI) {
+    s.subscribedBusinessPOIs.push(subscribedBusinessPOI);
   },
 };
 
@@ -101,8 +101,8 @@ const getters = {
   showWatchList(s) {
     return s.showWatchList;
   },
-  ownedBusinessPOIs(s) {
-    return s.businessPOIs;
+  subscribedBusinessPOIs(s) {
+    return s.subscribedBusinessPOIs;
   },
 };
 

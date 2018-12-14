@@ -130,7 +130,7 @@
     computed: {
       ...mapGetters([
         'isLoggedIn',
-        'ownedBusinessPOIs',
+        'subscribedBusinessPOIs',
         'map',
       ]),
       prettyAddress() {
