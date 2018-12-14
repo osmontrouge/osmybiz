@@ -1,29 +1,42 @@
 <template>
   <l-marker
+    ref="popup"
     v-if="business"
     :key="business.id"
     :visible="visibility"
     :draggable="draggable"
     :lat-lng="position"
     :icon="icon"
-    @click="loadAddress"
   >
-    <l-popup :options="{minWidth: 240, maxWidth: 240, autoPanPadding: autoPanPadding}" class="popup-data">
+    <l-popup :lat-lng="position" :options="{minWidth: 240, maxWidth: 240, autoPanPadding: autoPanPadding}" class="popup-data">
       <div class="popup-title">
         {{tooltipText}}
       </div>
-      <div v-if="hasOsmId">
-        {{prettyAddress}}
-      </div>
+      {{prettyAddress}}
+
       <div class="popup-options">
-        <div class="popup-option" :title="$t('popups.edit')">
-          <div class="popup-clickable" v-if="isLoggedIn" @click="edit">
-            <icon name="pen" scale="3"></icon>
-          </div>
-          <div v-else class="popup-not-clickable">
-            <icon name="pen" scale="3"></icon>
+
+        <div v-if="isNewBusiness">
+          <div class="popup-option" :title="$t('popups.create')">
+            <div class="popup-clickable" v-if="isLoggedIn" @click="createNew">
+              <icon name="plus-circle" scale="3"></icon>
+            </div>
+            <div v-else class="popup-not-clickable">
+              <icon name="plus-circle" scale="3"></icon>
+            </div>
           </div>
         </div>
+        <div v-else>
+          <div class="popup-option" :title="$t('popups.edit')">
+            <div class="popup-clickable" v-if="isLoggedIn" @click="edit">
+              <icon name="pen" scale="3"></icon>
+            </div>
+            <div v-else class="popup-not-clickable">
+              <icon name="pen" scale="3"></icon>
+            </div>
+          </div>
+        </div>
+
         <div class="popup-option">
           <a class="popup-clickable" v-if="this.business.noteId" :href="linkToOsmNote" target="_blank">
             <img style="width: 40px" :src="noteGreen" :title="$t('popups.noteLink')">
@@ -32,6 +45,7 @@
             <img style="width: 40px" :src="noteGrey" :title="$t('landing.watchlist.icon.noteNull')">
           </div>
         </div>
+
         <div class="popup-option">
           <a class="popup-clickable" v-if="this.business.id > 0" :href="linkToOsmElement" target="_blank">
             <img :src="updatedIcon" :title="$t('popups.mapLink')">
@@ -41,6 +55,7 @@
           </a>
         </div>
       </div>
+
     </l-popup>
     <l-tooltip :content="tooltipText" />
   </l-marker>
@@ -76,6 +91,19 @@
 
   export default {
     name: 'v-business-marker-popup',
+    mounted() {
+      this.loadAddress();
+      if (this.isNewBusiness) {
+        /* eslint-disable no-underscore-dangle */
+        this.$nextTick(() => {
+          // clears the event
+          this.$refs.popup.mapObject._events.click = {};
+          const popup = this.$refs.popup.mapObject._popup;
+          this.map.openPopup(popup._content, popup._latlng, popup.options);
+        });
+        /* eslint-enable no-underscore-dangle */
+      }
+    },
     components: {
       Icon,
       LMarker,
@@ -85,9 +113,6 @@
     props: {
       business: {
         required: true,
-      },
-      businessPosition: {
-        required: false,
       },
     },
     data() {
@@ -106,6 +131,7 @@
       ...mapGetters([
         'isLoggedIn',
         'ownedBusinessPOIs',
+        'map',
       ]),
       prettyAddress() {
         let out = '';
@@ -121,10 +147,16 @@
         return out;
       },
       icon() {
+        if (this.isNewBusiness) {
+          return null;
+        }
         return this.business.mine ? highlightedMarker : bizMarker;
       },
       tooltipText() {
-        if (!this.hasOsmId) {
+        if (this.isNewBusiness) {
+          return this.$t('popups.popuptitle');
+        }
+        if (this.isNoteWithoutElement) {
           return 'This is just a note';
         }
         const category = getBizCategory(this.business);
@@ -135,27 +167,30 @@
         return name;
       },
       position() {
-        if (this.business.lat && this.business.lng) {
-          return L.latLng(this.business.lat, this.business.lng);
+        if (this.isNewBusiness) {
+          return this.business;
         }
-        return this.businessPosition;
+        return L.latLng(this.business.lat, this.business.lng);
       },
       visibility() {
         return true;
         // TODO: maybe filter for visibility visible:
         // n.lat >= bbox.south && n.lat <= bbox.north && n.lng >= bbox.west && n.lng <= bbox.east,
       },
-      hasOsmId() {
-        return (this.business.id > 0);
+      isNoteWithoutElement() {
+        return (this.business.id < 0);
       },
       linkToOsmElement() {
-        if (this.hasOsmId) {
+        if (!this.isNoteWithoutElement) {
           return `${osmUrl}/${this.business.type}/${this.business.id}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
         }
-        return `${osmUrl}/note/${this.business.noteId}#map=19/${this.position.lat}/${this.position.lng}&layers=N`;
+        return `${osmUrl}/note/${this.business.noteId}#map=19/&layers=N`;
       },
       linkToOsmNote() {
         return `${osmUrl}/note/${this.business.noteId}#map=19/&layers=N`;
+      },
+      isNewBusiness() {
+        return (!this.business.id);
       },
     },
     methods: {
@@ -184,6 +219,30 @@
         const pos = L.latLng(this.business.lat, this.business.lng);
         this.setCoords(pos);
         this.setNoteId(this.business.noteId);
+        this.$router.push({ name: routes.Detail });
+      },
+      createNew() {
+        this.setCoords(this.position);
+        this.setIsNote(false);
+        this.setDetails({
+          category: {
+            text: '',
+            value: 0,
+            fields: [
+              { key: '', name: '', value: '' },
+            ],
+          },
+          name: '',
+          opening_hours: '',
+          phone: '',
+          email: '',
+          website: '',
+          wheelchair: '',
+          description: '',
+          note: '',
+        });
+        this.setNoteId(null);
+        this.setOsmType('node');
         this.$router.push({ name: routes.Detail });
       },
     },
@@ -224,6 +283,7 @@
 
   .popup-not-clickable {
     color: grey;
+    opacity: 0.3;
   }
 
   .popup-clickable:hover {
