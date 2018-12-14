@@ -29,10 +29,11 @@ export default {
   getters,
 };
 
-export function setError(listOfKeyWithPlaceholders) {
-  const key = listOfKeyWithPlaceholders[0];
-  state.placeholders = listOfKeyWithPlaceholders.splice(1);
-  state.errorMessageKey = key;
+export function setError(errorObj) {
+  state.errorMessageKey = errorObj.errorMessageKey;
+  if (typeof errorObj.placeholders !== 'undefined') {
+    state.placeholders = errorObj.placeholders;
+  }
   state.isError = true;
   setTimeout(() => {
     state.isError = false;

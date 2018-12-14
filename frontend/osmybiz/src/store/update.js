@@ -64,7 +64,7 @@ const actions = {
                   }
                   commit('pushBusinessPOI', ownedBusinessPOI);
                 } else {
-                  setError(['error.osm.osmElementDeleted', n.name]);
+                  setError({ errorMessageKey: 'error.osm.osmElementDeleted', placeholders: [n.name] });
                   ownedBusinessPOI.tags = {};
                   ownedBusinessPOI.tags.name = n.name;
                   commit('pushBusinessPOI', ownedBusinessPOI);
