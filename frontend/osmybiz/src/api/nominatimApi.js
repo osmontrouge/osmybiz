@@ -66,7 +66,12 @@ function buildReverseRequest(position) {
 
 export function reverseQuery(position) {
   return axios.get(buildReverseRequest(position))
-    .then(response => parseAddress(response.data.address))
+    .then((response) => {
+      if (response.data.error === 'Unable to geocode') {
+        return '';
+      }
+      return parseAddress(response.data.address);
+    })
     .catch((e) => {
       setError('error.nominatim');
       console.error(e);
