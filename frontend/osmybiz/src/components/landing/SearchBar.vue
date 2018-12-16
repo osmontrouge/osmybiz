@@ -3,7 +3,7 @@
   <div class="search-bar-wrapper">
 
     <div class="input-wrapper">
-      <input type="text" class="search-bar" :placeholder="t('landing').search" v-model="search">
+      <input type="text" class="search-bar" :placeholder="$t('landing.search')" v-model="search">
       <div v-if="search && search.length" class="remove" @click="resetSearch()">x</div>
     </div>
 
@@ -38,11 +38,11 @@
       ...mapMutations([
         'setSearch',
         'selectPoint',
-        'setMapPosition',
+        'setMapCenter',
         'resetSearch',
       ]),
       pick(point) {
-        this.setMapPosition(point.coords);
+        this.setMapCenter(point.coords);
         this.selectPoint(point);
       },
     },
@@ -55,7 +55,7 @@
         get() { return this.searchText; },
         set(value) {
           this.setSearch(value);
-          this.queryNominatim(value, this.$translate.lang);
+          this.queryNominatim(value, this.$i18n.locale);
         },
       },
     },

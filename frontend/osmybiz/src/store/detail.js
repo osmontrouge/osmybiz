@@ -1,20 +1,20 @@
 /* eslint-disable no-param-reassign */
 import { latLng } from 'leaflet';
-import { postNode, postNote, getNode } from './../api/osmApi';
+import deepEqual from 'deep-equal';
+import { postNode, postNote, getBusinessPOI, postNoteAsComment } from './../api/osmApi';
 import { reverseQuery } from './../api/nominatimApi';
-import { getLanguageTags } from './locale';
-import { addOrUpdateNode } from './../api/osmybizApi';
+import { addOrUpdateBusinessPOI, getTemporaryOsmId } from './../api/osmybizApi';
+import { MODIFIED, REMOVED } from '../config/config';
 
-let initalOptions = [];
-
-const state = {
+const initialState = {
   // detailPage
-  displaySuccess: false,
   osmId: null,
+  osmType: null,
   isNew: true,
+  isFormSubmission: false,
+  isEditingUnsavedChanges: false,
 
   // DetailForm
-  tags: initalOptions,
   address: {},
   lat: null,
   lon: null,
@@ -25,7 +25,7 @@ const state = {
       fields: [
         { key: '', name: '', value: '' },
       ],
-      value: 0,
+      value: '',
     },
     name: '',
     opening_hours: '',
@@ -40,79 +40,134 @@ const state = {
   isPopup: false,
   isNote: false,
   infoText: '',
-  infoMap: new Map(),
+
+  noteId: null,
 
   // PostSuccess
   note: {},
-  node: {},
 };
 
+const state = JSON.parse(JSON.stringify(initialState));
 
-function constructNote() {
-  let text = '#OSMyBiz \n \n';
+function getPrettifiedAddress() {
+  const {
+    street,
+    housenumber,
+    place,
+    postcode,
+    city,
+    country,
+  } = state.address;
 
-  if (state.address.length !== 0) {
-    let address = '';
-    if (state.address.street) {
-      address += `${state.address.street} `;
-      if (state.address.housenumber) {
-        address += `${state.address.housenumber}, `;
-      }
-    }
-    if (state.address.place) {
-      address += `${state.address.place}, `;
-    }
-    if (state.address.postcode) {
-      address += `${state.address.postcode} `;
-    }
-    if (state.address.city) {
-      address += `${state.address.city}, `;
-    }
-    if (state.address.country) {
-      address += state.address.country;
-    }
-    text += `Address: ${address}\n`;
+  let prettifiedAddress = '';
+  if (street) {
+    prettifiedAddress += street;
+    prettifiedAddress += housenumber ? ` ${housenumber},` : ',';
   }
-  if (state.details.category.text.length !== 0) {
-    if (state.isOwnCategory) {
-      text += `Category: ${state.details.category.text}\n`;
+  prettifiedAddress += place ? ` ${place},` : '';
+  prettifiedAddress += postcode ? ` ${postcode}` : '';
+  prettifiedAddress += city ? ` ${city}` : '';
+  prettifiedAddress += country ? ` ${country}` : '';
+
+  return prettifiedAddress;
+}
+
+function constructSuccessMessage(response, isNote) {
+  const {
+    link,
+  } = response;
+  const address = getPrettifiedAddress();
+  const { name } = state.details;
+  const successMessage = {
+    address,
+    name,
+    link,
+    isNote,
+  };
+  return successMessage;
+}
+
+function parseTagToString(tag, value, initialValue, additionalText) {
+  if (deepEqual(value, initialValue)) {
+    if (value) {
+      return `${additionalText}${tag} = ${value}\n`;
+    }
+    return '';
+  }
+  if (value) {
+    return `${MODIFIED}${additionalText}${tag} = ${value}\n`;
+  }
+  return `${REMOVED}${additionalText}${tag} = ${initialValue}\n`;
+}
+
+function insertLineBreak(isNoteAsComment) {
+  if (!isNoteAsComment) return '\n \n';
+  return '\n';
+}
+
+function constructAddrNote(address) {
+  let text = '';
+  const originalAddress = JSON.parse(localStorage.getItem('address'));
+  Object.keys(address).forEach((key) => {
+    text += parseTagToString(key, address[key], originalAddress[key], 'addr:');
+  });
+  return text;
+}
+
+function constructDetailNote(details) {
+  let text = '';
+  const originalDetails = JSON.parse(localStorage.getItem('details'));
+  Object.keys(details).forEach((key) => {
+    if (key !== 'category') {
+      text += parseTagToString(key, details[key], originalDetails[key], '');
+    }
+  });
+  return text;
+}
+
+function constructCategoryNote(category, isOwnCategory) {
+  let text = '';
+  const originalDetails = JSON.parse(localStorage.getItem('details'));
+  const originalCategory = originalDetails.category;
+  let categoryFormatted = '';
+
+  if (isOwnCategory) {
+    text += `${MODIFIED}category: ${category.text}\n`;
+  } else {
+    let field;
+    if (category.value.indexOf('/') !== -1) {
+      categoryFormatted = category.value.replace('/', ' = ');
+    }
+    if (deepEqual(category.value, originalCategory.value)) {
+      text += `${categoryFormatted}\n`;
+      for (let i = 0; i < category.fields.length; i += 1) {
+        // the field here is the additonal tag options that is dependant on the category
+        field = category.fields[i];
+        text += parseTagToString(field.key, field.value, originalCategory.fields[i].value, '');
+      }
     } else {
-      const category = state.details.category.value.split('/');
-      text += `Category: ${category[0]}:${category[1]}\n`;
+      text += `${MODIFIED}${categoryFormatted}\n`;
+      for (let i = 0; i < category.fields.length; i += 1) {
+        field = category.fields[i];
+        if (field.value) {
+          text += `${MODIFIED}${field.key} = ${field.value}\n`;
+        }
+      }
     }
   }
-  if (state.details.name.length !== 0) {
-    text += `Name: ${state.details.name}\n`;
-  }
-  if (state.details.opening_hours.length !== 0) {
-    text += `Opening hours: ${state.details.opening_hours}\n`;
-  }
-  if (state.details.phone.length !== 0) {
-    text += `Phone number: ${state.details.phone}\n`;
-  }
-  if (state.details.email.length !== 0) {
-    text += `Email: ${state.details.email}\n`;
-  }
-  if (state.details.website.length !== 0) {
-    text += `Website: ${state.details.website}\n`;
-  }
-  if (state.details.wheelchair !== 0) {
-    text += `Wheelchair accessible: ${state.details.wheelchair}\n`;
-  }
-  if (state.details.description.length !== 0) {
-    text += `Description: ${state.details.description}\n`;
-  }
-  if (state.details.note.length > 0) {
-    text += `Note: ${state.details.note}\n`;
-  }
+  return text;
+}
 
-  if (!state.isOwnCategory) {
-    state.details.category.fields.forEach((field) => {
-      if (field.value.length !== 0) {
-        text += `${field.label}: ${field.value}\n`;
-      }
-    });
-  }
+function constructNote(isNoteAsComment) {
+  let text = 'This is a comment generated by #OSMyBiz.\n';
+  text += `Modified Tags = '${MODIFIED}', Removed Tags = '${REMOVED}'.\n \n`;
+  const { address, details, details: { category } } = state;
+
+  text += constructAddrNote(address);
+  text += insertLineBreak(isNoteAsComment);
+  text += constructDetailNote(details);
+  text += insertLineBreak(isNoteAsComment);
+  text += constructCategoryNote(category, state.isOwnCategory);
 
   return {
     lat: state.lat,
@@ -121,14 +176,10 @@ function constructNote() {
   };
 }
 
-function constructDisplayNote(note) {
-  const address = note.text.split('Address: ')[1].split('\n')[0];
-  const name = note.text.split('Name: ')[1].split('\n')[0];
-  note.text = {
-    address,
-    name,
-  };
-  return note;
+export function isNotModified(store) {
+  const details = JSON.parse(localStorage.getItem('details'));
+  const address = JSON.parse(localStorage.getItem('address'));
+  return deepEqual(details, store.details) && deepEqual(address, store.address);
 }
 
 export function clearDetails() {
@@ -151,127 +202,126 @@ export function clearDetails() {
   };
 }
 
-export function loadTags() {
-  const tags = getLanguageTags();
-  const options = [];
-  Object.keys(tags).forEach((key) => {
-    const fields = [];
-    tags[key].fields.forEach((field) => {
-      if (field.options) {
-        const fieldOptions = [];
-        Object.keys(field.options).forEach((option) => {
-          fieldOptions.push({
-            key: option,
-            text: field.options[option],
-          });
-        });
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          options: fieldOptions,
-          value: '',
-        });
-      } else {
-        fields.push({
-          key: field.key,
-          label: field.label,
-          type: field.type,
-          value: '',
-        });
-      }
-    });
-    options.push({
-      value: key,
-      text: tags[key].name,
-      fields,
-    });
-  });
 
-  options.sort((a, b) => {
-    if (a.text < b.text) return -1;
-    if (a.text > b.text) return 1;
-    return 0;
-  });
-
-  if (state) {
-    state.tags = options;
-    state.tags.forEach((tag) => {
-      if (tag.value === state.details.category.value) {
-        const category = {
-          fields: tag.fields,
-          text: tag.text,
-          value: tag.value,
-        };
-        state.details.category.fields.forEach((field, index) => {
-          category.fields[index].value = field.value;
-        });
-        state.details.category = category;
-      }
-    });
-  } else {
-    initalOptions = options;
-  }
+export function saveChangesTemporarily() {
+  const unsavedChanges = JSON.stringify(state);
+  localStorage.setItem('unsavedChanges', unsavedChanges);
 }
-
-loadTags();
 
 const actions = {
   postNode({ commit }, user) {
-    const node = {
+    const businessPOI = {
       lat: state.lat,
       lon: state.lon,
       details: state.details,
       address: state.address,
     };
-    return postNode(node).then((ps) => {
-      state.displaySuccess = true;
-      commit('setNode', ps);
-
-      return addOrUpdateNode(user.id, {
-        lat: parseFloat(ps.lat),
-        lng: parseFloat(ps.lon),
-        version: parseInt(ps.version, 10),
-        osmId: parseInt(ps.id, 10),
-        recieveUpdates: true,
-        name: ps.details.name,
+    return postNode(businessPOI).then((newlyCreatedNode) => {
+      const isNote = false;
+      const nodeVersion = '0';
+      const nodeSuccessMessage = constructSuccessMessage(newlyCreatedNode, isNote);
+      commit('setSuccessMessage', nodeSuccessMessage);
+      return addOrUpdateBusinessPOI(user.id, {
+        lat: parseFloat(newlyCreatedNode.lat),
+        lng: parseFloat(newlyCreatedNode.lon),
+        name: newlyCreatedNode.details.name,
+        noteId: null,
+        osmId: parseInt(newlyCreatedNode.id, 10),
+        osmType: 'node',
+        receiveUpdates: true,
+        version: parseInt(nodeVersion, 10),
       });
     });
   },
-  postSelectedCategoryNote({ commit }, { user, osmId }) {
-    const note = constructNote();
+  /* eslint-disable-next-line object-curly-newline */
+  postNote({ commit }, { user, osmId, noteId, osmType }) {
     const { name } = state.details;
-    return postNote(note).then((ps) => {
-      state.displaySuccess = true;
-      const displayNote = constructDisplayNote(ps);
-      commit('setNote', displayNote);
-
-      return getNode(osmId).then((node) => {
-        if (node) {
-          addOrUpdateNode(user.id, {
-            lat: parseFloat(node.lat),
-            lng: parseFloat(node.lon),
-            version: parseInt(node.version, 10),
-            osmId: parseInt(node.id, 10),
-            recieveUpdates: true,
+    if (!noteId) {
+      const note = constructNote(false);
+      return postNote(note).then((noteThatWasSent) => {
+        const isNote = true;
+        const noteSuccessMessage = constructSuccessMessage(noteThatWasSent, isNote);
+        commit('setSuccessMessage', noteSuccessMessage);
+        if (osmId) {
+          return getBusinessPOI(osmType, osmId).then((businessPOI) => {
+            if (businessPOI) {
+              if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
+                // lat & lng is undefined when it is a relation/way,
+                // TODO calculate the lat lon instead of using the state
+                businessPOI.lat = state.lat;
+                businessPOI.lon = state.lon;
+              }
+              addOrUpdateBusinessPOI(user.id, {
+                lat: parseFloat(businessPOI.lat),
+                lng: parseFloat(businessPOI.lon),
+                name,
+                noteId: parseInt(noteThatWasSent.id, 10),
+                osmId: parseInt(businessPOI.id, 10),
+                osmType,
+                receiveUpdates: true,
+                version: parseInt(businessPOI.version, 10),
+              });
+            }
+            // TODO handle error status code 410 if the element has been deleted
+          });
+        }
+        return getTemporaryOsmId(user.id).then((temporaryOsmId) => {
+          addOrUpdateBusinessPOI(user.id, {
+            lat: parseFloat(state.lat),
+            lng: parseFloat(state.lon),
             name,
+            noteId: parseInt(noteThatWasSent.id, 10),
+            osmId: temporaryOsmId,
+            osmType,
+            receiveUpdates: true,
+            version: 0,
+          });
+        });
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+    const note = constructNote(true);
+    return postNoteAsComment(note, noteId).then((noteThatWasSent) => {
+      const isNote = true;
+      const noteSuccessMessage = constructSuccessMessage(noteThatWasSent, isNote);
+      commit('setSuccessMessage', noteSuccessMessage);
+      if (state.osmType === 'note') {
+        return addOrUpdateBusinessPOI(user.id, {
+          lat: parseFloat(state.lat),
+          lng: parseFloat(state.lon),
+          name,
+          noteId: parseInt(noteThatWasSent.id, 10),
+          osmId: state.osmId,
+          osmType: state.osmType,
+          receiveUpdates: true,
+          version: 0,
+        });
+      }
+      return getBusinessPOI(osmType, osmId).then((businessPOI) => {
+        if (businessPOI) {
+          if (typeof businessPOI.lat === 'undefined' && typeof businessPOI.lng === 'undefined') {
+            businessPOI.lat = state.lat;
+            businessPOI.lon = state.lon;
+          }
+          addOrUpdateBusinessPOI(user.id, {
+            lat: parseFloat(businessPOI.lat),
+            lng: parseFloat(businessPOI.lon),
+            name,
+            noteId: noteThatWasSent.id,
+            osmId: parseInt(businessPOI.id, 10),
+            osmType,
+            receiveUpdates: true,
+            version: parseInt(businessPOI.version, 10),
           });
         }
       });
     });
   },
-  postOwnCategoryNote({ commit }) {
-    const note = constructNote();
-    return postNote(note).then((ps) => {
-      state.displaySuccess = true;
-      const displayNote = constructDisplayNote(ps);
-      commit('setNote', displayNote);
-    });
-  },
   getAddress({ commit }, position) {
-    reverseQuery(position).then((ps) => {
-      commit('setAddress', ps);
-      localStorage.setItem('address', JSON.stringify(ps));
+    reverseQuery(position).then((address) => {
+      commit('setAddress', address);
+      localStorage.setItem('address', JSON.stringify(address));
     });
   },
 };
@@ -280,20 +330,8 @@ const mutations = {
   setNote(s, note) {
     s.note = note;
   },
-  setNode(s, node) {
-    s.node = node;
-  },
-  setDisplaySuccess(s, displaySuccess) {
-    s.displaySuccess = displaySuccess;
-  },
-  setDisplayConfirmation(s, displayConfirmation) {
-    s.displayConfirmation = displayConfirmation;
-  },
   setIsOwnCategory(s, isOwnCategory) {
     s.isOwnCategory = isOwnCategory;
-  },
-  setIsPopup(s, isPopup) {
-    s.isPopup = isPopup;
   },
   setIsNote(s, isNote) {
     s.isNote = isNote;
@@ -302,12 +340,6 @@ const mutations = {
     s.businessPosition = pos;
     s.lat = pos.lat;
     s.lon = pos.lng;
-  },
-  setInfoMap(s, infoMap) {
-    s.infoMap = infoMap;
-  },
-  setInfoText(s, infoText) {
-    s.infoText = infoText;
   },
   setAddress(s, address) {
     s.address = address;
@@ -320,6 +352,37 @@ const mutations = {
   },
   setIsNew(s, isNew) {
     s.isNew = isNew;
+  },
+  setNoteId(s, noteId) {
+    s.noteId = noteId;
+  },
+  setIsEditingUnsavedChanges(s, isEditingUnsavedChanges) {
+    s.isEditingUnsavedChanges = isEditingUnsavedChanges;
+  },
+  setIsFormSubmission(s, isFormSubmission) {
+    s.isFormSubmission = isFormSubmission;
+  },
+  showPopup(s, text) {
+    s.infoText = text;
+    s.isPopup = true;
+  },
+  hidePopup(s) {
+    s.infoText = '';
+    s.isPopup = false;
+  },
+  setOsmType(s, osmType) {
+    s.osmType = osmType;
+  },
+  resetDetailState(s) {
+    Object.keys(initialState).forEach((key) => {
+      s[key] = initialState[key];
+    });
+  },
+  restoreDetailState(s) {
+    const unsavedChanges = JSON.parse(localStorage.getItem('unsavedChanges'));
+    Object.keys(unsavedChanges).forEach((key) => {
+      s[key] = unsavedChanges[key];
+    });
   },
 };
 
@@ -345,15 +408,6 @@ const getters = {
   note(s) {
     return s.note;
   },
-  node(s) {
-    return s.node;
-  },
-  displaySuccess(s) {
-    return s.displaySuccess;
-  },
-  displayConfirmation(s) {
-    return s.displayConfirmation;
-  },
   isOwnCategory(s) {
     return s.isOwnCategory;
   },
@@ -369,14 +423,23 @@ const getters = {
   infoText(s) {
     return s.infoText;
   },
-  infoMap(s) {
-    return s.infoMap;
-  },
   osmId(s) {
     return s.osmId;
   },
   isNew(s) {
     return s.isNew;
+  },
+  noteId(s) {
+    return s.noteId;
+  },
+  isEditingUnsavedChanges(s) {
+    return s.isEditingUnsavedChanges;
+  },
+  isFormSubmission(s) {
+    return s.isFormSubmission;
+  },
+  osmType(s) {
+    return s.osmType;
   },
 };
 
@@ -386,12 +449,3 @@ export default {
   mutations,
   getters,
 };
-
-export function showPopup(text) {
-  state.infoText = text;
-  state.isPopup = true;
-}
-
-export function hidePopup() {
-  state.isPopup = false;
-}

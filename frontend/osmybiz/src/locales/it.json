@@ -124,7 +124,7 @@
       "no": "No"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Attività già esistente",
         "section1": "In questo punto esiste già un’attività con lo stesso nome e categoria",
         "section2": "Puoi modificare le informazioni già esistenti cliccando con il tasto sinistro del mouse sull’attività nella mappa."
@@ -141,7 +141,7 @@
     "address": "Indirizzo",
     "name": "Nome",
     "link": "Collegamento a OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "Nuova attività creata"
     },
     "note": {

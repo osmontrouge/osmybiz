@@ -2,7 +2,8 @@
   "header": {
     "about": "About",
     "messagetitle": "Messages from OpenStreetMap",
-    "updatestitle": "Updates of edited businesses"
+    "updatestitle": "Updates of edited businesses",
+    "watchlisttitle" : "Watch List"
   },
   "landing": {
     "search": "Search...",
@@ -20,6 +21,18 @@
       "changesetHelp": "View changeset",
       "muteHelp": "Disable notifications"
     },
+    "watchlist": {
+      "title": "Watch List",
+      "info": "This shows the Business POIs that you are currently subscribed to.",
+      "icon": {
+        "close": "Remove from Watch List",
+        "noteResolved": "Note has been resolved",
+        "notePending": "Note is pending",
+        "noteNull": "No note",
+        "updatePending": "No update on OSM.org",
+        "updateDetected": "Update detected on OSM.org"
+      }
+    },
     "help": {
       "title": "Help",
       "section1": "Zoom in with a double click or the '+' in the top left corner or search your address using the search bar at the top.",
@@ -34,6 +47,7 @@
   },
   "detail": {
     "titles": {
+      "title": "Detail",
       "create": "Create Business",
       "edit": "Edit Business",
       "category": "Category",
@@ -90,13 +104,14 @@
       "choosecategory": "Choose Category",
       "back": "Back",
       "reset": "Reset",
-      "save": "Save"
+      "save": "Save",
+      "pleasewait": "Please wait..."
     },
     "ownCategoryInfo": "If you choose to enter an own Category this resolves in a note. This note must be processed by a member of the OpenStreetMap-Community."
   },
   "infoTexts": {
     "category": "Choose a category for your business so that it is easier to identify what your business is about. Search through the data for a suitable category and if you have not found one, click on \"Own Category\" to define your own category.",
-    "address": "The address is loaded automatically from the point you have choosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
+    "address": "The address is loaded automatically from the point you have chosen. Take possible changes if necessary. The field \"Place\" is only allowed if the business has no other address.",
     "name": "Write the name of your business in this field. e.g. Migros",
     "opening_hours": "In this field are the opening hours of your business. e.g. Mo-Fr 07:00 - 12:00 13:00 - 17:00",
     "phone": "Here comes the phone number under which you, respectively your business, are reachable.",
@@ -109,7 +124,9 @@
   "popups": {
     "popuptitle": "New Business",
     "feedback": "Report Map Error",
-    "mapLink": "View on OSM.org",
+    "mapLink": "View element on OSM.org",
+    "noteLink": "View note on OSM.org",
+    "noElement": "No element",
     "edit": "Edit",
     "create": "Create",
     "buttontitle": "You have to be logged in for this function",
@@ -124,7 +141,7 @@
       "no": "No"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Already existing business",
         "section1": "At this position is already a business with exact same name and category",
         "section2": "You have the possibility to edit the already existing informations with a left click on the business on the map."
@@ -141,27 +158,37 @@
     "address": "Address",
     "name": "Name",
     "link": "Link to OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "New business created"
     },
     "note": {
       "title": "Changes saved"
     }
   },
+  "unsavedchanges": {
+    "title": "Unsaved Changes",
+    "section": "You have {time} seconds to recover the unsaved changes. Click {here} to recover the changes.",
+    "here": "here"
+  },
   "error": {
     "title": "Error",
     "nominatim": "There is a problem with the connection. Check your internet connection or try it again later.",
     "osm": {
+      "getNotesByOsmId": "Unable to get note from OSM.org",
       "login": "User could not be logged in.",
       "loadUser": "User could not be loaded.",
       "postNode": "Business could not be uploaded.",
       "postNote": "Changes could not be saved.",
-      "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later."
+      "postNoteAsComments": "Note could not be saved.",
+      "reopenClosedNoteAndAddComment": "Note cannot be reopened or saved.",
+      "load": "There is a problem with loading data from OpenStreetMap. Check your internet connection or try it again later.",
+      "osmElementDeleted": "The Business POI {0} has been removed from OSM.org. You are recommended to remove this Business POI from your watch list."
     },
     "overpass": {
       "query": "Businesses could not be loaded.",
       "surrounding": "There is a problem with uploading the data to OpenStreetMap. Check your internet connection or try it again later."
-    }
+    },
+    "osmybiz": "OSMyBiz: {0}"
   },
   "about": "\"OpenStreetMap My Business\" (short OSMyBiz) is a webapp where businesses - like hotels, restaurants, bars and shops - can enter and manage their information (e.g. address (housenumber, street), opening hours, phone no, and website) in OpenStreetMap in an easy way. It's similar to Onosm.org but contains more functions which are designed to be user friendly."
 }

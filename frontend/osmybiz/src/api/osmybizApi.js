@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { fakeOsmybizApi, osmyBizBackendUrl } from './../config/config';
 import {
-  mockAddOrUpdateUser, mockAddOrUpdateNode, mockFetchnodes, mockUnsubscribe,
-  mockDeleteNode,
+  mockAddOrUpdateUser,
+  mockAddOrUpdateBusinessPOI,
+  mockFetchBusinessPOIs,
+  mockUnsubscribe,
 } from './osmybizApiMock';
+import { setError } from '../store/error';
 
 const baseRoute = osmyBizBackendUrl;
 
@@ -17,40 +20,55 @@ export function addOrUpdateUser(userId, displayName) {
     return mockAddOrUpdateUser(userId, displayName);
   }
   const route = `${baseRoute}user`;
-  return axios.post(route, {
-    osmId: userId,
-    username: displayName,
-  });
+  return axios.post(route, { osmId: userId, username: displayName })
+    .catch((err) => {
+      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    });
 }
 
-export function fetchnodes(userId) {
+export function fetchBusinessPOIs(userId) {
   if (fakeOsmybizApi) {
-    return mockFetchnodes(userId);
+    return mockFetchBusinessPOIs(userId);
   }
-  const route = `${baseRoute}user/${userId}/node`;
-  return axios.get(route).then(response => response.data);
+  const route = `${baseRoute}user/${userId}/business-poi`;
+  return axios.get(route).then(response => response.data)
+    .catch((err) => {
+      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    });
 }
 
-export function addOrUpdateNode(userId, node) {
+export function addOrUpdateBusinessPOI(userId, businessPOI) {
   if (fakeOsmybizApi) {
-    return mockAddOrUpdateNode(userId, node);
+    return mockAddOrUpdateBusinessPOI(userId, businessPOI);
   }
-  const route = `${baseRoute}user/${userId}/node`;
-  return axios.post(route, node);
+  const route = `${baseRoute}user/${userId}/business-poi`;
+  return axios.post(route, businessPOI)
+    .catch((err) => {
+      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    });
 }
 
-export function unsubscribe(userId, nodeId) {
-  if (fakeOsmybizApi) {
-    return mockUnsubscribe(userId, nodeId);
-  }
-  const route = `${baseRoute}user/${userId}/node/${nodeId}/unsubscribe`;
-  return axios.post(route);
+export function getTemporaryOsmId(userId) {
+  // NOT IMPLEMENTED for fakeOsmmybiz
+  // if (fakeOsmybizApi) {
+  //    return mockAddOrUpdateNote(userId);
+  // }
+  const route = `${baseRoute}user/${userId}/temporary-osm-id`;
+  return axios.get(route)
+    .then(response => response.data)
+    .catch((err) => {
+      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    });
 }
 
-export function deleteNode(userId, nodeId) {
+export function unsubscribe(userId, osmId) {
   if (fakeOsmybizApi) {
-    return mockDeleteNode(userId, nodeId);
+    return mockUnsubscribe(userId, osmId);
   }
-  const route = `${baseRoute}user/${userId}/node/${nodeId}/delete`;
-  return axios.post(route);
+  const route = `${baseRoute}user/${userId}/business-poi/${osmId}/unsubscribe`;
+  return axios.post(route)
+    .catch((err) => {
+      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    });
 }
+

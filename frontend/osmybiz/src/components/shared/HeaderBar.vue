@@ -1,8 +1,10 @@
 <template>
     <div class="header">
       <div class="title">
-        <a href="/">
-          OpenStreetMap My Business
+        <a>
+          <router-link to="/">
+            OpenStreetMap My Business
+          </router-link>
         </a>
       </div>
       <div class="buttons">
@@ -10,7 +12,7 @@
           <a href="http://wiki.openstreetmap.org/wiki/OSMyBiz"
              class="external-link"
              target="_blank">
-            {{t('header').about}}
+            {{ $t('header.about') }}
             <icon class="link-icon" name="external-link-alt"></icon>
           </a>
         </div>
@@ -19,14 +21,13 @@
           <span>{{user.name}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()" :title="t('header').messagetitle">
+        <div class="messages" v-if="isLoggedIn" @click="gotoMessages()" :title="$t('header.messagetitle')">
           <icon name="envelope"></icon>
           <span class="unread" v-if="user.unReadCount > 0">{{user.unReadCount}}</span>
         </div>
 
-        <div class="messages" v-if="isLoggedIn" @click="toggleUpdates()" :title="t('header').updatestitle">
-          <icon name="bell"></icon>
-          <span class="unread" v-if="updateCount > 0">{{updateCount}}</span>
+        <div class="messages" v-if="isLoggedIn" @click="toggleWatchList()" :title="$t('header.watchlisttitle')">
+          <icon name="eye"></icon>
         </div>
 
         <button v-if="!isLoggedIn" @click="login()">Login</button>
@@ -61,7 +62,6 @@
       ...mapGetters([
         'user',
         'isLoggedIn',
-        'updateCount',
       ]),
     },
     methods: {
@@ -73,8 +73,7 @@
       ...mapMutations([
         'logout',
         'setTags',
-        'toggleUpdates',
-        'setInfoMap',
+        'toggleWatchList',
       ]),
       login() {
         this.authenticate();
@@ -165,7 +164,7 @@
     margin: 8px 0 10px 10px;
   }
 
-  #translation-select {
+  #locale-select {
     margin-right: 10px;
     padding: 7px 8px;
     outline: none;

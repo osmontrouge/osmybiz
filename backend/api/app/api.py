@@ -1,50 +1,42 @@
 from flask import Blueprint, request, jsonify
 import json
-from app.business import get_all_users, get_all_nodes, \
-    add_or_update_user, add_or_update_node, get_nodes_for_user, \
-    unsub_user_from_node, delete_node
+from app.business import add_or_update_user, add_or_update_business_poi, get_business_pois_for_user, \
+    unsub_user_from_business_poi, delete_business_poi, get_temporary_osm_id_for_user
 
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
 
-@api.route('/')
-def hello_world():
-    data = get_all_users()
-    return jsonify(data)
-
-
-@api.route('/test')
-def hello_world2():
-    data = get_all_nodes()
-    return jsonify(data)
-
-
 @api.route('/user', methods=['POST'])
 def update_user():
     user_data = json.loads(request.data)
-
     return add_or_update_user(user_data)
 
 
-@api.route('/user/<int:userid>/node', methods=['POST'])
-def update_node(userid):
-    node = json.loads(request.data)
-    return add_or_update_node(userid, node)
+@api.route('/user/<int:userid>/business-poi', methods=['POST'])
+def update_business_poi(userid):
+    business_poi = json.loads(request.data)
+    return add_or_update_business_poi(userid, business_poi)
 
 
-@api.route('/user/<int:userid>/node', methods=['GET'])
-def fetch_nodes(userid):
-    data = get_nodes_for_user(userid)
+@api.route('/user/<int:userid>/business-poi', methods=['GET'])
+def fetch_business_pois(userid):
+    data = get_business_pois_for_user(userid)
     return jsonify(data)
 
 
-@api.route('/user/<int:userid>/node/<int:nodeid>/unsubscribe',
+@api.route('/user/<int:userid>/business-poi/<signed_int:osmid>/unsubscribe',
            methods=['POST'])
-def unsubscribe(userid, nodeid):
-    return unsub_user_from_node(userid, nodeid)
+def unsubscribe(userid, osmid):
+    return unsub_user_from_business_poi(userid, osmid)
 
 
-@api.route('/user/<int:userid>/node/<int:nodeid>/delete', methods=['POST'])
-def delete(userid, nodeid):
-    return delete_node(userid, nodeid)
+@api.route('/user/<int:userid>/business-poi/<signed_int:osmid>/delete', methods=['POST'])
+def delete(userid, osmid):
+    return delete_business_poi(userid, osmid)
+
+
+@api.route('/user/<int:userid>/temporary-osm-id', methods=['GET'])
+def fetch_noteId(userid):
+    temporaryOsmId = get_temporary_osm_id_for_user(userid)
+    return jsonify(temporaryOsmId)

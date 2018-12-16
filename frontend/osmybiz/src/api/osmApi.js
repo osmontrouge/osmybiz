@@ -5,11 +5,12 @@ import { setError } from '../store/error';
 import util from './../util/osmApiUtils';
 
 const createNotePath = `${osmApiLevel}notes.json`;
+const notePath = `${osmApiLevel}notes/`;
 const createChangesetPath = `${osmApiLevel}changeset/create`;
 const uploadChangesetPath = `${osmApiLevel}changeset/`;
 const closeChangesetPath = `${osmApiLevel}changeset/`;
-const getNodePath = `${osmApiLevel}node/`;
 const userPath = `${osmApiLevel}user/details.json`;
+const apiPath = `${osmApiLevel}`;
 
 
 const auth = osmAuth({
@@ -25,7 +26,7 @@ const auth = osmAuth({
 export function login() {
   auth.authenticate((e) => {
     console.log(e);
-    setError('error.osm.login');
+    setError({ errorMessageKey: 'error.osm.login' });
   });
 }
 
@@ -52,7 +53,7 @@ export function loadUser() {
     } else {
       auth.xhr({ method: 'GET', path: userPath }, (err, response) => {
         if (err) {
-          setError('error.osm.loadUser');
+          setError({ errorMessageKey: 'error.osm.loadUser' });
           resolve(null);
           return;
         }
@@ -63,31 +64,31 @@ export function loadUser() {
 }
 
 // temporary fix to redirect to live api, because dev environment is currently broken
-function getNode2(nodeId) {
-  return axios.get(`https://www.openstreetmap.org/api/0.6/node/${nodeId}`).then(res => util.parseNode(res.data));
+function getBusinessPOI2(osmType, osmId) {
+  return axios.get(`https://www.openstreetmap.org/api/0.6/${osmType}/${osmId}`).then(res => util.parseBusinessPOI(res.data, osmType));
 }
 
-export function getNode(nodeId) {
+export function getBusinessPOI(osmType, osmId) {
   return new Promise((resolve, reject) => {
     auth.xhr({
       method: 'GET',
-      path: getNodePath + nodeId,
+      path: `${apiPath}${osmType}/${osmId}`,
     }, (err, response) => {
       if (err) {
         if (err.status === 410) {
           resolve(null);
         } else if (err.status === 404) {
-          getNode2(nodeId).then((res) => {
+          getBusinessPOI2(osmType, osmId).then((res) => {
             resolve(res);
           }).catch(() => {
             resolve(null);
           });
         } else {
-          setError('error.osm.load');
+          setError({ errorMessageKey: 'error.osm.load' });
           reject(err);
         }
       } else {
-        resolve(util.parseNode(response));
+        resolve(util.parseBusinessPOI(response));
       }
     });
   });
@@ -100,7 +101,7 @@ function closeChangeset(changesetId) {
     path: `${closeChangesetPath + changesetId}/close`,
   }, (err) => {
     if (err) {
-      setError('error.osm.load');
+      setError({ errorMessageKey: 'error.osm.load' });
     }
   });
 }
@@ -119,12 +120,12 @@ function uploadChangeset(node, changesetId) {
       },
     }, (err, response) => {
       if (err) {
-        setError('error.osm.load');
+        setError({ errorMessageKey: 'error.osm.load' });
         resolve(null);
+      } else {
+        closeChangeset(changesetId);
+        resolve(getBusinessPOI('node', util.extractId(response)));
       }
-      closeChangeset(changesetId);
-
-      resolve(getNode(util.extractId(response)));
     });
   });
 }
@@ -150,7 +151,7 @@ export function postNode(node) {
       },
     }, (err, changesetId) => {
       if (err) {
-        setError('error.osm.postNode');
+        setError({ errorMessageKey: 'error.osm.postNode' });
       }
       resolve(uploadChangeset(node, changesetId));
     });
@@ -162,20 +163,76 @@ export function postNote(note) {
     auth.xhr({
       method: 'POST',
       path: createNotePath,
-      content: `lat=${note.lat}&lon=${note.lon}&text=${note.text}`,
+      content: `lat=${note.lat}&lon=${note.lon}&text=${encodeURIComponent(note.text)}`,
     }, (err, response) => {
       if (err) {
-        setError('error.osm.postNote');
+        setError({ errorMessageKey: 'error.osm.postNote' });
         resolve(null);
+      } else {
+        const data = JSON.parse(response);
+        resolve({
+          html: data.properties.comments[0].html,
+          text: data.properties.comments[0].text,
+          id: data.properties.id,
+          link: `${osmUrl}/note/${data.properties.id}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+          status: data.properties.status,
+        });
       }
-      const data = JSON.parse(response);
-      resolve({
-        html: data.properties.comments[0].html,
-        text: data.properties.comments[0].text,
-        id: data.properties.id,
-        link: `${osmUrl}/note/${data.properties.id}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
-        status: data.properties.status,
-      });
+    });
+  });
+}
+
+export function reopenClosedNoteAndAddComment(note, noteId) {
+  return new Promise((resolve) => {
+    auth.xhr({
+      method: 'POST',
+      path: `${notePath}${noteId}/reopen.json`,
+      content: `text=${encodeURIComponent(note.text)}`,
+    }, (err, response) => {
+      if (err) {
+        setError({ errorMessageKey: 'error.osm.reopenClosedNoteAndAddComment' });
+        resolve(null);
+      } else {
+        const data = JSON.parse(response);
+        const mostRecentCommentIndex = data.properties.comments.length - 1;
+        resolve({
+          html: data.properties.comments[mostRecentCommentIndex].html,
+          text: data.properties.comments[mostRecentCommentIndex].text,
+          id: data.properties.id,
+          link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+          status: data.properties.status,
+        });
+      }
+    });
+  });
+}
+
+export function postNoteAsComment(note, noteId) {
+  return new Promise((resolve) => {
+    auth.xhr({
+      method: 'POST',
+      path: `${notePath}${noteId}/comment.json`,
+      content: `text=${encodeURIComponent(note.text)}`,
+    }, (err, response) => {
+      const noteIsClosed = 409;
+      if (err) {
+        if (err.status === noteIsClosed) {
+          resolve(reopenClosedNoteAndAddComment(note, noteId));
+        } else {
+          setError({ errorMessageKey: 'error.osm.postNoteAsComment' });
+          resolve(null);
+        }
+      } else {
+        const data = JSON.parse(response);
+        const mostRecentCommentIndex = data.properties.comments.length - 1;
+        resolve({
+          html: data.properties.comments[mostRecentCommentIndex].html,
+          text: data.properties.comments[mostRecentCommentIndex].text,
+          id: data.properties.id,
+          link: `${osmUrl}/note/${noteId}/#map=19/${data.geometry.coordinates[1]}/${data.geometry.coordinates[0]}&layers=ND`,
+          status: data.properties.status,
+        });
+      }
     });
   });
 }
@@ -190,7 +247,15 @@ export function getNotes(lat, lng) {
   const top = lat + distance;
   return axios.get(`${osmUrl}${createNotePath}?bbox=${left},${bottom},${right},${top}`).then(response => response.data.features)
     .catch(() => {
-      setError('error.osm.load');
+      setError({ errorMessageKey: 'error.osm.load' });
       return [];
     });
 }
+
+export function getNotesByOsmId(noteId) {
+  return axios.get(`${osmUrl}${osmApiLevel}notes/${noteId}`)
+    .catch(() => {
+      setError({ errorMessageKey: 'error.osm.getNotesByOsmId' });
+    });
+}
+

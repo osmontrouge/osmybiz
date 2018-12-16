@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 const state = {
-  error: '',
+  errorMessageKey: '',
+  placeholders: [],
   isError: false,
 };
 
@@ -10,8 +11,11 @@ const mutations = {
 };
 
 const getters = {
-  error(s) {
-    return s.error;
+  errorMessageKey(s) {
+    return s.errorMessageKey;
+  },
+  placeholders(s) {
+    return s.placeholders;
   },
   isError(s) {
     return s.isError;
@@ -25,9 +29,12 @@ export default {
   getters,
 };
 
-export function setError(error) {
+export function setError(errorObj) {
+  state.errorMessageKey = errorObj.errorMessageKey;
+  if (typeof errorObj.placeholders !== 'undefined') {
+    state.placeholders = errorObj.placeholders;
+  }
   state.isError = true;
-  state.error = error;
   setTimeout(() => {
     state.isError = false;
   }, 5000);

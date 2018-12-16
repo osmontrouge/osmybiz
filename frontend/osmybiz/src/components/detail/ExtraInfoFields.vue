@@ -1,7 +1,7 @@
 <template>
   <div class="extra-wrapper">
     <div v-if="details.category.fields && details.category.fields.length > 0 && details.category.fields[0].name !== ''">
-      <h3>{{t('detail').titles.extras}}</h3>
+      <h3>{{ $t('detail.titles.extras') }}</h3>
       <div class="extra-fields">
         <div class="column">
           <div class="field"

@@ -4,8 +4,11 @@
       ref="map"
       class="map"
       :zoom="mapZoom"
-      :center="mapPosition"
-      @update:bounds="viewChange"
+      :min-zoom="3"
+      :max-bounds="maxBounds"
+      :center="mapCenter"
+      :max-bounds-viscosity="1"
+      @moveend="updateMap()"
       @contextmenu="contextMenu($event)"
       @click="cleanNewBusinessPopups"
     >
@@ -13,23 +16,25 @@
         :url="osmLayer.url"
         :attribution="osmLayer.attribution"
         :visible="mode === 'vector'"
+        :options="tileLayerZoomSettings"
       ></l-tile-layer>
       <l-tile-layer
         :url="mapBoxLayer.url"
         :attribution="mapBoxLayer.attribution"
         :token="mapBoxLayer.token"
         :visible="mode === 'satellite'"
+        :options="tileLayerZoomSettings"
       ></l-tile-layer>
       <v-business-marker-popup
         v-for="business in allBusinesses"
         :key="business.id"
         :business="business"
       ></v-business-marker-popup>
-      <v-new-business-popup
-        v-for="newBusinessPosition in newBusinessPositions"
-        :key="`${newBusinessPosition.lat}_${newBusinessPosition.lng}`"
-        :businessPosition="newBusinessPosition"
-      ></v-new-business-popup>
+      <v-business-marker-popup
+        v-if="positionWhereContextMenuIsTriggered"
+        :key="`${positionWhereContextMenuIsTriggered.lat}_${positionWhereContextMenuIsTriggered.lng}`"
+        :business="positionWhereContextMenuIsTriggered"
+      ></v-business-marker-popup>
     </l-map>
   </div>
 </template>
@@ -37,12 +42,10 @@
 <script>
   import { LMap, LMarker, LPopup, LTileLayer, LTooltip } from 'vue2-leaflet';
   import { mapActions, mapGetters, mapMutations } from 'vuex';
-  import * as L from 'leaflet';
   import _ from 'lodash';
   import VBusinessMarkerPopup from '../map/VBusinessMarkerPopup.vue';
-  import VNewBusinessPopup from '../map/VNewBusinessPopup.vue';
-  import { storeViewPort } from '../../util/positionUtil';
-  import { initialPosition, initialZoom, mapBoxToken } from '../../config/config';
+  import { initialPosition, initialZoom, mapBoxToken, LatLngRoundingAccuracy } from '../../config/config';
+  import { routes } from '../../router';
 
   export default {
     name: 'tile-map',
@@ -52,7 +55,6 @@
       LMarker,
       LPopup,
       LTooltip,
-      VNewBusinessPopup,
       VBusinessMarkerPopup,
     },
     data() {
@@ -66,30 +68,36 @@
           attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">&copy; Mapbox</a> <a href="https://openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap</a> <a class="mapbox-improve-map" href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a> <a href="https://www.digitalglobe.com/" target="_blank">&copy; DigitalGlobe</a>',
           token: mapBoxToken,
         },
-        newBusinessPositions: [],
-        map: null,
+        positionWhereContextMenuIsTriggered: null,
+        maxBounds: [[-89.98155760646617, -180], [89.99346179538875, 180]],
+        tileLayerZoomSettings: { maxNativeZoom: 18, maxZoom: 21 },
       };
     },
     created() {
-      if (!this.position) {
-        this.setMapPosition(initialPosition);
+      if (!this.mapCenter) {
+        this.setMapCenter(initialPosition);
       }
       if (!this.mapZoom) {
         this.setMapZoom(initialZoom);
       }
     },
     mounted() {
-      this.map = this.$refs.map.mapObject;
-      let { lat, lng, zoom } = this.$router.currentRoute.params;
-      [lat, lng, zoom] = [Number(lat), Number(lng), Number(zoom)];
-      if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(zoom)) {
-        const mapCenter = L.latLng(lat, lng);
-        this.map.setView(mapCenter, zoom);
+      this.$nextTick(() => {
+        this.setMap(this.$refs.map.mapObject);
+        const { params } = this.$route;
+        this.setUrlParams(params);
+        this.setMapViewToUrl();
+      });
+    },
+    watch: {
+      $route: function updatePosition(route) {
+        const { params } = route;
+        this.setUrlParams(params);
+        this.setMapViewToUrl();
+      },
+      '$i18n.locale': function updateBusinessInViewPort() {
         this.queryOverpass(this.viewPort);
-      } else {
-        // on load trigger manually if no predefined values from route
-        this.viewChange();
-      }
+      },
     },
     methods: {
       ...mapActions(['queryOverpass', 'checkDuplicateNote']),
@@ -98,63 +106,83 @@
         'setDetails',
         'setCoords',
         'setIsNote',
-        'setMapPosition',
+        'setMapCenter',
         'setOsmId',
         'setMapZoom',
+        'setMapViewToUrl',
+        'setUrlParams',
+        'setMap',
+        'setLastKnownPosition',
       ]),
-      viewChange() {
+      updateMap() {
+        /* Note that the moveend event is triggered in the landing page as well
+        so the following line is required */
+        if (this.isDetailPage) {
+          return;
+        }
         const zoom = this.map.getZoom();
+        const coords = this.map.getCenter();
+        const lat = coords.lat.toFixed(LatLngRoundingAccuracy);
+        const lng = coords.lng.toFixed(LatLngRoundingAccuracy);
+
+        // update url to leaflet position
+        this.$router.push({ name: routes.Landing, params: { zoom, lat, lng } });
+
+        // saves last-known-position in local storage
+        this.setLastKnownPosition({ coords, zoom });
+
         const bounds = this.map.getBounds();
         this.setViewPort({
           bounds,
           zoom,
         });
-        storeViewPort(bounds, zoom, this.$router);
+
+        // update business by making overpass query based on the leaflet bounds
         this.queryOverpass(this.viewPort);
       },
-      getOwnedNodesInViewPort() {
+      getOwnedBusinessPOIsInViewPort() {
         const bbox = this.viewPort.boundingBox;
-        return this.ownedNodes.filter(n =>
+        return this.ownedBusinessPOIs.filter(n =>
           (n.lat >= bbox.south)
           && (n.lat <= bbox.north)
           && (n.lng >= bbox.west)
           && (n.lng <= bbox.east));
       },
       cleanNewBusinessPopups() {
-        if (this.newBusinessPositions.length >= 1) {
-          this.newBusinessPositions.splice(0, this.newBusinessPositions.length);
-        }
+        this.positionWhereContextMenuIsTriggered = null;
       },
       contextMenu(event) {
-        // TODO: Cleanup this ugly code!
         this.cleanNewBusinessPopups();
-        _.delay((latLng) => {
-          this.newBusinessPositions.push(latLng);
-        }, 100, event.latlng);
+        this.positionWhereContextMenuIsTriggered = event.latlng;
       },
     },
     computed: {
       ...mapGetters([
-        'mapPosition',
+        'mapCenter',
         'mapZoom',
         'viewPort',
         'businesses',
         'mode',
         'isLoggedIn',
-        'ownedNodes',
+        'ownedBusinessPOIs',
+        'urlParams',
+        'map',
       ]),
       allBusinesses() {
         let mine = [];
         if (this.viewPort) {
-          mine = this.getOwnedNodesInViewPort();
+          mine = this.getOwnedBusinessPOIsInViewPort();
         }
         return _.unionBy(mine, this.businesses, b => b.id);
+      },
+      isDetailPage() {
+        return (this.$route.name === routes.Detail);
       },
     },
   };
 </script>
 
-<style>
+<style scoped>
 
   .map-wrapper {
     position: fixed;

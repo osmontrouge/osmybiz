@@ -124,7 +124,7 @@
       "no": "否"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "已經存在的商家",
         "section1": "這個位子上已經有一樣名稱和類別的商家",
         "section2": "你可能可以用左鍵在地圖上編輯既有的商家資訊。"
@@ -141,7 +141,7 @@
     "address": "地址",
     "name": "名稱",
     "link": "連到開放街圖",
-    "node": {
+    "businessPOI": {
       "title": "已建立新商家"
     },
     "note": {

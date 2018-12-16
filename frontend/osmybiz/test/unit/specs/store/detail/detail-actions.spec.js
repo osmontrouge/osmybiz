@@ -6,20 +6,16 @@ const actionsInjector = require('inject-loader!../../../../../src/store/detail')
 const actions = actionsInjector({
   './../api/osmApi': {
     postNote() {
-      return Promise.resolve({ text: 'test Address: test\n Category: test\n Name: test\n Wheelchair: true' });
-    },
-    getNode() {
       return Promise.resolve({
-        lat: '1',
-        lon: '2',
-        version: '1',
-        id: '1',
+        text: '#OSMyBiz \n' +
+          'Address: Oberseestrasse 10, 8640 Rapperswil-Jona, Switzerland\n' +
+          'Category: amenity:university\n' +
+          'Name: HSR Hochschule für Technik Rapperswil\n' +
+          'Website: http://www.hsr.ch\n' +
+          'Wheelchair accessible: true\n',
+        link: 'www.osm.org/note/1',
+        id: 1,
       });
-    },
-  },
-  './../api/osmybizApi': {
-    addOrUpdateNode() {
-      return Promise.resolve();
     },
   },
 });
@@ -56,11 +52,18 @@ const testAction = (action, payload, state, expectedMutations, done) => {
   }
 };
 
+const mockData = {
+  category: {
+    value: ' ',
+  },
+};
+
 describe('detail store', () => {
   describe('actions', () => {
     it('should post note', (done) => {
+      localStorage.setItem('details', JSON.stringify(mockData));
       testAction(
-        actions.default.actions.postSelectedCategoryNote,
+        actions.default.actions.postNote,
         { user: {}, osmId: 0 },
         {
           details: {
@@ -80,10 +83,23 @@ describe('detail store', () => {
             description: '',
             note: '',
           },
-        },
-        [
-          { type: 'setNote', payload: { text: { address: 'test', name: 'test' } } },
-        ], done,
+          address: {
+            street: '',
+            housenumber: '',
+            postalcode: '',
+            place: '',
+            city: '',
+            country: '',
+          },
+        }, [{
+          type: 'setSuccessMessage',
+          payload: {
+            address: '',
+            name: '',
+            link: 'www.osm.org/note/1',
+            isNote: true,
+          },
+        }], done,
       );
     });
   });

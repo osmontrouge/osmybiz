@@ -56,7 +56,7 @@ export function query(queryString, language) {
   return axios.get(buildRequest(queryString, 7, language))
     .then(response => mapResults(response.data))
     .catch(() => {
-      setError('error.nominatim');
+      setError({ errorMessageKey: 'error.nominatim' });
     });
 }
 
@@ -66,9 +66,14 @@ function buildReverseRequest(position) {
 
 export function reverseQuery(position) {
   return axios.get(buildReverseRequest(position))
-    .then(response => parseAddress(response.data.address))
+    .then((response) => {
+      if (response.data.error === 'Unable to geocode') {
+        return '';
+      }
+      return parseAddress(response.data.address);
+    })
     .catch((e) => {
-      setError('error.nominatim');
+      setError({ errorMessageKey: 'error.nominatim' });
       console.error(e);
     });
 }

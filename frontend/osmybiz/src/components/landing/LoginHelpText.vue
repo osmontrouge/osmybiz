@@ -6,14 +6,14 @@
       </div>
 
       <div class="dialog-title">
-        {{t('landing').loginhelp.title}}
+        {{ $t('landing.loginhelp.title') }}
       </div>
 
       <div class="section">
-        {{t('landing').loginhelp.section1}}
+        {{ $t('landing.loginhelp.section1') }}
       </div>
       <div class="section">
-        {{t('landing').loginhelp.section2}}
+        {{ $t('landing.loginhelp.section2') }}
       </div>
     </div>
 
@@ -46,7 +46,7 @@
   };
 </script>
 
-<style>
+<style scoped>
 
   #login-dialog {
     top: 55px;

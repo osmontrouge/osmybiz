@@ -7,7 +7,7 @@ function saveUsers(users) {
   localStorage.setItem(userKey, JSON.stringify(users));
 }
 
-function saveNodes(notes) {
+function saveBusinessPOIs(notes) {
   localStorage.setItem(noteKey, JSON.stringify(notes));
 }
 
@@ -15,7 +15,7 @@ function loadUsers() {
   return JSON.parse(localStorage.getItem(userKey)) || [];
 }
 
-function loadNodes() {
+function loadBusinessPOIs() {
   return JSON.parse(localStorage.getItem(noteKey)) || [];
 }
 
@@ -32,7 +32,7 @@ export function mockAddOrUpdateUser(userId, displayName) {
   return Promise.resolve();
 }
 
-export function mockFetchnodes(userId) {
+export function mockFetchBusinessPOIs(userId) {
   const users = loadUsers();
   const user = users.filter(u => u.osmId === userId)[0];
 
@@ -40,66 +40,67 @@ export function mockFetchnodes(userId) {
     return Promise.reject(new Error('User not found'));
   }
 
-  const nodes = loadNodes().filter(n => n.userId === userId);
-  return Promise.resolve(nodes);
+  const businessPOIs = loadBusinessPOIs().filter(n => n.userId === userId);
+  return Promise.resolve(businessPOIs);
 }
 
-export function mockAddOrUpdateNode(userId, node) {
+export function mockAddOrUpdateBusinessPOI(userId, businessPOI) {
   const users = loadUsers();
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
     return Promise.reject(new Error('User not found'));
   }
-  const nodes = loadNodes();
-  let existingNode = nodes.filter(n => n.osmId === node.osmId && n.userId === userId)[0];
-  if (!_.isObject(existingNode)) {
-    existingNode = { osmId: node.osmId, userId };
-    nodes.push(existingNode);
+  const businessPOIs = loadBusinessPOIs();
+  let existingBusinesPoi =
+    businessPOIs.filter(n => n.osmId === businessPOI.osmId && n.userId === userId)[0];
+  if (!_.isObject(existingBusinesPoi)) {
+    existingBusinesPoi = { osmId: businessPOI.osmId, userId };
+    businessPOIs.push(existingBusinesPoi);
   }
-  existingNode.lat = node.lat;
-  existingNode.lng = node.lng;
-  existingNode.version = node.version;
-  existingNode.recieveUpdates = node.recieveUpdates;
-  existingNode.name = node.name;
+  existingBusinesPoi.lat = businessPOI.lat;
+  existingBusinesPoi.lng = businessPOI.lng;
+  existingBusinesPoi.version = businessPOI.version;
+  existingBusinesPoi.receiveUpdates = businessPOI.receiveUpdates;
+  existingBusinesPoi.name = businessPOI.name;
 
-  saveNodes(nodes);
+  saveBusinessPOIs(businessPOIs);
   return Promise.resolve();
 }
 
-export function mockUnsubscribe(userId, nodeId) {
+export function mockUnsubscribe(userId, businessPOIId) {
   const users = loadUsers();
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
     return Promise.reject(new Error('User not found'));
   }
-  const nodes = loadNodes();
-  const node = nodes.filter(n => n.osmId === nodeId && n.userId === userId)[0];
-  if (!_.isObject(node)) {
+  const businessPOIs = loadBusinessPOIs();
+  const businessPOI = businessPOIs.filter(n => n.osmId === businessPOIId && n.userId === userId)[0];
+  if (!_.isObject(businessPOI)) {
     return Promise.reject(new Error('User not found'));
   }
 
-  node.recieveUpdates = false;
-  saveNodes(nodes);
+  businessPOI.receiveUpdates = false;
+  saveBusinessPOIs(businessPOIs);
   return Promise.resolve();
 }
 
-export function mockDeleteNode(userId, nodeId) {
+export function mockDeleteBusinessPOI(userId, businessPOIId) {
   const users = loadUsers();
   const user = users.filter(u => u.osmId === userId)[0];
 
   if (!_.isObject(user)) {
     return Promise.reject(new Error('User not found'));
   }
-  const nodes = loadNodes();
-  const node = nodes.filter(n => n.osmId === nodeId && n.userId === userId)[0];
-  if (!_.isObject(node)) {
+  const businessPOIs = loadBusinessPOIs();
+  const businessPOI = businessPOIs.filter(n => n.osmId === businessPOIId && n.userId === userId)[0];
+  if (!_.isObject(businessPOI)) {
     return Promise.reject(new Error('User not found'));
   }
 
-  const index = nodes.indexOf(node);
-  nodes.splice(index, 1);
-  saveNodes(nodes);
+  const index = businessPOIs.indexOf(businessPOI);
+  businessPOIs.splice(index, 1);
+  saveBusinessPOIs(businessPOIs);
   return Promise.resolve();
 }

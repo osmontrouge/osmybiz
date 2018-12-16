@@ -7,7 +7,7 @@ export const categoryTags = ['shop', 'amenity', 'tourism', 'office', 'leisure'];
 
 const tagRegex = categoryTags.join('|');
 
-const query = `[out:json];node[~"^${tagRegex}$"~"."]({{bbox}});out;`;
+const query = `[out:json];nwr[~"^${tagRegex}$"~"."]({{bbox}});out center;`;
 const surroundingQuery = `[out:json];node(around:${searchradius}, {{lat}}, {{lon}})[{{tag}}={{cat}}]["name"="{{name}}"];out;`;
 
 function buildQuery(bbox) {
@@ -24,21 +24,28 @@ function buildSurroundingQuery(details, lat, lon) {
 }
 
 function parseData(data) {
-  return data.elements.map(e => ({
-    id: e.id,
-    lat: e.lat,
-    lng: e.lon,
-    tags: e.tags,
-  }));
+  return data.elements.map((e) => {
+    if (e.type !== 'node') {
+      e.lat = e.center.lat;
+      e.lon = e.center.lon;
+    }
+    return {
+      type: e.type,
+      id: e.id,
+      lat: e.lat,
+      lng: e.lon,
+      tags: e.tags,
+    };
+  });
 }
 
-function filterTags(node) {
+function filterTags(businessPOI) {
   return Object.keys(tags).some((f) => {
     const element = f.split('/');
     const key = element[0];
     const value = element[1];
-    if (node.tags[key]) {
-      if (node.tags[key].indexOf(value) === 0) {
+    if (businessPOI.tags[key]) {
+      if (businessPOI.tags[key].indexOf(value) === 0) {
         return true;
       }
     }
@@ -49,15 +56,15 @@ function filterTags(node) {
 export function queryBox(bbox) {
   return axios.post(overpassUrl, buildQuery(bbox))
     .then(res => parseData(res.data).filter(filterTags), () => {
-      setError('error.overpass.query');
+      setError({ errorMessageKey: 'error.overpass.query' });
       return [];
     });
 }
 
-export function surroundingQueryNode(details, lat, lon) {
+export function surroundingQueryBusinessPOI(details, lat, lon) {
   return axios.post(overpassUrl, buildSurroundingQuery(details, lat, lon))
     .then(res => res.data.elements.length > 0, () => {
-      setError('error.overpass.surrounding');
+      setError({ errorMessageKey: 'error.overpass.surrounding' });
       return false;
     });
 }

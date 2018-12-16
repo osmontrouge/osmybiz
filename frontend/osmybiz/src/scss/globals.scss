@@ -98,4 +98,24 @@ input::placeholder, textarea::placeholder {
 .external-link {
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 }
+
+.info {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+
+.info:hover {
+  cursor: help;
+}
+
+.help {
+  text-align: left;
+}
+
+.is-danger {
+  color: $error-color;
+}
+

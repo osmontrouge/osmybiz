@@ -1,24 +1,24 @@
 import { categoryTags } from '../api/overpassApi';
-import { getTagName } from './translate';
+import { getTagName } from '../store/locale';
 
-function getNodeCategoryKey(node) {
+function getBusinessPOICategoryKey(businessPOI) {
   let result = '';
   categoryTags.forEach((t) => {
-    if (node.tags[t]) {
-      result = `${t}/${node.tags[t]}`;
+    if (businessPOI.tags[t]) {
+      result = `${t}/${businessPOI.tags[t]}`;
     }
   });
   return result;
 }
 
-function getBizCategory(node) {
-  const key = getNodeCategoryKey(node);
+function getBizCategory(businessPOI) {
+  const key = getBusinessPOICategoryKey(businessPOI);
   const fields = [];
   const tagFields = getTagName(key).fields || [];
   tagFields.forEach((field) => {
     let value = '';
-    if (node.tags[field.key]) {
-      value = node.tags[field.key];
+    if (businessPOI.tags[field.key]) {
+      value = businessPOI.tags[field.key];
     }
     if (field.options) {
       const options = [];
@@ -51,31 +51,31 @@ function getBizCategory(node) {
   };
 }
 
-function extractTag(node, tagName) {
-  return node.tags[tagName] || '';
+function extractTag(businessPOI, tagName) {
+  return businessPOI.tags[tagName] || '';
 }
 
-function extractWheelchair(node) {
-  const value = node.tags.wheelchair;
+function extractWheelchair(businessPOI) {
+  const value = businessPOI.tags.wheelchair;
   return value === 'yes' || value === 'limited';
 }
 
-function createNoteFromNode(node) {
+function createNoteFromBusinessPOI(businessPOI) {
   return {
-    category: getBizCategory(node),
-    name: extractTag(node, 'name'),
-    opening_hours: extractTag(node, 'opening_hours'),
-    phone: extractTag(node, 'phone'),
-    email: extractTag(node, 'email'),
-    website: extractTag(node, 'website'),
-    wheelchair: extractWheelchair(node),
-    description: extractTag(node, 'description'),
+    category: getBizCategory(businessPOI),
+    name: extractTag(businessPOI, 'name'),
+    opening_hours: extractTag(businessPOI, 'opening_hours'),
+    phone: extractTag(businessPOI, 'phone'),
+    email: extractTag(businessPOI, 'email'),
+    website: extractTag(businessPOI, 'website'),
+    wheelchair: extractWheelchair(businessPOI),
+    description: extractTag(businessPOI, 'description'),
     note: '',
   };
 }
 
 export {
-  getNodeCategoryKey,
+  getBusinessPOICategoryKey,
   getBizCategory,
-  createNoteFromNode,
+  createNoteFromBusinessPOI,
 };

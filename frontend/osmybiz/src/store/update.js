@@ -1,106 +1,108 @@
 /* eslint-disable no-param-reassign */
 import * as _ from 'lodash';
-import { addOrUpdateUser, fetchnodes, addOrUpdateNode, deleteNode, unsubscribe } from './../api/osmybizApi';
-import { getNode } from './../api/osmApi';
-import util from './../util/updateUtil';
-
+import { addOrUpdateUser, fetchBusinessPOIs, unsubscribe } from './../api/osmybizApi';
+import { getBusinessPOI, getNotesByOsmId } from './../api/osmApi';
+import util from '../util/osmApiUtils';
+import { setError } from './error';
 
 const state = {
-  updates: [],
-  nodes: [],
-  showUpdates: false,
+  businessPOIs: [],
+  showWatchList: false,
 };
+
+function hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI) {
+  return (osmBusinessPOI.version > ownedBusinessPOI.version);
+}
+
+function isNoteWithoutOsmElement(osmId) {
+  return (osmId < 0);
+}
 
 const actions = {
   loadUpdates({ commit }, user) {
     addOrUpdateUser(user.id, user.name).then(() => {
-      fetchnodes(user.id).then((ns) => {
-        commit('setNodes', []);
-
-        ns.filter(n => n.recieveUpdates).forEach((n) => {
-          getNode(n.osmId).then((node) => {
-            const update = util.getUpdate(n, node);
-            if (_.isObject(update)) {
-              commit('pushUpdate', update);
+      fetchBusinessPOIs(user.id).then((ns) => {
+        commit('setBusinessPOIs', []);
+        ns.filter(n => n.receiveUpdates).forEach((n) => {
+          const ownedBusinessPOI = {
+            id: n.osmId,
+            lat: n.lat,
+            lng: n.lng,
+            mine: true,
+            noteId: n.noteId,
+            type: n.osmType,
+            version: n.version,
+            hasUpdate: false,
+            noteIsResolved: false,
+          };
+          const promise = new Promise((resolve) => {
+            if (ownedBusinessPOI.noteId) {
+              // update note status
+              getNotesByOsmId(ownedBusinessPOI.noteId).then((response) => {
+                const noteStatus = util.parseNoteStatus(response);
+                if (noteStatus === 'closed') {
+                  ownedBusinessPOI.noteIsResolved = true;
+                }
+                resolve(ownedBusinessPOI);
+              });
+            } else {
+              resolve(ownedBusinessPOI);
             }
+          });
 
-            if (_.isObject(node)) {
-              const ownedNode = {
-                id: n.osmId,
-                lat: n.lat,
-                lng: n.lng,
-                tags: node.tags,
-                mine: true,
-              };
-              commit('pushNode', ownedNode);
+          promise.then(() => {
+            if (isNoteWithoutOsmElement(ownedBusinessPOI.id)) {
+              ownedBusinessPOI.tags = {};
+              ownedBusinessPOI.tags.name = n.name;
+              commit('pushBusinessPOI', ownedBusinessPOI);
+            } else {
+              getBusinessPOI(n.osmType, n.osmId).then((osmBusinessPOI) => {
+                if (_.isObject(osmBusinessPOI)) {
+                  ownedBusinessPOI.tags = osmBusinessPOI.tags;
+                  if (hasVersionUpdate(ownedBusinessPOI, osmBusinessPOI)) {
+                    ownedBusinessPOI.hasUpdate = true;
+                  }
+                  commit('pushBusinessPOI', ownedBusinessPOI);
+                } else {
+                  setError({ errorMessageKey: 'error.osm.osmElementDeleted', placeholders: [n.name] });
+                  ownedBusinessPOI.tags = {};
+                  ownedBusinessPOI.tags.name = n.name;
+                  commit('pushBusinessPOI', ownedBusinessPOI);
+                  // TODO handle the case when osm element has been deleted
+                }
+              });
             }
           });
         });
       });
-    }, () => {
     });
   },
-
-  confirmUpdate({ commit }, { user, update }) {
-    let promise;
-    if (update.kind === 'update') {
-      promise = addOrUpdateNode(user.id, {
-        osmId: update.id,
-        version: update.newVersion,
-        lat: update.coords.lat,
-        lng: update.coords.lng,
-        recieveUpdates: true,
-        name: update.name,
-      });
-    } else {
-      promise = deleteNode(user.id, update.id);
-    }
-    promise.then(() => {
-      commit('removeUpdate', update);
-    });
-  },
-
-  ignoreFutureUpdates({ commit }, { update, user }) {
-    unsubscribe(user.id, update.id).then(() => {
-      commit('removeUpdate', update);
+  /* eslint-disable-next-line */
+  removeFromWatchList({ commit }, { ownedBusinessPOI, user }) {
+    unsubscribe(user.id, ownedBusinessPOI.id).then(() => {
+      this.dispatch('loadUpdates', user);
     });
   },
 };
 
 const mutations = {
-  setNodes(s, nodes) {
-    s.nodes = nodes;
+  setBusinessPOIs(s, businessPOIs) {
+    s.businessPOIs = businessPOIs;
   },
-  pushUpdate(s, update) {
-    s.updates.push(update);
+  toggleWatchList(s) {
+    s.showWatchList = !s.showWatchList;
   },
-  removeUpdate(s, update) {
-    const i = _.findIndex(s.updates, u => u.id === update.id);
-
-    if (i >= 0) {
-      s.updates.splice(i, 1);
-    }
-  },
-  toggleUpdates(s) {
-    s.showUpdates = !s.showUpdates;
-  },
-  pushNode(s, node) {
-    s.nodes.push(node);
+  pushBusinessPOI(s, businessPOI) {
+    s.businessPOIs.push(businessPOI);
   },
 };
 
 const getters = {
-  updates(s) {
-    return s.updates;
+  showWatchList(s) {
+    return s.showWatchList;
   },
-  showUpdates(s) {
-    return s.showUpdates;
-  },
-  updateCount(s) {
-    return s.updates.length;
-  },
-  ownedNodes(s) {
-    return s.nodes;
+  ownedBusinessPOIs(s) {
+    return s.businessPOIs;
   },
 };
 

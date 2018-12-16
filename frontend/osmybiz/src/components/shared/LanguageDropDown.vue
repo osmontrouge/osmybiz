@@ -1,10 +1,7 @@
 <template>
-
-  <select id="translation-select" @click="onSelect" v-model="selected" >
-    <option v-for="language in supportedLanguagesOptions" v-bind:value="language.value">
-      {{ language.label }}
-    </option>
-  </select>
+    <select id="locale-select" @click="saveLocaleAsCookie" v-model="$i18n.locale">
+      <option v-for="(lang) in langs" :value="lang.value">{{ lang.label }}</option>
+    </select>
 </template>
 
 <script>
@@ -44,14 +41,15 @@
     return supportedLanguagesList;
   }
 
-  function setBrowserLanguageIfSupported(object) {
+  function setBrowserLanguageIfSupported(context) {
     const browserLanguagesList = getBrowserLanguages();
     const supportedLanguagesList = getSupportedLanguages();
     for (let i = 0; i < browserLanguagesList.length; i += 1) {
       const browserLanguage = browserLanguagesList[i];
       if (supportedLanguagesList.indexOf(browserLanguage) >= 0) {
-        object.$store.commit('setTags', browserLanguage);
-        object.$translate.setLang(browserLanguage);
+        context.$store.commit('setTags', browserLanguage);
+        /* eslint-disable-next-line no-param-reassign */
+        context.$i18n.locale = browserLanguage;
         return;
       }
     }
@@ -61,22 +59,20 @@
     mounted() {
       if (this.$cookies.get('language')) {
         this.$store.commit('setTags', this.$cookies.get('language'));
-        this.$translate.setLang(this.$cookies.get('language'));
+        /* eslint-disable-next-line no-param-reassign */
+        this.$i18n.locale = this.$cookies.get('language');
       } else {
         setBrowserLanguageIfSupported(this);
       }
-      this.selected = this.$translate.lang;
     },
     name: 'language-drop-down',
     data() {
       return {
-        selected: '',
-        supportedLanguagesOptions: SUPPORTEDLANGUAGESOPTIONS,
+        langs: SUPPORTEDLANGUAGESOPTIONS,
       };
     },
     methods: {
-      onSelect(e) {
-        this.$translate.setLang(e.target.value);
+      saveLocaleAsCookie(e) {
         this.$store.commit('setTags', e.target.value);
         this.$cookies.set('language', e.target.value, '30d');
       },

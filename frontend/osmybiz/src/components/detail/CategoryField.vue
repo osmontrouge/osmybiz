@@ -2,24 +2,25 @@
   <div class="category-wrapper">
     <div class="field">
       <div class="field-label">
-        <h3>{{t('detail').titles.category}}*</h3>
+        <h3>{{ $t('detail.titles.category') }}*</h3>
         <img class="info"
-             @mouseenter="show('category')"
-             @mouseleave="hide()"
+             @mouseenter="showPopup($t('infoTexts.category'))"
+             @mouseleave="hidePopup()"
              src="../../assets/info_black.png">
       </div>
 
       <div v-show="!isOwnCategory" class="category-field">
         <basic-select v-show="!isOwnCategory"
-                      :options="this.tags"
+                      :options="this.categoryFields"
                       :selected-option="details.category"
-                      :placeholder="t('detail').placeholders.category"
+                      :placeholder="$t('detail.placeholders.category')"
                       @select="onSelect"
-                      class="basic-select">
+                      class="basic-select"
+                      ref="categorySelection">
         </basic-select>
 
-        <button class="button" @click="showInput()">
-          {{t('detail').buttons.owncategory}}
+        <button class="button" @click="setOwnCategory()">
+          {{ $t('detail.buttons.owncategory') }}
         </button>
       </div>
 
@@ -28,20 +29,20 @@
         <div class="category-field">
           <input v-model="details.category.text"
                  type="text"
-                 :placeholder="t('detail').placeholders.owncategory"
+                 :placeholder="$t('detail.placeholders.owncategory')"
                  name="category-input"/>
-          <button class="button" @click="hideInput()">
-            {{t('detail').buttons.choosecategory}}
+          <button class="button" @click="setPredefinedCategory()">
+            {{ $t('detail.buttons.choosecategory') }}
           </button>
         </div>
         <div>
-           {{t('detail').ownCategoryInfo}}
+           {{ $t('detail.ownCategoryInfo') }}
         </div>
       </div>
 
       <span v-show="details.category.text === ''"
             class="help is-danger">
-          {{t('detail').validate.required}}
+          {{ $t('detail.validate.required') }}
         </span>
     </div>
   </div>
@@ -52,7 +53,6 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import { mapGetters, mapMutations } from 'vuex';
-  import { showPopup, hidePopup } from '../../store/detail';
 
   Vue.use(VeeValidate);
 
@@ -64,40 +64,55 @@
     computed: {
       ...mapGetters([
         'details',
-        'tags',
         'isOwnCategory',
-        'infoMap',
+        'categoryFields',
         'isNote',
         'isNew',
+        'languageTags',
       ]),
+    },
+    watch: {
+      categoryFields: function updateSelectedOption() {
+        this.$nextTick(() => {
+          const { categorySelection } = this.$refs;
+          let option = {};
+          for (let i = 0; i < categorySelection.options.length; i += 1) {
+            option = categorySelection.options[i];
+            if (option.value === categorySelection.selectedOption.value) {
+              categorySelection.selectItem(option);
+              break;
+            }
+          }
+        });
+      },
     },
     methods: {
       ...mapMutations([
         'setIsOwnCategory',
-        'setInfoText',
-        'setIsPopup',
         'setIsNote',
+        'setOsmType',
+        'showPopup',
+        'hidePopup',
       ]),
-      hideInput() {
+      setPredefinedCategory() {
         if (this.isNew) {
           this.setIsNote(false);
+          this.setOsmType('node');
         }
         this.setIsOwnCategory(false);
         this.details.category = { value: 0, text: '' };
       },
-      showInput() {
+      setOwnCategory() {
         this.setIsNote(true);
         this.setIsOwnCategory(true);
+        if (this.isNew) {
+          this.setOsmType('note');
+        }
         this.details.category = { value: 0, text: '' };
       },
-      show(key) {
-        showPopup(this.$translate.text(key));
-      },
       onSelect(item) {
-        this.details.category = item;
-      },
-      hide() {
-        hidePopup();
+        // Intended to copy by value by stringify then parse it.
+        this.details.category = JSON.parse(JSON.stringify(item));
       },
     },
     components: {

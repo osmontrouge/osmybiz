@@ -2,11 +2,14 @@
 import * as _ from 'lodash';
 import { query } from './../api/nominatimApi';
 import { queryBox } from '../api/overpassApi';
+import { saveCoordsZoomIntoLocalStorage, getPositionFromUrl } from '../util/positionUtil';
 
 const state = {
-  mapPosition: null,
+  map: null,
+  mapCenter: null,
   mapZoom: null,
 
+  urlParams: null,
   search: null,
   suggestions: [],
   viewPort: null,
@@ -67,11 +70,24 @@ const actions = {
 };
 
 const mutations = {
-  setMapPosition(s, pos) {
-    s.mapPosition = pos;
+  setUrlParams(s, params) {
+    s.urlParams = params;
+  },
+  setMapCenter(s, pos) {
+    s.mapCenter = pos;
   },
   setMapZoom(s, zoom) {
     s.mapZoom = zoom;
+  },
+  setMapViewToUrl(s) {
+    const pos = getPositionFromUrl(s);
+    s.map.setView(pos.coords, pos.zoom);
+  },
+  setMapViewToCoordsZoom(s, { coords, zoom }) {
+    s.map.setView(coords, zoom);
+  },
+  setMap(s, mapObject) {
+    s.map = mapObject;
   },
   setSearch(s, search) {
     s.search = search;
@@ -108,6 +124,9 @@ const mutations = {
   setApplyOffset(s, applyOffset) {
     s.applyOffset = applyOffset;
   },
+  setLastKnownPosition(s, { coords, zoom }) {
+    saveCoordsZoomIntoLocalStorage(coords, zoom);
+  },
 };
 
 const getters = {
@@ -117,8 +136,14 @@ const getters = {
   suggestions(s) {
     return s.suggestions;
   },
-  mapPosition(s) {
-    return s.mapPosition;
+  urlParams(s) {
+    return s.urlParams;
+  },
+  map(s) {
+    return s.map;
+  },
+  mapCenter(s) {
+    return s.mapCenter;
   },
   mapZoom(s) {
     return s.mapZoom;

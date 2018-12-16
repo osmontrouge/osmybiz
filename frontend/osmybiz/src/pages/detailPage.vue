@@ -3,8 +3,8 @@
     <div class="detailcontent-wrapper">
 
       <div class="content-wrapper">
-        <h2 v-show="isNew">{{t('detail').titles.create}}</h2>
-        <h2 v-show="!isNew">{{t('detail').titles.edit}}</h2>
+        <h2 v-show="isNew">{{ $t('detail.titles.create') }}</h2>
+        <h2 v-show="!isNew">{{ $t('detail.titles.edit') }}</h2>
 
         <category-field></category-field>
         <address-fields></address-fields>
@@ -32,20 +32,21 @@
   import FormFooter from '../components/detail/FormFooter.vue';
   import DuplicateWarning from '../components/landing/DuplicateWarning.vue';
   import ConfirmWarning from '../components/detail/ConfirmWarning.vue';
-
+  import { isNotModified, saveChangesTemporarily } from '../store/detail';
   import { routes } from './../router';
+
 
   export default {
     mounted() {
       if (_.isEmpty(this.businessPosition) || !this.isLoggedIn) {
         this.$router.push({ name: routes.Landing });
       }
-      this.setDisplaySuccess(false);
-
-      this.getAddress(this.businessPosition);
-      localStorage.setItem('details', JSON.stringify(this.details));
-      this.setInfoMap(this.$translate.locale);
-      this.setIsNew(!this.isNote);
+      if (!this.isEditingUnsavedChanges) {
+        this.getAddress(this.businessPosition);
+        this.hideUserDialog();
+        localStorage.setItem('details', JSON.stringify(this.details));
+        this.setIsNew(!this.isNote);
+      }
     },
     components: {
       ConfirmWarning,
@@ -61,7 +62,7 @@
     computed: {
       ...mapGetters([
         'businessPosition',
-        'mapPosition',
+        'mapCenter',
         'details',
         'isLoggedIn',
         'isPopup',
@@ -69,23 +70,52 @@
         'address',
         'isDuplicate',
         'isNew',
+        'osmId',
+        'isEditingUnsavedChanges',
+        'isFormSubmission',
+        'isOwnCategory',
+        'osmType',
+        'noteId',
+        'languageTags',
       ]),
+      isModifiedAndNotSubmited() {
+        return !isNotModified(this) && !this.isFormSubmission;
+      },
     },
     methods: {
       ...mapMutations([
-        'setDisplaySuccess',
-        'setDisplayConfirmation',
-        'setInfoMap',
         'setIsNew',
+        'displayUnsavedChangesNotification',
+        'hideUnsavedChangesNotification',
+        'setIsEditingUnsavedChanges',
+        'setDetails',
+        'setAddress',
+        'setOsmId',
+        'setIsNote',
+        'setIsOwnCategory',
+        'setNoteId',
+        'setOsmType',
+        'resetDetailState',
+        'hideUserDialog',
       ]),
       ...mapActions([
         'getAddress',
+        'getConfirmation',
       ]),
+    },
+    destroyed() {
+      if (this.isModifiedAndNotSubmited) {
+        saveChangesTemporarily();
+        this.displayUnsavedChangesNotification();
+      } else {
+        this.hideUnsavedChangesNotification();
+      }
+      this.resetDetailState();
     },
   };
 </script>
 
-<style>
+<style scoped>
   h2 {
     text-align: left;
   }

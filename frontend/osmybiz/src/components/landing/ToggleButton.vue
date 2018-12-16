@@ -1,8 +1,8 @@
 <template>
 
   <div class="toggle-wrapper">
-    <button @click="setSatellite()" v-if="isVector">{{t('landing').satelite}}</button>
-    <button @click="setVector()" v-if="isSatellite">{{t('landing').map}}</button>
+    <button @click="setSatellite()" v-if="isVector">{{ $t('landing.satelite') }}</button>
+    <button @click="setVector()" v-if="isSatellite">{{ $t('landing.map') }}</button>
   </div>
 
 </template>
@@ -34,7 +34,7 @@
     },
   };
 </script>
-<style>
+<style scoped>
   .toggle-wrapper {
     position: fixed;
     z-index: 99;

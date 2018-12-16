@@ -124,7 +124,7 @@
       "no": "Nie"
     },
     "duplicate": {
-      "node": {
+      "businessPOI": {
         "title": "Istniejąca firma",
         "section1": "W tej lokalizacji istnieje już firma o tej samej nazwie i kategorii",
         "section2": "Możesz edytować już istniejące informacje klikając lewym przyciskiem myszy firmę na mapie."
@@ -141,7 +141,7 @@
     "address": "Adres",
     "name": "Nazwa",
     "link": "Link do OpenStreetMap",
-    "node": {
+    "businessPOI": {
       "title": "Utworzono nową firmę"
     },
     "note": {

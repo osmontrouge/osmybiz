@@ -38,13 +38,13 @@ def build():
     environ['COMPOSE_PROJECT_NAME'] = url_without_prefix
     commands = [
         [
-            'docker-compose', '-f', os.path.join(COMPOSE_DIR, COMPOSE_FILE), 'build', '--pull', 'frontend',
+            'docker-compose', '-f', os.path.join(COMPOSE_DIR, COMPOSE_FILE), 'build', '--pull', '--no-cache', 'frontend',
         ],
         [
             'docker-compose', '-f', os.path.join(COMPOSE_DIR, COMPOSE_FILE), 'run', '--rm', 'frontend', 'bash', '-c', 'cd /opt/frontend && npm run build -p',
         ],
         [
-            'docker-compose', '-f', os.path.join(COMPOSE_DIR, COMPOSE_FILE), 'build', '--pull', 'api', 'frontend-build', 'nginx',
+            'docker-compose', '-f', os.path.join(COMPOSE_DIR, COMPOSE_FILE), 'build', '--pull', '--no-cache', 'api', 'frontend-build', 'nginx',
         ],
         [
             'docker-compose', '-f', os.path.join(COMPOSE_DIR, COMPOSE_FILE), 'push', 'api', 'frontend-build', 'nginx',

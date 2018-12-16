@@ -2,25 +2,30 @@
   <div class="form-footer">
     <button class="button"
             @click="back()">
-      {{t('detail').buttons.back}}</button>
+      {{ $t('detail.buttons.back') }}</button>
     <button class="button"
             id="reset-button"
             @click="reset()">
-      {{t('detail').buttons.reset}}</button>
+      {{ $t('detail.buttons.reset') }}</button>
     <button class="button"
-            :disabled="isRequiredFields() || isDuplicate || hasNoChanges()"
-            @click="submit()">
-      {{t('detail').buttons.save}}</button>
+            :disabled="isRequiredFields() || isDuplicate || isNotModified(this)"
+            @click.once="submit()">
+      {{ message }}</button>
   </div>
 </template>
 
 <script>
   import { mapGetters, mapActions, mapMutations } from 'vuex';
   import { routes } from '../../router/index';
-  import { clearDetails } from '../../store/detail';
+  import { clearDetails, isNotModified } from '../../store/detail';
 
   export default {
     name: 'form-footer',
+    data() {
+      return {
+        message: this.$t('detail.buttons.save'),
+      };
+    },
     computed: {
       ...mapGetters([
         'isNote',
@@ -29,9 +34,11 @@
         'address',
         'user',
         'osmId',
+        'osmType',
         'lat',
         'lon',
         'isDuplicate',
+        'noteId',
       ]),
     },
     methods: {
@@ -40,29 +47,34 @@
         'setAddress',
         'setIsDuplicate',
         'setIsConfirm',
+        'setIsFormSubmission',
       ]),
       ...mapActions([
-        'postSelectedCategoryNote',
+        'postNote',
         'postOwnCategoryNote',
         'postNode',
-        'checkDuplicateNode',
+        'checkDuplicateBusinessPOI',
         'getConfirmation',
         'loadUpdates',
       ]),
       submit() {
+        this.message = this.$t('detail.buttons.pleasewait');
         let promise;
-        if (this.isNote && !this.isOwnCategory) {
-          promise = this.postSelectedCategoryNote({ user: this.user, osmId: this.osmId })
-            .then(() => true);
-        } else if (this.isOwnCategory) {
-          promise = this.postOwnCategoryNote().then(() => true);
-        } else {
-          promise = this.checkDuplicateNode().then((res) => {
+        this.setIsFormSubmission(true);
+        if (!this.isNote && !this.isOwnCategory) {
+          promise = this.checkDuplicateBusinessPOI().then((res) => {
             if (!res) {
               return this.postNode(this.user).then(() => true);
             }
             return false;
           });
+        } else {
+          promise = this.postNote({
+            user: this.user,
+            osmId: this.osmId,
+            noteId: this.noteId,
+            osmType: this.osmType,
+          }).then(() => true);
         }
         promise.then((success) => {
           if (success) {
@@ -80,37 +92,18 @@
           this.address.country === '' ||
           this.details.name === '';
       },
-      hasNoChanges() {
-        const details = JSON.parse(localStorage.getItem('details'));
-        const address = JSON.parse(localStorage.getItem('address'));
-        return JSON.stringify(details) === JSON.stringify(this.details) &&
-          JSON.stringify(address) === JSON.stringify(this.address);
-      },
       reset() {
         this.getConfirmation(() => {
           const details = JSON.parse(localStorage.getItem('details'));
           const address = JSON.parse(localStorage.getItem('address'));
-          const category = {
-            text: details.category.text,
-            fields: details.category.fields,
-            value: details.category.value,
-          };
-          if (this.details.category.text === details.category.text) {
-            this.details.category.fields.forEach((field, index) => {
-              category.fields[index].label = field.label;
-            });
-          }
-          details.category = category;
           this.setDetails(details);
           this.setAddress(address);
           this.setIsConfirm(false);
         });
       },
+      isNotModified,
       back() {
-        this.getConfirmation(() => {
-          this.$router.push({ name: routes.Landing });
-          this.setIsConfirm(false);
-        });
+        this.$router.push({ name: routes.Landing });
       },
     },
   };
