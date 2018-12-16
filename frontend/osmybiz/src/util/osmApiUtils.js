@@ -219,8 +219,7 @@ function parseBusinessPOI(businessPOIXml, osmType) {
     id: businessPOIAttributes.id,
     lat: businessPOIAttributes.lat,
     lon: businessPOIAttributes.lon,
-    // KEITH
-    link: `${osmUrl}/${osmType}/${businessPOIAttributes.id}/#map=19/${businessPOIAttributes.lat}/${businessPOIAttributes.lon}&layers=D`,
+    link: `${osmUrl}/node/${businessPOIAttributes.id}/#map=19/${businessPOIAttributes.lat}/${businessPOIAttributes.lon}&layers=D`,
     address,
     details,
     version: businessPOIAttributes.version,

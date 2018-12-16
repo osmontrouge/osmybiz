@@ -56,7 +56,7 @@ function filterTags(businessPOI) {
 export function queryBox(bbox) {
   return axios.post(overpassUrl, buildQuery(bbox))
     .then(res => parseData(res.data).filter(filterTags), () => {
-      setError('error.overpass.query');
+      setError({ errorMessageKey: 'error.overpass.query' });
       return [];
     });
 }
@@ -64,7 +64,7 @@ export function queryBox(bbox) {
 export function surroundingQueryBusinessPOI(details, lat, lon) {
   return axios.post(overpassUrl, buildSurroundingQuery(details, lat, lon))
     .then(res => res.data.elements.length > 0, () => {
-      setError('error.overpass.surrounding');
+      setError({ errorMessageKey: 'error.overpass.surrounding' });
       return false;
     });
 }
