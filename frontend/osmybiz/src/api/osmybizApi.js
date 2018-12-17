@@ -21,8 +21,8 @@ export function addOrUpdateUser(userId, displayName) {
   }
   const route = `${baseRoute}user`;
   return axios.post(route, { osmId: userId, username: displayName })
-    .catch((err) => {
-      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    .catch(() => {
+      setError({ errorMessageKey: 'error.osmybiz' });
     });
 }
 
@@ -32,8 +32,8 @@ export function fetchBusinessPOIs(userId) {
   }
   const route = `${baseRoute}user/${userId}/business-poi`;
   return axios.get(route).then(response => response.data)
-    .catch((err) => {
-      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    .catch(() => {
+      setError({ errorMessageKey: 'error.osmybiz' });
     });
 }
 
@@ -43,8 +43,8 @@ export function addOrUpdateBusinessPOI(userId, businessPOI) {
   }
   const route = `${baseRoute}user/${userId}/business-poi`;
   return axios.post(route, businessPOI)
-    .catch((err) => {
-      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    .catch(() => {
+      setError({ errorMessageKey: 'error.osmybiz' });
     });
 }
 
@@ -56,8 +56,8 @@ export function getTemporaryOsmId(userId) {
   const route = `${baseRoute}user/${userId}/temporary-osm-id`;
   return axios.get(route)
     .then(response => response.data)
-    .catch((err) => {
-      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    .catch(() => {
+      setError({ errorMessageKey: 'error.osmybiz' });
     });
 }
 
@@ -67,8 +67,8 @@ export function unsubscribe(userId, osmId) {
   }
   const route = `${baseRoute}user/${userId}/business-poi/${osmId}/unsubscribe`;
   return axios.post(route)
-    .catch((err) => {
-      setError({ errorMessageKey: 'error.osmybiz', placeholder: [err] });
+    .catch(() => {
+      setError({ errorMessageKey: 'error.osmybiz' });
     });
 }
 
