@@ -188,7 +188,7 @@
       "query": "Businesses could not be loaded.",
       "surrounding": "There is a problem with uploading the data to OpenStreetMap. Check your internet connection or try it again later."
     },
-    "osmybiz": "OSMyBiz: {0}"
+    "osmybiz": "There is something wrong with our sever. Please be patient and give us some time while our team works on it."
   },
   "about": "\"OpenStreetMap My Business\" (short OSMyBiz) is a webapp where businesses - like hotels, restaurants, bars and shops - can enter and manage their information (e.g. address (housenumber, street), opening hours, phone no, and website) in OpenStreetMap in an easy way. It's similar to Onosm.org but contains more functions which are designed to be user friendly."
 }
