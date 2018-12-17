@@ -65,10 +65,9 @@ const actions = {
                   commit('pushSubscribedBusinessPOI', subscribedBusinessPOI);
                 } else {
                   setError({ errorMessageKey: 'error.osm.osmElementDeleted', placeholders: [n.name] });
-                  ownedBusinessPOI.tags = {};
-                  ownedBusinessPOI.tags.name = n.name;
-                  commit('pushBusinessPOI', ownedBusinessPOI);
-                  // TODO handle the case when osm element has been deleted
+                  subscribedBusinessPOI.tags = {};
+                  subscribedBusinessPOI.tags.name = n.name;
+                  commit('pushSubscribedBusinessPOI', subscribedBusinessPOI);
                 }
               });
             }
