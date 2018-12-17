@@ -7,24 +7,24 @@
              @mouseleave="hidePopup()"
              src="../../assets/info_black.png">
     </div>
-    <div class="watchlist" v-for="(ownedBusinessPOI, index) in ownedBusinessPOIs">
+    <div class="watchlist" v-for="(subscribedBusinessPOI, index) in subscribedBusinessPOIs">
       <div class="watchlist-index">
         {{ index + 1 }}
       </div>
-      <div class="watchlist-name" @click="panToMarker(ownedBusinessPOI)">
-        <span v-if="ownedBusinessPOI.tags.name"> {{ownedBusinessPOI.tags.name}} </span>
+      <div class="watchlist-name" @click="panToMarker(subscribedBusinessPOI)">
+        <span v-if="subscribedBusinessPOI.tags.name"> {{subscribedBusinessPOI.tags.name}} </span>
         <span v-else> Name not found </span>
       </div>
 
-      <div class="watchlist-icons" :title="noteStatus(ownedBusinessPOI)">
-        <img :src="noteIcon(ownedBusinessPOI.noteIsResolved)">
+      <div class="watchlist-icons" :title="noteStatus(subscribedBusinessPOI)">
+        <img :src="noteIcon(subscribedBusinessPOI.noteIsResolved)">
       </div>
 
-      <div class="watchlist-icons" :title="updateStatus(ownedBusinessPOI)">
-        <img style="width:14px" :src="updateIcon(ownedBusinessPOI.hasUpdate)">
+      <div class="watchlist-icons" :title="updateStatus(subscribedBusinessPOI)">
+        <img style="width:14px" :src="updateIcon(subscribedBusinessPOI.hasUpdate)">
       </div>
 
-      <div class="watchlist-icons" :title="$t('landing.watchlist.icon.close')" @click="removeMarker(ownedBusinessPOI)">
+      <div class="watchlist-icons" :title="$t('landing.watchlist.icon.close')" @click="removeMarker(subscribedBusinessPOI)">
         <icon class="close" name="times"></icon>
       </div>
     </div>
@@ -60,8 +60,8 @@
         'setMapViewToCoordsZoom',
       ]),
       ...mapActions(['removeFromWatchList']),
-      panToMarker(ownedBusinessPOI) {
-        const coords = latLng(ownedBusinessPOI.lat, ownedBusinessPOI.lng);
+      panToMarker(subscribedBusinessPOI) {
+        const coords = latLng(subscribedBusinessPOI.lat, subscribedBusinessPOI.lng);
         const zoom = 17;
         this.setMapViewToCoordsZoom({ coords, zoom });
         /* eslint-disable */
@@ -77,8 +77,8 @@
         });
         /* eslint-enable */
       },
-      removeMarker(ownedBusinessPOI) {
-        this.removeFromWatchList({ ownedBusinessPOI, user: this.user });
+      removeMarker(subscribedBusinessPOI) {
+        this.removeFromWatchList({ subscribedBusinessPOI, user: this.user });
       },
       noteIcon(noteIsResolved) {
         return noteIsResolved ? resolvedNote : unresolvedNote;
@@ -86,17 +86,17 @@
       updateIcon(hasUpdate) {
         return hasUpdate ? updatedIcon : notUpdatedIcon;
       },
-      noteStatus(ownedBusinessPOI) {
-        if (ownedBusinessPOI.noteIsResolved) {
+      noteStatus(subscribedBusinessPOI) {
+        if (subscribedBusinessPOI.noteIsResolved) {
           return this.$t('landing.watchlist.icon.noteResolved');
         }
-        if (ownedBusinessPOI.noteId === null) {
+        if (subscribedBusinessPOI.noteId === null) {
           return this.$t('landing.watchlist.icon.noteNull');
         }
         return this.$t('landing.watchlist.icon.notePending');
       },
-      updateStatus(ownedBusinessPOI) {
-        if (ownedBusinessPOI.hasUpdate) {
+      updateStatus(subscribedBusinessPOI) {
+        if (subscribedBusinessPOI.hasUpdate) {
           return this.$t('landing.watchlist.icon.updateDetected');
         }
         return this.$t('landing.watchlist.icon.updatePending');
@@ -104,7 +104,7 @@
     },
     computed: {
       ...mapGetters([
-        'ownedBusinessPOIs',
+        'subscribedBusinessPOIs',
         'user',
         'showWatchList',
         'map',
