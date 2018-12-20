@@ -1,11 +1,18 @@
 <template>
   <div class="watchlist-wrapper" v-if="showWatchList">
     <div class="watchlist-title">
-      {{ $t('landing.watchlist.title') }}
-      <img class="info"
+      <div>
+          {{ $t('landing.watchlist.title') }}
+      </div>
+      <div>
+        <img class="info"
              @mouseenter="showPopup($t('landing.watchlist.info'))"
              @mouseleave="hidePopup()"
              src="../../assets/info_black.png">
+      </div>
+      <div :title="$t('landing.watchlist.icon.refresh')" @click="getUpdate">
+        <icon class="refresh" name="sync" scale="1.2"></icon>
+      </div>
     </div>
     <div class="watchlist" v-for="(subscribedBusinessPOI, index) in subscribedBusinessPOIs">
       <div class="watchlist-index">
@@ -59,7 +66,7 @@
         'hidePopup',
         'setMapViewToCoordsZoom',
       ]),
-      ...mapActions(['removeFromWatchList']),
+      ...mapActions(['removeFromWatchList', 'loadUpdates']),
       panToMarker(subscribedBusinessPOI) {
         const coords = latLng(subscribedBusinessPOI.lat, subscribedBusinessPOI.lng);
         const zoom = 17;
@@ -100,6 +107,9 @@
           return this.$t('landing.watchlist.icon.updateDetected');
         }
         return this.$t('landing.watchlist.icon.updatePending');
+      },
+      getUpdate() {
+        this.loadUpdates(this.user);
       },
     },
     computed: {
@@ -160,10 +170,17 @@
   }
 
   .watchlist-title {
-    font-size:20px;
-    font-weight:bold;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
     text-align: left;
     border-bottom: #006600;
+  }
+
+  .refresh {
+    position: absolute;
+    right: 15px;
+    cursor: pointer
   }
 
   .watchlist {

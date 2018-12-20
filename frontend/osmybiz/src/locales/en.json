@@ -25,6 +25,7 @@
       "title": "Watch List",
       "info": "This shows the Business POIs that you are currently subscribed to.",
       "icon": {
+        "refresh": "Refresh",
         "close": "Remove from Watch List",
         "noteResolved": "Note has been resolved",
         "notePending": "Note is pending",
