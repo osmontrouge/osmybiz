@@ -92,10 +92,13 @@
   export default {
     name: 'v-business-marker-popup',
     mounted() {
-      this.loadAddress();
+      this.$refs.popup.mapObject.on('popupopen', () => {
+        this.loadAddress();
+      });
       if (this.isNewBusiness) {
         /* eslint-disable no-underscore-dangle */
         this.$nextTick(() => {
+          this.loadAddress();
           // clears the event
           this.$refs.popup.mapObject._events.click = {};
           const popup = this.$refs.popup.mapObject._popup;
