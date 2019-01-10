@@ -5,7 +5,7 @@ services:
       context: backend/
       dockerfile: Dockerfile
     environment:
-      SQLALCHEMY_DATABASE_URI: 'postgresql+psycopg2://osmybiz:123456@database:5432/osmybiz'
+      DB_URL: 'postgresql+psycopg2://osmybiz:123456@database:5432/osmybiz'
     volumes:
       - ./backend/api:/opt/backend
     links:
