@@ -40,6 +40,20 @@
                  :placeholder="$t('detail.placeholders.opening_hours')">
         </div>
 
+		<div class="field">
+			<div class="field-label">
+				<label>URL Öffnungszeiten</label>
+				<img class="info"
+					@mouseenter="showPopup('Für das Automatische eintragen der Öffnungszeiten die URL wo sie zu finden sind hier eintragen')"
+					@mouseleave="hidePopup()"
+					src="../../assets/info_black.png">
+			</div>
+			
+			<input type="text"
+					v-model="details.opening_hours"
+					:placeholder="$t('detail.placeholders.opening_hours')">
+		</div>
+		
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.phone') }}</label>
