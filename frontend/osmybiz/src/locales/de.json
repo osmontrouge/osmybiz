@@ -2,11 +2,12 @@
   "header": {
     "about": "About",
     "messagetitle": "Nachrichten von OpenStreetMap",
-    "updatestitle": "Kartenänderungen von editierten Unternehmen"
+    "updatestitle": "Kartenänderungen von editierten Unternehmen",
+    "watchlisttitle" : "Beobachtungsliste"
   },
   "landing": {
     "search": "Suchen...",
-    "satelite": "Satellit",
+    "satelite": "Satellitenbild",
     "map": "Karte",
     "update": {
       "title": "Kartenänderungen",
@@ -18,7 +19,20 @@
       "confirmHelp": "Als gelesen markieren",
       "zoomHelp": "Auf der Karte anzeigen",
       "changesetHelp": "Changeset anschauen",
-      "muteHelp": "Notifikationen abschalten"
+      "muteHelp": "Benachrichtigungen abschalten"
+    },
+    "watchlist": {
+      "title": "Beobachtungsliste",
+      "info": "Zeigt die von Ihnen abonnierten Unternehmens-Einträge an.",
+      "icon": {
+        "refresh": "Aktualisieren",
+        "close": "Nicht mehr beobachten",
+        "noteResolved": "Notiz wurde erledigt",
+        "notePending": "Notiz ist unerledigt",
+        "noteNull": "Keine Notiz",
+        "updatePending": "Kein Update auf OSM.org",
+        "updateDetected": "Update auf OSM.org erkannt"
+      }
     },
     "help": {
       "title": "Hilfe",
@@ -29,11 +43,12 @@
     "loginhelp": {
       "title": "Information",
       "section1": "Um Änderungen in der Karte vorzunehmen, müssen Sie sich mit einem OpenStreetMap-Login anmelden.",
-      "section2": "In dieser Ansicht können Sie aber bereits schauen, wie das ganze in etwa funktioniert."
+      "section2": "In dieser Ansicht können Sie bereits einen Eindruck erhalten, wie die Website in etwa funktioniert."
     }
   },
   "detail": {
     "titles": {
+      "title": "Details",
       "create": "Unternehmen erfassen",
       "edit": "Unternehmen bearbeiten",
       "category": "Kategorie",
@@ -79,8 +94,8 @@
     },
     "validate": {
       "required": "Dies ist ein Pflichfeld",
-      "email": "E-Mailadresse ist nicht valid",
-      "website": "Webseite ist nicht valid",
+      "email": "E-Mailadresse ist nicht korrekt",
+      "website": "Webseite ist nicht korrekt",
       "streetOrPlace": "Die Strasse oder der Platz ist obligatorisch.",
       "notStreetAndPlace": "Die Strasse und der Platz dürfen nicht beide ausgefüllt sein.",
       "subtitle": "Felder mit * sind Pflichtfelder (Bei Feldern mit (*) ist jeweils nur eines davon ein Pflichfeld)"
@@ -90,18 +105,19 @@
       "choosecategory": "Kategorie wählen",
       "back": "Zurück",
       "reset": "Zurücksetzen",
-      "save": "Speichern"
+      "save": "Speichern",
+      "pleasewait": "Bitte warten..."
     },
     "ownCategoryInfo": "Wenn Sie eine eigene Kategorie eingeben, wird eine Notiz erzeugt. Diese muss erst von einem Mitglied der OpenStreetMap-Community abgearbeitet werden."
   },
   "infoTexts": {
     "category": "Wählen Sie die Kategorie für ihr Unternehmen aus, damit man besser identifizieren kann um was es sich bei ihrem Unternehmen genau handelt. Durchsuchen Sie die Daten nach einer passenden Kategorie und sollten Sie nicht fündig werden, drücken Sie \"Eigene Kategorie\" und geben eine eigene Kategorie ein.",
-    "address": "Die Adresse wird automatisch von dem Punkt geladen, den Sie ausgewählt haben. Nehmen Sie allfällige Änderungen vor. Das Feld \"Platz\" darf nur dann ausgefüllt werden, wenn für das Unternehmen sonst keine Adresse existiert.",
+    "address": "Die Adresse wird automatisch von dem Punkt geladen, den Sie ausgewählt haben. Nehmen Sie erforderliche Änderungen vor. Das Feld \"Platz\" darf nur dann ausgefüllt werden, wenn für das Unternehmen sonst keine Adresse existiert.",
     "name": "Schreiben Sie den Namen Ihres Unternehmens in dieses Feld. z.B. Microsoft",
     "opening_hours": "In dieses Feld kommen die Öffnungszeiten Ihres Unternehmens. z.B. Tu-Su 07:00-12:00, 13:00-17:00",
-    "phone": "Hier kommt die Telefonnummer unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
-    "email": "Hier kommt die E-Mailadresse unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
-    "website": "In dieses Feld kommt die Webseite von Ihrem Unternehmen.",
+    "phone": "In dieses Feld kommt die Telefonnummer unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
+    "email": "In dieses Feld kommt die E-Mailadresse unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
+    "website": "In dieses Feld kommt die Webseite unter der man Sie bzw. Ihr Unternehmen erreichen kann.",
     "wheelchair": "Hier auswählen, ob Ihr Unternehmen rollstuhlgängig ist bzw. wie rollstuhlgängig es ist. Was die verschiedenen Optionen genau bedeuten, können sie unter https://wiki.openstreetmap.org/wiki/DE:Key:wheelchair genauer nachlesen.",
     "description": "In diesem Feld können Sie Text erfassen, der einem Anwender angezeigt werden kann.",
     "note": "Eine Notiz dient dazu, Informationen zum Element festzuhalten, die nicht offensichlich sind, die die Intention des Autors genauer beschreiben, oder die Hinweise zur weiteren Bearbeitung geben."
@@ -109,7 +125,9 @@
   "popups": {
     "popuptitle": "Neues Unternehmen",
     "feedback": "Kartenfehler melden",
-    "mapLink": "Auf OSM.org ansehen",
+    "mapLink": "Element auf OSM.org ansehen",
+    "noteLink": "Notiz auf OSM.org ansehen",
+    "noElement": "Kein Element",
     "edit": "Bearbeiten",
     "create": "Erstellen",
     "buttontitle": "Für diese Funktion muss man eingeloggt sein",
@@ -148,20 +166,30 @@
       "title": "Änderungen gespeichert"
     }
   },
+  "unsavedchanges": {
+    "title": "Ungespeicherte Änderungen",
+    "section": "Sie haben {time} Sekunden Zeit, um die ungespeicherten Änderungen wiederherzustellen. Klicken Sie {here},  um die Änderungen wiederherzustellen.",
+    "here": "hier"
+  },
   "error": {
     "title": "Fehler",
     "nominatim": "Es besteht ein Problem mit der Verbindung. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.",
     "osm": {
+      "getNotesByOsmId": "Kann Notiz nicht von OSM.org laden",
       "login": "Benutzer konnte nicht eingeloggt werden.",
       "loadUser": "Benutzer konnte nicht geladen werden.",
       "postNode": "Unternehmen konnte nicht hochgeladen werden.",
       "postNote": "Änderungen konnten nicht gespeichert werden",
-      "load": "Es besteht ein Problem mit dem Laden der Daten von OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
+      "postNoteAsComments": "Notiz konnte nicht gespeichert werden.",
+      "reopenClosedNoteAndAddComment": "Notiz kann nicht reaktiviert oder gespeichert werden.",
+      "load": "Es besteht ein Problem mit dem Laden der Daten von OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal.",
+      "osmElementDeleted": "Der Unternehmens-Eintrag {0} wurde aus OSM.org entfernt. Es wird empfohlen, diesen Unternehmens-Eintrag aus ihrer Beobachtungsliste zu entfernen."
     },
     "overpass": {
       "query": "Unternehmen konnten nicht geladen werden.",
       "surrounding": "Es besteht ein Problem mit dem Hochladen der Daten nach OpenStreetMap. Überprüfen Sie ihre Internetverbindung oder versuchen Sie es später noch einmal."
-    }
+    },
+    "osmybiz": "Es scheint ein Applikationsproblem zu geben. Falls es weiter besteht, versuchen Sie es später nochmals."
   },
-  "about": "\"OpenStreetMap My Business\" (kurz OSMyBiz) ist eine Webapp mit der Geschäfte - namentlch Hotels, Restaurants, Bars und Shops - und ihre Daten (z.B. Addresse (Hausnummer, Strassse), Öffnungszeiten, Kontakt-Telefonnummer und Website) auf einfache Weise in OpenStreetMap eintragen und verwaltet werden können. Es ist ähnlich wie Onosm.org, umfasst jedoch viel mehr Funktionen, die benutzerfreundlich gestaltet sind."
+  "about": "\"OpenStreetMap My Business\" (kurz OSMyBiz) ist eine Webapp mit der Geschäfte - namentlich Hotels, Restaurants, Bars und Shops - und ihre Daten (z.B. Addresse (Hausnummer, Straße), Öffnungszeiten, Kontakt-Telefonnummer und Website) auf einfache Weise in OpenStreetMap eintragen und verwaltet werden können. Es ist ähnlich wie Onosm.org, umfasst jedoch viel mehr Funktionen, die benutzerfreundlich gestaltet sind."
 }
