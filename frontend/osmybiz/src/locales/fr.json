@@ -2,7 +2,8 @@
   "header": {
     "about": "À propos",
     "messagetitle": "Messages de la part d'OpenStreetMap",
-    "updatestitle": "Mises à jour des commerces modifiés"
+    "updatestitle": "Mises à jour des commerces modifiés",
+    "watchlisttitle" : "Liste de surveillance"
   },
   "landing": {
     "search": "Recherche...",
@@ -20,6 +21,19 @@
       "changesetHelp": "Voir le groupe de modifications",
       "muteHelp": "Désactiver les notifications"
     },
+    "watchlist": {
+      "title": "Liste de surveillance",
+      "info": "Cela affiche les points d'intérêts auxquels vous êtes actuellement inscrits.",
+      "icon": {
+        "refresh": "Rafraîchir",
+        "close": "Supprimer de ma liste de surveillance",
+        "noteResolved": "La note a été résolue",
+        "notePending": "La note est en attente",
+        "noteNull": "Pas de note",
+        "updatePending": "Pas de mise à jour sur OSM.org",
+        "updateDetected": "Mise à jour détectée sur OSM.org"
+      }
+    },
     "help": {
       "title": "Aide",
       "section1": "Zoomez avec un double-clic ou le « + » dans le coin supérieur gauche, ou cherchez votre adresse grâce à la barre de recherche en haut.",
@@ -29,11 +43,12 @@
     "loginhelp": {
       "title": "Information",
       "section1": "Pour modifier la carte, vous devez être authentifié avec un compte OpenStreetMap.",
-      "section2": "Mais dans cette vue vous pouvez déjà voir comment ce site web fonctionne."
+      "section2": "Dans cette vue vous pouvez déjà voir comment ce site web fonctionne."
     }
   },
   "detail": {
     "titles": {
+      "title": "Détails",
       "create": "Créer un commerce",
       "edit": "Modifier un commerce",
       "category": "Catégorie",
@@ -90,7 +105,8 @@
       "choosecategory": "Choisir la catégorie",
       "back": "Retour",
       "reset": "Réinitialiser",
-      "save": "Sauvegarder"
+      "save": "Sauvegarder",
+      "pleasewait": "Veuillez patienter…"
     },
     "ownCategoryInfo": "Si vous choisissez une catégorie propre, cela produira une note. Cette note devra être traitée par un membre de la communauté OpenStreetMap."
   },
@@ -109,7 +125,9 @@
   "popups": {
     "popuptitle": "Nouveau commerce",
     "feedback": "Signaler une erreur de la carte",
-    "mapLink": "Visualiser sur OSM.org",
+    "mapLink": "Visualiser l'élément sur OSM.org",
+    "noteLink": "Visualiser la note sur OSM.org",
+    "noElement": "Pas d'élément",
     "edit": "Modifier",
     "create": "Créer",
     "buttontitle": "Vous devez être authentifié pour cette fonction",
@@ -148,20 +166,30 @@
       "title": "Modifications prises en compte"
     }
   },
+  "unsavedchanges": {
+    "title": "Changements non sauvegardés",
+    "section": "Vous avez {time} secondes pour récupérer les changements non sauvegardés. Cliquez {here} pour récupérer les changements.",
+    "here": "ici"
+  },
   "error": {
     "title": "Erreur",
     "nominatim": "Il y a un problème avec la connexion. Vérifiez votre connexion à Internet, ou réessayez plus tard.",
     "osm": {
+      "getNotesByOsmId": "Impossible de récupérer la note depuis OSM.org",
       "login": "L'utilisateur ne peut être connecté.",
       "loadUser": "L'utilisateur ne peut être chargé.",
       "postNode": "Le commerce ne peut être envoyé.",
       "postNote": "Les changements ne peuvent être sauvegardés.",
-      "load": "Il y a un problème pour charger les données depuis OpenStreetMap. Vérifiez votre connexion Internet ou réessayez plus tard."
+      "postNoteAsComments": "La note n'a pas pu être sauvegardée.",
+      "reopenClosedNoteAndAddComment": "La note ne peut pas être ré-ouverte ou sauvegardée",
+      "load": "Il y a un problème pour charger les données depuis OpenStreetMap. Vérifiez votre connexion Internet ou réessayez plus tard.",
+      "osmElementDeleted": "Le point d'intérêt {0} a été supprimé d'OSM.org. Nous vous recommandons de supprimer ce point d'intérêt de votre liste de surveillance."
     },
     "overpass": {
       "query": "Les commerces ne peuvent être chargés.",
       "surrounding": "Il y a un problème pour envoyer les données vers OpenStreetMap. Vérifiez votre connexion Internet ou réessayez plus tard."
-    }
+    },
+    "osmybiz": "Cette application pourrait ne pas fonctionner correctement. Si le problème persiste, réessayez plus tard."
   },
   "about": "« OpenStreetMap My Business » (raccourci en OSMyBiz) est une application web où les commerces — comme les hôtels, les restaurants, les bars et les magasins — peuvent insérer et gérer leurs informations (par exemple l'adresse, les horaires d'ouverture, le numéro de téléphone et le site web) dans OpenStreetMap de façon simple. C'est similaire à Onosm.org mais avec plus de fonctions, prévues pour être simples à utiliser."
 }
