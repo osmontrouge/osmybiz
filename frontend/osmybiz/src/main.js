@@ -9,14 +9,14 @@ import router from './router';
 import de from './locales/de.json';
 import en from './locales/en.json';
 import fr from './locales/fr.json';
-import gl from './locales/gl.json'; //no tags yet TODO
+import gl from './locales/gl.json'; 
 import he from './locales/he.json';
 import hu from './locales/hu.json';
 import it from './locales/it.json';
 import pl from './locales/pl.json';
 import ru from './locales/ru.json';
 import sv from './locales/sv.json';
-import uk from './locales/uk.json'; //no tags yet TODO
+import uk from './locales/uk.json';
 /* eslint-disable-next-line camelcase */
 import zh_TW from './locales/zh_TW.json';
 import { FALLBACKLOCALE } from './store/locale';
