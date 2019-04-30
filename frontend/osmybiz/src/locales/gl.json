@@ -1,0 +1,195 @@
+{
+  "header": {
+    "about": "Acerca de",
+    "messagetitle": "Mensaxes do OpenStreetMap",
+    "updatestitle": "Modificacións dos negocios editados",
+    "watchlisttitle" : "Listaxe de seguemento"
+  },
+  "landing": {
+    "search": "Procurar...",
+    "satelite": "Satélite",
+    "map": "Mapa",
+    "update": {
+      "title": "Mudanzas do mapa",
+      "noChanges": "Non hai mudanzas",
+      "changeText1": "O negocio",
+      "changeText2": "modificouse.",
+      "deleteText1": "O negocio",
+      "deleteText2": "eliminouse.",
+      "confirmHelp": "Marcado coma lido",
+      "zoomHelp": "Amosar no mapa",
+      "changesetHelp": "Ollar conxunto de mudanzas",
+      "muteHelp": "Desactivar notificacións"
+    },
+    "watchlist": {
+      "title": "Listaxe de seguemento",
+      "info": "Isto amosa os PDI de negocios que estás a seguir actualmente.",
+      "icon": {
+        "refresh": "Actualizar",
+        "close": "Eliminar da listaxe de seguemento",
+        "noteResolved": "A nota foi resolta",
+        "notePending": "A nota está pendente",
+        "noteNull": "Sen nota",
+        "updatePending": "Non hai actualizacións no OSM.org",
+        "updateDetected": "Actualización detectada no OSM.org"
+      }
+    },
+    "help": {
+      "title": "Axuda",
+      "section1": "Achega cun dobre clic, premendo no '+' na esquina superior esquerda ou procura o teu enderezo empregando a barra de procura na parte superior.",
+      "section2": "Cun clic esquerdo nun negocio existente (círculo azul) podes editar o negocio.",
+      "section3": "Cun clic dereito en calquera posición no mapa podes crear un novo negocio."
+    },
+    "loginhelp": {
+      "title": "Información",
+      "section1": "Para facer mudanzas no mapa, tes que iniciar a sesión co OpenStreetMap.",
+      "section2": "Nesta vista xa podes obter de que xeito funciona o sitio web."
+    }
+  },
+  "detail": {
+    "titles": {
+      "title": "Detalle",
+      "create": "Crear negocio",
+      "edit": "Editar negocio",
+      "category": "Categoría",
+      "address": "Enderezo",
+      "details": "Detalles",
+      "extras": "Informacións adicionais"
+    },
+    "labels": {
+      "street": "Rúa",
+      "housenumber": "Número do edificio",
+      "place": "Lugar",
+      "postcode": "Código postal",
+      "city": "Cidade",
+      "country": "País",
+      "name": "Nome",
+      "opening_hours": "Horarios de apertura",
+      "phone": "Número de teléfono",
+      "email": "Enderezo de correo electrónico",
+      "website": "Sitio web",
+      "wheelchair": "Accesíbel para cadeiras de rodas",
+      "yes": "Si",
+      "limited": "Limitado",
+      "no": "Non",
+      "description": "Descrición do negocio",
+      "note": "Nota para outros cartógrafos"
+    },
+    "placeholders": {
+      "category": "Escoller categoría...",
+      "owncategory": "Inserir categoría",
+      "name": "Nome do negocio...",
+      "street": "Rúa principal",
+      "housenumber": "50",
+      "place": "Praza da estación",
+      "postcode": "8405",
+      "city": "Winterthur",
+      "country": "Suíza",
+      "opening_hours": "Mar-Dom 08:00-17:00",
+      "phone": "+41 11 111 11 11",
+      "email": "example@example.com",
+      "website": "http://www.example.com",
+      "description": "Descrición",
+      "note": "Nota"
+    },
+    "validate": {
+      "required": "O campo é obrigatorio",
+      "email": "O enderezo do correo electrónico non é válido",
+      "website": "O sitio web non é válido",
+      "streetOrPlace": "A rúa ou o lugar son obrigatorios",
+      "notStreetAndPlace": "A rúa e o lugar non se poden chear",
+      "subtitle": "Os campos con * son obrigatorios (nos campos con (*) só se require un á vez)"
+    },
+    "buttons": {
+      "owncategory": "Categoría propia",
+      "choosecategory": "Escoller categoría",
+      "back": "Voltar",
+      "reset": "Restabelecer",
+      "save": "Gardar",
+      "pleasewait": "Por favor agarda..."
+    },
+    "ownCategoryInfo": "Se escoller inserir unha categoría propia, isto resólvese nunha nota. Esta nota ten que ser revisada por un membro da comunidade do OpenStreetMap."
+  },
+  "infoTexts": {
+    "category": "Escolle unha categoría para o teu negocio para que sexa máis doado identificar de que vai o teu negocio. Procura nos datos unha categoría axeitada e, se non a atopaches, preme en \"Categoría propia\" para definir a túa propia categoría.",
+    "address": "O enderezo cárgase de xeito automático dende o punto que escolliches. Coller as posíbeis mudanzas se é necesario. O campo \"Lugar\" só está permitido se o negocio non ten outro enderezo.",
+    "name": "Escribe o nome do teu negocio neste campo, p.ex. Migros",
+    "opening_hours": "Neste campo están os horarios de apertura do teu negocio, p.ex. Lu-Ve 07:00 - 12:00 13:00 - 17:00",
+    "phone": "Velaquí tes o número de teléfono baixo o cal ti e o teu negocio son accesíbeis.",
+    "email": "Velaquí tes o enderezo de correo electrónico baixo o cal ti e o teu negocio son accesíbeis.",
+    "website": "Neste campo atópase o sitio web do teu negocio.",
+    "wheelchair": "Escolle que tan accesíbel é o teu negocio cunha cadeira de rodas. O que significan exactamente as diferentes opcións, podes ler na wiki: https://wiki.openstreetmap.org/wiki/Key:wheelchair",
+    "description": "Neste campo podes engadir información para o usuario final do mapa.",
+    "note": "Unha nota emprégase para informar a outros cartógrafos acerca de información non obvia sobre un elemento ou suxestións para unha mellora engadida, esa é intención do autor ó creala."
+  },
+  "popups": {
+    "popuptitle": "Novo negocio",
+    "feedback": "Informar dun erro no mapa",
+    "mapLink": "Ollar elemento no OSM.org",
+    "noteLink": "Ollar nota no OSM.org",
+    "noElement": "Sen elemento",
+    "edit": "Editar",
+    "create": "Crear",
+    "buttontitle": "Tes que iniciar a sesión para esta funcionalidade.",
+    "warning": "Xa hai unha nota aberta para este negocio.",
+    "comment": "Comentar"
+  },
+  "warning": {
+    "confirm": {
+      "title": "Estás na certeza?",
+      "section": "Se premes en \"Si\", tódalas túas mudanzas perderanse.",
+      "yes": "Si",
+      "no": "Non"
+    },
+    "duplicate": {
+      "businessPOI": {
+        "title": "Negocio xa existente",
+        "section1": "Nesta posición xa hai un negocio con exactamente o mesmo nome e categoría",
+        "section2": "Tes a posibilidade de editar as informacións existentes cun clic esquerdo no negocio no mapa."
+      },
+      "note": {
+        "title": "Mudanzas xa existentes",
+        "section1": "Para este negocio xa existe unha mudanza, que aínda non se procesou.",
+        "section2": "Tes a posibilidade de deixar un comentario directamente no OpenStreetMap:",
+        "comment": "Deixar un comentario"
+      }
+    }
+  },
+  "success": {
+    "address": "Enderezo",
+    "name": "Nome",
+    "link": "Ligazón ó OpenStreetMap",
+    "businessPOI": {
+      "title": "Novo negocio creado"
+    },
+    "note": {
+      "title": "Mudanzas gardadas"
+    }
+  },
+  "unsavedchanges": {
+    "title": "Mudanzas sen gardar",
+    "section": "Tes {time} segundos para recuperar as mudanzas non gardadas. Preme {here} para recuperar as mudanzas.",
+    "here": "aquí"
+  },
+  "error": {
+    "title": "Erro",
+    "nominatim": "Hai un problema ca conexión. Comproba a túa conexión á internet ou téntao de novo máis tarde.",
+    "osm": {
+      "getNotesByOsmId": "Non é posíbel obter unha nota do OSM.org",
+      "login": "O usuario non puido iniciar a sesión.",
+      "loadUser": "O usuario non puido ser cargado.",
+      "postNode": "O negocio non puido ser subido.",
+      "postNote": "As mudanzas non se puideron gardar.",
+      "postNoteAsComments": "Non se puido gardar a nota.",
+      "reopenClosedNoteAndAddComment": "A nota non pode ser reaberta ou gardada.",
+      "load": "Hai un problema ó cargar os datos do OpenStreetMap. Comproba a túa conexión á internet ou ténteo de novo máis tarde.",
+      "osmElementDeleted": "O PDI de negocio {0} eliminouse do OSM.org. Recoméndase eliminar este PDI de negocio da túa listaxe de seguemento."
+    },
+    "overpass": {
+      "query": "Os negocios non puideron ser cargados.",
+      "surrounding": "Hai un problema subindo os datos ó OpenStreetMap. Comproba a túa conexión á internet ou ténteo de novo máis tarde."
+    },
+    "osmybiz": "Seica a aplicación non vai moi ben. Se o problema perdura, téntao de novo máis tarde."
+  },
+  "about": "O \"OpenStreetMap My Business\" (abreviado OSMyBiz) é unha aplicación web onde os negocios - coma hoteis, restaurantes, bares e tendas - poden inserir e xestionar a súa información (p.ex. enderzo (número do edificio, rúa), horarios de apertura, número de teléfono e sitio web) no OpenStreetMap dun xeito doado. É semellante ó Onosm.org pero contén máis funcións deseñadas para ser amigábeis co usuario."
+}
