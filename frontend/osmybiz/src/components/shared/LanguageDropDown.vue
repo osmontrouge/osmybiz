@@ -11,12 +11,14 @@
     { label: 'Deutsch', value: 'de' },
     { label: 'English', value: 'en' },
     { label: 'Français', value: 'fr' },
+    { label: 'Galician', value: 'gl' },
     { label: 'עברית', value: 'he' },
     { label: 'Magyar', value: 'hu' },
     { label: 'Italiano', value: 'it' },
     { label: 'Polski', value: 'pl' },
     { label: 'русский', value: 'ru' },
     { label: 'Svenska', value: 'sv' },
+    { label: 'Ukrainian', value: 'uk' },
     { label: '汉语', value: 'zh_TW' },
   ];
 

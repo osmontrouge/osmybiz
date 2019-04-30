@@ -31,3 +31,16 @@ fields with the consumer key/secret you just created.
 For hints on running this project without docker/docker-compose 
 visit the readme.md files in the corresponding folder (frontend/api).
 This approach is not tested nor recommended.
+
+### Adding new language
+
+1. Add the new langauge file from https://www.transifex.com/openstreetmap/osmybiz/
+into ./src/locales/
+
+2. Modify a copy of another language file found under ./src/assets/tags/
+using the translation found here https://github.com/openstreetmap/iD/tree/master/dist/locales
+
+3. In main.js import the json from ./tags/ and add it in the messages list,
+keep both in alphabetical order.
+
+4. last in ./components/shared/LanguageDropDown.vue add the language too SUPPORTEDLANGUAGESOPTIONS
