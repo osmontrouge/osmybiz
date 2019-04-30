@@ -49,7 +49,7 @@
       },
       {
         "key": "animal_boarding",
-        "label": "label": "Para Animais",
+        "label":"Para Animais",
         "type": "semiCombo"
       }
     ]
@@ -1097,7 +1097,7 @@
     "fields": [
       {
         "key": "access_simple",
-        "label": "Permítese o acceso,
+        "label": "Permítese o acceso",
         "type": "combo"
       },
       {
