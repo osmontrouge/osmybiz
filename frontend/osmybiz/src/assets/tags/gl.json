@@ -1,0 +1,3135 @@
+{
+  "amenity/nursing_home": {
+    "name": "Residencia de anciáns",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "social_facility",
+        "label": "Tipo",
+        "type": "combo"
+      },
+      {
+        "key": "social_facility_for",
+        "label": "Persoas atendidas",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/register_office": {
+    "name": "Oficina do rexistro",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/scrapyard": {
+    "name": "Depósito de chatarra",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/animal_boarding": {
+    "name": "Aloxamento de animais",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "animal_boarding",
+        "label": "label": "Para Animais",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/animal_breeding": {
+    "name": "Granxa de animais",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "animal_breeding",
+        "label": "Para Animais",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/animal_shelter": {
+    "name": "Refuxio de animais",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "animal_shelter",
+        "label": "Para Animais",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/arts_centre": {
+    "name": "Centro de arte",
+    "fields": []
+  },
+  "amenity/bank": {
+    "name": "Banco",
+    "fields": [
+      {
+        "key": "atm",
+        "label": "Caixeiro automático",
+        "type": "check"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Auto-servizo",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/bar": {
+    "name": "Bar de copas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/bicycle_rental": {
+    "name": "Alugamento de bicicletas",
+    "fields": [
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      },
+      {
+        "key": "network",
+        "label": "Rede",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/biergarten": {
+    "name": "Bar-terraza alemá",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/boat_rental": {
+    "name": "Aluguer de botes",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/bureau_de_change": {
+    "name": "Troco de divisas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Tipos de moeda",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/bus_station": {
+    "name": "Estación de autobuses",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/cafe": {
+    "name": "Cafetaría",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Cociñas",
+        "type": "semiCombo"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/car_rental": {
+    "name": "Aluguer de automóbiles",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/car_sharing": {
+    "name": "Auto compartido",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      }
+    ]
+  },
+  "amenity/car_wash": {
+    "name": "Lavado de automóbiles",
+    "fields": []
+  },
+  "amenity/casino": {
+    "name": "Casino",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      }
+    ]
+  },
+  "amenity/childcare": {
+    "name": "Gardería",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/cinema": {
+    "name": "Cine",
+    "fields": []
+  },
+  "amenity/clinic": {
+    "name": "Clínica",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Especialidade",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/college": {
+    "name": "Zona de educación superior",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/community_centre": {
+    "name": "Centro comunitario",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/courthouse": {
+    "name": "Pazo de xustiza",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/crematorium": {
+    "name": "Crematorio",
+    "fields": []
+  },
+  "amenity/dentist": {
+    "name": "Dentista",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Especialidade",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/doctors": {
+    "name": "Doutor",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Especialidade",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/dojo": {
+    "name": "Dojo/academia de artes marciais",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Deportes",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/driving_school": {
+    "name": "Autoescola",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/embassy": {
+    "name": "Embaixada",
+    "fields": [
+      {
+        "key": "country",
+        "label": "Land",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/fast_food": {
+    "name": "Comida rápida",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Cociñas",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "takeaway",
+        "label": "Para Levar",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "only": "Só Para Levar"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Entrega",
+        "type": "check"
+      },
+      {
+        "key": "drive_through",
+        "label": "Auto-servizo",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ferry_terminal": {
+    "name": "Estación de ferry",
+    "fields": [
+      {
+        "key": "network",
+        "label": "Rede",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/fire_station": {
+    "name": "Parque de bombeiros",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/food_court": {
+    "name": "Zona de comidas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/fuel": {
+    "name": "Gasolineira",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "fuel_multi",
+        "label": "Tipos de combustíbeis",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/hospital": {
+    "name": "Zona hospitalaria",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Especialidade",
+        "type": "semiCombo"
+      },
+      {
+        "key": "emergency",
+        "label": "Emerxencia",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ice_cream": {
+    "name": "Xeadaría",
+    "fields": [
+      {
+        "key": "takeaway",
+        "label": "Para Levar",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "only": "Só Para Levar"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Entrega",
+        "type": "check"
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/internet_cafe": {
+    "name": "Cibercafé",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/kindergarten": {
+    "name": "Zona de gardería ou xardín de infancia",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/library": {
+    "name": "Biblioteca",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/marketplace": {
+    "name": "Mercado",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/nightclub": {
+    "name": "Pub",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      }
+    ]
+  },
+  "amenity/pharmacy": {
+    "name": "Farmacia",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Auto-servizo",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/planetarium": {
+    "name": "Planetario",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/police": {
+    "name": "Policía",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/post_office": {
+    "name": "Oficina de Correos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/prison": {
+    "name": "Zona penitenciaria",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/pub": {
+    "name": "Bar",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ranger_station": {
+    "name": "Estación de garda de bosques",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/recycling_centre": {
+    "name": "Reciclaxe",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "recycling_accepts",
+        "label": "Acepta",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/restaurant": {
+    "name": "Restaurante",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Cociñas",
+        "type": "semiCombo"
+      },
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      },
+      {
+        "key": "takeaway",
+        "label": "Para Levar",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "only": "Só Para Levar"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Entrega",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Terraza",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/school": {
+    "name": "Zona escolar",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/studio": {
+    "name": "Estudio",
+    "fields": [
+      {
+        "key": "studio",
+        "label": "Tipo",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/taxi": {
+    "name": "Parada de taxis",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      }
+    ]
+  },
+  "amenity/theatre": {
+    "name": "Teatro",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/townhall": {
+    "name": "Casa do Concello",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/university": {
+    "name": "Zona universitaria",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/veterinary": {
+    "name": "Veterinario",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/adult_gaming_centre": {
+    "name": "Centro recreativo para adultos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      }
+    ]
+  },
+  "leisure/bowling_alley": {
+    "name": "Birlos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      }
+    ]
+  },
+  "leisure/dance": {
+    "name": "Sala de baile",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/fitness_centre": {
+    "name": "Ximnasio",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Deportes",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/golf_course": {
+    "name": "Campo de golf",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/hackerspace": {
+    "name": "Hackerspace",
+    "fields": []
+  },
+  "leisure/horse_riding": {
+    "name": "Centro de equitación",
+    "fields": [
+      {
+        "key": "access_simple",
+        "label": "Permítese o acceso,
+        "type": "combo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Edificio",
+        "type": "combo"
+      }
+    ]
+  },
+  "leisure/ice_rink": {
+    "name": "Pista de xeo",
+    "fields": [
+      {
+        "key": "seasonal",
+        "label": "Estacional",
+        "type": "check"
+      },
+      {
+        "key": "sport_ice",
+        "label": "Deportes",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Edificio",
+        "type": "combo"
+      }
+    ]
+  },
+  "leisure/marina": {
+    "name": "Porto deportivo",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Tarifa",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Área de desaugue para caravanas",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Fonte de Alimentación",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/miniature_golf": {
+    "name": "Minigolf",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/resort": {
+    "name": "Complexo turístico",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/sports_centre": {
+    "name": "Complexo deportivo",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Deportes",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/stadium": {
+    "name": "Estadio",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Deportes",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/water_park": {
+    "name": "Parque acuático",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "office/physician": {
+    "name": "Médico",
+    "fields": []
+  },
+  "office/travel_agent": {
+    "name": "Axencia de viaxes",
+    "fields": []
+  },
+  "office/accountant": {
+    "name": "Contábel",
+    "fields": []
+  },
+  "office/administrative": {
+    "name": "Administración local",
+    "fields": []
+  },
+  "office/architect": {
+    "name": "Arquitecto",
+    "fields": []
+  },
+  "office/educational_institution": {
+    "name": "Institución educativa",
+    "fields": []
+  },
+  "office/employment_agency": {
+    "name": "Oficina de emprego",
+    "fields": []
+  },
+  "office/estate_agent": {
+    "name": "Axencia inmobiliaria",
+    "fields": []
+  },
+  "office/financial": {
+    "name": "Oficina financeira",
+    "fields": []
+  },
+  "office/government": {
+    "name": "Oficina gobernamental",
+    "fields": []
+  },
+  "office/insurance": {
+    "name": "Oficina de seguros",
+    "fields": []
+  },
+  "office/it": {
+    "name": "Oficina de tecnoloxías da información",
+    "fields": []
+  },
+  "office/lawyer": {
+    "name": "Bufete",
+    "fields": []
+  },
+  "office/newspaper": {
+    "name": "Bufete",
+    "fields": []
+  },
+  "office/ngo": {
+    "name": "Oficina ONG",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      }
+    ]
+  },
+  "office/political_party": {
+    "name": "Partido político",
+    "fields": []
+  },
+  "office/research": {
+    "name": "Oficina de investigación",
+    "fields": []
+  },
+  "office/telecommunication": {
+    "name": "Oficina de telecomunicacións",
+    "fields": []
+  },
+  "office/therapist": {
+    "name": "Oficina de terapeuta",
+    "fields": []
+  },
+  "shop/fishmonger": {
+    "name": "fishmonger",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/furnace": {
+    "name": "Tenda de calefacción",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/alcohol": {
+    "name": "Licoraría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Auto-servizo",
+        "type": "check"
+      }
+    ]
+  },
+  "shop/anime": {
+    "name": "Tenda de anime",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/antiques": {
+    "name": "Tenda de antigüidades",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/appliance": {
+    "name": "Tenda de electrodomésticos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/art": {
+    "name": "Galería de arte",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/baby_goods": {
+    "name": "Tenda de productos para bebés",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bag": {
+    "name": "Tenda de maletas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bakery": {
+    "name": "Panadaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bathroom_furnishing": {
+    "name": "Tenda de mobiliario de baño",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/beauty": {
+    "name": "Salón de beleza",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "beauty",
+        "label": "Especialidade",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/bed": {
+    "name": "Tenda de colchóns/roupa de cama",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/beverages": {
+    "name": "Tenda de bebidas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bicycle": {
+    "name": "Tenda de bicicletas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "service/bicycle",
+        "label": "Fahrradservice",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/bookmaker": {
+    "name": "Corredor de apostas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/books": {
+    "name": "Libraría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/boutique": {
+    "name": "Boutique",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Roupa",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/butcher": {
+    "name": "Carnizaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/candles": {
+    "name": "Tenda de velas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/car_parts": {
+    "name": "Tenda de recambios de automóbiles",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/car_repair": {
+    "name": "Taller de reparación de vehículos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Servizos",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/car": {
+    "name": "Concesionario",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Segunda Man",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "only": "Só"
+        }
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Servizos",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/carpet": {
+    "name": "Tenda de alfombras",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/charity": {
+    "name": "Tenda solidaria",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Segunda Man",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "only": "Só"
+        }
+      }
+    ]
+  },
+  "shop/cheese": {
+    "name": "Tenda de queixos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/chemist": {
+    "name": "Drogaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/chocolate": {
+    "name": "Chocolataría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/clothes": {
+    "name": "Tenda de roupa",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Roupa",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/coffee": {
+    "name": "Tenda de café",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/computer": {
+    "name": "Tenda de informática",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/confectionery": {
+    "name": "Tenda de larpeiradas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/convenience": {
+    "name": "Tenda de ultramarinos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/copyshop": {
+    "name": "Copistaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/cosmetics": {
+    "name": "Tenda de cosméticos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/craft": {
+    "name": "Tenda de artes e oficios",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/curtain": {
+    "name": "Tenda de cortinas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/dairy": {
+    "name": "Tenda de produtos frescos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/deli": {
+    "name": "Delicatessen",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/department_store": {
+    "name": "Grandes almacéns",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/doityourself": {
+    "name": "Tenda de bricolaxe",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/dry_cleaning": {
+    "name": "Lavandaría en seco",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/e-cigarette": {
+    "name": "Tenda de cigarros electrónicos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/electronics": {
+    "name": "Tenda de electrodomésticos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/erotic": {
+    "name": "Tenda erótica",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fabric": {
+    "name": "Tenda de teas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/farm": {
+    "name": "Tenda de produtos da terra",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fashion": {
+    "name": "Tenda de moda",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Roupa",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/florist": {
+    "name": "Floraría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/frame": {
+    "name": "Tenda de enmarcado",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/funeral_directors": {
+    "name": "Funeraria",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Relixión",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Denominación",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/furniture": {
+    "name": "Tenda de móbeis ou mobles",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/garden_centre": {
+    "name": "Centro de xardinaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/gas": {
+    "name": "Tenda de bombonas de gas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/gift": {
+    "name": "Tenda de regalos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/greengrocer": {
+    "name": "Froitaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hairdresser": {
+    "name": "Perrucaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hardware": {
+    "name": "Ferretaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hearing_aids": {
+    "name": "Tenda de audífonos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/herbalist": {
+    "name": "Herborista",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hifi": {
+    "name": "Tenda de equipamento de audio",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/houseware": {
+    "name": "Tenda de artículos do fogar",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/interior_decoration": {
+    "name": "Tenda de decoración de interiores",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/jewelry": {
+    "name": "Juwelier",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/kiosk": {
+    "name": "Quiosco",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/kitchen": {
+    "name": "Tenda de cociñas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/laundry": {
+    "name": "Lavandaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/leather": {
+    "name": "Tenda de peles",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/locksmith": {
+    "name": "Cerralleiro",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/lottery": {
+    "name": "Tenda de lotaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/mall": {
+    "name": "Centro comercial",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/massage": {
+    "name": "Fisioterapia",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/medical_supply": {
+    "name": "Tenda de suministros médicos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/mobile_phone": {
+    "name": "Tenda de telefonía móvil",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/money_lender": {
+    "name": "Usureiro",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Tipos de moeda",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/motorcycle": {
+    "name": "Concesionario de motocicletas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/music": {
+    "name": "Tenda de música",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/musical_instrument": {
+    "name": "Tenda de instrumentos musicais",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/newsagent": {
+    "name": "Tenda de xornais/revistas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/nutrition_supplements": {
+    "name": "Tenda de suplementos de nutrición",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/optician": {
+    "name": "Óptica",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/organic": {
+    "name": "Tenda de produtos ecolóxicos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/outdoor": {
+    "name": "Tenda de actividades ao aire libre",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/paint": {
+    "name": "Tenda de pintura",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pastry": {
+    "name": "Confitaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pawnbroker": {
+    "name": "Casa de empeños",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/perfumery": {
+    "name": "Perfumaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pet": {
+    "name": "Tenda de mascotas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/photo": {
+    "name": "Tenda de fotografía",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pyrotechnics": {
+    "name": "Tenda de pirotecnia",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/radiotechnics": {
+    "name": "Tenda de compoñentes electrónicos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/religion": {
+    "name": "Tenda de produtos relixiosos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Relixión",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Denominación",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/scuba_diving": {
+    "name": "Tenda de mergullo",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/seafood": {
+    "name": "Peixaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/second_hand": {
+    "name": "Tenda de segunda man",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Segunda Man",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "only": "Só"
+        }
+      }
+    ]
+  },
+  "shop/shoes": {
+    "name": "Zapataría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/sports": {
+    "name": "Tenda de deportes",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/stationery": {
+    "name": "Papelaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/storage_rental": {
+    "name": "Aluguer de almacéns",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Edificio",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/supermarket": {
+    "name": "Supermercado",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tailor": {
+    "name": "Xastre",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tattoo": {
+    "name": "Salón de tatuaxes",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tea": {
+    "name": "Tenda de té",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/ticket": {
+    "name": "Venda de entradas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tiles": {
+    "name": "Fliesenhändler",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tobacco": {
+    "name": "Estanco",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/toys": {
+    "name": "Tenda de xoguetes",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/trade": {
+    "name": "Baustoffhandel",
+    "fields": [
+      {
+        "key": "trade",
+        "label": "Tipo",
+        "type": "typeCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/travel_agency": {
+    "name": "Axencia de viaxes",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tyres": {
+    "name": "Tenda de neumáticos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/vacuum_cleaner": {
+    "name": "Tenda de aspiradoras",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/variety_store": {
+    "name": "Bazar",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/video_games": {
+    "name": "Tenda de videoxogos",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/video": {
+    "name": "Videoclub",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/watches": {
+    "name": "Reloxaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/water_sports": {
+    "name": "Deportes acuáticos/tenda de natación",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/weapons": {
+    "name": "Armaría",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/window_blind": {
+    "name": "Tenda de persianas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/wine": {
+    "name": "Tenda de viños",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/alpine_hut": {
+    "name": "Cabana alpina",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/apartment": {
+    "name": "Apartamento de vacacións",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/aquarium": {
+    "name": "Acuarium",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/attraction": {
+    "name": "Atracción turística",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/camp_site": {
+    "name": "Área de camping",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Tarifa",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/caravan_site": {
+    "name": "Parque de caravanas",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Capacidade",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Tarifa",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Área de desaugue para caravanas",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Fonte de Alimentación",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/chalet": {
+    "name": "Casas de vacacións ou chalets",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/gallery": {
+    "name": "Galería de arte",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/guest_house": {
+    "name": "Hostal",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/hostel": {
+    "name": "Albergue",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/hotel": {
+    "name": "Hotel",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "stars",
+        "label": "Sterne",
+        "type": "number"
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/motel": {
+    "name": "Motel",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Fumar",
+        "type": "combo",
+        "options": {
+          "no": "Non fumar en ningures",
+          "separated": "En zonas de fumadores, non fisicamente illadas",
+          "isolated": "En zonas de fumadores, fisicamente illadas",
+          "outside": "Permitido no exterior",
+          "yes": "Permitido en todas partes",
+          "dedicated": "Adicado a fumadores (p.ex. club fumadores)"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Räume",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Acceso a internet",
+        "type": "combo",
+        "options": {
+          "yes": "Si",
+          "no": "Non",
+          "wlan": "Wi-Fi",
+          "wired": "Por cabo ou cable",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Taxas de acceso a internet",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Nome da Rede)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/museum": {
+    "name": "Museo",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/theme_park": {
+    "name": "Parque de atraccións",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/zoo": {
+    "name": "Zoo",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Operador",
+        "type": "text"
+      }
+    ]
+  }
+}
