@@ -9,7 +9,7 @@ import router from './router';
 import de from './locales/de.json';
 import en from './locales/en.json';
 import fr from './locales/fr.json';
-import gl from './locales/gl.json'; 
+import gl from './locales/gl.json';
 import he from './locales/he.json';
 import hu from './locales/hu.json';
 import it from './locales/it.json';
