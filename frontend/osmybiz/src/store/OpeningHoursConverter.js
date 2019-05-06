@@ -145,6 +145,17 @@ function replaceSymbols(input) {
 function addDoublePoint(input) {
   return (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
 }
+function addMissingZeros(input) {
+  let output = input;
+  const noMinutes = /(\s|-)([0-1]?[0-9]|2[0-4])(\s|-|$|,|\+)/g;
+  const noSecondHourSyntax = /(,|\s|-)([0-9]:)/g;
+  output = ` ${output}`;
+  for (let a = 0; a < 2; a = +1) {
+    output = output.toString().replace(noMinutes, (_1, _2, _3, _4) => `${_2} ${_3}:00${_4}`);
+  }
+  output = output.toString().replace(noSecondHourSyntax, (_1, _2, _3) => `${_2}0${_3}`);
+  return output.trim();
+}
 function cutOverlappingTime(input) {
   let output = input;
   const timesWithoutEnd = /([0-2][0-9]:[0-5][0-9]\+)/g;
@@ -324,6 +335,12 @@ function orderDaysAndTime(input) {
   }
   return output;
 }
+function detectNewDay(input) {
+  let output = input;
+  const newDay = /(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|off)\s*(Mo|T[hu]|We|Fr|Sa|Su|PH)/g;
+  output = (output.toString().replace(newDay, (_1, _2, _3, _4) => `${_2}; ${_4}`));
+  return output.replace(/off\s/g, 'off;');
+}
 function cleanUp(input) {
   let output = input;
   // removes ; from the end of the string
@@ -341,12 +358,6 @@ function cleanUp(input) {
   output = output.replace(/([0-5][0-9])\s(Mo|Tu|We|Th|Fr|Sa|Su|PH)/g, (_1, _2, _3) => `${_2}; ${_3}`);
   output = detectNewDay(output);
   return output;
-}
-function detectNewDay(input) {
-  let output = input;
-  const newDay = /(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|off)\s*(Mo|T[hu]|We|Fr|Sa|Su|PH)/g;
-  output = (output.toString().replace(newDay, (_1, _2, _3, _4) => `${_2}; ${_4}`));
-  return output.replace(/off\s/g, 'off;');
 }
 // Formats like this Mo 12:00-17:00, Tu 12:00-17:00 turn int Mo,Tu 12:00-17:00
 function combineDaysWithSameTimes(input) {
@@ -449,6 +460,12 @@ function sortDays(input) {
   }
   return output;
 }
+function removeUnNeededSpace(input) {
+  let output = input;
+  output = output.replace(/\*|\r?\n|\r|\s+/g, ' ');
+  output = output.replace(/;;/g, ';');
+  return output.replace(/\s?-\s?/g, '-').trim();
+}
 function handelSorting(input) {
   let output = input;
   const findDaysAndTime = /(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f|\+)\s/g;
@@ -458,7 +475,7 @@ function handelSorting(input) {
   } else if (!ifStringDoesntMatch) {
     output = sortDays(output);
   } else {
-    output = output.replace(findDaysAndTime, (_1) => sortDays(_1));
+    output = output.replace(findDaysAndTime, (_1) => {sortDays(_1)});
   }
   output = output.replace(/([0-9]);?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) =>  `${_2} ${_3}`);
   output = removeUnNeededSpace(output);
@@ -613,17 +630,6 @@ function bindDaysTogether(input) {
   });
   return output;
 }
-function addMissingZeros(input) {
-  let output = input;
-  const noMinutes = /(\s|-)([0-1]?[0-9]|2[0-4])(\s|-|$|,|\+)/g;
-  const noSecondHourSyntax = /(,|\s|-)([0-9]:)/g;
-  output = ` ${output}`;
-  for (let a = 0; a < 2; a = +1) {
-    output = output.toString().replace(noMinutes, (_1, _2, _3, _4) => `${_2} ${_3}:00${_4}`);
-  }
-  output = output.toString().replace(noSecondHourSyntax, (_1, _2, _3) => `${_2}0${_3}`);
-  return output.trim();
-}
 function handleUnspecificClosingTime(input) {
   let output = input;
   const noCloseTime = /\b(Mo|T[hu]|We|Fr|S[au]|PH|)\b\s?\b(ab)\b\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])/g;
@@ -654,12 +660,6 @@ function shortenDaysEng(input) {
     output = output.replace(regexArray[a], replacementArray[a]);
   }
   return output;
-}
-function removeUnNeededSpace(input) {
-  let output = input;
-  output = output.replace(/\*|\r?\n|\r|\s+/g, ' ');
-  output = output.replace(/;;/g, ';');
-  return output.replace(/\s?-\s?/g, '-').trim();
 }
 function addComma(input) {
   let output = input;
@@ -743,7 +743,7 @@ function convert(input) {
     output = monthRagneEndCorrection(output);
     output = monthsAddSpace(output);
     output = combineSameMonths(output);
-    output = output.replace(multipleSpecificDates, (_1) => multipleSpecificDatesFunction(_1));
+    output = output.replace(multipleSpecificDates, (_1) => {multipleSpecificDatesFunction(_1)});
     output = output.replace(/:;/g, ':');
     output = separateMonthsAndDays(output);
     output = detectNewDay(output);
@@ -751,7 +751,7 @@ function convert(input) {
     output = correctSyntaxBetweenMonthAndDay(output);
   }
   output = `${output};`;
-  output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => cutOverlappingTime(_1));
+  output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {cutOverlappingTime(_1)});
   output = handleAdditiveTime(output);
   output = cleanUp(output);
   output = addMonthsToEveryDays(output);
@@ -767,7 +767,7 @@ function scriptHandeling(input) {
   const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
   outputString = outputString.replace(cutOutScript, (_1, _2, _3) => _3);
   const cutGroupOpeningHours = /"openingHours":\[(.*)\]/g;
-  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => _2.replace(/\"/g, ''));
+  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => _2.replace(/"/g, ''));
   const cutNotGroupedOpeningHours = /"openingHours":\s"(.+?)",/g;
   outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => _2);
   const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
@@ -804,7 +804,7 @@ function handelShemaOrg(string) {
   }
   microResponse = (`${microOHResponse} ${microResponse}`).trim();
   // this handels opening hours noted in RDFa
-  let rdfaOH = `${$(el).find("[property='openingHours']").attr("content")}`;
+  let rdfaOH = `${$(el).find("[property='openingHours']").attr('content')}`;
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
     rdfaOH = '';
@@ -843,5 +843,5 @@ async function isURL() {
   } else {
     result = convert(input);
   }
-  return result; /* document.getElementById("outputArea").value = result;*/
+  return result; /* document.getElementById("outputArea").value = result; */
 }
