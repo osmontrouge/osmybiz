@@ -6,21 +6,25 @@ function combineSameMonths(input) {
   let output = input;
   const multipleMonths = /(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off)[:,;]\s)(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off))/g;
   output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
+    let result = '';
     if (_4 === _8 && _5 === _9) {
-      return `${_3}: ${_7}: ${_9}`;
+      result = `${_3}: ${_7}: ${_9}`;
     } else {
-      return _1;
+      result = _1;
     }
+    return result;
   });
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),([0-9]{2}:[0-9]{2})/g, (_1, _2, _3, _4) => `${_2}: ${_4}`);
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),?\s/g, (_1) => { `${_1}: `; });
   output = output.replace(/\s:\s/g, ': ');
   output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2}):\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2})/g, (_1, _2, _3, _4, _5) => {
+    let result = '';
     if (_2 === _4) {
-      return `${_2} ${_3},${_5}`;
+      result = `${_2} ${_3},${_5}`;
     } else {
-      return `${_2} ${_3},${_4} ${_5}`;
+      result = `${_2} ${_3},${_4} ${_5}`;
     }
+    return result;
   });
   return output;
 }
@@ -31,12 +35,14 @@ function removeAdditionalZeroesFromMonths(input) {
     output = output.replace(detectDayBeforeMonth, (_1, _2, _3) => `; ${_2} ${_3}`);
   } else {
     output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-2][0-9]:00/g, (_1) => {
+      let result = '';
       const temp = moment(_1, 'MMM DD:00');
       if (temp.isValid()) {
-        return temp.format('MMM DD');
+        result = temp.format('MMM DD');
       } else {
-        return _1;
+        result = _1;
       }
+      return result;
     });
   }
   return output;
@@ -223,7 +229,9 @@ function cutOverlappingTime(input) {
           }
         }
       }
-      timesNoEnd = timesNoEnd.filter((el) => { el != null; });
+      timesNoEnd = timesNoEnd.filter(function (el) {
+        return el != null;
+      });
       startTimes = startTimes.filter(function (el) {
         return el != null;
       });
