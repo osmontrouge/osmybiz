@@ -8,7 +8,7 @@ function combineSameMonths(input) {
   output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
     if (_4 === _8 && _5 === _9) {
       return `${_3}: ${_7}: ${_9}`;
-    } else{
+    } else {
       return _1;
     }
   });
@@ -223,9 +223,15 @@ function cutOverlappingTime(input) {
           }
         }
       }
-      timesNoEnd = timesNoEnd.filter( (el) => { el != null });
-      startTimes = startTimes.filter( (el) => { el != null });
-      endTimes = endTimes.filter((el) => { el != null });
+      timesNoEnd = timesNoEnd.filter(function (el) {
+        return el != null;
+      });
+      startTimes = startTimes.filter(function (el) {
+        return el != null;
+      });
+      endTimes = endTimes.filter(function (el) {
+        return el != null;
+      });
       let result = '';
       for (let f = 0; f < startTimes.length; f = +1) {
         if (f > 0) {
@@ -448,13 +454,15 @@ function sortDays(input) {
             orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
             days[b] = true;
           } else {
-            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm, (_1, _2, _3, _4, _5, _6, _7, _8) => _8)}`;
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=> _8)}`;
             orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
           }
         }
       }
     }
-    orderedByWeekdays = orderedByWeekdays.filter( (el) => {el != null});
+    orderedByWeekdays = orderedByWeekdays.filter(function (el) {
+      return el != null;
+    });
     output = orderedByWeekdays.join(' ');
   }
   return output;
@@ -471,7 +479,7 @@ function handelSorting(input) {
   output = `${output} `;
   const ifStringDoesntMatch = output.toString().match(findDaysAndTime);
   if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) {
-    // console.log('Test');
+    console.log('Test');
   } else if (!ifStringDoesntMatch) {
     output = sortDays(output);
   } else {
@@ -627,8 +635,9 @@ function bindDaysTogether(input) {
       if ((_2 === 'Mo' && _4 === 'We') || (_2 === 'Tu' && _4 === 'Th') || (_2 === 'We' && _4 === 'Fr') || (_2 === 'Th' && _4 === 'Sa') || (_2 === 'Fr' && _4 === 'Su')) {
         return `${_2}-${_4}`;
       }
+    } else {
+      return _1;
     }
-    return _1;
   });
   return output;
 }
