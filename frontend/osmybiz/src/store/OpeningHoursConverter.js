@@ -284,7 +284,7 @@ function monthRagneEndCorrection(input) {
 }
 function monthsAddSpace(input) {
   let output = input;
-  output = output.replace(/;(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2) =>  `; ${_2}`);
+  output = output.replace(/;(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2) => `; ${_2}`);
   return output;
 }
 function multipleSpecificDatesFunction(input) {
@@ -333,7 +333,7 @@ function orderDaysAndTime(input) {
     let resultString = '';
     if (dayRange.length === timeRange.length) {
       for (let a = 0; a < dayRange.length; a = +1) {
-        resultString = `${resultString}${dayRange[a]} ${timeRange[a] }`;
+        resultString = `${resultString}${dayRange[a]} ${timeRange[a]}`;
       }
       output = `${resultString.slice(0, resultString.length - 2)}`;
     }
@@ -454,7 +454,7 @@ function sortDays(input) {
             orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
             days[b] = true;
           } else {
-            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>  _8)}`;
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=> _8)}`;
             orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
           }
         }
@@ -479,12 +479,13 @@ function handelSorting(input) {
   output = `${output} `;
   const ifStringDoesntMatch = output.toString().match(findDaysAndTime);
   if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) {
+    console.log("Test");
   } else if (!ifStringDoesntMatch) {
     output = sortDays(output);
   } else {
     output = output.replace(findDaysAndTime, (_1) => { sortDays(_1); });
   }
-  output = output.replace(/([0-9]);?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) =>  `${_2} ${_3}`);
+  output = output.replace(/([0-9]);?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) => `${_2} ${_3}`);
   output = removeUnNeededSpace(output);
   return output;
 }
@@ -530,7 +531,7 @@ function sortMonths(input) {
         let newString = '';
         for (let a = 0; a < monthRanges.length; a = +1) {
           timeRanges[a] = timeRanges[a].replace(months, '');
-          monthRanges[a] = `${monthRanges[a] }`;
+          monthRanges[a] = `${monthRanges[a]}`;
           newString = `${newString}${monthRanges[a]}${timeRanges[a]}`;
         }
         output = newString.slice(0, newString.length - 1);
