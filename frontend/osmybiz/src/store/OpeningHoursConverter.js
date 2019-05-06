@@ -2,156 +2,6 @@ import $ from 'jquery';
 import moment from 'moment';
 
 
-async function isURL() {
-  const input = document.getElementById('inputArea').value;
-  let result = '';
-  if (input.match(/https?:\/\//g)) {
-    const promisResult = await getSourceAsDom(input);
-    result = handelShemaOrg(promisResult);
-  } else {
-    result = convert(input);
-  }
-  return result; /* document.getElementById("outputArea").value = result;*/
-}
-
-async function getSourceAsDom(url) {
-  const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-  return response.text();
-}
-
-function handelShemaOrg(string) {
-  // this handels opning hours when written in markdown
-  const el = document.createElement('html');
-  el.innerHTML = string;
-  const microOH = $(el).find('[itemprop="openingHours"]');
-  let microOHResponse = `${$(microOH).attr('content')}`;
-  microOHResponse = convert(microOHResponse);
-  if (microOHResponse === 'No valid input') {
-    microOHResponse = '';
-  }
-  const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
-  let microResponse = convert(micro);
-  if (microResponse === 'No valid input') {
-    microResponse = '';
-  }
-  microResponse = (`${microOHResponse} ${microResponse}`).trim();
-  // this handels opening hours noted in RDFa
-  let rdfaOH = `${$(el).find("[property='openingHours']").attr("content")}`;
-  rdfaOH = convert(rdfaOH);
-  if (rdfaOH === 'No valid input') {
-    rdfaOH = '';
-  }
-  let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
-  rdfa = convert(rdfa);
-  if (rdfa === 'No valid input') {
-    rdfa = '';
-  }
-  const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
-  // this handels opening hours specified in the script application/ld+json
-  const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
-  let scriptResponse = scriptHandeling(scripts);
-
-  if (scriptResponse === 'No valid input') {
-    scriptResponse = '';
-  }
-  let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
-  if (result === '') {
-    result = 'No valid input';
-  }
-  return result.trim();
-}
-
-function scriptHandeling(input) {
-  let result = '';
-  let outputString = ' ';
-  outputString = `${outputString}${input}`;
-  const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
-  outputString = outputString.replace(cutOutScript, (_1, _2, _3) => _3);
-  const cutGroupOpeningHours = /"openingHours":\[(.*)\]/g;
-  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => _2.replace(/\"/g, ''));
-  const cutNotGroupedOpeningHours = /"openingHours":\s"(.+?)",/g;
-  outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => _2);
-  const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
-  outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => _2);
-  const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|\]|})/g;
-  outputString = outputString.replace(cutJSONParts, '');
-  const removeSeperators = /(','|':')/g;
-  outputString = outputString.replace(removeSeperators, ' ');
-  outputString = outputString.replace(/""/g, ' ');
-  outputString = outputString.replace(/closes/g, '-');
-  outputString = outputString.replace(/"|opens/g, '');
-  result = `${result}${outputString}`;
-  result = result.replace(/\s+/g, ' ');
-  result = result.replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => `${_2} - ${_3}`);
-  result = result.replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => `${_2} - ${_3}`);
-  result = convert(result);
-  return result;
-}
-
-function convert(input) {
-  let output = input;
-  // let output = document.getElementById("inputArea").value;
-  output = removeUnNeededSpace(output);
-  // if(document.getElementById("en").checked){
-  output = handelPM(output);
-  output = shortenDaysEng(output);
-  output = englishWords(output);
-  output = replaceEnglishMonths(output);
-  output = replaceEnglishMonths(output);
-  // } else if (document.getElementById("de").checked){
-  output = shortenDaysGer(output);
-  output = germanWords(output);
-  output = replaceGermanMonths(output);
-  // }
-  output = output.replace(/['!©«»&@]/g, '');
-  output = removeYearFromMonth(output);
-  output = addDoublePoint(output);
-  output = removeUnwantedText(output);
-  output = handleNumeralDates(output);
-  output = replaceSymbols(output);
-  output = addMissingZeros(output);
-  output = detectNextTime(output);
-  output = detectNewDay(output);
-  output = handleUnspecificClosingTime(output);
-  output = removeUnNeededSpace(output);
-  output = addComma(output);
-  output = orderDaysAndTime(output);
-  output = handelSorting(output);
-  output = pullDaysTogether(output);
-  output = handelMonthDays(output);
-  output = bindDaysTogether(output);
-  output = removeUnNeededSpace(output);
-  output = detectNewDay(output);
-  output = handelSecondSorting(output);
-  output = cleanUp(output);
-  output = removeAdditionalZeroesFromMonths(output);
-  if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
-    const multipleSpecificDates = /(Jan:|Feb:|Mar:|Apr:|May:|Jun:|Jul:|Aug:|Sep:|Oct:|Nov:|Dec:)(\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]):)+\s([0-2][0-9])/g;
-    output = output.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
-    output = sortMonths(output);
-    output = correctMonthDays(output);
-    output = switchDayAndMonthPosition(output);
-    output = removeWrongDoublepoints(output);
-    output = addMissingZeroesDays(output);
-    output = monthRagneEndCorrection(output);
-    output = monthsAddSpace(output);
-    output = combineSameMonths(output);
-    output = output.replace(multipleSpecificDates, (_1) => multipleSpecificDatesFunction(_1));
-    output = output.replace(/:;/g, ':');
-    output = separateMonthsAndDays(output);
-    output = detectNewDay(output);
-    output = pullMonthsTogether(output);
-    output = correctSyntaxBetweenMonthAndDay(output);
-  }
-  output = `${output};`;
-  output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => cutOverlappingTime(_1));
-  output = handleAdditiveTime(output);
-  output = cleanUp(output);
-  output = addMonthsToEveryDays(output);
-  output = replaceComma(output);
-  output = checkResult(output);
-  return output;
-}
 function combineSameMonths(input) {
   let output = input;
   const multipleMonths = /(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off)[:,;]\s)(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off))/g;
@@ -840,4 +690,158 @@ function handelPM(input) {
   });
   output = output.replace(/\s+/g, ' ');
   return output;
+}
+
+
+
+
+function convert(input) {
+  let output = input;
+  // let output = document.getElementById("inputArea").value;
+  output = removeUnNeededSpace(output);
+  // if(document.getElementById("en").checked){
+  output = handelPM(output);
+  output = shortenDaysEng(output);
+  output = englishWords(output);
+  output = replaceEnglishMonths(output);
+  output = replaceEnglishMonths(output);
+  // } else if (document.getElementById("de").checked){
+  output = shortenDaysGer(output);
+  output = germanWords(output);
+  output = replaceGermanMonths(output);
+  // }
+  output = output.replace(/['!©«»&@]/g, '');
+  output = removeYearFromMonth(output);
+  output = addDoublePoint(output);
+  output = removeUnwantedText(output);
+  output = handleNumeralDates(output);
+  output = replaceSymbols(output);
+  output = addMissingZeros(output);
+  output = detectNextTime(output);
+  output = detectNewDay(output);
+  output = handleUnspecificClosingTime(output);
+  output = removeUnNeededSpace(output);
+  output = addComma(output);
+  output = orderDaysAndTime(output);
+  output = handelSorting(output);
+  output = pullDaysTogether(output);
+  output = handelMonthDays(output);
+  output = bindDaysTogether(output);
+  output = removeUnNeededSpace(output);
+  output = detectNewDay(output);
+  output = handelSecondSorting(output);
+  output = cleanUp(output);
+  output = removeAdditionalZeroesFromMonths(output);
+  if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
+    const multipleSpecificDates = /(Jan:|Feb:|Mar:|Apr:|May:|Jun:|Jul:|Aug:|Sep:|Oct:|Nov:|Dec:)(\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]):)+\s([0-2][0-9])/g;
+    output = output.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
+    output = sortMonths(output);
+    output = correctMonthDays(output);
+    output = switchDayAndMonthPosition(output);
+    output = removeWrongDoublepoints(output);
+    output = addMissingZeroesDays(output);
+    output = monthRagneEndCorrection(output);
+    output = monthsAddSpace(output);
+    output = combineSameMonths(output);
+    output = output.replace(multipleSpecificDates, (_1) => multipleSpecificDatesFunction(_1));
+    output = output.replace(/:;/g, ':');
+    output = separateMonthsAndDays(output);
+    output = detectNewDay(output);
+    output = pullMonthsTogether(output);
+    output = correctSyntaxBetweenMonthAndDay(output);
+  }
+  output = `${output};`;
+  output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => cutOverlappingTime(_1));
+  output = handleAdditiveTime(output);
+  output = cleanUp(output);
+  output = addMonthsToEveryDays(output);
+  output = replaceComma(output);
+  output = checkResult(output);
+  return output;
+}
+
+function scriptHandeling(input) {
+  let result = '';
+  let outputString = ' ';
+  outputString = `${outputString}${input}`;
+  const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
+  outputString = outputString.replace(cutOutScript, (_1, _2, _3) => _3);
+  const cutGroupOpeningHours = /"openingHours":\[(.*)\]/g;
+  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => _2.replace(/\"/g, ''));
+  const cutNotGroupedOpeningHours = /"openingHours":\s"(.+?)",/g;
+  outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => _2);
+  const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
+  outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => _2);
+  const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|\]|})/g;
+  outputString = outputString.replace(cutJSONParts, '');
+  const removeSeperators = /(','|':')/g;
+  outputString = outputString.replace(removeSeperators, ' ');
+  outputString = outputString.replace(/""/g, ' ');
+  outputString = outputString.replace(/closes/g, '-');
+  outputString = outputString.replace(/"|opens/g, '');
+  result = `${result}${outputString}`;
+  result = result.replace(/\s+/g, ' ');
+  result = result.replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => `${_2} - ${_3}`);
+  result = result.replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => `${_2} - ${_3}`);
+  result = convert(result);
+  return result;
+}
+
+function handelShemaOrg(string) {
+  // this handels opning hours when written in markdown
+  const el = document.createElement('html');
+  el.innerHTML = string;
+  const microOH = $(el).find('[itemprop="openingHours"]');
+  let microOHResponse = `${$(microOH).attr('content')}`;
+  microOHResponse = convert(microOHResponse);
+  if (microOHResponse === 'No valid input') {
+    microOHResponse = '';
+  }
+  const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
+  let microResponse = convert(micro);
+  if (microResponse === 'No valid input') {
+    microResponse = '';
+  }
+  microResponse = (`${microOHResponse} ${microResponse}`).trim();
+  // this handels opening hours noted in RDFa
+  let rdfaOH = `${$(el).find("[property='openingHours']").attr("content")}`;
+  rdfaOH = convert(rdfaOH);
+  if (rdfaOH === 'No valid input') {
+    rdfaOH = '';
+  }
+  let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
+  rdfa = convert(rdfa);
+  if (rdfa === 'No valid input') {
+    rdfa = '';
+  }
+  const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
+  // this handels opening hours specified in the script application/ld+json
+  const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
+  let scriptResponse = scriptHandeling(scripts);
+
+  if (scriptResponse === 'No valid input') {
+    scriptResponse = '';
+  }
+  let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
+  if (result === '') {
+    result = 'No valid input';
+  }
+  return result.trim();
+}
+
+async function isURL() {
+  const input = document.getElementById('inputArea').value;
+  let result = '';
+  if (input.match(/https?:\/\//g)) {
+    const promisResult = await getSourceAsDom(input);
+    result = handelShemaOrg(promisResult);
+  } else {
+    result = convert(input);
+  }
+  return result; /* document.getElementById("outputArea").value = result;*/
+}
+
+async function getSourceAsDom(url) {
+  const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  return response.text();
 }
