@@ -160,9 +160,7 @@ function combineSameMonths(input) {
       return `${_3}: ${_7}: ${_9}`;
     }
   });
-  output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),([0-9]{2}:[0-9]{2})/g, (_1, _2, _3, _4) => {
-    return `${_2}: ${_4}`;
-  });
+  output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),([0-9]{2}:[0-9]{2})/g, (_1, _2, _3, _4) => `${_2}: ${_4}`);
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),?\s/g, (_1) => `${_1}: `);
   output = output.replace(/\s:\s/g, ': ');
   output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2}):\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2})/g, (_1, _2, _3, _4, _5) => {
@@ -487,9 +485,7 @@ function cleanUp(input) {
   output = output.replace(/Mo-Su 00:00-24:00/g, '24/7');
   output = output.replace(/\s;\s?/g, '; ');
   output = output.replace(/([0-9])(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
-  output = output.replace(/([0-5][0-9])\s(Mo|Tu|We|Th|Fr|Sa|Su|PH)/g, (_1, _2, _3) => {
-    return `${_2}; ${_3}`;
-  });
+  output = output.replace(/([0-5][0-9])\s(Mo|Tu|We|Th|Fr|Sa|Su|PH)/g, (_1, _2, _3) => `${_2}; ${_3}`);
   output = detectNewDay(output);
   return output;
 }
@@ -665,9 +661,7 @@ function sortDays(input) {
             orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
             days[b] = true;
           } else {
-            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>{
-              return _8;
-            } )}`;
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>  _8)}`;
             orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, "");
           }
         }
