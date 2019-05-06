@@ -400,7 +400,7 @@ function combineDaysWithSameTimes(input) {
         } else {
           result = `${result}${combinedTimes} ${checkTime}; `;
           combinedTimes = [];
-          a = a - 1;
+          a -= 1;
         }
       }
     }
@@ -454,7 +454,7 @@ function sortDays(input) {
             orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
             days[b] = true;
           } else {
-            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8) => _8)}`;
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm, (_1, _2, _3, _4, _5, _6, _7, _8) => _8)}`;
             orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
           }
         }
@@ -635,9 +635,8 @@ function bindDaysTogether(input) {
       if ((_2 === 'Mo' && _4 === 'We') || (_2 === 'Tu' && _4 === 'Th') || (_2 === 'We' && _4 === 'Fr') || (_2 === 'Th' && _4 === 'Sa') || (_2 === 'Fr' && _4 === 'Su')) {
         return `${_2}-${_4}`;
       }
-    } else {
-      return _1;
     }
+    return _1;
   });
   return output;
 }
