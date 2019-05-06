@@ -15,7 +15,7 @@ async function isURL() {
 }
 
 async function getSourceAsDom(url) {
-  const response = await fetch('https://cors-anywhere.herokuapp.com/' + url);
+  const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
   return response.text();
 }
 
@@ -24,37 +24,37 @@ function handelShemaOrg(string) {
   const el = document.createElement('html');
   el.innerHTML = string;
   const microOH = $(el).find('[itemprop="openingHours"]');
-  let microOHResponse = "" + $(microOH).attr( 'content');
+  let microOHResponse = `${$(microOH).attr( 'content')}`;
   microOHResponse = convert(microOHResponse);
   if (microOHResponse === 'No valid input') {
     microOHResponse = "";
   }
-  const micro = "" + $(el).find("[itemprop='openingHoursSpecification']").text();
+  const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
   let microResponse = convert(micro);
   if (microResponse === 'No valid input') {
     microResponse = "";
   }
-  microResponse = (microOHResponse + ' ' + microResponse).trim();
+  microResponse = (`${microOHResponse} ${microResponse}`).trim();
   //this handels opening hours noted in RDFa
-  let rdfaOH = "" + $(el).find("[property='openingHours']").attr("content");
+  let rdfaOH = `${$(el).find("[property='openingHours']").attr("content")}`;
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
     rdfaOH = "";
   }
-  let rdfa = "" + $(el).find("[property='openingHoursSpecification']").text();
+  let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
   rdfa = convert(rdfa);
   if (rdfa === 'No valid input') {
     rdfa = "";
   }
-  const rdfaResponse = (rdfaOH + ' ' + rdfa).trim();
+  const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
   //this handels opening hours specified in the script application/ld+json
-  const scripts = "" + $(el).find("[type='application/ld+json']").html();
+  const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
   let scriptResponse = scriptHandeling(scripts);
 
   if (scriptResponse === 'No valid input') {
     scriptResponse = "";
   }
-  let result = (microResponse + ' ' + rdfaResponse + ' ' + scriptResponse).trim();
+  let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
   if (result === "") {
     result = 'No valid input';
   }
@@ -64,7 +64,7 @@ function handelShemaOrg(string) {
 function scriptHandeling(input) {
   let result = "";
   let outputString = ' ';
-  outputString = outputString + input;
+  outputString = `${outputString}${input}`;
   const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
   outputString = outputString.replace(cutOutScript, (_1, _2, _3) => {
     return _3;
@@ -88,13 +88,13 @@ function scriptHandeling(input) {
   outputString = outputString.replace(/""/g, ' ');
   outputString = outputString.replace(/closes/g, '-');
   outputString = outputString.replace(/"|opens/g, '');
-  result = result + outputString;
+  result = `${result}${outputString}`;
   result = result.replace(/\s+/g, ' ');
   result = result.replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => {
-    return _2 + ' - ' + _3;
+    return `${_2} - ${_3}`;
   });
   result = result.replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => {
-    return _2 + ' - ' + _3;
+    return `${_2} - ${_3}`;
   });
   result = convert(result);
   return result;
@@ -140,7 +140,7 @@ function convert(input) {
   if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
     const multipleSpecificDates = /(Jan:|Feb:|Mar:|Apr:|May:|Jun:|Jul:|Aug:|Sep:|Oct:|Nov:|Dec:)(\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]):)+\s([0-2][0-9])/g;
     output = output.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => {
-      return _2 + '; ' + _3;
+      return `${_2}; ${_3}`;
     });
     output = sortMonths(output);
     output = correctMonthDays(output);
@@ -159,7 +159,7 @@ function convert(input) {
     output = pullMonthsTogether(output);
     output = correctSyntaxBetweenMonthAndDay(output);
   }
-  output = output + ';';
+  output = `${output};`;
   output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {
     return cutOverlappingTime(_1);
   });
@@ -175,21 +175,21 @@ function combineSameMonths(input) {
   const multipleMonths = /(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off)[:,;]\s)(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off))/g;
   output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
     if (_4 === _8 && _5 === _9) {
-      return _3 + ': ' + _7 + ': ' + _9;
+      return `${_3}: ${_7}: ${_9}`;
     }
   });
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),([0-9]{2}:[0-9]{2})/g, (_1, _2, _3, _4) => {
-    return _2 + ': ' + _4;
+    return `${_2}: ${_4}`;
   });
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),?\s/g, (_1) => {
-    return _1 + ': ';
+    return `${_1}: `;
   });
   output = output.replace(/\s:\s/g, ': ');
   output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2}):\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2})/g, (_1, _2, _3, _4, _5) => {
     if (_2 === _4) {
-      return _2 + ' ' + _3 + ',' + _5;
+      return `${_2} ${_3},${_5}`;
     } else {
-      return _2 + ' ' + _3 + ',' + _4 +' ' + _5;
+      return `${_2} ${_3},${_4} ${_5}`;
     }
   });
   return output;
@@ -199,7 +199,7 @@ function removeAdditionalZeroesFromMonths(input) {
   const detectDayBeforeMonth = /;\s([0-9]{2}):[0-9]{2}\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g;
   if (output.match(detectDayBeforeMonth)) {
     output = output.replace(detectDayBeforeMonth, (_1, _2, _3) => {
-      return '; ' + _2 + ' ' + _3;
+      return `; ${_2} ${_3}`;
     });
   } else {
     output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-2][0-9]:00/g, (_1) => {
@@ -217,7 +217,7 @@ function correctSyntaxBetweenMonthAndDay(input) {
   let output = input;
   const missingDoublePoint = /((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-3][0-1])[,\s]([0-2][0-9]:[0-5][0-9])/g;
   output = output.toString().replace(missingDoublePoint, (_1, _2, _3, _4) => {
-    return _2 + ': ' + _4;
+    return `${_2}: ${_4}`;
   });
   return output;
 }
@@ -242,8 +242,8 @@ function handleAdditiveTime(input) {
     const trial = _1;
     const dayAndTime = trial.match(timeWithSingleDay);
     const dayRangAndTime = trial.match(timeWithDayRange);
-    const startDay = dayRangAndTime.toString()[0] + dayRangAndTime.toString()[1];
-    const endDay = dayRangAndTime.toString()[3] + dayRangAndTime.toString()[4];
+    const startDay =`${dayRangAndTime.toString()[0]}${dayRangAndTime.toString()[1]}`;// dayRangAndTime.toString()[0] + dayRangAndTime.toString()[1];
+    const endDay = `${dayRangAndTime.toString()[3]}${dayRangAndTime.toString()[4]}`;//dayRangAndTime.toString()[3] + dayRangAndTime.toString()[4];
     const startDayIndex = week.indexOf(startDay);
     const endDayIndex = week.indexOf(endDay);
     let result = dayRangAndTime.toString();
@@ -251,17 +251,17 @@ function handleAdditiveTime(input) {
     for (let a = 1; a < dayAndTime.length; a++) {
       const singleDayIndex = week.indexOf(dayAndTime[a].toString()[0] + dayAndTime[a].toString()[1]);
       if (startDayIndex < singleDayIndex && endDayIndex > singleDayIndex) {
-        result = result + ', ' + dayAndTime[a];
+        result = `${result}, ${dayAndTime[a]}`;
       } else {
         daysAndTimeOutsideRange.push(dayAndTime[a].toString());
       }
     }
     if (!!daysAndTimeOutsideRange) {
       for (let b = 0; b < daysAndTimeOutsideRange.length; b++) {
-        result = result + '; ' + daysAndTimeOutsideRange[b];
+        result = `${result}; ${daysAndTimeOutsideRange[b]}`;
       }
     }
-    result = result + '; ';
+    result = `${result}; `;
     return result;
   });
   output = output.toString().replace(/;\s$/g, "");
@@ -284,12 +284,12 @@ function addMonthsToEveryDays(input) {
     const detectsDays = /;\s(Mo|Tu|We|Th|Fr|Sa|Su|PH)/g;
     const detectsMonths = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec).*?:/g;
     output = output.replace(/;\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2) => {
-      return ';  ' + _2;
+      return `; ${_2}`;
     }).trim();
     output = output.replace(separateMonths, (_1) => {
       const months = _1.match(detectsMonths);
       const temp = _1.replace(detectsDays, (_1, _2) => {
-        return '; ' + months + ' ' + _2;
+        return `; ${months} ${_2}`;
       });
       return temp;
     });
@@ -305,10 +305,10 @@ function handleNumeralDates(input) {
   const datesWithoutSecondDot = /([2][5-9]\.[01][0-9]|[3][01]\.[01][0-9])(-|\s|,|:)/g;
   output = output.replace(datesWithoutYear, (_1, _2, _3) => {
     const temp = moment(_2, ['D.M.', 'DD.M.', 'D.MM.', 'DD.MM.']);
-    return temp.format('DD.MM.') + '20:19' + _3;
+    return `${temp.format('DD.MM.')}20:19${_3}`;
   });
   output = output.replace(datesWithoutSecondDot, (_1, _2) => {
-    return _2 + '.';
+    return `${_2}.`;
   });
   output = output.replace(/([0-2]?[0-9]\.|3[01]\.)(0?[0-9]\.|1[0-2]\.)(([0-9]{2}:)?[0-9]{2})?/g, (_1, _2, _3) => {
     const temp = moment(_2+_3, ['D.M.', 'DD.M.', 'D.MM.', 'DD.MM.']);
@@ -398,16 +398,16 @@ function cutOverlappingTime(input) {
       let result = "";
       for (let f = 0; f < startTimes.length; f++) {
         if (f > 0) {
-          result = result + ','
+          result = `${result},`;
         }
-        result = result + addDoublePoint(startTimes[f].toString()) + '-' + addDoublePoint(endTimes[f].toString());
+        result = `${result}${addDoublePoint(startTimes[f].toString())}-${addDoublePoint(endTimes[f].toString())}`;
       }
       if (!!timesNoEnd) {
         for (let g = 0; g < timesNoEnd.length; g++) {
-          result = result + ',' + addDoublePoint(timesNoEnd[g].toString() + '+');
+          result = `${result},${addDoublePoint(timesNoEnd[g].toString())}+`;
         }
       }
-      result = result + ';';
+      result = `${result};`;
       output = result;
       output = addMissingZeros(output);
     }
@@ -418,7 +418,7 @@ function correctMonthDays(input) {
   let output = input;
   const monthdayWrongSyntax = /([0-1][0-9]|[2][0-4]):00\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g;
   output = output.replace(monthdayWrongSyntax, (_1, _2, _3) => {
-    return _2 + ' ' + _3;
+    return `${_2} ${_3}`;
   });
   return output;
 }
@@ -426,7 +426,7 @@ function switchDayAndMonthPosition(input) {
   let output = input;
   const dayMonthPositionWrong = /([1-2][0-9]|[3][0-1]|[0]?[1-9])\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g;
   output = output.replace(dayMonthPositionWrong, (_1, _2, _3) => {
-    return _3 + ' ' + _2;
+    return `${_3} ${_2}`;
   });
   return output;
 }
@@ -434,7 +434,7 @@ function removeWrongDoublepoints(input) {
   let output = input;
   const doublePointsInMonths = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec):\s([0][1-9]|[1-2][0-9]|[3][0-1]|[1-9])(:00)?/g;
   output = output.replace(doublePointsInMonths, (_1, _2, _3) => {
-    return _2 + ' ' + _3;
+    return`${_2} ${_3}`;
   });
   return output;
 }
@@ -442,7 +442,7 @@ function addMissingZeroesDays(input) {
   let output = input;
   const missingZeroDays = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([1-9])([-:;])/g;
   output = output.replace(missingZeroDays, (_1, _2, _3, _4) => {
-    return _2 + ' 0' + _3 + _4;
+    return `${_2} 0${_3}${_4}`;
   });
   return output;
 }
@@ -450,7 +450,7 @@ function monthRagneEndCorrection(input) {
   let output = input;
   const detectWrongEnd = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]|[3][0-1]);/g;
   output = output.replace(detectWrongEnd, (_1, _2, _3) => {
-    return _2 + ' ' + _3 + ':';
+    return `${_2} ${_3}:`;
   });
   output = output.replace(/:;/g, ':');
   return output;
@@ -458,7 +458,7 @@ function monthRagneEndCorrection(input) {
 function monthsAddSpace(input) {
   let output = input;
   output = output.replace(/;(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2) => {
-    return '; ' + _2;
+    return `; ${_2}`;
   });
   return output;
 }
@@ -469,22 +469,22 @@ function multipleSpecificDatesFunction(input) {
   const listMonths = output.match(months);
   const listDays = output.match(days);
   output = "";
-  output = output + listMonths[0].toString() + ' ' + listDays[0].toString();
+  output = `${output}${listMonths[0].toString()} ${listDays[0].toString()}`;
   for (let a = 1; a < listMonths.length; a++) {
     if (listMonths[a - 1].toString() === listMonths[a].toString()) {
-      output = output + ',' + listDays[a].toString();
+      output = `${output},${listDays[a].toString()}`;
     } else {
-      output = output + ',' + listMonths[a].toString() + ' ' + listDays[a];
+      output = `${output},${listMonths[a].toString()} ${listDays[a]}`;
     }
   }
-  output = output + ':';
+  output = `${output}:`;
   return output;
 }
 function separateMonthsAndDays(input) {
   let output = input;
   const separatedByComma = /((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-3][0-9]),(Mo|Tu|We|Th|Fr|Sa|Su|PH)/g;
   output = output.replace(separatedByComma, (_1, _2, _3, _4) => {
-    return _2 + ': ' + _4;
+    return `${_2}: ${_4}`;
   });
   return output;
 }
@@ -494,7 +494,7 @@ function pullMonthsTogether(input) {
   const monthCombination = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-3][0-9])([-,])(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-3][0-9])/g;
   output = output.replace(monthCombination, (_1, _2, _3, _4, _5, _6) => {
     if (_2 === _5) {
-      return _2 + ' ' + _3 + _4 + _6;
+      return `${_2} ${_3}${_4}${_6}`;
     }
     return _1;
   });
@@ -510,9 +510,9 @@ function orderDaysAndTime(input) {
     let resultString = "";
     if (dayRange.length === timeRange.length) {
       for (let a = 0; a < dayRange.length; a++) {
-        resultString = resultString + dayRange[a] + ' ' + timeRange[a] + ' '
+        resultString = `${resultString}${dayRange[a]} ${timeRange[a] }`;
       }
-      output = resultString.slice(0, resultString.length - 2);
+      output = `${resultString.slice(0, resultString.length-2)}`;
     }
   }
   return output;
@@ -521,11 +521,11 @@ function cleanUp(input) {
   let output = input;
   //removes ; from the end of the string
   if (output.endsWith(';')) {
-    output = output.slice(0, output.length - 1);
+    output = `${output.slice(0, output.length - 1)}`;
   }
   //removes comma between Days and time like this Mo, 10:00 to Mo 10:00
   output = output.replace(/(Mo|T[hu]|We|Fr|Sa|Su|PH),(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])/g, (_1, _2, _3) => {
-    return _2 + ' ' + _3;
+    return `${_2} ${_3}`;
   });
   //changes times like 17:00-00:00 to 17:00-24:00 as is convention
   output = output.replace(/-00:00/g, '-24:00');
@@ -533,10 +533,10 @@ function cleanUp(input) {
   output = output.replace(/Mo-Su 00:00-24:00/g, '24/7');
   output = output.replace(/\s;\s?/g, '; ');
   output = output.replace(/([0-9])(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) => {
-    return _2 + '; ' + _3;
+    return `${_2}; ${_3}`;
   });
   output = output.replace(/([0-5][0-9])\s(Mo|Tu|We|Th|Fr|Sa|Su|PH)/g, (_1, _2, _3) => {
-    return _2 + '; ' + _3;
+    return `${_2}; ${_3}`;
   });
   output = detectNewDay(output);
   return output;
@@ -546,28 +546,28 @@ function handelMonthDays(input) {
   let output = input;
   const dayMonthSeparation = /([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9]),(([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9])\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))/g;
   output = output.replace(dayMonthSeparation, (_1, _2, _3) => {
-    return _2 + '; ' + _3;
+    return `${_2}; ${_3}`;
   });
   output = output.replace(/off;/g, 'off');
   if (output.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)\s/g)) {
-    output = output + ' ';
+    output = `${output} `;
     output = output.toString().replace(/(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f)\s/g, (_1) => {
-      return combineDaysWithSameTimes(_1) + ' ';
+      return `${combineDaysWithSameTimes(_1)} `;
     });
-    output = output.replace(/\s;/g, '; ');
+    output = `${output.replace(/\\s;/g, '; ')}`;
   } else {
     output = combineDaysWithSameTimes(output);
   }
   output = output.replace(/off\s/g, 'off;');
   output = output.replace(/;([^\s])/g, (_1, _2) => {
-    return '; ' + _2;
+    return `; ${_2}`;
   });
   return output;
 }
 function handelSorting(input) {
   let output = input;
   const findDaysAndTime = /(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f|\+)\s/g;
-  output = output + ' ';
+  output = `${output} `;
   const ifStringDoesntMatch = output.toString().match(findDaysAndTime);
   if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) {
   } else if (!ifStringDoesntMatch) {
@@ -578,7 +578,7 @@ function handelSorting(input) {
     })
   }
   output = output.replace(/([0-9]);?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) => {
-    return _2 + ' ' + _3;
+    return `${_2} ${_3}`;
   });
   output = removeUnNeededSpace(output);
   return output;
@@ -589,15 +589,15 @@ function handelSecondSorting(input) {
   const findDaysAndTime = /(Mo.+?|Tu.+?|We.+?|Th.+?|Fr.+?|Sa.+?|Su.+?|PH.+?)(([0-2][0-9]:[0-5][0-9]\s)?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec|\$))/g;
   output = output.replace(/\(/gi, ' (');
   output = output.replace(/([0-9]);?,?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) => {
-    return _2 + ' ' + _3;
+    return `${_2} ${_3}`;
   });
-  output = output + '$';
+  output = `${output}$`;
   output = output.replace(/([0-2][0-9]:[0-5][0-9]-[0-2][0-9]:[0-5][0-9])\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => {
-    return _2 + '; ' + _3;
+    return `${_2}; ${_3}`;
   });
   if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g)) {
     output = output.replace(findDaysAndTime, (_1, _2, _3) => {
-      return sortDays(_2) + _3;
+      return `${sortDays(_2)}${_3}`;
     })
   } else if (output.toString().match(secondFindDaysAndTime)) {
     output = sortDays(output);
@@ -608,7 +608,7 @@ function handelSecondSorting(input) {
 function addDoublePointOnMonths(input) {
   let output = input;
   output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)\s/g, (_1, _2) => {
-    return _2 + ': ';
+    return `${_2}: `;
   });
   return output;
 }
@@ -616,7 +616,7 @@ function cleanUpMonthRange(input) {
   let output = input;
   const monthRange = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec):\s([1-3][0-9].|[0]?[1-9].)/g;
   output = output.toString().replace(monthRange, (_1, _2, _3) => {
-    return _2 + ' ' + _3;
+    return `${_2} ${_3}`;
   });
   return output;
 }
@@ -627,7 +627,7 @@ function sortMonths(input) {
     '(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)?(,Jan|,Feb|,Mar|,Apr|,May|,Jun|,Jul|,Aug|,Sep|,Oct|,Nov|,Dec)*', 'g');
   const timeRangFinder = /((Mo|Tu|We|Th|Fr|Sa|Su|PH).*?[0-9];)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g;
   output = output.replace(/([0-9]-[0-5][0-9])\s?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) => {
-    return _2 + '; ' + _3;
+    return `${_2}; ${_3}`;
   });
   if (output.toString().match(months)) {
     if (output.match(/(Jan$|Feb$|Mar$|Apr$|May$|Jun$|Jul$|Aug$|Sep$|Oct$|Nov$|Dec$)/gm)) {
@@ -637,8 +637,8 @@ function sortMonths(input) {
         let newString = "";
         for (let a = 0; a < monthRanges.length; a++) {
           timeRanges[a] = timeRanges[a].replace(months, "");
-          monthRanges[a] = monthRanges[a] + ' ';
-          newString = newString + monthRanges[a] + timeRanges[a];
+          monthRanges[a] = `${monthRanges[a] }`;
+          newString = `${newString}${monthRanges[a]}${timeRanges[a]}`;
         }
         output = newString.slice(0, newString.length - 1);
       }
@@ -647,7 +647,7 @@ function sortMonths(input) {
     output = cleanUpMonthRange(output);
   }
   output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)\s/g, (_1, _2) => {
-    return _2 + ': ';
+    return `${_2}: `;
   });
   return output;
 }
@@ -737,9 +737,9 @@ function sortDays(input) {
             orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
             days[b] = true;
           } else {
-            orderedByWeekdays[b] = orderedByWeekdays[b] + ',' + openingHoursSeperatedByDays[a].replace(stringForm, (_1, _2, _3, _4, _5, _6, _7, _8) => {
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>{
               return _8;
-            });
+            } )}`;
             orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, "");
           }
         }
@@ -769,7 +769,7 @@ function combineDaysWithSameTimes(input) {
     });
     output = output.replace(endWithMonthDate, ' ');
   }
-  const intermediate = ' ' + output.toString();
+  const intermediate = ` ${output}`;
   const matchingDays = intermediate.match(daysAndTime);
   const splittDaysAndTime = [];
   if (!!matchingDays) {
@@ -787,21 +787,21 @@ function combineDaysWithSameTimes(input) {
         if (checkTime === splittDaysAndTime[a][2]) {
           combinedTimes.push(splittDaysAndTime[a][1]);
         } else {
-          result = result + combinedTimes + ' ' + checkTime + '; ';
+          result = `${result}${combinedTimes} ${checkTime}; `;
           combinedTimes = [];
           a = a - 1;
         }
       }
     }
-    result = result + combinedTimes + ' ' + checkTime + '; ';
+    result = `${result}${combinedTimes} ${checkTime}; `;
     output = intermediate.toString().replace(daysAndTime, "");
     //input = input + ' ' + result;
-    output = result + output;
+    output = `${result} ${output}`;
     output = detectNewDay(output);
   } else {
-    output = output + ';'
+    output = `${output};`;
   }
-  output = output.trim() + ' ' + monthDate;
+  output = `${output.trim()} ${monthDate}`;
   output = output.replace(/\s?,\s?/g, ',');
   return output.trim();
 }
@@ -811,22 +811,22 @@ function bindDaysTogether(input) {
     '(We|Th|Fr|Sa|Su),?(Th|Fr|Sa|Su)?,?(Fr|Sa|Su)?,?(Sa|Su)?,?(Su)?', 'g');
   output = output.toString().replace(rowOfDays, (_1, _2, _3, _4, _5, _6, _7, _8) => {
     if (!!_8) {
-      return _2 + '-' + _8;
+      return `${_2}-${_8}`;
     } else if (!!_7) {
       if ((_2 === 'Mo' && _7 === 'Sa') || (_2 === 'Tu' && _7 === 'Su')) {
-        return _2 + '-' + _7;
+        return `${_2}-${_7}`;
       }
     } else if (!!_6) {
       if ((_2 === 'Mo' && _6 === 'Fr') || (_2 === 'Tu' && _6 === 'Sa') || (_2 === 'We' && _6 === 'Su')) {
-        return _2 + '-' + _6;
+        return `${_2}-${_6}`;
       }
     } else if (!!_5) {
       if ((_2 === 'Mo' && _5 === 'Th') || (_2 === 'Tu' && _5 === 'Fr') || (_2 === 'We' && _5 === 'Sa') || (_2 === 'Th' && _5 === 'Su')) {
-        return _2 + '-' + _5;
+        return `${_2}-${_5}`;
       }
     } else if (!!_4) {
       if ((_2 === 'Mo' && _4 === 'We') || (_2 === 'Tu' && _4 === 'Th') || (_2 === 'We' && _4 === 'Fr') || (_2 === 'Th' && _4 === 'Sa') || (_2 === 'Fr' && _4 === 'Su')) {
-        return _2 + '-' + _4;
+        return `${_2}-${_4}`;
       } else {
         return _1
       }
@@ -838,14 +838,14 @@ function addMissingZeros(input) {
   let output = input;
   const noMinutes = /(\s|-)([0-1]?[0-9]|2[0-4])(\s|-|$|,|\+)/g;
   const noSecondHourSyntax = /(,|\s|-)([0-9]:)/g;
-  output = ' ' + output;
+  output = ` ${output}`;
   for (let a = 0; a < 2; a++) {
     output = output.toString().replace(noMinutes, (_1, _2, _3, _4) => {
-      return _2 + _3 + ':00' + _4;
+      return `${_2} ${_3}:00${_4}`;
     })
   }
   output = output.toString().replace(noSecondHourSyntax, (_1, _2, _3) => {
-    return _2 + '0' + _3;
+    return `${_2}0${_3}`;
   });
   return output.trim();
 }
@@ -855,7 +855,7 @@ function handleUnspecificClosingTime(input) {
   const closeTime = /\b(Mo|T[hu]|We|Fr|S[au]|PH)\b\s?\b(ab)\b\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\s?-\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])/g;
   if (!output.match(closeTime)) {
     output = output.toString().replace(noCloseTime, (_1, _2, _3, _4) => {
-      return _2 + ' ' + _4 + '+';
+      return `${_2} ${_4}+`;
     })
   }
   return output.toString().replace(/\bab\b/g, "");
@@ -892,21 +892,21 @@ function addComma(input) {
   let output = input;
   const commaSearch = /\b(Mo|T[hu]|We|Fr|[S][au]|PH)\b\s.?\s?\b(Mo|T[hu]|We|Fr|S[au]|PH)\b/g;
   output = output.toString().replace(commaSearch, (_1, _2, _3) => {
-    return _2 + ',' + _3;
+    return `${_2},${_3}`;
   });
   output = output.replace(/\s?,\s?/g, ',');
   return output;
 }
 function addDoublePoint(input) {
   return (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => {
-    return _2 + ':' + _3;
+    return `${_2}:${_3}`;
   }));
 }
 function detectNextTime(input) {
   let output = input;
   const nextTime = /(([0-1][0-9]|[2][0-4]):[0-5][0-9])\s*(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|ab)/g;
   output = (output.toString().replace(nextTime, (_1, _2, _3, _4) => {
-    return _2 + ', ' + _4;
+    return `${_2}, ${_4}`;
   }));
   return output.replace(/\s+/g, ' ');
 }
@@ -914,7 +914,7 @@ function detectNewDay(input) {
   let output = input;
   const newDay = /(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|off)\s*(Mo|T[hu]|We|Fr|Sa|Su|PH)/g;
   output = (output.toString().replace(newDay, (_1, _2, _3, _4) => {
-    return _2 + '; ' + _4;
+    return `${_2}; ${_4}`;
   }));
   return output.replace(/off\s/g, 'off;');
 }
@@ -922,10 +922,10 @@ function pullDaysTogether(input) {
   let output = input;
   const multipleDays = /(Mo|T[hu]|We|Fr|Sa|Su|PH),\s((Mo|T[hu]|We|Fr|Sa|Su|PH),\s){2,}/g;
   output = output.toString().replace(/(Mo|T[hu]|We|Fr|Sa|Su|PH)\s+(Mo|T[hu]|We|Fr|Sa|Su|PH)/g, (_1, _2, _3) => {
-    return _2 + ',' + _3;
+    return `${_2},${_3}`;
   });
   return output.toString().replace(multipleDays, (_1, _2) => {
-    return _2 + '-';
+    return `${_2}-`;
   });
 }
 
