@@ -230,7 +230,7 @@ function handleAdditiveTime(input) {
         daysAndTimeOutsideRange.push(dayAndTime[a].toString());
       }
     }
-    if (!!daysAndTimeOutsideRange) {
+    if (daysAndTimeOutsideRange) {
       for (let b = 0; b < daysAndTimeOutsideRange.length; b = +1) {
         result = `${result}; ${daysAndTimeOutsideRange[b]}`;
       }
@@ -315,7 +315,7 @@ function cutOverlappingTime(input) {
         }
       }
       let timesNoEnd = [];
-      if (!!listTimesWithoutEnd) {
+      if (listTimesWithoutEnd) {
         const noEndHoursAndMinutes = listTimesWithoutEnd.join(' ').match(hoursPlusMinutes);
         for (let b = 0; b < noEndHoursAndMinutes.length; b = +1) {
           timesNoEnd.push(parseInt(noEndHoursAndMinutes[b] + noEndHoursAndMinutes[b + 1]));
@@ -342,7 +342,7 @@ function cutOverlappingTime(input) {
             delete endTimes[d];
           }
         }
-        if (!!timesNoEnd) {
+        if (timesNoEnd) {
           for (let e = 0; e < timesNoEnd.length; e = +1) {
             cNextDay = 0;
             if (startTimes[c] > endTimes[c]) {
@@ -370,7 +370,7 @@ function cutOverlappingTime(input) {
         }
         result = `${result}${addDoublePoint(startTimes[f].toString())}-${addDoublePoint(endTimes[f].toString())}`;
       }
-      if (!!timesNoEnd) {
+      if (timesNoEnd) {
         for (let g = 0; g < timesNoEnd.length; g = +1) {
           result = `${result},${addDoublePoint(timesNoEnd[g].toString())}+`;
         }
@@ -653,7 +653,7 @@ function sortDays(input) {
   const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'PH'];
   const days = [false, false, false, false, false, false, false, false];
   let orderedByWeekdays = [];
-  if (!!openingHoursSeperatedByDays) {
+  if (openingHoursSeperatedByDays) {
     for (let a = 0; a < openingHoursSeperatedByDays.length; a = +1) {
       for (let b = 0; b < weekDays.length; b = +1) {
         if (openingHoursSeperatedByDays[a].toString().startsWith(weekDays[b])) {
@@ -692,7 +692,7 @@ function combineDaysWithSameTimes(input) {
   const intermediate = ` ${output}`;
   const matchingDays = intermediate.match(daysAndTime);
   const splittDaysAndTime = [];
-  if (!!matchingDays) {
+  if (matchingDays) {
     for (let a = 0; a < matchingDays.length; a = +1) {
       splittDaysAndTime.push(daysAndTime.exec(intermediate));
     }
@@ -730,26 +730,26 @@ function bindDaysTogether(input) {
   const rowOfDays = new RegExp('(Mo|Tu|We|Th|Fr),(Tu|We|Th|Fr|Sa),' +
     '(We|Th|Fr|Sa|Su),?(Th|Fr|Sa|Su)?,?(Fr|Sa|Su)?,?(Sa|Su)?,?(Su)?', 'g');
   output = output.toString().replace(rowOfDays, (_1, _2, _3, _4, _5, _6, _7, _8) => {
-    if (!!_8) {
+    if (_8) {
       return `${_2}-${_8}`;
-    } else if (!!_7) {
+    } else if (_7) {
       if ((_2 === 'Mo' && _7 === 'Sa') || (_2 === 'Tu' && _7 === 'Su')) {
         return `${_2}-${_7}`;
       }
-    } else if (!!_6) {
+    } else if (_6) {
       if ((_2 === 'Mo' && _6 === 'Fr') || (_2 === 'Tu' && _6 === 'Sa') || (_2 === 'We' && _6 === 'Su')) {
         return `${_2}-${_6}`;
       }
-    } else if (!!_5) {
+    } else if (_5) {
       if ((_2 === 'Mo' && _5 === 'Th') || (_2 === 'Tu' && _5 === 'Fr') || (_2 === 'We' && _5 === 'Sa') || (_2 === 'Th' && _5 === 'Su')) {
         return `${_2}-${_5}`;
       }
-    } else if (!!_4) {
+    } else if (_4) {
       if ((_2 === 'Mo' && _4 === 'We') || (_2 === 'Tu' && _4 === 'Th') || (_2 === 'We' && _4 === 'Fr') || (_2 === 'Th' && _4 === 'Sa') || (_2 === 'Fr' && _4 === 'Su')) {
         return `${_2}-${_4}`;
-      } else {
-        return _1
       }
+    } else {
+      return _1;
     }
   });
   return output;
