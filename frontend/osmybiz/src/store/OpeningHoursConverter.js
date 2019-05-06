@@ -8,6 +8,8 @@ function combineSameMonths(input) {
   output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
     if (_4 === _8 && _5 === _9) {
       return `${_3}: ${_7}: ${_9}`;
+    } else {
+      return _1;
     }
   });
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),([0-9]{2}:[0-9]{2})/g, (_1, _2, _3, _4) => `${_2}: ${_4}`);
@@ -475,7 +477,7 @@ function handelSorting(input) {
   } else if (!ifStringDoesntMatch) {
     output = sortDays(output);
   } else {
-    output = output.replace(findDaysAndTime, (_1) => {sortDays(_1)});
+    output = output.replace(findDaysAndTime, (_1) => { sortDays(_1); });
   }
   output = output.replace(/([0-9]);?(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)/g, (_1, _2, _3) =>  `${_2} ${_3}`);
   output = removeUnNeededSpace(output);
@@ -692,9 +694,6 @@ function handelPM(input) {
   return output;
 }
 
-
-
-
 function convert(input) {
   let output = input;
   // let output = document.getElementById("inputArea").value;
@@ -743,7 +742,7 @@ function convert(input) {
     output = monthRagneEndCorrection(output);
     output = monthsAddSpace(output);
     output = combineSameMonths(output);
-    output = output.replace(multipleSpecificDates, (_1) => {multipleSpecificDatesFunction(_1)});
+    output = output.replace(multipleSpecificDates, (_1) => { multipleSpecificDatesFunction(_1); });
     output = output.replace(/:;/g, ':');
     output = separateMonthsAndDays(output);
     output = detectNewDay(output);
@@ -751,7 +750,7 @@ function convert(input) {
     output = correctSyntaxBetweenMonthAndDay(output);
   }
   output = `${output};`;
-  output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {cutOverlappingTime(_1)});
+  output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => { cutOverlappingTime(_1); });
   output = handleAdditiveTime(output);
   output = cleanUp(output);
   output = addMonthsToEveryDays(output);
