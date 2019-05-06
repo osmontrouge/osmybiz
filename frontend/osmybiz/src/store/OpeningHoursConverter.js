@@ -27,24 +27,24 @@ function handelShemaOrg(string) {
   let microOHResponse = `${$(microOH).attr( 'content')}`;
   microOHResponse = convert(microOHResponse);
   if (microOHResponse === 'No valid input') {
-    microOHResponse = "";
+    microOHResponse = '';
   }
   const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
   let microResponse = convert(micro);
   if (microResponse === 'No valid input') {
-    microResponse = "";
+    microResponse = '';
   }
   microResponse = (`${microOHResponse} ${microResponse}`).trim();
   //this handels opening hours noted in RDFa
   let rdfaOH = `${$(el).find("[property='openingHours']").attr("content")}`;
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
-    rdfaOH = "";
+    rdfaOH = '';
   }
   let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
   rdfa = convert(rdfa);
   if (rdfa === 'No valid input') {
-    rdfa = "";
+    rdfa = '';
   }
   const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
   //this handels opening hours specified in the script application/ld+json
@@ -52,17 +52,17 @@ function handelShemaOrg(string) {
   let scriptResponse = scriptHandeling(scripts);
 
   if (scriptResponse === 'No valid input') {
-    scriptResponse = "";
+    scriptResponse = '';
   }
   let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
-  if (result === "") {
+  if (result === '') {
     result = 'No valid input';
   }
   return result.trim();
 }
 
 function scriptHandeling(input) {
-  let result = "";
+  let result = '';
   let outputString = ' ';
   outputString = `${outputString}${input}`;
   const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
@@ -74,7 +74,7 @@ function scriptHandeling(input) {
   const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
   outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => _2);
   const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|\]|})/g;
-  outputString = outputString.replace(cutJSONParts, "");
+  outputString = outputString.replace(cutJSONParts, '');
   const removeSeperators = /(','|':')/g;
   outputString = outputString.replace(removeSeperators, ' ');
   outputString = outputString.replace(/""/g, ' ');
@@ -103,7 +103,7 @@ function convert(input) {
   output = germanWords(output);
   output = replaceGermanMonths(output);
   //}
-  output = output.replace(/['!©«»&@]/g, "");
+  output = output.replace(/['!©«»&@]/g, '');
   output = removeYearFromMonth(output);
   output = addDoublePoint(output);
   output = removeUnwantedText(output);
@@ -238,7 +238,7 @@ function handleAdditiveTime(input) {
     result = `${result}; `;
     return result;
   });
-  output = output.toString().replace(/;\s$/g, "");
+  output = output.toString().replace(/;\s$/g, '');
   return output;
 }
 function replaceComma(input) {
@@ -363,7 +363,7 @@ function cutOverlappingTime(input) {
       endTimes = endTimes.filter(function (el) {
         return el != null;
       });
-      let result = "";
+      let result = '';
       for (let f = 0; f < startTimes.length; f = +1) {
         if (f > 0) {
           result = `${result},`;
@@ -424,7 +424,7 @@ function multipleSpecificDatesFunction(input) {
   const days = /([0][1-9]|[1-2][0-9]|[3][01])/g;
   const listMonths = output.match(months);
   const listDays = output.match(days);
-  output = "";
+  output = '';
   output = `${output}${listMonths[0].toString()} ${listDays[0].toString()}`;
   for (let a = 1; a < listMonths.length; a = +1) {
     if (listMonths[a - 1].toString() === listMonths[a].toString()) {
@@ -461,7 +461,7 @@ function orderDaysAndTime(input) {
   if (output.endsWith(output.match(/(Mo$|Tu$|We$|Th$|Fr$|Sa$|Su$|PH$)/g))) {
     const dayRange = output.match(dayRangeFinder);
     const timeRange = output.match(timeRangeFinder);
-    let resultString = "";
+    let resultString = '';
     if (dayRange.length === timeRange.length) {
       for (let a = 0; a < dayRange.length; a = +1) {
         resultString = `${resultString}${dayRange[a]} ${timeRange[a] }`;
@@ -534,7 +534,7 @@ function handelSecondSorting(input) {
   } else if (output.toString().match(secondFindDaysAndTime)) {
     output = sortDays(output);
   }
-  output = output.replace(/\$/g, "");
+  output = output.replace(/\$/g, '');
   return output;
 }
 function addDoublePointOnMonths(input) {
@@ -560,9 +560,9 @@ function sortMonths(input) {
       const monthRanges = output.match(monthRangFinder);
       const timeRanges = output.match(timeRangFinder);
       if (monthRanges.length === timeRanges.length) {
-        let newString = "";
+        let newString = '';
         for (let a = 0; a < monthRanges.length; a = +1) {
-          timeRanges[a] = timeRanges[a].replace(months, "");
+          timeRanges[a] = timeRanges[a].replace(months, '');
           monthRanges[a] = `${monthRanges[a] }`;
           newString = `${newString}${monthRanges[a]}${timeRanges[a]}`;
         }
@@ -578,12 +578,12 @@ function sortMonths(input) {
 function checkResult(input) {
   let output = input;
   output = output.replace(/off/g, '#');
-  output = output.replace(/([^JFMASONDo])[a-z][A-Za-z]+/g, "");
+  output = output.replace(/([^JFMASONDo])[a-z][A-Za-z]+/g, '');
   output = output.replace(/#/g, 'off');
   if (!output.toString().match(/[0-1][0-9]:[0-5][0-9][-+]|[2][0-4]:[0-5][0-9][-+]|off|24\/7/g)) {
     output = 'No valid input';
   }
-  output = output.replace(/,{2,}|-{2,}|;{2,}|:{2,}|\.{2,}|\+{2,}/g, "").trim();
+  output = output.replace(/,{2,}|-{2,}|;{2,}|:{2,}|\.{2,}|\+{2,}/g, '').trim();
   return output;
 }
 function replaceEnglishMonths(input) {
@@ -617,7 +617,7 @@ function englishWords(input) {
   let output = input;
   output = output.replace(/\bfrom\b/gi, 'ab');
   output = output.replace(/\bto\b|\btill\b/gi, '-');
-  output = output.replace(/closed\snow|\band\b/gi, "");
+  output = output.replace(/closed\snow|\band\b/gi, '');
   output = output.replace(/\bclosed\b/gi, '#');
   output = output.replace(/Open\s24\shours/gi, '00:00-24:00');
   output = output.replace(/Bank\sHolidays/gi, 'PH');
@@ -630,13 +630,13 @@ function removeUnwantedText(input) {
   let output = input;
   output = output.replace(/&nbsp;/g, ' ');
   output = output.replace(/&ndash;/g, '-');
-  // input = input.replace(/<[^>]*>/g,"");
+  // input = input.replace(/<[^>]*>/g,'');
   output = output.replace(/<(?:[^>=]|='[^']*'|="[^"]*"|=[^'"][^\s>]*)*>|{.+?}/g, '').trim();
   output = output.replace(/".+?"|[a-z]+@[a-z]+.[a-z]+/g, '');
-  output = output.replace(/[äüöéèàáßçâ=<>"{}$£@¦°§¬¢[\]'_?()!\\]/gi, "");
+  output = output.replace(/[äüöéèàáßçâ=<>"{}$£@¦°§¬¢[\]'_?()!\\]/gi, '');
   output = output.replace(/([a-z]{4,}|[0-9]{3,})/gi, '');
   output = output.replace(/in|\ban|am|pm|on/gi, '');
-  output = output.replace(/Uhr|von|now|===|vom|der|die|das|new|img|row|add|sie|uns|\b[A-Z]\b|[()]/gi, "");
+  output = output.replace(/Uhr|von|now|===|vom|der|die|das|new|img|row|add|sie|uns|\b[A-Z]\b|[()]/gi, '');
   output = output.replace(/#/g, 'off');
   output = output.replace(/\s+/g, ' ');
   return output;
@@ -662,7 +662,7 @@ function sortDays(input) {
             days[b] = true;
           } else {
             orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>  _8)}`;
-            orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, "");
+            orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
           }
         }
       }
@@ -683,7 +683,7 @@ function combineDaysWithSameTimes(input) {
     '(,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])-(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])|,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\+)?);?', 'g');
   //in the case of when the input looks like this Sa 09:00-15:00; Su 09:00-14:00; 01:00 the 01:00 is part of the date for the next month range
   const endWithMonthDate = /(;\s([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9]))\s$/g;
-  let monthDate = "";
+  let monthDate = '';
   if (output.match(endWithMonthDate)) {
     monthDate = output.match(endWithMonthDate).toString();
     monthDate = monthDate.replace(endWithMonthDate, (_1, _2, _3) => _3);
@@ -697,8 +697,8 @@ function combineDaysWithSameTimes(input) {
       splittDaysAndTime.push(daysAndTime.exec(intermediate));
     }
     let combinedTimes = [];
-    let checkTime = "";
-    let result = "";
+    let checkTime = '';
+    let result = '';
     for (let a = 0; a < splittDaysAndTime.length; a = +1) {
       if (combinedTimes.length === 0) {
         combinedTimes.push(splittDaysAndTime[a][1]);
@@ -714,7 +714,7 @@ function combineDaysWithSameTimes(input) {
       }
     }
     result = `${result}${combinedTimes} ${checkTime}; `;
-    output = intermediate.toString().replace(daysAndTime, "");
+    output = intermediate.toString().replace(daysAndTime, '');
     //input = input + ' ' + result;
     output = `${result} ${output}`;
     output = detectNewDay(output);
@@ -772,7 +772,7 @@ function handleUnspecificClosingTime(input) {
   if (!output.match(closeTime)) {
     output = output.toString().replace(noCloseTime, (_1, _2, _3, _4) => `${_2} ${_4}+`);
   }
-  return output.toString().replace(/\bab\b/g, "");
+  return output.toString().replace(/\bab\b/g, '');
 }
 function shortenDaysGer(input) {
   let output = input;
