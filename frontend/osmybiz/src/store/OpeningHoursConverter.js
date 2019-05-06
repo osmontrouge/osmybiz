@@ -8,7 +8,7 @@ function combineSameMonths(input) {
   output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
     if (_4 === _8 && _5 === _9) {
       return `${_3}: ${_7}: ${_9}`;
-    } else {
+    } else{
       return _1;
     }
   });
@@ -223,12 +223,8 @@ function cutOverlappingTime(input) {
           }
         }
       }
-      timesNoEnd = timesNoEnd.filter(function (el) {
-        return el != null;
-      });
-      startTimes = startTimes.filter(function (el) {
-        return el != null;
-      });
+      timesNoEnd = timesNoEnd.filter( (el) => el != null);
+      startTimes = startTimes.filter( (el) => el != null);
       endTimes = endTimes.filter(function (el) {
         return el != null;
       });
@@ -460,9 +456,7 @@ function sortDays(input) {
         }
       }
     }
-    orderedByWeekdays = orderedByWeekdays.filter(function (el) {
-      return el != null;
-    });
+    orderedByWeekdays = orderedByWeekdays.filter( (el) => el != null);
     output = orderedByWeekdays.join(' ');
   }
   return output;
@@ -479,7 +473,7 @@ function handelSorting(input) {
   output = `${output} `;
   const ifStringDoesntMatch = output.toString().match(findDaysAndTime);
   if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) {
-    console.log("Test");
+    console.log('Test');
   } else if (!ifStringDoesntMatch) {
     output = sortDays(output);
   } else {
