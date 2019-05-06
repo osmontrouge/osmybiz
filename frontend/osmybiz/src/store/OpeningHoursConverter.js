@@ -142,6 +142,9 @@ function replaceSymbols(input) {
   output = output.replace(/:\B/g, '');
   return output;
 }
+function addDoublePoint(input) {
+  return (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
+}
 function cutOverlappingTime(input) {
   let output = input;
   const timesWithoutEnd = /([0-2][0-9]:[0-5][0-9]\+)/g;
@@ -339,6 +342,63 @@ function cleanUp(input) {
   output = detectNewDay(output);
   return output;
 }
+function detectNewDay(input) {
+  let output = input;
+  const newDay = /(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|off)\s*(Mo|T[hu]|We|Fr|Sa|Su|PH)/g;
+  output = (output.toString().replace(newDay, (_1, _2, _3, _4) => `${_2}; ${_4}`));
+  return output.replace(/off\s/g, 'off;');
+}
+// Formats like this Mo 12:00-17:00, Tu 12:00-17:00 turn int Mo,Tu 12:00-17:00
+function combineDaysWithSameTimes(input) {
+  let output = input;
+  // A regex that detects days and the corresponding times
+  const daysAndTime = new RegExp('\\s\\b(Mo|T[hu]|We|Fr|S[au]|PH)\\b\\s?' +
+    '((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-]|[+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?' +
+    '(,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])-(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])|,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\+)?);?', 'g');
+  // in the case of when the input looks like this Sa 09:00-15:00; Su 09:00-14:00; 01:00 the 01:00 is part of the date for the next month range
+  const endWithMonthDate = /(;\s([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9]))\s$/g;
+  let monthDate = '';
+  if (output.match(endWithMonthDate)) {
+    monthDate = output.match(endWithMonthDate).toString();
+    monthDate = monthDate.replace(endWithMonthDate, (_1, _2, _3) => _3);
+    output = output.replace(endWithMonthDate, ' ');
+  }
+  const intermediate = ` ${output}`;
+  const matchingDays = intermediate.match(daysAndTime);
+  const splittDaysAndTime = [];
+  if (matchingDays) {
+    for (let a = 0; a < matchingDays.length; a = +1) {
+      splittDaysAndTime.push(daysAndTime.exec(intermediate));
+    }
+    let combinedTimes = [];
+    let checkTime = '';
+    let result = '';
+    for (let a = 0; a < splittDaysAndTime.length; a = +1) {
+      if (combinedTimes.length === 0) {
+        combinedTimes.push(splittDaysAndTime[a][1]);
+        checkTime = splittDaysAndTime[a][2];
+      } else {
+        if (checkTime === splittDaysAndTime[a][2]) {
+          combinedTimes.push(splittDaysAndTime[a][1]);
+        } else {
+          result = `${result}${combinedTimes} ${checkTime}; `;
+          combinedTimes = [];
+          a = a - 1;
+        }
+      }
+    }
+    result = `${result}${combinedTimes} ${checkTime}; `;
+    output = intermediate.toString().replace(daysAndTime, '');
+    // input = input + ' ' + result;
+    output = `${result} ${output}`;
+    output = detectNewDay(output);
+  } else {
+    output = `${output};`;
+  }
+  output = `${output.trim()} ${monthDate}`;
+  output = output.replace(/\s?,\s?/g, ',');
+  return output.trim();
+}
 // Groups days that share the same times, without taking those in other month ranges into account
 function handelMonthDays(input) {
   let output = input;
@@ -354,6 +414,39 @@ function handelMonthDays(input) {
   }
   output = output.replace(/off\s/g, 'off;');
   output = output.replace(/;([^\s])/g, (_1, _2) => `; ${_2}`);
+  return output;
+}
+// sorts days by order of Mo to Su with PH coming at the end
+function sortDays(input) {
+  let output = input;
+  // This regex detects day and Opening hours bsp: Mo 12:00-14:00, 18:0-20:30; or Mo-Sa 12:00-20:00; or  Mo,Tu,We off;
+  const stringForm = new RegExp('\\b(Mo|T[hu]|We|Fr|S[au]|PH)\\b\\s?' +
+    '([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au])?\\b\\s?([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au]|PH)?' +
+    '\\b\\s?(off;)?((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?;?' +
+    '(\\s?,\\s*(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])(\\+|\\s?-\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])))*;?)?(off)?', 'gm');
+  const openingHoursSeperatedByDays = output.toString().match(stringForm);
+  const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'PH'];
+  const days = [false, false, false, false, false, false, false, false];
+  let orderedByWeekdays = [];
+  if (openingHoursSeperatedByDays) {
+    for (let a = 0; a < openingHoursSeperatedByDays.length; a = +1) {
+      for (let b = 0; b < weekDays.length; b = +1) {
+        if (openingHoursSeperatedByDays[a].toString().startsWith(weekDays[b])) {
+          if (days[b] === false) {
+            orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
+            days[b] = true;
+          } else {
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>  _8)}`;
+            orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
+          }
+        }
+      }
+    }
+    orderedByWeekdays = orderedByWeekdays.filter(function (el) {
+      return el != null;
+    });
+    output = orderedByWeekdays.join(' ');
+  }
   return output;
 }
 function handelSorting(input) {
@@ -491,90 +584,6 @@ function removeUnwantedText(input) {
   output = output.replace(/\s+/g, ' ');
   return output;
 }
-// sorts days by order of Mo to Su with PH coming at the end
-function sortDays(input) {
-  let output = input;
-  // This regex detects day and Opening hours bsp: Mo 12:00-14:00, 18:0-20:30; or Mo-Sa 12:00-20:00; or  Mo,Tu,We off;
-  const stringForm = new RegExp('\\b(Mo|T[hu]|We|Fr|S[au]|PH)\\b\\s?' +
-    '([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au])?\\b\\s?([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au]|PH)?' +
-    '\\b\\s?(off;)?((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?;?' +
-    '(\\s?,\\s*(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])(\\+|\\s?-\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])))*;?)?(off)?', 'gm');
-  const openingHoursSeperatedByDays = output.toString().match(stringForm);
-  const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'PH'];
-  const days = [false, false, false, false, false, false, false, false];
-  let orderedByWeekdays = [];
-  if (openingHoursSeperatedByDays) {
-    for (let a = 0; a < openingHoursSeperatedByDays.length; a = +1) {
-      for (let b = 0; b < weekDays.length; b = +1) {
-        if (openingHoursSeperatedByDays[a].toString().startsWith(weekDays[b])) {
-          if (days[b] === false) {
-            orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
-            days[b] = true;
-          } else {
-            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm,(_1, _2, _3, _4, _5, _6, _7, _8)=>  _8)}`;
-            orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
-          }
-        }
-      }
-    }
-    orderedByWeekdays = orderedByWeekdays.filter(function (el) {
-      return el != null;
-    });
-    output = orderedByWeekdays.join(' ');
-  }
-  return output;
-}
-// Formats like this Mo 12:00-17:00, Tu 12:00-17:00 turn int Mo,Tu 12:00-17:00
-function combineDaysWithSameTimes(input) {
-  let output = input;
-  // A regex that detects days and the corresponding times
-  const daysAndTime = new RegExp('\\s\\b(Mo|T[hu]|We|Fr|S[au]|PH)\\b\\s?' +
-    '((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-]|[+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?' +
-    '(,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])-(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])|,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\+)?);?', 'g');
-  // in the case of when the input looks like this Sa 09:00-15:00; Su 09:00-14:00; 01:00 the 01:00 is part of the date for the next month range
-  const endWithMonthDate = /(;\s([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9]))\s$/g;
-  let monthDate = '';
-  if (output.match(endWithMonthDate)) {
-    monthDate = output.match(endWithMonthDate).toString();
-    monthDate = monthDate.replace(endWithMonthDate, (_1, _2, _3) => _3);
-    output = output.replace(endWithMonthDate, ' ');
-  }
-  const intermediate = ` ${output}`;
-  const matchingDays = intermediate.match(daysAndTime);
-  const splittDaysAndTime = [];
-  if (matchingDays) {
-    for (let a = 0; a < matchingDays.length; a = +1) {
-      splittDaysAndTime.push(daysAndTime.exec(intermediate));
-    }
-    let combinedTimes = [];
-    let checkTime = '';
-    let result = '';
-    for (let a = 0; a < splittDaysAndTime.length; a = +1) {
-      if (combinedTimes.length === 0) {
-        combinedTimes.push(splittDaysAndTime[a][1]);
-        checkTime = splittDaysAndTime[a][2];
-      } else {
-        if (checkTime === splittDaysAndTime[a][2]) {
-          combinedTimes.push(splittDaysAndTime[a][1]);
-        } else {
-          result = `${result}${combinedTimes} ${checkTime}; `;
-          combinedTimes = [];
-          a = a - 1;
-        }
-      }
-    }
-    result = `${result}${combinedTimes} ${checkTime}; `;
-    output = intermediate.toString().replace(daysAndTime, '');
-    // input = input + ' ' + result;
-    output = `${result} ${output}`;
-    output = detectNewDay(output);
-  } else {
-    output = `${output};`;
-  }
-  output = `${output.trim()} ${monthDate}`;
-  output = output.replace(/\s?,\s?/g, ',');
-  return output.trim();
-}
 function bindDaysTogether(input) {
   let output = input;
   const rowOfDays = new RegExp('(Mo|Tu|We|Th|Fr),(Tu|We|Th|Fr|Sa),' +
@@ -659,20 +668,11 @@ function addComma(input) {
   output = output.replace(/\s?,\s?/g, ',');
   return output;
 }
-function addDoublePoint(input) {
-  return (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
-}
 function detectNextTime(input) {
   let output = input;
   const nextTime = /(([0-1][0-9]|[2][0-4]):[0-5][0-9])\s*(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|ab)/g;
   output = (output.toString().replace(nextTime, (_1, _2, _3, _4) => `${_2}, ${_4}`));
   return output.replace(/\s+/g, ' ');
-}
-function detectNewDay(input) {
-  let output = input;
-  const newDay = /(([0-1]?[0-9]|[2][0-4]):[0-5][0-9]|off)\s*(Mo|T[hu]|We|Fr|Sa|Su|PH)/g;
-  output = (output.toString().replace(newDay, (_1, _2, _3, _4) => `${_2}; ${_4}`));
-  return output.replace(/off\s/g, 'off;');
 }
 function pullDaysTogether(input) {
   let output = input;
@@ -829,6 +829,11 @@ function handelShemaOrg(string) {
   return result.trim();
 }
 
+async function getSourceAsDom(url) {
+  const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  return response.text();
+}
+
 async function isURL() {
   const input = document.getElementById('inputArea').value;
   let result = '';
@@ -839,9 +844,4 @@ async function isURL() {
     result = convert(input);
   }
   return result; /* document.getElementById("outputArea").value = result;*/
-}
-
-async function getSourceAsDom(url) {
-  const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-  return response.text();
 }
