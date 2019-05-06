@@ -13,7 +13,7 @@ function combineSameMonths(input) {
     }
   });
   output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),([0-9]{2}:[0-9]{2})/g, (_1, _2, _3, _4) => `${_2}: ${_4}`);
-  output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),?\s/g, (_1) => `${_1}: `);
+  output = output.replace(/((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2}),?\s/g, (_1) => { `${_1}: ` });
   output = output.replace(/\s:\s/g, ': ');
   output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2}):\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-9]{2})/g, (_1, _2, _3, _4, _5) => {
     if (_2 === _4) {
@@ -114,7 +114,7 @@ function addMonthsToEveryDays(input) {
     output = output.replace(/;\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2) => `; ${_2}`).trim();
     output = output.replace(separateMonths, (_1) => {
       const months = _1.match(detectsMonths);
-      const temp = _1.replace(detectsDays, (_1, _2) => `; ${months} ${_2}`);
+      const temp = _1.replace(detectsDays, (_a, _2) => `; ${months} ${_2}`);
       return temp;
     });
     output = output.replace(/\s+/g, ' ');
@@ -175,11 +175,11 @@ function cutOverlappingTime(input) {
       let endTimes = [];
       for (let a = 0; a < hoursAndMinutes.length; a = +1) {
         if (startTimes.length === endTimes.length) {
-          startTimes.push(parseInt(hoursAndMinutes[a] + hoursAndMinutes[a + 1]));
-          a = a + 1;
+          startTimes.push(parseInt(hoursAndMinutes[a] + hoursAndMinutes[a + 1], 10));
+          a += 1;
         } else {
-          endTimes.push(parseInt(hoursAndMinutes[a] + hoursAndMinutes[a + 1]));
-          a = a + 1;
+          endTimes.push(parseInt(hoursAndMinutes[a] + hoursAndMinutes[a + 1], 10));
+          a += 1;
         }
       }
       let timesNoEnd = [];
@@ -187,7 +187,7 @@ function cutOverlappingTime(input) {
         const noEndHoursAndMinutes = listTimesWithoutEnd.join(' ').match(hoursPlusMinutes);
         for (let b = 0; b < noEndHoursAndMinutes.length; b = +1) {
           timesNoEnd.push(parseInt(noEndHoursAndMinutes[b] + noEndHoursAndMinutes[b + 1]));
-          b = b + 1;
+          b += 1;
         }
       }
       for (let c = 0; c < startTimes.length; c = +1) {
