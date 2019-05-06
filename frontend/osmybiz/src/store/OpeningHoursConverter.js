@@ -75,7 +75,8 @@ function handleAdditiveTime(input) {
     let result = dayRangAndTime.toString();
     const daysAndTimeOutsideRange = [];
     for (let a = 1; a < dayAndTime.length; a = +1) {
-      const singleDayIndex = week.indexOf(dayAndTime[a].toString()[0] + dayAndTime[a].toString()[1]);
+      const singleDayIndex = week.indexOf(dayAndTime[a].toString()[0]
+        + dayAndTime[a].toString()[1]);
       if (startDayIndex < singleDayIndex && endDayIndex > singleDayIndex) {
         result = `${result}, ${dayAndTime[a]}`;
       } else {
@@ -102,7 +103,8 @@ function replaceComma(input) {
   }
   return output;
 }
-// Transforms Jan-Feb: Mo 10:00-18:00; Tu 09:00-17:00; into Jan-Feb: Mo 10:00-18:00; Jan-Feb: Tu 09:00-17:00;
+// Transforms Jan-Feb: Mo 10:00-18:00; Tu 09:00-17:00;
+// into Jan-Feb: Mo 10:00-18:00; Jan-Feb: Tu 09:00-17:00;
 function addMonthsToEveryDays(input) {
   let output = input;
   if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/g)) {
@@ -203,7 +205,8 @@ function cutOverlappingTime(input) {
           if (startTimes[c] >= startTimes[d] && endTimes[c] + cNextDay <= endTimes[d] + dNextDay) {
             delete startTimes[c];
             delete endTimes[c];
-          } else if (startTimes[c] < startTimes[d] && endTimes[c] + cNextDay > endTimes[d] + dNextDay) {
+          } else if (startTimes[c] < startTimes[d] &&
+            endTimes[c] + cNextDay > endTimes[d] + dNextDay) {
             delete startTimes[d];
             delete endTimes[d];
           }
@@ -368,7 +371,8 @@ function combineDaysWithSameTimes(input) {
   const daysAndTime = new RegExp('\\s\\b(Mo|T[hu]|We|Fr|S[au]|PH)\\b\\s?' +
     '((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-]|[+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?' +
     '(,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])-(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])|,(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\+)?);?', 'g');
-  // in the case of when the input looks like this Sa 09:00-15:00; Su 09:00-14:00; 01:00 the 01:00 is part of the date for the next month range
+  // in the case of when the input looks like this Sa 09:00-15:00;
+  // Su 09:00-14:00; 01:00 the 01:00 is part of the date for the next month range
   const endWithMonthDate = /(;\s([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9]))\s$/g;
   let monthDate = '';
   if (output.match(endWithMonthDate)) {
@@ -432,7 +436,8 @@ function handelMonthDays(input) {
 // sorts days by order of Mo to Su with PH coming at the end
 function sortDays(input) {
   let output = input;
-  // This regex detects day and Opening hours bsp: Mo 12:00-14:00, 18:0-20:30; or Mo-Sa 12:00-20:00; or  Mo,Tu,We off;
+  // This regex detects day and Opening hours bsp: Mo 12:00-14:00,
+  // 18:0-20:30; or Mo-Sa 12:00-20:00; or  Mo,Tu,We off;
   const stringForm = new RegExp('\\b(Mo|T[hu]|We|Fr|S[au]|PH)\\b\\s?' +
     '([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au])?\\b\\s?([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au]|PH)?' +
     '\\b\\s?(off;)?((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?;?' +
@@ -566,7 +571,8 @@ function replaceGermanMonths(input) {
   }
   return output;
 }
-// replaces words with their correct symbols, geschlossen gets turned int # to make it easier to handle surplus words later
+// replaces words with their correct symbols, geschlossen gets turned
+// int # to make it easier to handle surplus words later
 function germanWords(input) {
   let output = input;
   output = output.replace(/\bbis\b/gi, '-');
@@ -574,7 +580,8 @@ function germanWords(input) {
   output = output.replace(/\bgeschlossen\b|ruhetag/gi, '#;');
   return output.replace(/\btäglich\b/gi, 'Mo-Su');
 }
-// replaces words with their correct symbols, from and closed get turned into ab and # to make them easier to handel later
+// replaces words with their correct symbols, from and closed get
+// turned into ab and # to make them easier to handel later
 function englishWords(input) {
   let output = input;
   output = output.replace(/\bfrom\b/gi, 'ab');
@@ -587,7 +594,8 @@ function englishWords(input) {
   output = output.replace(/(12\s)?noon/gi, '12:00');
   return output;
 }
-// removes any word or number longer then 4 digits and two/three letter words that were specified also turns # into the correct syntax
+// removes any word or number longer then 4 digits and two/three letter
+// words that were specified also turns # into the correct syntax
 function removeUnwantedText(input) {
   let output = input;
   output = output.replace(/&nbsp;/g, ' ');
