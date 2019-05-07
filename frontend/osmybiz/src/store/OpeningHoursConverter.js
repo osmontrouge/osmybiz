@@ -838,8 +838,8 @@ async function getSourceAsDom(url) {
   return response.text();
 }
 
-async function isURL() {
-  const input = document.getElementById('inputArea').value;
+export async function isURL(url) {
+  const input = url;
   let result = '';
   if (input.match(/https?:\/\//g)) {
     const promisResult = await getSourceAsDom(input);

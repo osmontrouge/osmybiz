@@ -52,7 +52,7 @@
 			<input type="text"
 					v-model="details.opening_hours_url"
 					:placeholder="$t('detail.placeholders.opening_hours_url')"
-					onblur="console.log('test')">
+					onblur="blurOpeningHours()">
 		</div>
 		
         <div class="field">
@@ -172,9 +172,15 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
+  import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
+  function blurOpeningHours(){
+    console.log('Test');
+    let result = avait; isURL("https://www.casaferlin.ch/en");
+    console.log(result);
+  }
   export default {
     mounted() {
       this.setApplyOffset(true);
