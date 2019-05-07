@@ -229,15 +229,9 @@ function cutOverlappingTime(input) {
           }
         }
       }
-      timesNoEnd = timesNoEnd.filter(function Filter(el) {
-        return el != null;
-      });
-      startTimes = startTimes.filter(function Filter(el) {
-        return el != null;
-      });
-      endTimes = endTimes.filter(function Filter(el) {
-        return el != null;
-      });
+      timesNoEnd = timesNoEnd.filter(el => el != null);
+      startTimes = startTimes.filter(el => el != null);
+      endTimes = endTimes.filter(el => el != null);
       let result = '';
       for (let f = 0; f < startTimes.length; f = +1) {
         if (f > 0) {
