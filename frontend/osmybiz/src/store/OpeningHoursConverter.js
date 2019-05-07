@@ -395,7 +395,7 @@ function combineDaysWithSameTimes(input) {
         combinedTimes.push(splittDaysAndTime[a][1]);
         checkTime = splittDaysAndTime[a][2];
       } else if (checkTime === splittDaysAndTime[a][2]) {
-          combinedTimes.push(splittDaysAndTime[a][1]);
+        combinedTimes.push(splittDaysAndTime[a][1]);
       } else {
         result = `${result}${combinedTimes} ${checkTime}; `;
         combinedTimes = [];
@@ -422,7 +422,7 @@ function handelMonthDays(input) {
   output = output.replace(/off;/g, 'off');
   if (output.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec)\s/g)) {
     output = `${output} `;
-    output = output.toString().replace(/(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f)\s/g, (_1) => `${combineDaysWithSameTimes(_1)} `);
+    output = output.toString().replace(/(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f)\s/g, _1 => `${combineDaysWithSameTimes(_1)} `);
     output = `${output.replace(/\\s;/g, '; ')}`;
   } else {
     output = combineDaysWithSameTimes(output);
