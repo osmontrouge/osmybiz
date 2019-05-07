@@ -852,4 +852,4 @@ async function isURL(url) {
 
 export default {
   isURL,
-}
+};
