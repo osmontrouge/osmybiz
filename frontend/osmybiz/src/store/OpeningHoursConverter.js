@@ -838,7 +838,7 @@ async function getSourceAsDom(url) {
   return response.text();
 }
 
-async function isURL(url) {
+export default async function isURL(url) {
   const input = url;
   let result = '';
   if (input.match(/https?:\/\//g)) {
@@ -849,6 +849,3 @@ async function isURL(url) {
   }
   return result; /* document.getElementById("outputArea").value = result; */
 }
-export default {
-  isURL,
-};
