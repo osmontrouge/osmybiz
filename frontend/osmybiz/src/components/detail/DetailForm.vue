@@ -172,7 +172,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import { isURL } from '../../store/OpeningHoursConverter';
+  import {  } from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
