@@ -176,10 +176,8 @@
 
   Vue.use(VeeValidate);
 
-  function blurOpeningHours(){
-    console.log('Test');
-    let result = avait; isURL("https://www.casaferlin.ch/en");
-    console.log(result);
+  async function blurOpeningHours() {
+    console.log(await isURL('https://www.casaferlin.ch/en'));
   }
   export default {
     mounted() {
