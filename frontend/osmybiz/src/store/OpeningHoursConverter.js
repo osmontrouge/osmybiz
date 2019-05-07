@@ -466,7 +466,7 @@ function sortDays(input) {
         }
       }
     }
-    orderedByWeekdays = orderedByWeekdays.filter(function Filter(el) {
+    orderedByWeekdays = orderedByWeekdays.filter(el => {
       return el != null;
     });
     output = orderedByWeekdays.join(' ');
