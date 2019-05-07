@@ -394,14 +394,12 @@ function combineDaysWithSameTimes(input) {
       if (combinedTimes.length === 0) {
         combinedTimes.push(splittDaysAndTime[a][1]);
         checkTime = splittDaysAndTime[a][2];
-      } else {
-        if (checkTime === splittDaysAndTime[a][2]) {
+      } else if (checkTime === splittDaysAndTime[a][2]) {
           combinedTimes.push(splittDaysAndTime[a][1]);
-        } else {
-          result = `${result}${combinedTimes} ${checkTime}; `;
-          combinedTimes = [];
-          a -= 1;
-        }
+      } else {
+        result = `${result}${combinedTimes} ${checkTime}; `;
+        combinedTimes = [];
+        a -= 1;
       }
     }
     result = `${result}${combinedTimes} ${checkTime}; `;
