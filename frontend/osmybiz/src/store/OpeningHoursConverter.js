@@ -392,7 +392,7 @@ function combineDaysWithSameTimes(input) {
     let result = '';
     for (let a = 0; a < splittDaysAndTime.length; a += 1) {
       if (combinedTimes.length === 0) {
-        const [, combinedTime, _checkTime] = splittDaysAndTime[a]
+        const [, combinedTime, _checkTime] = splittDaysAndTime[a];
         combinedTimes.push(combinedTime);
         checkTime = _checkTime;
       } else if (checkTime === splittDaysAndTime[a][2]) {
