@@ -390,10 +390,11 @@ function combineDaysWithSameTimes(input) {
     let combinedTimes = [];
     let checkTime = '';
     let result = '';
-    for (let a = 0; a < splittDaysAndTime.length; a = +1) {
+    for (let a = 0; a < splittDaysAndTime.length; a += 1) {
       if (combinedTimes.length === 0) {
-        combinedTimes.push(splittDaysAndTime[a][1]);
-        checkTime = splittDaysAndTime[a][2];
+        const [, combinedTime, _checkTime] = splittDaysAndTime[a]
+        combinedTimes.push(combinedTime);
+        checkTime = _checkTime;
       } else if (checkTime === splittDaysAndTime[a][2]) {
         combinedTimes.push(splittDaysAndTime[a][1]);
       } else {
