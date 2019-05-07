@@ -229,13 +229,13 @@ function cutOverlappingTime(input) {
           }
         }
       }
-      timesNoEnd = timesNoEnd.filter(function (el) {
+      timesNoEnd = timesNoEnd.filter(function Filter(el) {
         return el != null;
       });
-      startTimes = startTimes.filter(function (el) {
+      startTimes = startTimes.filter(function Filter(el) {
         return el != null;
       });
-      endTimes = endTimes.filter(function (el) {
+      endTimes = endTimes.filter(function Filter(el) {
         return el != null;
       });
       let result = '';
@@ -466,7 +466,7 @@ function sortDays(input) {
         }
       }
     }
-    orderedByWeekdays = orderedByWeekdays.filter(function (el) {
+    orderedByWeekdays = orderedByWeekdays.filter(function Filter(el) {
       return el != null;
     });
     output = orderedByWeekdays.join(' ');
