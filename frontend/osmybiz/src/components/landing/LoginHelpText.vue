@@ -16,7 +16,7 @@
         {{ $t('landing.loginhelp.osmlink') }}
       </div>
       <div class="section">
-        <a href="https://master.apis.dev.openstreetmap.org/" target="_blank">OpenStreetMap</a>
+        <a v-bind:href="osmLink" target="_blank">OpenStreetMap</a>
       </div>
       <div class="section">
         {{ $t('landing.loginhelp.section2') }}
@@ -30,10 +30,16 @@
   import 'vue-awesome/icons';
   import Icon from 'vue-awesome/components/Icon.vue';
   import { mapGetters, mapMutations } from 'vuex';
+  import { osmUrl } from '../../config/config';
 
   export default {
     mounted() {
       this.setShowLoginHelp(true);
+    },
+    data() {
+      return {
+        osmLink: osmUrl,
+      };
     },
     methods: {
       ...mapMutations(['setShowLoginHelp']),
