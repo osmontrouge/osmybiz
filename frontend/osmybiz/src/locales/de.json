@@ -43,7 +43,7 @@
     "loginhelp": {
       "title": "Information",
       "section1": "Um Änderungen in der Karte vorzunehmen, müssen Sie sich mit einem OpenStreetMap Account anmelden.",
-      "osmlink": "Falls Sie noch keinen Account haben, registrieren Sie sich unter",
+      "osmlinktext": "Falls Sie noch keinen Account haben, registrieren Sie sich hier:",
       "section2": "In dieser Ansicht können Sie bereits einen Eindruck erhalten, wie die Website in etwa funktioniert."
     }
   },
