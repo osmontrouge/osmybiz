@@ -42,7 +42,8 @@
     },
     "loginhelp": {
       "title": "Information",
-      "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap-Login.",
+      "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap account.",
+      "osmlink": "If you don't have an account, register at",
       "section2": "In this view you can already get an impression how the website works."
     }
   },
