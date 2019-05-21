@@ -14,9 +14,7 @@
       </div>
       <div class="section">
         {{ $t('landing.loginhelp.osmlink') }}
-      </div>
-      <div class="section">
-        <a v-bind:href="osmLink" target="_blank">OpenStreetMap</a>
+        <a v-bind:href="osmLink" target="_blank">OpenStreetMap</a>.
       </div>
       <div class="section">
         {{ $t('landing.loginhelp.section2') }}
