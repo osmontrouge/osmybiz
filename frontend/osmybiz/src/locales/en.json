@@ -43,6 +43,7 @@
     "loginhelp": {
       "title": "Information",
       "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap-Login.",
+      "osmlink": "If you don't have one already, follow the link below:",
       "section2": "In this view you can already get an impression how the website works."
     }
   },

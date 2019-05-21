@@ -13,6 +13,12 @@
         {{ $t('landing.loginhelp.section1') }}
       </div>
       <div class="section">
+        {{ $t('landing.loginhelp.osmlink') }}
+      </div>
+      <div class="section">
+        <a href="https://master.apis.dev.openstreetmap.org/" target="_blank">OpenStreetMap</a>
+      </div>
+      <div class="section">
         {{ $t('landing.loginhelp.section2') }}
       </div>
     </div>
