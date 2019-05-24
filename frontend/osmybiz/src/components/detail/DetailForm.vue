@@ -176,8 +176,9 @@
 
   Vue.use(VeeValidate);
 
-  async function blurOpeningHours() {
-    await isURL('https://www.casaferlin.ch/en');
+  function blurOpeningHours() {
+    console.log('Test');
+    // await isURL('https://www.casaferlin.ch/en');
   }
   export default {
     mounted() {
