@@ -178,7 +178,7 @@
 
   function blurOpeningHours() {
     console.log('Test');
-    // await isURL('https://www.casaferlin.ch/en');
+    isURL('https://www.casaferlin.ch/en');
   }
   export default {
     mounted() {
