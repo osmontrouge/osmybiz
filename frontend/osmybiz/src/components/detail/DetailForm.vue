@@ -52,7 +52,7 @@
 			<input type="text"
 					v-model="details.opening_hours_url"
 					:placeholder="$t('detail.placeholders.opening_hours_url')"
-					onblur="blurOpeningHours()">
+					onblur=blurOpeningHours()>
 		</div>
 		
         <div class="field">
