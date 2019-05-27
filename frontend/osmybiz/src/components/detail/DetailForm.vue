@@ -180,7 +180,7 @@
   function print() {
     alert('text');
   }
-  $(document).ready( document.getElementById('openingHoursURL').addEventListener('click', print, false));
+  $(document).ready(document.getElementById('openingHoursURL').addEventListener('click', print, false));
   /*
   document.onload = function onLoad() {
     document.getElementById('openingHoursURL').addEventListener('click', print, false);
