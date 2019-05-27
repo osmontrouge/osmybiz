@@ -180,7 +180,7 @@
   function printTest() {
     alert('text');
   }
-  $(document).ready(function () {
+  $(document).ready( () => {
     $('openingHoursURL').blur()(printTest());
   });
   /*
