@@ -838,7 +838,6 @@ async function getSourceAsDom(url) {
   return response.text();
 }
 
-/* eslint-disable-next-line no-unused-vars */
 export default async function isURL(url) {
   const input = url;
   let result = '';

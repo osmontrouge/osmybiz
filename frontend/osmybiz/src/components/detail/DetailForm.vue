@@ -173,7 +173,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
 
-   import isURL from '../../store/OpeningHoursConverter';
+  import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -200,7 +200,7 @@
         'hidePopup',
       ]),
       blurOpeningHours() {
-         isURL('test'/* https://www.casaferlin.ch/en */);
+        isURL('test');/* https://www.casaferlin.ch/en */
       },
     },
   };
