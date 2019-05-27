@@ -168,7 +168,7 @@
 </template>
 
 <script>
-
+  import $ from 'jquery';
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
@@ -177,11 +177,17 @@
 
   Vue.use(VeeValidate);
 
-  const ele = document.getElementById('openingHoursURL');
-  if (ele != null) {
-    document.getElementById('openingHoursURL').addEventListener('click', alert('Hello world'), false); // .addEventListener('blur', null, alert('Testing this'));
+  function print() {
+    alert('text');
   }
-
+  $(document).ready(function () {
+    document.getElementById('openingHoursURL').addEventListener('click', print, false); // .addEventListener('blur', null, alert('Testing this'));
+  });
+  /*
+  document.onload = function onLoad() {
+    document.getElementById('openingHoursURL').addEventListener('click', print, false); // .addEventListener('blur', null, alert('Testing this'));
+  };
+*/
   /* eslint-disable-next-line no-unused-vars */
   function blurOpeningHours() {
     isURL('https://www.casaferlin.ch/en');
