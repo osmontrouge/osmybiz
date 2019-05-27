@@ -180,8 +180,9 @@
   function print() {
     alert('text');
   }
-  $(document).ready(function () {
-    document.getElementById('openingHoursURL').addEventListener('click', print, false); // .addEventListener('blur', null, alert('Testing this'));
+  $(document).ready(function load() {
+    document.getElementById('openingHoursURL').addEventListener('click', print, false);
+    // .addEventListener('blur', null, alert('Testing this'));
   });
   /*
   document.onload = function onLoad() {
