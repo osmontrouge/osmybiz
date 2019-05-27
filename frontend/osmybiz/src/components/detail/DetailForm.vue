@@ -177,8 +177,8 @@
 
   Vue.use(VeeValidate);
 
-  let ele = document.getElementById('openingHoursURL');
-  if(ele != null){
+  const ele = document.getElementById('openingHoursURL');
+  if (ele != null) {
     document.getElementById('openingHoursURL').addEventListener('click', alert('Hello world'), false); // .addEventListener('blur', null, alert('Testing this'));
   }
 
