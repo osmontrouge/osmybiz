@@ -180,7 +180,9 @@
   function printTest() {
     alert('text');
   }
-  $(document).ready($('openingHoursURL').blur()(printTest()));
+  $(document).ready(function () {
+    $('openingHoursURL').blur()(printTest());
+  });
   /*
   document.onload = function onLoad() {
     document.getElementById('openingHoursURL').addEventListener('click', print, false);
