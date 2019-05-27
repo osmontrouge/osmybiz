@@ -50,9 +50,9 @@
 			</div>
 			
 			<input type="text"
+             id="openingHoursURL"
 					v-model="details.opening_hours_url"
-					:placeholder="$t('detail.placeholders.opening_hours_url')"
-					onblur="blurOpeningHours()">
+					:placeholder="$t('detail.placeholders.opening_hours_url')">
 		</div>
 		
         <div class="field">
@@ -179,8 +179,8 @@
 
   /* eslint-disable-next-line no-unused-vars */
   function blurOpeningHours() {
+    document.getElementById("openingHoursURL").addEventListener("blur", null, isURL('https://www.casaferlin.ch/en'))
     console.log('Test');
-    isURL('https://www.casaferlin.ch/en');
   }
   export default {
     mounted() {
