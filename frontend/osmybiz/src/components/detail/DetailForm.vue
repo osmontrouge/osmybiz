@@ -50,7 +50,7 @@
 			</div>
 			
 			<input type="text"
-             @blur="blurOpeningHours()"
+             v-on:blur="blurOpeningHours()"
              id="openingHoursURL"
 					v-model="details.opening_hours_url"
 					:placeholder="$t('detail.placeholders.opening_hours_url')">
@@ -169,26 +169,16 @@
 </template>
 
 <script>
-  import $ from 'jquery';
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
 
-  import isURL from '../../store/OpeningHoursConverter';
+   import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
-  function printTest() {
-    alert('text');
-  }
-
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
 
-  /* eslint-disable-next-line no-unused-vars */
-  function blurOpeningHours() {
-    alert('TESTING');
-    isURL('https://www.casaferlin.ch/en');
-  }
   export default {
     mounted() {
       this.setApplyOffset(true);
@@ -208,8 +198,10 @@
         'setApplyOffset',
         'showPopup',
         'hidePopup',
-        blurOpeningHours(),
       ]),
+      blurOpeningHours() {
+         isURL('test'/* https://www.casaferlin.ch/en */);
+      },
     },
   };
 </script>
