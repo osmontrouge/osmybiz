@@ -180,13 +180,11 @@
   function print() {
     alert('text');
   }
-  $(document).ready(function load() {
-    document.getElementById('openingHoursURL').addEventListener('click', print, false);
-    // .addEventListener('blur', null, alert('Testing this'));
-  });
+  $(document).ready( document.getElementById('openingHoursURL').addEventListener('click', print, false));
   /*
   document.onload = function onLoad() {
-    document.getElementById('openingHoursURL').addEventListener('click', print, false); // .addEventListener('blur', null, alert('Testing this'));
+    document.getElementById('openingHoursURL').addEventListener('click', print, false);
+    // .addEventListener('blur', null, alert('Testing this'));
   };
 */
   /* eslint-disable-next-line no-unused-vars */
