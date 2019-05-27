@@ -177,10 +177,10 @@
 
   Vue.use(VeeValidate);
 
-  function print() {
+  function printTest() {
     alert('text');
   }
-  $(document).ready(document.getElementById('openingHoursURL').addEventListener('click', print, false));
+  $(document).ready($('openingHoursURL').blur()(printTest()));
   /*
   document.onload = function onLoad() {
     document.getElementById('openingHoursURL').addEventListener('click', print, false);
