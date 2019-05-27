@@ -53,6 +53,9 @@
              id="openingHoursURL"
 					v-model="details.opening_hours_url"
 					:placeholder="$t('detail.placeholders.opening_hours_url')">
+      <script>
+        alert('text');
+      </script>
 		</div>
 		
         <div class="field">
@@ -180,8 +183,12 @@
   function printTest() {
     alert('text');
   }
-  $(document).ready(() => {
-    $('openingHoursURL').blur()(printTest());
+
+  $(document.getElementById('openingHoursURL')).ready(printTest());
+
+  $(document.getElementById('openingHoursURL')).ready(() => {
+    console.log('TEST');
+    document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
   });
   /*
   document.onload = function onLoad() {
