@@ -50,12 +50,10 @@
 			</div>
 			
 			<input type="text"
+             @blur="blurOpeningHours()"
              id="openingHoursURL"
 					v-model="details.opening_hours_url"
 					:placeholder="$t('detail.placeholders.opening_hours_url')">
-      <script>
-        alert('text');
-      </script>
 		</div>
 		
         <div class="field">
@@ -184,20 +182,11 @@
     alert('text');
   }
 
-  $(document.getElementById('openingHoursURL')).ready(printTest());
+  //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
 
-  $(document.getElementById('openingHoursURL')).ready(() => {
-    console.log('TEST');
-    document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
-  });
-  /*
-  document.onload = function onLoad() {
-    document.getElementById('openingHoursURL').addEventListener('click', print, false);
-    // .addEventListener('blur', null, alert('Testing this'));
-  };
-*/
   /* eslint-disable-next-line no-unused-vars */
   function blurOpeningHours() {
+    alert('TESTING');
     isURL('https://www.casaferlin.ch/en');
   }
   export default {
@@ -219,6 +208,7 @@
         'setApplyOffset',
         'showPopup',
         'hidePopup',
+        blurOpeningHours(),
       ]),
     },
   };
