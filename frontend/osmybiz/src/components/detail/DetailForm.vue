@@ -177,7 +177,10 @@
 
   Vue.use(VeeValidate);
 
-  document.getElementById('openingHoursURL').addEventListener('click', alert('Hello world'), false); // .addEventListener('blur', null, alert('Testing this'));
+  let ele = document.getElementById('openingHoursURL');
+  if(ele != null){
+    document.getElementById('openingHoursURL').addEventListener('click', alert('Hello world'), false); // .addEventListener('blur', null, alert('Testing this'));
+  }
 
   /* eslint-disable-next-line no-unused-vars */
   function blurOpeningHours() {
