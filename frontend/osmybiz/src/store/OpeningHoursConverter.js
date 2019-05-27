@@ -837,7 +837,7 @@ async function getSourceAsDom(url) {
   const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
   return response.text();
 }
-
+/*  */
 export default async function isURL(url) {
   const input = url;
   let result = '';
@@ -847,5 +847,6 @@ export default async function isURL(url) {
   } else {
     result = convert(input);
   }
-  return result; /* document.getElementById("outputArea").value = result; */
+  console.log(result);
+  // return result; /* document.getElementById("outputArea").value = result; */
 }

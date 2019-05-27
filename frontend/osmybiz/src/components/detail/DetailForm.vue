@@ -36,6 +36,7 @@
           </div>
 
           <input type="text"
+                 id="openingHoursTime"
                  v-model="details.opening_hours"
                  :placeholder="$t('detail.placeholders.opening_hours')">
         </div>
@@ -172,8 +173,8 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-
-  import isURL from '../../store/OpeningHoursConverter';
+  // import $ from 'jquery';
+  // import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -199,8 +200,15 @@
         'showPopup',
         'hidePopup',
       ]),
-      blurOpeningHours() {
-        isURL('test');/* https://www.casaferlin.ch/en */
+      async blurOpeningHours() {
+        const input = document.getElementById('openingHoursURL').value;
+        // getting the value works, now make the handling async.
+        // const result = isURL(input);/* https://www.casaferlin.ch/en */
+        console.log(document.getElementById('openingHoursTime').value);
+        console.log(input);
+        if(document.getElementById('openingHoursTime').value == null){
+
+        }
       },
     },
   };
