@@ -179,7 +179,7 @@
 
   /* eslint-disable-next-line no-unused-vars */
   function blurOpeningHours() {
-    document.getElementById("openingHoursURL").addEventListener("blur", null, isURL('https://www.casaferlin.ch/en'))
+    document.getElementById('openingHoursURL').addEventListener('blur', null, isURL('https://www.casaferlin.ch/en'));
     console.log('Test');
   }
   export default {
