@@ -838,18 +838,23 @@ async function getSourceAsDom(url) {
   return response.text();
 }
 /*  */
-export default async function isURL(url) {
+export default /* async */ function isURL(url) {
   const input = url;
   let result = '';
   if (input.match(/https?:\/\//g)) {
-    const promisResult = await getSourceAsDom(input);
-    result = handelShemaOrg(promisResult);
+    const promiseResult = /* await */ getSourceAsDom(input);
+    result = handelShemaOrg(promiseResult);
+    document.getElementById('openingHoursTime').value = result;
   } else if (input.match(/[0-9]/g)) {
     result = convert(input);
+    document.getElementById('openingHoursTime').value = result;
   } else {
     alert('Please enter an URL');
   }
-  console.log(`Resultat ${result}`);
 
+  onmessage = function (e) {
+    isURL(e[0]);
+    postMessage('finished');
+  };
   // return result; /* document.getElementById("outputArea").value = result; */
 }

@@ -174,7 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  import isURL from '../../store/OpeningHoursConverter';
+  // import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -206,7 +206,10 @@
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
 
         if (document.getElementById('openingHoursTime').value === '') {
-          isURL(input);
+          const worker = new Worker('../../store/OpeningHoursConverter');
+
+          console.log('Test');
+          worker.postMessage([input]);
         }
       },
     },
