@@ -207,8 +207,6 @@
 
         if (document.getElementById('openingHoursTime').value === '') {
           const worker = new Worker('../../store/OpeningHoursConverter');
-
-          console.log('Test');
           worker.postMessage([input]);
         }
       },
