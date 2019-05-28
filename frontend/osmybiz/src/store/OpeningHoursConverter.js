@@ -844,9 +844,12 @@ export default async function isURL(url) {
   if (input.match(/https?:\/\//g)) {
     const promisResult = await getSourceAsDom(input);
     result = handelShemaOrg(promisResult);
-  } else {
+  } else if (input.match(/[0-9]/g)) {
     result = convert(input);
+  } else {
+    alert('Please enter an URL');
   }
-  console.log(result);
+  console.log(`Resultat ${result}`);
+
   // return result; /* document.getElementById("outputArea").value = result; */
 }

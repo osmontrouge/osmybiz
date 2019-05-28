@@ -174,7 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  // import isURL from '../../store/OpeningHoursConverter';
+  import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -200,14 +200,13 @@
         'showPopup',
         'hidePopup',
       ]),
-      async blurOpeningHours() {
+      blurOpeningHours() {
         const input = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
-        console.log(document.getElementById('openingHoursTime').value);
-        console.log(input);
-        if (document.getElementById('openingHoursTime').value == null) {
-          alert('test');
+
+        if (document.getElementById('openingHoursTime').value === '') {
+          isURL(input);
         }
       },
     },
