@@ -174,7 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  // import isURL from '../../store/OpeningHoursConverter';
+  import script from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -205,8 +205,8 @@
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
 
-        if (document.getElementById('openingHoursTime').value === '') {
-          const worker = new Worker('../../store/OpeningHoursConverter');
+        if (document.getElementById('openingHoursTime').value === '' && document.getElementById('openingHoursURL').value !== '') {
+          const worker = new Worker(script);
           worker.postMessage([input]);
         }
       },
