@@ -879,6 +879,10 @@ export default /* async */ function isURL(url) {
     alert('Please enter an URL');
   }
 
+  export default function startToGetWorker(){
+    console.log('start');
+  }
+
   onmessage = function startingTheWorker(e) {
     isURL(e[0]);
     postMessage('finished');

@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import Vue from 'vue';
+import VueWorker from 'vue-worker';
 import VueCookies from 'vue-cookies';
 import VueI18n from 'vue-i18n';
 import { sync } from 'vuex-router-sync';
@@ -21,7 +22,7 @@ import { FALLBACKLOCALE } from './store/locale';
 
 Vue.use(VueCookies);
 Vue.use(VueI18n);
-
+Vue.use(VueWorker);
 const messages = ({
   de,
   en,
