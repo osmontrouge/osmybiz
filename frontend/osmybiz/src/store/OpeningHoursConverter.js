@@ -878,14 +878,5 @@ export default /* async */ function isURL(url) {
   } else {
     alert('Please enter an URL');
   }
-
-  export default function startToGetWorker(){
-    console.log('start');
-  }
-
-  onmessage = function startingTheWorker(e) {
-    isURL(e[0]);
-    postMessage('finished');
-  };
   // return result; /* document.getElementById("outputArea").value = result; */
 }

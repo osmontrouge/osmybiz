@@ -174,7 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  // import startToGetWorker from '../../store/OpeningHoursConverter';
+  import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -207,8 +207,11 @@
 
         if (document.getElementById('openingHoursTime').value === '' && document.getElementById('openingHoursURL').value !== '') {
           // console.log();
-          const worker = new Worker('../../store/OpeningHoursConverter');
-          worker.postMessage([input]);
+          this.$worker.run((arg) => {
+            isURL(arg);
+          }, [input]);
+        //  const worker = new Worker('../../store/OpeningHoursConverter');
+        //  worker.postMessage([input]);
         }
       },
     },
