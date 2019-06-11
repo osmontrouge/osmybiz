@@ -71,10 +71,5 @@ module.exports = {
         }
       }
     ]
-  },
-  exclude: {
-    exclude: [
-      '../src/store/OpeningHoursConverter'
-    ]
   }
 }
