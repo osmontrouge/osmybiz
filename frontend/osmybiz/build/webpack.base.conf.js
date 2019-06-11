@@ -71,5 +71,8 @@ module.exports = {
         }
       }
     ]
+  },
+  externals: {
+    osmConverter: '/frontend/osmybiz/src/OpeningHoursConverter'
   }
 }

@@ -861,7 +861,7 @@ async function getSourceAsDom(url) {
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
   */
-export default /* async */ function isURL(url) {
+/* export default async */ function isURL(url) {
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
     '\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]' +
@@ -874,6 +874,11 @@ export default /* async */ function isURL(url) {
   } else if (input.match(/[0-9]/g)) {
     result = convert(input);
   }
-  postMessage(result);
+  return result;
   // return result; /* document.getElementById("outputArea").value = result; */
+}
+
+onmessage = function getStringInput(event) {
+  const result = isURL(event);
+  postMessage(result);
 }

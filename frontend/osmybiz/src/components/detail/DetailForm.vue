@@ -174,7 +174,6 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  // import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -207,6 +206,7 @@
         if (document.getElementById('openingHoursTime').value === ''
           && input !== '') {
           if (typeof (Worker) !== 'undefined') {
+            // const Worker = require('../../OpeningHoursConverter');
             const w = new Worker('../../OpeningHoursConverter');
             w.onmessage = function reactToMessage(event) {
               alert(event.data);
