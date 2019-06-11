@@ -881,4 +881,4 @@ async function getSourceAsDom(url) {
 onmessage = function getStringInput(event) {
   const result = isURL(event);
   postMessage(result);
-}
+};
