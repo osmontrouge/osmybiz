@@ -867,16 +867,13 @@ export default /* async */ function isURL(url) {
     '\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]' +
     '{0,62})?[a-z0-9\u00a1-\uffff]\\.)+(?:[a-z\u00a1-\uffff]{2,}\\.?))', 'gm');
   const input = url;
-  let result = '';
+  let result = 'Please enter an URL';
   if (input.match(UrlRegex)) {
     const promiseResult = /* await */ getSourceAsDom(input);
     result = handelShemaOrg(promiseResult);
-    document.getElementById('openingHoursTime').value = result;
   } else if (input.match(/[0-9]/g)) {
     result = convert(input);
-    document.getElementById('openingHoursTime').value = result;
-  } else {
-    alert('Please enter an URL');
   }
+  postMessage(result);
   // return result; /* document.getElementById("outputArea").value = result; */
 }

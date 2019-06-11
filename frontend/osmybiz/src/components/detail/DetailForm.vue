@@ -174,7 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  import isURL from '../../store/OpeningHoursConverter';
+  // import isURL from '../../store/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -201,17 +201,27 @@
         'hidePopup',
       ]),
       blurOpeningHours() {
-        const input = document.getElementById('openingHoursURL').value;
+        // const input = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
-
-        if (document.getElementById('openingHoursTime').value === '' && document.getElementById('openingHoursURL').value !== '') {
-          // console.log();
-          this.$worker.run((arg) => {
-            isURL(arg);
-          }, [input]);
-        //  const worker = new Worker('../../store/OpeningHoursConverter');
-        //  worker.postMessage([input]);
+        if (typeof (Worker) !== 'undefined') {
+          const w = new Worker('../../store/OpeningHoursConverter');
+          w.onmessage = function reactToMessage(event) {
+            alert(event.data);
+          };
+          /*
+          if (document.getElementById('openingHoursTime').value === ''
+          && document.getElementById('openingHoursURL').value !== '') {
+            // console.log();
+            this.$worker.run((arg) => {
+              isURL(arg);
+            }, [input]);
+            //  const worker = new Worker('../../store/OpeningHoursConverter');
+            //  worker.postMessage([input]);
+          }
+            */
+        } else {
+          alert('Browser does not support webworker, pls enter times manualy');
         }
       },
     },
