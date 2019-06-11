@@ -201,28 +201,29 @@
         'hidePopup',
       ]),
       blurOpeningHours() {
-        // const input = document.getElementById('openingHoursURL').value;
+        const input = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
-        if (typeof (Worker) !== 'undefined') {
-          const w = new Worker('../../OpeningHoursConverter');
-          w.onmessage = function reactToMessage(event) {
-            alert(event.data);
-          };
-          /*
-          if (document.getElementById('openingHoursTime').value === ''
-          && document.getElementById('openingHoursURL').value !== '') {
-            // console.log();
-            this.$worker.run((arg) => {
-              isURL(arg);
-            }, [input]);
-            //  const worker = new Worker('../../store/OpeningHoursConverter');
-            //  worker.postMessage([input]);
+        if (document.getElementById('openingHoursTime').value === ''
+          && input !== '') {
+          if (typeof (Worker) !== 'undefined') {
+            const w = new Worker('../../OpeningHoursConverter');
+            w.onmessage = function reactToMessage(event) {
+              alert(event.data);
+            };
+          } else {
+            alert('Browser does not support webworker, pls enter times manualy');
           }
-            */
-        } else {
-          alert('Browser does not support webworker, pls enter times manualy');
         }
+        /*
+          // console.log();
+          this.$worker.run((arg) => {
+            isURL(arg);
+          }, [input]);
+          //  const worker = new Worker('../../store/OpeningHoursConverter');
+          //  worker.postMessage([input]);
+        }
+          */
       },
     },
   };
