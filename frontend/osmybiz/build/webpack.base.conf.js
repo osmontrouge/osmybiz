@@ -71,5 +71,8 @@ module.exports = {
         }
       }
     ]
+  },
+  externals: {
+    converterScript: '../src/store/OpeningHoursConverter'
   }
 }
