@@ -173,7 +173,6 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import converterScript from 'converterScript';
   // import $ from 'jquery';
   // import isURL from '../../store/OpeningHoursConverter';
 
@@ -206,7 +205,7 @@
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
         if (typeof (Worker) !== 'undefined') {
-          const w = new Worker(converterScript);
+          const w = new Worker('../../OpeningHoursConverter');
           w.onmessage = function reactToMessage(event) {
             alert(event.data);
           };
