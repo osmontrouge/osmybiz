@@ -56,7 +56,7 @@ export default class Worker {
     return output;
   };
 
-  removeYearFromMonth = input => {
+  removeYearFromMonth = (input) => {
     let output = input;
     output = output.replace(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s[2-9][0-9][0-9][0-9])/g, (_1) => {
       const temp = moment(_1, 'MMM YYYY');
@@ -65,7 +65,7 @@ export default class Worker {
     return output;
   };
 
-// Transforms Mo-Fr 08:0-16:00; We 18:00-22:00; into Mo-Fr 08:00-16:00, We 18:00-22:00;
+  // Transforms Mo-Fr 08:0-16:00; We 18:00-22:00; into Mo-Fr 08:00-16:00, We 18:00-22:00;
   handleAdditiveTime = (input) => {
     let output = input;
     const findTimeAndDays = new RegExp('(Mo|Tu|We|Th|Fr|Sa|Su)-(Mo|Tu|We|Th|Fr|Sa|Su)\\s' +
@@ -115,8 +115,8 @@ export default class Worker {
     return output;
   };
 
-// Transforms Jan-Feb: Mo 10:00-18:00; Tu 09:00-17:00;
-// into Jan-Feb: Mo 10:00-18:00; Jan-Feb: Tu 09:00-17:00;
+  // Transforms Jan-Feb: Mo 10:00-18:00; Tu 09:00-17:00;
+  // into Jan-Feb: Mo 10:00-18:00; Jan-Feb: Tu 09:00-17:00;
   addMonthsToEveryDays = (input) => {
     let output = input;
     if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/g)) {
@@ -160,9 +160,7 @@ export default class Worker {
     return output;
   };
 
-  addDoublePoint = (input) => {
-    return (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
-  };
+  addDoublePoint = (input) => (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
 
   addMissingZeros = (input) => {
     let output = input;
@@ -218,7 +216,8 @@ export default class Worker {
             if (startTimes[c] > endTimes[c]) {
               cNextDay = 2400;
             }
-            if (startTimes[c] >= startTimes[d] && endTimes[c] + cNextDay <= endTimes[d] + dNextDay) {
+            if (startTimes[c] >= startTimes[d] &&
+              endTimes[c] + cNextDay <= endTimes[d] + dNextDay) {
               delete startTimes[c];
               delete endTimes[c];
             } else if (startTimes[c] < startTimes[d] &&
@@ -330,7 +329,7 @@ export default class Worker {
     return output;
   };
 
-// turns May 01-May 30 into May 01-30
+  // turns May 01-May 30 into May 01-30
   pullMonthsTogether = (input) => {
     let output = input;
     const monthCombination = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-3][0-9])([-,])(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-3][0-9])/g;
@@ -387,7 +386,7 @@ export default class Worker {
     return output;
   };
 
-// Formats like this Mo 12:00-17:00, Tu 12:00-17:00 turn int Mo,Tu 12:00-17:00
+  // Formats like this Mo 12:00-17:00, Tu 12:00-17:00 turn int Mo,Tu 12:00-17:00
   combineDaysWithSameTimes = (input) => {
     let output = input;
     // A regex that detects days and the corresponding times
@@ -439,7 +438,7 @@ export default class Worker {
     return output.trim();
   };
 
-// Groups days that share the same times, without taking those in other month ranges into account
+  // Groups days that share the same times, without taking those in other month ranges into account
   handelMonthDays = (input) => {
     let output = input;
     const dayMonthSeparation = /([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9]),(([0-1][0-9]:[0-5][0-9]|[2][0-4]:[0-5][0-9])\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))/g;
@@ -457,7 +456,7 @@ export default class Worker {
     return output;
   };
 
-// sorts days by order of Mo to Su with PH coming at the end
+  // sorts days by order of Mo to Su with PH coming at the end
   sortDays = (input) => {
     let output = input;
     // This regex detects day and Opening hours bsp: Mo 12:00-14:00,
@@ -502,6 +501,7 @@ export default class Worker {
     const findDaysAndTime = /(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f|\+)\s/g;
     output = `${output} `;
     const ifStringDoesntMatch = output.toString().match(findDaysAndTime);
+    /* estlint-disable-no-empty */
     if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) {
     } else if (!ifStringDoesntMatch) {
       output = this.sortDays(output);
@@ -605,8 +605,8 @@ export default class Worker {
     return output;
   };
 
-// replaces words with their correct symbols, geschlossen gets turned
-// int # to make it easier to handle surplus words later
+  // replaces words with their correct symbols, geschlossen gets turned
+  // int # to make it easier to handle surplus words later
   germanWords = (input) => {
     let output = input;
     output = output.replace(/\bbis\b/gi, '-');
@@ -615,8 +615,8 @@ export default class Worker {
     return output.replace(/\btäglich\b/gi, 'Mo-Su');
   };
 
-// replaces words with their correct symbols, from and closed get
-// turned into ab and # to make them easier to handel later
+  // replaces words with their correct symbols, from and closed get
+  // turned into ab and # to make them easier to handel later
   englishWords = (input) => {
     let output = input;
     output = output.replace(/\bfrom\b/gi, 'ab');
@@ -630,8 +630,8 @@ export default class Worker {
     return output;
   };
 
-// removes any word or number longer then 4 digits and two/three letter
-// words that were specified also turns # into the correct syntax
+  // removes any word or number longer then 4 digits and two/three letter
+  // words that were specified also turns # into the correct syntax
   removeUnwantedText = (input) => {
     let output = input;
     output = output.replace(/&nbsp;/g, ' ');
@@ -851,7 +851,7 @@ export default class Worker {
       microOHResponse = '';
     }
     const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
-    let microResponse = convert(micro);
+    let microResponse = this.convert(micro);
     if (microResponse === 'No valid input') {
       microResponse = '';
     }
@@ -882,7 +882,7 @@ export default class Worker {
     return result.trim();
   };
 
-  getSourceAsDom = async url => {
+  getSourceAsDom = async (url) => {
     const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
     return response.text();
   };
