@@ -878,7 +878,9 @@ async function getSourceAsDom(url) {
   // return result; /* document.getElementById("outputArea").value = result; */
 }
 
-onmessage = function getStringInput(event) {
-  const result = isURL(event);
-  postMessage(result);
-};
+export default class Worker {
+  onmessage = function getStringInput(event) {
+    const result = isURL(event);
+    postMessage(result);
+  };
+}
