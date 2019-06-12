@@ -174,6 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
+  import Worker from '/../../OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -207,7 +208,7 @@
           && input !== '') {
           if (typeof (Worker) !== 'undefined') {
             // const Worker = require('../../OpeningHoursConverter');
-            const w = new Worker('../../OpeningHoursConverter');
+            const w = new Worker();
             w.onmessage = function reactToMessage(event) {
               alert(event.data);
             };
