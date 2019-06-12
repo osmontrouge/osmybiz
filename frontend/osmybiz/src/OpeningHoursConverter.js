@@ -2,7 +2,7 @@ import $ from 'jquery';
 import moment from 'moment';
 
 export default class Worker {
-  combineSameMonths(input) {
+  combineSameMonths = input => {
     let output = input;
     const multipleMonths = /(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off)[:,;]\s)(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off))/g;
     output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
@@ -27,7 +27,7 @@ export default class Worker {
       return result;
     });
     return output;
-  }
+  };
 
   removeAdditionalZeroesFromMonths(input) {
     let output = input;
