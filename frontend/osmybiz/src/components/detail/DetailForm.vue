@@ -174,7 +174,7 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  import Worker from '/../../OpeningHoursConverter';
+  import Worker from '/osmybiz/src/OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
