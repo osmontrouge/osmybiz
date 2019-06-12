@@ -209,7 +209,7 @@
           && input !== '') {
           if (typeof (Worker) !== 'undefined') {
             // const Worker = require('../../OpeningHoursConverter');
-            const w = new Worker();
+            const w = new Worker(input);
             w.onmessage = function reactToMessage(event) {
               alert(event.data);
             };
