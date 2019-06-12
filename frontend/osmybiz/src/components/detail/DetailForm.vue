@@ -210,7 +210,6 @@
           if (typeof (ConvertWorker) !== 'undefined') {
             // const Worker = require('../../OpeningHoursConverter');
             const w = new ConvertWorker(input);
-            console.log('worker');
             w.onmessage = function reactToMessage(event) {
               console.log(event.data);
               console.log('event');
@@ -219,15 +218,6 @@
             alert('Browser does not support webworker, pls enter times manualy');
           }
         }
-        /*
-          // console.log();
-          this.$worker.run((arg) => {
-            isURL(arg);
-          }, [input]);
-          //  const worker = new Worker('../../store/OpeningHoursConverter');
-          //  worker.postMessage([input]);
-        }
-          */
       },
     },
   };
