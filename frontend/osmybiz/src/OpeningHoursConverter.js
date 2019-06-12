@@ -160,7 +160,7 @@ export default class Worker {
     return output;
   };
 
-  addDoublePoint = (input) => (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
+  addDoublePoint = input => (input.toString().replace(/([2][0-4]|[0-1]?[0-9])([0-5][0-9])/g, (_1, _2, _3) => `${_2}:${_3}`));
 
   addMissingZeros = (input) => {
     let output = input;
@@ -501,8 +501,7 @@ export default class Worker {
     const findDaysAndTime = /(Mo|Tu|We|Th|Fr|Sa|Su|PH).+?([0-9]|f|\+)\s/g;
     output = `${output} `;
     const ifStringDoesntMatch = output.toString().match(findDaysAndTime);
-    /* estlint-disable-no-empty */
-    if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) {
+    if (output.toString().match(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Oct|Sep|Nov|Dec/g)) { /* eslint-disable no-empty */
     } else if (!ifStringDoesntMatch) {
       output = this.sortDays(output);
     } else {
