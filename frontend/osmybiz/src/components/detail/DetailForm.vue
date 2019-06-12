@@ -174,7 +174,8 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
-  import Worker from '/../../OpeningHoursConverter.js';
+  /* estlint-disable-no-absolute-path */
+  import Worker from '../../OpeningHoursConverter.js';
 
   Vue.use(VeeValidate);
 
