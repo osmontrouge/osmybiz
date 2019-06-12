@@ -744,72 +744,77 @@ export default class Worker {
   };
 
   convert = (input) => {
-    let output = input;
-    // let output = document.getElementById("inputArea").value;
-    output = this.removeUnNeededSpace(output);
-    // if(document.getElementById("en").checked){
-    output = this.handelPM(output);
-    output = this.shortenDaysEng(output);
-    output = this.englishWords(output);
-    output = this.replaceEnglishMonths(output);
-    output = this.replaceEnglishMonths(output);
-    // } else if (document.getElementById("de").checked){
-    output = this.shortenDaysGer(output);
-    output = this.germanWords(output);
-    output = this.replaceGermanMonths(output);
-    // }
-    output = output.replace(/['!©«»&@]/g, '');
-    output = this.removeYearFromMonth(output);
-    output = this.addDoublePoint(output);
-    output = this.removeUnwantedText(output);
-    output = this.handleNumeralDates(output);
-    output = this.replaceSymbols(output);
-    output = this.addMissingZeros(output);
-    output = this.detectNextTime(output);
-    output = this.detectNewDay(output);
-    output = this.handleUnspecificClosingTime(output);
-    output = this.removeUnNeededSpace(output);
-    output = this.addComma(output);
-    output = this.orderDaysAndTime(output);
-    output = this.handelSorting(output);
-    output = this.pullDaysTogether(output);
-    output = this.handelMonthDays(output);
-    output = this.bindDaysTogether(output);
-    output = this.removeUnNeededSpace(output);
-    output = this.detectNewDay(output);
-    output = this.handelSecondSorting(output);
-    output = this.cleanUp(output);
-    output = this.removeAdditionalZeroesFromMonths(output);
-    if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
-      const multipleSpecificDates = /(Jan:|Feb:|Mar:|Apr:|May:|Jun:|Jul:|Aug:|Sep:|Oct:|Nov:|Dec:)(\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]):)+\s([0-2][0-9])/g;
-      output = output.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
-      output = this.sortMonths(output);
-      output = this.correctMonthDays(output);
-      output = this.switchDayAndMonthPosition(output);
-      output = this.removeWrongDoublepoints(output);
-      output = this.addMissingZeroesDays(output);
-      output = this.monthRagneEndCorrection(output);
-      output = this.monthsAddSpace(output);
-      output = this.combineSameMonths(output);
-      output = output.replace(multipleSpecificDates, (_1) => {
-        this.multipleSpecificDatesFunction(_1);
-      });
-      output = output.replace(/:;/g, ':');
-      output = this.separateMonthsAndDays(output);
+    if (input !== undefined) {
+      let output = input;
+      // let output = document.getElementById("inputArea").value;
+      output = this.removeUnNeededSpace(output);
+      // if(document.getElementById("en").checked){
+      output = this.handelPM(output);
+      output = this.shortenDaysEng(output);
+      output = this.englishWords(output);
+      output = this.replaceEnglishMonths(output);
+      output = this.replaceEnglishMonths(output);
+      // } else if (document.getElementById("de").checked){
+      output = this.shortenDaysGer(output);
+      output = this.germanWords(output);
+      output = this.replaceGermanMonths(output);
+      // }
+      console.log('times');
+      output = output.replace(/['!©«»&@]/g, '');
+      output = this.removeYearFromMonth(output);
+      output = this.addDoublePoint(output);
+      output = this.removeUnwantedText(output);
+      output = this.handleNumeralDates(output);
+      output = this.replaceSymbols(output);
+      output = this.addMissingZeros(output);
+      output = this.detectNextTime(output);
       output = this.detectNewDay(output);
-      output = this.pullMonthsTogether(output);
-      output = this.correctSyntaxBetweenMonthAndDay(output);
+      output = this.handleUnspecificClosingTime(output);
+      output = this.removeUnNeededSpace(output);
+      output = this.addComma(output);
+      output = this.orderDaysAndTime(output);
+      output = this.handelSorting(output);
+      output = this.pullDaysTogether(output);
+      output = this.handelMonthDays(output);
+      output = this.bindDaysTogether(output);
+      output = this.removeUnNeededSpace(output);
+      output = this.detectNewDay(output);
+      output = this.handelSecondSorting(output);
+      output = this.cleanUp(output);
+      output = this.removeAdditionalZeroesFromMonths(output);
+      console.log('months');
+      if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
+        const multipleSpecificDates = /(Jan:|Feb:|Mar:|Apr:|May:|Jun:|Jul:|Aug:|Sep:|Oct:|Nov:|Dec:)(\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]):)+\s([0-2][0-9])/g;
+        output = output.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
+        output = this.sortMonths(output);
+        output = this.correctMonthDays(output);
+        output = this.switchDayAndMonthPosition(output);
+        output = this.removeWrongDoublepoints(output);
+        output = this.addMissingZeroesDays(output);
+        output = this.monthRagneEndCorrection(output);
+        output = this.monthsAddSpace(output);
+        output = this.combineSameMonths(output);
+        output = output.replace(multipleSpecificDates, (_1) => {
+          this.multipleSpecificDatesFunction(_1);
+        });
+        output = output.replace(/:;/g, ':');
+        output = this.separateMonthsAndDays(output);
+        output = this.detectNewDay(output);
+        output = this.pullMonthsTogether(output);
+        output = this.correctSyntaxBetweenMonthAndDay(output);
+      }
+      output = `${output};`;
+      output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {
+        this.cutOverlappingTime(_1);
+      });
+      output = this.handleAdditiveTime(output);
+      output = this.cleanUp(output);
+      output = this.addMonthsToEveryDays(output);
+      output = this.replaceComma(output);
+      output = this.checkResult(output);
+      return output;
     }
-    output = `${output};`;
-    output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {
-      this.cutOverlappingTime(_1);
-    });
-    output = this.handleAdditiveTime(output);
-    output = this.cleanUp(output);
-    output = this.addMonthsToEveryDays(output);
-    output = this.replaceComma(output);
-    output = this.checkResult(output);
-    return output;
+    return '';
   };
 
   scriptHandeling = (input) => {
@@ -845,6 +850,7 @@ export default class Worker {
     el.innerHTML = string;
     const microOH = $(el).find('[itemprop="openingHours"]');
     let microOHResponse = `${$(microOH).attr('content')}`;
+    console.log('1');
     microOHResponse = this.convert(microOHResponse);
     if (microOHResponse === 'No valid input') {
       microOHResponse = '';
@@ -857,6 +863,7 @@ export default class Worker {
     microResponse = (`${microOHResponse} ${microResponse}`).trim();
     // this handels opening hours noted in RDFa
     let rdfaOH = `${$(el).find("[property='openingHours']").attr('content')}`;
+    console.log('2');
     rdfaOH = this.convert(rdfaOH);
     if (rdfaOH === 'No valid input') {
       rdfaOH = '';
@@ -921,16 +928,24 @@ export default class Worker {
     let result = 'Please enter an URL';
     if (input.match(UrlRegex)) {
       const promiseResult = /* await */ this.getSourceAsDom(input);
+      console.log('dom');
       result = this.handelShemaOrg(promiseResult);
     } else if (input.match(/[0-9]/g)) {
+      console.log('time');
       result = this.convert(input);
     }
     return result;
     // return result; /* document.getElementById("outputArea").value = result; */
   };
+  /*
+  postMessage = (input) => {
+  };
+  */
 
   constructor(input) {
-    const result = this.isURL(input);
-    postMessage(result);
+    console.log(input);
+    // const result = this.isURL(input);
+    /* eslint-disable no-restricted-globals */
+    /* DedicatedWorkerGlobalScope. */postMessage('result');
   }
 }

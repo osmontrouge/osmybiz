@@ -34,7 +34,8 @@ module.exports = {
         include: [resolve('src'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
-        }
+        },
+        exclude: /OpeningHoursConverter\.js/
       },
       {
         test: /\.vue$/,

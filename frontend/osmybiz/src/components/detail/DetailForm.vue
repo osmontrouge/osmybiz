@@ -175,7 +175,7 @@
   import VeeValidate from 'vee-validate';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
-  import Worker from '../../OpeningHoursConverter';
+  import ConvertWorker from '../../OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -207,11 +207,13 @@
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
         if (document.getElementById('openingHoursTime').value === ''
           && input !== '') {
-          if (typeof (Worker) !== 'undefined') {
+          if (typeof (ConvertWorker) !== 'undefined') {
             // const Worker = require('../../OpeningHoursConverter');
-            const w = new Worker(input);
+            const w = new ConvertWorker(input);
+            console.log('worker');
             w.onmessage = function reactToMessage(event) {
-              alert(event.data);
+              console.log(event.data);
+              console.log('event');
             };
           } else {
             alert('Browser does not support webworker, pls enter times manualy');
