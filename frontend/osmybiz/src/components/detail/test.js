@@ -1,12 +1,10 @@
-let i = 0;
 
-function countNumbers() {
-  console.log('worker');
-  if (i < 100) {
-    i += 1;
-    postMessage(i);
-  }
-}
-
-countNumbers();
+onmessage = (event) => {
+  // const result = isURL(event.data[0]);
+  console.log(event.data[1]);
+  // alert('Started Webworker');
+  // const answere = ['no', 'not', 'yes', 'but', 'maybe'];
+  debugger;
+  // postMessage(answere);
+};
 

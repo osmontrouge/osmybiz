@@ -938,9 +938,12 @@ function isURL(url) {
   // return result; /* document.getElementById("outputArea").value = result; */
 }
 
-onmessage = function runConverter(event) {
+onmessage = (event) => {
   // const result = isURL(event.data[0]);
   console.log(event.data[0]);
-  postMessage('result');
+  // alert('Started Webworker');
+  const answere = ['no', 'not', 'yes', 'but', 'maybe'];
+  debugger;
+  postMessage(answere);
 };
 

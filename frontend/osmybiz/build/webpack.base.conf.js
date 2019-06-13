@@ -3,14 +3,14 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   entry: {
     app: './src/main.js',
-    worker: './src/components/detail/converter.js'
+    worker: './src/components/detail/test.js'
     // worker: './src/components/detail/OpeningHoursConverter.js'
   },
   output: {
@@ -74,8 +74,8 @@ module.exports = {
         }
       },
       {
-        test: /OpeningHoursConverter\.js$/,
-        loader: 'work-loader'
+        test: /\.test\.js$/,
+        use: {loader: 'worker-loader'}
       }
     ]
   }
