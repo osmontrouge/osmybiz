@@ -173,7 +173,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import Worker from './test';
+  import WebWorker from './test';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
   // import ConvertWorker from '../../OpeningHoursConverter';
@@ -210,12 +210,10 @@
           && input !== '') {
           if (typeof (window.Worker) !== 'undefined') {
             /* eslint-disable no-unused-vars */
-            const w = new Worker(['test','ing']);
-            // w.postMessage(['Heute', 'habe', 'ich']);
-            // const w = new Worker('../../OpeningHoursConverter.js');
-            // w.postMessage('input');
-            w.onmessage = function converterFinished(event) {
-              debugger;
+            console.log('TESTINGTHIS');
+            const w = new WebWorker(/* ['test', 'ing'] */);
+            debugger;
+            w.onmessage = (event) => {
               console.log(event.data[2]);
             };
           } else {

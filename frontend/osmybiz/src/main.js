@@ -67,5 +67,3 @@ L.Icon.Default.mergeOptions({
   // eslint-disable-next-line global-require
   shadowUrl: require('./../node_modules/leaflet/dist/images/marker-shadow.png'),
 });
-
-console.log('Main test!');
