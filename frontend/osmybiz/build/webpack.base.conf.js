@@ -9,7 +9,9 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    worker: './src/components/detail/converter.js'
+    // worker: './src/components/detail/OpeningHoursConverter.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -32,10 +34,10 @@ module.exports = {
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [resolve('src'), resolve('test')],
+        exclude: /OpeningHoursConverter\.js/,
         options: {
           formatter: require('eslint-friendly-formatter')
-        },
-        exclude: /OpeningHoursConverter\.js/
+        }
       },
       {
         test: /\.vue$/,
@@ -72,8 +74,8 @@ module.exports = {
         }
       },
       {
-        test: /\.OpeningHoursConverter\.js$/,
-        use: {loader: 'work-loader'}
+        test: /OpeningHoursConverter\.js$/,
+        loader: 'work-loader'
       }
     ]
   }
