@@ -173,7 +173,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import WebWorker from './test';
+  import WebWorker from './converter.js';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
   // import ConvertWorker from '../../OpeningHoursConverter';
@@ -210,8 +210,8 @@
           && input !== '') {
           if (typeof (window.Worker) !== 'undefined') {
             /* eslint-disable no-unused-vars */
-            console.log('TESTINGTHIS');
-            const w = new WebWorker(/* ['test', 'ing'] */);
+            console.log('TESTING THIS');
+            const w = new WebWorker();
             debugger;
             w.onmessage = (event) => {
               console.log(event.data[2]);

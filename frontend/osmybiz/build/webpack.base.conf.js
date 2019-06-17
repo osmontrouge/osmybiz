@@ -10,7 +10,7 @@ function resolve(dir) {
 module.exports = {
   entry: {
     app: './src/main.js',
-    worker: './src/components/detail/test.js'
+    worker: './src/components/detail/converter.js'
     // worker: './src/components/detail/OpeningHoursConverter.js'
   },
   output: {
@@ -74,7 +74,7 @@ module.exports = {
         }
       },
       {
-        test: /\.test\.js$/,
+        test: /\.converter\.js$/,
         use: {loader: 'worker-loader'}
       }
     ]

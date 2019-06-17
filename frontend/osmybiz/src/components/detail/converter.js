@@ -938,12 +938,21 @@ function isURL(url) {
   // return result; /* document.getElementById("outputArea").value = result; */
 }
 
+self.addEventListener('message', (event) => {
+  console.log('This is an eventlistener');
+  console.log(event.data);
+});
+/*
 onmessage = (event) => {
+  if(event.data[0]=== undefined){
+    console.log('data undefined');
+  } else {
+    console.log(event.data[0]);
+    // alert('Started Webworker');
+    const answere = ['no', 'not', 'yes', 'but', 'maybe'];
+    debugger;
+    postMessage(answere);
+  }
   // const result = isURL(event.data[0]);
-  console.log(event.data[0]);
-  // alert('Started Webworker');
-  const answere = ['no', 'not', 'yes', 'but', 'maybe'];
-  debugger;
-  postMessage(answere);
 };
-
+*/
