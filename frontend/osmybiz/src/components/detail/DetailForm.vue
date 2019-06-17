@@ -209,22 +209,26 @@
           && input !== '') {
           if (typeof (window.Worker) !== 'undefined') {
             console.log('TESTING THE BLUR');
-
+            /*
             const test = isURL(input);
-            console.log(test);
+            */
 
             this.$worker.run((args) => {
               return isURL(args[0]);
             }, [input, 'testing'])
             .then(result => {
-              console.log(result)
+              if(result === 'Please enter an URL'){
+                alert(result);
+                document.getElementById('openingHoursURL').value = '';
+              } else {
+                console.log(result);
+              }
             })
               .catch(e => {
                 console.error(e)
               });
 
             /* eslint-disable no-unused-vars */
-            debugger;
             /*
             const w = new WebWorker();
             debugger;

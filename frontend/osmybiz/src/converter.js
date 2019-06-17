@@ -760,7 +760,7 @@ function convert(input) {
     output = germanWords(output);
     output = replaceGermanMonths(output);
     // }
-    console.log('times');
+    console.log('sprachen fertig');
     output = output.replace(/['!©«»&@]/g, '');
     output = removeYearFromMonth(output);
     output = addDoublePoint(output);
@@ -770,6 +770,7 @@ function convert(input) {
     output = addMissingZeros(output);
     output = detectNextTime(output);
     output = detectNewDay(output);
+    console.log('detectNewDay');
     output = handleUnspecificClosingTime(output);
     output = removeUnNeededSpace(output);
     output = addComma(output);
@@ -778,6 +779,7 @@ function convert(input) {
     output = pullDaysTogether(output);
     output = handelMonthDays(output);
     output = bindDaysTogether(output);
+    console.log('bindDaysTogether');
     output = removeUnNeededSpace(output);
     output = detectNewDay(output);
     output = handelSecondSorting(output);
@@ -804,6 +806,7 @@ function convert(input) {
       output = pullMonthsTogether(output);
       output = correctSyntaxBetweenMonthAndDay(output);
     }
+    console.log('monate fertig');
     output = `${output};`;
     output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {
       cutOverlappingTime(_1);
@@ -813,6 +816,7 @@ function convert(input) {
     output = addMonthsToEveryDays(output);
     output = replaceComma(output);
     output = checkResult(output);
+    console.log('fertig');
     return output;
   }
   return '';
@@ -920,23 +924,23 @@ async function getSourceAsDom(url) {
   */
 /* eslint-disable no-unused-vars */
 export default function isURL(url) {
-  debugger;
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
     '\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]' +
     '{0,62})?[a-z0-9\u00a1-\uffff]\\.)+(?:[a-z\u00a1-\uffff]{2,}\\.?))', 'gm');
   const input = url;
+
   let result = 'Please enter an URL';
-  return `${result} ${url}`;
-  /*
+  // return `${result} ${input}`;
+
   if (input.match(UrlRegex)) {
-    const promiseResult = /* await */ /*getSourceAsDom(input);
+    const promiseResult = getSourceAsDom(input);
     console.log('dom');
     result = handelShemaOrg(promiseResult);
   } else if (input.match(/[0-9]/g)) {
     console.log('time');
     result = convert(input);
   }
-  return result;*/
+  return result;
   // return result; /* document.getElementById("outputArea").value = result; */
 }
