@@ -10,7 +10,7 @@ function resolve(dir) {
 module.exports = {
   entry: {
     app: './src/main.js',
-    worker: './src/converter.js'
+    // worker: './src/converter.js'
     // worker: './src/components/detail/OpeningHoursConverter.js'
   },
   output: {

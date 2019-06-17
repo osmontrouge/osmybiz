@@ -173,18 +173,14 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import VueWorker from 'vue-worker';
   import isURL from '../../converter';
-
   // import WebWorker from './converter.js';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
   // import ConvertWorker from '../../OpeningHoursConverter';
 
   Vue.use(VeeValidate);
-  Vue.use(VueWorker, 'webWorker');
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
-
   export default {
     mounted() {
       this.setApplyOffset(true);
@@ -212,16 +208,21 @@
         if (document.getElementById('openingHoursTime').value === ''
           && input !== '') {
           if (typeof (window.Worker) !== 'undefined') {
+            console.log('TESTING THE BLUR');
 
-            this.webWorker.run((args) => {
+            const test = isURL(input);
+            console.log(test);
+
+            this.$worker.run((args) => {
               return isURL(args[0]);
-            }, [input])
+            }, [input, 'testing'])
             .then(result => {
               console.log(result)
             })
               .catch(e => {
                 console.error(e)
               });
+
             /* eslint-disable no-unused-vars */
             debugger;
             /*

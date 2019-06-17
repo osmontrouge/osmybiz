@@ -2,6 +2,7 @@ import * as L from 'leaflet';
 import Vue from 'vue';
 import VueCookies from 'vue-cookies';
 import VueI18n from 'vue-i18n';
+import vueWorker from 'vue-worker';
 import { sync } from 'vuex-router-sync';
 import store from './store';
 import App from './App.vue';
@@ -21,6 +22,7 @@ import { FALLBACKLOCALE } from './store/locale';
 
 Vue.use(VueCookies);
 Vue.use(VueI18n);
+Object.defineProperty(Vue.prototype, '$worker', {value:vueWorker});
 const messages = ({
   de,
   en,
