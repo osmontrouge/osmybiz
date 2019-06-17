@@ -173,13 +173,16 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import WebWorker from './converter.js';
+  import VueWorker from 'vue-worker';
+  import isURL from '../../converter';
+
+  // import WebWorker from './converter.js';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
   // import ConvertWorker from '../../OpeningHoursConverter';
 
   Vue.use(VeeValidate);
-
+  Vue.use(VueWorker, 'webWorker');
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
 
   export default {
@@ -209,13 +212,25 @@
         if (document.getElementById('openingHoursTime').value === ''
           && input !== '') {
           if (typeof (window.Worker) !== 'undefined') {
+
+            this.webWorker.run((args) => {
+              return isURL(args[0]);
+            }, [input])
+            .then(result => {
+              console.log(result)
+            })
+              .catch(e => {
+                console.error(e)
+              });
             /* eslint-disable no-unused-vars */
             debugger;
+            /*
             const w = new WebWorker();
             debugger;
             w.onmessage = (event) => {
               console.log(event.data[2]);
             };
+            */
           } else {
             alert('Browser does not support webworker, pls enter times manualy');
           }
