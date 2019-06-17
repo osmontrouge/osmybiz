@@ -10,7 +10,7 @@ function resolve(dir) {
 module.exports = {
   entry: {
     app: './src/main.js',
-    worker: './src/components/detail/converter.js'
+    worker: './src/converter.js'
     // worker: './src/components/detail/OpeningHoursConverter.js'
   },
   output: {
@@ -34,7 +34,6 @@ module.exports = {
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [resolve('src'), resolve('test')],
-        exclude: /OpeningHoursConverter\.js/,
         options: {
           formatter: require('eslint-friendly-formatter')
         }
