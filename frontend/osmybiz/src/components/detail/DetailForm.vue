@@ -210,7 +210,7 @@
           && input !== '') {
           if (typeof (window.Worker) !== 'undefined') {
             /* eslint-disable no-unused-vars */
-            console.log('TESTING THIS');
+            debugger;
             const w = new WebWorker();
             debugger;
             w.onmessage = (event) => {

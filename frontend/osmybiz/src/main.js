@@ -35,7 +35,7 @@ const messages = ({
   sv,
   zh_TW,
 });
-console.log('Testing the main');
+
 const i18n = new VueI18n({
   locale: 'en',
   fallbackLocale: FALLBACKLOCALE,
