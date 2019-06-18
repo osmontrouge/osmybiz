@@ -173,7 +173,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import isURL from '../../converter';
+  import isURL from '../../../static/converter';
   // import WebWorker from './converter.js';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
@@ -207,12 +207,32 @@
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
         if (document.getElementById('openingHoursTime').value === ''
           && input !== '') {
-          if (typeof (window.Worker) !== 'undefined') {
-            console.log('TESTING THE BLUR');
-            /*
-            const test = isURL(input);
-            */
+          if (typeof (Worker) !== 'undefined') {
 
+            const worker = new Worker('../../../static/converter');
+            worker.onmessage = (string) => {
+              console.log(string);
+            };
+            worker.postMessage('test');
+            /*
+            worker.run((args) => {
+              return isURL(args[0]);
+            }, [input]).then( result => {
+              alert(result);
+              }).catch(e => {
+                console.log('error');
+                console.log(e);
+            })
+            /*
+            const result = converterAccess(input);
+            if(result === 'Please enter an URL'){
+              alert(result);
+              document.getElementById('openingHoursURL').value = '';
+            } else {
+              console.log(result);
+            }
+*/
+            /*
             this.$worker.run((args) => {
               return isURL(args[0]);
             }, [input, 'testing'])
@@ -227,7 +247,7 @@
               .catch(e => {
                 console.error(e)
               });
-
+*/
             /* eslint-disable no-unused-vars */
             /*
             const w = new WebWorker();

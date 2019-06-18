@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import moment from 'moment';
+import $worker from 'vue-worker';
 
 function combineSameMonths(input) {
   let output = input;
@@ -923,12 +924,12 @@ async function getSourceAsDom(url) {
  OTHER DEALINGS IN THE SOFTWARE.
   */
 /* eslint-disable no-unused-vars */
-export default function isURL(url) {
+export default function isURL(url){
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
     '\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]' +
     '{0,62})?[a-z0-9\u00a1-\uffff]\\.)+(?:[a-z\u00a1-\uffff]{2,}\\.?))', 'gm');
-  const input = url;
+  const input = url + '';
 
   let result = 'Please enter an URL';
   // return `${result} ${input}`;
@@ -944,3 +945,34 @@ export default function isURL(url) {
   return result;
   // return result; /* document.getElementById("outputArea").value = result; */
 }
+
+self.onmessage = function (url) {
+  const result = url + ' for the';
+  console.log(result);
+  self.postMessage('message', result);
+};
+
+/*
+export default function converterAccess(url) {
+let inputs = [url+''];
+inputs.runCallback(isURL(),[inputs[0]])
+  .then(result => {
+    console.log(result);
+    return result;
+  }).catch(e => {
+    console.log(e.messageData);
+    return e
+});
+let worker = new Worker(null);
+worker.call(isURL(), [url])
+  .then(result => {
+    console.log(result);
+    return result;
+  })
+  .catch(e =>{
+    console.log(e);
+    return e;
+  })
+
+}
+*/
