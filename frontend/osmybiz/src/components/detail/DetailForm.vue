@@ -180,6 +180,7 @@
   // import ConvertWorker from '../../OpeningHoursConverter';
 
   Vue.use(VeeValidate);
+
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
   export default {
     mounted() {
@@ -202,36 +203,50 @@
         'hidePopup',
       ]),
       blurOpeningHours() {
-        const input = document.getElementById('openingHoursURL').value;
+        const url = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
         if (document.getElementById('openingHoursTime').value === ''
-          && input !== '') {
+          && url !== '') {
           if (typeof (Worker) !== 'undefined') {
+            // testingIsURL('test 02');
 
-            const worker = new Worker('../../../static/converter');
-            worker.onmessage = (string) => {
-              console.log(string);
-            };
-            worker.postMessage('test');
+            const actions = [
+              { message: 'func2', func:isURL},
+            ]
+
+            let worker = this.$worker.create(actions);
+
+            worker.postMessage('func2', [url])
+              .then(console.log) // logs 'Worker 1: Working on func1'
+              .catch(console.error) // logs any possible error
+
+            // callWebWorker(url);
             /*
-            worker.run((args) => {
-              return isURL(args[0]);
-            }, [input]).then( result => {
-              alert(result);
-              }).catch(e => {
-                console.log('error');
-                console.log(e);
-            })
-            /*
-            const result = converterAccess(input);
-            if(result === 'Please enter an URL'){
-              alert(result);
-              document.getElementById('openingHoursURL').value = '';
-            } else {
-              console.log(result);
-            }
-*/
+                        const worker = new Worker('../../../static/converter');
+                        worker.onmessage = (string) => {
+                          console.log(string);
+                        };
+                        worker.postMessage('test');
+
+                        /*
+                        worker.run((args) => {
+                          return isURL(args[0]);
+                        }, [input]).then( result => {
+                          alert(result);
+                          }).catch(e => {
+                            console.log('error');
+                            console.log(e);
+                        })
+                        /*
+                        const result = converterAccess(input);
+                        if(result === 'Please enter an URL'){
+                          alert(result);
+                          document.getElementById('openingHoursURL').value = '';
+                        } else {
+                          console.log(result);
+                        }
+            */
             /*
             this.$worker.run((args) => {
               return isURL(args[0]);
