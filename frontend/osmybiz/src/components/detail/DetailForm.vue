@@ -219,8 +219,12 @@
 
             worker.postMessage('func2', [url])
               .then(console.log) // logs 'Worker 1: Working on func1'
-              .catch(console.error) // logs any possible error
+              .catch(console.error); // logs any possible error
 
+            let w = new Worker('../../../static/converter');
+            w.onmessage = function (event) {
+              console.log(event);
+            }
             // callWebWorker(url);
             /*
                         const worker = new Worker('../../../static/converter');
