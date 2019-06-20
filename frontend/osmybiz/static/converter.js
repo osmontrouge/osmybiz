@@ -955,9 +955,10 @@ async function getSourceAsDom(url) {
 function testWorker() {
   postMessage('test');
 }
-self.addEventListener('message', event => {
+onmessage = function (event) {
   isURL(event.data);
-});
+  postMessage('message',event.origin,['console.log']);
+}
 
 /*
 export default function converterAccess(url) {

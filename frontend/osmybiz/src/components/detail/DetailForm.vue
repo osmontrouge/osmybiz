@@ -174,8 +174,8 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import isURL from '../../../static/converter';
-
-  import Worker from '../../../static/converter'
+  //var Worker = require("worker-loader?name=hash.worker.js!./worker");
+  // import Worker from '../../../static/converter'
   // import WebWorker from './converter.js';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
@@ -211,7 +211,8 @@
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
           if (typeof (window.Worker) !== 'undefined') {
-            debugger;
+            ;
+            let w = require('worker!../../../static/converter.js');// new Worker('../../../static/converter');
             // testingIsURL('test 02');
 /*
             const actions = [
@@ -224,15 +225,15 @@
               .then(console.log) // logs 'Worker 1: Working on func1'
               .catch(console.error); // logs any possible error
 */
-            let w = new Worker();
+            //let w = new Worker();
 
             debugger;
-            console.log(w);
-            w.postMessage('message',[url]);
-            w.addEventListener('event', event => {
+            w.onmessage = function(event) {
               console.log(event.data);
               debugger;
-            });
+            }
+            console.log(w);
+            w.postMessage(url);
             // callWebWorker(url);
             /*
                         const worker = new Worker('../../../static/converter');

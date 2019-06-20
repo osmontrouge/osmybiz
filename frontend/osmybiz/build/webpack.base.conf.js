@@ -10,8 +10,6 @@ function resolve(dir) {
 module.exports = {
   entry: {
     app: './src/main.js',
-    // worker: './src/converter.js'
-    // worker: './src/components/detail/OpeningHoursConverter.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -46,6 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        exclude: /converter\.js$/,
         include: [resolve('src'), resolve('test')]
       },
       {
