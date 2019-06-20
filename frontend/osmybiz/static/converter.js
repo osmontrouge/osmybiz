@@ -925,37 +925,40 @@ async function getSourceAsDom(url) {
   */
 /* eslint-disable no-unused-vars */
 
-const test = () =>{
-  console.log("test");
-};
-
-export default function isURL(url){
+/* export default */function isURL(url){
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
     '\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]' +
     '{0,62})?[a-z0-9\u00a1-\uffff]\\.)+(?:[a-z\u00a1-\uffff]{2,}\\.?))', 'gm');
-  const input = url + '';
+  if(url !== '') {
+    const input = url + '';
+    let result = 'Please enter an URL';
+    console.log(result);
+    //postMessage(result + ' ' + url);
 
-  let result = 'Please enter an URL';
-  return result + ' ' + url;
-  /*
-  if (input.match(UrlRegex)) {
-    const promiseResult = getSourceAsDom(input);
-    console.log('dom');
-    result = handelShemaOrg(promiseResult);
-  } else if (input.match(/[0-9]/g)) {
-    console.log('time');
-    result = convert(input);
+    /*
+    if (input.match(UrlRegex)) {
+      const promiseResult = getSourceAsDom(input);
+      console.log('dom');
+      result = handelShemaOrg(promiseResult);
+    } else if (input.match(/[0-9]/g)) {
+      console.log('time');
+      result = convert(input);
+    }
+    return result;
+    // return result; /* document.getElementById("outputArea").value = result; */
+  } else {
+    console.log('empty url');
   }
-  return result;
-  // return result; /* document.getElementById("outputArea").value = result; */
 }
 function testWorker() {
   postMessage('test');
 }
+self.addEventListener('message', event => {
+  isURL(event.data);
+});
 
-testWorker();
 /*
 export default function converterAccess(url) {
 let inputs = [url+''];

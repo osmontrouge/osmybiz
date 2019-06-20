@@ -174,6 +174,8 @@
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
   import isURL from '../../../static/converter';
+
+  import Worker from '../../../static/converter'
   // import WebWorker from './converter.js';
   // import $ from 'jquery';
   /* estlint-disable-no-absolute-path */
@@ -208,9 +210,10 @@
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
-          if (typeof (Worker) !== 'undefined') {
+          if (typeof (window.Worker) !== 'undefined') {
+            debugger;
             // testingIsURL('test 02');
-
+/*
             const actions = [
               { message: 'func2', func:isURL},
             ]
@@ -220,11 +223,16 @@
             worker.postMessage('func2', [url])
               .then(console.log) // logs 'Worker 1: Working on func1'
               .catch(console.error); // logs any possible error
+*/
+            let w = new Worker();
 
-            let w = new Worker('../../../static/converter');
-            w.onmessage = function (event) {
-              console.log(event);
-            }
+            debugger;
+            console.log(w);
+            w.postMessage('message',[url]);
+            w.addEventListener('event', event => {
+              console.log(event.data);
+              debugger;
+            });
             // callWebWorker(url);
             /*
                         const worker = new Worker('../../../static/converter');
