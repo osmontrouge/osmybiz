@@ -211,8 +211,8 @@
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
           if (typeof (window.Worker) !== 'undefined') {
-            ;
-            let w = require('worker!../../../static/converter.js');// new Worker('../../../static/converter');
+
+            let w = new Worker('worker!./../../../static/worker.js');// new Worker('../../../static/converter');
             // testingIsURL('test 02');
 /*
             const actions = [

@@ -72,7 +72,7 @@ module.exports = {
         }
       },
       {
-        test: /\.converter\.js$/,
+        test: /\.worker\.js$/,
         use: {loader: 'worker-loader'}
       }
     ]
