@@ -173,13 +173,6 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-  import isURL from '../../../static/converter';
-  //var Worker = require("worker-loader?name=hash.worker.js!./worker");
-  // import Worker from '../../../static/converter'
-  // import WebWorker from './converter.js';
-  // import $ from 'jquery';
-  /* estlint-disable-no-absolute-path */
-  // import ConvertWorker from '../../OpeningHoursConverter';
 
   Vue.use(VeeValidate);
 
@@ -212,80 +205,18 @@
           && url !== '') {
           if (typeof (window.Worker) !== 'undefined') {
 
-            let w = new Worker('worker!./../../../static/worker.js');// new Worker('../../../static/converter');
-            // testingIsURL('test 02');
-/*
-            const actions = [
-              { message: 'func2', func:isURL},
-            ]
-
-            let worker = this.$worker.create(actions);
-
-            worker.postMessage('func2', [url])
-              .then(console.log) // logs 'Worker 1: Working on func1'
-              .catch(console.error); // logs any possible error
-*/
-            //let w = new Worker();
-
+            let w = new Worker('worker!./../../../static/converter.js');// new Worker('../../../static/converter');
             debugger;
             w.onmessage = function(event) {
-              console.log(event.data);
-              debugger;
-            }
-            console.log(w);
-            w.postMessage(url);
-            // callWebWorker(url);
-            /*
-                        const worker = new Worker('../../../static/converter');
-                        worker.onmessage = (string) => {
-                          console.log(string);
-                        };
-                        worker.postMessage('test');
-
-                        /*
-                        worker.run((args) => {
-                          return isURL(args[0]);
-                        }, [input]).then( result => {
-                          alert(result);
-                          }).catch(e => {
-                            console.log('error');
-                            console.log(e);
-                        })
-                        /*
-                        const result = converterAccess(input);
-                        if(result === 'Please enter an URL'){
-                          alert(result);
-                          document.getElementById('openingHoursURL').value = '';
-                        } else {
-                          console.log(result);
-                        }
-            */
-            /*
-            this.$worker.run((args) => {
-              return isURL(args[0]);
-            }, [input, 'testing'])
-            .then(result => {
-              if(result === 'Please enter an URL'){
-                alert(result);
-                document.getElementById('openingHoursURL').value = '';
+              if(event.data === 'Please enter a valid URL') {
+                alert(event.data);
               } else {
-                console.log(result);
+                console.log(event.data);
               }
-            })
-              .catch(e => {
-                console.error(e)
-              });
-*/
-            /* eslint-disable no-unused-vars */
-            /*
-            const w = new WebWorker();
-            debugger;
-            w.onmessage = (event) => {
-              console.log(event.data[2]);
-            };
-            */
+            }
+            w.postMessage(url);
           } else {
-            alert('Browser does not support webworker, pls enter times manualy');
+            alert('Browser does not support webworker, pls enter times manually');
           }
         }
       },

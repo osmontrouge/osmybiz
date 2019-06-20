@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   api:
-    image: geometalab/osmybiz-backend:${IMAGE_POSTFIX}
+    image: geometalab/osmybiz-backend:query{IMAGE_POSTFIX}
     build:
       context: ../backend/
       dockerfile: Dockerfile
@@ -10,20 +10,20 @@ services:
       context: ../frontend/
       dockerfile: Dockerfile
     environment:
-      API_URL: ${API_URL}
-      OSM_URL: ${OSM_URL}
-      OSM_OAUTH_KEY: ${OSM_OAUTH_KEY}
-      OSM_OAUTH_SECRET: ${OSM_OAUTH_SECRET}
+      API_URL: query{API_URL}
+      OSM_URL: query{OSM_URL}
+      OSM_OAUTH_KEY: query{OSM_OAUTH_KEY}
+      OSM_OAUTH_SECRET: query{OSM_OAUTH_SECRET}
     volumes:
       - ./frontend_prod/frontend_build:/opt/frontend/dist
   frontend-build:
-    image: geometalab/osmybiz-frontend:${IMAGE_POSTFIX}
+    image: geometalab/osmybiz-frontend:query{IMAGE_POSTFIX}
     build:
       context: ./frontend_prod/
       dockerfile: Dockerfile.nginx
     command: echo true
   nginx:
-    image: geometalab/osmybiz-nginx:${IMAGE_POSTFIX}
+    image: geometalab/osmybiz-nginx:query{IMAGE_POSTFIX}
     build:
       context: ../nginx/
       dockerfile: Dockerfile

@@ -1,6 +1,6 @@
-import $ from 'jquery';
-import moment from 'moment';
-import $worker from 'vue-worker';
+//import query from 'jquery';
+//import moment from 'moment';
+//import $worker from 'vue-worker';
 
 function combineSameMonths(input) {
   let output = input;
@@ -854,34 +854,34 @@ function handelShemaOrg(string) {
   // this handels opning hours when written in markdown
   const el = document.createElement('html');
   el.innerHTML = string;
-  const microOH = $(el).find('[itemprop="openingHours"]');
+  const microOH = query(el).find('[itemprop="openingHours"]');
   let microOHResponse = `${$(microOH).attr('content')}`;
   console.log('1');
   microOHResponse = convert(microOHResponse);
   if (microOHResponse === 'No valid input') {
     microOHResponse = '';
   }
-  const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
+  const micro = `${query(el).find("[itemprop='openingHoursSpecification']").text()}`;
   let microResponse = convert(micro);
   if (microResponse === 'No valid input') {
     microResponse = '';
   }
   microResponse = (`${microOHResponse} ${microResponse}`).trim();
   // this handels opening hours noted in RDFa
-  let rdfaOH = `${$(el).find("[property='openingHours']").attr('content')}`;
+  let rdfaOH = `${query(el).find("[property='openingHours']").attr('content')}`;
   console.log('2');
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
     rdfaOH = '';
   }
-  let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
+  let rdfa = `${query(el).find("[property='openingHoursSpecification']").text()}`;
   rdfa = convert(rdfa);
   if (rdfa === 'No valid input') {
     rdfa = '';
   }
   const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
   // this handels opening hours specified in the script application/ld+json
-  const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
+  const scripts = `${query(el).find("[type='application/ld+json']").html()}`;
   let scriptResponse = scriptHandeling(scripts);
 
   if (scriptResponse === 'No valid input') {
@@ -931,33 +931,29 @@ async function getSourceAsDom(url) {
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
     '\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]' +
     '{0,62})?[a-z0-9\u00a1-\uffff]\\.)+(?:[a-z\u00a1-\uffff]{2,}\\.?))', 'gm');
+  let output = '';
   if(url !== '') {
     const input = url + '';
-    let result = 'Please enter an URL';
-    console.log(result);
-    //postMessage(result + ' ' + url);
+    output = 'Please enter a valid URL';
+    console.log(input);
 
-    /*
     if (input.match(UrlRegex)) {
       const promiseResult = getSourceAsDom(input);
       console.log('dom');
-      result = handelShemaOrg(promiseResult);
+      output = handelShemaOrg(promiseResult);
     } else if (input.match(/[0-9]/g)) {
       console.log('time');
-      result = convert(input);
+      output = convert(input);
     }
-    return result;
     // return result; /* document.getElementById("outputArea").value = result; */
   } else {
-    console.log('empty url');
+    output = 'empty url';
   }
+  postMessage(output);
 }
-function testWorker() {
-  postMessage('test');
-}
-onmessage = function (event) {
+
+onmessage = (event) => {
   isURL(event.data);
-  postMessage('message',event.origin,['console.log']);
 }
 
 /*
