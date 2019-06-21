@@ -206,12 +206,14 @@
           if (typeof (window.Worker) !== 'undefined') {
 
             let w = new Worker('worker!./../../../static/converter.js');// new Worker('../../../static/converter');
-            debugger;
+
             w.onmessage = function(event) {
               if(event.data === 'Please enter a valid URL') {
                 alert(event.data);
               } else {
-                console.log(event.data);
+                const result = event.data + '';
+                console.log(result);
+                document.getElementById('openingHoursTime').value = result;
               }
             }
             w.postMessage(url);
