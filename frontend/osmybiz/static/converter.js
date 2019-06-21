@@ -1,4 +1,4 @@
-//import query from 'jquery';
+import $ from 'jquery';
 //import moment from 'moment';
 //import $worker from 'vue-worker';
 
@@ -836,51 +836,53 @@ function scriptHandeling(input) {
   outputString = outputString.replace(/""/g, ' ');
   outputString = outputString.replace(/closes/g, '-');
   outputString = outputString.replace(/"|opens/g, '');
-  result = `${result}${outputString}`;
-  result = result.replace(/\s+/g, ' ');
-  result = result.replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => `${_2} - ${_3}`);
-  result = result.replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => `${_2} - ${_3}`);
+  result = outputString;
+  result = result.toString().replace(/\s+/g, ' ');
+  result = result.toString().replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => {return `${_2} - ${_3}`});
+  result = result.toString().replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => {return`${_2} - ${_3}`});
+  console.log(result);
   result = convert(result);
+  console.log(result);
   return result;
 }
 
 function handelShemaOrg(string) {
+  string = string +'';
   // this handels opning hours when written in markdown
   const el = document.createElement('html');
   el.innerHTML = string;
-  const microOH = query(el).find('[itemprop="openingHours"]');
+  const microOH = $(el).find('[itemprop="openingHours"]');
   let microOHResponse = `${$(microOH).attr('content')}`;
-  console.log('1');
   microOHResponse = convert(microOHResponse);
   if (microOHResponse === 'No valid input') {
     microOHResponse = '';
   }
-  const micro = `${query(el).find("[itemprop='openingHoursSpecification']").text()}`;
+  const micro = `${$(el).find("[itemprop='openingHoursSpecification']").text()}`;
   let microResponse = convert(micro);
   if (microResponse === 'No valid input') {
     microResponse = '';
   }
   microResponse = (`${microOHResponse} ${microResponse}`).trim();
   // this handels opening hours noted in RDFa
-  let rdfaOH = `${query(el).find("[property='openingHours']").attr('content')}`;
+  let rdfaOH = `${$(el).find("[property='openingHours']").attr('content')}`;
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
     rdfaOH = '';
   }
-  let rdfa = `${query(el).find("[property='openingHoursSpecification']").text()}`;
+  let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
   rdfa = convert(rdfa);
   if (rdfa === 'No valid input') {
     rdfa = '';
   }
   const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
   // this handels opening hours specified in the script application/ld+json
-  const scripts = `${query(el).find("[type='application/ld+json']").html()}`;
+  const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
   let scriptResponse = scriptHandeling(scripts);
-
   if (scriptResponse === 'No valid input') {
     scriptResponse = '';
   }
   let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
+  console.log('final '+result);
   if (result === '') {
     result = 'No valid input';
   }
@@ -918,7 +920,7 @@ async function getSourceAsDom(url) {
   */
 /* eslint-disable no-unused-vars */
 
-/* export default */function isURL(url){
+ export default async function isURL(url){
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
@@ -928,12 +930,10 @@ async function getSourceAsDom(url) {
   if(url !== '') {
     const input = url + '';
     output = 'Please enter a valid URL';
-    console.log(input);
 
     if (input.match(UrlRegex)) {
       const promiseResult = getSourceAsDom(input);
-      console.log('dom');
-      output = handelShemaOrg(promiseResult);
+      output = handelShemaOrg(await promiseResult);
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
     }
@@ -941,7 +941,8 @@ async function getSourceAsDom(url) {
   } else {
     output = 'empty url';
   }
-  postMessage(output);
+  // postMessage(output);
+  return output;
 }
 
 onmessage = (event) => {

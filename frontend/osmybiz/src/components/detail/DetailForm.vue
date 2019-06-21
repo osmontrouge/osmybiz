@@ -173,7 +173,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Vue from 'vue';
   import VeeValidate from 'vee-validate';
-
+  import isURL from '../../../static/converter';
   Vue.use(VeeValidate);
 
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
@@ -204,7 +204,8 @@
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
           if (typeof (window.Worker) !== 'undefined') {
-
+            console.log(isURL(url));
+/*
             let w = new Worker('worker!./../../../static/converter.js');// new Worker('../../../static/converter');
 
             w.onmessage = function(event) {
@@ -216,7 +217,7 @@
                 document.getElementById('openingHoursTime').value = result;
               }
             }
-            w.postMessage(url);
+            w.postMessage(url);*/
           } else {
             alert('Browser does not support webworker, pls enter times manually');
           }
