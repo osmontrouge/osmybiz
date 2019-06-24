@@ -748,19 +748,15 @@ function handelPM(input) {
 function convert(input) {
   if (input !== undefined) {
     let output = input;
-    // let output = document.getElementById("inputArea").value;
     output = removeUnNeededSpace(output);
-    // if(document.getElementById("en").checked){
     output = handelPM(output);
     output = shortenDaysEng(output);
     output = englishWords(output);
     output = replaceEnglishMonths(output);
     output = replaceEnglishMonths(output);
-    // } else if (document.getElementById("de").checked){
     output = shortenDaysGer(output);
     output = germanWords(output);
     output = replaceGermanMonths(output);
-    // }
     output = output.replace(/['!©«»&@]/g, '');
     output = removeYearFromMonth(output);
     output = addDoublePoint(output);
@@ -916,8 +912,6 @@ async function getSourceAsDom(url) {
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
   */
-/* eslint-disable no-unused-vars */
-
  export default async function isURL(url){
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
@@ -935,14 +929,14 @@ async function getSourceAsDom(url) {
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
     }
-    // return result; /* document.getElementById("outputArea").value = result; */
   } else {
     output = 'empty url';
   }
   //postMessage(output);
   return output;
 }
-
+/*
 onmessage = (event) => {
   isURL(event.data);
 }
+*/
