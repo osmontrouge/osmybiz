@@ -197,17 +197,16 @@
         'showPopup',
         'hidePopup',
       ]),
-      blurOpeningHours() {
+      async blurOpeningHours() {
         const url = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
         // const result = isURL(input);/* https://www.casaferlin.ch/en */
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
           if (typeof (window.Worker) !== 'undefined') {
-            console.log(isURL(url));
+            document.getElementById('openingHoursTime').value = await isURL(url);
 /*
             let w = new Worker('worker!./../../../static/converter.js');// new Worker('../../../static/converter');
-
             w.onmessage = function(event) {
               if(event.data === 'Please enter a valid URL') {
                 alert(event.data);

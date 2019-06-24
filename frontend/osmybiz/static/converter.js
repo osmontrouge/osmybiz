@@ -818,17 +818,18 @@ function convert(input) {
 }
 
 function scriptHandeling(input) {
-  let result = '';
+  input = input.toString().replace(/"/g,'\'');
+  let result;
   let outputString = ' ';
-  outputString = `${outputString}${input}`;
+  outputString = outputString+input;
   const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
-  outputString = outputString.replace(cutOutScript, (_1, _2, _3) => _3);
+  outputString = outputString.replace(cutOutScript, (_1, _2, _3) => {return _3});
   const cutGroupOpeningHours = /"openingHours":\[(.*)\]/g;
-  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => _2.replace(/"/g, ''));
+  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => {return _2.replace(/"/g, '');});
   const cutNotGroupedOpeningHours = /"openingHours":\s"(.+?)",/g;
-  outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => _2);
+  outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => {return _2});
   const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
-  outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => _2);
+  outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => {return _2});
   const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|\]|})/g;
   outputString = outputString.replace(cutJSONParts, '');
   const removeSeperators = /(','|':')/g;
@@ -840,9 +841,7 @@ function scriptHandeling(input) {
   result = result.toString().replace(/\s+/g, ' ');
   result = result.toString().replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => {return `${_2} - ${_3}`});
   result = result.toString().replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => {return`${_2} - ${_3}`});
-  console.log(result);
   result = convert(result);
-  console.log(result);
   return result;
 }
 
@@ -882,7 +881,6 @@ function handelShemaOrg(string) {
     scriptResponse = '';
   }
   let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
-  console.log('final '+result);
   if (result === '') {
     result = 'No valid input';
   }
@@ -941,35 +939,10 @@ async function getSourceAsDom(url) {
   } else {
     output = 'empty url';
   }
-  // postMessage(output);
+  //postMessage(output);
   return output;
 }
 
 onmessage = (event) => {
   isURL(event.data);
 }
-
-/*
-export default function converterAccess(url) {
-let inputs = [url+''];
-inputs.runCallback(isURL(),[inputs[0]])
-  .then(result => {
-    console.log(result);
-    return result;
-  }).catch(e => {
-    console.log(e.messageData);
-    return e
-});
-let worker = new Worker(null);
-worker.call(isURL(), [url])
-  .then(result => {
-    console.log(result);
-    return result;
-  })
-  .catch(e =>{
-    console.log(e);
-    return e;
-  })
-
-}
-*/
