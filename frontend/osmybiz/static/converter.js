@@ -3,8 +3,8 @@ import $ from 'jquery';
 //import $worker from 'vue-worker';
 
 function combineSameMonths(input) {
-  let output = input + '';
   const multipleMonths = /(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off)[:,;]\s)(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off))/g;
+  let output = input + '';
   output = output.replace(multipleMonths, (_1, _2, _3, _4, _5, _6, _7, _8, _9) => {
     let result = '';
     if (_4 === _8 && _5 === _9) {
