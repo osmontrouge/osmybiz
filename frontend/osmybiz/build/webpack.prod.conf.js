@@ -110,7 +110,7 @@ if (config.build.productionGzip) {
       test: new RegExp(
         '\\.(' +
         config.build.productionGzipExtensions.join('|') +
-        ')query'
+        ')$'
       ),
       threshold: 10240,
       minRatio: 0.8
