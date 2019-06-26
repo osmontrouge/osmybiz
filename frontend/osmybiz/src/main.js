@@ -23,8 +23,8 @@ import { FALLBACKLOCALE } from './store/locale';
 Vue.use(VueCookies);
 Vue.use(VueI18n);
 // Vue.use(VueWorker);
-//Object.defineProperty(Vue.prototype, '$worker', {value:VueWorker,configurable: true});
-//Vue.prototype.$worker = vueWorker;
+// Object.defineProperty(Vue.prototype, '$worker', {value:VueWorker,configurable: true});
+// Vue.prototype.$worker = vueWorker;
 
 const messages = ({
   de,

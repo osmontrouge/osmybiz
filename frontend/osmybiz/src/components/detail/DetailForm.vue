@@ -171,9 +171,13 @@
 
 <script>
   import { mapGetters, mapMutations } from 'vuex';
+
   import Vue from 'vue';
+
   import VeeValidate from 'vee-validate';
-  import isURL from '../../../static/converter';
+
+  // import isURL from '../../../static/converter';
+
   Vue.use(VeeValidate);
 
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
@@ -197,26 +201,27 @@
         'showPopup',
         'hidePopup',
       ]),
-      async blurOpeningHours() {
+      blurOpeningHours() {
         const url = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
-        // const result = isURL(input);/* https://www.casaferlin.ch/en */
+        // const result = isURL(input); https://www.casaferlin.ch/en
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
           if (typeof (window.Worker) !== 'undefined') {
-            document.getElementById('openingHoursTime').value = await isURL(url);
-/*
-            let w = new Worker('worker!./../../../static/converter.js');// new Worker('../../../static/converter');
-            w.onmessage = function(event) {
-              if(event.data === 'Please enter a valid URL') {
+            // document.getElementById('openingHoursTime').value = isURL(url);
+
+            const w = new Worker('worker!./../../../static/converter.js');
+            // new Worker('../../../static/converter');
+            w.onmessage = function (event) {
+              if (event.data === 'Please enter a valid URL') {
                 alert(event.data);
               } else {
-                const result = event.data + '';
+                const result = `${event.data}`;
                 console.log(result);
                 document.getElementById('openingHoursTime').value = result;
               }
-            }
-            w.postMessage(url);*/
+            };
+            w.postMessage(url);
           } else {
             alert('Browser does not support webworker, pls enter times manually');
           }

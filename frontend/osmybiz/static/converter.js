@@ -881,9 +881,10 @@ function handelShemaOrg(string) {
   return result.trim();
 }
 
-async function getSourceAsDom(url) {
-  const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-  return response.text();
+function getSourceAsDom(url) {
+  return fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  // const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  // return response.text();
 }
 
 /*
@@ -910,7 +911,7 @@ async function getSourceAsDom(url) {
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
   */
- export default async function isURL(url){
+ export default /* async */ function isURL(url){
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
@@ -919,22 +920,21 @@ async function getSourceAsDom(url) {
   let output = '';
   if(url !== '') {
     const input = url + '';
-    output = 'Please enter a valid URL';
-
     if (input.match(UrlRegex)) {
-      const promiseResult = getSourceAsDom(input);
-      output = handelShemaOrg(await promiseResult);
+      /* const promiseResult = */getSourceAsDom(input).then(responseDom => {
+        output = handelShemaOrg(responseDom);
+        postMessage(output);
+      });
+      // output = handelShemaOrg(promiseResult);
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
+      postMessage(output);
     }
   } else {
-    output = 'empty url';
+    postMessage('empty url');
   }
-  //postMessage(output);
-  return output;
 }
-/*
+
 onmessage = (event) => {
   isURL(event.data);
 }
-*/
