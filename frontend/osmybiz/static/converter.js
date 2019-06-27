@@ -839,7 +839,7 @@ function scriptHandeling(input) {
   return result;
 }
 
-export function handelShemaOrg(string) {
+function handelShemaOrg(string) {
   string = string + '';
   // this handels opning hours when written in markdown
 
