@@ -745,72 +745,72 @@ function handelPM(input) {
 
 function convert(input) {
   if (input !== undefined) {
-    let output = input;
-    output = removeUnNeededSpace(output);
-    output = handelPM(output);
-    output = shortenDaysEng(output);
-    output = englishWords(output);
-    output = replaceEnglishMonths(output);
-    output = replaceEnglishMonths(output);
-    output = shortenDaysGer(output);
-    output = germanWords(output);
-    output = replaceGermanMonths(output);
-    output = output.replace(/['!©«»&@]/g, '');
-    output = removeYearFromMonth(output);
-    output = addDoublePoint(output);
-    output = removeUnwantedText(output);
-    output = handleNumeralDates(output);
-    output = replaceSymbols(output);
-    output = addMissingZeros(output);
-    output = detectNextTime(output);
-    output = detectNewDay(output);
-    output = handleUnspecificClosingTime(output);
-    output = removeUnNeededSpace(output);
-    output = addComma(output);
-    output = orderDaysAndTime(output);
-    output = handelSorting(output);
-    output = pullDaysTogether(output);
-    output = handelMonthDays(output);
-    output = bindDaysTogether(output);
-    output = removeUnNeededSpace(output);
-    output = detectNewDay(output);
-    output = handelSecondSorting(output);
-    output = cleanUp(output);
-    output = removeAdditionalZeroesFromMonths(output);
-    if (output.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
+    let hoursToConvert = input;
+    hoursToConvert = removeUnNeededSpace(hoursToConvert);
+    hoursToConvert = handelPM(hoursToConvert);
+    hoursToConvert = shortenDaysEng(hoursToConvert);
+    hoursToConvert = englishWords(hoursToConvert);
+    hoursToConvert = replaceEnglishMonths(hoursToConvert);
+    hoursToConvert = replaceEnglishMonths(hoursToConvert);
+    hoursToConvert = shortenDaysGer(hoursToConvert);
+    hoursToConvert = germanWords(hoursToConvert);
+    hoursToConvert = replaceGermanMonths(hoursToConvert);
+    hoursToConvert = hoursToConvert.replace(/['!©«»&@]/g, '');
+    hoursToConvert = removeYearFromMonth(hoursToConvert);
+    hoursToConvert = addDoublePoint(hoursToConvert);
+    hoursToConvert = removeUnwantedText(hoursToConvert);
+    hoursToConvert = handleNumeralDates(hoursToConvert);
+    hoursToConvert = replaceSymbols(hoursToConvert);
+    hoursToConvert = addMissingZeros(hoursToConvert);
+    hoursToConvert = detectNextTime(hoursToConvert);
+    hoursToConvert = detectNewDay(hoursToConvert);
+    hoursToConvert = handleUnspecificClosingTime(hoursToConvert);
+    hoursToConvert = removeUnNeededSpace(hoursToConvert);
+    hoursToConvert = addComma(hoursToConvert);
+    hoursToConvert = orderDaysAndTime(hoursToConvert);
+    hoursToConvert = handelSorting(hoursToConvert);
+    hoursToConvert = pullDaysTogether(hoursToConvert);
+    hoursToConvert = handelMonthDays(hoursToConvert);
+    hoursToConvert = bindDaysTogether(hoursToConvert);
+    hoursToConvert = removeUnNeededSpace(hoursToConvert);
+    hoursToConvert = detectNewDay(hoursToConvert);
+    hoursToConvert = handelSecondSorting(hoursToConvert);
+    hoursToConvert = cleanUp(hoursToConvert);
+    hoursToConvert = removeAdditionalZeroesFromMonths(hoursToConvert);
+    if (hoursToConvert.toString().match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g)) {
       const multipleSpecificDates = /(Jan:|Feb:|Mar:|Apr:|May:|Jun:|Jul:|Aug:|Sep:|Oct:|Nov:|Dec:)(\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]):)+\s([0-2][0-9])/g;
-      output = output.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
-      output = sortMonths(output);
-      output = correctMonthDays(output);
-      output = switchDayAndMonthPosition(output);
-      output = removeWrongDoublepoints(output);
-      output = addMissingZeroesDays(output);
-      output = monthRagneEndCorrection(output);
-      output = monthsAddSpace(output);
-      output = combineSameMonths(output);
-      output = output.replace(multipleSpecificDates, (_1) => {
+      hoursToConvert = hoursToConvert.replace(/([0-9]{2}:[0-9]{2}\+)(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/g, (_1, _2, _3) => `${_2}; ${_3}`);
+      hoursToConvert = sortMonths(hoursToConvert);
+      hoursToConvert = correctMonthDays(hoursToConvert);
+      hoursToConvert = switchDayAndMonthPosition(hoursToConvert);
+      hoursToConvert = removeWrongDoublepoints(hoursToConvert);
+      hoursToConvert = addMissingZeroesDays(hoursToConvert);
+      hoursToConvert = monthRagneEndCorrection(hoursToConvert);
+      hoursToConvert = monthsAddSpace(hoursToConvert);
+      hoursToConvert = combineSameMonths(hoursToConvert);
+      hoursToConvert = hoursToConvert.replace(multipleSpecificDates, (_1) => {
         multipleSpecificDatesFunction(_1);
       });
-      output = output.replace(/:;/g, ':');
-      output = separateMonthsAndDays(output);
-      output = detectNewDay(output);
-      output = pullMonthsTogether(output);
-      output = correctSyntaxBetweenMonthAndDay(output);
+      hoursToConvert = hoursToConvert.replace(/:;/g, ':');
+      hoursToConvert = separateMonthsAndDays(hoursToConvert);
+      hoursToConvert = detectNewDay(hoursToConvert);
+      hoursToConvert = pullMonthsTogether(hoursToConvert);
+      hoursToConvert = correctSyntaxBetweenMonthAndDay(hoursToConvert);
     }
-    output = `${output};`;
-    output = output.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {
+    hoursToConvert = `${hoursToConvert};`;
+    hoursToConvert = hoursToConvert.replace(/[0-2][0-9]:[0-5].+?[0-9+];/g, (_1) => {
       return cutOverlappingTime(_1);
     });
-    output = handleAdditiveTime(output);
-    output = cleanUp(output);
-    output = addMonthsToEveryDays(output);
-    output = replaceComma(output);
-    output = checkResult(output);
-    return output;
+    hoursToConvert = handleAdditiveTime(hoursToConvert);
+    hoursToConvert = cleanUp(hoursToConvert);
+    hoursToConvert = addMonthsToEveryDays(hoursToConvert);
+    hoursToConvert = replaceComma(hoursToConvert);
+    hoursToConvert = checkResult(hoursToConvert);
+    return hoursToConvert;
   }
   return '';
 }
-
+//this reads the needed data out of the dom
 function scriptHandeling(input) {
   input = input.toString().replace(/"/g,'\'');
   let result;
@@ -839,9 +839,10 @@ function scriptHandeling(input) {
   return result;
 }
 
-function handelShemaOrg(string) {
-  string = string +'';
+export default function handelShemaOrg(string) {
+  string = string + '';
   // this handels opning hours when written in markdown
+
   const el = document.createElement('html');
   el.innerHTML = string;
   const microOH = $(el).find('[itemprop="openingHours"]');
@@ -879,12 +880,11 @@ function handelShemaOrg(string) {
     result = 'No valid input';
   }
   return result.trim();
+  return `${string} test`;
 }
 
 function getSourceAsDom(url) {
   return fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-  // const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
-  // return response.text();
 }
 
 /*
@@ -911,7 +911,7 @@ function getSourceAsDom(url) {
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
   */
- export default /* async */ function isURL(url){
+ /* export default async */ function isURL(url){
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
@@ -921,7 +921,7 @@ function getSourceAsDom(url) {
   if(url !== '') {
     const input = url + '';
     if (input.match(UrlRegex)) {
-      /* const promiseResult = */getSourceAsDom(input).then(responseDom => {
+      /* const promiseResult = */Promise.resolve(getSourceAsDom(input)).then(responseDom => {
         output = handelShemaOrg(responseDom);
         postMessage(output);
       });
@@ -936,5 +936,6 @@ function getSourceAsDom(url) {
 }
 
 onmessage = (event) => {
+   console.log(event);
   isURL(event.data);
-}
+};

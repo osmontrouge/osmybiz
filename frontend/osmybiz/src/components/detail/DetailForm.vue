@@ -176,7 +176,7 @@
 
   import VeeValidate from 'vee-validate';
 
-  // import isURL from '../../../static/converter';
+  import handelShemaOrg from '../../../static/converter';
 
   Vue.use(VeeValidate);
 
@@ -205,13 +205,18 @@
         const url = document.getElementById('openingHoursURL').value;
         // getting the value works, now make the handling async.
         // const result = isURL(input); https://www.casaferlin.ch/en
-        if (document.getElementById('openingHoursTime').value === ''
-          && url !== '') {
-          if (typeof (window.Worker) !== 'undefined') {
-            // document.getElementById('openingHoursTime').value = isURL(url);
+        // if (document.getElementById('openingHoursTime').value === ''
+        // && url !== '') {
+        // if (typeof (window.Worker) !== 'undefined') {
+        // document.getElementById('openingHoursTime').value = isURL(url);
 
+        fetch(`https://cors-anywhere.herokuapp.com/${url}`).then((fetchedHTML) => {
+          console.log(fetchedHTML.valueOf());
+          const output = handelShemaOrg(fetchedHTML);
+          console.log(output);
+        });
+        /*
             const w = new Worker('worker!./../../../static/converter.js');
-            // new Worker('../../../static/converter');
             w.onmessage = function (event) {
               if (event.data === 'Please enter a valid URL') {
                 alert(event.data);
@@ -222,10 +227,13 @@
               }
             };
             w.postMessage(url);
-          } else {
-            alert('Browser does not support webworker, pls enter times manually');
-          }
+            */
+        /*
+        } else {
+        console.log('Browser does not support webworker, pls enter times manually');
         }
+        */
+        // }
       },
     },
   };
