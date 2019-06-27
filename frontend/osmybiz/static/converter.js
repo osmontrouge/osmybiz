@@ -839,7 +839,7 @@ function scriptHandeling(input) {
   return result;
 }
 
-export default function handelShemaOrg(string) {
+export function handelShemaOrg(string) {
   string = string + '';
   // this handels opning hours when written in markdown
 
@@ -880,7 +880,7 @@ export default function handelShemaOrg(string) {
     result = 'No valid input';
   }
   return result.trim();
-  return `${string} test`;
+  // return `${string} test`;
 }
 
 function getSourceAsDom(url) {
