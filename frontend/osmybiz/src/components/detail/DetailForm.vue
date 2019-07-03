@@ -176,7 +176,7 @@
 
   import VeeValidate from 'vee-validate';
 
-  // import isURL from '../../../static/converter';
+  import isURL from '../../../static/converter';
 
   Vue.use(VeeValidate);
 
@@ -215,7 +215,35 @@
               console.log(output);
             });
             */
+            /* const conversion = new Promise((resolve, reject) =>
+              isURL(url, $).then((response) => {
+                if (response.ok) {
+                  console.log(response);
+                  resolve(response);
+                } else {
+                  reject(new Error('error'));
+                }
+              }, (error) => {
+                reject(new Error(error.message));
+              }));
+            console.log(conversion); */
+            /* const convertPromise = new Promise((resolve) => {
+              const result = */ isURL(url); /* if (result !== '') {
+                resolve(result);
+              }
+            });
+            convertPromise.then((result) => {
+              if (result === 'No valid input') {
+                console.log(`False Result: ${result}`);
+              } else {
+                console.log(`True Result: ${result}`);
+              }
+            });
+            /*
+            const result = isURL(url, $);
+            console.log(result);
 
+          /*
             const w = new Worker('worker!./../../../static/converter.js');
             // new Worker('../../../static/converter');
             w.onmessage = function a(event) {
@@ -228,6 +256,7 @@
               }
             };
             w.postMessage(url);
+            */
           } else {
             console.log('Browser does not support webworker, pls enter times manually');
           }

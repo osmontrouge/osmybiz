@@ -1,5 +1,9 @@
-const $ = require('jquery');
-
+import $ from 'jquery';
+// const $ = function() { };
+//import document from '../src/components/detail/DetailForm';
+/* const $ = fetch('').then((response)=> {
+  return response;
+}); */
 function combineSameMonths(input) {
   const multipleMonths = /(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off)[:,;]\s)(((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s[0-9]{2})\s([0-9]{2}:[0-9]{2}|off))/g;
   let combinedMonths = input + '';
@@ -884,7 +888,12 @@ function handelShemaOrg(string) {
 }
 
 function getSourceAsDom(url) {
-  return fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+  return fetch(`https://cors-anywhere.herokuapp.com/${url}`)
+    .then((response)=> {
+      if(response.status===200){
+        return response.text();
+      }
+    });
 }
 
 /*
@@ -911,7 +920,7 @@ function getSourceAsDom(url) {
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
   */
- /* export default async */ function isURL(url){
+ export default function isURL(url){
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
@@ -921,21 +930,25 @@ function getSourceAsDom(url) {
   if(url !== '') {
     const input = url + '';
     if (input.match(UrlRegex)) {
-      /* const promiseResult = */Promise.resolve(getSourceAsDom(input)).then(responseDom => {
-        output = handelShemaOrg(responseDom);
-        postMessage(output);
+      const fetched = getSourceAsDom(input);
+      fetched.then((result) =>{
+        // console.log(result); string is here
+        output = handelShemaOrg(result);
+        document.getElementById('openingHoursTime').value = output;
       });
-      // output = handelShemaOrg(promiseResult);
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
-      postMessage(output);
+      document.getElementById('openingHoursTime').value = output;
+    } else {
+      alert('Enter a valid URL');
     }
   } else {
-    postMessage('empty url');
+    alert('Enter a valid Input');
   }
+  // return output;
 }
-
+/*
 onmessage = (event) => {
-   console.log(event);
   isURL(event.data);
 };
+*/
