@@ -207,59 +207,7 @@
         // const result = isURL(input); https://www.casaferlin.ch/en
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
-          if (typeof (window.Worker) !== 'undefined') {
-            // document.getElementById('openingHoursTime').value = isURL(url);
-            /*
-            fetch(`https://cors-anywhere.herokuapp.com/${url}`).then(fetchedHTML => {
-              const output = handelShemaOrg(fetchedHTML);
-              console.log(output);
-            });
-            */
-            /* const conversion = new Promise((resolve, reject) =>
-              isURL(url, $).then((response) => {
-                if (response.ok) {
-                  console.log(response);
-                  resolve(response);
-                } else {
-                  reject(new Error('error'));
-                }
-              }, (error) => {
-                reject(new Error(error.message));
-              }));
-            console.log(conversion); */
-            /* const convertPromise = new Promise((resolve) => {
-              const result = */ isURL(url); /* if (result !== '') {
-                resolve(result);
-              }
-            });
-            convertPromise.then((result) => {
-              if (result === 'No valid input') {
-                console.log(`False Result: ${result}`);
-              } else {
-                console.log(`True Result: ${result}`);
-              }
-            });
-            /*
-            const result = isURL(url, $);
-            console.log(result);
-
-          /*
-            const w = new Worker('worker!./../../../static/converter.js');
-            // new Worker('../../../static/converter');
-            w.onmessage = function a(event) {
-              if (event.data === 'Please enter a valid URL') {
-                alert(event.data);
-              } else {
-                const result = `${event.data}`;
-                console.log(result);
-                document.getElementById('openingHoursTime').value = result;
-              }
-            };
-            w.postMessage(url);
-            */
-          } else {
-            console.log('Browser does not support webworker, pls enter times manually');
-          }
+          isURL(url);
         }
       },
     },
