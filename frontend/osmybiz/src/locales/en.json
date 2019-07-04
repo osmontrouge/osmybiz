@@ -42,7 +42,8 @@
     },
     "loginhelp": {
       "title": "Information",
-      "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap-Login.",
+      "section1": "To make changes on the map, you have to be logged in with an OpenStreetMap account.",
+      "osmlinktext": "If you don't have an account yet, register here:",
       "section2": "In this view you can already get an impression how the website works."
     }
   },
@@ -190,7 +191,7 @@
       "query": "Businesses could not be loaded.",
       "surrounding": "There is a problem with uploading the data to OpenStreetMap. Check your internet connection or try it again later."
     },
-    "osmybiz": "There is something wrong with our sever. Please be patient and give us some time while our team works on it."
+    "osmybiz": "There could be something wrong with the application. If the problem persists try again later."
   },
   "about": "\"OpenStreetMap My Business\" (short OSMyBiz) is a webapp where businesses - like hotels, restaurants, bars and shops - can enter and manage their information (e.g. address (housenumber, street), opening hours, phone no, and website) in OpenStreetMap in an easy way. It's similar to Onosm.org but contains more functions which are designed to be user friendly."
 }
