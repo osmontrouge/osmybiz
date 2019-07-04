@@ -10,7 +10,6 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
-
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
@@ -31,5 +30,6 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new FriendlyErrorsPlugin()
-  ]
+  ],
+  watch: true
 })

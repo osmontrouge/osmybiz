@@ -36,10 +36,27 @@
           </div>
 
           <input type="text"
+                 id="openingHoursTime"
                  v-model="details.opening_hours"
                  :placeholder="$t('detail.placeholders.opening_hours')">
         </div>
 
+		<div class="field">
+			<div class="field-label">
+				<label>{{ $t('detail.labels.opening_hours_url') }}</label>
+				<img class="info"
+					@mouseenter="showPopup($t('infoTexts.opening_hours_url'))"
+					@mouseleave="hidePopup()"
+					src="../../assets/info_black.png">
+			</div>
+			
+			<input type="text"
+             v-on:blur="blurOpeningHours()"
+             id="openingHoursURL"
+					v-model="details.opening_hours_url"
+					:placeholder="$t('detail.placeholders.opening_hours_url')">
+		</div>
+		
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.phone') }}</label>
@@ -153,13 +170,17 @@
 </template>
 
 <script>
-
   import { mapGetters, mapMutations } from 'vuex';
+
   import Vue from 'vue';
+
   import VeeValidate from 'vee-validate';
+
+  import isURL from '../../../static/converter';
 
   Vue.use(VeeValidate);
 
+  //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
   export default {
     mounted() {
       this.setApplyOffset(true);
@@ -180,6 +201,15 @@
         'showPopup',
         'hidePopup',
       ]),
+      blurOpeningHours() {
+        const url = document.getElementById('openingHoursURL').value;
+        // getting the value works, now make the handling async.
+        // const result = isURL(input); https://www.casaferlin.ch/en
+        if (document.getElementById('openingHoursTime').value === ''
+          && url !== '') {
+          isURL(url);
+        }
+      },
     },
   };
 </script>

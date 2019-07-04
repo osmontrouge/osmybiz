@@ -12,7 +12,7 @@ var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = (process.env.NODE_ENV === 'testing' || process.env.NODE_ENV === 'production')
   ? require('./webpack.prod.conf')
-  : require('./webpack.dev.conf')
+: require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -25,6 +25,15 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 var compiler = webpack(webpackConfig)
 
+const watching = compiler.watch({
+  // Example watchOptions
+  aggregateTimeout: 300,
+  poll: 1000
+}, (err, stats) => { // Stats Object
+  // Print watch/build result here...
+  //console.log(stats);
+  console.log('> watching!');
+});
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true
