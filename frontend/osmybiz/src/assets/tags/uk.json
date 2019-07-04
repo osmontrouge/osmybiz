@@ -1,0 +1,3231 @@
+{
+  "amenity/nursing_home": {
+    "name": "Будинок престарілих",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "social_facility",
+        "label": "Тип",
+        "type": "combo"
+      },
+      {
+        "key": "social_facility_for",
+        "label": "Обслуговуються",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/register_office": {
+    "name": "РАГС (ЗАГС)",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/scrapyard": {
+    "name": "Авторозборка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/animal_boarding": {
+    "name": "Готель для тварин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "animal_boarding",
+        "label": "Для тварин",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/animal_breeding": {
+    "name": "Розплідник тварин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "animal_breeding",
+        "label": "Для тварин",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/animal_shelter": {
+    "name": "Притулок для тварин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "animal_shelter",
+        "label": "Для тварин",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/arts_centre": {
+    "name": "Мистецький центр",
+    "fields": []
+  },
+  "amenity/bank": {
+    "name": "Банк",
+    "fields": [
+      {
+        "key": "atm",
+        "label": "Банкомат",
+        "type": "check"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Проїзд біля пункту обслуговування",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/bar": {
+    "name": "Бар",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "dedicated": "Призначено для курців",
+          "isolated": "У відведених зонах, ізольованих",
+          "no": "Паління заборонено",
+          "outside": "Дозволено зовні",
+          "separated": "У відведених зонах, не ізольованих",
+		  "yes": "Дозволено скрізь"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/bicycle_rental": {
+    "name": "Прокат велосипедів",
+    "fields": [
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      },
+      {
+        "key": "network",
+        "label": "Мережа",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/biergarten": {
+    "name": "Пивний садок",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "dedicated": "Призначено для курців",
+          "isolated": "У відведених зонах, ізольованих",
+          "no": "Паління заборонено",
+          "outside": "Дозволено зовні",
+          "separated": "У відведених зонах, не ізольованих",
+		  "yes": "Дозволено скрізь"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/boat_rental": {
+    "name": "Прокат човнів",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/bureau_de_change": {
+    "name": "Обмін валют",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Валюта",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/bus_station": {
+    "name": "Автостанція/Термінал",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/cafe": {
+    "name": "Кафе",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Кухня",
+        "type": "semiCombo"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/car_rental": {
+    "name": "Прокат автомобілів",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/car_sharing": {
+    "name": "Короткострокова оренда автомобіля",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      }
+    ]
+  },
+  "amenity/car_wash": {
+    "name": "Автомийка",
+    "fields": []
+  },
+  "amenity/casino": {
+    "name": "Казино",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      }
+    ]
+  },
+  "amenity/childcare": {
+    "name": "Дитяча кімната",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/cinema": {
+    "name": "Кінотеатр",
+    "fields": []
+  },
+  "amenity/clinic": {
+    "name": "Кліника",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Спеціальності",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/college": {
+    "name": "Територія коледжу",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/community_centre": {
+    "name": "Суспільний центр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/courthouse": {
+    "name": "Суд",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/crematorium": {
+    "name": "Крематорій",
+    "fields": []
+  },
+  "amenity/dentist": {
+    "name": "Дантист",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Спеціальності",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/doctors": {
+    "name": "Лікар",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Спеціальності",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/dojo": {
+    "name": "Додзьо / Школа бойових мистецтв",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Спорт",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "amenity/driving_school": {
+    "name": "Автошкола",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/embassy": {
+    "name": "Амбасада",
+    "fields": [
+      {
+        "key": "country",
+        "label": "Країна",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/fast_food": {
+    "name": "Фаст-Фуд",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Кухня",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "takeaway",
+        "label": "На винос",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "only": "Тільки на винос"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Доставка",
+        "type": "check"
+      },
+      {
+        "key": "drive_through",
+        "label": "Проїзд біля пункту обслуговування",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ferry_terminal": {
+    "name": "Поромна станція/Термінал",
+    "fields": [
+      {
+        "key": "network",
+        "label": "Мережа",
+        "type": "text"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/fire_station": {
+    "name": "Пожежна станція",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/food_court": {
+    "name": "Ресторане подвірʼя",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/fuel": {
+    "name": "Заправка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "fuel_multi",
+        "label": "Паливо",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/hospital": {
+    "name": "Територія лікарні",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "healthcare/speciality",
+        "label": "Спеціальності",
+        "type": "semiCombo"
+      },
+      {
+        "key": "emergency",
+        "label": "Аварійні служби",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ice_cream": {
+    "name": "Морозиво",
+    "fields": [
+      {
+        "key": "takeaway",
+        "label": "На винос",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "only": "Тільки на винос"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Доставка",
+        "type": "check"
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/internet_cafe": {
+    "name": "Інтернет кафе",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/kindergarten": {
+    "name": "Підготовча школа / Територія дитсадка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/library": {
+    "name": "Бібліотека",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/marketplace": {
+    "name": "Ринок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/nightclub": {
+    "name": "Нічний клуб",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      }
+    ]
+  },
+  "amenity/pharmacy": {
+    "name": "Pharmacy",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Проїзд біля пункту обслуговування",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/planetarium": {
+    "name": "Планетарій",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/police": {
+    "name": "Міліція/Поліція",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/post_office": {
+    "name": "Пошта",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/prison": {
+    "name": "Вʼязниця",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/pub": {
+    "name": "Паб",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/ranger_station": {
+    "name": "Контора лісництва",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/recycling_centre": {
+    "name": "Переробка вторсировини",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "recycling_accepts",
+        "label": "Приймається",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "amenity/restaurant": {
+    "name": "Ресторан",
+    "fields": [
+      {
+        "key": "cuisine",
+        "label": "Кухня",
+        "type": "semiCombo"
+      },
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      },
+      {
+        "key": "takeaway",
+        "label": "На винос",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "only": "Тільки на винос"
+        }
+      },
+      {
+        "key": "delivery",
+        "label": "Доставка",
+        "type": "check"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "outdoor_seating",
+        "label": "Місця на зовні",
+        "type": "check"
+      }
+    ]
+  },
+  "amenity/school": {
+    "name": "Територія школи",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/studio": {
+    "name": "Студія",
+    "fields": [
+      {
+        "key": "studio",
+        "label": "Тип",
+        "type": "combo"
+      }
+    ]
+  },
+  "amenity/taxi": {
+    "name": "Стоянка таксі",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      }
+    ]
+  },
+  "amenity/theatre": {
+    "name": "Театр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/townhall": {
+    "name": "Міська державна адміністрація",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/university": {
+    "name": "Територія університета",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "amenity/veterinary": {
+    "name": "Ветеринарна лікарня",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/adult_gaming_centre": {
+    "name": "Гральні автомати",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      }
+    ]
+  },
+  "leisure/bowling_alley": {
+    "name": "Боулінг",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      }
+    ]
+  },
+  "leisure/dance": {
+    "name": "Зала для танців",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/fitness_centre": {
+    "name": "Зал/Фітнес центр",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Спорт",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/golf_course": {
+    "name": "Поле для гольфу",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/hackerspace": {
+    "name": "Хакерспейс",
+    "fields": []
+  },
+  "leisure/horse_riding": {
+    "name": "Верхова їзда",
+    "fields": [
+      {
+        "key": "access_simple",
+        "label": " Пересування дозволено",
+        "type": "combo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Будинок",
+        "type": "combo"
+      }
+    ]
+  },
+  "leisure/ice_rink": {
+    "name": "Каток",
+    "fields": [
+      {
+        "key": "seasonal",
+        "label": "Сезонний",
+        "type": "check"
+      },
+      {
+        "key": "sport_ice",
+        "label": "Спорт",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Будинок",
+        "type": "combo"
+      }
+    ]
+  },
+  "leisure/marina": {
+    "name": "Пристань для яхт",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Плата",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Злив каналізаційних відходів",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Розетка",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/miniature_golf": {
+    "name": "Міні-гольф",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/resort": {
+    "name": "Курорт",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "leisure/sauna": {
+    "name": "Сауна",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "access_simple",
+        "label": " Пересування дозволено",
+        "type": "combo"
+      },
+      {
+        "key": "fee",
+        "label": "Плата",
+        "type": "check"
+      }
+    ]
+  },
+  "leisure/sports_centre": {
+    "name": "Спортивний центр/комплекс",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Спорт",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/stadium": {
+    "name": "Стадіон",
+    "fields": [
+      {
+        "key": "sport",
+        "label": "Спорт",
+        "type": "semiCombo"
+      }
+    ]
+  },
+  "leisure/water_park": {
+    "name": "Аквапарк",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "office/physician": {
+    "name": "Лікар",
+    "fields": []
+  },
+  "office/travel_agent": {
+    "name": "Туристична агенція",
+    "fields": []
+  },
+  "office/accountant": {
+    "name": "Бухгалтер",
+    "fields": []
+  },
+  "office/administrative": {
+    "name": "Канцелярія",
+    "fields": []
+  },
+  "office/adoption_agency": {
+    "name": "Агенція з усиновлення",
+    "fields": []
+  },
+  "office/advertising_agency": {
+    "name": "Рекламна агенція",
+    "fields": []
+  },
+  "office/architect": {
+    "name": "Архітектор",
+    "fields": []
+  },
+  "office/association": {
+    "name": "Неприбуткова організація",
+    "fields": []
+  },
+  "office/charity": {
+    "name": "Благодійна організація",
+    "fields": []
+  },
+  "office/educational_institution": {
+    "name": "Офіс освітнього закладу",
+    "fields": []
+  },
+  "office/employment_agency": {
+    "name": "Кадрова агенція",
+    "fields": []
+  },
+  "office/energy_supplier": {
+    "name": "Електропостачальна компанія",
+    "fields": []
+  },
+  "office/estate_agent": {
+    "name": "Агенція з нерухомості",
+    "fields": []
+  },
+  "office/financial": {
+    "name": "Фінансове управління",
+    "fields": []
+  },
+  "office/forestry": {
+    "name": "Лісництво",
+    "fields": []
+  },
+  "office/foundation": {
+    "name": "Фундація",
+    "fields": []
+  },
+  "office/government": {
+    "name": "Уряд",
+    "fields": []
+  },
+  "office/guide": {
+    "name": "Гід",
+    "fields": []
+  },
+  "office/insurance": {
+    "name": "Страхове бюро",
+    "fields": []
+  },
+  "office/it": {
+    "name": "ІТ компанія",
+    "fields": []
+  },
+  "office/lawyer": {
+    "name": "Адвокатське бюро",
+    "fields": []
+  },
+  "office/moving_company": {
+    "name": "Перевезення речей",
+    "fields": []
+  },
+  "office/newspaper": {
+    "name": "Редакція газети",
+    "fields": []
+  },
+  "office/ngo": {
+    "name": "Недержавна громадська організація",
+    "fields": [
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      }
+    ]
+  },
+  "office/notary": {
+    "name": "Нотаріус",
+    "fields": []
+  },
+  "office/political_party": {
+    "name": "Політична партія",
+    "fields": []
+  },
+  "office/private_investigator": {
+    "name": "Приватний детектив",
+    "fields": []
+  },
+  "office/quango": {
+    "name": "Квазі-НГО",
+    "fields": []
+  },
+  "office/research": {
+    "name": "Дослідницька лабораторія",
+    "fields": []
+  },
+  "office/surveyor": {
+    "name": "Експет-оцінщик",
+    "fields": []
+  },
+  "office/tax_advisor": {
+    "name": "Податкова консультація",
+    "fields": []
+  },
+  "office/telecommunication": {
+    "name": "Телекомунікаційна компанія",
+    "fields": []
+  },
+  "office/therapist": {
+    "name": "Фізіотерапевт",
+    "fields": []
+  },
+  "office/water_utility": {
+    "name": "Водоканал",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fishmonger": {
+    "name": "Риботорговець",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/furnace": {
+    "name": "Опалювальні котли",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/alcohol": {
+    "name": "Алкогольні напої",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "drive_through",
+        "label": "Проїзд біля пункту обслуговування",
+        "type": "check"
+      }
+    ]
+  },
+  "shop/anime": {
+    "name": "Аніме магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/antiques": {
+    "name": "Антикварний магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/appliance": {
+    "name": "Побутова техніка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/art": {
+    "name": "Художній салон",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/baby_goods": {
+    "name": "Товари для немовлят",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bag": {
+    "name": "Магазин з продажу валіз",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bakery": {
+    "name": "Булочна",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bathroom_furnishing": {
+    "name": "Магазин сантехніки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/beauty": {
+    "name": "Cалон краси",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "beauty",
+        "label": "Послуги",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/bed": {
+    "name": "Магазин постільних приналежнастей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/beverages": {
+    "name": "Напої",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/bicycle": {
+    "name": "Веломагазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "service/bicycle",
+        "label": "Послуги",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/bookmaker": {
+    "name": "Видавництво",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/books": {
+    "name": "Книжковий магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/boutique": {
+    "name": "Бутік",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Одяг",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/butcher": {
+    "name": "М’ясна лавка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/candles": {
+    "name": "Магазин свічок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/car_parts": {
+    "name": "Автозапчастини",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/car_repair": {
+    "name": "Автомайстерня",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Послуги",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/car": {
+    "name": "Автосалон",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Вживані речі",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "only": "Виключно"
+        }
+      },
+      {
+        "key": "service/vehicle",
+        "label": "Послуги",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/carpet": {
+    "name": "Магазин килимів",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/charity": {
+    "name": "Доброчинна крамниця",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Вживані речі",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "only": "Виключно"
+        }
+      }
+    ]
+  },
+  "shop/cheese": {
+    "name": "Магазин сиру",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/chemist": {
+    "name": "Побутова хімія",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/chocolate": {
+    "name": "Магазин шоколаду",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/clothes": {
+    "name": "Одяг",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Одяг",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/coffee": {
+    "name": "Крамниця кави",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/computer": {
+    "name": "Комп’ютери",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/confectionery": {
+    "name": "Кондитерська ",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/convenience": {
+    "name": "Міні-маркет",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/copyshop": {
+    "name": "Копіювальні послуги",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/cosmetics": {
+    "name": "Мазазин косметики",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/craft": {
+    "name": "Мистецтво та ремесла",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/curtain": {
+    "name": "Магазин занавісок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/dairy": {
+    "name": "Молочний магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/deli": {
+    "name": "Делікатеси/Вишукана їжа",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/department_store": {
+    "name": "Універмаг",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/doityourself": {
+    "name": "Зроби сам",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/dry_cleaning": {
+    "name": "Хімчистка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/e-cigarette": {
+    "name": "Магазин Е-цигарок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/electronics": {
+    "name": "Електроніка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/erotic": {
+    "name": "Секс-шоп",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fabric": {
+    "name": "Магазин тканин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/farm": {
+    "name": "Стелаж з фермерськими товарами",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/fashion": {
+    "name": "Бутік",
+    "fields": [
+      {
+        "key": "clothes",
+        "label": "Одяг",
+        "type": "semiCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/florist": {
+    "name": "Квіти",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/frame": {
+    "name": "Сільгосптовари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/funeral_directors": {
+    "name": "Ритуальні послуги",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Релігія",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Віросповідання",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/furniture": {
+    "name": "Меблі",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/garden_centre": {
+    "name": "Садово-парковий центр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/gas": {
+    "name": "Продаж зрідженого газу",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/gift": {
+    "name": "Подарунки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/greengrocer": {
+    "name": "Овочевий",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hairdresser": {
+    "name": "Перукарня",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hardware": {
+    "name": "Господарські товари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hearing_aids": {
+    "name": "Слухові апарати",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/herbalist": {
+    "name": "Ботаник",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/hifi": {
+    "name": "Аудіо апаратура",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/houseware": {
+    "name": "Господарські товари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/interior_decoration": {
+    "name": "Оформлення інтер’єру",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/jewelry": {
+    "name": "Jeweler",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/kiosk": {
+    "name": "Кіоск",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/kitchen": {
+    "name": "Меблі для кухні",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/laundry": {
+    "name": "Пральня",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/leather": {
+    "name": "Магазин шкіри",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/locksmith": {
+    "name": "Слюсар",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/lottery": {
+    "name": "Лоторейний магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/mall": {
+    "name": "Торгівельний центр",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/massage": {
+    "name": "Массаж",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/medical_supply": {
+    "name": "Медтехніка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/mobile_phone": {
+    "name": "Мобільні телефони",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/money_lender": {
+    "name": "Кредитна спілка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "currency_multi",
+        "label": "Валюта",
+        "type": "multiCombo"
+      }
+    ]
+  },
+  "shop/motorcycle": {
+    "name": "Мотомагазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/music": {
+    "name": "Музичний магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/musical_instrument": {
+    "name": "Магазин музикальних інструментів",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/newsagent": {
+    "name": "Преса",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/nutrition_supplements": {
+    "name": "Магазин храчових добавок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/optician": {
+    "name": "Оптика",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/organic": {
+    "name": "Органічна їжа",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/outdoor": {
+    "name": "Активний відпочинок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/paint": {
+    "name": "Магазин фарб",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pastry": {
+    "name": "Кондитерські вироби",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pawnbroker": {
+    "name": "Ломбард",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/perfumery": {
+    "name": "Парфуми",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pet": {
+    "name": "Товари для тварин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/photo": {
+    "name": "Фототовари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/pyrotechnics": {
+    "name": "Феєрверки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/radiotechnics": {
+    "name": "Радіодеталі",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/religion": {
+    "name": "Церковна лавка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "religion",
+        "label": "Релігія",
+        "type": "combo"
+      },
+      {
+        "key": "denomination",
+        "label": "Віросповідання",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/scuba_diving": {
+    "name": "Підводне плавання",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/seafood": {
+    "name": "Морепродукти",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/second_hand": {
+    "name": "Благодійний магазин",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "second_hand",
+        "label": "Вживані речі",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "only": "Виключно"
+        }
+      }
+    ]
+  },
+  "shop/shoes": {
+    "name": "Взуття",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/sports": {
+    "name": "Спорттовари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/stationery": {
+    "name": "Канцтовари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/storage_rental": {
+    "name": "Місце на складі в оренду",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "building",
+        "label": "Будинок",
+        "type": "combo"
+      }
+    ]
+  },
+  "shop/supermarket": {
+    "name": "Супермаркет",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tailor": {
+    "name": "Кравець",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tattoo": {
+    "name": "Тату салон",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tea": {
+    "name": "Чай",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/ticket": {
+    "name": "Білетна каса",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tiles": {
+    "name": "Кахель",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tobacco": {
+    "name": "Тютюн",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/toys": {
+    "name": "Іграшки",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/trade": {
+    "name": "Оптово-роздрібний склад",
+    "fields": [
+      {
+        "key": "trade",
+        "label": "Тип",
+        "type": "typeCombo"
+      },
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/travel_agency": {
+    "name": "Туристична агенція",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/tyres": {
+    "name": "Колеса та шини",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/vacuum_cleaner": {
+    "name": "Пилососи",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/variety_store": {
+    "name": "Універсам",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/video_games": {
+    "name": "Комп’ютерні ігри",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/video": {
+    "name": "Відео",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/watches": {
+    "name": "Годинники",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/water_sports": {
+    "name": "Водный спорт/Спорттовари",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/weapons": {
+    "name": "Зброя",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/window_blind": {
+    "name": "Жалюзі, ролети",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "shop/wine": {
+    "name": "Вино",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/alpine_hut": {
+    "name": "Гірський притулок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/apartment": {
+    "name": "Мебльована квартира/Комплекс",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Кількість номерів",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/aquarium": {
+    "name": "Акваріум",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/attraction": {
+    "name": "Визначне місце",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/camp_site": {
+    "name": "Табір",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Плата",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/caravan_site": {
+    "name": "Караван-парк",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "capacity",
+        "label": "Пропускна здатність на годину",
+        "type": "number"
+      },
+      {
+        "key": "fee",
+        "label": "Плата",
+        "type": "check"
+      },
+      {
+        "key": "sanitary_dump_station",
+        "label": "Злив каналізаційних відходів",
+        "type": "check"
+      },
+      {
+        "key": "power_supply",
+        "label": "Розетка",
+        "type": "check"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/chalet": {
+    "name": "Шале",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/gallery": {
+    "name": "Художня галерея",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/guest_house": {
+    "name": "Гостьовий будинок",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Кількість номерів",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/hostel": {
+    "name": "Хостел",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Кількість номерів",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/hotel": {
+    "name": "Готель",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "stars",
+        "label": "Кількість зірок",
+        "type": "number"
+      },
+      {
+        "key": "rooms",
+        "label": "Кількість номерів",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/motel": {
+    "name": "Мотель",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      },
+      {
+        "key": "smoking",
+        "label": "Паління",
+        "type": "combo",
+        "options": {
+          "no": "Паління заборонено",
+          "separated": "У відведених зонах, не ізольованих",
+          "isolated": "У відведених зонах, ізольованих",
+          "outside": "Дозволено зовні",
+          "yes": "Дозволено скрізь",
+          "dedicated": "Призначено для курців"
+        }
+      },
+      {
+        "key": "rooms",
+        "label": "Кількість номерів",
+        "type": "number"
+      },
+      {
+        "key": "internet_access",
+        "label": "Доступ до Інтеренету",
+        "type": "combo",
+        "options": {
+          "yes": "Так",
+          "no": "Ні",
+          "wlan": "Wifi",
+          "wired": "Дротовий",
+          "terminal": "Термінал"
+        }
+      },
+      {
+        "key": "internet_access/fee",
+        "label": "Плата за доступ до Інтеренету",
+        "type": "check"
+      },
+      {
+        "key": "internet_access/ssid",
+        "label": "SSID (Назва мережі)",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/museum": {
+    "name": "Музей",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/theme_park": {
+    "name": "Тематичний парк",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/wilderness_hut": {
+    "name": "Лісова хатинка",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  },
+  "tourism/zoo": {
+    "name": "Зоопарк",
+    "fields": [
+      {
+        "key": "operator",
+        "label": "Оператор",
+        "type": "text"
+      }
+    ]
+  }
+}
