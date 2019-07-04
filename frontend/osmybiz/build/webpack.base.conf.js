@@ -44,7 +44,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        // exclude: /converter\.js$/,
         include: [resolve('src'), resolve('test')/* , resolve('node_modules') */]
       },
       {
@@ -70,10 +69,6 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.worker\.js$/,
-        use: {loader: 'worker-loader'}
       }
     ]
   }
