@@ -50,11 +50,18 @@
 					src="../../assets/info_black.png">
 			</div>
 			
-			<input type="text"
+			<input v-validate="url"
+             :class="{'is-error': errors.has('website')}"
+             type="text"
              v-on:blur="blurOpeningHours()"
              id="openingHoursURL"
 					v-model="details.opening_hours_url"
 					:placeholder="$t('detail.placeholders.opening_hours_url')">
+
+      <span v-show="errors.has('website')"
+            class="help is-danger">
+        {{$t('detail.validate.website')}}
+      </span>
 		</div>
 		
         <div class="field">
