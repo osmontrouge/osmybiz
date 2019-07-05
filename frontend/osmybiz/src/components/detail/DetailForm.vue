@@ -207,7 +207,6 @@
         // const result = isURL(input); https://www.casaferlin.ch/en
         if (document.getElementById('openingHoursTime').value === ''
           && url !== '') {
-          console.log('test');
           isURL(url);
         }
       },

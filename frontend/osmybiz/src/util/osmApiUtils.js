@@ -7,6 +7,7 @@ function parseDetails(businessPOITags) {
   const tags = [
     'name',
     'opening_hours',
+    'opening_hours_url',
     'phone',
     'email',
     'website',
@@ -127,6 +128,9 @@ function createDetailTags(businessPOI) {
   let text = '';
   if (businessPOI.details.opening_hours.length !== 0) {
     text += `<tag k="opening_hours" v="${businessPOI.details.opening_hours}"/>`;
+  }
+  if (businessPOI.details.opening_hours_url.length !== 0) {
+    text += `<tag k="opening_hours:url" v="${businessPOI.details.opening_hours_url}"/>`;
   }
   if (businessPOI.details.phone.length !== 0) {
     text += `<tag k="phone" v="${businessPOI.details.phone}"/>`;
