@@ -27,7 +27,6 @@ export function addOrUpdateUser(userId, displayName) {
 }
 
 export function fetchBusinessPOIs(userId) {
-  console.log('fetchbusinessPOIS called by update.js');
   if (fakeOsmybizApi) {
     return mockFetchBusinessPOIs(userId);
   }
