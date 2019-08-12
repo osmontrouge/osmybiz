@@ -29,6 +29,7 @@ const initialState = {
     },
     name: '',
     opening_hours: '',
+    opening_url: '',
     phone: '',
     email: '',
     website: '',
@@ -88,6 +89,9 @@ function constructSuccessMessage(response, isNote) {
 }
 
 function parseTagToString(tag, value, initialValue, additionalText) {
+  if (tag === 'opening_url') {
+    tag = 'opening_hours:url';
+  }
   if (deepEqual(value, initialValue)) {
     if (value) {
       return `${additionalText}${tag} = ${value}\n`;
@@ -193,6 +197,7 @@ export function clearDetails() {
     },
     name: '',
     opening_hours: '',
+    opening_url: '',
     phone: '',
     email: '',
     website: '',
