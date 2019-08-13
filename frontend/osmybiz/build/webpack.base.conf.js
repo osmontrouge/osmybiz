@@ -44,7 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('static/converter.js')/* , resolve('node_modules') */]
+        include: [resolve('src'), resolve('test'), resolve('static/converter.js')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
