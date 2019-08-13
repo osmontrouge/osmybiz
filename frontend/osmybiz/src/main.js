@@ -3,7 +3,6 @@ import Vue from 'vue';
 import VueCookies from 'vue-cookies';
 import VueI18n from 'vue-i18n';
 import { sync } from 'vuex-router-sync';
-// import VueWorker from 'vue-worker';
 import store from './store';
 import App from './App.vue';
 import router from './router';
@@ -24,9 +23,6 @@ import { FALLBACKLOCALE } from './store/locale';
 
 Vue.use(VueCookies);
 Vue.use(VueI18n);
-// Vue.use(VueWorker);
-// Object.defineProperty(Vue.prototype, '$worker', {value:VueWorker,configurable: true});
-// Vue.prototype.$worker = vueWorker;
 
 const messages = ({
   de,
