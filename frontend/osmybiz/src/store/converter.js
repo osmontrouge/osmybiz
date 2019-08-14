@@ -82,7 +82,7 @@ function handleAdditiveTime(input) {
     const endDayIndex = week.indexOf(endDay);
     let result = dayRangAndTime.toString();
     const daysAndTimeOutsideRange = [];
-    for (let a = 1; a < dayAndTime.length; a = a+1) {
+    for (let a = 1; a < dayAndTime.length; a = a + 1) {
       const singleDayIndex = week.indexOf(dayAndTime[a].toString()[0]
         + dayAndTime[a].toString()[1]);
       if (startDayIndex < singleDayIndex && endDayIndex > singleDayIndex) {
@@ -92,7 +92,7 @@ function handleAdditiveTime(input) {
       }
     }
     if (daysAndTimeOutsideRange) {
-      for (let b = 0; b < daysAndTimeOutsideRange.length; b = b+1) {
+      for (let b = 0; b < daysAndTimeOutsideRange.length; b = b + 1) {
         result = `${result}; ${daysAndTimeOutsideRange[b]}`;
       }
     }
@@ -107,7 +107,7 @@ function replaceComma(input) {
   let output = input + '';
   const regexArray = [/Mo,Tu/g, /Tu,We/g, /We,Th/g, /Th,Fr/g, /Fr,Sa/g, /Sa,Su/g];
   const replacementArray = ['Mo-Tu', 'Tu-We', 'We-Th', 'Th-Fr', 'Fr-Sa', 'Sa-Su'];
-  for (let a = 0; a < regexArray.length; a = a+1) {
+  for (let a = 0; a < regexArray.length; a = a + 1) {
     output = output.replace(regexArray[a], replacementArray[a]);
   }
   return output;
@@ -167,7 +167,7 @@ function addMissingZeros(input) {
   const noMinutes = /(\s|-)([0-1]?[0-9]|2[0-4])(\s|-|$|,|\+)/g;
   const noSecondHourSyntax = /(,|\s|-)([0-9]:)/g;
   output = ` ${output}`;
-  for (let a = 0; a < 2; a = a +1) {
+  for (let a = 0; a < 2; a = a + 1) {
     output = output.toString().replace(noMinutes, (_1, _2, _3, _4) => `${_2} ${_3}:00${_4}`);
   }
   output = output.toString().replace(noSecondHourSyntax, (_1, _2, _3) => `${_2}0${_3}`);
@@ -187,7 +187,7 @@ function cutOverlappingTime(input) {
     if (timesList.length % 2 === 0) {
       let startTimes = [];
       let endTimes = [];
-      for (let a = 0; a < hoursAndMinutes.length; a = a+1) {
+      for (let a = 0; a < hoursAndMinutes.length; a = a + 1) {
         if (startTimes.length === endTimes.length) {
           startTimes.push(parseInt(hoursAndMinutes[a] + hoursAndMinutes[a + 1], 10));
           a += 1;
@@ -199,15 +199,15 @@ function cutOverlappingTime(input) {
       let timesNoEnd = [];
       if (listTimesWithoutEnd) {
         const noEndHoursAndMinutes = listTimesWithoutEnd.join(' ').match(hoursPlusMinutes);
-        for (let b = 0; b < noEndHoursAndMinutes.length; b = b+1) {
+        for (let b = 0; b < noEndHoursAndMinutes.length; b = b + 1) {
           timesNoEnd.push(parseInt(noEndHoursAndMinutes[b] + noEndHoursAndMinutes[b + 1], 10));
           b += 1;
         }
       }
-      for (let c = 0; c < startTimes.length; c = c+1) {
+      for (let c = 0; c < startTimes.length; c = c + 1) {
         let cNextDay = 0;
         let dNextDay = 0;
-        for (let d = c + 1; d < startTimes.length; d = d+1) {
+        for (let d = c + 1; d < startTimes.length; d = d + 1) {
           cNextDay = 0;
           dNextDay = 0;
           if (startTimes[d] > endTimes[d]) {
@@ -227,7 +227,7 @@ function cutOverlappingTime(input) {
           }
         }
         if (timesNoEnd) {
-          for (let e = 0; e < timesNoEnd.length; e = e+1) {
+          for (let e = 0; e < timesNoEnd.length; e = e + 1) {
             cNextDay = 0;
             if (startTimes[c] > endTimes[c]) {
               cNextDay = 2400;
@@ -242,14 +242,14 @@ function cutOverlappingTime(input) {
       startTimes = startTimes.filter(el => el != null);
       endTimes = endTimes.filter(el => el != null);
       let result = '';
-      for (let f = 0; f < startTimes.length; f = f+1) {
+      for (let f = 0; f < startTimes.length; f = f + 1) {
         if (f > 0) {
           result = `${result},`;
         }
         result = `${result}${addDoublePoint(startTimes[f].toString())}-${addDoublePoint(endTimes[f].toString())}`;
       }
       if (timesNoEnd) {
-        for (let g = 0; g < timesNoEnd.length; g = g+1) {
+        for (let g = 0; g < timesNoEnd.length; g = g + 1) {
           result = `${result},${addDoublePoint(timesNoEnd[g].toString())}+`;
         }
       }
@@ -311,7 +311,7 @@ function multipleSpecificDatesFunction(input) {
   const listDays = output.match(days);
   output = '';
   output = `${output}${listMonths[0].toString()} ${listDays[0].toString()}`;
-  for (let a = 1; a < listMonths.length; a = a+1) {
+  for (let a = 1; a < listMonths.length; a = a + 1) {
     if (listMonths[a - 1].toString() === listMonths[a].toString()) {
       output = `${output},${listDays[a].toString()}`;
     } else {
@@ -351,7 +351,7 @@ function orderDaysAndTime(input) {
     const timeRange = output.match(timeRangeFinder);
     let resultString = '';
     if (dayRange.length === timeRange.length) {
-      for (let a = 0; a < dayRange.length; a = a+1) {
+      for (let a = 0; a < dayRange.length; a = a + 1) {
         resultString = `${resultString}${dayRange[a]} ${timeRange[a]}`;
       }
       output = `${resultString.slice(0, resultString.length - 2)}`;
@@ -406,7 +406,7 @@ function combineDaysWithSameTimes(input) {
   const matchingDays = intermediate.match(daysAndTime);
   const splittDaysAndTime = [];
   if (matchingDays) {
-    for (let a = 0; a < matchingDays.length; a = a+1) {
+    for (let a = 0; a < matchingDays.length; a = a + 1) {
       splittDaysAndTime.push(daysAndTime.exec(intermediate));
     }
     let combinedTimes = [];
@@ -470,8 +470,8 @@ function sortDays(input) {
   const days = [false, false, false, false, false, false, false, false];
   let orderedByWeekdays = [];
   if (openingHoursSeperatedByDays) {
-    for (let a = 0; a < openingHoursSeperatedByDays.length; a = a+1) {
-      for (let b = 0; b < weekDays.length; b = b+1) {
+    for (let a = 0; a < openingHoursSeperatedByDays.length; a = a + 1) {
+      for (let b = 0; b < weekDays.length; b = b + 1) {
         if (openingHoursSeperatedByDays[a].toString().startsWith(weekDays[b])) {
           if (days[b] === false) {
             orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
@@ -557,7 +557,7 @@ function sortMonths(input) {
       const timeRanges = output.match(timeRangFinder);
       if (monthRanges.length === timeRanges.length) {
         let newString = '';
-        for (let a = 0; a < monthRanges.length; a = a+1) {
+        for (let a = 0; a < monthRanges.length; a = a + 1) {
           timeRanges[a] = timeRanges[a].replace(months, '');
           monthRanges[a] = `${monthRanges[a]}`;
           newString = `${newString}${monthRanges[a]}${timeRanges[a]}`;
@@ -588,7 +588,7 @@ function replaceEnglishMonths(input) {
   let output = input + '';
   const regexArray = [/January/gi, /February/gi, /March/gi, /April/gi, /May/gi, /June/gi, /July/gi, /August/gi, /September/gi, /October/gi, /November/gi, /December/gi];
   const replacementArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  for (let a = 0; a < regexArray.length; a = a+1) {
+  for (let a = 0; a < regexArray.length; a = a + 1) {
     output = output.replace(regexArray[a], replacementArray[a]);
   }
   return output;
@@ -598,7 +598,7 @@ function replaceGermanMonths(input) {
   let output = input + '';
   const regexArray = [/Januar/gi, /Februar/gi, /März/gi, /April/gi, /Mai/gi, /Juni/gi, /Juli/gi, /August/gi, /September/gi, /Oktober/gi, /November/gi, /Dezember/gi];
   const replacementArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  for (let a = 0; a < regexArray.length; a = a+1) {
+  for (let a = 0; a < regexArray.length; a = a + 1) {
     output = output.replace(regexArray[a], replacementArray[a]);
   }
   return output;
@@ -692,7 +692,7 @@ function shortenDaysGer(input) {
     /\b(Donnerstage?s?|Do\.?)\b/gi, /\b(Freitage?s?|Fr\.?)\b/gi, /\b(Samstage?s?|Sa\.?)\b/gi, /\b(Sonntage?s?|So\.?)\b/gi,
     /(Sonn\.\sund\sFeiertags|Sonn-\s?(&|und)\s?Feiertage?:?|Sonn..\sFeiertage?s?)/g, /Wochenenden?\b/gi, /\b(Feiertags|Feiertage?)\b/gi];
   const replacementArray = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Su,PH', 'Sa-Su', 'PH'];
-  for (let a = 0; a < regexArray.length; a = a+1) {
+  for (let a = 0; a < regexArray.length; a = a + 1) {
     output = output.replace(regexArray[a], replacementArray[a]);
   }
   return output;
@@ -810,20 +810,29 @@ function convert(input) {
   }
   return '';
 }
+
 //this reads the needed data out of the dom
 function scriptHandeling(input) {
-  input = input.toString().replace(/"/g,'\'');
+  input = input.toString().replace(/"/g, '\'');
   let result;
   let outputString = ' ';
-  outputString = outputString+input;
+  outputString = outputString + input;
   const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
-  outputString = outputString.replace(cutOutScript, (_1, _2, _3) => {return _3});
+  outputString = outputString.replace(cutOutScript, (_1, _2, _3) => {
+    return _3
+  });
   const cutGroupOpeningHours = /"openingHours":\[(.*)\]/g;
-  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => {return _2.replace(/"/g, '');});
+  outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => {
+    return _2.replace(/"/g, '');
+  });
   const cutNotGroupedOpeningHours = /"openingHours":\s"(.+?)",/g;
-  outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => {return _2});
+  outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => {
+    return _2
+  });
   const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
-  outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => {return _2});
+  outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => {
+    return _2
+  });
   const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|\]|})/g;
   outputString = outputString.replace(cutJSONParts, '');
   const removeSeperators = /(','|':')/g;
@@ -833,8 +842,12 @@ function scriptHandeling(input) {
   outputString = outputString.replace(/"|opens/g, '');
   result = outputString;
   result = result.toString().replace(/\s+/g, ' ');
-  result = result.toString().replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => {return `${_2} - ${_3}`});
-  result = result.toString().replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => {return`${_2} - ${_3}`});
+  result = result.toString().replace(/(\.[0-9]{2}\.)\s([0-9]{2}\.)/g, (_1, _2, _3) => {
+    return `${_2} - ${_3}`
+  });
+  result = result.toString().replace(/(:[0-9][0-9])\s([0-9][0-9]:)/g, (_1, _2, _3) => {
+    return `${_2} - ${_3}`
+  });
   result = convert(result);
   return result;
 }
@@ -882,8 +895,8 @@ function handelShemaOrg(string) {
 
 function getSourceAsDom(url) {
   return fetch(`https://cors-anywhere.herokuapp.com/${url}`)
-    .then((response)=> {
-      if(response.status===200){
+    .then((response) => {
+      if (response.status === 200) {
         return response.text();
       }
     });
@@ -913,7 +926,7 @@ function getSourceAsDom(url) {
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
   */
- export default async function isURL(url) {
+export default async function isURL(url) {
 
   const UrlRegex = new RegExp('^(?:(?:(?:https?|ftp):)?\\/\\/)(?:(?:[1-9]\\d?' +
     '|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]' +
