@@ -178,10 +178,14 @@
 </template>
 
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters, mapMutations } from 'vuex';
+
   import Vue from 'vue';
+
   import VeeValidate from 'vee-validate';
+
   import isURL from '../../../static/converter';
+  
   Vue.use(VeeValidate);
 
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
