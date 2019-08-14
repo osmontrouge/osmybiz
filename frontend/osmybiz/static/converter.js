@@ -926,7 +926,6 @@ function getSourceAsDom(url) {
 
       const fetched = getSourceAsDom(input);
       fetched.then((result) =>{
-        // console.log(result); string is here
         output = handelShemaOrg(result);
       });
 
@@ -934,14 +933,7 @@ function getSourceAsDom(url) {
       output = convert(input);
     }
   }
-  if (output === 'No valid input') {
-    output = '';
+  if (output !== 'No valid input') {
+    document.getElementById('openingHoursTime').value = output;
   }
-   document.getElementById('openingHoursTime').value = output;
-  // return output;
 }
-/*
-onmessage = (event) => {
-  isURL(event.data);
-};
-*/
