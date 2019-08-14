@@ -928,14 +928,16 @@ function getSourceAsDom(url) {
       fetched.then((result) =>{
         // console.log(result); string is here
         output = handelShemaOrg(result);
-        document.getElementById('openingHoursTime').value = output;
       });
 
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
-      document.getElementById('openingHoursTime').value = output;
     }
   }
+  if (output === 'No valid input') {
+    output = '';
+  }
+   document.getElementById('openingHoursTime').value = output;
   // return output;
 }
 /*
