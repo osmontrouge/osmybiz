@@ -876,9 +876,6 @@ function handelShemaOrg(string) {
     scriptResponse = '';
   }
   let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
-  if (result === '') {
-    result = 'No valid input';
-  }
   return result.trim();
   // return `${string} test`;
 }
