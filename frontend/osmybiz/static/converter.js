@@ -934,11 +934,7 @@ function getSourceAsDom(url) {
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
       document.getElementById('openingHoursTime').value = output;
-    } else {
-      alert('Enter a valid URL');
     }
-  } else {
-    alert('Enter a valid Input');
   }
   // return output;
 }

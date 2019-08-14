@@ -185,7 +185,7 @@
   import VeeValidate from 'vee-validate';
 
   import isURL from '../../../static/converter';
-  
+
   Vue.use(VeeValidate);
 
   //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
