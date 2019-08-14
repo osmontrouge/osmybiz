@@ -876,9 +876,6 @@ function handelShemaOrg(string) {
     scriptResponse = '';
   }
   let result = (`${microResponse} ${rdfaResponse} ${scriptResponse}`).trim();
-  if (result === '') {
-    result = 'No valid input';
-  }
   return result.trim();
   // return `${string} test`;
 }
@@ -937,11 +934,7 @@ function getSourceAsDom(url) {
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
       document.getElementById('openingHoursTime').value = output;
-    } else {
-      alert('Enter a valid URL');
     }
-  } else {
-    alert('Enter a valid Input');
   }
   // return output;
 }
