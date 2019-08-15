@@ -41,30 +41,30 @@
                  :placeholder="$t('detail.placeholders.opening_hours')">
         </div>
 
-		<div class="field">
-			<div class="field-label">
-				<label>{{ $t('detail.labels.opening_hours_url') }}</label>
-				<img class="info"
-					@mouseenter="showPopup($t('infoTexts.opening_hours_url'))"
-					@mouseleave="hidePopup()"
-					src="../../assets/info_black.png">
-			</div>
-			
-			<input v-validate="'url'"
-             :class="{'is-error': errors.has('website_opening_hours')}"
-             type="text"
-             name="website_opening_hours"
-             v-on:blur="blurOpeningHours()"
-             id="openingHoursURL"
-					v-model="details.opening_url"
-					:placeholder="$t('detail.placeholders.opening_hours_url')">
+        <div class="field">
+          <div class="field-label">
+            <label>{{ $t('detail.labels.opening_hours_url') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.opening_hours_url'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
+          </div>
 
-      <span v-show="errors.has('website_opening_hours')"
-            class="help is-danger">
+          <input v-validate="'url'"
+                 :class="{'is-error': errors.has('website_opening_hours')}"
+                 type="text"
+                 name="website_opening_hours"
+                 v-on:blur="blurOpeningHours()"
+                 id="openingHoursURL"
+                 v-model="details.opening_url"
+                 :placeholder="$t('detail.placeholders.opening_hours_url')">
+
+          <span v-show="errors.has('website_opening_hours')"
+                class="help is-danger">
         {{$t('detail.validate.website')}}
       </span>
-		</div>
-		
+        </div>
+
         <div class="field">
           <div class="field-label">
             <label>{{ $t('detail.labels.phone') }}</label>
@@ -184,7 +184,7 @@
 
   import VeeValidate from 'vee-validate';
 
-  import isURL from '../../../static/converter';
+  import isURL from '../../store/converter';
 
   Vue.use(VeeValidate);
 
@@ -266,7 +266,7 @@
     width: 49%;
     display: flex;
     flex-direction: column;
-    align-items:stretch;
+    align-items: stretch;
     justify-content: space-around;
   }
 
