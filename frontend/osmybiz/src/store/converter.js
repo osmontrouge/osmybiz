@@ -837,7 +837,7 @@ function scriptHandling(input) {
 }
 
 function handelSchemaOrg(string) {
-  // this handels opening hours when written in markdown
+  // this handles opening hours when written in markdown
   const el = document.createElement('html');
   el.innerHTML = string.toString();
   const microOH = $(el).find('[itemprop="openingHours"]');
@@ -852,17 +852,20 @@ function handelSchemaOrg(string) {
     microResponse = '';
   }
   microResponse = (`${microOHResponse} ${microResponse}`).trim();
-  // this handels opening hours noted in RDFa
+  // this handles opening hours noted in RDFa
+  // noinspection SpellCheckingInspection
   let rdfaOH = `${$(el).find("[property='openingHours']").attr('content')}`;
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
     rdfaOH = '';
   }
+  // noinspection SpellCheckingInspection
   let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
   rdfa = convert(rdfa);
   if (rdfa === 'No valid input') {
     rdfa = '';
   }
+  // noinspection SpellCheckingInspection
   const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
   // this handel's opening hours specified in the script application/ld+json
   const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
@@ -881,6 +884,7 @@ function getSourceAsDom(url) {
       if (response.status === 200) {
         return response.text();
       }
+      console.log(response.status);
       return null;
     });
 }
@@ -919,11 +923,17 @@ export default async function isURL(url) {
     const input = `${url}`;
     if (input.match(UrlRegex)) {
       const fetched = await getSourceAsDom(input);
+      // TODO proper error handling
       if (fetched != null) {
         output = handelSchemaOrg(fetched);
       } else {
-        // TODO proper error handling
-        console.log('failed to fetch website');
+        const seconedFetch = await getSourceAsDom(input);
+        if (seconedFetch != null) {
+          output = handelSchemaOrg(seconedFetch);
+        } else {
+          output = 'No valid input';
+        }
+        alert('Fetching of Website failed please enter the Opening Hours Manually');
       }
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
