@@ -49,7 +49,6 @@ const actions = {
               resolve(subscribedBusinessPOI);
             }
           });
-
           promise.then(() => {
             if (isNoteWithoutOsmElement(subscribedBusinessPOI.id)) {
               subscribedBusinessPOI.tags = {};

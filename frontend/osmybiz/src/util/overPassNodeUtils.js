@@ -65,6 +65,7 @@ function createNoteFromBusinessPOI(businessPOI) {
     category: getBizCategory(businessPOI),
     name: extractTag(businessPOI, 'name'),
     opening_hours: extractTag(businessPOI, 'opening_hours'),
+    opening_url: extractTag(businessPOI, 'opening_hours:url'),
     phone: extractTag(businessPOI, 'phone'),
     email: extractTag(businessPOI, 'email'),
     website: extractTag(businessPOI, 'website'),

@@ -7,6 +7,7 @@ function parseDetails(businessPOITags) {
   const tags = [
     'name',
     'opening_hours',
+    'opening_hours:url',
     'phone',
     'email',
     'website',
@@ -128,6 +129,9 @@ function createDetailTags(businessPOI) {
   if (businessPOI.details.opening_hours.length !== 0) {
     text += `<tag k="opening_hours" v="${businessPOI.details.opening_hours}"/>`;
   }
+  if (businessPOI.opening_url.length !== 0) {
+    text += `<tag k="opening_hours:url" v="${businessPOI.details.opening_url}"/>`;
+  }
   if (businessPOI.details.phone.length !== 0) {
     text += `<tag k="phone" v="${businessPOI.details.phone}"/>`;
   }
@@ -234,7 +238,6 @@ function extractId(businessPOIDiff) {
 
   return getAttributes(diffJson).new_id;
 }
-
 
 export default {
   parseUser,

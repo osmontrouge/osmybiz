@@ -36,8 +36,33 @@
           </div>
 
           <input type="text"
+                 id="openingHoursTime"
                  v-model="details.opening_hours"
                  :placeholder="$t('detail.placeholders.opening_hours')">
+        </div>
+
+        <div class="field">
+          <div class="field-label">
+            <label>{{ $t('detail.labels.opening_hours_url') }}</label>
+            <img class="info"
+                 @mouseenter="showPopup($t('infoTexts.opening_hours_url'))"
+                 @mouseleave="hidePopup()"
+                 src="../../assets/info_black.png">
+          </div>
+
+          <input v-validate="'url'"
+                 :class="{'is-error': errors.has('website_opening_hours')}"
+                 type="text"
+                 name="website_opening_hours"
+                 v-on:blur="blurOpeningHours()"
+                 id="openingHoursURL"
+                 v-model="details.opening_url"
+                 :placeholder="$t('detail.placeholders.opening_hours_url')">
+
+          <span v-show="errors.has('website_opening_hours')"
+                class="help is-danger">
+        {{$t('detail.validate.website')}}
+      </span>
         </div>
 
         <div class="field">
@@ -153,13 +178,17 @@
 </template>
 
 <script>
-
   import { mapGetters, mapMutations } from 'vuex';
+
   import Vue from 'vue';
+
   import VeeValidate from 'vee-validate';
+
+  import isURL from '../../store/converter';
 
   Vue.use(VeeValidate);
 
+  //  document.getElementById('openingHoursURL').addEventListener('blur', printTest, false);
   export default {
     mounted() {
       this.setApplyOffset(true);
@@ -180,6 +209,15 @@
         'showPopup',
         'hidePopup',
       ]),
+      blurOpeningHours() {
+        const url = document.getElementById('openingHoursURL').value;
+        // getting the value works, now make the handling async.
+        // const result = isURL(input); https://www.casaferlin.ch/en
+        if (document.getElementById('openingHoursTime').value === ''
+          && url !== '') {
+          isURL(url);
+        }
+      },
     },
   };
 </script>
@@ -228,7 +266,7 @@
     width: 49%;
     display: flex;
     flex-direction: column;
-    align-items:stretch;
+    align-items: stretch;
     justify-content: space-around;
   }
 
