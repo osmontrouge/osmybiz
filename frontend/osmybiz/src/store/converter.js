@@ -347,7 +347,7 @@ function orderDaysAndTime(input) {
   let output = `${input}`;
   const dayRangeFinder = /(Mo|Tu|We|Th|Fr|Sa|Su|PH)([-|,])?(Mo|Tu|We|Th|Fr|Sa|Su|PH)?(,Mo|,Tu|,We|,Th|,Fr|,Sa|,Su|,PH)*/g;
   const timeRangeFinder = /[0-2].*?;/g;
-  if (output.endsWith(output.match(/(Mo$|Tu$|We$|Th$|Fr$|Sa$|Su$|PH$)/g))) {
+  if (output.match(/(Mo$|Tu$|We$|Th$|Fr$|Sa$|Su$|PH$)/g)) {
     const dayRange = output.match(dayRangeFinder);
     const timeRange = output.match(timeRangeFinder);
     let resultString = '';
@@ -815,13 +815,13 @@ function scriptHandeling(input) {
   outputString += input.toString().replace(/"/g, '\'');
   const cutOutScript = /<script type="application\/ld\+json">(.|\n)+("openingHoursSpecification":.+?|"openingHours":.+?)<\/script>/g;
   outputString = outputString.replace(cutOutScript, (_1, _2, _3) => _3);
-  const cutGroupOpeningHours = /"openingHours":\[(.*)\]/g;
+  const cutGroupOpeningHours = /"openingHours":\[(.*)]/g;
   outputString = outputString.replace(cutGroupOpeningHours, (_1, _2) => _2.replace(/"/g, ''));
   const cutNotGroupedOpeningHours = /"openingHours":\s"(.+?)",/g;
   outputString = outputString.replace(cutNotGroupedOpeningHours, (_1, _2) => _2);
   const cutRemainingNotRelevantPart = /("openingHoursSpecification":\[.+?]).+/g;
   outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => _2);
-  const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|\]|})/g;
+  const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|]|})/g;
   outputString = outputString.replace(cutJSONParts, '');
   const removeSeperators = /(','|':')/g;
   outputString = outputString.replace(removeSeperators, ' ');
@@ -919,7 +919,12 @@ export default async function isURL(url) {
     const input = `${url}`;
     if (input.match(UrlRegex)) {
       const fetched = await getSourceAsDom(input);
-      output = handelShemaOrg(fetched);
+      if (fetched != null) {
+        output = handelShemaOrg(fetched);
+      } else {
+        // TODO propper error handling
+        console.log('failed to fetch');
+      }
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
     }
