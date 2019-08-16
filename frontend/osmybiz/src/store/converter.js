@@ -276,7 +276,7 @@ function switchDayAndMonthPosition(input) {
   return output;
 }
 
-function removeWrongDoublepoints(input) {
+function removeWrongDoublePoints(input) {
   let output = `${input}`;
   const doublePointsInMonths = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec):\s([0][1-9]|[1-2][0-9]|[3][0-1]|[1-9])(:00)?/g;
   output = output.replace(doublePointsInMonths, (_1, _2, _3) => `${_2} ${_3}`);
@@ -290,7 +290,7 @@ function addMissingZeroesDays(input) {
   return output;
 }
 
-function monthRagneEndCorrection(input) {
+function monthRangeEndCorrection(input) {
   let output = `${input}`;
   const detectWrongEnd = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s([0-2][0-9]|[3][0-1]);/g;
   output = output.replace(detectWrongEnd, (_1, _2, _3) => `${_2} ${_3}:`);
@@ -405,21 +405,21 @@ function combineDaysWithSameTimes(input) {
   }
   const intermediate = ` ${output}`;
   const matchingDays = intermediate.match(daysAndTime);
-  const splittDaysAndTime = [];
+  const splitDaysAndTime = [];
   if (matchingDays) {
     for (let a = 0; a < matchingDays.length; a += 1) {
-      splittDaysAndTime.push(daysAndTime.exec(intermediate));
+      splitDaysAndTime.push(daysAndTime.exec(intermediate));
     }
     let combinedTimes = [];
     let checkTime = '';
     let result = '';
-    for (let a = 0; a < splittDaysAndTime.length; a += 1) {
+    for (let a = 0; a < splitDaysAndTime.length; a += 1) {
       if (combinedTimes.length === 0) {
-        const [, combinedTime, _checkTime] = splittDaysAndTime[a];
+        const [, combinedTime, _checkTime] = splitDaysAndTime[a];
         combinedTimes.push(combinedTime);
         checkTime = _checkTime;
-      } else if (checkTime === splittDaysAndTime[a][2]) {
-        combinedTimes.push(splittDaysAndTime[a][1]);
+      } else if (checkTime === splitDaysAndTime[a][2]) {
+        combinedTimes.push(splitDaysAndTime[a][1]);
       } else {
         result = `${result}${combinedTimes} ${checkTime}; `;
         combinedTimes = [];
@@ -466,19 +466,19 @@ function sortDays(input) {
     '([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au])?\\b\\s?([-,])?\\s?\\b(Mo|T[hu]|We|Fr|S[au]|PH)?' +
     '\\b\\s?(off;)?((([0-1]?[0-9]|[2][0-4]):[0-5][0-9])\\s?([-+])\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])?;?' +
     '(\\s?,\\s*(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])(\\+|\\s?-\\s?(([0-1]?[0-9]|[2][0-4]):[0-5][0-9])))*;?)?(off)?', 'gm');
-  const openingHoursSeperatedByDays = output.toString().match(stringForm);
+  const openingHoursSeparatedByDays = output.toString().match(stringForm);
   const weekDays = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'PH'];
   const days = [false, false, false, false, false, false, false, false];
   let orderedByWeekdays = [];
-  if (openingHoursSeperatedByDays) {
-    for (let a = 0; a < openingHoursSeperatedByDays.length; a += 1) {
+  if (openingHoursSeparatedByDays) {
+    for (let a = 0; a < openingHoursSeparatedByDays.length; a += 1) {
       for (let b = 0; b < weekDays.length; b += 1) {
-        if (openingHoursSeperatedByDays[a].toString().startsWith(weekDays[b])) {
+        if (openingHoursSeparatedByDays[a].toString().startsWith(weekDays[b])) {
           if (days[b] === false) {
-            orderedByWeekdays[b] = openingHoursSeperatedByDays[a];
+            orderedByWeekdays[b] = openingHoursSeparatedByDays[a];
             days[b] = true;
           } else {
-            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeperatedByDays[a].replace(stringForm, (_1, _2, _3, _4, _5, _6, _7, _8) => _8)}`;
+            orderedByWeekdays[b] = `${orderedByWeekdays[b]},${openingHoursSeparatedByDays[a].replace(stringForm, (_1, _2, _3, _4, _5, _6, _7, _8) => _8)}`;
             orderedByWeekdays[b] = orderedByWeekdays[b].replace(/;/g, '');
           }
         }
@@ -782,9 +782,9 @@ function convert(input) {
       hoursToConvert = sortMonths(hoursToConvert);
       hoursToConvert = correctMonthDays(hoursToConvert);
       hoursToConvert = switchDayAndMonthPosition(hoursToConvert);
-      hoursToConvert = removeWrongDoublepoints(hoursToConvert);
+      hoursToConvert = removeWrongDoublePoints(hoursToConvert);
       hoursToConvert = addMissingZeroesDays(hoursToConvert);
-      hoursToConvert = monthRagneEndCorrection(hoursToConvert);
+      hoursToConvert = monthRangeEndCorrection(hoursToConvert);
       hoursToConvert = monthsAddSpace(hoursToConvert);
       hoursToConvert = combineSameMonths(hoursToConvert);
       hoursToConvert = hoursToConvert.replace(multipleSpecificDates, (_1) => {
@@ -809,7 +809,7 @@ function convert(input) {
 }
 
 // this reads the needed data out of the dom
-function scriptHandeling(input) {
+function scriptHandling(input) {
   let result;
   let outputString = ' ';
   outputString += input.toString().replace(/"/g, '\'');
@@ -823,8 +823,8 @@ function scriptHandeling(input) {
   outputString = outputString.replace(cutRemainingNotRelevantPart, (_1, _2) => _2);
   const cutJSONParts = /(http:\/\/schema.org\/|{"@type":"OpeningHoursSpecification",|},|"dayOfWeek":|"openingHoursSpecification":\[|]|})/g;
   outputString = outputString.replace(cutJSONParts, '');
-  const removeSeperators = /(','|':')/g;
-  outputString = outputString.replace(removeSeperators, ' ');
+  const removeSeparators = /(','|':')/g;
+  outputString = outputString.replace(removeSeparators, ' ');
   outputString = outputString.replace(/""/g, ' ');
   outputString = outputString.replace(/closes/g, '-');
   outputString = outputString.replace(/"|opens/g, '');
@@ -836,8 +836,8 @@ function scriptHandeling(input) {
   return result;
 }
 
-function handelShemaOrg(string) {
-  // this handels opning hours when written in markdown
+function handelSchemaOrg(string) {
+  // this handles opening hours when written in markdown
   const el = document.createElement('html');
   el.innerHTML = string.toString();
   const microOH = $(el).find('[itemprop="openingHours"]');
@@ -852,21 +852,24 @@ function handelShemaOrg(string) {
     microResponse = '';
   }
   microResponse = (`${microOHResponse} ${microResponse}`).trim();
-  // this handels opening hours noted in RDFa
+  // this handles opening hours noted in RDFa
+  // noinspection SpellCheckingInspection
   let rdfaOH = `${$(el).find("[property='openingHours']").attr('content')}`;
   rdfaOH = convert(rdfaOH);
   if (rdfaOH === 'No valid input') {
     rdfaOH = '';
   }
+  // noinspection SpellCheckingInspection
   let rdfa = `${$(el).find("[property='openingHoursSpecification']").text()}`;
   rdfa = convert(rdfa);
   if (rdfa === 'No valid input') {
     rdfa = '';
   }
+  // noinspection SpellCheckingInspection
   const rdfaResponse = (`${rdfaOH} ${rdfa}`).trim();
-  // this handels opening hours specified in the script application/ld+json
+  // this handel's opening hours specified in the script application/ld+json
   const scripts = `${$(el).find("[type='application/ld+json']").html()}`;
-  let scriptResponse = scriptHandeling(scripts);
+  let scriptResponse = scriptHandling(scripts);
   if (scriptResponse === 'No valid input') {
     scriptResponse = '';
   }
@@ -920,10 +923,14 @@ export default async function isURL(url) {
     if (input.match(UrlRegex)) {
       const fetched = await getSourceAsDom(input);
       if (fetched != null) {
-        output = handelShemaOrg(fetched);
+        output = handelSchemaOrg(fetched);
       } else {
-        // TODO propper error handling
-        console.log('failed to fetch');
+        const secondFetch = await getSourceAsDom(input);
+        if (secondFetch != null) {
+          output = handelSchemaOrg(secondFetch);
+        } else {
+          output = 'No valid input';
+        }
       }
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
