@@ -884,7 +884,6 @@ function getSourceAsDom(url) {
       if (response.status === 200) {
         return response.text();
       }
-      console.log(response.status);
       return null;
     });
 }
@@ -927,13 +926,12 @@ export default async function isURL(url) {
       if (fetched != null) {
         output = handelSchemaOrg(fetched);
       } else {
-        const seconedFetch = await getSourceAsDom(input);
-        if (seconedFetch != null) {
-          output = handelSchemaOrg(seconedFetch);
+        const secondFetch = await getSourceAsDom(input);
+        if (secondFetch != null) {
+          output = handelSchemaOrg(secondFetch);
         } else {
           output = 'No valid input';
         }
-        alert('Fetching of Website failed please enter the Opening Hours Manually');
       }
     } else if (input.match(/[0-9]/g)) {
       output = convert(input);
