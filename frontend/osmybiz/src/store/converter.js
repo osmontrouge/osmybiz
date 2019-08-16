@@ -922,7 +922,6 @@ export default async function isURL(url) {
     const input = `${url}`;
     if (input.match(UrlRegex)) {
       const fetched = await getSourceAsDom(input);
-      // TODO proper error handling
       if (fetched != null) {
         output = handelSchemaOrg(fetched);
       } else {
