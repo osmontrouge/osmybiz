@@ -131,6 +131,7 @@ function createDetailTags(businessPOI) {
   }
   // TODO: Find out why `opening_url` has to be treated differently
   //       than the other properties of `businessPOI.details`.
+  //       https://gitlab.com/geometalab/osmybiz/issues/240
   if (businessPOI.details.opening_url) { // if opening_url is neither undefined nor empty
     text += `<tag k="opening_hours:url" v="${businessPOI.details.opening_url}"/>`;
   }
