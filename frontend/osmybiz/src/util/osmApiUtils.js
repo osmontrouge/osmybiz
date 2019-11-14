@@ -129,7 +129,9 @@ function createDetailTags(businessPOI) {
   if (businessPOI.details.opening_hours.length !== 0) {
     text += `<tag k="opening_hours" v="${businessPOI.details.opening_hours}"/>`;
   }
-  if (businessPOI.opening_url.length !== 0) {
+  // TODO: Find out why `opening_url` has to be treated differently
+  //       than the other properties of `businessPOI.details`.
+  if (businessPOI.details.opening_url) { // if opening_url is neither undefined nor empty
     text += `<tag k="opening_hours:url" v="${businessPOI.details.opening_url}"/>`;
   }
   if (businessPOI.details.phone.length !== 0) {
