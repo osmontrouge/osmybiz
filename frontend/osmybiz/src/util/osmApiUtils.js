@@ -129,7 +129,7 @@ function createDetailTags(businessPOI) {
   if (businessPOI.details.opening_hours.length !== 0) {
     text += `<tag k="opening_hours" v="${businessPOI.details.opening_hours}"/>`;
   }
-  if (businessPOI.opening_url.length !== 0) {
+  if (businessPOI.details.opening_url.length !== 0) {
     text += `<tag k="opening_hours:url" v="${businessPOI.details.opening_url}"/>`;
   }
   if (businessPOI.details.phone.length !== 0) {
