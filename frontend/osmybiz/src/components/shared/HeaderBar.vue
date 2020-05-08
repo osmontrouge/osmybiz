@@ -124,7 +124,7 @@
     display: flex;
     flex-direction: row;
     margin: 0 24px;
-    align-items: baseline;
+    align-items: center;
   }
 
   .about {
@@ -140,7 +140,8 @@
 
   .messages {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 0 20px 0 20px;
     cursor: pointer;
   }
