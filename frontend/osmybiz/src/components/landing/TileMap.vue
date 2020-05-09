@@ -70,7 +70,7 @@
         },
         positionWhereContextMenuIsTriggered: null,
         maxBounds: [[-89.98155760646617, -180], [89.99346179538875, 180]],
-        tileLayerZoomSettings: { maxNativeZoom: 18, maxZoom: 19 },
+        tileLayerZoomSettings: { maxNativeZoom: 19, maxZoom: 19 },
       };
     },
     created() {
