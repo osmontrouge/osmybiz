@@ -69,17 +69,13 @@
 
   .search-bar-wrapper {
     position: fixed;
-    height:50px;
-    width: 500px;
+    height: 50px;
     z-index: 99;
-    left: 50%;
-    margin-left: -251px;
     top:60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    border: 2px solid $primary-color;
+    width: 100%;
   }
 
   .search-bar {
@@ -99,16 +95,20 @@
 
   .input-wrapper {
     width: 450px;
+    max-width: 90%;
     height: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: white;
+    border: 2px solid $primary-color;
   }
 
   .suggestion-list {
     font-size:12px;
     position: fixed;
     width: 500px;
+    max-width: 90%;
     display: flex;
     align-items: flex-start;
     flex-direction: column;

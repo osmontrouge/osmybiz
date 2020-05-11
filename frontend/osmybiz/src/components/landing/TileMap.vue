@@ -195,4 +195,11 @@
     height: 100%;
     width: 100%;
   }
+
+  @media screen and (max-width: 750px) {
+    >>> .leaflet-left {
+      top: 60px;
+    }
+  }
+
 </style>

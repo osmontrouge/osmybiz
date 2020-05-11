@@ -7,7 +7,12 @@
           </router-link>
         </a>
       </div>
-      <div class="buttons">
+
+      <div class="collapse" @click="expandMenu = !expandMenu">
+        <icon name="bars"></icon>
+      </div>
+
+      <div class="buttons" :class="{ expanded: expandMenu }">
         <div class="about">
           <a href="http://wiki.openstreetmap.org/wiki/OSMyBiz"
              class="external-link"
@@ -58,6 +63,11 @@
       });
     },
     name: 'header-bar',
+    data() {
+      return {
+        expandMenu: false,
+      };
+    },
     computed: {
       ...mapGetters([
         'user',
@@ -88,6 +98,7 @@
         }
       },
     },
+
     components: {
       Icon,
       LanguageDropDown,
@@ -169,6 +180,41 @@
     margin-right: 10px;
     padding: 7px 8px;
     outline: none;
+  }
+
+  .collapse {
+    display: none;
+  }
+
+  @media screen and (max-width: 750px) {
+    .title {
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: none;
+    }
+
+    .expanded {
+      display: flex;
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      background: white;
+      flex-direction: column;
+      margin: 0;
+
+      > * {
+        margin-bottom: 10px;
+      }
+    }
+
+    .collapse {
+      display: flex;
+      padding: 10px;
+      margin: 0 14px;
+      cursor: pointer;
+    }
   }
 
 </style>
